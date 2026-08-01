@@ -1,0 +1,309 @@
+{
+  "auth": {
+    "signIn": {
+      "title": "Willkommen zurück",
+      "subtitle": "Melden Sie sich an, um Ihr Wellness-Dashboard zu öffnen",
+      "mockNotice": "Die lokale Test-Anmeldung ist aktiv. Verwenden Sie die Superadmin-E-Mail {{email}} und Ihr Passwort, um Mitgliederbereich und Administration zu Testzwecken zu öffnen.",
+      "remember": "Angemeldet bleiben",
+      "forgot": "Passwort vergessen?",
+      "submit": "Anmelden",
+      "submitting": "Anmeldung läuft...",
+      "noAccount": "Noch kein Konto?",
+      "signUpLink": "Registrieren",
+      "legal": "Mit der Anmeldung stimmen Sie unseren Nutzungsbedingungen und der Datenschutzerklärung zu",
+      "genericError": "Bei der Anmeldung ist ein Fehler aufgetreten",
+      "noSession": "Anmeldung fehlgeschlagen – keine Benutzersitzung erstellt"
+    },
+    "signUp": {
+      "title": "Konto erstellen",
+      "subtitle": "Starten Sie Ihren Wellness-Weg mit BioMath Core",
+      "success": "Konto erfolgreich erstellt! Weiterleitung zur Anmeldung...",
+      "verifyEmail": "Konto erstellt. Bitte bestätigen Sie Ihre E-Mail-Adresse, bevor Sie sich anmelden.",
+      "submit": "Konto erstellen",
+      "submitting": "Konto wird erstellt...",
+      "haveAccount": "Sie haben bereits ein Konto?",
+      "signInLink": "Anmelden",
+      "legal": "Mit der Erstellung eines Kontos stimmen Sie unseren Nutzungsbedingungen und der Datenschutzerklärung zu",
+      "rights": "© {{year}} BioMath Core. Alle Rechte vorbehalten.",
+      "genericError": "Bei der Registrierung ist ein Fehler aufgetreten",
+      "passwordMismatch": "Die Passwörter stimmen nicht überein",
+      "passwordTooShort": "Das Passwort muss mindestens 6 Zeichen lang sein"
+    },
+    "fields": {
+      "email": "E-Mail-Adresse",
+      "password": "Passwort",
+      "confirmPassword": "Passwort bestätigen",
+      "fullName": "Vollständiger Name",
+      "fullNamePlaceholder": "Max Mustermann",
+      "referralCode": "Empfehlungscode (optional)",
+      "referralHint": "Erhalten Sie 5 $ Rabatt mit dem Code eines Freundes",
+      "passwordHint": "Mindestens 6 Zeichen"
+    }
+  },
+  "contactExtra": {
+    "seoTitle": "Kontakt - Nehmen Sie Kontakt mit BioMath Core auf",
+    "seoDescription": "Sie haben Fragen? Wenden Sie sich an BioMath Core für Support, Partnerschaften oder Anfragen. Wir antworten in der Regel innerhalb von 24 Stunden über mehrere Kanäle.",
+    "sent": "Gesendet",
+    "receivedTitle": "Nachricht erhalten",
+    "receivedBody": "Danke für Ihre Nachricht. Unser Team antwortet innerhalb von 24 Stunden.",
+    "form": {
+      "name": "Ihr Name *",
+      "email": "E-Mail-Adresse *",
+      "company": "Unternehmen (optional)",
+      "subject": "Betreff *",
+      "message": "Nachricht *",
+      "messagePlaceholder": "Erzählen Sie uns mehr über Ihre Anfrage...",
+      "submit": "Nachricht senden",
+      "selectSubject": "Betreff auswählen",
+      "subjects": {
+        "general": "Allgemeine Anfrage",
+        "enterprise": "Unternehmenslösungen",
+        "api": "API-Zugang",
+        "investment": "Investitionsmöglichkeit",
+        "partnership": "Partnerschaft",
+        "support": "Technischer Support"
+      }
+    },
+    "channelsLabel": "Kanäle",
+    "channels": {
+      "email": {
+        "title": "E-Mail",
+        "note": "Wir antworten innerhalb von 24 Stunden",
+        "body": "Am besten für detaillierte Fragen, Kontothemen und alles Schriftliche."
+      },
+      "chat": {
+        "title": "Live-Chat",
+        "body": "Kurze Fragen und Kontohilfe während der Geschäftszeiten.",
+        "note": "Chat auf dieser Seite öffnen",
+        "open": "Chat starten",
+        "close": "Chat schließen"
+      },
+      "enterprise": {
+        "title": "Unternehmen",
+        "note": "Partnerschaften und individuelle Umsetzungen",
+        "body": "Für Kliniken, Teams, maßgeschneiderte Deployments und Partnerschaften."
+      }
+    },
+    "responseLabel": "Antwortzeiten",
+    "response": {
+      "general": "Allgemeine Anfragen",
+      "generalValue": "24 Stunden",
+      "enterprise": "Unternehmen",
+      "enterpriseValue": "12 Stunden",
+      "support": "Technischer Support",
+      "supportValue": "48 Stunden"
+    },
+    "partnershipsLabel": "Partnerschaften",
+    "partnershipsTitle": "Anfragen von Unternehmen und Partnern",
+    "partnershipsBody": "Für individuelle Lösungen, Unternehmensumsetzungen oder strategische Partnerschaften erreichen Sie unser dediziertes Team direkt.",
+    "howToReach": "Wählen Sie den passenden Weg: E-Mail für detaillierte Fragen, Live-Chat für schnelle Hilfe nach Anmeldung oder das Formular für eine nachverfolgbare Anfrage.",
+    "choosePathLabel": "Kontaktwege",
+    "choosePathTitle": "Den klarsten Kanal wählen",
+    "formIntro": "Nutzen Sie das Formular für Partnerschaften, technische Fragen oder alles, was schriftlich bleiben soll.",
+    "sidebarTip": "Chat eignet sich für kurze Kontofragen. E-Mail oder Formular, wenn Anhänge, Kontext oder eine ruhigere Antwort nötig sind."
+  },
+  "content": {
+    "blog": {
+      "seoTitle": "Blog zu Gesundheit und Wohlbefinden: Fachbeiträge und Analysen",
+      "seoDescription": "Entdecken Sie unsere Beiträge zu Gesundheitsanalytik, Optimierung des Wohlbefindens, Prävention und personalisierter Medizin. Fachwissen von BioMath Core.",
+      "badge": "Blog",
+      "title": "Blog",
+      "subtitle": "Analysen, Forschung und Geschichten über Gesundheit, Wohlbefinden und die Zukunft personalisierter Versorgung",
+      "loadError": "Blog konnte nicht geladen werden",
+      "errorTitle": "Artikel konnten nicht geladen werden",
+      "emptyTitle": "Noch keine Artikel",
+      "emptyBody": "Schauen Sie bald wieder vorbei für Gesundheitsanalysen, Forschung und Wellness-Geschichten.",
+      "searchPlaceholder": "Artikel suchen...",
+      "allCategories": "Alle Kategorien",
+      "noResultsTitle": "Keine Ergebnisse",
+      "noResultsBody": "Versuchen Sie einen anderen Suchbegriff oder eine andere Kategorie.",
+      "defaultCategory": "Gesundheit"
+    },
+    "news": {
+      "badge": "News",
+      "title": "News",
+      "subtitle": "Aktuelle Neuigkeiten, Ankündigungen und Meilensteine von BioMath Core",
+      "loading": "News werden geladen...",
+      "loadError": "News konnten nicht geladen werden",
+      "errorTitle": "Fehler beim Laden der News",
+      "retry": "Erneut versuchen",
+      "emptyTitle": "Noch keine News verfügbar.",
+      "emptyBody": "Bleiben Sie dran für Neuigkeiten!",
+      "searchPlaceholder": "News suchen...",
+      "noResultsTitle": "Keine News gefunden.",
+      "noResultsBody": "Versuchen Sie einen anderen Suchbegriff.",
+      "readMore": "Weiterlesen"
+    },
+    "shared": {
+      "results": "{{count}} Ergebnisse",
+      "retry": "Erneut versuchen",
+      "clearSearch": "Suche löschen",
+      "loadMore": "Mehr laden",
+      "share": "Teilen",
+      "copyLink": "Link kopieren",
+      "linkCopied": "Link kopiert",
+      "close": "Schließen"
+    },
+    "media": {
+      "seoTitle": "Medien – Videos, Präsentationen und Dokumente",
+      "seoDescription": "Sehen Sie BioMath-Core-Videos, durchsuchen Sie Präsentationen und laden Sie Dokumente zum Gesundheitsverständnis und zum Human Data Model herunter.",
+      "badge": "Medien",
+      "title": "Medien",
+      "subtitle": "Videos, Präsentationen und Dokumente von BioMath Core — klares Material zum Lernen und Teilen.",
+      "loading": "Medien werden geladen…",
+      "loadError": "Medien konnten nicht geladen werden",
+      "errorTitle": "Medien konnten nicht geladen werden",
+      "emptyTitle": "Noch keine Medien",
+      "emptyBody": "Veröffentlichte Videos, Präsentationen und Dokumente erscheinen hier.",
+      "noResultsTitle": "Nichts in dieser Kategorie",
+      "noResultsBody": "Versuchen Sie einen anderen Tab oder schauen Sie bald wieder vorbei.",
+      "download": "Herunterladen",
+      "open": "Öffnen",
+      "openVideo": "Video öffnen",
+      "tabs": {
+        "all": "Alle",
+        "video": "Videos",
+        "presentation": "Präsentationen",
+        "document": "Dokumente"
+      },
+      "sections": {
+        "video": "Videos",
+        "presentation": "Präsentationen",
+        "document": "Dokumente"
+      }
+    }
+  },
+  "apiPage": {
+    "seoTitle": "API-Dokumentation - Entwicklerzugang zu BioMath Core",
+    "seoDescription": "Integrieren Sie die biomathematische Intelligenz von BioMath Core in Ihre Anwendungen und Abläufe. REST-API mit HIPAA-konformer Sicherheit, Webhooks und Entwicklerdokumentation.",
+    "label": "Entwickler-API",
+    "heroTitle": "API-Dokumentation",
+    "heroSubtitle": "Integrieren Sie die biomathematische Intelligenz von BioMath Core in Ihre Anwendungen, Dienste und Arbeitsabläufe.",
+    "capabilitiesLabel": "Funktionen",
+    "capabilitiesTitle": "Was die API bietet",
+    "features": {
+      "auth": {
+        "title": "Authentifizierung per API-Schlüssel",
+        "body": "Sichere Authentifizierung über API-Schlüssel mit konfigurierbaren Berechtigungen und Ratenbegrenzungen."
+      },
+      "rest": {
+        "title": "RESTful-Architektur",
+        "body": "Klares, vorhersehbares REST-Design mit umfassender Dokumentation und Beispielen."
+      },
+      "security": {
+        "title": "HIPAA-konforme Sicherheit",
+        "body": "Sicherheit auf Unternehmensniveau mit Verschlüsselung im Ruhezustand und bei der Übertragung sowie vollständigen Audit-Protokollen."
+      },
+      "webhooks": {
+        "title": "Webhooks in Echtzeit",
+        "body": "Erhalten Sie sofort Benachrichtigungen, wenn neue Erkenntnisse oder Warnungen entstehen."
+      }
+    },
+    "endpointsLabel": "Endpunkte",
+    "endpointsTitle": "Zentrale Endpunkte",
+    "endpoints": {
+      "profile": "Benutzerprofil und Parameter des physiologischen Modells abrufen",
+      "metrics": "Aktuelle Wellness-Kennzahlen und -Werte abrufen",
+      "insights": "Auf personalisierte Erkenntnisse und Empfehlungen zugreifen",
+      "sync": "Neue physiologische Daten aus externen Quellen übermitteln",
+      "predictions": "Vorhersagende Gesundheitsverläufe abrufen",
+      "reports": "Umfassende Gesundheitsberichte erstellen"
+    },
+    "quickStartLabel": "Schnellstart",
+    "quickStartTitle": "Authentifizierung und Beispielantwort",
+    "authTitle": "Authentifizierung",
+    "authSteps": [
+      "Holen Sie sich Ihren API-Schlüssel im Entwickler-Dashboard",
+      "Fügen Sie den Schlüssel in den Authorization-Header ein",
+      "Alle Anfragen müssen HTTPS verwenden"
+    ],
+    "exampleTitle": "Beispielantwort",
+    "requestAccess": "API-Zugang anfragen",
+    "useCasesLabel": "Anwendungsfälle",
+    "useCasesTitle": "Wo Teams integrieren",
+    "useCases": {
+      "insurance": {
+        "title": "Versicherungsprogramme",
+        "body": "Integrieren Sie Wellness-Daten für Risikobewertung, Tarifgestaltung und Programme zur Mitgliederbindung."
+      },
+      "apps": {
+        "title": "Gesundheits-Apps",
+        "body": "Erweitern Sie die Patientenbeobachtung um biomathematische Erkenntnisse und prädiktive Analysen."
+      },
+      "research": {
+        "title": "Forschungsstudien",
+        "body": "Greifen Sie für die klinische Forschung auf Populationsanalysen und individuelle Teilnehmerdaten zu."
+      },
+      "corporate": {
+        "title": "Betriebliches Gesundheitsmanagement",
+        "body": "Führen Sie Wellness-Tracking im Unternehmen ein – mit individuellen Dashboards und Berichten."
+      },
+      "fitness": {
+        "title": "Fitness-Dienste",
+        "body": "Ergänzen Sie Trainingsprogramme um die Beobachtung des physiologischen Zustands und die Optimierung der Erholung."
+      },
+      "clinical": {
+        "title": "Klinische Entscheidungsunterstützung",
+        "body": "Liefern Sie Behandelnden umsetzbare Patientenerkenntnisse direkt in ihren Arbeitsabläufen."
+      }
+    },
+    "ctaTitle": "Bereit, mit BioMath Core zu entwickeln?",
+    "ctaBody": "Starten Sie heute mit unserer API. Unternehmenssupport und individuelle Integrationen verfügbar.",
+    "contactSales": "Vertrieb kontaktieren",
+    "viewDocs": "Vollständige Dokumentation ansehen"
+  },
+  "admin": {
+    "media": {
+      "menuLabel": "Medienbibliothek",
+      "title": "Medienbibliothek",
+      "subtitle": "Laden Sie Videos, Präsentationen und Dokumente für die öffentliche Medienseite hoch und verwalten Sie sie.",
+      "refresh": "Aktualisieren",
+      "addItem": "Medium hinzufügen",
+      "editItem": "Medium bearbeiten",
+      "loading": "Medien werden geladen…",
+      "loadingBody": "Neueste Medienelemente werden abgerufen.",
+      "loadError": "Medienelemente konnten nicht geladen werden.",
+      "emptyTitle": "Noch keine Medienelemente",
+      "emptyBody": "Fügen Sie Ihr erstes Video, Ihre erste Präsentation oder Ihr erstes Dokument hinzu.",
+      "published": "Veröffentlicht",
+      "draft": "Entwurf",
+      "publish": "Veröffentlichen",
+      "unpublish": "Zurückziehen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "orderLabel": "Reihenfolge",
+      "confirmDelete": "Dieses Medienelement löschen?",
+      "requiredFields": "Titel und Datei-URL sind erforderlich",
+      "saveSuccess": "Medienelement gespeichert",
+      "saveFailed": "Speichern fehlgeschlagen",
+      "deleteSuccess": "Medienelement gelöscht",
+      "deleteFailed": "Löschen fehlgeschlagen",
+      "uploadFile": "Datei hochladen",
+      "uploadThumbnail": "Vorschaubild hochladen",
+      "uploading": "Wird hochgeladen…",
+      "uploadSuccess": "Upload abgeschlossen",
+      "uploadFailed": "Upload fehlgeschlagen — fügen Sie stattdessen eine URL ein",
+      "saving": "Wird gespeichert…",
+      "types": {
+        "video": "Video",
+        "presentation": "Präsentation",
+        "document": "Dokument"
+      },
+      "fields": {
+        "title": "Titel",
+        "description": "Beschreibung",
+        "type": "Typ",
+        "fileUrl": "Datei-URL",
+        "thumbnailUrl": "Vorschaubild-URL (optional)",
+        "sortOrder": "Anzeigereihenfolge",
+        "published": "Auf der Medienseite veröffentlichen"
+      },
+      "placeholders": {
+        "title": "Medientitel",
+        "description": "Kurze Beschreibung",
+        "fileUrl": "https://… oder Datei hochladen",
+        "thumbnailUrl": "https://… oder Bild hochladen"
+      }
+    }
+  }
+}

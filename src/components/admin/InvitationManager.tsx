@@ -192,7 +192,7 @@ export default function InvitationManager() {
       max: 'Max Plan',
     };
     const planName = planMap[invitation.plan_type] || invitation.plan_type;
-    const inviteLink = `${window.location.origin}/#/redeem-invitation?code=${invitation.code}`;
+    const inviteLink = `${window.location.origin}/redeem-invitation?code=${invitation.code}`;
     const recipientName = invitation.first_name || invitation.email;
     const subject = `You’re invited to BioMath Core (${planName})`;
     const html = `
@@ -248,7 +248,7 @@ export default function InvitationManager() {
   };
 
   const handleCopyLink = (code: string) => {
-    const link = `${window.location.origin}/#/redeem-invitation?code=${code}`;
+    const link = `${window.location.origin}/redeem-invitation?code=${code}`;
     navigator.clipboard.writeText(link);
     setCopiedCode(code);
     setTimeout(() => setCopiedCode(null), 2000);

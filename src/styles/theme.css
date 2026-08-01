@@ -1,0 +1,20 @@
+/**
+ * BioMath Core theme canvases
+ * Light: deep off-white
+ * Dark: soft gray-blue (~20% deeper than #2a3038)
+ */
+:root {
+  --bm-page: #ebe8e2;
+  --bm-surface: #f4f2ec;
+  --bm-header: #e6e3dc;
+  --bm-footer: #e2dfd8;
+  --bm-border: #d4d0c8;
+}
+
+html.dark {
+  --bm-page: #22262d;
+  --bm-surface: #2a2f37;
+  --bm-header: #272d35;
+  --bm-footer: #1c2026;
+  --bm-border: #373d47;
+}

@@ -1,0 +1,224 @@
+{
+  "member": {
+    "zone": {
+      "label": "会员区",
+      "workspace": "已登录的工作区",
+      "backHome": "返回首页",
+      "signOut": "退出登录",
+      "collapse": "收起"
+    },
+    "nav": {
+      "main": "主要",
+      "supportServices": "支持与服务",
+      "healthAnalysis": "健康与分析",
+      "dataDocuments": "数据与文档",
+      "account": "账户",
+      "dashboard": "仪表板",
+      "humanDataModel": "Human Data Model",
+      "healthGuide": "健康向导",
+      "devices": "设备",
+      "support": "支持",
+      "system": "系统",
+      "catalog": "服务目录",
+      "serviceWorkspace": "服务工作区",
+      "questionnaires": "健康问卷",
+      "reports": "报告",
+      "signalHub": "信号中心",
+      "reminders": "提醒",
+      "secondOpinion": "第二意见",
+      "medicalFiles": "医疗文件",
+      "blackBox": "黑匣子",
+      "referral": "推荐",
+      "billing": "账单",
+      "profile": "个人资料",
+      "settings": "设置"
+    },
+    "gate": {
+      "catalogTitle": "订阅后可访问服务目录",
+      "catalogBody": "选择一个订阅方案，解锁包含 20 个类别的完整健康服务目录。",
+      "viewPlans": "查看方案并订阅",
+      "serviceTitle": "订阅后可使用服务",
+      "serviceBody": "打开完整的交互式服务工作区需要有效的订阅方案。",
+      "loadingService": "正在加载服务…"
+    },
+    "welcome": {
+      "title": "欢迎使用 BioMath Core！",
+      "body": "感谢订阅！您的付款已成功。",
+      "nextStepTitle": "下一步：选择您的健康类别",
+      "nextStepBody": "打开服务目录，选择您的方案所包含的健康服务类别：",
+      "corePlan": "Core 方案：最多选择 3 个类别",
+      "dailyPlan": "Daily 方案：最多选择 10 个类别",
+      "maxPlan": "Max 方案：包含全部 20 个类别",
+      "emailNote": "包含全部详情的确认邮件已发送至您的邮箱。",
+      "goToCatalog": "前往服务目录"
+    },
+    "dashboard": {
+      "title": "仪表板",
+      "subtitle": "汇总今日状态、目标与习惯的健康中心"
+    },
+    "humanDataModel": {
+      "title": "Human Data Model",
+      "subtitle": "支撑并解释您模型的核心工具——导入记录、查看时间线、发现有意义的变化。与分类服务相互独立。",
+      "openWorkspace": "打开工作区"
+    },
+    "devices": {
+      "title": "已连接设备",
+      "subtitle": "连接您的可穿戴设备和健康传感器，实现数据自动同步",
+      "yourDevices": "您的设备",
+      "activeDevices": "活跃设备",
+      "recentlySynced": "最近同步",
+      "supportedDevices": "支持的设备",
+      "clickToConnect": "点击连接"
+    },
+    "billing": {
+      "title": "账单与订阅",
+      "subtitle": "管理订阅、更新支付方式并查看完整的付款记录",
+      "noSubscription": "没有有效订阅",
+      "nextBillingDate": "下次扣款日期",
+      "reportsThisMonth": "本月报告数",
+      "storageUsed": "已用存储",
+      "searchInvoices": "搜索账单…",
+      "allStatus": "全部状态",
+      "noInvoices": "未找到账单",
+      "upgradePlan": "升级方案",
+      "upgradePlanBody": "获得更多功能与更高额度",
+      "changeCycle": "更改计费周期",
+      "paymentMethods": "支付方式",
+      "paymentMethodsBody": "更新您的银行卡与账单信息"
+    },
+    "profile": {
+      "title": "个人信息",
+      "subtitle": "管理您的头像与自定义信息字段",
+      "photo": "个人头像",
+      "basicInfo": "基本信息",
+      "fullName": "姓名",
+      "imageUrl": "输入图片链接",
+      "customFields": "自定义信息字段",
+      "fieldName": "新字段名称",
+      "fieldValue": "值"
+    },
+    "support": {
+      "title": "支持",
+      "subtitle": "通过聊天或邮件获得支持团队的帮助",
+      "liveChat": "在线聊天",
+      "liveChatBody": "与支持人员实时沟通",
+      "emailSupport": "邮件支持",
+      "supportHours": "支持时间",
+      "tickets": "支持工单",
+      "typeMessage": "输入您的消息…",
+      "subjectPlaceholder": "简要描述您的问题",
+      "descriptionPlaceholder": "请详细描述您的问题…"
+    },
+    "reports": {
+      "title": "我的报告",
+      "subtitle": "查看和管理由 AI 生成的全部健康报告与分析",
+      "totalReports": "报告总数",
+      "latestReport": "最新报告",
+      "empty": "未找到报告",
+      "emptyHint": "生成您的第一份健康报告即可开始"
+    },
+    "signalHub": {
+      "title": "信号中心",
+      "subtitle": "实时展示为报告、洞察与建议提供输入的每一路信号。",
+      "readiness": "数据整体就绪度",
+      "acrossSources": "覆盖全部数据源",
+      "lastRefresh": "上次信号刷新"
+    },
+    "reminders": {
+      "title": "智能提醒",
+      "subtitle": "本地提醒，帮助您保持健康习惯的连续性。",
+      "create": "创建提醒",
+      "titlePlaceholder": "提醒标题",
+      "notePlaceholder": "备注（可选）"
+    },
+    "secondOpinion": {
+      "title": "健康第二意见",
+      "subtitle": "就您的健康问题获取两份独立的专业意见",
+      "researchBacked": "有研究支持",
+      "analysisTime": "分析用时",
+      "submitQuestion": "提交您的问题",
+      "healthQuestion": "健康问题",
+      "questionPlaceholder": "您需要就哪个健康问题获取第二意见？",
+      "contextPlaceholder": "请提供相关病史、检查结果或正在服用的药物…",
+      "disclaimer": "医疗免责声明"
+    },
+    "referral": {
+      "title": "推荐计划",
+      "subtitle": "邀请好友，每成功推荐一位即可获得奖励",
+      "totalReferrals": "推荐总数",
+      "totalEarned": "累计收益",
+      "yourCode": "您的推荐码",
+      "history": "推荐记录",
+      "empty": "暂无推荐记录"
+    },
+    "medicalFiles": {
+      "title": "医疗文件与文档",
+      "subtitle": "安全地保存和管理您的病历、检查结果与健康文档",
+      "legalNotice": "重要法律声明",
+      "searchPlaceholder": "按名称或标签搜索文件…",
+      "allCategories": "全部类别",
+      "empty": "尚未上传医疗文件",
+      "fileName": "文件名",
+      "fileUrl": "文件链接",
+      "fileType": "文件类型"
+    },
+    "blackBox": {
+      "title": "黑匣子存储",
+      "subtitle": "为最敏感的健康数据提供强加密存储",
+      "legalNotice": "重大法律责任",
+      "securedFiles": "受保护文件",
+      "totalStorage": "存储总量",
+      "accessLogs": "访问日志",
+      "lastAccess": "最近访问",
+      "encryptedFiles": "加密文件",
+      "empty": "黑匣子为空",
+      "emptyHint": "上传最敏感的健康数据以获得最高安全级别"
+    },
+    "system": {
+      "title": "系统",
+      "subtitle": "实时监控系统进程与性能指标",
+      "totalRequests": "请求总数",
+      "activeConnections": "活跃连接",
+      "avgResponseTime": "平均响应时间",
+      "errorRate": "错误率",
+      "apiKeys": "API 密钥",
+      "apiKeysBody": "管理用于第三方集成的 API 密钥",
+      "dataExport": "数据导出",
+      "dataExportBody": "以多种格式导出您的健康数据"
+    },
+    "questionnaires": {
+      "title": "健康问卷",
+      "subtitle": "完善健康档案，获取个性化的建议与洞察",
+      "settings": "设置"
+    },
+    "reportSettings": {
+      "title": "报告设置",
+      "subtitle": "选择报告的写作方式、结构与发送方式"
+    },
+    "catalog": {
+      "title": "定制您的健康方案",
+      "subtitle": "从 20 个健康类别和 200 多项服务中选择",
+      "hint": "先从任意 3 个类别开始",
+      "openService": "打开服务",
+      "planCalculator": "方案计算器",
+      "planCalculatorHint": "选择类别时实时查看方案变化",
+      "selectTitle": "选择您的健康类别",
+      "selectedTitle": "已选择的类别",
+      "selectedSubtitle": "升级前请确认您的选择",
+      "nextSteps": "后续步骤"
+    },
+    "healthGuide": {
+      "ask": "提出您的健康问题",
+      "askPlaceholder": "在此输入您的健康问题…",
+      "keyInsights": "关键洞察",
+      "empty": "尚未提出问题",
+      "emptyHint": "提出健康问题即可获得两份独立的专业意见"
+    },
+    "placeholder": {
+      "comingSoon": "即将推出",
+      "comingSoonBody": "我们正在开发此功能，敬请期待。",
+      "ready": "本模块已准备好实现",
+      "plannedFeatures": "计划中的功能："
+    }
+  }
+}

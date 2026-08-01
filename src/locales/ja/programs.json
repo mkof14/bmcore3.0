@@ -1,0 +1,175 @@
+{
+  "programs": {
+    "referral": {
+      "label": "紹介プログラム",
+      "heroTitle": "健康を分かち合い、特典を受け取る",
+      "heroSubtitle": "友人を BioMath Core に招待すると、紹介が成立するたびにクレジットが貯まります。",
+      "statsLabel": "あなたの実績",
+      "totalReferred": "紹介した人数",
+      "creditsEarned": "獲得クレジット",
+      "activeReferrals": "有効な紹介",
+      "howLabel": "仕組み",
+      "howTitle": "3つの簡単なステップ",
+      "steps": {
+        "share": { "title": "専用コードを共有", "body": "メールやSNSで友人に送ります。" },
+        "discount": { "title": "友人に5ドル割引", "body": "登録時にすぐ適用されます。" },
+        "credit": { "title": "あなたに10ドルのクレジット", "body": "登録が確認されるとすぐに付与されます。" }
+      },
+      "rewardTitle": "特典の詳細",
+      "perReferral": "紹介1件あたりの獲得額",
+      "friendDiscount": "友人が受ける割引",
+      "notes": [
+        "紹介数に上限はありません",
+        "クレジットに有効期限はありません",
+        "サブスクリプションやプラン変更に利用できます"
+      ],
+      "shareLabel": "共有",
+      "codeTitle": "あなたの紹介コード",
+      "permanentCode": "変更されないコード",
+      "copy": "コピー",
+      "copied": "コピーしました",
+      "shareLink": "共有リンク",
+      "inviteTitle": "メールで招待を送る",
+      "invitePlaceholder": "友人のメールアドレス",
+      "send": "送信",
+      "inviteSent": "招待を送信しました",
+      "socialTitle": "SNSで共有",
+      "shareText": "BioMath Core を紹介します。自分の体を理解する助けになるウェルネスの知見が得られます。一緒に始めて5ドル割引を受け取りましょう。",
+      "detailsLabel": "詳細",
+      "detailsTitle": "プログラムの詳細",
+      "eligibility": "対象条件",
+      "eligibilityItems": [
+        "友人は新規ユーザーである必要があります",
+        "コードは登録時に入力してください",
+        "1アカウントにつき紹介コードは1つのみです"
+      ],
+      "fraud": "不正利用の防止",
+      "fraudItems": [
+        "自己紹介は認められません",
+        "重複アカウントは認められません",
+        "悪質な行為が確認された場合、特典は無効となります"
+      ],
+      "upgradeQuestion": "10人以上を紹介しましたか？",
+      "upgradePrefix": "特典が拡大する",
+      "upgradeLink": "アンバサダープログラム",
+      "upgradeSuffix": "の対象になる可能性があります。"
+    },
+    "ambassador": {
+      "label": "アンバサダープログラム",
+      "heroTitle": "ウェルネスの輪を広げる",
+      "heroSubtitle": "BioMath Core をご自身の言葉で伝え、拡大された特典を受け取りながら、落ち着いた寄り添う案内を多くの方に届けてください。",
+      "pathsLabel": "参加方法",
+      "pathsTitle": "アンバサダーとは",
+      "paths": {
+        "organic": {
+          "title": "自然な広がり",
+          "body": "10人以上を紹介した継続利用者は、拡大された特典付きで自動的にアンバサダーへ移行できます。"
+        },
+        "direct": {
+          "title": "直接応募",
+          "body": "ウェルネスコーチ、健康教育者、コンテンツ制作者、コミュニティ運営者は、下のフォームから直接応募できます。"
+        }
+      },
+      "rewardsLabel": "特典",
+      "rewardsTitle": "得られるもの",
+      "rewards": {
+        "higher": {
+          "title": "高い還元",
+          "body": "紹介1件あたり20ドル（通常の2倍）。段階に応じてさらに拡大します。"
+        },
+        "priority": {
+          "title": "優先アクセス",
+          "body": "新機能の先行テスト、優先サポート、専用のアンバサダーダッシュボード。"
+        },
+        "tools": {
+          "title": "共同ブランドのツール",
+          "body": "専用資料、SNS素材、任意のランディングページ、共有用キット。"
+        }
+      },
+      "benefitsLabel": "メリット",
+      "benefitsTitle": "アンバサダーのメリット",
+      "benefits": {
+        "enhanced": { "title": "拡大された特典", "body": "通常の紹介還元の2倍。段階に応じて上昇します。" },
+        "dashboard": { "title": "専用ダッシュボード", "body": "紹介グループ、累計特典、アンバサダー段階を確認できます。" },
+        "materials": { "title": "共同ブランド資料", "body": "プロ仕様のSNS素材と共有用キット。" },
+        "support": { "title": "優先サポート", "body": "ご質問には BioMath Core チームが直接対応します。" },
+        "features": { "title": "先行機能", "body": "ベータテストと新機能への先行アクセス。" },
+        "revenue": { "title": "収益分配による成長", "body": "より進んだ提携モデルの対象となります。" }
+      },
+      "guidelinesLabel": "ガイドライン",
+      "guidelinesTitle": "アンバサダーの役割",
+      "guidelinesIntro": "アンバサダーとして、ご自身の言葉で誠実に伝え、ウェルネスを第一とする価値観を守っていただくようお願いします。",
+      "responsibilities": [
+        "ご自身の体験に基づいて、誠実に BioMath Core を紹介してください。",
+        "指示的ではなく、寄り添うウェルネス中心の言葉を使ってください。",
+        "医学的・診断的な主張は決して行わないでください。",
+        "スパム、誤解を招く広告、特典の不正利用は避けてください。"
+      ],
+      "applyLabel": "応募",
+      "applyTitle": "アンバサダーに応募する",
+      "submitted": "送信しました",
+      "receivedTitle": "応募を受け付けました",
+      "receivedBody": "BioMath Core アンバサダーへのご関心ありがとうございます。担当チームが内容を確認し、3〜5営業日以内にご連絡します。",
+      "form": {
+        "fullName": "氏名 *",
+        "email": "メールアドレス *",
+        "country": "国・地域 *",
+        "audience": "対象層の種類 *",
+        "selectType": "種類を選択...",
+        "audienceOptions": {
+          "users": "一般利用者",
+          "clients": "コーチングの顧客",
+          "followers": "SNSのフォロワー",
+          "community": "コミュニティのメンバー",
+          "other": "その他"
+        },
+        "hasReferrals": "現在、紹介プログラムを利用していますか？ *",
+        "yes": "はい",
+        "no": "いいえ",
+        "motivation": "アンバサダーを希望する理由 *",
+        "motivationPlaceholder": "動機と、どのように貢献したいかをお書きください...",
+        "socialLink": "ウェブサイトまたはSNSリンク（任意）",
+        "submit": "応募を送信"
+      },
+      "footerQuestion": "すでに10人以上を紹介していますか？",
+      "footerPrefix": "自動移行の対象かどうかは",
+      "footerLink": "メンバーゾーン",
+      "footerSuffix": "でご確認ください。"
+    },
+    "careers": {
+      "label": "採用情報",
+      "heroTitle": "ウェルネスの知見を共につくる",
+      "heroSubtitle": "生体数理、計算生物学、予防医療が交わる領域で取り組むチームに加わってください。",
+      "whyLabel": "参加する理由",
+      "whyTitle": "なぜ BioMath Core なのか",
+      "why": {
+        "innovation": { "title": "革新を推進", "body": "健康に実際の影響をもたらす生体数理とAIに取り組みます。" },
+        "impact": { "title": "成果を重視", "body": "予防的なウェルネスを通じて人々の健康改善を支えます。" },
+        "growth": { "title": "成長を後押し", "body": "科学を第一に置くチームで継続的に学び、成長できます。" }
+      },
+      "openLabel": "募集職種",
+      "openTitle": "現在の募集",
+      "loading": "募集を読み込んでいます...",
+      "loadError": "採用情報の読み込みに失敗しました",
+      "errorTitle": "募集の読み込みエラー",
+      "retry": "再試行",
+      "emptyTitle": "現在、募集中のポジションはありません。",
+      "emptyBody": "近日中にご確認いただくか、履歴書を careers@biomathcore.com までお送りください。",
+      "searchPlaceholder": "職種を検索...",
+      "clearSearch": "検索をクリア",
+      "allTypes": "すべての雇用形態",
+      "results": "{{count}} 件",
+      "noMatchTitle": "条件に一致する職種はありません。",
+      "noMatchBody": "別のキーワードや絞り込みでお試しください。",
+      "loadMore": "さらに表示",
+      "share": "共有",
+      "copyLink": "リンクをコピー",
+      "linkCopied": "リンクをコピーしました",
+      "close": "閉じる",
+      "overview": "職務の概要",
+      "responsibilities": "職務内容",
+      "requirements": "応募要件",
+      "salaryRange": "給与レンジ"
+    }
+  }
+}

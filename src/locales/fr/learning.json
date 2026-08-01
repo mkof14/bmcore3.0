@@ -1,0 +1,129 @@
+{
+  "learning": {
+    "title": "Centre d'apprentissage",
+    "subtitle": "Comprenez votre parcours de santé grâce à des explications posées, des visuels simples et un accompagnement qui donne confiance",
+    "searchPlaceholder": "Rechercher des catégories, des services ou des termes de santé...",
+    "gettingStarted": "Pour commencer",
+    "sections": {
+      "pricing": {
+        "title": "Formules et tarifs",
+        "body": "Choisissez parmi des abonnements flexibles adaptés à votre parcours bien-être. Toutes les formules incluent les services essentiels ; les niveaux avancés donnent accès à des évaluations spécialisées, aux intégrations d'appareils et à un accompagnement IA premium."
+      },
+      "member": {
+        "title": "Espace Membre",
+        "body": "Votre tableau de bord santé personnalisé. Suivez votre progression sur tous les services, consultez vos rapports, gérez vos appareils connectés, définissez vos objectifs et accédez à votre historique complet en un seul endroit sécurisé."
+      },
+      "multiModel": {
+        "title": "Rapports multimodèles",
+        "body": "Lancez deux perspectives d'IA en parallèle et recevez une synthèse unifiée. Vous comparez les angles et parvenez à une conclusion unique et fiable."
+      },
+      "aiGuide": {
+        "title": "Guide des systèmes d'IA",
+        "body": "Découvrez le fonctionnement de la chaîne d'IA, la construction de la profondeur de mémoire et la façon dont les instantanés de connaissance façonnent chaque rapport."
+      },
+      "services": {
+        "title": "Guide des services",
+        "body": "Chacun des {{count}} services comprend une description claire, un parcours d'évaluation guidé et des recommandations concrètes. N'activez que ce qui vous importe maintenant : parcourez le catalogue complet avec descriptions ci-dessous."
+      },
+      "categories": {
+        "title": "Catégories",
+        "body": "Explorez {{categories}} catégories de santé regroupant {{count}} services. Chaque catégorie couvre un domaine précis du bien-être, du suivi de la santé critique aux soins des seniors, à la longévité et au bien-être mental."
+      },
+      "signalHub": {
+        "title": "Hub de signaux et plans d'action",
+        "body": "Examinez la force de vos signaux, votre profondeur de connaissance et la maturité de vos rapports. Puis transformez les analyses en plans d'action posés, étape par étape."
+      }
+    },
+    "viewPlans": "Voir les formules →",
+    "goToMember": "Aller à l'Espace Membre →",
+    "browseServices": "Voir tous les services →",
+    "ai": {
+      "title": "Systèmes d'IA 101",
+      "intro": "Un aperçu clair et posé de la façon dont BioMath Core transforme des signaux bruts en un rapport unifié grâce à l'intelligence multimodèle.",
+      "step": "Étape {{number}}",
+      "steps": {
+        "intake": {
+          "title": "Collecte des signaux",
+          "desc": "Appareils, questionnaires, notes, rapports"
+        },
+        "snapshot": {
+          "title": "Instantané de connaissance",
+          "desc": "Synthèse du contexte + profondeur d'historique"
+        },
+        "analysis": {
+          "title": "Analyse multimodèle",
+          "desc": "Deux perspectives d'IA en parallèle"
+        },
+        "report": {
+          "title": "Rapport unifié",
+          "desc": "Constats fusionnés + priorités"
+        },
+        "plan": {
+          "title": "Plan d'action",
+          "desc": "Étapes à 7, 14 et 30 jours, en clair"
+        }
+      },
+      "viewExample": "Voir un rapport d'exemple",
+      "exploreSecondOpinion": "Découvrir le second avis",
+      "exampleLabel": "Rapport d'exemple",
+      "unifiedSummary": "Synthèse unifiée",
+      "exampleTitle": "Intelligence santé quotidienne",
+      "exampleBody": "Énergie équilibrée avec une légère charge de récupération. La qualité du sommeil s'est améliorée de 12 % d'une semaine à l'autre.",
+      "quality": "Qualité",
+      "coverage": "Couverture",
+      "consistency": "Régularité",
+      "planLabel": "Aperçu du plan d'action",
+      "planTitle": "Remise à zéro en 7 jours",
+      "planItems": [
+        "Objectif de sommeil : 7 h 30 avec routine d'apaisement",
+        "Récupération : 1 journée de faible intensité entre les séances",
+        "Hydratation : 2,2 l par jour, en commençant le matin"
+      ],
+      "focusTag": "Point de focus : équilibre du système nerveux",
+      "secondOpinionLabel": "Aperçu du second avis",
+      "modelA": "Modèle A · Physiologie",
+      "modelATitle": "Charge de récupération élevée",
+      "modelABody": "La dette de sommeil et la baisse de la VFC suggèrent une fenêtre de récupération de 48 heures.",
+      "modelB": "Modèle B · Comportement",
+      "modelBTitle": "Variabilité des habitudes",
+      "modelBBody": "Les repas tardifs et les changements d'horaires coïncident avec les baisses d'énergie.",
+      "unifiedTitle": "Stabiliser récupération et rythme",
+      "unifiedBody": "Privilégiez la régularité du sommeil et une séance d'entraînement plus légère sur 2 sessions.",
+      "howToRead": "Comment lire les rapports multimodèles : comparez le Modèle A et le Modèle B pour des angles complémentaires, puis utilisez la Synthèse unifiée comme unique base d'action."
+    },
+    "categoriesTitle": "Catégories de santé",
+    "categoriesIntro": "Les {{categories}} catégories et {{count}} services du catalogue en direct — dépliez une catégorie pour lire les descriptions des services.",
+    "servicesCount": "{{count}} services",
+    "openInCatalog": "Ouvrir dans le catalogue de services →",
+    "guide": {
+      "title": "Health Guide",
+      "body": "Vous ne savez pas par où commencer ? Health Guide vous aide à trouver la catégorie et les services adaptés à vos besoins.",
+      "cta": "Démarrer la visite guidée"
+    },
+    "secondOpinion": {
+      "title": "Moteur de second avis",
+      "body": "Générez deux rapports simultanés et une synthèse unifiée avec des priorités, de la clarté et un seul plan d'action.",
+      "cta": "Découvrir le second avis →"
+    },
+    "quickHelp": {
+      "title": "Aide rapide",
+      "cta": "Consulter la FAQ →"
+    },
+    "referenceTitle": "Référence complète des services",
+    "referenceSubtitle": "Inventaire consultable des {{categories}} catégories et {{count}} descriptions de services.",
+    "glossaryTitle": "Glossaire santé",
+    "glossaryIntro": "Les concepts scientifiques et de santé essentiels, expliqués simplement et concrètement",
+    "whyItMatters": "Pourquoi c'est important :",
+    "howItHelps": "En quoi cela aide :",
+    "philosophy": {
+      "title": "Notre philosophie pédagogique",
+      "body": "Le Centre d'apprentissage enseigne par la sérénité, non par la surcharge. Nous faisons le lien entre les données et les choix du quotidien. Pas de leçons magistrales, seulement de la clarté. Notre ton est calme, appuyé sur la science, humain et non médical.",
+      "whatTitle": "Ce que nous faisons",
+      "whatBody": "Expliquer clairement les services et leur finalité",
+      "howTitle": "Comment nous aidons",
+      "howBody": "Vous orienter vers le bon accompagnement",
+      "goalTitle": "Notre objectif",
+      "goalBody": "Renforcer votre confiance, pas votre confusion"
+    }
+  }
+}

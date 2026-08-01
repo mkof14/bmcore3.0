@@ -103,7 +103,7 @@ function FeatureCell({ value }: { value: boolean | string }) {
 
 export default function ComparisonTable() {
   return (
-    <div className="py-16 bg-gray-50 dark:bg-gray-900">
+    <div className="py-16 bg-gray-50 dark:bg-[var(--bm-surface)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
@@ -119,7 +119,7 @@ export default function ComparisonTable() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-200 dark:border-gray-700">
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-900">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white bg-gray-50 dark:bg-[var(--bm-surface)]">
                     Features
                   </th>
                   <th className="px-6 py-4 text-center bg-white dark:bg-gray-800">
@@ -212,7 +212,7 @@ export function ComparisonTableCompact() {
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
-          <thead className="bg-gray-50 dark:bg-gray-900">
+          <thead className="bg-gray-50 dark:bg-[var(--bm-surface)]">
             <tr>
               <th className="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">
                 Feature

@@ -6,7 +6,7 @@ import { clsx } from 'clsx';
 const dialog = tv({
   slots: {
     overlay: 'fixed inset-0 bg-black/60 backdrop-blur-sm z-50',
-    content: 'fixed z-50 bg-white dark:bg-gray-900 shadow-2xl w-full border border-gray-200 dark:border-gray-700',
+    content: 'fixed z-50 bg-white dark:bg-[var(--bm-surface)] shadow-2xl w-full border border-gray-200 dark:border-gray-700',
     // Default positioning is center, can be overridden by className
     positioner: 'fixed inset-0 z-50 flex items-center justify-center p-4',
   }

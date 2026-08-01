@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FileText, Upload, Download, Share2, Printer, Copy, Trash2, Eye, Search, FileImage, FileVideo, AlertTriangle } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserInfo, notifyUserSuccess } from '../../lib/adminNotify';
@@ -21,6 +22,7 @@ const CATEGORIES = ['Lab Results', 'X-Ray', 'MRI', 'CT Scan', 'Prescription', 'R
 const FILE_TYPES = ['pdf', 'image', 'document', 'video', 'dicom'];
 
 export default function MedicalFilesSection() {
+  const { t } = useTranslation();
   const [files, setFiles] = useState<MedicalFile[]>([]);
   const [loading, setLoading] = useState(true);
   const [showUploadModal, setShowUploadModal] = useState(false);
@@ -166,10 +168,10 @@ export default function MedicalFilesSection() {
       <div className="mb-6">
         <h1 className="text-3xl font-semibold text-gray-900 mb-2 flex items-center gap-3">
           <FileText className="h-8 w-8 text-orange-500" />
-          Medical Files & Documents
+          {t('member.medicalFiles.title')}
         </h1>
         <p className="text-gray-600">
-          Store and manage your medical records, test results, and health documents securely
+          {t('member.medicalFiles.subtitle')}
         </p>
       </div>
 
@@ -184,7 +186,7 @@ export default function MedicalFilesSection() {
         <div className="flex items-start gap-3">
           <AlertTriangle className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-sm text-yellow-700 font-medium mb-1">Important Legal Notice</p>
+            <p className="text-sm text-yellow-700 font-medium mb-1">{t('member.medicalFiles.legalNotice')}</p>
             <p className="text-xs text-yellow-700/80">
               Only store legal medical documents relevant to health services. You are fully responsible for the content
               of your files and any legal consequences related to storing personal health information. Ensure compliance
@@ -199,7 +201,7 @@ export default function MedicalFilesSection() {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" />
           <input
             type="text"
-            placeholder="Search files by name or tags..."
+            placeholder={t('member.medicalFiles.searchPlaceholder')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-10 pr-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
@@ -211,7 +213,7 @@ export default function MedicalFilesSection() {
             onChange={(e) => setSelectedCategory(e.target.value)}
             className="px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
           >
-            <option value="all">All Categories</option>
+            <option value="all">{t('member.medicalFiles.allCategories')}</option>
             {CATEGORIES.map(cat => (
               <option key={cat} value={cat}>{cat}</option>
             ))}
@@ -231,7 +233,7 @@ export default function MedicalFilesSection() {
       ) : filteredFiles.length === 0 ? (
         <div className="text-center py-12">
           <FileText className="h-16 w-16 text-gray-600 mx-auto mb-4" />
-          <p className="text-gray-600 dark:text-gray-400 mb-2">No medical files uploaded yet</p>
+          <p className="text-gray-600 dark:text-gray-400 mb-2">{t('member.medicalFiles.empty')}</p>
           <p className="text-sm text-gray-500">Upload your lab results, scans, and medical documents to get started</p>
         </div>
       ) : (
@@ -330,7 +332,7 @@ export default function MedicalFilesSection() {
         >
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">File Name</label>
+              <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">{t('member.medicalFiles.fileName')}</label>
               <input
                 type="text"
                 value={uploadForm.file_name}
@@ -341,7 +343,7 @@ export default function MedicalFilesSection() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">File URL</label>
+              <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">{t('member.medicalFiles.fileUrl')}</label>
               <input
                 type="text"
                 value={uploadForm.file_url}
@@ -365,7 +367,7 @@ export default function MedicalFilesSection() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">File Type</label>
+              <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">{t('member.medicalFiles.fileType')}</label>
               <select
                 value={uploadForm.file_type}
                 onChange={(e) => setUploadForm({ ...uploadForm, file_type: e.target.value })}

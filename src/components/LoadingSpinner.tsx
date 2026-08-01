@@ -35,7 +35,7 @@ export default function LoadingSpinner({
 
   if (fullScreen) {
     return (
-      <div className="fixed inset-0 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="fixed inset-0 bg-white/80 dark:bg-[var(--bm-page)]/80 backdrop-blur-sm flex items-center justify-center z-50">
         {content}
       </div>
     );
@@ -54,7 +54,7 @@ export function LoadingCard({ text }: { text?: string }) {
 
 export function LoadingPage({ text }: { text?: string }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950">
+    <div className="min-h-screen flex items-center justify-center bg-page">
       <LoadingSpinner size="xl" text={text || 'Loading...'} />
     </div>
   );

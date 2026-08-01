@@ -1,0 +1,129 @@
+{
+  "science": {
+    "seo": {
+      "title": "Science & Research - Biomathematical Health Modeling",
+      "description": "Discover the scientific foundation of BioMath Core: biomathematical modeling, multi-signal integration, genomic analysis, and predictive analytics for personalized health intelligence."
+    },
+    "hero": {
+      "label": "Science",
+      "title": "The science behind BioMath Core",
+      "body": "BioMath Core is built on decades of research in systems biology, biomathematics, and physiological modeling — applied through the Human Data Model."
+    },
+    "pillars": {
+      "label": "Foundations",
+      "title": "Core scientific pillars",
+      "subtitle": "The disciplines that shape every model and every recommendation.",
+      "items": [
+        {
+          "title": "Biomathematical modeling",
+          "body": "Differential equations and systems biology model physiological dynamics — not just pattern recognition."
+        },
+        {
+          "title": "Multi-signal integration",
+          "body": "Heart rate variability, activity patterns, sleep architecture, and metabolic markers unified into one framework."
+        },
+        {
+          "title": "Genomic analysis",
+          "body": "Genetic predispositions for inflammation, stress response, and metabolic efficiency inform the model."
+        },
+        {
+          "title": "Predictive analytics",
+          "body": "Health trajectories forecasted from current patterns and historical data."
+        },
+        {
+          "title": "Lab integration",
+          "body": "Biomarkers like cortisol, glucose, inflammation markers, and hormone levels incorporated directly."
+        },
+        {
+          "title": "Evidence-based",
+          "body": "Every model grounded in peer-reviewed research and validated against clinical outcomes."
+        }
+      ]
+    },
+    "models": {
+      "label": "Models",
+      "title": "Mathematical models",
+      "subtitle": "Unlike black-box approaches, our models are interpretable. Every prediction can be traced to its underlying drivers.",
+      "simplifiedForm": "Simplified form",
+      "interpretationLabel": "Interpretation",
+      "items": [
+        {
+          "name": "Stress-recovery dynamics",
+          "description": "Models the relationship between sympathetic activation, HRV patterns, and recovery capacity.",
+          "interpretation": "Stress accumulates based on inputs (I) and dissipates based on recovery (R)."
+        },
+        {
+          "name": "Metabolic state estimation",
+          "description": "Estimates insulin sensitivity, glucose regulation, and metabolic flexibility from activity and nutrition data.",
+          "interpretation": "Metabolic state is a function of glucose (G), activity (A), nutrition (N), and hormones (H)."
+        },
+        {
+          "name": "Inflammatory load",
+          "description": "Quantifies systemic inflammation based on sleep quality, stress, diet, and genetic markers.",
+          "interpretation": "Inflammation is a weighted sum of lifestyle factors (f) plus genetic contribution (g)."
+        },
+        {
+          "name": "Energy availability",
+          "description": "Models available energy for physical and cognitive performance based on sleep, nutrition, and recovery.",
+          "interpretation": "Energy changes based on sleep (S), nutrition (N), and work output (W)."
+        }
+      ]
+    },
+    "pipeline": {
+      "label": "Process",
+      "title": "From data to insight",
+      "subtitle": "How raw signals become readable health intelligence.",
+      "items": [
+        {
+          "title": "Data collection",
+          "body": "Continuous streams from wearables, periodic surveys, lab results, and genetic reports are normalized and time-aligned."
+        },
+        {
+          "title": "Model processing",
+          "body": "Biomathematical models estimate physiological states, predict trajectories, and identify patterns."
+        },
+        {
+          "title": "Actionable guidance",
+          "body": "Results translated into clear recommendations: what is happening, why, and what to consider next."
+        }
+      ]
+    },
+    "approach": {
+      "label": "Approach",
+      "title": "Why biomathematics?",
+      "items": [
+        {
+          "title": "Explainability",
+          "body": "Unlike neural networks, mathematical models can be interrogated and understood."
+        },
+        {
+          "title": "Stability",
+          "body": "Models do not drift or require constant retraining with new data."
+        },
+        {
+          "title": "Efficiency",
+          "body": "Smaller data requirements compared to deep learning approaches."
+        },
+        {
+          "title": "Biological grounding",
+          "body": "Models reflect actual physiological mechanisms, not just correlations."
+        }
+      ]
+    },
+    "research": {
+      "label": "Research",
+      "title": "Published research",
+      "body": "Our scientific team has published extensively in peer-reviewed journals on topics including:",
+      "topics": [
+        "Systems biology of stress and recovery",
+        "Mathematical modeling of metabolic dynamics",
+        "Heart rate variability and autonomic function",
+        "Predictive modeling in precision medicine"
+      ]
+    },
+    "closing": {
+      "title": "Experience science-backed wellness",
+      "body": "BioMath Core brings rigorous biomathematical modeling into everyday preventive care."
+    }
+  }
+}

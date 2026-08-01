@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Users, Copy, Mail, TrendingUp, Gift, DollarSign } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserInfo } from '../../lib/adminNotify';
 import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 
 export default function ReferralSection() {
+  const { t } = useTranslation();
   const [referralCode, setReferralCode] = useState('');
   const [referrals, setReferrals] = useState<any[]>([]);
   const [stats, setStats] = useState({
@@ -70,9 +72,9 @@ export default function ReferralSection() {
       <div className="mb-6">
         <h1 className="text-3xl font-semibold text-gray-900 mb-2 flex items-center gap-3">
           <Users className="h-8 w-8 text-orange-500" />
-          Referral Program
+          {t('member.referral.title')}
         </h1>
-        <p className="text-gray-600">Invite friends and earn rewards for each successful referral</p>
+        <p className="text-gray-600">{t('member.referral.subtitle')}</p>
       </div>
 
       <ReportBrandHeader
@@ -87,7 +89,7 @@ export default function ReferralSection() {
           <ReportBrandHeader variant="strip" subtitle="Total Referrals" className="mb-3" />
           <Users className="h-6 w-6 text-blue-600 mb-2" />
           <p className="text-2xl font-semibold text-gray-900">{stats.total}</p>
-          <p className="text-xs text-gray-600">Total Referrals</p>
+          <p className="text-xs text-gray-600">{t('member.referral.totalReferrals')}</p>
         </div>
 
         <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4">
@@ -108,13 +110,13 @@ export default function ReferralSection() {
           <ReportBrandHeader variant="strip" subtitle="Total Earned" className="mb-3" />
           <DollarSign className="h-6 w-6 text-orange-500 mb-2" />
           <p className="text-2xl font-semibold text-gray-900">${stats.earnings}</p>
-          <p className="text-xs text-gray-600">Total Earned</p>
+          <p className="text-xs text-gray-600">{t('member.referral.totalEarned')}</p>
         </div>
       </div>
 
       <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-lg mb-6">
         <ReportBrandHeader variant="strip" subtitle="Your Referral Code" className="mb-4" />
-        <h3 className="text-xl font-semibold text-gray-900 mb-4">Your Referral Code</h3>
+        <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('member.referral.yourCode')}</h3>
         <div className="flex gap-3">
           <div className="flex-1 px-4 py-3 bg-white border border-slate-200 rounded-lg font-mono text-xl text-orange-600 font-semibold text-center">
             {referralCode || 'Loading...'}
@@ -141,11 +143,11 @@ export default function ReferralSection() {
 
       <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-lg">
         <ReportBrandHeader variant="strip" subtitle="Referral History" className="mb-4" />
-        <h3 className="text-xl font-semibold text-gray-900 mb-4">Referral History</h3>
+        <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('member.referral.history')}</h3>
         {referrals.length === 0 ? (
           <div className="text-center py-12">
             <Users className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-600 mb-2">No referrals yet</p>
+            <p className="text-gray-600 mb-2">{t('member.referral.empty')}</p>
             <p className="text-sm text-gray-500">Start inviting friends to earn rewards!</p>
           </div>
         ) : (

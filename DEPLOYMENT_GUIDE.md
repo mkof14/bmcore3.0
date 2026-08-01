@@ -1,5 +1,91 @@
 # Vercel Deployment Guide
 
+## Operator deploy checklist (production)
+
+Use this before every Production deploy. Details below if you need them.
+
+### 1) Vercel environment variables
+
+**Required (Production + live Preview):**
+
+```bash
+VITE_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
+VITE_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
+```
+
+**Recommended:**
+
+```bash
+VITE_APP_URL=https://YOUR_DOMAIN_OR_VERCEL_URL
+VITE_CONFIG_LOCK=0
+VITE_REQUIRE_EMAIL_VERIFICATION=1
+```
+
+**Optional analytics / ads:**
+
+```bash
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+VITE_FACEBOOK_PIXEL_ID=XXXXXXXXXXXXXXXX
+```
+
+**If Stripe checkout is enabled:**
+
+```bash
+VITE_STRIPE_PUBLISHABLE_KEY=pk_live_...   # or pk_test_... for a staging first pass
+# plus VITE_STRIPE_PRICE_* monthly/yearly IDs and VITE_STRIPE_CURRENCY
+```
+
+**Critical — remove mock mode from Production:**
+
+- In Vercel → Project → Settings → Environment Variables, delete or set `VITE_MOCK_MODE=0`.
+- Do **not** leave `VITE_MOCK_MODE=1` on Production (unsafe mock auth / admin shortcuts).
+- `vercel.json` / `vercel-build` do **not** force mock; only dashboard env can re-enable it by mistake.
+
+Local note: this repo’s `.env` may keep `VITE_MOCK_MODE=1` for UI work. That does **not** apply on Vercel unless you copy it there.
+
+### 2) Supabase migrations + edge function
+
+Apply pending migrations on the production project (SQL editor, CLI, or CI), especially:
+
+- `supabase/migrations/20260801170000_create_media_library.sql` — `media_items` + `media` storage bucket
+- `supabase/migrations/20260801180000_harden_profile_admin_privileges.sql` — blocks client self-elevate of `is_admin` / elevated `role`
+
+Then redeploy the `admin-db` edge function (allowlist includes `media_items`):
+
+```bash
+supabase functions deploy admin-db --project-ref YOUR_PROJECT_REF
+```
+
+Also ensure Stripe-related functions (`create-checkout-session`, `create-portal-session`, `stripe-webhook`) are deployed if payments are live.
+
+### 3) Promote admin
+
+1. User signs up / signs in against **real** Supabase (not mock).
+2. In Supabase SQL editor, run `scripts/promote-admin.sql` with their email.
+3. Reload `/admin` — access is DB-only (`profiles.is_admin` / RLS `is_admin_cached()`).
+
+### 4) Deploy on Vercel
+
+- Framework: Vite · Build: `npm run vercel-build` · Output: `dist` · Node `20.x`
+- Confirm Production env has real Supabase keys and **no** `VITE_MOCK_MODE=1`
+- Deploy (git push to the production branch, or Vercel Deploy button)
+
+### 5) Post-deploy smoke
+
+- [ ] `/pricing` deep link loads (SPA rewrite OK; no blank 404)
+- [ ] Auth: `/sign-in` / `/sign-up` against real Supabase; console has **no** `[supabase] Mock auth active`
+- [ ] DevTools → Network → document response includes `Content-Security-Policy` (enforce, not Report-Only only); console has no CSP blocks for Stripe/Supabase/optional GA/Pixel
+- [ ] Home primary CTA navigates correctly
+- [ ] `/media` loads (empty list OK if no published rows yet)
+- [ ] Non-admin user is denied `/admin` (or admin panel gate); promoted admin can enter
+- [ ] Optional: Health Guide mic permission, Stripe test checkout redirect
+
+### Human actions still required
+
+Secrets, Supabase dashboard, custom domain, and Stripe live keys cannot be set from the repo — do those in Vercel / Supabase / DNS yourself. Do not commit `.env`.
+
+---
+
 ## Prerequisites
 - Vercel account (free): https://vercel.com/signup
 - GitHub/GitLab account
@@ -11,13 +97,13 @@
 ### Option A: Using GitHub
 1. Go to https://github.com/new
 2. Create a **PRIVATE** repository (recommended for security)
-3. Name it: `biomathcore-platform`
+3. Name it: `bmcore3.0`
 4. Do NOT initialize with README (we already have files)
 
 ### Option B: Using GitLab
 1. Go to https://gitlab.com/projects/new
 2. Create a **PRIVATE** repository
-3. Name it: `biomathcore-platform`
+3. Name it: `bmcore3.0`
 
 ## Step 2: Download Project from Bolt.new
 
@@ -37,10 +123,10 @@ git init
 git add .
 
 # Create first commit
-git commit -m "Initial commit - BioMath Core Platform"
+git commit -m "Initial commit - bmcore3.0"
 
 # Add your remote repository (replace with your URL)
-git remote add origin https://github.com/YOUR_USERNAME/biomathcore-platform.git
+git remote add origin https://github.com/YOUR_USERNAME/bmcore2.1-savem.git
 
 # Push to repository
 git push -u origin main
@@ -54,29 +140,33 @@ git push -u origin main
 
 ## Step 4: Deploy to Vercel
 
-### 4.0 Development/Preview Mode Without Live Services
+### 4.0 Production vs mock mode
 
-The repository is configured so Vercel development and preview deployments can run without real Supabase, storage, or realtime connections.
+**Vercel Production and Preview use real Supabase by default.** Mock mode is not enabled by `vercel.json` or `vercel-build`.
 
-- `npm run vercel-build` sets `VITE_MOCK_MODE=1`.
-- `vercel.json` also sets `VITE_MOCK_MODE=1` for Vercel builds.
-- In mock mode, the frontend uses local fallbacks for Supabase auth, queries, rpc, storage, functions, and realtime channels.
-- Live DB/API smoke tests are intentionally skipped when no Supabase URL is present and `VITE_MOCK_MODE=1`.
+| Environment | `VITE_MOCK_MODE` | Supabase env vars |
+|---|---|---|
+| Local `npm run dev` | `1` in `.env` / `.env.local` (team default) | Optional while mocking |
+| Local production build | unset / `0` | Required: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` |
+| Local mock build | via `npm run build:mock` | Not required |
+| Vercel Production | **Do not set** (or `0`) | **Required** in Vercel env |
+| Vercel Preview (live backend) | unset / `0` | **Required** in Vercel env |
+| Vercel Preview (UI-only, optional) | `1` only on Preview | Not required |
 
-Use this mode for UI, routing, design, copy, and frontend flow development. Add real environment variables only when you are ready to test live auth/data/payments.
+Mock mode uses client fallbacks for auth/queries and treats listed emails as superadmin for **local UI testing only** — unsafe for a real site. Production admin is DB-only (see **Granting admin access** below). Builds without mock and without Supabase credentials **fail** at `prebuild` (`scripts/validate-build-env.mjs`).
 
 ### 4.0 Vercel Environment Checklist (Quick)
 
-Set these in **Vercel → Project → Settings → Environment Variables**.
+Set these in **Vercel → Project → Settings → Environment Variables** for **Production** and **Preview** (unless a Preview is intentionally mock-only).
 
-Required only for live Supabase environments:
+Required for live Supabase:
 
 ```bash
 VITE_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
 VITE_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
 ```
 
-Recommended for all environments:
+Recommended:
 
 ```bash
 VITE_APP_URL=https://YOUR_DOMAIN_OR_VERCEL_URL
@@ -90,79 +180,77 @@ Required if payments are enabled:
 VITE_STRIPE_PUBLISHABLE_KEY=pk_test_OR_pk_live_KEY
 ```
 
-Optional observability:
+Optional observability / ads:
 
 ```bash
 VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+VITE_FACEBOOK_PIXEL_ID=XXXXXXXXXXXXXXXX
 VITE_SENTRY_DSN=https://xxxxx@o0.ingest.sentry.io/0
 ```
+
+Do **not** set `VITE_MOCK_MODE=1` on Production.
 
 ### 4.1 Import Project
 1. Go to https://vercel.com/new
 2. Click **"Import Git Repository"**
-3. Select your `biomathcore-platform` repository
+3. Select your `bmcore3.0` repository
 4. Click **"Import"**
 
 ### 4.2 Configure Project
 - **Framework Preset:** Vite
-- **Build Command:** `npm run vercel-build`
+- **Build Command:** `npm run vercel-build` (same as `npm run build`; does **not** force mock)
 - **Output Directory:** `dist`
 - **Install Command:** `npm ci`
 - **Node.js Version:** `20.x`
 
 ### 4.2.1 Preflight Check (recommended)
-Before first production deploy, run locally:
+Before first production deploy, run locally with real (or staging) Supabase values in `.env`:
 
 ```bash
 npm ci
+# Ensure VITE_MOCK_MODE is unset/0 and VITE_SUPABASE_* are set
 npm run build
 ```
 
-If this succeeds locally, Vercel build settings are aligned.
+For a UI-only compile smoke test without Supabase: `npm run build:mock`.
 
 ### 4.2.2 Post-Deploy Smoke Check
 
-After deploy:
+After deploy (fuller list at top → **Operator deploy checklist**):
 
-1. Open `/` and verify app loads without blank screen.
-2. Open `/pricing` and verify plan buttons render.
-3. Sign in flow works on `/sign-in` and `/sign-up`.
-4. Open browser console and ensure no `Missing Supabase environment variables` error.
+1. Open `/` and verify app loads without blank screen; Home CTA works.
+2. Deep-link `/pricing` (hard refresh) — SPA rewrite must serve the app, not a Vercel 404.
+3. Sign in on `/sign-in` / `/sign-up` against **real** Supabase; console has **no** `[supabase] Mock auth active`.
+4. Check document response has enforce `Content-Security-Policy`; no CSP console errors for Supabase/Stripe.
+5. Open `/media` (empty published list is OK).
+6. Non-admin denied `/admin`; after `scripts/promote-admin.sql`, admin can enter.
 
 ### 4.3 Add Environment Variables
 
-Click **"Environment Variables"** and add these variables:
+Click **"Environment Variables"** and add placeholders with your real project values (never commit secrets):
 
 ```bash
-# Supabase Configuration
-VITE_SUPABASE_URL=https://txnwvaqzmtlhefcxilfu.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4bnd2YXF6bXRsaGVmY3hpbGZ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA4MTUxNDEsImV4cCI6MjA3NjM5MTE0MX0.nvfoPz57lwSgiVJDwbZgwvlTJhsnHtk4nM1M-q2_snA
+# Supabase Configuration (required for Production / live Preview)
+VITE_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
+VITE_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
 
-# THIS IS CRITICAL - Will be set after first deploy
-# VITE_PUBLIC_URL=https://your-app.vercel.app
+# After first deploy
+# VITE_APP_URL=https://your-app.vercel.app
 
-# Stripe Configuration - TEST MODE (recommended for testing)
+# Stripe — TEST MODE recommended first
 VITE_STRIPE_PUBLISHABLE_KEY=pk_test_YOUR_TEST_KEY_HERE
 
-# Stripe Price IDs - Monthly
-VITE_STRIPE_PRICE_DAILY_MONTHLY=price_1Ry1DrFeT62z7zOTWTEuqnQF
-VITE_STRIPE_PRICE_CORE_MONTHLY=price_1Ry1B0FeT62z7zOTfpYzRVgK
-VITE_STRIPE_PRICE_MAX_MONTHLY=price_1Ry1FRFeT62z7zOTRXDSDvmh
+# Stripe Price IDs (from Stripe Dashboard → Products)
+VITE_STRIPE_PRICE_DAILY_MONTHLY=price_xxx
+VITE_STRIPE_PRICE_CORE_MONTHLY=price_xxx
+VITE_STRIPE_PRICE_MAX_MONTHLY=price_xxx
+VITE_STRIPE_PRICE_DAILY_YEARLY=price_xxx
+VITE_STRIPE_PRICE_CORE_YEARLY=price_xxx
+VITE_STRIPE_PRICE_MAX_YEARLY=price_xxx
 
-# Stripe Price IDs - Yearly
-VITE_STRIPE_PRICE_DAILY_YEARLY=price_1Ry1ERFeT62z7zOTzqGU2Mb7
-VITE_STRIPE_PRICE_CORE_YEARLY=price_1Ry1CeFeT62z7zOTtNyV6TRq
-VITE_STRIPE_PRICE_MAX_YEARLY=price_1Ry1FyFeT62z7zOT2XxWrJPA
-
-# Stripe Price IDs - Default
-VITE_STRIPE_PRICE_DAILY=price_1Ry1DrFeT62z7zOTWTEuqnQF
-VITE_STRIPE_PRICE_CORE=price_1Ry1B0FeT62z7zOTfpYzRVgK
-VITE_STRIPE_PRICE_MAX=price_1Ry1FRFeT62z7zOTRXDSDvmh
-
-# Stripe Configuration
 VITE_STRIPE_CURRENCY=usd
 
-# Email Configuration (mock for testing)
+# Email (client provider hint; server keys stay server-side)
 VITE_EMAIL_PROVIDER=mock
 VITE_EMAIL_FROM=BioMath Core <no-reply@biomathcore.com>
 VITE_EMAIL_REPLY_TO=support@biomathcore.com
@@ -170,7 +258,8 @@ VITE_EMAIL_REPLY_TO=support@biomathcore.com
 
 **IMPORTANT:**
 - Use Stripe **TEST keys** (start with `pk_test_`) for testing
-- You'll add `VITE_PUBLIC_URL` in Step 5 after getting your Vercel URL
+- You'll add `VITE_APP_URL` / public URL in Step 5 after getting your Vercel URL
+- Rotate any credentials that were previously pasted into docs or chat
 
 ### 4.4 Deploy
 Click **"Deploy"** and wait 2-3 minutes.
@@ -179,13 +268,13 @@ Click **"Deploy"** and wait 2-3 minutes.
 
 After deployment completes:
 
-1. Vercel will show your URL, something like: `https://biomathcore-platform.vercel.app`
+1. Vercel will show your URL, something like: `https://bmcore3.0.vercel.app`
 2. Go to **Settings → Environment Variables**
-3. Add a NEW variable:
+3. Add or update:
    ```
-   VITE_PUBLIC_URL=https://biomathcore-platform.vercel.app
+   VITE_APP_URL=https://bmcore3.0.vercel.app
    ```
-   (Replace with your actual Vercel URL)
+   (Replace with your actual Vercel URL or custom domain. SEO / OG tags use this; there is no `VITE_PUBLIC_URL`.)
 4. Click **"Save"**
 5. Go to **Deployments** tab
 6. Click **"Redeploy"** on the latest deployment
@@ -231,7 +320,7 @@ Your Edge Functions need to know about the Vercel URL:
 ### Common Issues
 
 **Issue: Redirect doesn't work after payment**
-- Check that `VITE_PUBLIC_URL` is set correctly in Vercel
+- Check that `VITE_APP_URL` / Stripe success/cancel URLs are set correctly in Vercel
 - Verify the URL matches your Vercel deployment URL exactly
 
 **Issue: "Invalid API Key" in Stripe**
@@ -253,7 +342,7 @@ When you're ready for production:
 2. **Update Domain (optional):**
    - In Vercel: Settings → Domains
    - Add your custom domain (e.g., biomathcore.com)
-   - Update `VITE_PUBLIC_URL` to your custom domain
+   - Update `VITE_APP_URL` to your custom domain
 
 3. **Enable Email Provider:**
    - Update `VITE_EMAIL_PROVIDER` to `resend`, `sendgrid`, or `ses`
@@ -275,15 +364,48 @@ git push
 # Vercel will automatically deploy!
 ```
 
+## Granting admin access (safe)
+
+Admin is **database-only**. The browser never writes `profiles.is_admin` or elevated `role` values.
+
+1. Apply migrations (includes `20260801180000_harden_profile_admin_privileges.sql`).
+2. User signs up / signs in normally (real Supabase — not mock).
+3. In the **Supabase SQL editor** (or any service-role connection), run `scripts/promote-admin.sql` with their email:
+
+```sql
+UPDATE public.profiles
+SET is_admin = true, role = 'superadmin', updated_at = now()
+WHERE email = 'your@email.com';
+```
+
+4. They reload `/admin` — UI checks the profile row; RLS uses `is_admin_cached()`.
+
+**Do not** rely on client email allowlists for production admin. `VITE_SUPERADMIN_EMAILS` / hardcoded emails are for **local mock login** only (`VITE_MOCK_MODE=1`).
+
+**Operator audit (live DB):** confirm no authenticated user can self-elevate:
+
+```sql
+-- As a non-admin user JWT this must fail:
+UPDATE public.profiles SET is_admin = true WHERE id = auth.uid();
+UPDATE public.profiles SET role = 'superadmin' WHERE id = auth.uid();
+```
+
 ## Security Checklist
 
 - [ ] Repository is PRIVATE
 - [ ] `.env` file is in `.gitignore`
 - [ ] Using Stripe TEST mode for testing
 - [ ] All secrets are in Vercel Dashboard, not in code
-- [ ] `VITE_PUBLIC_URL` is set correctly
+- [ ] `VITE_APP_URL` is set correctly
+- [ ] `VITE_MOCK_MODE=1` is **not** set on Production
+- [ ] Migrations applied (`media_items` + admin privilege harden) and `admin-db` redeployed
 - [ ] Edge Functions are deployed in Supabase
 - [ ] RLS policies are enabled in database
+- [ ] Admin granted only via SQL / service role (not client self-elevate)
+- [ ] Live DB audited: users cannot UPDATE own `is_admin` / elevated `role`
+- [ ] After deploy: DevTools → Network → document response includes `Content-Security-Policy` (not Report-Only only)
+- [ ] Smoke Health Guide mic, Stripe checkout redirect, Supabase auth, and optional GA/Meta with consent — console has no CSP violations
+- [ ] If a new third party is added, update the CSP allowlist in `vercel.json` and the matching `vite preview` headers in `vite.config.ts`
 
 ## Support
 

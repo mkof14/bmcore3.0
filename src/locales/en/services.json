@@ -1,0 +1,172 @@
+{
+  "services": {
+    "seo": {
+      "title": "Services & Pricing - Health Analytics Plans",
+      "description": "Choose from Core, Daily, or Max plans for intelligent health analytics. 5-day free trial, 200+ services across 20 health categories. From $19/month. Secure, HIPAA-compliant."
+    },
+    "hero": {
+      "label": "Services",
+      "title": "Choose the depth of your Human Data Model",
+      "body": "Each plan expands what the model can see. More categories mean richer context — and clearer guidance.",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "yearlySaving": "−17%"
+    },
+    "plans": {
+      "mostPopular": "Most popular",
+      "perMonth": "/month",
+      "perYear": "/year",
+      "getStarted": "Get started",
+      "trialNote": "All plans include a <strong>5-day trial</strong>. Cancel anytime during the trial.",
+      "items": [
+        {
+          "name": "Core",
+          "description": "Essential health analytics for individuals",
+          "categories": "3 Categories",
+          "features": [
+            "Basic health dashboard",
+            "3 service categories access",
+            "10 GB Model Archive storage",
+            "Monthly health reports",
+            "Email support",
+            "Data encryption",
+            "Device connectivity (up to 2 devices)"
+          ]
+        },
+        {
+          "name": "Daily",
+          "description": "Daily insights and comprehensive tracking",
+          "categories": "10 Categories",
+          "features": [
+            "Everything in Core",
+            "10 Categories",
+            "50 GB Model Archive storage",
+            "Daily health reports",
+            "Health Guide access",
+            "Priority email support",
+            "Device connectivity (up to 5 devices)",
+            "Lab results integration",
+            "Genetic data analysis"
+          ]
+        },
+        {
+          "name": "Max",
+          "description": "Complete health intelligence for serious tracking",
+          "categories": "20 Categories",
+          "features": [
+            "Everything in Daily",
+            "All 20 service categories",
+            "200 GB Model Archive storage",
+            "Real-time AI insights",
+            "24/7 priority support",
+            "Unlimited device connectivity",
+            "Advanced predictive analytics",
+            "Custom report generation",
+            "Family accounts (up to 5 members)",
+            "API access for developers"
+          ]
+        }
+      ]
+    },
+    "compare": {
+      "label": "Compare",
+      "title": "All features, side by side",
+      "featureHeader": "Feature",
+      "included": "Included",
+      "rows": [
+        { "name": "Health dashboard", "core": "Basic", "daily": "Advanced", "max": "Advanced" },
+        { "name": "Service categories", "core": "3", "daily": "10", "max": "All 20" },
+        { "name": "Model Archive storage", "core": "10 GB", "daily": "50 GB", "max": "200 GB" },
+        { "name": "Health reports", "core": "Monthly", "daily": "Daily", "max": "Real-time" },
+        { "name": "Support", "core": "Email", "daily": "Priority email", "max": "24/7 priority" },
+        { "name": "Data encryption", "core": true, "daily": true, "max": true },
+        { "name": "Device connectivity", "core": "Up to 2", "daily": "Up to 5", "max": "Unlimited" },
+        { "name": "Health Guide", "core": false, "daily": true, "max": true },
+        { "name": "Lab results integration", "core": false, "daily": true, "max": true },
+        { "name": "Genetic data analysis", "core": false, "daily": true, "max": true },
+        { "name": "Predictive analytics", "core": false, "daily": false, "max": true },
+        { "name": "Custom report generation", "core": false, "daily": false, "max": true },
+        { "name": "Family accounts", "core": false, "daily": false, "max": "Up to 5" },
+        { "name": "API access", "core": false, "daily": false, "max": true }
+      ]
+    },
+    "testimonials": {
+      "label": "Voices",
+      "title": "What users notice",
+      "items": [
+        {
+          "quote": "Perfect for tracking my basic health metrics. Simple and effective.",
+          "author": "Sarah M.",
+          "plan": "Core"
+        },
+        {
+          "quote": "The Health Guide changed how I understand my health data. Worth every penny.",
+          "author": "Michael R.",
+          "plan": "Daily"
+        },
+        {
+          "quote": "As a healthcare professional, the comprehensive analytics and family accounts are invaluable.",
+          "author": "Dr. Emily Chen",
+          "plan": "Max"
+        }
+      ]
+    },
+    "why": {
+      "label": "Why BioMath Core",
+      "title": "Built for lasting clarity",
+      "items": [
+        {
+          "title": "Timely insights",
+          "body": "Feedback on your health signals as models learn from your patterns."
+        },
+        {
+          "title": "HIPAA-aligned security",
+          "body": "Enterprise-grade protection so sensitive data stays private by default."
+        },
+        {
+          "title": "Human support",
+          "body": "Specialists and priority help when you need clarity on what the data means."
+        }
+      ]
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Common questions",
+      "items": [
+        {
+          "question": "Can I switch plans at any time?",
+          "answer": "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate the cost accordingly."
+        },
+        {
+          "question": "What happens after the 5-day trial?",
+          "answer": "After your 5-day trial ends, you'll be automatically charged based on your selected plan and billing period. You can cancel anytime during the trial without being charged."
+        },
+        {
+          "question": "Is my health data secure?",
+          "answer": "Absolutely. All plans include enterprise-grade encryption, secure data storage, and compliance with HIPAA regulations. Your health data is never shared with third parties without your explicit consent."
+        },
+        {
+          "question": "Do you offer discounts for annual billing?",
+          "answer": "Yes! Annual billing saves you approximately 17% compared to monthly payments. You'll see the discounted price when you select yearly billing above."
+        }
+      ],
+      "moreText": "Want the fuller picture before choosing a plan?",
+      "moreCta": "Learn more about BioMath Core →"
+    },
+    "closing": {
+      "title": "Ready to start with clearer health context?",
+      "body": "Begin with a 5-day trial. Expand categories as your Human Data Model grows.",
+      "ctaTrial": "Start your free trial",
+      "ctaContact": "Contact sales",
+      "footnote": "HIPAA-aligned · Encrypted in transit and at rest · Cancel anytime"
+    },
+    "errors": {
+      "title": "Payment error",
+      "dismiss": "Dismiss",
+      "priceNotConfigured": "Stripe price ID not configured for this plan.",
+      "subscriptionFailed": "Subscription create failed",
+      "notAuthenticated": "Not authenticated",
+      "paymentFailed": "Payment failed"
+    }
+  }
+}

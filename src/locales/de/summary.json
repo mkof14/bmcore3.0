@@ -1,0 +1,100 @@
+{
+  "summary": {
+    "label": "Überblick",
+    "logoAlt": "BioMath Core",
+    "healthIntelligence": "Persönliche Gesundheitsintelligenz",
+    "healthIntelligenceSub": "Ein klarerer Weg durch Ihre Gesundheit – geleitet von Verständnis statt von noch mehr Diagrammen.",
+    "principle": {
+      "label": "Grundsatz",
+      "title": "Rund um Bedeutung gebaut",
+      "p1": "BioMath Core hilft Menschen, ihre Gesundheit durch Verständnis, Deutung und begleitete Entscheidungen selbst in die Hand zu nehmen. Anders als Wellness-Apps, Klinikportale oder Wearable-Dashboards dreht es sich nicht um Messwerte oder Behandlung – sondern um <strong>Bedeutung</strong>.",
+      "p2": "Es misst nicht mehr, sondern erklärt besser. Sie erhalten nicht nur Daten; Sie lernen, Ihre eigene Biologie mit einer Klarheit zu lesen, die über die Zeit bestehen bleibt."
+    },
+    "guide": {
+      "label": "Begleitung",
+      "title": "Health Guide",
+      "lead": "Ihr wichtigster Zugang zu BioMath Core – Orientierung noch vor Navigation.",
+      "items": [
+        {
+          "title": "Begleitung im Kontext",
+          "body": "Statt Menüs nach Erkenntnissen zu durchsuchen, schlägt der Health Guide den passenden Dienst, die passende Deutung oder den nächsten Schritt genau dann vor, wenn es darauf ankommt."
+        },
+        {
+          "title": "Aktive Entscheidungen",
+          "body": "Sie erhalten nicht länger nur Zahlen, sondern entscheiden mit Kontext. Der erste Bildschirm zeigt, was jetzt zählt – und was als Nächstes zu tun ist."
+        },
+        {
+          "title": "Ein lebendiger Startbildschirm",
+          "body": "Die Startansicht ordnet sich nach Relevanz, persönlichen Risikosignalen und möglichen Schritten – statt einer starren Liste von Kacheln, die Sie selbst zusammenstellen müssten."
+        },
+        {
+          "title": "Richtung statt Status",
+          "body": "Ein Status allein genügt nicht. Entscheidend ist die Richtung: was sich verändert hat, warum es zählt und welcher Schritt als Nächstes sinnvoll ist."
+        }
+      ]
+    },
+    "flow": {
+      "label": "Ablauf",
+      "title": "Ein Service in drei Phasen",
+      "items": [
+        {
+          "title": "Vorbereitung",
+          "body": "Bevor ein Bericht erstellt wird, stellt eine geführte Prüfung sicher, dass der wesentliche Kontext vorliegt und Sie wissen, was die Genauigkeit beeinflusst."
+        },
+        {
+          "title": "Erstellung mit doppelter Analyse",
+          "body": "Zwei Auswertungssysteme erstellen unabhängig voneinander Einschätzungen. Der Vergleich zeigt Übereinstimmung oder Abweichung – eine zweite Sicht, die die Begründung offenlegt und nicht nur einen zweiten Wert liefert."
+        },
+        {
+          "title": "Deutung",
+          "body": "Nach der Erstellung erklärt der Health Guide die Bedeutung – nicht nur das Ergebnis – und weist auf nächste Schritte, Lerninhalte oder längerfristige Beobachtung hin. So bleibt jeder Dienst dauerhaft nützlich."
+        }
+      ]
+    },
+    "plans": {
+      "label": "Tarife",
+      "title": "Zugang nach Tiefe",
+      "body": "Ein Basisabo mit weiterführenden Erweiterungen – Fortschritt entsteht durch Anwendung, nicht durch freigeschaltete Funktionen.",
+      "items": [
+        { "name": "Core", "focus": "Bewusstsein" },
+        { "name": "Daily", "focus": "Aktive Begleitung" },
+        { "name": "Max", "focus": "Vorausschauende Einsicht" }
+      ],
+      "note": "Die Stufen erweitern Fähigkeiten, keine Funktionsliste. Erweiterungen vertiefen die Deutung dann, wenn sie am nützlichsten ist – Beschleuniger statt Verkaufsfallen."
+    },
+    "data": {
+      "label": "Daten",
+      "title": "Unser Umgang mit Daten",
+      "items": [
+        {
+          "title": "Sparsam und bedeutungsorientiert",
+          "body": "Wir fragen nach Relevantem, nicht nach Vollständigkeit. Fragen erscheinen, wenn sie die Deutung verändern – nicht aus Formalismus."
+        },
+        {
+          "title": "Wachsendes Verständnis",
+          "body": "Personalisierung wirkt auf der Ebene der Auswahl: Was Sie sehen und lernen, verändert sich mit Ihren laufenden Gesundheitssignalen. Je länger Sie dabei sind, desto klarer wird das Bild."
+        }
+      ]
+    },
+    "position": {
+      "label": "Einordnung",
+      "title": "Wo BioMath Core steht",
+      "p1": "BioMath Core konkurriert nicht mit Telemedizin, Wellness-Apps oder Wearables – es vervollständigt sie. Es ist die Deutungsebene, die modernen Gesundheitswerkzeugen bislang fehlte: die Brücke zwischen Gesundheitsdaten und Gesundheitsverständnis.",
+      "p2": "Sie kaufen keine Berichte. Sie bauen Kompetenz auf – die Fähigkeit, Ihr Wohlbefinden selbstbestimmt und vorausschauend zu steuern.",
+      "quote": "„Sie werden zu jemandem, der seinen Körper lesen und aus Verständnis heraus handeln kann – nicht aus Vermutung.“"
+    },
+    "closing": {
+      "label": "Abschluss",
+      "title": "Keine weitere Gesundheits-App",
+      "p1": "BioMath Core ist persönliche Gesundheitsintelligenz, die Sie über die Zeit begleitet, sich mit Ihnen verändert und Gesundheit von etwas Reaktivem zu etwas macht, das Sie mit Klarheit steuern können.",
+      "p2": "Verstehen ist die stärkste Form gesundheitlicher Selbstbestimmung. BioMath Core gibt es, um dieses Verstehen zu ermöglichen – fortlaufend, sorgfältig und persönlich."
+    },
+    "explore": {
+      "title": "Weiter erkunden",
+      "viewServices": "Leistungen ansehen",
+      "seePricing": "Preise ansehen",
+      "getStarted": "Loslegen",
+      "readSummary": "Zusammenfassung lesen"
+    }
+  }
+}

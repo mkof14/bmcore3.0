@@ -1,0 +1,129 @@
+{
+  "learning": {
+    "title": "Learning Center",
+    "subtitle": "Understand your health journey through calm explanations, simple visuals, and confidence-building guidance",
+    "searchPlaceholder": "Search categories, services, or health terms...",
+    "gettingStarted": "Getting Started",
+    "sections": {
+      "pricing": {
+        "title": "Pricing Plans",
+        "body": "Choose from flexible subscription tiers designed to match your wellness journey. All plans include core services, with advanced tiers unlocking specialized assessments, device integrations, and premium AI guidance."
+      },
+      "member": {
+        "title": "Member Zone",
+        "body": "Your personalized health dashboard. Track progress across all services, review reports, manage device connections, set wellness goals, and access your complete health timeline in one secure location."
+      },
+      "multiModel": {
+        "title": "Multi-Model Reports",
+        "body": "Run two AI perspectives at the same time and receive a unified summary. This helps you compare angles and arrive at a single, confident conclusion."
+      },
+      "aiGuide": {
+        "title": "AI Systems Guide",
+        "body": "Learn how the AI pipeline works, how memory depth is built, and how knowledge snapshots shape every report."
+      },
+      "services": {
+        "title": "Services Guide",
+        "body": "Each of the {{count}} services includes a clear description, guided assessment path, and actionable recommendations. Activate only what matters to you right now — browse the full catalog with descriptions below."
+      },
+      "categories": {
+        "title": "Categories",
+        "body": "Explore {{categories}} health categories containing {{count}} services. Each category focuses on a specific domain of wellness, from critical health monitoring to senior care, longevity, and mental wellbeing."
+      },
+      "signalHub": {
+        "title": "Signal Hub & Action Plans",
+        "body": "Review your signal strength, knowledge depth, and report readiness. Then turn insights into calm, step-by-step action plans."
+      }
+    },
+    "viewPlans": "View Plans →",
+    "goToMember": "Go to Member Zone →",
+    "browseServices": "Browse All Services →",
+    "ai": {
+      "title": "AI Systems 101",
+      "intro": "A clear, calm overview of how BioMath Core turns raw signals into a unified report with multi-model intelligence.",
+      "step": "Step {{number}}",
+      "steps": {
+        "intake": {
+          "title": "Signal Intake",
+          "desc": "Devices, questionnaires, notes, reports"
+        },
+        "snapshot": {
+          "title": "Knowledge Snapshot",
+          "desc": "Context summary + history depth"
+        },
+        "analysis": {
+          "title": "Multi-Model Analysis",
+          "desc": "Two AI perspectives run in parallel"
+        },
+        "report": {
+          "title": "Unified Report",
+          "desc": "Merged findings + priorities"
+        },
+        "plan": {
+          "title": "Action Plan",
+          "desc": "7/14/30-day steps with clarity"
+        }
+      },
+      "viewExample": "View Example Report",
+      "exploreSecondOpinion": "Explore Second Opinion",
+      "exampleLabel": "Example Report",
+      "unifiedSummary": "Unified Summary",
+      "exampleTitle": "Daily Health Intelligence",
+      "exampleBody": "Balanced energy with mild recovery load. Sleep quality improved 12% week over week.",
+      "quality": "Quality",
+      "coverage": "Coverage",
+      "consistency": "Consistency",
+      "planLabel": "Action Plan Preview",
+      "planTitle": "7-Day Reset",
+      "planItems": [
+        "Sleep target: 7h 30m with wind-down routine",
+        "Recovery: 1 low-intensity day between workouts",
+        "Hydration: 2.2L daily with morning start"
+      ],
+      "focusTag": "Focus tag: Nervous System Balance",
+      "secondOpinionLabel": "Second Opinion Preview",
+      "modelA": "Model A · Physiology",
+      "modelATitle": "Recovery Load Elevated",
+      "modelABody": "Sleep debt and HRV dip suggest a 48-hour recovery window.",
+      "modelB": "Model B · Behavioral",
+      "modelBTitle": "Routine Variability",
+      "modelBBody": "Late meals and schedule shifts correlate with energy dips.",
+      "unifiedTitle": "Stabilize Recovery + Rhythm",
+      "unifiedBody": "Prioritize sleep consistency and a lighter training day for 2 sessions.",
+      "howToRead": "How to read multi-model reports: compare Model A and Model B for complementary angles, then use the Unified Summary as your single source of action."
+    },
+    "categoriesTitle": "Health Categories",
+    "categoriesIntro": "All {{categories}} categories and {{count}} services from the live catalog — expand any category to read service descriptions.",
+    "servicesCount": "{{count}} services",
+    "openInCatalog": "Open in Services Catalog →",
+    "guide": {
+      "title": "Health Guide",
+      "body": "Not sure where to start? The Health Guide helps you find the right category and services based on your needs.",
+      "cta": "Start Guided Tour"
+    },
+    "secondOpinion": {
+      "title": "Second Opinion Engine",
+      "body": "Generate two simultaneous reports and a unified summary with priorities, clarity, and one action plan.",
+      "cta": "Explore Second Opinion →"
+    },
+    "quickHelp": {
+      "title": "Quick Help",
+      "cta": "Visit FAQ →"
+    },
+    "referenceTitle": "Complete services reference",
+    "referenceSubtitle": "Searchable inventory of all {{categories}} categories and {{count}} service descriptions.",
+    "glossaryTitle": "Health Glossary",
+    "glossaryIntro": "Key scientific and health concepts explained in simple, actionable language",
+    "whyItMatters": "Why it matters:",
+    "howItHelps": "How it helps:",
+    "philosophy": {
+      "title": "Our Educational Philosophy",
+      "body": "The Learning Center educates through reassurance, not overload. We bridge the gap between data and daily choices. There are no lectures — only clarity. Our tone is calm, science-backed, human, and non-medical.",
+      "whatTitle": "What We Do",
+      "whatBody": "Explain services and their purpose clearly",
+      "howTitle": "How We Help",
+      "howBody": "Guide you to the right support",
+      "goalTitle": "Our Goal",
+      "goalBody": "Build your confidence, not confusion"
+    }
+  }
+}

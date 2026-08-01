@@ -1,69 +1,15 @@
 import { BookOpen, Sparkles, FileText, HelpCircle, Search, ChevronRight, ChevronDown, GraduationCap, DollarSign, Users, Grid, Activity, Database, Layers, FileCheck, Compass } from 'lucide-react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import BackButton from '../components/BackButton';
+import ServiceCatalogReference from '../components/ServiceCatalogReference';
+import { serviceCategories, totalServiceCount } from '../data/services';
+import { categoryAccent } from '../data/categoryTheme';
+import { localizeCategory, localizeService } from '../lib/localizeServices';
 
 interface LearningCenterProps {
   onNavigate: (page: string, data?: string) => void;
 }
-
-const categories = [
-  {
-    id: 'critical-health',
-    name: 'Critical Health',
-    count: 18,
-    description: 'Emergency health monitoring and critical condition assessment',
-    services: ['Heart Attack Risk', 'Stroke Prevention', 'Blood Pressure Monitoring', 'Diabetes Management']
-  },
-  {
-    id: 'everyday-wellness',
-    name: 'Everyday Wellness',
-    count: 15,
-    description: 'Daily health maintenance and general wellbeing support',
-    services: ['Energy Optimization', 'Sleep Quality', 'Stress Management', 'Hydration Tracking']
-  },
-  {
-    id: 'longevity',
-    name: 'Longevity & Anti-Aging',
-    count: 15,
-    description: 'Cellular health and biological age optimization',
-    services: ['Biological Age Assessment', 'Telomere Health', 'Cellular Senescence', 'NAD+ Optimization']
-  },
-  {
-    id: 'mental-wellness',
-    name: 'Mental Wellness',
-    count: 11,
-    description: 'Emotional balance and cognitive health support',
-    services: ['Anxiety Support', 'Depression Screening', 'Cognitive Function', 'Mindfulness Training']
-  },
-  {
-    id: 'fitness',
-    name: 'Fitness & Performance',
-    count: 19,
-    description: 'Athletic performance and physical optimization',
-    services: ['VO₂ Max Testing', 'Recovery Tracking', 'Performance Analytics', 'Training Optimization']
-  },
-  {
-    id: 'womens-health',
-    name: 'Women\'s Health',
-    count: 8,
-    description: 'Comprehensive women\'s health and hormonal support',
-    services: ['Cycle Tracking', 'Hormonal Balance', 'Pregnancy Support', 'Menopause Management']
-  },
-  {
-    id: 'mens-health',
-    name: 'Men\'s Health',
-    count: 8,
-    description: 'Men-specific health monitoring and vitality support',
-    services: ['Testosterone Tracking', 'Prostate Health', 'Vitality Optimization', 'Performance Support']
-  },
-  {
-    id: 'nutrition',
-    name: 'Nutrition & Diet',
-    count: 15,
-    description: 'Personalized nutrition guidance and metabolic health',
-    services: ['Meal Planning', 'Macro Tracking', 'Metabolic Flexibility', 'Insulin Sensitivity']
-  }
-];
 
 const glossaryTerms = [
   {
@@ -170,60 +116,59 @@ const glossaryTerms = [
   }
 ];
 
+function stringList(value: unknown): string[] {
+  return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : [];
+}
+
 export default function LearningCenter({ onNavigate }: LearningCenterProps) {
+  const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTerm, setSelectedTerm] = useState<string | null>(null);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
-
-  const filteredCategories = categories.filter(cat =>
-    cat.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
+  const localizedCategories = useMemo(
+    () =>
+      serviceCategories.map((category) => ({
+        ...localizeCategory(t, category),
+        services: category.services.map((service) =>
+          localizeService(t, category.id, service),
+        ),
+      })),
+    [t],
   );
+
+  const filteredCategories = useMemo(() => {
+    const q = searchQuery.toLowerCase().trim();
+    if (!q) return localizedCategories;
+    return localizedCategories.filter(
+      (cat) =>
+        cat.name.toLowerCase().includes(q) ||
+        cat.description.toLowerCase().includes(q) ||
+        cat.services.some(
+          (s) => s.name.toLowerCase().includes(q) || s.description.toLowerCase().includes(q),
+        ),
+    );
+  }, [localizedCategories, searchQuery]);
 
   const filteredTerms = glossaryTerms.filter(term =>
     term.term.toLowerCase().includes(searchQuery.toLowerCase()) ||
     term.meaning.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-const gettingStartedSections = [
-  {
-    title: 'Pricing Plans',
-    icon: DollarSign,
-    content: 'Choose from flexible subscription tiers designed to match your wellness journey. All plans include core services, with advanced tiers unlocking specialized assessments, device integrations, and premium AI guidance.'
-  },
-  {
-    title: 'Member Zone',
-    icon: Users,
-    content: 'Your personalized health dashboard. Track progress across all services, review reports, manage device connections, set wellness goals, and access your complete health timeline in one secure location.'
-  },
-  {
-    title: 'Multi-Model Reports',
-    icon: Sparkles,
-    content: 'Run two AI perspectives at the same time and receive a unified summary. This helps you compare angles and arrive at a single, confident conclusion.'
-  },
-  {
-    title: 'AI Systems Guide',
-    icon: BookOpen,
-    content: 'Learn how the AI pipeline works, how memory depth is built, and how knowledge snapshots shape every report.'
-  },
-  {
-    title: 'Services Guide',
-    icon: FileText,
-    content: 'Each service provides guided assessments, clear interpretations, and actionable recommendations. Services are activated individually, ensuring you only engage with what matters to you right now.'
-  },
-  {
-    title: 'Categories',
-    icon: Grid,
-    content: 'Explore 20 major health categories containing 200+ services. Each category focuses on a specific domain of wellness, from critical health monitoring to longevity optimization and mental wellbeing.'
-  },
-  {
-    title: 'Signal Hub & Action Plans',
-    icon: BookOpen,
-    content: 'Review your signal strength, knowledge depth, and report readiness. Then turn insights into calm, step-by-step action plans.'
-  }
-];
+  const counts = { count: totalServiceCount(), categories: serviceCategories.length };
+
+  const gettingStartedSections = [
+    { key: 'pricing', icon: DollarSign },
+    { key: 'member', icon: Users },
+    { key: 'multiModel', icon: Sparkles },
+    { key: 'aiGuide', icon: BookOpen },
+    { key: 'services', icon: FileText },
+    { key: 'categories', icon: Grid },
+    { key: 'signalHub', icon: BookOpen },
+  ] as const;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/30 to-white dark:from-gray-950 dark:via-gray-950 dark:to-gray-900 pt-20 pb-16">
+    <div className="min-h-screen bg-page pt-20 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <BackButton onNavigate={onNavigate} />
 
@@ -231,83 +176,87 @@ const gettingStartedSections = [
           <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-600 rounded-2xl mb-4 shadow-lg shadow-orange-600/20">
             <GraduationCap className="h-8 w-8 text-white" />
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Learning Center
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-neutral-100 mb-4">
+            {t('learning.title')}
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Understand your health journey through calm explanations, simple visuals, and confidence-building guidance
+          <p className="text-lg text-gray-600 dark:text-neutral-300 max-w-3xl mx-auto">
+            {t('learning.subtitle')}
           </p>
         </div>
 
         <div className="mb-12">
           <div className="relative max-w-2xl mx-auto">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500 dark:text-neutral-400" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search categories, services, or health terms..."
-              className="w-full pl-12 pr-4 py-4 rounded-xl border border-slate-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-600 focus:border-transparent shadow-sm"
+              placeholder={t('learning.searchPlaceholder')}
+              className="w-full pl-12 pr-4 py-4 rounded-xl border border-[var(--bm-border)] bg-surface text-gray-900 dark:text-neutral-100 placeholder:text-gray-500 dark:placeholder:text-neutral-400 focus:ring-2 focus:ring-orange-600 focus:border-transparent shadow-sm"
             />
           </div>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
           <div className="lg:col-span-2 space-y-8">
-            <div className="bg-white dark:bg-gray-900/70 rounded-xl p-8 border border-slate-200 dark:border-gray-800 shadow-sm">
+            <div className="bg-surface rounded-xl p-8 border border-[var(--bm-border)] shadow-sm">
               <div className="flex items-center space-x-3 mb-6">
                 <BookOpen className="h-6 w-6 text-orange-600 dark:text-orange-400" />
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Getting Started</h2>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-neutral-100">
+                  {t('learning.gettingStarted')}
+                </h2>
               </div>
 
               <div className="space-y-3">
-                {gettingStartedSections.map((section, index) => {
+                {gettingStartedSections.map((section) => {
                   const Icon = section.icon;
-                  const isExpanded = expandedSection === section.title;
+                  const isExpanded = expandedSection === section.key;
 
                   return (
-                    <div key={index} className="border border-slate-200 dark:border-gray-800 rounded-lg overflow-hidden bg-white dark:bg-gray-900">
+                    <div key={section.key} className="border border-[var(--bm-border)] rounded-lg overflow-hidden bg-page">
                       <button
-                        onClick={() => setExpandedSection(isExpanded ? null : section.title)}
-                        className="w-full flex items-center justify-between p-4 bg-slate-50 dark:bg-gray-900 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors"
+                        onClick={() => setExpandedSection(isExpanded ? null : section.key)}
+                        className="w-full flex items-center justify-between p-4 bg-page hover:bg-slate-100/80 dark:hover:bg-[var(--bm-surface)] transition-colors"
                       >
                         <div className="flex items-center space-x-3">
                           <Icon className="h-5 w-5 text-orange-600 dark:text-orange-400" />
-                          <span className="font-medium text-gray-900 dark:text-white">{section.title}</span>
+                          <span className="font-medium text-gray-900 dark:text-neutral-100">
+                            {t(`learning.sections.${section.key}.title`)}
+                          </span>
                         </div>
                         {isExpanded ? (
-                          <ChevronDown className="h-5 w-5 text-gray-400" />
+                          <ChevronDown className="h-5 w-5 text-gray-500 dark:text-neutral-400" />
                         ) : (
-                          <ChevronRight className="h-5 w-5 text-gray-400" />
+                          <ChevronRight className="h-5 w-5 text-gray-500 dark:text-neutral-400" />
                         )}
                       </button>
                       {isExpanded && (
-                        <div className="p-4 bg-white dark:bg-gray-900">
-                          <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                            {section.content}
+                        <div className="p-4 bg-surface border-t border-[var(--bm-border)]">
+                          <p className="text-sm text-gray-600 dark:text-neutral-300 leading-relaxed">
+                            {t(`learning.sections.${section.key}.body`, counts)}
                           </p>
-                          {section.title === 'Pricing Plans' && (
+                          {section.key === 'pricing' && (
                             <button
                               onClick={() => onNavigate('services')}
                               className="mt-4 text-sm text-orange-600 dark:text-orange-400 hover:underline"
                             >
-                              View Plans →
+                              {t('learning.viewPlans')}
                             </button>
                           )}
-                          {section.title === 'Member Zone' && (
+                          {section.key === 'member' && (
                             <button
                               onClick={() => onNavigate('member')}
                               className="mt-4 text-sm text-orange-600 dark:text-orange-400 hover:underline"
                             >
-                              Go to Member Zone →
+                              {t('learning.goToMember')}
                             </button>
                           )}
-                          {section.title === 'Services Guide' && (
+                          {section.key === 'services' && (
                             <button
                               onClick={() => onNavigate('services-catalog')}
                               className="mt-4 text-sm text-orange-600 dark:text-orange-400 hover:underline"
                             >
-                              Browse All Services →
+                              {t('learning.browseServices')}
                             </button>
                           )}
                         </div>
@@ -318,34 +267,36 @@ const gettingStartedSections = [
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-gray-900 via-gray-900 to-slate-900 rounded-2xl p-8 text-white border border-white/10 shadow-lg">
+            <div className="bg-gradient-to-br from-[#1a1e25] via-[#1e232b] to-[#252b34] rounded-2xl p-8 text-white border border-white/15 shadow-lg">
               <div className="flex items-center space-x-3 mb-6">
                 <Sparkles className="h-6 w-6 text-orange-400" />
-                <h2 className="text-2xl font-bold">AI Systems 101</h2>
+                <h2 className="text-2xl font-bold">{t('learning.ai.title')}</h2>
               </div>
               <p className="text-sm text-slate-200 max-w-2xl">
-                A clear, calm overview of how BioMath Core turns raw signals into a unified report with multi‑model intelligence.
+                {t('learning.ai.intro')}
               </p>
 
               <div className="mt-6 grid md:grid-cols-5 gap-4">
                 {[
-                  { title: 'Signal Intake', desc: 'Devices, questionnaires, notes, reports', icon: Activity },
-                  { title: 'Knowledge Snapshot', desc: 'Context summary + history depth', icon: Database },
-                  { title: 'Multi‑Model Analysis', desc: 'Two AI perspectives run in parallel', icon: Layers },
-                  { title: 'Unified Report', desc: 'Merged findings + priorities', icon: FileCheck },
-                  { title: 'Action Plan', desc: '7/14/30‑day steps with clarity', icon: Compass }
+                  { key: 'intake', icon: Activity },
+                  { key: 'snapshot', icon: Database },
+                  { key: 'analysis', icon: Layers },
+                  { key: 'report', icon: FileCheck },
+                  { key: 'plan', icon: Compass },
                 ].map((step, index) => {
                   const Icon = step.icon;
                   return (
-                  <div key={index} className="rounded-xl bg-white/5 border border-white/10 p-4">
+                  <div key={step.key} className="rounded-xl bg-white/10 border border-white/15 p-4">
                     <div className="text-xs uppercase tracking-widest text-orange-300 mb-2">
-                      Step {index + 1}
+                      {t('learning.ai.step', { number: index + 1 })}
                     </div>
                     <div className="flex items-center gap-2 mb-2">
                       <Icon className="h-4 w-4 text-orange-300" />
-                      <div className="font-semibold">{step.title}</div>
+                      <div className="font-semibold">{t(`learning.ai.steps.${step.key}.title`)}</div>
                     </div>
-                    <div className="text-xs text-slate-300 mt-1">{step.desc}</div>
+                    <div className="text-xs text-slate-200 mt-1">
+                      {t(`learning.ai.steps.${step.key}.desc`)}
+                    </div>
                   </div>
                 );
                 })}
@@ -356,115 +307,174 @@ const gettingStartedSections = [
                   onClick={() => onNavigate('reports')}
                   className="px-5 py-3 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-semibold text-sm transition-colors"
                 >
-                  View Example Report
+                  {t('learning.ai.viewExample')}
                 </button>
                 <button
-                  onClick={() => onNavigate('second-opinion')}
+                  onClick={() => onNavigate('second-opinion-demo')}
                   className="px-5 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors"
                 >
-                  Explore Second Opinion
+                  {t('learning.ai.exploreSecondOpinion')}
                 </button>
               </div>
 
               <div className="mt-6 grid md:grid-cols-2 gap-4">
-                <div className="rounded-xl border border-white/10 bg-white/5 p-5">
+                <div className="rounded-xl border border-white/15 bg-white/10 p-5">
                   <div className="flex items-center justify-between mb-3">
-                    <div className="text-xs uppercase tracking-widest text-orange-300">Example Report</div>
-                    <div className="text-xs text-slate-300">Unified Summary</div>
+                    <div className="text-xs uppercase tracking-widest text-orange-300">
+                      {t('learning.ai.exampleLabel')}
+                    </div>
+                    <div className="text-xs text-slate-200">{t('learning.ai.unifiedSummary')}</div>
                   </div>
-                  <div className="text-lg font-semibold">Daily Health Intelligence</div>
-                  <p className="text-sm text-slate-300 mt-2">
-                    Balanced energy with mild recovery load. Sleep quality improved 12% week over week.
+                  <div className="text-lg font-semibold">{t('learning.ai.exampleTitle')}</div>
+                  <p className="text-sm text-slate-200 mt-2">
+                    {t('learning.ai.exampleBody')}
                   </p>
                   <div className="mt-4 grid grid-cols-3 gap-3">
-                    <div className="rounded-lg bg-white/5 p-3 text-center">
-                      <div className="text-xs text-slate-400">Quality</div>
+                    <div className="rounded-lg bg-black/20 p-3 text-center">
+                      <div className="text-xs text-slate-200">{t('learning.ai.quality')}</div>
                       <div className="text-lg font-semibold text-white">92%</div>
                     </div>
-                    <div className="rounded-lg bg-white/5 p-3 text-center">
-                      <div className="text-xs text-slate-400">Coverage</div>
+                    <div className="rounded-lg bg-black/20 p-3 text-center">
+                      <div className="text-xs text-slate-200">{t('learning.ai.coverage')}</div>
                       <div className="text-lg font-semibold text-white">87%</div>
                     </div>
-                    <div className="rounded-lg bg-white/5 p-3 text-center">
-                      <div className="text-xs text-slate-400">Consistency</div>
+                    <div className="rounded-lg bg-black/20 p-3 text-center">
+                      <div className="text-xs text-slate-200">{t('learning.ai.consistency')}</div>
                       <div className="text-lg font-semibold text-white">+6%</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/5 p-5">
-                  <div className="text-xs uppercase tracking-widest text-orange-300 mb-3">Action Plan Preview</div>
-                  <div className="text-lg font-semibold">7‑Day Reset</div>
-                  <ul className="mt-3 space-y-2 text-sm text-slate-300">
-                    <li>Sleep target: 7h 30m with wind‑down routine</li>
-                    <li>Recovery: 1 low‑intensity day between workouts</li>
-                    <li>Hydration: 2.2L daily with morning start</li>
+                <div className="rounded-xl border border-white/15 bg-white/10 p-5">
+                  <div className="text-xs uppercase tracking-widest text-orange-300 mb-3">
+                    {t('learning.ai.planLabel')}
+                  </div>
+                  <div className="text-lg font-semibold">{t('learning.ai.planTitle')}</div>
+                  <ul className="mt-3 space-y-2 text-sm text-slate-200">
+                    {stringList(t('learning.ai.planItems', { returnObjects: true })).map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
                   </ul>
-                  <div className="mt-4 rounded-lg bg-white/5 p-3 text-xs text-slate-300">
-                    Focus tag: Nervous System Balance
+                  <div className="mt-4 rounded-lg bg-black/20 p-3 text-xs text-slate-200">
+                    {t('learning.ai.focusTag')}
                   </div>
                 </div>
               </div>
 
-              <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5">
-                <div className="text-xs uppercase tracking-widest text-orange-300 mb-4">Second Opinion Preview</div>
+              <div className="mt-6 rounded-2xl border border-white/15 bg-white/10 p-5">
+                <div className="text-xs uppercase tracking-widest text-orange-300 mb-4">
+                  {t('learning.ai.secondOpinionLabel')}
+                </div>
                 <div className="grid md:grid-cols-3 gap-4">
-                  <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                    <div className="text-xs text-slate-400 mb-2">Model A · Physiology</div>
-                    <div className="font-semibold">Recovery Load Elevated</div>
-                    <p className="text-xs text-slate-300 mt-2">
-                      Sleep debt and HRV dip suggest a 48‑hour recovery window.
+                  <div className="rounded-xl border border-white/15 bg-white/10 p-4">
+                    <div className="text-xs text-slate-200 mb-2">{t('learning.ai.modelA')}</div>
+                    <div className="font-semibold">{t('learning.ai.modelATitle')}</div>
+                    <p className="text-xs text-slate-200 mt-2">
+                      {t('learning.ai.modelABody')}
                     </p>
                   </div>
-                  <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                    <div className="text-xs text-slate-400 mb-2">Model B · Behavioral</div>
-                    <div className="font-semibold">Routine Variability</div>
-                    <p className="text-xs text-slate-300 mt-2">
-                      Late meals and schedule shifts correlate with energy dips.
+                  <div className="rounded-xl border border-white/15 bg-white/10 p-4">
+                    <div className="text-xs text-slate-200 mb-2">{t('learning.ai.modelB')}</div>
+                    <div className="font-semibold">{t('learning.ai.modelBTitle')}</div>
+                    <p className="text-xs text-slate-200 mt-2">
+                      {t('learning.ai.modelBBody')}
                     </p>
                   </div>
                   <div className="rounded-xl border border-orange-400/30 bg-gradient-to-br from-orange-500/10 to-white/5 p-4">
-                    <div className="text-xs text-orange-200 mb-2">Unified Summary</div>
-                    <div className="font-semibold">Stabilize Recovery + Rhythm</div>
+                    <div className="text-xs text-orange-200 mb-2">
+                      {t('learning.ai.unifiedSummary')}
+                    </div>
+                    <div className="font-semibold">{t('learning.ai.unifiedTitle')}</div>
                     <p className="text-xs text-slate-200 mt-2">
-                      Prioritize sleep consistency and a lighter training day for 2 sessions.
+                      {t('learning.ai.unifiedBody')}
                     </p>
                   </div>
                 </div>
-                <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-4 text-xs text-slate-300">
-                  How to read multi‑model reports: compare Model A and Model B for complementary angles, then use the Unified Summary as your single source of action.
+                <div className="mt-4 rounded-xl border border-white/15 bg-white/10 p-4 text-xs text-slate-200">
+                  {t('learning.ai.howToRead')}
                 </div>
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-900/70 rounded-xl p-8 border border-slate-200 dark:border-gray-800 shadow-sm">
+            <div className="bg-surface rounded-xl p-8 border border-[var(--bm-border)] shadow-sm">
               <div className="flex items-center space-x-3 mb-6">
                 <Grid className="h-6 w-6 text-orange-600 dark:text-orange-400" />
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Health Categories</h2>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-neutral-100">
+                  {t('learning.categoriesTitle')}
+                </h2>
               </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-6">
-                Explore comprehensive health categories with specialized services
+              <p className="text-gray-600 dark:text-neutral-300 mb-6">
+                {t('learning.categoriesIntro', counts)}
               </p>
 
               <div className="space-y-3">
-                {filteredCategories.map((category, index) => (
-                  <button
-                    key={index}
-                    onClick={() => onNavigate('services-catalog', category.id)}
-                    className="w-full border border-slate-200 dark:border-gray-800 rounded-lg p-4 bg-slate-50 dark:bg-gray-900 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors text-left group shadow-sm"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-3 mb-1">
-                          <span className="font-medium text-gray-900 dark:text-white">{category.name}</span>
-                          <span className="text-xs text-gray-500 dark:text-gray-400">{category.count} services</span>
+                {filteredCategories.map((category) => {
+                  const open = expandedCategory === category.id;
+                  const accent = categoryAccent(category.id);
+                  const q = searchQuery.toLowerCase().trim();
+                  const services = q
+                    ? category.services.filter(
+                        (s) =>
+                          s.name.toLowerCase().includes(q) ||
+                          s.description.toLowerCase().includes(q) ||
+                          category.name.toLowerCase().includes(q),
+                      )
+                    : category.services;
+
+                  return (
+                    <div
+                      key={category.id}
+                      className="border border-[var(--bm-border)] rounded-lg bg-page shadow-sm overflow-hidden"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => setExpandedCategory(open ? null : category.id)}
+                        className="w-full p-4 text-left hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors"
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="min-w-0 flex-1">
+                            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-1">
+                              <span
+                                className="font-semibold tracking-tight"
+                                style={{ color: accent }}
+                              >
+                                {category.name}
+                              </span>
+                              <span className="text-xs text-gray-500 dark:text-neutral-400">
+                                {t('learning.servicesCount', { count: category.services.length })}
+                              </span>
+                            </div>
+                            <p className="text-xs text-gray-600 dark:text-neutral-300">{category.description}</p>
+                          </div>
+                          {open ? (
+                            <ChevronDown className="h-5 w-5 text-orange-600 dark:text-orange-400 flex-shrink-0" />
+                          ) : (
+                            <ChevronRight className="h-5 w-5 text-gray-500 dark:text-neutral-400 flex-shrink-0" />
+                          )}
                         </div>
-                        <p className="text-xs text-gray-600 dark:text-gray-400">{category.description}</p>
-                      </div>
-                      <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-orange-600 dark:group-hover:text-orange-400 flex-shrink-0 ml-2 transition-colors" />
+                      </button>
+                      {open && (
+                        <div className="border-t border-[var(--bm-border)] bg-surface px-4 py-3 space-y-3">
+                          {services.map((service) => (
+                            <div key={service.id} className="border-l-2 pl-3" style={{ borderColor: `${accent}66` }}>
+                              <p className="text-sm font-semibold text-gray-900 dark:text-neutral-100">{service.name}</p>
+                              <p className="mt-0.5 text-xs leading-relaxed text-gray-600 dark:text-neutral-300">
+                                {service.description}
+                              </p>
+                            </div>
+                          ))}
+                          <button
+                            type="button"
+                            onClick={() => onNavigate('services-catalog', category.id)}
+                            className="text-sm font-semibold text-orange-600 dark:text-orange-400 hover:underline"
+                          >
+                            {t('learning.openInCatalog')}
+                          </button>
+                        </div>
+                      )}
                     </div>
-                  </button>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -473,57 +483,72 @@ const gettingStartedSections = [
             <div className="bg-gradient-to-br from-orange-600 to-orange-700 rounded-xl p-6 text-white shadow-lg">
               <div className="flex items-center space-x-3 mb-4">
                 <Sparkles className="h-6 w-6" />
-                <h3 className="text-xl font-bold">AI Health Advisor</h3>
+                <h3 className="text-xl font-bold">{t('learning.guide.title')}</h3>
               </div>
               <p className="text-orange-100 mb-4 text-sm">
-                Not sure where to start? The AI Health Advisor helps you find the right category and services based on your needs.
+                {t('learning.guide.body')}
               </p>
               <button
                 onClick={() => onNavigate('member')}
                 className="w-full px-4 py-3 bg-white text-orange-700 hover:bg-orange-50 rounded-lg transition-colors font-medium text-sm"
               >
-                Start Guided Tour
+                {t('learning.guide.cta')}
               </button>
             </div>
 
-            <div className="bg-white dark:bg-gray-900/70 rounded-xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm">
+            <div className="bg-surface rounded-xl p-6 border border-[var(--bm-border)] shadow-sm">
               <div className="flex items-center space-x-3 mb-4">
                 <FileText className="h-6 w-6 text-orange-600 dark:text-orange-400" />
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">Second Opinion Engine</h3>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-neutral-100">
+                  {t('learning.secondOpinion.title')}
+                </h3>
               </div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                Generate two simultaneous reports and a unified summary with priorities, clarity, and one action plan.
+              <p className="text-sm text-gray-600 dark:text-neutral-300 mb-4">
+                {t('learning.secondOpinion.body')}
               </p>
               <button
-                onClick={() => onNavigate('second-opinion')}
-                className="w-full text-left px-4 py-3 bg-slate-50 dark:bg-gray-900 hover:bg-slate-100 dark:hover:bg-gray-800 rounded-lg transition-colors text-sm text-gray-700 dark:text-gray-300"
+                onClick={() => onNavigate('second-opinion-demo')}
+                className="w-full text-left px-4 py-3 bg-page hover:bg-slate-100 dark:hover:bg-[var(--bm-page)]/80 rounded-lg transition-colors text-sm text-gray-700 dark:text-gray-300"
               >
-                Explore Second Opinion →
+                {t('learning.secondOpinion.cta')}
               </button>
             </div>
 
-            <div className="bg-white dark:bg-gray-900/70 rounded-xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm">
+            <div className="bg-surface rounded-xl p-6 border border-[var(--bm-border)] shadow-sm">
               <div className="flex items-center space-x-3 mb-4">
                 <HelpCircle className="h-6 w-6 text-orange-600 dark:text-orange-400" />
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">Quick Help</h3>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-neutral-100">
+                  {t('learning.quickHelp.title')}
+                </h3>
               </div>
               <button
                 onClick={() => onNavigate('faq')}
-                className="w-full text-left px-4 py-3 bg-slate-50 dark:bg-gray-900 hover:bg-slate-100 dark:hover:bg-gray-800 rounded-lg transition-colors text-sm text-gray-700 dark:text-gray-300"
+                className="w-full text-left px-4 py-3 bg-page hover:bg-slate-100 dark:hover:bg-[var(--bm-page)]/80 rounded-lg transition-colors text-sm text-gray-700 dark:text-gray-300"
               >
-                Visit FAQ →
+                {t('learning.quickHelp.cta')}
               </button>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-900/70 rounded-xl p-8 border border-slate-200 dark:border-gray-800 shadow-sm mb-12">
+        <div className="mb-12">
+          <ServiceCatalogReference
+            title={t('learning.referenceTitle')}
+            subtitle={t('learning.referenceSubtitle', counts)}
+            onOpenCategory={(categoryId) => onNavigate('services-catalog', categoryId)}
+            includeHumanDataModel
+          />
+        </div>
+
+        <div className="bg-surface rounded-xl p-8 border border-[var(--bm-border)] shadow-sm mb-12">
           <div className="flex items-center space-x-3 mb-6">
             <BookOpen className="h-6 w-6 text-orange-600 dark:text-orange-400" />
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Health Glossary</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-neutral-100">
+              {t('learning.glossaryTitle')}
+            </h2>
           </div>
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
-            Key scientific and health concepts explained in simple, actionable language
+          <p className="text-gray-600 dark:text-neutral-300 mb-6">
+            {t('learning.glossaryIntro')}
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -534,20 +559,24 @@ const gettingStartedSections = [
                 <button
                   key={index}
                   onClick={() => setSelectedTerm(isExpanded ? null : item.term)}
-                  className="text-left p-4 rounded-lg bg-slate-50 dark:bg-gray-900 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors border border-slate-200 dark:border-gray-800 shadow-sm"
+                  className="text-left p-4 rounded-lg bg-page hover:bg-slate-100 dark:hover:bg-[var(--bm-page)]/80 transition-colors border border-[var(--bm-border)] shadow-sm"
                 >
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">{item.term}</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{item.meaning}</p>
+                  <h4 className="font-semibold text-gray-900 dark:text-neutral-100 mb-2">{item.term}</h4>
+                  <p className="text-sm text-gray-600 dark:text-neutral-300 mb-2">{item.meaning}</p>
 
                   {isExpanded && (
-                    <div className="mt-3 pt-3 border-t border-slate-200 dark:border-gray-800 space-y-2">
+                    <div className="mt-3 pt-3 border-t border-[var(--bm-border)] space-y-2">
                       <div>
-                        <p className="text-xs font-medium text-orange-600 dark:text-orange-400 mb-1">Why it matters:</p>
-                        <p className="text-xs text-gray-600 dark:text-gray-400">{item.importance}</p>
+                        <p className="text-xs font-medium text-orange-600 dark:text-orange-400 mb-1">
+                          {t('learning.whyItMatters')}
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-neutral-300">{item.importance}</p>
                       </div>
                       <div>
-                        <p className="text-xs font-medium text-orange-700 dark:text-orange-400 mb-1">How it helps:</p>
-                        <p className="text-xs text-gray-600 dark:text-gray-400">{item.helps}</p>
+                        <p className="text-xs font-medium text-orange-700 dark:text-orange-400 mb-1">
+                          {t('learning.howItHelps')}
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-neutral-300">{item.helps}</p>
                       </div>
                     </div>
                   )}
@@ -557,24 +586,37 @@ const gettingStartedSections = [
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-gray-900 rounded-xl p-8 text-center border border-slate-200 dark:border-gray-800">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Our Educational Philosophy</h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
-            The Learning Center educates through reassurance, not overload. We bridge the gap between data and daily choices.
-            There are no lectures — only clarity. Our tone is calm, science-backed, human, and non-medical.
+        <div className="bg-surface rounded-xl p-8 text-center border border-[var(--bm-border)]">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-neutral-100 mb-4">
+            {t('learning.philosophy.title')}
+          </h2>
+          <p className="text-gray-600 dark:text-neutral-300 max-w-3xl mx-auto mb-8">
+            {t('learning.philosophy.body')}
           </p>
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="bg-white dark:bg-gray-900/70 rounded-xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm">
-              <p className="font-semibold text-gray-900 dark:text-white mb-2">What We Do</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Explain services and their purpose clearly</p>
+            <div className="bg-surface rounded-xl p-6 border border-[var(--bm-border)] shadow-sm">
+              <p className="font-semibold text-gray-900 dark:text-neutral-100 mb-2">
+                {t('learning.philosophy.whatTitle')}
+              </p>
+              <p className="text-sm text-gray-600 dark:text-neutral-300">
+                {t('learning.philosophy.whatBody')}
+              </p>
             </div>
-            <div className="bg-white dark:bg-gray-900/70 rounded-xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm">
-              <p className="font-semibold text-gray-900 dark:text-white mb-2">How We Help</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Guide you to the right support</p>
+            <div className="bg-surface rounded-xl p-6 border border-[var(--bm-border)] shadow-sm">
+              <p className="font-semibold text-gray-900 dark:text-neutral-100 mb-2">
+                {t('learning.philosophy.howTitle')}
+              </p>
+              <p className="text-sm text-gray-600 dark:text-neutral-300">
+                {t('learning.philosophy.howBody')}
+              </p>
             </div>
-            <div className="bg-white dark:bg-gray-900/70 rounded-xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm">
-              <p className="font-semibold text-gray-900 dark:text-white mb-2">Our Goal</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Build your confidence, not confusion</p>
+            <div className="bg-surface rounded-xl p-6 border border-[var(--bm-border)] shadow-sm">
+              <p className="font-semibold text-gray-900 dark:text-neutral-100 mb-2">
+                {t('learning.philosophy.goalTitle')}
+              </p>
+              <p className="text-sm text-gray-600 dark:text-neutral-300">
+                {t('learning.philosophy.goalBody')}
+              </p>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-# BioMath Core Platform
+# bmcore3.0
 
 Advanced Health Analytics Platform powered by dual AI models and comprehensive health data integration.
 
@@ -38,7 +38,7 @@ BioMath Core is a comprehensive health analytics platform that combines cutting-
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd biomathcore-platform
+   cd bmcore3.0
    ```
 
 2. **Install dependencies**
@@ -53,7 +53,7 @@ BioMath Core is a comprehensive health analytics platform that combines cutting-
    cp .env.example .env
    ```
 
-   For UI/dev work without real backend services, set `VITE_MOCK_MODE=1` and leave service credentials empty. Fill in real environment variables only when testing live Supabase, payments, or provider integrations. See `.env.example` for all available options.
+   For UI/dev work without real backend services, keep `VITE_MOCK_MODE=1` in `.env` (see `.env.example`) and leave Supabase credentials empty. Fill in real `VITE_SUPABASE_*` only when testing live integrations. Vercel Production must use real Supabase env vars and must **not** set `VITE_MOCK_MODE`.
 
 4. **Run database migrations** (live backend only)
    ```bash
@@ -70,8 +70,10 @@ BioMath Core is a comprehensive health analytics platform that combines cutting-
 
 ## Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
+- `npm run dev` - Start development server (uses `.env`; mock when `VITE_MOCK_MODE=1`)
+- `npm run build` - Production build (requires `VITE_SUPABASE_URL` + anon key unless mock)
+- `npm run build:mock` - Production build with mock Supabase (local/CI smoke only)
+- `npm run vercel-build` - Vercel build entry (same as `build`; does not force mock)
 - `npm run preview` - Preview production build
 - `npm run lint` - Lint code with ESLint
 - `npm run typecheck` - Type check with TypeScript
@@ -82,7 +84,7 @@ BioMath Core is a comprehensive health analytics platform that combines cutting-
 ## Project Structure
 
 ```
-biomathcore-platform/
+bmcore3.0/
 ├── public/              # Static assets
 ├── src/
 │   ├── components/      # React components
@@ -111,11 +113,11 @@ biomathcore-platform/
 
 All environment variables must be prefixed with `VITE_` to be accessible in the browser. See `.env.example` for a complete list.
 
-**Development/staging without live services:**
-- `VITE_MOCK_MODE=1` - Uses local client fallbacks for Supabase auth, queries, storage, functions, and realtime channels.
-- Vercel preview/development builds are configured to use mock mode by default through `npm run vercel-build`.
+**Local/dev without live services:**
+- `VITE_MOCK_MODE=1` in `.env` / `.env.local` — local client fallbacks for Supabase auth, queries, storage, functions, and realtime.
+- Optional compile: `npm run build:mock`. Do **not** enable mock on Vercel Production.
 
-**Required for live Supabase mode:**
+**Required for live Supabase (Vercel Production/Preview and non-mock builds):**
 - `VITE_SUPABASE_URL` - Supabase project URL
 - `VITE_SUPABASE_ANON_KEY` - Supabase anon key
 
@@ -197,12 +199,13 @@ Built-in rate limiting protects against abuse:
 
 ### Security Headers
 
-Automatically applied security headers:
-- `X-Frame-Options: SAMEORIGIN`
+Applied as real HTTP headers via `vercel.json` (and mirrored for `vite preview` in `vite.config.ts`):
+- `Content-Security-Policy` — enforceable allowlist for Supabase, Stripe, GA/Meta (when enabled), YouTube/Vimeo embeds; `style-src` allows `'unsafe-inline'` for React/Tailwind runtime styles; no `'unsafe-eval'`
+- `X-Frame-Options: DENY` (aligned with CSP `frame-ancestors 'none'`)
 - `X-Content-Type-Options: nosniff`
 - `Referrer-Policy: strict-origin-when-cross-origin`
-- `Permissions-Policy: camera=(), microphone=(), geolocation=()`
-- Content Security Policy (CSP) for XSS protection
+- `Permissions-Policy: camera=(), microphone=(self), geolocation=(), payment=(self)` — microphone kept for Health Guide speech
+- `Cross-Origin-Opener-Policy: same-origin-allow-popups`
 
 ## Database
 

@@ -1,0 +1,426 @@
+{
+  "faq": {
+    "seoTitle": "Preguntas frecuentes",
+    "seoDescription": "Encuentra respuestas a las preguntas más comunes sobre BioMath Core: servicios, precios, seguridad de los datos, informes y más. Respuestas rápidas sobre tu analítica de salud.",
+    "categoriesOrg": {
+      "question": "¿Cómo se organizan las categorías?",
+      "answer": "BioMath Core incluye {{categoryCount}} categorías de salud y {{serviceCount}} servicios (incluidas las herramientas del Human Data Model). Cada categoría agrupa servicios según una necesidad real: salud crítica, sueño, nutrición, longevidad, cuidado de mayores y más."
+    },
+    "hdmQuestion": "¿Qué incluye {{name}}?",
+    "categoryQuestion": "¿Qué servicios hay en {{name}}?",
+    "catalogRef": {
+      "title": "Explora la descripción de cada servicio",
+      "subtitle": "Catálogo completo en vivo: abre una categoría para leer el nombre y la descripción de cada servicio."
+    },
+    "cta": {
+      "title": "¿Todavía tienes dudas?",
+      "body": "Nuestro equipo puede ayudarte con preguntas sobre tu cuenta, facturación y servicios.",
+      "button": "Contactar con soporte"
+    },
+    "sections": [
+      {
+        "id": "approach",
+        "title": "Cómo entendemos nuestro enfoque",
+        "items": [
+          {
+            "id": "what-makes-different",
+            "question": "¿Qué diferencia a BioMath Core de otras apps de bienestar?",
+            "answer": "En lugar de registrar cifras, convertimos las señales de tu cuerpo en significado y, después, en una guía clara, amable y personalizada. Nos centramos en la comprensión, no en la saturación. En la tranquilidad, no en la urgencia. En la interpretación, no en el diagnóstico."
+          },
+          {
+            "id": "is-this-medical",
+            "question": "¿Es una herramienta de diagnóstico médico?",
+            "answer": "No. BioMath Core es inteligencia de bienestar centrada en la interpretación, la educación y el bienestar preventivo. Te ayudamos a entender cómo responde tu cuerpo día a día, pero nunca diagnosticamos enfermedades. Cuando algo requiere atención profesional, te lo indicamos con claridad."
+          },
+          {
+            "id": "ux-tone",
+            "question": "¿Qué puedo esperar de la orientación?",
+            "answer": "Nuestra orientación es de apoyo, no directiva. Sencilla, no técnica. No usamos lenguaje basado en el miedo. Nunca «fracasas»: estás aprendiendo. Cada insight busca aumentar tu confianza y reducir el estrés, no generar ansiedad."
+          }
+        ]
+      },
+      {
+        "id": "getting-started",
+        "title": "Primeros pasos",
+        "items": [
+          {
+            "id": "what-is",
+            "question": "¿Qué es BioMath Core?",
+            "answer": "BioMath Core es inteligencia de bienestar que te ayuda a entender cómo responde tu cuerpo día a día y te guía con acciones claras, amables y personalizadas. Aporta claridad, seguridad emocional y autocuidado proactivo, sin presión clínica."
+          },
+          {
+            "id": "who-for",
+            "question": "¿Para quién es BioMath Core?",
+            "answer": "Para personas que quieren claridad, explicaciones tranquilas y mejoras paso a paso, no jerga médica ni paneles llenos de cifras. BioMath Core sirve tanto a principiantes como a profesionales ocupados, usuarios de bienestar y cualquiera que trabaje su salud a largo plazo."
+          },
+          {
+            "id": "need-medical",
+            "question": "¿Necesito conocimientos médicos para usarlo?",
+            "answer": "No. Todo se explica en lenguaje sencillo. Los informes, objetivos y recomendaciones están escritos como si hablaras con un coach humano, no con un clínico."
+          },
+          {
+            "id": "is-medical",
+            "question": "¿Es un servicio médico?",
+            "answer": "No. BioMath Core es un servicio de bienestar, no un proveedor médico. No diagnostica ni trata enfermedades."
+          },
+          {
+            "id": "need-devices",
+            "question": "¿Necesito dispositivos para empezar?",
+            "answer": "No. Puedes empezar solo con los cuestionarios. Los dispositivos hacen que los informes sean más precisos, pero son opcionales."
+          }
+        ]
+      },
+      {
+        "id": "subscriptions",
+        "title": "Suscripciones y pagos",
+        "items": [
+          {
+            "id": "purchase",
+            "question": "¿Cómo puedo contratar una suscripción?",
+            "answer": "Puedes suscribirte directamente en la página de Precios. Tras el pago, desbloquearás las funciones avanzadas dentro de la Zona de Miembros."
+          },
+          {
+            "id": "plans",
+            "question": "¿Qué incluye cada plan?",
+            "answer": "Básico: informes estándar, asistente principal, dispositivos y paneles.\nPro: segunda opinión, análisis más profundos, exportación a PDF y avisos inteligentes.\nEmpresa: funciones para equipos, analítica y onboarding dedicado."
+          },
+          {
+            "id": "free-start",
+            "question": "¿Puedo empezar gratis?",
+            "answer": "Sí. El onboarding gratuito está disponible antes de mejorar de plan."
+          },
+          {
+            "id": "change-plan",
+            "question": "¿Cómo cambio a un plan superior o inferior?",
+            "answer": "Puedes cambiar de plan en cualquier momento desde los ajustes de tu cuenta."
+          },
+          {
+            "id": "cancel",
+            "question": "¿Cómo cancelo una suscripción?",
+            "answer": "Puedes cancelar con 1 clic en los ajustes de facturación. Tu acceso sigue activo hasta el final del ciclo de facturación."
+          }
+        ]
+      },
+      {
+        "id": "onboarding",
+        "title": "Onboarding y cuestionarios",
+        "items": [
+          {
+            "id": "why-questionnaires",
+            "question": "¿Por qué tengo que responder cuestionarios?",
+            "answer": "Permiten que el sistema entienda tu punto de partida y te ofrezca un contexto personalizado en lugar de consejos genéricos."
+          },
+          {
+            "id": "onboarding-time",
+            "question": "¿Cuánto dura el onboarding?",
+            "answer": "Normalmente entre 3 y 5 minutos."
+          },
+          {
+            "id": "skip-questions",
+            "question": "¿Puedo saltarme algunas preguntas?",
+            "answer": "Sí. Puedes omitirlas y completarlas más tarde."
+          },
+          {
+            "id": "update-answers",
+            "question": "¿Puedo actualizar mis respuestas después?",
+            "answer": "Sí, en cualquier momento desde la Zona de Miembros."
+          },
+          {
+            "id": "refresh-frequency",
+            "question": "¿Con qué frecuencia debo actualizar mis respuestas?",
+            "answer": "Cada vez que cambien tus rutinas de salud, tu patrón de sueño, tu carga de trabajo o tu estilo de vida."
+          }
+        ]
+      },
+      {
+        "id": "categories",
+        "title": "Categorías y servicios",
+        "items": [
+          {
+            "id": "use-all",
+            "question": "¿Tengo que usar todas las categorías?",
+            "answer": "No. Solo usas lo que te resulta relevante: nada es obligatorio."
+          },
+          {
+            "id": "add-services",
+            "question": "¿Puedo añadir más servicios más adelante?",
+            "answer": "Sí. Puedes activar nuevos servicios cuando quieras desde el Catálogo de Servicios o la Zona de Miembros."
+          },
+          {
+            "id": "which-service",
+            "question": "¿Cómo sé qué servicio encaja conmigo?",
+            "answer": "BioMath Core te guía a partir de tu instantánea del día y de tu informe más reciente. También puedes consultar la descripción de cada servicio en el catálogo de abajo o en el Centro de Aprendizaje."
+          },
+          {
+            "id": "adaptive",
+            "question": "¿Los servicios son estáticos o adaptativos?",
+            "answer": "Son adaptativos: el contenido evoluciona con tus datos y tu progreso."
+          }
+        ]
+      },
+      {
+        "id": "member-zone",
+        "title": "Zona de Miembros",
+        "items": [
+          {
+            "id": "what-member-zone",
+            "question": "¿Qué es la Zona de Miembros?",
+            "answer": "Es tu panel interactivo personal, donde están todas las funciones: informes, objetivos, instantáneas, dispositivos, segunda opinión y chat."
+          },
+          {
+            "id": "dashboard-features",
+            "question": "¿Qué puedo hacer en el panel?",
+            "answer": "Ves tu estado actual, tu tendencia, tus objetivos de hoy, tu progreso reciente y un paso suave que puedes dar."
+          },
+          {
+            "id": "daily-snapshot",
+            "question": "¿Qué es la Instantánea Diaria?",
+            "answer": "Una breve explicación de «cómo está hoy tu sistema» más una recomendación suave."
+          },
+          {
+            "id": "goals-habits",
+            "question": "¿Cómo funcionan los objetivos y los hábitos?",
+            "answer": "Eliges pequeñas acciones ligadas a tu fisiología. BioMath Core ajusta la dificultad automáticamente."
+          },
+          {
+            "id": "nudges",
+            "question": "¿Qué son los avisos suaves?",
+            "answer": "Mensajes breves de apoyo basados en tu estado, no en temporizadores."
+          },
+          {
+            "id": "download-reports",
+            "question": "¿Puedo descargar mis informes?",
+            "answer": "Sí. La exportación a PDF está disponible en Pro."
+          },
+          {
+            "id": "devices-connect",
+            "question": "¿Puedo conectar y desconectar dispositivos?",
+            "answer": "Sí, cuando quieras."
+          },
+          {
+            "id": "signal-hub",
+            "question": "¿Qué es el Signal Hub?",
+            "answer": "El Signal Hub resume tus fuentes de datos activas, la fuerza de la señal y los cambios recientes, para que entiendas sobre qué se construyen tus informes."
+          },
+          {
+            "id": "report-favorites",
+            "question": "¿Puedo guardar y organizar informes?",
+            "answer": "Sí. Puedes marcar informes como favoritos y añadir notas personales para consultarlos rápido."
+          }
+        ]
+      },
+      {
+        "id": "health-guide",
+        "title": "Health Guide",
+        "items": [
+          {
+            "id": "assistant-features",
+            "question": "¿Qué puede hacer el asistente?",
+            "answer": "Explica tu estado, te ayuda con los informes, responde preguntas de salud en lenguaje sencillo y convierte los insights en acciones."
+          },
+          {
+            "id": "text-voice",
+            "question": "¿Es solo texto o también voz?",
+            "answer": "Admite tanto texto como (en Pro) interacción por voz."
+          },
+          {
+            "id": "vs-chatbots",
+            "question": "¿En qué se diferencia de un chatbot?",
+            "answer": "Usa tu contexto y tu estado personales, no respuestas genéricas."
+          },
+          {
+            "id": "step-by-step",
+            "question": "¿Puede guiarme paso a paso?",
+            "answer": "Sí. Puede acompañarte a través de un informe, un plan o una rutina como lo haría un guía humano."
+          },
+          {
+            "id": "learning",
+            "question": "¿El asistente aprende con el tiempo?",
+            "answer": "Sí: recuerda tus preferencias de estilo (explicaciones simples o profundas)."
+          },
+          {
+            "id": "multi-model-mode",
+            "question": "¿Qué es el modo multimodelo?",
+            "answer": "El modo multimodelo ejecuta más de una perspectiva de IA a la vez para ampliar la amplitud del análisis. Ayuda a revelar tanto insights fisiológicos como conductuales."
+          }
+        ]
+      },
+      {
+        "id": "second-opinion",
+        "title": "Segunda opinión",
+        "items": [
+          {
+            "id": "second-opinion-what",
+            "question": "¿Qué es la «Segunda opinión» en BioMath Core?",
+            "answer": "Es una función en la que ves dos interpretaciones de dos modelos de IA: la visión fisiológica frente a la visión conductual."
+          },
+          {
+            "id": "why-two-models",
+            "question": "¿Por qué dos modelos?",
+            "answer": "Porque la salud tiene más de una dimensión: la respuesta del cuerpo y la influencia del estilo de vida."
+          },
+          {
+            "id": "when-use-second",
+            "question": "¿Cuándo debería usar la Segunda opinión?",
+            "answer": "Siempre que quieras más profundidad, tranquilidad o un segundo estilo de explicación."
+          },
+          {
+            "id": "compare-merge",
+            "question": "¿Puedo compararlas o combinarlas?",
+            "answer": "Sí. Puedes compararlas en paralelo y combinarlas en un resumen final."
+          },
+          {
+            "id": "aggregated-report",
+            "question": "¿Cómo funciona el informe agregado?",
+            "answer": "El sistema combina los hallazgos más sólidos de cada modelo en un único informe unificado, con prioridades claras y un solo plan de acción."
+          },
+          {
+            "id": "replace-doctor",
+            "question": "¿La segunda opinión sustituye a un médico?",
+            "answer": "No. Complementa la atención humana; no sustituye a los profesionales sanitarios."
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "title": "Informes e insights",
+        "items": [
+          {
+            "id": "report-quality",
+            "question": "¿Qué es la Puntuación de Calidad del Informe?",
+            "answer": "Un indicador de claridad y fiabilidad basado en la cobertura de señales, la consistencia y la actualidad de los datos. Te ayuda a saber cuán sólido es el informe actual."
+          },
+          {
+            "id": "data-coverage",
+            "question": "¿Qué significa la Cobertura de Datos?",
+            "answer": "Muestra lo completos que son tus datos entre dispositivos, cuestionarios, notas e informes. A mayor cobertura, mayor contexto."
+          },
+          {
+            "id": "knowledge-snapshot",
+            "question": "¿Qué es una Instantánea de Conocimiento?",
+            "answer": "Una instantánea es la comprensión actual que BioMath Core tiene de tu estado de salud, construida con tus últimas señales y tu historial."
+          },
+          {
+            "id": "action-plan",
+            "question": "¿Qué es el Creador de Planes de Acción?",
+            "answer": "Convierte los insights en pasos a 7, 14 y 30 días con prioridades y casillas de verificación, para que el progreso sea estructurado y llevadero."
+          }
+        ]
+      },
+      {
+        "id": "ai-systems",
+        "title": "Sistemas de IA",
+        "items": [
+          {
+            "id": "ai-pipeline",
+            "question": "¿Cómo funciona el flujo de informes con IA?",
+            "answer": "Se recogen señales de tus dispositivos, cuestionarios, notas e informes y se resumen en una instantánea de conocimiento. El análisis multimodelo se ejecuta en paralelo y los hallazgos más sólidos se fusionan en un informe unificado."
+          },
+          {
+            "id": "memory-depth",
+            "question": "¿Qué es la Profundidad de Memoria?",
+            "answer": "La Profundidad de Memoria refleja cuánto historial y contexto relevante puede consultar el sistema al generar tu informe. Aumenta a medida que añades más señales."
+          },
+          {
+            "id": "knowledge-timeline",
+            "question": "¿Qué es la Línea de Tiempo de Conocimiento?",
+            "answer": "Una cronología de los cambios clave en tus señales e informes, para que veas cómo evoluciona tu contexto con el tiempo."
+          },
+          {
+            "id": "report-styles",
+            "question": "¿Puedo cambiar el estilo de los informes?",
+            "answer": "Sí. Puedes ver un resumen rápido, un análisis equilibrado o una narrativa completa en profundidad, según el nivel de detalle que quieras."
+          }
+        ]
+      },
+      {
+        "id": "devices",
+        "title": "Dispositivos y monitorización",
+        "items": [
+          {
+            "id": "supported-devices",
+            "question": "¿Qué dispositivos son compatibles?",
+            "answer": "Apple Watch, Samsung, Fitbit, Amazon Halo, Oura, monitores continuos de glucosa y otros dispositivos certificados."
+          },
+          {
+            "id": "connect-device",
+            "question": "¿Cómo conecto un dispositivo?",
+            "answer": "Mediante un flujo de conexión guiado paso a paso en la Zona de Miembros."
+          },
+          {
+            "id": "store-data",
+            "question": "¿Almacenáis datos de salud en bruto?",
+            "answer": "No. Interpretamos métricas: no necesitamos almacenar flujos de datos en bruto."
+          },
+          {
+            "id": "syncing-stops",
+            "question": "¿Qué pasa si la sincronización se detiene?",
+            "answer": "Verás un recordatorio y podrás volver a conectar con un clic."
+          },
+          {
+            "id": "disable-sharing",
+            "question": "¿Puedo desactivar el uso compartido de datos?",
+            "answer": "Sí, al instante desde los ajustes."
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Privacidad y seguridad",
+        "items": [
+          {
+            "id": "data-protection",
+            "question": "¿Cómo se protegen mis datos?",
+            "answer": "Usamos cifrado, separación de los datos identificables y capas de anonimización."
+          },
+          {
+            "id": "sell-data",
+            "question": "¿Vendéis o intercambiáis datos?",
+            "answer": "No. Nunca vendemos, licenciamos ni monetizamos datos personales de salud."
+          },
+          {
+            "id": "request-deletion",
+            "question": "¿Puedo solicitar el borrado?",
+            "answer": "Sí. El borrado de datos está disponible bajo petición."
+          },
+          {
+            "id": "export-data",
+            "question": "¿Puedo exportar mis datos?",
+            "answer": "Sí, en PDF o como resumen JSON en bruto."
+          },
+          {
+            "id": "data-storage",
+            "question": "¿Dónde se almacenan los datos?",
+            "answer": "En centros de datos seguros que cumplen con los estándares actuales de privacidad."
+          }
+        ]
+      },
+      {
+        "id": "wellness-vs-medical",
+        "title": "Bienestar frente a medicina",
+        "items": [
+          {
+            "id": "diagnostic-tool",
+            "question": "¿Es una herramienta de diagnóstico?",
+            "answer": "No. Es un servicio de insights y orientación, no un sistema de diagnóstico."
+          },
+          {
+            "id": "emergency",
+            "question": "¿Qué debo hacer en una emergencia médica?",
+            "answer": "Contacta con los servicios de emergencia o con un médico. BioMath Core no está pensado para atención urgente."
+          },
+          {
+            "id": "replace-doctor-medical",
+            "question": "¿Puede sustituir a mi médico?",
+            "answer": "No: complementa la atención profesional."
+          },
+          {
+            "id": "share-with-doctor",
+            "question": "¿Puedo compartir los resultados con mi médico?",
+            "answer": "Sí. Puedes exportar o mostrar los informes cuando quieras."
+          }
+        ]
+      }
+    ]
+  }
+}

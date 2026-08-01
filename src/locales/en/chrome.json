@@ -1,0 +1,91 @@
+{
+  "footer": {
+    "partnership": "Partnership",
+    "partnershipOpportunities": "Partnership opportunities",
+    "news": "News",
+    "learningCenter": "Learning Center",
+    "inviteFriend": "Invite a friend",
+    "ambassador": "Ambassador program",
+    "commandCenter": "Command Center",
+    "adminPanel": "Admin panel",
+    "whyTwoModels": "Why two models",
+    "privacyTrust": "Privacy & Trust Center",
+    "legalNote": "BioMath Core is a wellness service. It does not provide medical care, diagnosis, or treatment.",
+    "legalGroups": {
+      "documents": "Legal documents",
+      "disclaimers": "Disclaimers",
+      "data": "Data & privacy",
+      "safety": "Safety & security"
+    },
+    "cookiePreferences": "Cookie preferences",
+    "legalContact": "Privacy & legal contact",
+    "disclaimer": "BioMath Core is a wellness service, not a medical service. We do not diagnose, treat, or provide medical advice. We offer guidance for wellness and preventive health support only. Always consult qualified healthcare professionals for medical concerns.",
+    "media": "Media"
+  },
+  "cookies": {
+    "title": "Cookie preferences",
+    "body": "We use cookies to keep the site working, to understand how it is used, and to remember your settings. You choose what to allow.",
+    "acceptAll": "Accept all",
+    "rejectAll": "Reject all",
+    "customize": "Customize",
+    "policiesNote": "You can change this at any time from the footer.",
+    "settingsTitle": "Cookie settings",
+    "back": "Back",
+    "save": "Save preferences",
+    "categories": {
+      "necessary": {
+        "title": "Necessary cookies",
+        "body": "Required for the site to work, including sign-in and security. These cannot be turned off."
+      },
+      "analytics": {
+        "title": "Analytics cookies",
+        "body": "Help us see how visitors use the site so we can improve it."
+      },
+      "marketing": {
+        "title": "Marketing cookies",
+        "body": "Used to show content and offers that are relevant to you."
+      },
+      "preferences": {
+        "title": "Preference cookies",
+        "body": "Remember your language, theme, and other settings."
+      }
+    }
+  },
+  "commandCenter": {
+    "title": "Command Center",
+    "subtitle": "Real-time business analytics and service metrics",
+    "revenueTrend": "Revenue trend (last 30 days)",
+    "userGrowth": "User growth (last 30 days)",
+    "serviceUsage": "Service usage",
+    "reportsEngine": "Reports engine"
+  },
+  "catalogReference": {
+    "label": "Reference",
+    "defaultTitle": "Services catalog",
+    "defaultSubtitle": "{{categories}} categories · {{count}} services with descriptions from the live catalog.",
+    "searchPlaceholder": "Search categories or services…",
+    "empty": "No matching services.",
+    "servicesCount": "{{count}} services",
+    "openCatalog": "Open in Services Catalog →"
+  },
+  "liveSupportChat": {
+    "title": "Live support chat",
+    "subtitle": "We typically respond within minutes",
+    "closeAria": "Close chat",
+    "emptyTitle": "Welcome to support chat",
+    "emptyBody": "Send a message and our team will respond shortly.",
+    "signInTitle": "Sign in to chat",
+    "signInBody": "Live support needs an account so we can keep your conversation private and connected to your history.",
+    "errorTitle": "Chat unavailable",
+    "errorBody": "We could not open support chat right now. You can retry, or email contact@biomathcore.com.",
+    "retry": "Try again",
+    "placeholder": "Type your message…",
+    "hint": "Press Enter to send, Shift+Enter for a new line",
+    "supportTeam": "Support team",
+    "typing": "{{name}} is typing…",
+    "userFallback": "User",
+    "someoneFallback": "Someone",
+    "loadError": "Support chat failed to load. Please try again.",
+    "sendError": "Message could not be sent. Please try again."
+  }
+}

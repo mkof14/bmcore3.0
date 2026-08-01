@@ -24,7 +24,7 @@ export const KEY_SPECS: KeySpec[] = [
   { key: "VERCEL_PROJECT_ID", label: "Vercel Project ID", scope: "server_private", envTarget: "production", category: "admin", company: "Vercel", description: "Project identifier" },
   { key: "VERCEL_TEAM_ID", label: "Vercel Team ID", scope: "server_private", envTarget: "production", category: "admin", company: "Vercel", description: "Team identifier (optional)" },
 
-  { key: "GEMINI_API_KEY", label: "Google AI (Gemini) Key", scope: "server_private", envTarget: "production", category: "ai", company: "Google AI", description: "Gemini 1.5/2.0 for Health Advisor", example: "AIza..." },
+  { key: "GEMINI_API_KEY", label: "Google AI (Gemini) Key", scope: "server_private", envTarget: "production", category: "ai", company: "Google AI", description: "Gemini 1.5/2.0 for Health Guide", example: "AIza..." },
   { key: "ANTHROPIC_API_KEY", label: "Anthropic (Claude) Key", scope: "server_private", envTarget: "production", category: "ai", company: "Anthropic", description: "Claude for report analysis", example: "sk-ant-..." },
   { key: "OPENAI_API_KEY", label: "OpenAI (GPT) Key", scope: "server_private", envTarget: "production", category: "ai", company: "OpenAI", description: "GPT-4/5 for Q&A", example: "sk-..." },
 

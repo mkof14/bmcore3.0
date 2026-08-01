@@ -1,0 +1,74 @@
+{
+  "privacyTrust": {
+    "seo": {
+      "title": "Datenschutz und Vertrauen – so schützt BioMath Core Ihre Daten",
+      "description": "Erfahren Sie, wie BioMath Core Ihre Gesundheitsdaten schützt: Verschlüsselung, HIPAA-konforme Verfahren, DSGVO-Konformität und nutzergesteuerte Freigabe. Lesen Sie unsere Datenschutzrichtlinien und Sicherheitspraktiken."
+    },
+    "hero": {
+      "label": "Datenschutz und Vertrauen",
+      "title": "Ihre Daten – geschützt von Anfang an",
+      "body": "Gesundheitsdaten sind zutiefst persönlich. BioMath Core behandelt ihren Schutz als grundlegende Produktanforderung – mit transparenten Verfahren und verständlich formulierten Richtlinien."
+    },
+    "commitments": {
+      "label": "Zusagen",
+      "title": "Unsere Zusage an Ihren Datenschutz",
+      "body": "Sechs Grundsätze, die jede Produkt- und Entwicklungsentscheidung leiten.",
+      "items": [
+        {
+          "title": "Durchgehende Verschlüsselung",
+          "body": "Gesundheitsdaten werden im Ruhezustand und bei der Übertragung mit AES-256 und branchenüblichem TLS verschlüsselt."
+        },
+        {
+          "title": "Sie behalten die Kontrolle",
+          "body": "Sie entscheiden, was Sie teilen und wer darauf zugreifen darf – und können Ihre Daten jederzeit exportieren oder löschen."
+        },
+        {
+          "title": "HIPAA-konforme Verfahren",
+          "body": "Wir erfüllen die HIPAA-Anforderungen zum Schutz sensibler Gesundheitsinformationen."
+        },
+        {
+          "title": "Sichere Infrastruktur",
+          "body": "Speicherung in SOC-2-zertifizierten Rechenzentren mit regelmäßigen Sicherheitsaudits."
+        },
+        {
+          "title": "DSGVO-Konformität",
+          "body": "Vollständige Einhaltung der europäischen Datenschutzvorgaben und Ihrer Rechte."
+        },
+        {
+          "title": "Kein Datenverkauf",
+          "body": "Wir verkaufen Ihre Daten niemals. Datenschutz ist eine Designvorgabe, keine Einnahmequelle."
+        }
+      ]
+    },
+    "policies": {
+      "label": "Richtlinien",
+      "title": "Transparenz und Regelkonformität",
+      "body": "Die vollständige rechtliche Dokumentation ist öffentlich und verständlich geschrieben.",
+      "readMore": "Mehr lesen →",
+      "items": [
+        { "title": "Datenschutzerklärung", "description": "Wie wir Ihre Daten erheben, nutzen und schützen" },
+        { "title": "HIPAA-Hinweis", "description": "Unsere Zusage zum Schutz von Gesundheitsdaten" },
+        { "title": "DSGVO-Konformität", "description": "Europäische Datenschutzstandards und Ihre Rechte" },
+        { "title": "Sicherheitspraktiken", "description": "Technische und organisatorische Maßnahmen, die wir ergreifen" },
+        { "title": "Datenschutz", "description": "Ihre Rechte und unsere Pflichten" },
+        { "title": "Vertrauen und Sicherheit", "description": "So schaffen wir eine sichere, vertrauenswürdige Nutzung" }
+      ]
+    },
+    "control": {
+      "label": "Kontrolle",
+      "title": "Ihre Daten, Ihre Kontrolle",
+      "body": "Sie haben jederzeit das Recht, auf Ihre Daten zuzugreifen, sie zu exportieren oder zu löschen – ohne Rückfragen.",
+      "stats": [
+        { "value": "100%", "label": "Dateneigentum" },
+        { "value": "0", "label": "Datenverkäufe" },
+        { "value": "24/7", "label": "Sicherheitsüberwachung" }
+      ]
+    },
+    "contact": {
+      "label": "Fragen",
+      "title": "Fragen zum Datenschutz?",
+      "body": "Unser Datenschutzteam hilft Ihnen gern weiter. Bei Fragen zum Schutz Ihrer Daten können Sie sich jederzeit melden.",
+      "cta": "Datenschutzteam kontaktieren"
+    }
+  }
+}

@@ -186,7 +186,7 @@ export default function SecondOpinionDemo({ onNavigate }: SecondOpinionDemoProps
 
   if (showComparison && comparison) {
     return (
-      <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors pt-16">
+      <div className="min-h-screen bg-page transition-colors pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <button
             onClick={() => setShowComparison(false)}
@@ -210,7 +210,7 @@ export default function SecondOpinionDemo({ onNavigate }: SecondOpinionDemoProps
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors pt-16">
+    <div className="min-h-screen bg-page transition-colors pt-16">
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-600 dark:bg-blue-500 rounded-full mb-6">
@@ -272,7 +272,7 @@ export default function SecondOpinionDemo({ onNavigate }: SecondOpinionDemoProps
         </div>
       </section>
 
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-[var(--bm-surface)]">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
             Two AI Models, Two Perspectives

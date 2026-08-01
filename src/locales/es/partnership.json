@@ -1,0 +1,101 @@
+{
+  "partnership": {
+    "seo": {
+      "title": "Alianzas: colabora con BioMath Core",
+      "description": "Colabora con BioMath Core en desarrollo de negocio, investigación o integración clínica. Envíanos una consulta para explorar distribución, marketing conjunto y alianzas de datos."
+    },
+    "hero": {
+      "label": "Alianzas",
+      "title": "Construye con BioMath Core",
+      "body": "Trabajamos con clínicas, investigadores y organizaciones que comparten nuestro enfoque en la salud preventiva, la privacidad y una orientación biomatemática explicable."
+    },
+    "types": {
+      "label": "Oportunidades",
+      "title": "Cómo colaboramos",
+      "body": "Cada tipo de alianza tiene un alcance propio: desde la distribución hasta la investigación o la integración clínica.",
+      "items": [
+        {
+          "title": "Desarrollo de negocio",
+          "body": "Distribución, marketing conjunto y acceso a mercado para organizaciones que quieran llevar BioMath Core a su audiencia.",
+          "points": ["Modelos de reparto de ingresos", "Iniciativas de marketing conjunto", "Acceso a mercados regionales"]
+        },
+        {
+          "title": "Personal científico e investigador",
+          "body": "Colaboración en modelado biomatemático, validación clínica e investigación publicada con datos de salud estructurados.",
+          "points": ["Acceso controlado a datos", "Oportunidades de publicación", "Programas de investigación conjuntos"]
+        },
+        {
+          "title": "Profesionales sanitarios",
+          "body": "Integra el Human Data Model en los flujos clínicos, con formación, soporte y herramientas de seguimiento de pacientes.",
+          "points": ["Integración en la práctica", "Formación y soporte", "Herramientas de seguimiento de pacientes"]
+        }
+      ]
+    },
+    "why": {
+      "label": "Por qué BioMath Core",
+      "title": "Qué obtienen los socios",
+      "body": "Un producto basado en el análisis con dos modelos, datos controlados por el usuario y contexto de salud a largo plazo, no informes aislados.",
+      "items": [
+        {
+          "title": "Mercado en crecimiento",
+          "body": "Un mercado de salud digital de más de 350.000 M$ con una demanda creciente de orientación preventiva y explicable."
+        },
+        {
+          "title": "Alcance internacional",
+          "body": "Amplía tu impacto con un producto diseñado para los estándares internacionales de privacidad y cumplimiento."
+        },
+        {
+          "title": "Usuarios comprometidos",
+          "body": "Acceso a personas conscientes de su salud que siguen activamente sus biomarcadores y su bienestar a largo plazo."
+        },
+        {
+          "title": "Análisis con dos modelos",
+          "body": "Modelos biomatemáticos y clínicos que trabajan juntos: un factor diferencial para socios y pacientes."
+        }
+      ]
+    },
+    "programs": {
+      "label": "Formas de participar",
+      "title": "Tres maneras de colaborar con nosotros",
+      "body": "Las organizaciones, los miembros que invitan a sus amigos y quienes nos recomiendan a largo plazo empiezan en puntos distintos.",
+      "items": [
+        {
+          "title": "Consulta de colaboración",
+          "body": "Para clínicas, grupos de investigación y empresas que quieren un acuerdo formal con BioMath Core.",
+          "action": "Ir al formulario de consulta"
+        },
+        {
+          "title": "Invita a un amigo",
+          "body": "Los miembros comparten un enlace personal. El amigo recibe un descuento y el miembro obtiene crédito en su cuenta.",
+          "action": "Abrir el programa de invitaciones"
+        },
+        {
+          "title": "Programa de embajadores",
+          "body": "Para miembros que recomiendan BioMath Core con regularidad y quieren mayores recompensas, herramientas y apoyo directo.",
+          "action": "Abrir el programa de embajadores"
+        }
+      ]
+    },
+    "form": {
+      "label": "Consulta",
+      "title": "Contacta con nosotros",
+      "body": "Cuéntanos sobre tu organización y el tipo de alianza que tienes en mente. Solemos responder en dos días laborables.",
+      "typeLabel": "Tipo de alianza",
+      "typePlaceholder": "Selecciona el tipo de alianza",
+      "typeOptions": {
+        "business": "Desarrollo de negocio",
+        "research": "Investigación y ciencia",
+        "healthcare": "Profesional sanitario",
+        "technology": "Integración tecnológica",
+        "other": "Otro"
+      },
+      "contactName": "Nombre de contacto",
+      "organization": "Empresa u organización",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "message": "Mensaje",
+      "submit": "Enviar consulta",
+      "directLabel": "O escríbenos directamente"
+    }
+  }
+}

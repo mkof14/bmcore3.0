@@ -1,0 +1,1004 @@
+{
+  "servicesData": {
+    "categories": {
+      "critical-health": {
+        "name": "关键健康状况",
+        "description": "针对危急医疗状况的先进健康监测和风险评估",
+        "services": {
+          "risk-insight": {
+            "name": "风险洞察",
+            "description": "使用生物数学模型进行全面的健康风险评估"
+          },
+          "lab-results": {
+            "name": "实验室结果解释器",
+            "description": "实验室测试结果的人工智能解释"
+          },
+          "lab-results-trend": {
+            "name": "实验室结果趋势",
+            "description": "比较一段时间内的实验室结果，识别有意义的变化、重复的异常和缺失的后续测试。"
+          },
+          "drug-interaction": {
+            "name": "药物相互作用检查器",
+            "description": "实时药物相互作用分析"
+          },
+          "medication-reconciliation": {
+            "name": "药物协调",
+            "description": "根据处方、医疗记录和用户条目创建一份确认的药物清单，并识别重复、冲突和过时的说明。"
+          },
+          "symptom-analyzer": {
+            "name": "症状分析仪",
+            "description": "智能症状评估和分诊"
+          },
+          "chronic-disease": {
+            "name": "慢性病教练",
+            "description": "慢性病的个性化管理"
+          },
+          "medication-adherence": {
+            "name": "AI 用药依从性",
+            "description": "智能用药追踪和提醒"
+          },
+          "care-cost": {
+            "name": "护理成本优化器",
+            "description": "医疗成本分析与优化"
+          },
+          "doctor-visit-prep": {
+            "name": "就诊准备",
+            "description": "准备一份简明的就诊摘要，包括预约原因、最近的变化、当前的药物、相关结果、症状和问题。"
+          },
+          "prescription-price-comparison": {
+            "name": "处方价格比较",
+            "description": "按药房、通用选项、剂量和付款方式比较处方药物的可用价格。"
+          },
+          "post-surgery": {
+            "name": "术后恢复追踪器",
+            "description": "恢复监测和指导"
+          },
+          "clinical-trial": {
+            "name": "临床试验查找器",
+            "description": "个性化临床试验匹配"
+          },
+          "pre-surgery": {
+            "name": "手术前准备",
+            "description": "手术准备评估"
+          },
+          "rare-disease": {
+            "name": "罕见病导航器",
+            "description": "支持罕见病管理"
+          },
+          "med-refill": {
+            "name": "智能医疗补充装",
+            "description": "自动化处方补充管理"
+          },
+          "pain-map": {
+            "name": "AI疼痛地图",
+            "description": "疼痛追踪和模式分析"
+          },
+          "vaccination": {
+            "name": "疫苗接种护照",
+            "description": "数字免疫记录"
+          },
+          "post-covid": {
+            "name": "新冠疫情后规划师",
+            "description": "长期新冠病毒恢复计划"
+          },
+          "genetic-risk": {
+            "name": "遗传病风险预测",
+            "description": "基因组风险评估"
+          },
+          "emergency-profile": {
+            "name": "紧急医疗档案",
+            "description": "快速访问紧急健康信息"
+          },
+          "remote-vitals": {
+            "name": "远程生命体征监测",
+            "description": "持续生命体征追踪"
+          }
+        }
+      },
+      "everyday-wellness": {
+        "name": "日常健康",
+        "description": "日常健康优化和健康实践",
+        "services": {
+          "travel-kit": {
+            "name": "健康旅行套装",
+            "description": "旅行健康准备和提示"
+          },
+          "goal-assistant": {
+            "name": "目标助理",
+            "description": "健康目标设定和跟踪"
+          },
+          "habit-tracker": {
+            "name": "每日习惯追踪器",
+            "description": "建立并保持健康的习惯"
+          },
+          "stress-reduction": {
+            "name": "减压指南",
+            "description": "循证压力管理"
+          },
+          "energy-optimizer": {
+            "name": "能量水平优化器",
+            "description": "增强并维持日常能量"
+          },
+          "mind-body": {
+            "name": "身心连接练习",
+            "description": "整体健康实践"
+          },
+          "affirmations": {
+            "name": "积极肯定生成器",
+            "description": "个性化的积极信息"
+          },
+          "gratitude": {
+            "name": "感恩日记提示",
+            "description": "日常感恩练习"
+          },
+          "digital-wellbeing": {
+            "name": "数字健康得分",
+            "description": "技术使用优化"
+          },
+          "mindful-eating": {
+            "name": "正念饮食助手",
+            "description": "有意识的饮食习惯"
+          },
+          "work-life": {
+            "name": "工作与生活平衡顾问",
+            "description": "平衡优化策略"
+          },
+          "immunity-booster": {
+            "name": "免疫力增强计划",
+            "description": "增强免疫系统"
+          },
+          "breathing": {
+            "name": "正念呼吸练习",
+            "description": "引导呼吸技术"
+          },
+          "ergonomic": {
+            "name": "符合人体工程学的工作空间设置",
+            "description": "工作空间健康优化"
+          },
+          "social-connection": {
+            "name": "社交联系追踪器",
+            "description": "社会健康监测"
+          }
+        }
+      },
+      "longevity": {
+        "name": "长寿与抗衰老",
+        "description": "先进的衰老科学和寿命优化",
+        "services": {
+          "biological-age": {
+            "name": "生物年龄因素",
+            "description": "真实生物年龄评估"
+          },
+          "polygenic-risk": {
+            "name": "多基因风险查看器",
+            "description": "多基因健康风险分析"
+          },
+          "epigenetic-age": {
+            "name": "表观遗传年龄仪表板",
+            "description": "DNA甲基化年龄追踪"
+          },
+          "pharmacogenomics": {
+            "name": "药物基因组学匹配器",
+            "description": "遗传药物相容性"
+          },
+          "genetic-traits": {
+            "name": "遗传特征解释器",
+            "description": "了解您的基因构成"
+          },
+          "telomere": {
+            "name": "端粒长度分析",
+            "description": "细胞衰老生物标志物"
+          },
+          "nad-optimization": {
+            "name": "NAD+ 优化指南",
+            "description": "细胞能量增强"
+          },
+          "senolytics": {
+            "name": "Senolytics 推荐",
+            "description": "细胞衰老干预"
+          },
+          "mitochondrial": {
+            "name": "线粒体健康评估",
+            "description": "蜂窝动力室优化"
+          },
+          "longevity-diet": {
+            "name": "长寿饮食计划",
+            "description": "延长健康寿命的营养"
+          },
+          "glycemic-control": {
+            "name": "血糖控制顾问",
+            "description": "血糖优化"
+          },
+          "cellular-senescence": {
+            "name": "细胞衰老评分",
+            "description": "老化细胞累积追踪"
+          },
+          "microbiome": {
+            "name": "微生物组多样性分析",
+            "description": "肠道健康与长寿的关系"
+          },
+          "gene-expression": {
+            "name": "长寿基因表达报告",
+            "description": "衰老相关基因活性"
+          },
+          "organ-age": {
+            "name": "器官年龄评估",
+            "description": "个体器官老化分析"
+          }
+        }
+      },
+      "mental-wellness": {
+        "name": "心理健康",
+        "description": "心理健康和认知优化",
+        "services": {
+          "mindfulness": {
+            "name": "正念指南",
+            "description": "冥想和意识练习"
+          },
+          "motivation": {
+            "name": "动力助推器",
+            "description": "心理驱动力增强"
+          },
+          "digital-detox": {
+            "name": "数字排毒计划",
+            "description": "技术突破策略"
+          },
+          "gratitude-wall": {
+            "name": "数字感恩墙",
+            "description": "社区感恩分享"
+          },
+          "social-battery": {
+            "name": "社交电池预测",
+            "description": "社会能源管理"
+          },
+          "isolation-coach": {
+            "name": "社交隔离教练",
+            "description": "连接建立支持"
+          },
+          "cognitive-performance": {
+            "name": "认知表现增强剂",
+            "description": "心理敏锐度优化"
+          },
+          "emotional-regulation": {
+            "name": "情绪调节工具",
+            "description": "情绪管理技巧"
+          },
+          "cbt-modules": {
+            "name": "认知行为治疗 (CBT) 模块",
+            "description": "循证治疗练习"
+          },
+          "stress-hormone": {
+            "name": "压力荷尔蒙追踪器",
+            "description": "皮质醇和压力生物标志物"
+          },
+          "sleep-mood": {
+            "name": "睡眠-情绪关联分析",
+            "description": "休息-情绪关系追踪"
+          }
+        }
+      },
+      "fitness-performance": {
+        "name": "健身与表现",
+        "description": "运动训练和身体优化",
+        "services": {
+          "meal-plan": {
+            "name": "个性化膳食计划",
+            "description": "为您的目标定制营养"
+          },
+          "vo2-max": {
+            "name": "最大摄氧量评估",
+            "description": "有氧能力测量"
+          },
+          "workout-generator": {
+            "name": "锻炼发生器",
+            "description": "人工智能驱动的培训计划"
+          },
+          "plateau-breaker": {
+            "name": "力量平台突破者",
+            "description": "克服训练停滞"
+          },
+          "tissue-release": {
+            "name": "软组织释放图",
+            "description": "肌筋膜释放指导"
+          },
+          "body-fat": {
+            "name": "身体脂肪趋势预测",
+            "description": "成分预测建模"
+          },
+          "sport-warmup": {
+            "name": "运动专项热身",
+            "description": "活动定制准备"
+          },
+          "cycling-power": {
+            "name": "骑行功率预测",
+            "description": "绩效预测"
+          },
+          "hrv-breathwork": {
+            "name": "2 分钟 HRV 呼吸",
+            "description": "快速恢复呼吸"
+          },
+          "active-recovery": {
+            "name": "主动恢复定时器",
+            "description": "优化休息时间"
+          },
+          "desk-stretch": {
+            "name": "办公桌拉伸休息",
+            "description": "工作场所流动例程"
+          },
+          "soft-tissue-map": {
+            "name": "软组织图",
+            "description": "肌肉健康可视化"
+          },
+          "endurance-plan": {
+            "name": "耐力训练计划",
+            "description": "长距离性能"
+          },
+          "flexibility": {
+            "name": "灵活性和移动性指南",
+            "description": "运动范围改善"
+          },
+          "post-workout": {
+            "name": "运动后营养指南",
+            "description": "恢复营养时机"
+          },
+          "injury-prevention": {
+            "name": "伤害预防计划",
+            "description": "主动避免伤害"
+          },
+          "strength-conditioning": {
+            "name": "体能教练",
+            "description": "综合培训"
+          },
+          "powerlifting": {
+            "name": "举重程序生成器",
+            "description": "最大力量发展"
+          },
+          "gait-analysis": {
+            "name": "跑步步态分析",
+            "description": "跑步形态优化"
+          }
+        }
+      },
+      "womens-health": {
+        "name": "女性健康",
+        "description": "女性专业保健",
+        "services": {
+          "cycle-tracker": {
+            "name": "自行车追踪器",
+            "description": "月经周期监测和预测"
+          },
+          "pregnancy": {
+            "name": "怀孕时间表",
+            "description": "每周怀孕指导"
+          },
+          "menopause": {
+            "name": "更年期导航器",
+            "description": "过渡支持和管理"
+          },
+          "breast-health": {
+            "name": "乳房健康风险",
+            "description": "筛查和风险评估"
+          },
+          "hormone-dashboard": {
+            "name": "激素仪表板",
+            "description": "女性荷尔蒙追踪"
+          },
+          "endometriosis": {
+            "name": "子宫内膜异位症症状追踪器",
+            "description": "状态管理支持"
+          },
+          "pcos": {
+            "name": "多囊卵巢综合症 (PCOS) 指南",
+            "description": "多囊卵巢综合症生活方式优化"
+          },
+          "pelvic-floor": {
+            "name": "盆底锻炼计划",
+            "description": "强化和康复"
+          }
+        }
+      },
+      "mens-health": {
+        "name": "男性健康",
+        "description": "专门针对男性的保健",
+        "services": {
+          "androgen": {
+            "name": "雄激素仪表板",
+            "description": "男性荷尔蒙监测"
+          },
+          "prostate-risk": {
+            "name": "前列腺风险评分",
+            "description": "前列腺健康评估"
+          },
+          "fertility-tracker": {
+            "name": "生育追踪器",
+            "description": "男性生育力优化"
+          },
+          "hair-loss": {
+            "name": "脱发预测器",
+            "description": "雄激素性脱发追踪"
+          },
+          "performance-coach": {
+            "name": "绩效教练",
+            "description": "男性活力优化"
+          },
+          "cardiovascular-risk": {
+            "name": "男性的心血管风险",
+            "description": "心脏健康检查"
+          },
+          "hormone-optimization": {
+            "name": "男性荷尔蒙优化",
+            "description": "睾酮平衡"
+          },
+          "prostate-health": {
+            "name": "前列腺健康教练",
+            "description": "积极的前列腺护理"
+          }
+        }
+      },
+      "beauty-skincare": {
+        "name": "美容与护肤",
+        "description": "皮肤科健康和美容优化",
+        "services": {
+          "skincare-routine": {
+            "name": "人工智能护肤程序",
+            "description": "个性化护肤方案"
+          },
+          "uv-forecast": {
+            "name": "紫外线损害预测",
+            "description": "阳光照射风险预测"
+          },
+          "dermatology-scan": {
+            "name": "数字皮肤科扫描",
+            "description": "AI肌肤状态分析"
+          },
+          "hair-porosity": {
+            "name": "头发孔隙度顾问",
+            "description": "护发优化"
+          },
+          "cosmetic-scan": {
+            "name": "化妆品条码扫描",
+            "description": "产品成分分析"
+          },
+          "facial-massage": {
+            "name": "面部按摩程序",
+            "description": "淋巴引流技术"
+          },
+          "ingredient-conflict": {
+            "name": "成分冲突",
+            "description": "产品兼容性检查器"
+          },
+          "hair-growth": {
+            "name": "头发生长预测器",
+            "description": "增长时间表估计"
+          },
+          "anti-aging-skincare": {
+            "name": "抗衰老护肤顾问",
+            "description": "抗衰老策略"
+          },
+          "sunscreen": {
+            "name": "防晒霜推荐引擎",
+            "description": "SPF产品搭配"
+          }
+        }
+      },
+      "nutrition-diet": {
+        "name": "营养与饮食",
+        "description": "基于证据的营养和饮食优化",
+        "services": {
+          "food-swaps": {
+            "name": "智能食物交换",
+            "description": "更健康的替代建议"
+          },
+          "rpm": {
+            "name": "远程患者监护 (RPM)",
+            "description": "营养干预追踪"
+          },
+          "hydration": {
+            "name": "保湿配方",
+            "description": "个性化饮水目标"
+          },
+          "label-decoder": {
+            "name": "营养标签解码器",
+            "description": "食品标签解读"
+          },
+          "meal-kit": {
+            "name": "预算膳食套件生成器",
+            "description": "负担得起的营养计划"
+          },
+          "sodium-potassium": {
+            "name": "钠钾计",
+            "description": "电解质平衡跟踪"
+          },
+          "gut-microbiome": {
+            "name": "肠道微生物组分析仪",
+            "description": "消化系统健康评估"
+          },
+          "supplement-guide": {
+            "name": "个性化补充指南",
+            "description": "循证补充"
+          },
+          "metabolic-rate": {
+            "name": "代谢率计算器",
+            "description": "热量需求估算"
+          },
+          "food-sensitivity": {
+            "name": "食物敏感性追踪器",
+            "description": "不耐受识别"
+          },
+          "electrolyte": {
+            "name": "电解质平衡顾问",
+            "description": "矿物优化"
+          },
+          "sustainability": {
+            "name": "食品可持续性得分",
+            "description": "环境影响追踪"
+          },
+          "meal-prep": {
+            "name": "膳食准备计划",
+            "description": "每周膳食准备"
+          },
+          "recipe-analyzer": {
+            "name": "食谱营养分析仪",
+            "description": "食谱营养成分分析"
+          },
+          "hydration-goal": {
+            "name": "补水目标设定者",
+            "description": "每日液体摄入量计划"
+          }
+        }
+      },
+      "sleep-recovery": {
+        "name": "睡眠与恢复",
+        "description": "睡眠优化和恢复增强",
+        "services": {
+          "blue-light": {
+            "name": "蓝光规划师",
+            "description": "曝光优化"
+          },
+          "sleep-hygiene": {
+            "name": "睡眠卫生教练",
+            "description": "睡眠环境改善"
+          },
+          "circadian-light": {
+            "name": "昼夜节律光导",
+            "description": "自然节奏对齐"
+          },
+          "sleep-apnea": {
+            "name": "睡眠呼吸暂停筛查仪",
+            "description": "呼吸障碍检测"
+          },
+          "micro-meditation": {
+            "name": "微冥想发生器",
+            "description": "快速放松练习"
+          },
+          "sleep-environment": {
+            "name": "睡眠环境优化器",
+            "description": "卧室优化"
+          },
+          "guided-sleep": {
+            "name": "引导睡眠冥想",
+            "description": "音频睡眠辅助"
+          },
+          "dream-analysis": {
+            "name": "梦境分析",
+            "description": "睡眠质量见解"
+          }
+        }
+      },
+      "environmental-health": {
+        "name": "环境健康",
+        "description": "环境暴露监测和缓解",
+        "services": {
+          "eco-routine": {
+            "name": "生态常规评估",
+            "description": "环境影响评价"
+          },
+          "environmental-exposure": {
+            "name": "环境暴露",
+            "description": "毒素暴露追踪"
+          },
+          "pollen-defense": {
+            "name": "花粉防御",
+            "description": "过敏季节准备"
+          },
+          "noise-map": {
+            "name": "室内噪声图",
+            "description": "声音污染评估"
+          },
+          "commute-calorie": {
+            "name": "通勤卡路里优化器",
+            "description": "积极的交通规划"
+          },
+          "air-quality": {
+            "name": "家庭空气质量顾问",
+            "description": "室内空气监测"
+          },
+          "water-quality": {
+            "name": "水质监测仪",
+            "description": "饮用水评估"
+          },
+          "mold-exposure": {
+            "name": "模具暴露风险评估",
+            "description": "真菌污染检测"
+          }
+        }
+      },
+      "family-health": {
+        "name": "家庭健康",
+        "description": "全面的家庭医疗保健管理",
+        "services": {
+          "medication-hub": {
+            "name": "家庭药物中心",
+            "description": "家庭用药追踪"
+          },
+          "family-caregiver-access": {
+            "name": "家庭和看护者访问",
+            "description": "基于许可的访问权限，用于管理儿童、配偶、父母或受抚养成人的选定健康信息和任务。"
+          },
+          "child-growth": {
+            "name": "儿童成长追踪器",
+            "description": "儿科发育监测"
+          },
+          "genetic-compatibility": {
+            "name": "遗传相容性筛查",
+            "description": "计划生育见解"
+          },
+          "wellness-challenge": {
+            "name": "家庭健康挑战",
+            "description": "团体健康目标"
+          },
+          "immunization": {
+            "name": "儿童免疫接种计划",
+            "description": "疫苗接种时间表"
+          },
+          "first-aid": {
+            "name": "家庭急救指南",
+            "description": "应急响应协议"
+          },
+          "sibling-comparison": {
+            "name": "兄弟姐妹健康比较",
+            "description": "发展标杆管理"
+          }
+        }
+      },
+      "preventive-medicine": {
+        "name": "预防医学与长寿",
+        "description": "主动疾病预防和健康优化",
+        "services": {
+          "cancer-screening": {
+            "name": "个性化癌症筛查",
+            "description": "基于风险的筛查方案"
+          },
+          "preventive-care-due": {
+            "name": "预防性护理到期",
+            "description": "根据用户确认的个人资料和记录显示到期的、即将进行的或已完成的预防性筛查、疫苗接种和后续检查。"
+          },
+          "cardiovascular-prevention": {
+            "name": "心血管疾病预防计划",
+            "description": "心脏健康优化"
+          },
+          "neurodegenerative": {
+            "name": "神经退行性风险评估",
+            "description": "大脑健康保护"
+          },
+          "inflammation-management": {
+            "name": "炎症管理计划",
+            "description": "减少全身炎症"
+          },
+          "immune-optimization": {
+            "name": "免疫系统优化",
+            "description": "增强免疫功能"
+          },
+          "risk-calculator": {
+            "name": "健康与保健风险计算器",
+            "description": "全面的风险评估"
+          },
+          "diabetes-prevention": {
+            "name": "糖尿病预防计划",
+            "description": "血糖管理"
+          },
+          "metabolic-syndrome": {
+            "name": "代谢综合症监测仪",
+            "description": "代谢健康追踪"
+          }
+        }
+      },
+      "biohacking": {
+        "name": "生物黑客与性能",
+        "description": "先进的人类绩效优化",
+        "services": {
+          "nootropics": {
+            "name": "益智推荐引擎",
+            "description": "认知增强剂指导"
+          },
+          "cryotherapy": {
+            "name": "冷冻治疗方案生成器",
+            "description": "冷疗优化"
+          },
+          "red-light": {
+            "name": "红光治疗指南",
+            "description": "光生物调节方案"
+          },
+          "cold-exposure": {
+            "name": "冷暴露训练计划",
+            "description": "激素应激适应"
+          },
+          "intermittent-fasting": {
+            "name": "间歇性禁食时间表",
+            "description": "限时饮食"
+          },
+          "biofeedback": {
+            "name": "生物反馈培训模块",
+            "description": "生理自我调节"
+          },
+          "neurofeedback": {
+            "name": "神经反馈会议计划",
+            "description": "脑电波优化"
+          },
+          "wearable-integrator": {
+            "name": "可穿戴数据集成器",
+            "description": "多设备数据综合"
+          },
+          "recovery-modalities": {
+            "name": "个性化的恢复方式",
+            "description": "自定义恢复协议"
+          },
+          "nootropic-stack": {
+            "name": "促智堆栈构建器",
+            "description": "补充协同优化"
+          },
+          "cold-protocol": {
+            "name": "冷暴露协议",
+            "description": "冰浴和冷水淋浴指导"
+          },
+          "breathwork-optimizer": {
+            "name": "呼吸优化器",
+            "description": "先进的呼吸技巧"
+          },
+          "cognitive-enhancement": {
+            "name": "认知增强计划",
+            "description": "心理表现提升"
+          },
+          "fasting-calculator": {
+            "name": "间歇性禁食计算器",
+            "description": "禁食窗口优化"
+          },
+          "dopamine-reset": {
+            "name": "多巴胺重置协议",
+            "description": "神经递质重新平衡"
+          },
+          "sensory-deprivation": {
+            "name": "感觉剥夺指南",
+            "description": "浮箱协议"
+          },
+          "biofeedback-focus": {
+            "name": "专注力生物反馈训练",
+            "description": "注意力增强"
+          }
+        }
+      },
+      "senior-care": {
+        "name": "老年护理",
+        "description": "老年人的专业医疗保健",
+        "services": {
+          "senior-dashboard": {
+            "name": "高级仪表板",
+            "description": "全面长者健康监测"
+          },
+          "caregiver-portal": {
+            "name": "看护者门户网站",
+            "description": "家庭照顾者协调"
+          },
+          "fall-detection": {
+            "name": "跌倒检测警报",
+            "description": "紧急坠落反应"
+          },
+          "medication-adherence-senior": {
+            "name": "服药依从性",
+            "description": "高级用药管理"
+          },
+          "voice-companion": {
+            "name": "语音伴侣",
+            "description": "AI老年人健康助手"
+          },
+          "frailty-index": {
+            "name": "衰弱指数",
+            "description": "体质衰退评估"
+          },
+          "medication-reminder": {
+            "name": "服药提醒系统",
+            "description": "自动服药提醒"
+          },
+          "fall-prevention": {
+            "name": "预防跌倒练习",
+            "description": "平衡和力量训练"
+          },
+          "cognitive-games": {
+            "name": "认知健康游戏",
+            "description": "老年人大脑训练"
+          }
+        }
+      },
+      "eye-health": {
+        "name": "眼健康套件",
+        "description": "视觉健康监测和优化",
+        "services": {
+          "vision-test": {
+            "name": "浏览器视觉测试",
+            "description": "在线视力测试"
+          },
+          "retina-scan": {
+            "name": "视网膜扫描人工智能",
+            "description": "视网膜健康分析"
+          },
+          "blue-light-filter": {
+            "name": "蓝光过滤器",
+            "description": "减少数字眼疲劳"
+          },
+          "eye-exercises": {
+            "name": "眼保健操提醒",
+            "description": "预防视觉疲劳"
+          }
+        }
+      },
+      "digital-therapeutics": {
+        "name": "数字治疗商店",
+        "description": "循证数字健康干预措施",
+        "services": {
+          "insomnia-cbt": {
+            "name": "失眠 CBT-I 应用程序",
+            "description": "失眠的认知行为疗法"
+          },
+          "adhd-game": {
+            "name": "多动症神经游戏",
+            "description": "ADHD注意力训练"
+          },
+          "anxiety-app": {
+            "name": "焦虑管理应用程序",
+            "description": "基于证据的焦虑缓解"
+          },
+          "pain-relief-vr": {
+            "name": "缓解慢性疼痛 VR",
+            "description": "虚拟现实疼痛管理"
+          },
+          "ptsd-modules": {
+            "name": "创伤后应激障碍恢复模块",
+            "description": "创伤康复支持"
+          }
+        }
+      },
+      "general-sexual": {
+        "name": "一般性寿命",
+        "description": "全面的性健康和健康优化",
+        "services": {
+          "libido-optimization": {
+            "name": "性欲荷尔蒙优化",
+            "description": "性健康的荷尔蒙平衡"
+          },
+          "sexual-biomarkers": {
+            "name": "性健康生物标志物",
+            "description": "关键健康指标追踪"
+          },
+          "aphrodisiac-nutrigenomics": {
+            "name": "春药营养基因组学",
+            "description": "基于基因的性欲营养"
+          },
+          "microbiome-sexuality": {
+            "name": "微生物组与性",
+            "description": "肠道健康 性关系"
+          },
+          "neuroplasticity-libido": {
+            "name": "神经可塑性和性欲",
+            "description": "为欲望而训练的大脑"
+          },
+          "stress-cortisol": {
+            "name": "压力和皮质醇管理",
+            "description": "压力荷尔蒙优化"
+          },
+          "circadian-sexuality": {
+            "name": "昼夜节律和性行为",
+            "description": "把握性健康时机"
+          },
+          "physical-fitness-sexuality": {
+            "name": "性健康",
+            "description": "运动促进性健康"
+          },
+          "peptide-therapy": {
+            "name": "性欲肽疗法",
+            "description": "先进的肽方案"
+          },
+          "xenoestrogen-detox": {
+            "name": "异雌激素解毒",
+            "description": "消除激素干扰物"
+          },
+          "psychosexual": {
+            "name": "性心理优化",
+            "description": "增强心理性健康"
+          },
+          "partner-sync": {
+            "name": "合作伙伴同步",
+            "description": "夫妻健康协调"
+          },
+          "fertility-assessment": {
+            "name": "生育健康评估",
+            "description": "生殖健康评估"
+          },
+          "hormone-balance-libido": {
+            "name": "性欲的荷尔蒙平衡",
+            "description": "内分泌优化"
+          },
+          "sexual-wellness-education": {
+            "name": "性健康教育",
+            "description": "全面性教育"
+          },
+          "relationship-communication": {
+            "name": "关系沟通教练",
+            "description": "亲密沟通技巧"
+          }
+        }
+      },
+      "mens-sexual-health": {
+        "name": "男性性健康",
+        "description": "专门针对男性的性健康",
+        "services": {
+          "vascular-health": {
+            "name": "血管健康促进效力",
+            "description": "循环性功能"
+          },
+          "male-vitality-trt": {
+            "name": "男性活力和 TRT",
+            "description": "睾酮替代疗法"
+          },
+          "ed-guide": {
+            "name": "勃起功能障碍 (ED) 指南",
+            "description": "全面的急诊管理"
+          },
+          "sperm-health": {
+            "name": "精子健康优化",
+            "description": "增强男性生育能力"
+          }
+        }
+      },
+      "womens-sexual-health": {
+        "name": "女性性健康",
+        "description": "专门针对女性的性健康",
+        "services": {
+          "female-hormone-optimization": {
+            "name": "女性荷尔蒙优化",
+            "description": "女性荷尔蒙平衡"
+          },
+          "libido-nutrition": {
+            "name": "增强性欲的营养",
+            "description": "满足女性欲望的营养"
+          },
+          "pelvic-health-program": {
+            "name": "盆腔健康计划",
+            "description": "盆底健康"
+          },
+          "menopausal-intimacy": {
+            "name": "更年期亲密顾问",
+            "description": "更年期性健康"
+          }
+        }
+      },
+      "human-data-model": {
+        "name": "人类数据模型",
+        "description": "在人类数据模型中导入、组织和跟踪健康信息的跨类别工具。",
+        "services": {
+          "medical-records-import": {
+            "name": "医疗记录导入和组织者",
+            "description": "导入医学 PDF、图像和记录，提取关键事实，并将诊断、药物、测试、程序和日期组织到人类数据模型中。"
+          },
+          "health-timeline": {
+            "name": "健康时间表",
+            "description": "按时间顺序记录诊断、检查、药物、手术、症状、就诊和重要健康变化。"
+          },
+          "what-changed": {
+            "name": "发生了什么变化",
+            "description": "显示健康记录、实验室结果、药物、症状和监测测量值随时间的有意义的变化。"
+          }
+        }
+      }
+    }
+  }
+}

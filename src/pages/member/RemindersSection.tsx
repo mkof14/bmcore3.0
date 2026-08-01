@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Bell, Plus, Check, Trash2, Clock } from 'lucide-react';
 import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 
@@ -14,6 +15,7 @@ type Reminder = {
 const STORAGE_KEY = 'bmcore.reminders';
 
 export default function RemindersSection() {
+  const { t } = useTranslation();
   const [reminders, setReminders] = useState<Reminder[]>([]);
   const [form, setForm] = useState({ title: '', note: '', schedule: 'Daily' });
 
@@ -61,27 +63,27 @@ export default function RemindersSection() {
       <div className="mb-6">
         <h1 className="text-3xl font-semibold text-gray-900 mb-2 flex items-center gap-3">
           <Bell className="h-8 w-8 text-orange-500" />
-          Smart Reminders
+          {t('member.reminders.title')}
         </h1>
-        <p className="text-gray-600">Local reminders to keep your health routines consistent.</p>
+        <p className="text-gray-600">{t('member.reminders.subtitle')}</p>
       </div>
 
       <ReportBrandHeader title="BioMath Core" subtitle="Reminders" variant="strip" className="mb-6" />
 
       <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 mb-6 shadow-lg">
-        <ReportBrandHeader variant="strip" subtitle="Create Reminder" className="mb-4" />
+        <ReportBrandHeader variant="strip" subtitle={t('member.reminders.create')} className="mb-4" />
         <div className="grid md:grid-cols-3 gap-3">
           <input
             value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
             className="px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900"
-            placeholder="Reminder title"
+            placeholder={t('member.reminders.titlePlaceholder')}
           />
           <input
             value={form.note}
             onChange={(e) => setForm({ ...form, note: e.target.value })}
             className="px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900"
-            placeholder="Note (optional)"
+            placeholder={t('member.reminders.notePlaceholder')}
           />
           <select
             value={form.schedule}
@@ -110,7 +112,7 @@ export default function RemindersSection() {
         {reminders.map((reminder) => (
           <div
             key={reminder.id}
-          className="bg-white/90 dark:bg-gray-900 border border-slate-200 dark:border-gray-800 rounded-xl p-5 shadow-sm"
+          className="bg-white/90 dark:bg-[var(--bm-surface)] border border-slate-200 dark:border-gray-800 rounded-xl p-5 shadow-sm"
           >
             <ReportBrandHeader variant="strip" subtitle={reminder.schedule} className="mb-3" />
             <div className="flex items-start justify-between">

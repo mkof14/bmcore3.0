@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Gift, Check, AlertCircle, Mail, Lock, Eye, EyeOff, Loader } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '../lib/supabase';
 import { useSession } from '../hooks/useSession';
+import { getContentSearchParams } from '../lib/routing';
 
 export default function RedeemInvitation() {
+  const { t, i18n } = useTranslation();
   const session = useSession();
   const [code, setCode] = useState('');
   const [invitation, setInvitation] = useState<any>(null);
@@ -23,7 +26,7 @@ export default function RedeemInvitation() {
   });
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.hash.split('?')[1]);
+    const params = getContentSearchParams();
     const urlCode = params.get('code');
     if (urlCode) {
       setCode(urlCode);
@@ -48,12 +51,12 @@ export default function RedeemInvitation() {
       if (error) throw error;
 
       if (!data) {
-        setError('Invalid or expired invitation code');
+        setError(t('redeem.errors.invalidCode'));
         return;
       }
 
       if (data.expires_at && new Date(data.expires_at) < new Date()) {
-        setError('This invitation has expired');
+        setError(t('redeem.errors.expired'));
         return;
       }
 
@@ -61,8 +64,8 @@ export default function RedeemInvitation() {
       if (!session) {
         setSignUpData({ ...signUpData, email: data.email });
       }
-    } catch (err: any) {
-      setError(err.message || 'Invitation check failed');
+    } catch {
+      setError(t('redeem.errors.checkFailed'));
     } finally {
       setChecking(false);
     }
@@ -78,12 +81,12 @@ export default function RedeemInvitation() {
     setError('');
 
     if (signUpData.password !== signUpData.confirmPassword) {
-      setError('Passwords do not match');
+      setError(t('redeem.errors.passwordsMismatch'));
       return;
     }
 
     if (signUpData.password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError(t('redeem.errors.passwordTooShort'));
       return;
     }
 
@@ -103,8 +106,8 @@ export default function RedeemInvitation() {
       if (error) throw error;
 
       await redeemInvitation();
-    } catch (err: any) {
-      setError(err.message || 'Account create failed');
+    } catch {
+      setError(t('redeem.errors.createFailed'));
       setLoading(false);
     }
   };
@@ -121,15 +124,16 @@ export default function RedeemInvitation() {
       if (error) throw error;
 
       if (!data.success) {
-        throw new Error(data.error || 'Invitation redeem failed');
+        throw new Error(data.error || t('redeem.errors.redeemFailed'));
       }
 
       setSuccess(true);
       setTimeout(() => {
-        window.location.hash = '#/member-zone';
+        window.history.pushState({ page: 'member-zone' }, '', '/member-zone');
+        window.dispatchEvent(new PopStateEvent('popstate'));
       }, 3000);
-    } catch (err: any) {
-      setError(err.message || 'Invitation redeem failed');
+    } catch {
+      setError(t('redeem.errors.redeemFailed'));
     } finally {
       setRedeeming(false);
       setLoading(false);
@@ -138,42 +142,45 @@ export default function RedeemInvitation() {
 
   const getPlanName = (planType: string) => {
     const plans: Record<string, string> = {
-      core: 'Core Plan',
-      daily: 'Daily Plan',
-      max: 'Max Plan',
+      core: t('redeem.planCore'),
+      daily: t('redeem.planDaily'),
+      max: t('redeem.planMax'),
     };
     return plans[planType] || planType;
   };
 
   const getPlanPrice = (planType: string) => {
     const prices: Record<string, string> = {
-      core: '$19/month',
-      daily: '$39/month',
-      max: '$99/month',
+      core: t('redeem.monthlyPrice', { price: '$19' }),
+      daily: t('redeem.monthlyPrice', { price: '$39' }),
+      max: t('redeem.monthlyPrice', { price: '$99' }),
     };
     return prices[planType] || '';
   };
 
   const getDurationText = (months: number) => {
-    if (months === 0) return 'Forever';
-    if (months === 1) return '1 month';
-    if (months === 12) return '1 year';
-    return `${months} months`;
+    if (months === 0) return t('redeem.durationForever');
+    if (months === 1) return t('redeem.durationMonth');
+    if (months === 12) return t('redeem.durationYear');
+    return t('redeem.durationMonths', { count: months });
   };
 
   if (success) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-page flex items-center justify-center p-4">
         <div className="max-w-md w-full text-center">
           <div className="bg-gradient-to-br from-green-900/30 to-green-800/20 border border-green-600/30 rounded-xl p-8">
             <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <Check className="h-8 w-8 text-white" />
             </div>
-            <h2 className="text-2xl font-bold text-white mb-2">Welcome to BioMath Core!</h2>
+            <h2 className="text-2xl font-bold text-white mb-2">{t('redeem.successTitle')}</h2>
             <p className="text-gray-300 mb-4">
-              Your invitation has been successfully redeemed. You now have free access to {invitation && getPlanName(invitation.plan_type)} for {invitation && getDurationText(invitation.duration_months)}.
+              {t('redeem.successBody', {
+                plan: invitation && getPlanName(invitation.plan_type),
+                duration: invitation && getDurationText(invitation.duration_months),
+              })}
             </p>
-            <p className="text-sm text-gray-400">Redirecting to your dashboard...</p>
+            <p className="text-sm text-gray-400">{t('redeem.redirecting')}</p>
           </div>
         </div>
       </div>
@@ -181,15 +188,15 @@ export default function RedeemInvitation() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-page flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <Gift className="h-8 w-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">Redeem Your Invitation</h1>
+          <h1 className="text-3xl font-bold text-white mb-2">{t('redeem.title')}</h1>
           <p className="text-gray-400">
-            Enter your invitation code to activate your free access
+            {t('redeem.subtitle')}
           </p>
         </div>
 
@@ -204,13 +211,13 @@ export default function RedeemInvitation() {
           <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-gray-700/50 rounded-xl p-6">
             <form onSubmit={handleCheckCode}>
               <label className="block text-sm font-medium text-gray-300 mb-2">
-                Invitation Code
+                {t('redeem.codeLabel')}
               </label>
               <input
                 type="text"
                 value={code}
                 onChange={(e) => setCode(e.target.value.toUpperCase())}
-                placeholder="Enter 8-character code"
+                placeholder={t('redeem.codePlaceholder')}
                 maxLength={8}
                 className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white text-center text-xl font-mono tracking-wider focus:outline-none focus:ring-2 focus:ring-purple-500 uppercase"
                 required
@@ -223,10 +230,10 @@ export default function RedeemInvitation() {
                 {checking ? (
                   <>
                     <Loader className="h-5 w-5 animate-spin" />
-                    Checking...
+                    {t('redeem.checking')}
                   </>
                 ) : (
-                  <>Check Code</>
+                  <>{t('redeem.checkCode')}</>
                 )}
               </button>
             </form>
@@ -236,24 +243,24 @@ export default function RedeemInvitation() {
             <div className="bg-gradient-to-br from-purple-900/30 to-purple-800/20 border border-purple-600/30 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-4">
                 <Gift className="h-6 w-6 text-purple-400" />
-                <h3 className="text-xl font-bold text-white">Your Invitation Details</h3>
+                <h3 className="text-xl font-bold text-white">{t('redeem.detailsTitle')}</h3>
               </div>
 
               <div className="space-y-3">
                 <div className="flex justify-between py-2 border-b border-gray-700/50">
-                  <span className="text-gray-400">Plan</span>
+                  <span className="text-gray-400">{t('redeem.plan')}</span>
                   <span className="text-white font-semibold">{getPlanName(invitation.plan_type)}</span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-gray-700/50">
-                  <span className="text-gray-400">Regular Price</span>
+                  <span className="text-gray-400">{t('redeem.regularPrice')}</span>
                   <span className="text-white line-through">{getPlanPrice(invitation.plan_type)}</span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-gray-700/50">
-                  <span className="text-gray-400">Your Price</span>
-                  <span className="text-green-400 font-bold text-lg">FREE</span>
+                  <span className="text-gray-400">{t('redeem.yourPrice')}</span>
+                  <span className="text-green-400 font-bold text-lg">{t('redeem.free')}</span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="text-gray-400">Duration</span>
+                  <span className="text-gray-400">{t('redeem.duration')}</span>
                   <span className="text-white font-semibold">{getDurationText(invitation.duration_months)}</span>
                 </div>
               </div>
@@ -261,7 +268,9 @@ export default function RedeemInvitation() {
               {invitation.expires_at && (
                 <div className="mt-4 p-3 bg-yellow-900/20 border border-yellow-600/30 rounded-lg">
                   <p className="text-sm text-yellow-400">
-                    This invitation expires on {new Date(invitation.expires_at).toLocaleDateString()}
+                    {t('redeem.expiresOn', {
+                      date: new Date(invitation.expires_at).toLocaleDateString(i18n.resolvedLanguage),
+                    })}
                   </p>
                 </div>
               )}
@@ -270,7 +279,7 @@ export default function RedeemInvitation() {
             {session ? (
               <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-gray-700/50 rounded-xl p-6">
                 <p className="text-gray-300 mb-4">
-                  You're signed in as <span className="text-white font-semibold">{session.email}</span>
+                  {t('redeem.signedInAs', { email: session.email })}
                 </p>
                 <button
                   onClick={redeemInvitation}
@@ -280,24 +289,24 @@ export default function RedeemInvitation() {
                   {redeeming ? (
                     <>
                       <Loader className="h-5 w-5 animate-spin" />
-                      Activating...
+                      {t('redeem.activating')}
                     </>
                   ) : (
                     <>
                       <Check className="h-5 w-5" />
-                      Activate Free Access
+                      {t('redeem.activate')}
                     </>
                   )}
                 </button>
               </div>
             ) : showSignUp ? (
               <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-gray-700/50 rounded-xl p-6">
-                <h3 className="text-lg font-bold text-white mb-4">Create Your Account</h3>
+                <h3 className="text-lg font-bold text-white mb-4">{t('redeem.createAccountTitle')}</h3>
                 <form onSubmit={handleSignUp} className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">
                       <Mail className="h-4 w-4 inline mr-1" />
-                      Email
+                      {t('redeem.email')}
                     </label>
                     <input
                       type="email"
@@ -310,21 +319,21 @@ export default function RedeemInvitation() {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Full Name
+                      {t('redeem.fullName')}
                     </label>
                     <input
                       type="text"
                       value={signUpData.fullName}
                       onChange={(e) => setSignUpData({ ...signUpData, fullName: e.target.value })}
                       className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      placeholder="John Doe"
+                      placeholder={t('redeem.fullNamePlaceholder')}
                     />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">
                       <Lock className="h-4 w-4 inline mr-1" />
-                      Password
+                      {t('redeem.password')}
                     </label>
                     <div className="relative">
                       <input
@@ -334,7 +343,7 @@ export default function RedeemInvitation() {
                         required
                         minLength={6}
                         className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                        placeholder="Min 6 characters"
+                        placeholder={t('redeem.passwordPlaceholder')}
                       />
                       <button
                         type="button"
@@ -348,7 +357,7 @@ export default function RedeemInvitation() {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Confirm Password
+                      {t('redeem.confirmPassword')}
                     </label>
                     <input
                       type={showPassword ? 'text' : 'password'}
@@ -357,7 +366,7 @@ export default function RedeemInvitation() {
                       required
                       minLength={6}
                       className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      placeholder="Confirm password"
+                      placeholder={t('redeem.confirmPasswordPlaceholder')}
                     />
                   </div>
 
@@ -369,10 +378,10 @@ export default function RedeemInvitation() {
                     {loading ? (
                       <>
                         <Loader className="h-5 w-5 animate-spin" />
-                        Creating Account...
+                        {t('redeem.creatingAccount')}
                       </>
                     ) : (
-                      <>Create Account & Activate</>
+                      <>{t('redeem.createAndActivate')}</>
                     )}
                   </button>
                 </form>
@@ -382,27 +391,30 @@ export default function RedeemInvitation() {
                     onClick={() => setShowSignUp(false)}
                     className="text-sm text-gray-400 hover:text-white transition-colors"
                   >
-                    Already have an account? Sign in instead
+                    {t('redeem.haveAccount')}
                   </button>
                 </div>
               </div>
             ) : (
               <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-gray-700/50 rounded-xl p-6">
                 <p className="text-gray-300 mb-4 text-center">
-                  To redeem this invitation, you need an account
+                  {t('redeem.needAccount')}
                 </p>
                 <div className="space-y-3">
                   <button
                     onClick={() => setShowSignUp(true)}
                     className="w-full px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
                   >
-                    Create Account
+                    {t('redeem.createAccount')}
                   </button>
                   <button
-                    onClick={() => (window.location.hash = '#/signin')}
+                    onClick={() => {
+                      window.history.pushState({ page: 'signin' }, '', '/signin');
+                      window.dispatchEvent(new PopStateEvent('popstate'));
+                    }}
                     className="w-full px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
                   >
-                    Sign In to Existing Account
+                    {t('redeem.signInExisting')}
                   </button>
                 </div>
               </div>

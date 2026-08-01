@@ -1,0 +1,100 @@
+{
+  "summary": {
+    "label": "Resumen",
+    "logoAlt": "BioMath Core",
+    "healthIntelligence": "Inteligencia de salud personal",
+    "healthIntelligenceSub": "Una forma más clara de orientarte en tu salud, guiada por la comprensión y no por más gráficos.",
+    "principle": {
+      "label": "Principio",
+      "title": "Construido en torno al significado",
+      "p1": "BioMath Core ayuda a las personas a dominar su salud mediante la comprensión, la interpretación y decisiones acompañadas. A diferencia de las apps de bienestar, los portales clínicos o los paneles de dispositivos, no gira en torno a métricas ni a tratamientos: gira en torno al <strong>significado</strong>.",
+      "p2": "No registra más: explica mejor. No solo recibes datos; aprendes a leer tu propia biología con una claridad que se mantiene en el tiempo."
+    },
+    "guide": {
+      "label": "Guía",
+      "title": "Health Guide",
+      "lead": "La forma principal de encontrarte con BioMath Core: orientación antes que navegación.",
+      "items": [
+        {
+          "title": "Orientación con contexto",
+          "body": "En lugar de buscar entre menús, Health Guide propone el servicio, la interpretación o el siguiente paso adecuado cuando de verdad importa."
+        },
+        {
+          "title": "Decisiones activas",
+          "body": "Pasas de recibir números de forma pasiva a decidir con contexto. La primera pantalla muestra lo que importa ahora y qué hacer a continuación."
+        },
+        {
+          "title": "Una pantalla de inicio viva",
+          "body": "La vista principal se reorganiza según la relevancia, tus señales de riesgo y las acciones posibles, en lugar de una lista fija de widgets que debes montar tú."
+        },
+        {
+          "title": "Dirección más que estado",
+          "body": "El estado por sí solo no basta. Lo importante es la dirección: qué ha cambiado, por qué importa y cuál es el siguiente paso sensato."
+        }
+      ]
+    },
+    "flow": {
+      "label": "Flujo",
+      "title": "Un servicio en tres fases",
+      "items": [
+        {
+          "title": "Preparación",
+          "body": "Antes de generar un informe, una comprobación guiada asegura que el contexto clave está presente y que entiendes qué influye en la precisión."
+        },
+        {
+          "title": "Generación con doble análisis",
+          "body": "Dos motores de razonamiento producen evaluaciones de forma independiente. Compararlas revela coincidencias o divergencias: una segunda mirada que muestra el razonamiento, no solo otra puntuación."
+        },
+        {
+          "title": "Interpretación",
+          "body": "Tras la generación, Health Guide explica el significado —no solo el resultado— y señala próximas acciones, aprendizajes o seguimiento a largo plazo. Cada servicio sigue siendo útil con el tiempo."
+        }
+      ]
+    },
+    "plans": {
+      "label": "Planes",
+      "title": "Acceso según la profundidad",
+      "body": "Una suscripción base con complementos más profundos: se avanza demostrando, no desbloqueando funciones.",
+      "items": [
+        { "name": "Core", "focus": "Conciencia" },
+        { "name": "Daily", "focus": "Orientación activa" },
+        { "name": "Max", "focus": "Anticipación" }
+      ],
+      "note": "Los niveles amplían capacidad, no una lista de funciones. Los complementos añaden profundidad interpretativa cuando resulta más pertinente: aceleradores, no trampas de venta."
+    },
+    "data": {
+      "label": "Datos",
+      "title": "Filosofía de datos",
+      "items": [
+        {
+          "title": "Mínimos y con sentido",
+          "body": "Pedimos relevancia, no exhaustividad. Las preguntas aparecen cuando cambian la interpretación, no por burocracia."
+        },
+        {
+          "title": "Comprensión acumulativa",
+          "body": "La personalización actúa en el enrutamiento: lo que ves y aprendes cambia con tus señales de salud. Cuanto más tiempo pasa, más nítida es la imagen."
+        }
+      ]
+    },
+    "position": {
+      "label": "Posición",
+      "title": "Dónde encaja BioMath Core",
+      "p1": "BioMath Core no compite con la telemedicina, las apps de bienestar ni los dispositivos: los completa. Es la capa de razonamiento que faltaba a las herramientas de salud actuales, el puente entre los datos de salud y su comprensión.",
+      "p2": "No estás comprando informes. Estás construyendo alfabetización: la capacidad de orientar tu bienestar con criterio y previsión.",
+      "quote": "«Te conviertes en alguien capaz de leer su cuerpo y actuar desde la comprensión, no desde la suposición»."
+    },
+    "closing": {
+      "label": "Cierre",
+      "title": "No es otra app de salud",
+      "p1": "BioMath Core es inteligencia de salud personal que te acompaña en el tiempo, se adapta a tus cambios y convierte la salud en algo que puedes gobernar con claridad, en lugar de algo reactivo.",
+      "p2": "La comprensión es la forma más alta de autonomía en salud. BioMath Core existe para ofrecer esa comprensión de manera continua, cuidadosa y personal."
+    },
+    "explore": {
+      "title": "Sigue explorando",
+      "viewServices": "Ver servicios",
+      "seePricing": "Ver precios",
+      "getStarted": "Empezar",
+      "readSummary": "Leer el resumen"
+    }
+  }
+}

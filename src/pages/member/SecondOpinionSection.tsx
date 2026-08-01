@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Scale, Send, FileText, AlertCircle, CheckCircle, Clock } from 'lucide-react';
 import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 
 export default function SecondOpinionSection() {
+  const { t } = useTranslation();
   const [request, setRequest] = useState({ question: '', context: '' });
   const [status, setStatus] = useState<'idle' | 'processing' | 'ready'>('idle');
 
@@ -16,9 +18,9 @@ export default function SecondOpinionSection() {
       <div className="mb-6">
         <h1 className="text-3xl font-semibold text-gray-900 mb-2 flex items-center gap-3">
           <Scale className="h-8 w-8 text-orange-500" />
-          AI Health Second Opinion
+          {t('member.secondOpinion.title')}
         </h1>
-        <p className="text-gray-600">Get dual AI expert opinions on your health questions</p>
+        <p className="text-gray-600">{t('member.secondOpinion.subtitle')}</p>
       </div>
 
       <ReportBrandHeader
@@ -39,28 +41,28 @@ export default function SecondOpinionSection() {
           <ReportBrandHeader variant="strip" subtitle="Evidence-Based" className="mb-3" />
           <CheckCircle className="h-6 w-6 text-emerald-600 mb-2" />
           <p className="text-2xl font-semibold text-gray-900">Evidence-Based</p>
-          <p className="text-xs text-gray-600">Research Backed</p>
+          <p className="text-xs text-gray-600">{t('member.secondOpinion.researchBacked')}</p>
         </div>
         <div className="bg-orange-50 border border-orange-200 rounded-2xl p-4">
           <ReportBrandHeader variant="strip" subtitle="Analysis Time" className="mb-3" />
           <Clock className="h-6 w-6 text-orange-500 mb-2" />
           <p className="text-2xl font-semibold text-gray-900">~2 min</p>
-          <p className="text-xs text-gray-600">Analysis Time</p>
+          <p className="text-xs text-gray-600">{t('member.secondOpinion.analysisTime')}</p>
         </div>
       </div>
 
       <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-lg mb-6">
         <ReportBrandHeader variant="strip" subtitle="Submit Question" className="mb-4" />
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Submit Your Question</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('member.secondOpinion.submitQuestion')}</h3>
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Health Question</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">{t('member.secondOpinion.healthQuestion')}</label>
             <textarea
               value={request.question}
               onChange={(e) => setRequest({ ...request, question: e.target.value })}
               rows={3}
               className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              placeholder="What health question do you need a second opinion on?"
+              placeholder={t('member.secondOpinion.questionPlaceholder')}
             />
           </div>
           <div>
@@ -70,7 +72,7 @@ export default function SecondOpinionSection() {
               onChange={(e) => setRequest({ ...request, context: e.target.value })}
               rows={3}
               className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              placeholder="Provide any relevant medical history, test results, or current medications..."
+              placeholder={t('member.secondOpinion.contextPlaceholder')}
             />
           </div>
           <button
@@ -143,7 +145,7 @@ export default function SecondOpinionSection() {
         <div className="flex items-start gap-3">
           <AlertCircle className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-sm text-yellow-700 font-medium mb-1">Medical Disclaimer</p>
+            <p className="text-sm text-yellow-700 font-medium mb-1">{t('member.secondOpinion.disclaimer')}</p>
             <p className="text-xs text-yellow-700/80">
               AI opinions are for informational purposes only. Always consult with qualified healthcare professionals
               for medical advice, diagnosis, or treatment. Do not use AI opinions as a substitute for professional medical care.

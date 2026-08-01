@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Lock, Shield, Key, Activity, AlertTriangle, Upload, Eye, Trash2, FileText } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserSuccess } from '../../lib/adminNotify';
@@ -20,6 +21,7 @@ interface BlackBoxFile {
 }
 
 export default function BlackBoxSection() {
+  const { t } = useTranslation();
   const [files, setFiles] = useState<BlackBoxFile[]>([]);
   const [loading, setLoading] = useState(true);
   const [showUploadModal, setShowUploadModal] = useState(false);
@@ -166,10 +168,10 @@ export default function BlackBoxSection() {
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">
           <Lock className="h-8 w-8 text-orange-500" />
-          Black Box Storage
+          {t('member.blackBox.title')}
         </h1>
         <p className="text-gray-600 dark:text-gray-400">
-          Military-grade encrypted storage for your most sensitive health data
+          {t('member.blackBox.subtitle')}
         </p>
       </div>
 
@@ -186,7 +188,7 @@ export default function BlackBoxSection() {
         <div className="flex items-start gap-3">
           <AlertTriangle className="h-5 w-5 text-red-600 dark:text-red-500 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-sm text-red-700 dark:text-red-200 font-medium mb-1">Critical Legal Responsibility</p>
+            <p className="text-sm text-red-700 dark:text-red-200 font-medium mb-1">{t('member.blackBox.legalNotice')}</p>
             <p className="text-xs text-red-700/80 dark:text-red-300/80 mb-2">
               You are FULLY RESPONSIBLE for all content stored in your Black Box. Only store legal information
               relevant to health services. Any illegal content will result in immediate account termination and
@@ -201,37 +203,37 @@ export default function BlackBoxSection() {
       </div>
 
       <div className="grid md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-blue-50 dark:bg-gradient-to-br dark:from-blue-900/30 dark:via-blue-800/20 dark:to-gray-900 border border-blue-200 dark:border-blue-600/30 rounded-xl p-4">
+        <div className="bg-blue-50 dark:bg-gradient-to-br dark:from-blue-900/30 dark:via-blue-800/20 dark:to-[var(--bm-surface)] border border-blue-200 dark:border-blue-600/30 rounded-xl p-4">
           <ReportBrandHeader variant="strip" subtitle="Secured Files" className="mb-3" />
           <div className="flex items-center justify-between mb-2">
             <Shield className="h-5 w-5 text-blue-600 dark:text-blue-400" />
             <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">ENCRYPTED</span>
           </div>
           <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.totalFiles}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">Secured Files</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.blackBox.securedFiles')}</p>
         </div>
 
-        <div className="bg-green-50 dark:bg-gradient-to-br dark:from-green-900/30 dark:via-green-800/20 dark:to-gray-900 border border-green-200 dark:border-green-600/30 rounded-xl p-4">
+        <div className="bg-green-50 dark:bg-gradient-to-br dark:from-green-900/30 dark:via-green-800/20 dark:to-[var(--bm-surface)] border border-green-200 dark:border-green-600/30 rounded-xl p-4">
           <ReportBrandHeader variant="strip" subtitle="Total Storage" className="mb-3" />
           <div className="flex items-center justify-between mb-2">
             <Key className="h-5 w-5 text-green-600 dark:text-green-400" />
             <span className="text-xs text-green-600 dark:text-green-400 font-medium">AES-256</span>
           </div>
           <p className="text-2xl font-bold text-gray-900 dark:text-white">{formatFileSize(stats.totalSize)}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">Total Storage</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.blackBox.totalStorage')}</p>
         </div>
 
-        <div className="bg-orange-50 dark:bg-gradient-to-br dark:from-orange-900/30 dark:via-orange-800/20 dark:to-gray-900 border border-orange-200 dark:border-orange-600/30 rounded-xl p-4">
+        <div className="bg-orange-50 dark:bg-gradient-to-br dark:from-orange-900/30 dark:via-orange-800/20 dark:to-[var(--bm-surface)] border border-orange-200 dark:border-orange-600/30 rounded-xl p-4">
           <ReportBrandHeader variant="strip" subtitle="Access Logs" className="mb-3" />
           <div className="flex items-center justify-between mb-2">
             <Activity className="h-5 w-5 text-orange-600 dark:text-orange-400" />
             <span className="text-xs text-orange-600 dark:text-orange-400 font-medium">MONITORED</span>
           </div>
           <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.accessCount}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">Access Logs</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.blackBox.accessLogs')}</p>
         </div>
 
-        <div className="bg-purple-50 dark:bg-gradient-to-br dark:from-purple-900/30 dark:via-purple-800/20 dark:to-gray-900 border border-purple-200 dark:border-purple-600/30 rounded-xl p-4">
+        <div className="bg-purple-50 dark:bg-gradient-to-br dark:from-purple-900/30 dark:via-purple-800/20 dark:to-[var(--bm-surface)] border border-purple-200 dark:border-purple-600/30 rounded-xl p-4">
           <ReportBrandHeader variant="strip" subtitle="Last Access" className="mb-3" />
           <div className="flex items-center justify-between mb-2">
             <Lock className="h-5 w-5 text-purple-600 dark:text-purple-400" />
@@ -240,11 +242,11 @@ export default function BlackBoxSection() {
           <p className="text-sm font-bold text-gray-900 dark:text-white truncate">
             {stats.lastAccess ? new Date(stats.lastAccess).toLocaleDateString() : 'Never'}
           </p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">Last Access</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.blackBox.lastAccess')}</p>
         </div>
       </div>
 
-      <div className="mb-6 bg-white/90 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border border-slate-200 dark:border-gray-700/50 rounded-xl p-6 shadow-sm">
+      <div className="mb-6 bg-white/90 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-slate-200 dark:border-gray-700/50 rounded-xl p-6 shadow-sm">
         <ReportBrandHeader variant="strip" subtitle="Security Features" className="mb-4" />
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
           <Shield className="h-5 w-5 text-orange-500" />
@@ -291,7 +293,7 @@ export default function BlackBoxSection() {
       </div>
 
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Encrypted Files</h3>
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('member.blackBox.encryptedFiles')}</h3>
         <div className="flex items-center gap-2">
           <Button size="sm" onClick={loadFiles}>
             Refresh
@@ -309,17 +311,17 @@ export default function BlackBoxSection() {
       {loading ? (
         <div className="text-center py-12 text-gray-600 dark:text-gray-400">Loading secure storage...</div>
       ) : files.length === 0 ? (
-        <div className="text-center py-12 bg-white/70 dark:bg-gray-900/40 border border-slate-200 dark:border-gray-700/50 rounded-2xl shadow-sm">
+        <div className="text-center py-12 bg-white/70 dark:bg-[var(--bm-surface)]/40 border border-slate-200 dark:border-gray-700/50 rounded-2xl shadow-sm">
           <Lock className="h-16 w-16 text-gray-500 dark:text-gray-600 mx-auto mb-4" />
-          <p className="text-gray-700 dark:text-gray-400 mb-2">Black Box is empty</p>
-          <p className="text-sm text-gray-600 dark:text-gray-500">Upload your most sensitive health data for maximum security</p>
+          <p className="text-gray-700 dark:text-gray-400 mb-2">{t('member.blackBox.empty')}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-500">{t('member.blackBox.emptyHint')}</p>
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {files.map((file) => (
             <div
               key={file.id}
-              className="bg-white/90 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border border-orange-200 dark:border-orange-600/30 rounded-xl p-4 hover:border-orange-500/50 transition-all shadow-sm"
+              className="bg-white/90 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-orange-200 dark:border-orange-600/30 rounded-xl p-4 hover:border-orange-500/50 transition-all shadow-sm"
             >
               <ReportBrandHeader variant="strip" subtitle="Encrypted File" className="mb-3" />
               <div className="flex items-start justify-between mb-3">

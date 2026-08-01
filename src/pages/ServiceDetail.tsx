@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
-import { ChevronLeft, Lock, Copy, Printer, Share2, Download, FileDown, ChevronDown, ChevronUp, BookOpen, Sparkles, Cpu, Bot, GitCompare, Zap, Layers } from 'lucide-react';
-import { serviceCategories } from '../data/services';
+import { useTranslation } from 'react-i18next';
+import { ChevronLeft, Lock, Copy, Printer, Share2, Download, FileDown, ChevronDown, ChevronUp, BookOpen, MessageSquareText, Brain, Scale, GitCompare, FileOutput, Layers } from 'lucide-react';
+import { resolveServiceRef, serviceDetailPath } from '../data/services';
 import { supabase } from '../lib/supabase';
 import { notifyUserInfo } from '../lib/adminNotify';
 import SEO from '../components/SEO';
@@ -8,33 +9,38 @@ import { addKnowledgeSignals, buildAggregatedSecondOpinion, estimateLocalSignalC
 import type { UserKnowledgeSnapshot } from '../lib/secondOpinionEngine';
 import ReportBrandHeader from '../components/report/ReportBrandHeader';
 import ModelRadarComparison, { buildModelScores } from '../components/report/ModelRadarComparison';
+import { localizeCategory, localizeService } from '../lib/localizeServices';
 
 const categoryColors: Record<string, string> = {
-  'critical-health': 'text-orange-400',
-  'everyday-wellness': 'text-green-400',
-  'longevity': 'text-pink-400',
-  'mental-wellness': 'text-cyan-400',
-  'fitness-performance': 'text-yellow-400',
-  'womens-health': 'text-pink-400',
-  'mens-health': 'text-blue-400',
-  'beauty-skincare': 'text-pink-400',
-  'nutrition-diet': 'text-green-400',
-  'sleep-recovery': 'text-indigo-400',
-  'environmental-health': 'text-teal-400',
-  'family-health': 'text-orange-400',
-  'preventive-medicine': 'text-cyan-400',
-  'biohacking': 'text-blue-400',
-  'senior-care': 'text-slate-300',
-  'eye-health': 'text-blue-400',
-  'digital-therapeutics': 'text-indigo-400',
-  'general-sexual': 'text-red-400',
-  'mens-sexual-health': 'text-blue-400',
-  'womens-sexual-health': 'text-pink-400',
+  'human-data-model': 'text-slate-500 dark:text-slate-300',
+  'critical-health': 'text-orange-500',
+  'everyday-wellness': 'text-green-500',
+  longevity: 'text-pink-500',
+  'mental-wellness': 'text-cyan-500',
+  'fitness-performance': 'text-yellow-500',
+  'womens-health': 'text-pink-500',
+  'mens-health': 'text-blue-500',
+  'beauty-skincare': 'text-pink-500',
+  'nutrition-diet': 'text-green-500',
+  'sleep-recovery': 'text-purple-500',
+  'environmental-health': 'text-teal-500',
+  'family-health': 'text-orange-500',
+  'preventive-medicine': 'text-cyan-500',
+  biohacking: 'text-blue-500',
+  'senior-care': 'text-amber-800 dark:text-amber-500',
+  'eye-health': 'text-blue-500',
+  'digital-therapeutics': 'text-purple-500',
+  'general-sexual': 'text-red-500',
+  'mens-sexual-health': 'text-blue-500',
+  'womens-sexual-health': 'text-pink-500',
 };
 
 interface ServiceDetailProps {
   onNavigate: (page: string, param?: string) => void;
   serviceId?: string;
+  /** Full interactive workspace inside Member Zone (no public chrome). */
+  embedded?: boolean;
+  onBack?: () => void;
 }
 
 const serviceFAQDatabase: Record<string, Array<{ question: string; answer: string }>> = {
@@ -88,7 +94,8 @@ const serviceFAQDatabase: Record<string, Array<{ question: string; answer: strin
   ]
 };
 
-export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailProps) {
+export default function ServiceDetail({ onNavigate, serviceId, embedded = false, onBack }: ServiceDetailProps) {
+  const { t } = useTranslation();
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [reportGenerated, setReportGenerated] = useState(false);
   const [showSecondOpinion, setShowSecondOpinion] = useState(false);
@@ -137,8 +144,13 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
   }, [knowledgeSnapshot]);
 
   useEffect(() => {
+    // Inside Member Zone the user is already authenticated — unlock full interactive UI.
+    if (embedded) {
+      setIsSignedIn(true);
+      return;
+    }
     checkAuth();
-  }, []);
+  }, [embedded]);
 
   useEffect(() => {
     if (!serviceId) return;
@@ -198,19 +210,28 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
 
   if (!serviceId) {
     return (
-      <div className="min-h-screen bg-white dark:bg-gray-950 pt-16 flex items-center justify-center">
+      <div className="min-h-screen bg-page pt-16 flex items-center justify-center">
         <p className="text-gray-600 dark:text-gray-400">Service not found</p>
       </div>
     );
   }
 
-  const [categoryId, sId] = serviceId.split('/');
-  const category = serviceCategories.find(c => c.id === categoryId);
-  const service = category?.services.find(s => s.id === sId);
+  const resolved = resolveServiceRef(serviceId);
+  const category = resolved
+    ? {
+        ...localizeCategory(t, resolved.category),
+        services: resolved.category.services.map((item) =>
+          localizeService(t, resolved.category.id, item),
+        ),
+      }
+    : undefined;
+  const service = category?.services.find((item) => item.id === resolved?.service.id);
+  const categoryId = category?.id ?? '';
+  const sId = service?.id ?? '';
 
   if (!category || !service) {
     return (
-      <div className="min-h-screen bg-white dark:bg-gray-950 pt-16 flex items-center justify-center">
+      <div className="min-h-screen bg-page pt-16 flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-600 dark:text-gray-400 mb-4">Service not found</p>
           <button
@@ -234,7 +255,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
   ];
 
   const handleGenerateReport = async () => {
-    if (!isSignedIn) {
+    if (!embedded && !isSignedIn) {
       onNavigate('signin');
       return;
     }
@@ -290,8 +311,21 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
     }, 2500);
   };
 
+  const reportExportText = () =>
+    [
+      `BioMath Core — ${service.name}`,
+      `Question: ${userQuestion}`,
+      firstOpinion ? `\nFirst Opinion\n${firstOpinion}` : '',
+      secondOpinion ? `\nSecond Opinion\n${secondOpinion}` : '',
+      aggregatedOpinion?.summary ? `\nUnified Summary\n${aggregatedOpinion.summary}` : '',
+      `\nSignature: ${reportSignature}`,
+    ]
+      .filter(Boolean)
+      .join('\n');
+
   const handleCopy = () => {
-    navigator.clipboard.writeText(firstOpinion + '\n\n' + (showSecondOpinion ? secondOpinion : ''));
+    navigator.clipboard.writeText(reportExportText());
+    notifyUserInfo('Report copied to clipboard');
   };
 
   const handlePrint = () => {
@@ -302,9 +336,29 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
     if (navigator.share) {
       navigator.share({
         title: service.name,
-        text: firstOpinion
+        text: firstOpinion || service.description,
       });
+    } else {
+      handleCopy();
     }
+  };
+
+  const handleDownload = () => {
+    const blob = new Blob([reportExportText()], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${sId || 'service'}-report.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handlePdfExport = () => {
+    window.print();
+  };
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const handleSaveLocalEdit = () => {
@@ -331,48 +385,92 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-gray-950 transition-colors pt-16">
-      <SEO
-        title={`${service.name} - BioMath Core Service`}
-        description={service.description}
-        keywords={[service.name.toLowerCase(), 'biomath core service', 'health analytics', 'wellness insights']}
-        url={`/services/${categoryId}/${sId}`}
-      />
-      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-gray-950 to-gray-900 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-orange-500/20 to-transparent"></div>
-        </div>
-        <div className="max-w-4xl mx-auto relative z-10">
-          <button
-            onClick={() => onNavigate('services-catalog', categoryId)}
-            className="flex items-center space-x-2 text-orange-500 hover:text-orange-400 mb-6 transition-colors"
-          >
-            <ChevronLeft className="h-5 w-5" />
-            <span>Back to {category.name}</span>
-          </button>
+    <div
+      className={`bg-page transition-colors ${
+        embedded ? 'min-h-0 pt-0' : 'min-h-screen pt-16'
+      }`}
+    >
+      {!embedded && (
+        <SEO
+          title={`${service.name} - BioMath Core Service`}
+          description={service.description}
+          keywords={[service.name.toLowerCase(), 'biomath core service', 'health analytics', 'wellness insights']}
+          url={`/services/${categoryId}/${sId}`}
+        />
+      )}
+      <section
+        className={`relative overflow-hidden px-4 py-8 sm:px-6 lg:px-8 ${
+          embedded
+            ? 'rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-[var(--bm-surface)]'
+            : ''
+        }`}
+      >
+        <div className={`relative z-10 mx-auto ${embedded ? 'max-w-5xl' : 'max-w-4xl'}`}>
+          {!embedded && (
+            <div className="mb-6 rounded-2xl border border-gray-200 bg-[radial-gradient(circle_at_top,_#fff6ed,_transparent_55%),linear-gradient(135deg,#f8fafc,white)] p-6 dark:border-gray-800 dark:bg-[radial-gradient(circle_at_top,_rgba(120,145,175,0.14),_transparent_55%),linear-gradient(135deg,var(--bm-surface),var(--bm-page))] sm:p-8">
+              <button
+                type="button"
+                onClick={() => (onBack ? onBack() : onNavigate('services-catalog', categoryId))}
+                className="mb-6 flex items-center space-x-2 text-orange-600 transition-colors hover:text-orange-500 dark:text-orange-400 dark:hover:text-orange-300"
+              >
+                <ChevronLeft className="h-5 w-5" />
+                <span>{`Back to ${category.name}`}</span>
+              </button>
+              <p className={`mb-2 text-xs font-semibold uppercase tracking-[0.2em] ${categoryColors[categoryId] || 'text-orange-500'}`}>
+                {category.name}
+              </p>
+              <h1 className="mb-3 text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                {service.name}
+              </h1>
+              <p className="text-lg text-gray-600 dark:text-gray-400">{service.description}</p>
+            </div>
+          )}
 
-          {/* Header */}
+          {embedded && (
+            <button
+              type="button"
+              onClick={() => (onBack ? onBack() : onNavigate('services-catalog', categoryId))}
+              className="mb-6 flex items-center space-x-2 text-orange-600 transition-colors hover:text-orange-500 dark:text-orange-400 dark:hover:text-orange-300"
+            >
+              <ChevronLeft className="h-5 w-5" />
+              <span>Back to Member Catalog</span>
+            </button>
+          )}
+
           <div className="mb-6">
-            <h1 className={`text-4xl font-bold mb-3 ${categoryColors[categoryId] || 'text-white'}`}>
-              {service.name}
-            </h1>
-            <p className="text-lg text-gray-300">
-              {service.description}
-            </p>
+            {embedded && (
+              <div className="mb-3 flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center rounded-full bg-orange-500 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
+                  Member Zone
+                </span>
+                <span className="inline-flex items-center rounded-full bg-orange-50 px-2.5 py-1 text-[11px] font-semibold text-orange-700 ring-1 ring-orange-200 dark:bg-orange-950/40 dark:text-orange-200 dark:ring-orange-500/30">
+                  Full interactive service
+                </span>
+                <span className="text-xs text-gray-500 dark:text-gray-400">{category.name}</span>
+              </div>
+            )}
+            {embedded && (
+              <>
+                <h1 className={`mb-3 text-4xl font-semibold tracking-tight ${categoryColors[categoryId] || 'text-orange-500'}`}>
+                  {service.name}
+                </h1>
+                <p className="text-lg text-gray-600 dark:text-gray-400">{service.description}</p>
+              </>
+            )}
           </div>
 
-          {/* Access Gate */}
-          {!isSignedIn && (
-            <div className="mb-6 bg-white dark:bg-gray-900/50 backdrop-blur border border-gray-200 dark:border-gray-800 rounded-xl p-4 shadow-sm">
+          {!embedded && !isSignedIn && (
+            <div className="mb-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-[var(--bm-surface)]">
               <div className="flex items-start space-x-3">
-                <Lock className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                <Lock className="mt-0.5 h-5 w-5 flex-shrink-0 text-orange-500" />
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                  <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-white">
                     Sign in to Member Zone to unlock full functionality and generate real reports
                   </h3>
                   <button
+                    type="button"
                     onClick={() => onNavigate('signin')}
-                    className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-colors"
+                    className="rounded-lg bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
                   >
                     Sign In
                   </button>
@@ -380,6 +478,35 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
               </div>
             </div>
           )}
+
+          {embedded && (
+            <div className="mb-6 rounded-xl border border-green-200 bg-green-50 p-4 shadow-sm dark:border-green-800/40 dark:bg-green-950/30">
+              <p className="text-sm font-semibold text-green-800 dark:text-green-200">
+                Interactive workspace unlocked
+              </p>
+              <p className="mt-1 text-xs text-green-700/90 dark:text-green-300/90">
+                Ask questions, run multi-model reports, edit locally, and continue the dialog — all fields below are active.
+              </p>
+            </div>
+          )}
+
+          <div className="mb-4 flex flex-wrap gap-2">
+            {[
+              { id: 'service-ask', label: 'Ask question' },
+              { id: 'service-faq', label: 'FAQ' },
+              { id: 'service-learn', label: 'Learning' },
+              { id: 'service-report', label: 'Report & second opinion' },
+            ].map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => scrollToSection(item.id)}
+                className="rounded-full border border-orange-200 bg-white px-3 py-1.5 text-xs font-semibold text-orange-700 transition hover:border-orange-400 hover:bg-orange-50 dark:border-orange-500/30 dark:bg-[var(--bm-surface)] dark:text-orange-300 dark:hover:bg-orange-950/40"
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
 
           <div className="mb-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4 shadow-sm">
             <div className="flex items-start gap-3">
@@ -396,9 +523,12 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
           </div>
 
           {/* Ask Your Health Question */}
-          <div className="mb-6 bg-white dark:bg-gray-900/50 backdrop-blur border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
+          <div
+            id="service-ask"
+            className="mb-6 scroll-mt-24 bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm"
+          >
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-4 flex items-center space-x-2">
-              <Sparkles className="h-5 w-5 text-orange-500" />
+              <MessageSquareText className="h-5 w-5 text-orange-500" />
               <span>Ask Your Health Question</span>
             </h3>
             <textarea
@@ -410,7 +540,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
               }}
               placeholder={`Example: "I've been feeling tired in the afternoons. What could my ${service.name.toLowerCase()} data reveal about this?"`}
               rows={2}
-              className="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 focus:outline-none mb-3 resize-none overflow-hidden"
+              className="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-white placeholder-gray-500 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 focus:outline-none mb-3 resize-none overflow-hidden"
               style={{ minHeight: '48px', maxHeight: '300px' }}
             />
 
@@ -425,10 +555,10 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                     selectedAI === 'ai1'
                       ? 'bg-orange-500 text-white shadow-md scale-105'
-                      : 'bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-orange-500'
+                      : 'bg-white dark:bg-[var(--bm-surface)] border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-orange-500'
                   }`}
                 >
-                  <Bot className="h-3.5 w-3.5" />
+                  <Brain className="h-3.5 w-3.5" />
                   <span>AI-1</span>
                   <span className="opacity-70">Supportive</span>
                 </button>
@@ -437,10 +567,10 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                     selectedAI === 'ai2'
                       ? 'bg-green-500 text-white shadow-md scale-105'
-                      : 'bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-green-500'
+                      : 'bg-white dark:bg-[var(--bm-surface)] border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-green-500'
                   }`}
                 >
-                  <Cpu className="h-3.5 w-3.5" />
+                  <Scale className="h-3.5 w-3.5" />
                   <span>AI-2</span>
                   <span className="opacity-70">Analytical</span>
                 </button>
@@ -449,7 +579,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                     selectedAI === 'both'
                       ? 'bg-purple-500 text-white shadow-md scale-105'
-                      : 'bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-purple-500'
+                      : 'bg-white dark:bg-[var(--bm-surface)] border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-purple-500'
                   }`}
                 >
                   <GitCompare className="h-3.5 w-3.5" />
@@ -470,11 +600,11 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
               disabled={isGenerating || !userQuestion.trim()}
               className="w-full px-4 py-3 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
             >
-              <Zap className="h-4 w-4" />
+              <FileOutput className="h-4 w-4" />
               <span>{isGenerating ? 'Generating Report...' : 'Generate Report'}</span>
             </button>
             {isGenerating && (
-              <div className="mt-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3 text-xs text-gray-600 dark:text-gray-300">
+              <div className="mt-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-page p-3 text-xs text-gray-600 dark:text-gray-300">
                 <p>✓ Gathering signals</p>
                 <p>✓ Model A synthesis</p>
                 <p>✓ Model B synthesis</p>
@@ -491,7 +621,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                         ? 'border-green-200 bg-green-50 text-green-700 dark:border-green-700/40 dark:bg-green-900/20 dark:text-green-300'
                         : pipelineStep === idx
                         ? 'border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-700/40 dark:bg-orange-900/20 dark:text-orange-300'
-                        : 'border-gray-200 bg-white text-gray-500 dark:border-gray-800 dark:bg-gray-900/40 dark:text-gray-400'
+                        : 'border-gray-200 bg-white text-gray-500 dark:border-gray-800 dark:bg-page dark:text-gray-400'
                     }`}
                   >
                     {pipelineStep > idx ? '✓' : pipelineStep === idx ? '⏳' : '•'} {label}
@@ -501,7 +631,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
             )}
             {isGenerating && (
               <div className="mt-4">
-                <div className="h-2 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+                <div className="h-2 bg-gray-200 dark:bg-[var(--bm-surface)] rounded-full overflow-hidden">
                   <div
                     className="h-full bg-orange-500 transition-all"
                     style={{ width: `${(pipelineStep / 3) * 100}%` }}
@@ -514,9 +644,64 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
             )}
           </div>
 
+          {/* FAQ — always visible above the report fold */}
+          <div id="service-faq" className="mb-6 max-w-3xl scroll-mt-24">
+            <h3 className="mb-4 text-lg font-bold text-gray-900 dark:text-white">FAQ</h3>
+            <div className="space-y-3">
+              {serviceFAQs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-[var(--bm-surface)]"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFAQ(openFAQ === `faq-${index}` ? null : `faq-${index}`)}
+                    className="flex w-full items-center justify-between px-4 py-3 text-left transition-colors hover:bg-gray-50 dark:hover:bg-page"
+                  >
+                    <span className="text-sm font-medium text-gray-900 dark:text-white">{faq.question}</span>
+                    {openFAQ === `faq-${index}` ? (
+                      <ChevronUp className="h-4 w-4 flex-shrink-0 text-orange-500" />
+                    ) : (
+                      <ChevronDown className="h-4 w-4 flex-shrink-0 text-gray-400" />
+                    )}
+                  </button>
+                  {openFAQ === `faq-${index}` && (
+                    <div className="border-t border-gray-200 px-4 py-3 dark:border-gray-800">
+                      <p className="text-sm text-gray-600 dark:text-gray-300">{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div id="service-learn" className="mb-6 scroll-mt-24">
+            <button
+              type="button"
+              onClick={() => onNavigate('learning-center', `topic-${sId}`)}
+              className="flex w-full items-center justify-center space-x-2 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-orange-600 shadow-sm transition-all hover:border-orange-500 hover:text-orange-500 dark:border-gray-800 dark:bg-[var(--bm-surface)] dark:text-orange-400"
+            >
+              <BookOpen className="h-4 w-4" />
+              <span>Learn more about {service.name}</span>
+            </button>
+          </div>
+
+          {!reportGenerated && (
+            <div
+              id="service-report"
+              className="mb-6 scroll-mt-24 rounded-xl border border-dashed border-slate-300 bg-white p-5 text-sm text-gray-600 shadow-sm dark:border-gray-700 dark:bg-[var(--bm-surface)] dark:text-gray-300"
+            >
+              <p className="font-semibold text-gray-900 dark:text-white">Report & second opinion</p>
+              <p className="mt-1 text-xs">
+                Enter a question above, choose AI-1 / AI-2 / Multi-Model, then Generate Report to unlock dual opinions,
+                aggregation, dialog, and export tools.
+              </p>
+            </div>
+          )}
+
           {/* Report Result */}
           {reportGenerated && (
-            <div className="mb-6 space-y-4">
+            <div id="service-report" className="mb-6 scroll-mt-24 space-y-4">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Your Report</h3>
@@ -533,20 +718,20 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                 subtitle="Service Report"
                 compact
               />
-              <div className="bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4 shadow-sm">
+              <div className="bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-800 rounded-xl p-4 shadow-sm">
                 <div className="flex flex-wrap gap-2 text-xs text-gray-500 dark:text-gray-400">
-                  <span className="px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                  <span className="px-2 py-1 rounded-full bg-gray-100 dark:bg-[var(--bm-surface)] text-gray-700 dark:text-gray-300">
                     Signature: {reportSignature}
                   </span>
-                  <span className="px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                  <span className="px-2 py-1 rounded-full bg-gray-100 dark:bg-[var(--bm-surface)] text-gray-700 dark:text-gray-300">
                     Knowledge Score: {knowledgeScore.score}
                   </span>
-                  <span className="px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                  <span className="px-2 py-1 rounded-full bg-gray-100 dark:bg-[var(--bm-surface)] text-gray-700 dark:text-gray-300">
                     Freshness: {knowledgeScore.freshnessLabel}
                   </span>
                 </div>
               </div>
-              <div className="bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4 shadow-sm">
+              <div className="bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-800 rounded-xl p-4 shadow-sm">
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">Pipeline Timeline</p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
                   {['Data Gather', 'Model A', 'Model B', 'Aggregation'].map((label, idx) => (
@@ -555,7 +740,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                       className={`rounded-lg border px-3 py-2 ${
                         pipelineStep >= idx
                           ? 'border-green-200 bg-green-50 text-green-700 dark:border-green-700/40 dark:bg-green-900/20 dark:text-green-300'
-                          : 'border-gray-200 bg-white text-gray-500 dark:border-gray-800 dark:bg-gray-900/40 dark:text-gray-400'
+                          : 'border-gray-200 bg-white text-gray-500 dark:border-gray-800 dark:bg-page dark:text-gray-400'
                       }`}
                     >
                       {pipelineStep >= idx ? '✓' : '•'} {label}
@@ -570,13 +755,13 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                     setDraftOpinionB(secondOpinion);
                     setEditorOpen((prev) => !prev);
                   }}
-                  className="px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800"
+                  className="px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 bg-white dark:bg-[var(--bm-surface)]"
                 >
                   {editorOpen ? 'Close Editor' : 'Edit Report (Local)'}
                 </button>
               </div>
               {editorOpen && (
-                <div className="bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4 shadow-sm">
+                <div className="bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-800 rounded-xl p-4 shadow-sm">
                   <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">Local Report Editor</h3>
                   <div className="grid gap-3">
                     <div>
@@ -585,7 +770,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                         value={draftOpinionA}
                         onChange={(e) => setDraftOpinionA(e.target.value)}
                         rows={4}
-                        className="mt-1 w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                        className="mt-1 w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
                       />
                     </div>
                     <div>
@@ -594,7 +779,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                         value={draftOpinionB}
                         onChange={(e) => setDraftOpinionB(e.target.value)}
                         rows={4}
-                        className="mt-1 w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                        className="mt-1 w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
                       />
                     </div>
                     <div className="flex gap-2">
@@ -606,7 +791,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                       </button>
                       <button
                         onClick={() => setEditorOpen(false)}
-                        className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-lg"
+                        className="px-4 py-2 bg-gray-100 dark:bg-[var(--bm-surface)] text-gray-700 dark:text-gray-200 rounded-lg"
                       >
                         Cancel
                       </button>
@@ -614,7 +799,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                   </div>
                 </div>
               )}
-              <div className="bg-white dark:bg-gray-900/50 backdrop-blur border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
+              <div className="bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
                 <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
                   <span className="px-2 py-0.5 bg-orange-500/20 text-orange-400 text-xs font-bold rounded">
                     {selectedAI === 'ai1' ? 'AI-1' : selectedAI === 'ai2' ? 'AI-2' : 'AI-1'}
@@ -644,7 +829,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                       setSecondOpinion(`AI-${selectedAI === 'ai1' ? '2' : '1'} Perspective: Looking at your ${service.name.toLowerCase()} question from another analytical angle:\n\n${userQuestion}\n\nThe patterns confirm stability with room for optimization. Your body's signals indicate positive trajectory.\n\nThis complementary view suggests you're on a good path.`);
                       setShowSecondOpinion(true);
                     }}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-white text-sm font-medium rounded-lg transition-colors"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-white dark:bg-[var(--bm-surface)] hover:bg-gray-100 dark:hover:bg-page border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-white text-sm font-medium rounded-lg transition-colors"
                   >
                     <span>Get Second Opinion</span>
                     <ChevronDown className="h-4 w-4" />
@@ -654,7 +839,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
               )}
 
               {(showSecondOpinion || selectedAI === 'both') && secondOpinion && (
-                <div className="bg-white dark:bg-gray-900/50 backdrop-blur border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
+                <div className="bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
                   <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
                     <span className="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs font-bold rounded">
                       {selectedAI === 'ai1' ? 'AI-2' : 'AI-1'}
@@ -680,7 +865,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                       {aggregatedOpinion.consensusLabel} · Conflict {Math.round(aggregatedOpinion.conflictIndex * 100)}%
                     </span>
                   </div>
-                  <div className="bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-slate-800 rounded-lg p-4 mb-4">
+                  <div className="bg-white dark:bg-[var(--bm-surface)] border border-slate-200 dark:border-slate-800 rounded-lg p-4 mb-4">
                     <p className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-line leading-relaxed">
                       {aggregatedOpinion.summary}
                     </p>
@@ -692,9 +877,9 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-3 mb-4">
-                    <div className="bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-slate-800 rounded-lg p-3">
+                    <div className="bg-white dark:bg-[var(--bm-surface)] border border-slate-200 dark:border-slate-800 rounded-lg p-3">
                       <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">Model Divergence</p>
-                      <div className="h-2 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+                      <div className="h-2 bg-gray-200 dark:bg-[var(--bm-surface)] rounded-full overflow-hidden">
                         <div
                           className="h-full bg-rose-500"
                           style={{ width: `${Math.round(aggregatedOpinion.conflictIndex * 100)}%` }}
@@ -704,9 +889,9 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                         Conflict {Math.round(aggregatedOpinion.conflictIndex * 100)}%
                       </p>
                     </div>
-                    <div className="bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-slate-800 rounded-lg p-3">
+                    <div className="bg-white dark:bg-[var(--bm-surface)] border border-slate-200 dark:border-slate-800 rounded-lg p-3">
                       <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">Unified Confidence</p>
-                      <div className="h-2 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+                      <div className="h-2 bg-gray-200 dark:bg-[var(--bm-surface)] rounded-full overflow-hidden">
                         <div
                           className="h-full bg-emerald-500"
                           style={{ width: `${Math.round(aggregatedOpinion.confidence * 100)}%` }}
@@ -719,7 +904,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                   </div>
 
                   {modelScores && (
-                    <div className="bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-slate-800 rounded-lg p-4 mb-4">
+                    <div className="bg-white dark:bg-[var(--bm-surface)] border border-slate-200 dark:border-slate-800 rounded-lg p-4 mb-4">
                       <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
                         Model Comparison Radar
                       </h3>
@@ -768,7 +953,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                       </p>
                       <div className="grid md:grid-cols-2 gap-3">
                         {aggregatedOpinion.recommendations.map((rec, idx) => (
-                          <div key={idx} className="bg-white dark:bg-gray-900/60 border border-blue-100 dark:border-blue-900 rounded-lg p-3">
+                          <div key={idx} className="bg-white dark:bg-[var(--bm-surface)] border border-blue-100 dark:border-blue-900 rounded-lg p-3">
                             <p className="text-sm font-semibold text-gray-900 dark:text-white">
                               {rec.title}
                             </p>
@@ -784,15 +969,15 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
               )}
 
               {knowledgeSnapshot && (
-                <div className="bg-white dark:bg-gray-900/50 backdrop-blur border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
+                <div className="bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
                   <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
                     Knowledge Snapshot Used
                   </h3>
                   <div className="mb-3 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
-                    <span className="px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                    <span className="px-2 py-1 rounded-full bg-gray-100 dark:bg-[var(--bm-surface)] text-gray-700 dark:text-gray-300">
                       Signal Score: {knowledgeScore.score}
                     </span>
-                    <span className="px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                    <span className="px-2 py-1 rounded-full bg-gray-100 dark:bg-[var(--bm-surface)] text-gray-700 dark:text-gray-300">
                       Freshness: {knowledgeScore.freshnessLabel}
                     </span>
                   </div>
@@ -800,7 +985,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                     {knowledgeSnapshot.sources.map((source) => (
                       <span
                         key={source.key}
-                        className="px-2 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                        className="px-2 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 dark:bg-[var(--bm-surface)] dark:text-gray-300"
                       >
                         {source.key.replace('-', ' ')} · {source.count}
                       </span>
@@ -812,36 +997,36 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                 </div>
               )}
 
-              <div className="bg-white dark:bg-gray-900/50 backdrop-blur border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
+              <div className="bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
                 <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">Memory Depth & Coverage</h3>
                 <div className="grid grid-cols-2 gap-3 text-xs text-gray-600 dark:text-gray-300">
-                  <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3">
+                  <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-page p-3">
                     <p className="text-gray-500">Total Signals</p>
                     <p className="text-base font-semibold">{knowledgeSnapshot?.totalSignals || 0}</p>
                   </div>
-                  <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3">
+                  <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-page p-3">
                     <p className="text-gray-500">Freshness</p>
                     <p className="text-base font-semibold">{knowledgeScore.freshnessLabel}</p>
                   </div>
-                  <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3">
+                  <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-page p-3">
                     <p className="text-gray-500">Reports</p>
                     <p className="text-base font-semibold">
                       {knowledgeSnapshot?.sources.find((s) => s.key === 'reports')?.count || 0}
                     </p>
                   </div>
-                  <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3">
+                  <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-page p-3">
                     <p className="text-gray-500">Devices</p>
                     <p className="text-base font-semibold">
                       {knowledgeSnapshot?.sources.find((s) => s.key === 'devices')?.count || 0}
                     </p>
                   </div>
-                  <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3">
+                  <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-page p-3">
                     <p className="text-gray-500">Documents</p>
                     <p className="text-base font-semibold">
                       {knowledgeSnapshot?.sources.find((s) => s.key === 'documents')?.count || 0}
                     </p>
                   </div>
-                  <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3">
+                  <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-page p-3">
                     <p className="text-gray-500">Inputs</p>
                     <p className="text-base font-semibold">
                       {knowledgeSnapshot?.sources.find((s) => s.key === 'inputs')?.count || 0}
@@ -859,12 +1044,12 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                   ].map((item) => {
                     const count = knowledgeSnapshot?.sources.find((s) => s.key === item.key)?.count || 0;
                     return (
-                      <div key={item.key} className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3">
+                      <div key={item.key} className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-page p-3">
                         <div className="flex items-center justify-between text-xs text-gray-500">
                           <span>{item.label}</span>
                           <span>{count}</span>
                         </div>
-                        <div className="mt-2 h-1.5 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+                        <div className="mt-2 h-1.5 bg-gray-200 dark:bg-[var(--bm-surface)] rounded-full overflow-hidden">
                           <div className="h-full bg-orange-500" style={{ width: `${Math.min(100, count * 10)}%` }} />
                         </div>
                       </div>
@@ -876,7 +1061,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-gray-900/50 backdrop-blur border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
+              <div className="bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
                 <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">AI Knowledge Gaps</h3>
                 {knowledgeGaps.length === 0 ? (
                   <p className="text-xs text-gray-500">No major gaps detected.</p>
@@ -892,7 +1077,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                 )}
               </div>
 
-              <div className="bg-white dark:bg-gray-900/50 backdrop-blur border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
+              <div className="bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
                 <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">AI Dialog Simulator</h3>
                 <div className="space-y-3 mb-4">
                   {dialog.length === 0 && (
@@ -904,7 +1089,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                         className={`inline-block px-3 py-2 rounded-lg text-xs ${
                           msg.role === 'user'
                             ? 'bg-orange-100 text-orange-800'
-                            : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200'
+                            : 'bg-gray-100 dark:bg-[var(--bm-surface)] text-gray-700 dark:text-gray-200'
                         }`}
                       >
                         {msg.content}
@@ -916,7 +1101,7 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                   <input
                     value={dialogInput}
                     onChange={(e) => setDialogInput(e.target.value)}
-                    className="flex-1 px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 text-xs"
+                    className="flex-1 px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100 text-xs"
                     placeholder="Ask about this report..."
                   />
                   <button
@@ -932,32 +1117,36 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
               <div className="flex flex-wrap gap-2 pt-1">
                 <button
                   onClick={handleCopy}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:border-orange-500 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-xs rounded-lg transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-[var(--bm-surface)] border border-gray-300 dark:border-gray-700 hover:border-orange-500 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-xs rounded-lg transition-colors"
                 >
                   <Copy className="h-3.5 w-3.5" />
                   <span>Copy</span>
                 </button>
                 <button
                   onClick={handlePrint}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:border-orange-500 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-xs rounded-lg transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-[var(--bm-surface)] border border-gray-300 dark:border-gray-700 hover:border-orange-500 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-xs rounded-lg transition-colors"
                 >
                   <Printer className="h-3.5 w-3.5" />
                   <span>Print</span>
                 </button>
                 <button
                   onClick={handleShare}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:border-orange-500 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-xs rounded-lg transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-[var(--bm-surface)] border border-gray-300 dark:border-gray-700 hover:border-orange-500 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-xs rounded-lg transition-colors"
                 >
                   <Share2 className="h-3.5 w-3.5" />
                   <span>Share</span>
                 </button>
                 <button
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:border-orange-500 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-xs rounded-lg transition-colors"
+                  type="button"
+                  onClick={handleDownload}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-[var(--bm-surface)] border border-gray-300 dark:border-gray-700 hover:border-orange-500 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-xs rounded-lg transition-colors"
                 >
                   <Download className="h-3.5 w-3.5" />
                   <span>Download</span>
                 </button>
                 <button
+                  type="button"
+                  onClick={handlePdfExport}
                   className="flex items-center gap-1.5 px-3 py-1.5 bg-orange-500 hover:bg-orange-600 text-white text-xs rounded-lg transition-colors"
                 >
                   <FileDown className="h-3.5 w-3.5" />
@@ -966,46 +1155,6 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
               </div>
             </div>
           )}
-
-          {/* Learning Center Link */}
-          <div className="mb-6">
-            <button
-              onClick={() => onNavigate('learning-center', `topic-${sId}`)}
-              className="w-full px-4 py-3 bg-white dark:bg-gray-900/50 backdrop-blur border border-gray-200 dark:border-gray-800 hover:border-orange-500 text-orange-600 dark:text-orange-400 hover:text-orange-500 text-sm font-medium rounded-lg transition-all flex items-center justify-center space-x-2 shadow-sm"
-            >
-              <BookOpen className="h-4 w-4" />
-              <span>Learn more about {service.name}</span>
-            </button>
-          </div>
-
-          {/* Service-Level FAQ */}
-          <div className="mb-6 max-w-3xl">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
-              FAQ
-            </h3>
-            <div className="space-y-3">
-              {serviceFAQs.map((faq, index) => (
-                <div key={index} className="border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden bg-white dark:bg-gray-900/50 backdrop-blur shadow-sm">
-                  <button
-                    onClick={() => setOpenFAQ(openFAQ === `faq-${index}` ? null : `faq-${index}`)}
-                    className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors text-left"
-                  >
-                    <span className="text-sm font-medium text-gray-900 dark:text-white">{faq.question}</span>
-                    {openFAQ === `faq-${index}` ? (
-                      <ChevronUp className="h-4 w-4 text-orange-500 flex-shrink-0" />
-                    ) : (
-                      <ChevronDown className="h-4 w-4 text-gray-400 flex-shrink-0" />
-                    )}
-                  </button>
-                  {openFAQ === `faq-${index}` && (
-                    <div className="px-4 py-3 border-t border-gray-200 dark:border-gray-800">
-                      <p className="text-sm text-gray-600 dark:text-gray-300">{faq.answer}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
 
           {/* Related Services */}
           <div className="mb-6">
@@ -1016,10 +1165,10 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
               {category.services.filter(s => s.id !== sId).slice(0, 3).map((relatedService) => (
                 <button
                   key={relatedService.id}
-                  onClick={() => onNavigate('service-detail', `${categoryId}/${relatedService.id}`)}
-                  className="p-4 bg-white dark:bg-gray-900/50 backdrop-blur border border-gray-200 dark:border-gray-800 hover:border-orange-500 hover:shadow-2xl hover:shadow-orange-500/20 rounded-xl transition-all text-left group shadow-sm"
+                  onClick={() => onNavigate('service-detail', serviceDetailPath(categoryId, relatedService.id))}
+                  className="group rounded-2xl border border-gray-200 bg-white p-4 text-left shadow-sm transition-all hover:border-orange-300 dark:border-gray-800 dark:bg-[var(--bm-surface)] dark:hover:border-orange-500/40"
                 >
-                  <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-orange-400 transition-colors flex items-center">
+                  <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-orange-500 transition-colors flex items-center">
                     {relatedService.name}
                     <ChevronLeft className="h-3 w-3 ml-auto transform rotate-180" />
                   </h4>
@@ -1049,8 +1198,8 @@ export default function ServiceDetail({ onNavigate, serviceId }: ServiceDetailPr
                 <strong>How it supports you:</strong> This insight provides educational context and gentle guidance.
                 It's designed to increase clarity and reduce stress, not create urgency.
               </p>
-              <div className="mt-3 p-3 bg-white dark:bg-gray-800 rounded-md border border-green-200 dark:border-green-800">
-                <p className="text-xs font-medium text-green-600 dark:text-green-400 mb-1">💡 Tip</p>
+              <div className="mt-3 p-3 bg-white dark:bg-[var(--bm-surface)] rounded-md border border-green-200 dark:border-green-800">
+                <p className="mb-1 text-xs font-medium text-green-600 dark:text-green-400">Tip</p>
                 <p className="text-xs">
                   Consistency matters more than perfection. Small, regular check-ins help you understand
                   trends over time, which is more valuable than any single data point.

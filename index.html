@@ -2,13 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Early lang/dir from stored preference to avoid RTL/LTR flash before JS bootstrap. -->
+    <script>
+      (function () {
+        try {
+          var code = localStorage.getItem('bmcore-language') || localStorage.getItem('language');
+          if (!code) return;
+          var rtl = { ar: 1, he: 1 };
+          document.documentElement.lang = code;
+          document.documentElement.dir = rtl[code] ? 'rtl' : 'ltr';
+        } catch (e) {}
+      })();
+    </script>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/logo-header.png" />
     <link rel="apple-touch-icon" sizes="192x192" href="/android-chrome-192x192.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#2563eb" />
+    <meta name="theme-color" content="#22262d" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ebe8e2" media="(prefers-color-scheme: light)" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="BioMath Core" />
@@ -22,19 +35,48 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="dns-prefetch" href="https://js.stripe.com" />
 
-    <!-- International SEO -->
+    <!--
+      hreflang: language is selected via cookie/localStorage (bmcore-language), not URL paths.
+      Do not invent /es/, /ru/, etc. — those routes do not exist. Only real URLs are listed.
+    -->
     <link rel="alternate" hreflang="en" href="https://biomathcore.com/" />
-    <link rel="alternate" hreflang="ru" href="https://biomathcore.com/ru/" />
     <link rel="alternate" hreflang="x-default" href="https://biomathcore.com/" />
 
-    <!-- Security Headers -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="DENY" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()" />
+    <link rel="canonical" href="https://biomathcore.com/" />
 
-    <title>BioMath Core Wellness Web Platform</title>
+    <!--
+      Security headers (CSP, X-Frame-Options, Permissions-Policy, etc.) are set as real
+      HTTP response headers in vercel.json (prod/preview) and vite.config.ts (vite preview).
+      http-equiv meta is intentionally omitted — it is weaker and conflicted with DENY/SAMEORIGIN.
+      Health Guide speech needs microphone=(self); camera/geolocation stay denied.
+    -->
+
+    <title>BioMath Core — Personalized Health Intelligence</title>
+    <meta name="description" content="BioMath Core turns your health data into clear insights, personalized guidance, and practical next steps with Health Guide." />
+    <meta name="keywords" content="health analytics, personalized health, Health Guide, biomarkers, preventive healthcare, medical data analysis" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <!-- Open Graph (1200×630 landscape; see public/og-default.jpg) -->
+    <meta property="og:site_name" content="BioMath Core" />
+    <meta property="og:title" content="BioMath Core — Personalized Health Intelligence" />
+    <meta property="og:description" content="BioMath Core turns your health data into clear insights, personalized guidance, and practical next steps with Health Guide." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://biomathcore.com/" />
+    <meta property="og:image" content="https://biomathcore.com/og-default.jpg" />
+    <meta property="og:image:secure_url" content="https://biomathcore.com/og-default.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="BioMath Core" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@biomathcore" />
+    <meta name="twitter:title" content="BioMath Core — Personalized Health Intelligence" />
+    <meta name="twitter:description" content="BioMath Core turns your health data into clear insights, personalized guidance, and practical next steps with Health Guide." />
+    <meta name="twitter:image" content="https://biomathcore.com/og-default.jpg" />
+    <meta name="twitter:image:alt" content="BioMath Core" />
 
     <!-- Stripe.js -->
     <script src="https://js.stripe.com/v3/" async></script>

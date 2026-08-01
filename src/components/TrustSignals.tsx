@@ -60,7 +60,7 @@ const trustBadges: TrustBadge[] = [
 
 export default function TrustSignals() {
   return (
-    <div className="py-16 bg-white dark:bg-gray-950">
+    <div className="py-16 bg-page">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
@@ -75,7 +75,7 @@ export default function TrustSignals() {
           {trustBadges.map((badge, index) => (
             <div
               key={index}
-              className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="bg-gray-50 dark:bg-[var(--bm-surface)] rounded-lg p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               <div className={`inline-flex items-center justify-center w-12 h-12 mb-4 rounded-lg bg-white dark:bg-gray-800 shadow-md`}>
                 <badge.icon className={`h-6 w-6 ${badge.color}`} />

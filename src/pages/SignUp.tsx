@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { Mail, Lock, User, AlertCircle, CheckCircle, Gift, Eye, EyeOff } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '../lib/supabase';
 import { notifyUserInfo } from '../lib/adminNotify';
 import BackButton from '../components/BackButton';
@@ -9,6 +10,7 @@ interface SignUpProps {
 }
 
 export default function SignUp({ onNavigate }: SignUpProps) {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -45,14 +47,14 @@ export default function SignUp({ onNavigate }: SignUpProps) {
     setSuccess(false);
 
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
+      setError(t('auth.signUp.passwordMismatch'));
       setLoading(false);
       submittingRef.current = false;
       return;
     }
 
     if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError(t('auth.signUp.passwordTooShort'));
       setLoading(false);
       submittingRef.current = false;
       return;
@@ -78,7 +80,7 @@ export default function SignUp({ onNavigate }: SignUpProps) {
 
       if (requireEmailVerification) {
         setError('');
-        notifyUserInfo('Account created. Please check your email to confirm before signing in.');
+        notifyUserInfo(t('auth.signUp.verifyEmail'));
       }
 
       setTimeout(() => {
@@ -88,7 +90,7 @@ export default function SignUp({ onNavigate }: SignUpProps) {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError('An error occurred during sign up');
+        setError(t('auth.signUp.genericError'));
       }
     } finally {
       setLoading(false);
@@ -97,7 +99,7 @@ export default function SignUp({ onNavigate }: SignUpProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-950 dark:to-gray-900 transition-colors flex items-center justify-center px-4 py-24">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-[var(--bm-page)] via-[var(--bm-surface)] to-[var(--bm-page)] px-4 py-24 transition-colors">
       <div className="fixed top-6 left-6 z-50">
         <BackButton onNavigate={onNavigate} />
       </div>
@@ -113,8 +115,10 @@ export default function SignUp({ onNavigate }: SignUpProps) {
               <span className="text-white"> Core</span>
             </h1>
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Create Your Account</h2>
-          <p className="text-gray-600 dark:text-gray-300">Start your wellness journey with BioMath Core</p>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            {t('auth.signUp.title')}
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300">{t('auth.signUp.subtitle')}</p>
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700">
@@ -129,7 +133,7 @@ export default function SignUp({ onNavigate }: SignUpProps) {
             <div className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg flex items-start space-x-3">
               <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
               <p className="text-sm text-green-800 dark:text-green-200">
-                Account created successfully! Redirecting to sign in...
+                {t('auth.signUp.success')}
               </p>
             </div>
           )}
@@ -137,7 +141,7 @@ export default function SignUp({ onNavigate }: SignUpProps) {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Full Name
+                {t('auth.fields.fullName')}
               </label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
@@ -148,15 +152,15 @@ export default function SignUp({ onNavigate }: SignUpProps) {
                   value={formData.fullName}
                   onChange={handleChange}
                   required
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                  placeholder="John Doe"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  placeholder={t('auth.fields.fullNamePlaceholder')}
                 />
               </div>
             </div>
 
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Email Address
+                {t('auth.fields.email')}
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
@@ -167,7 +171,7 @@ export default function SignUp({ onNavigate }: SignUpProps) {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                   placeholder="your@email.com"
                 />
               </div>
@@ -175,7 +179,7 @@ export default function SignUp({ onNavigate }: SignUpProps) {
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Password
+                {t('auth.fields.password')}
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
@@ -186,7 +190,7 @@ export default function SignUp({ onNavigate }: SignUpProps) {
                   value={formData.password}
                   onChange={handleChange}
                   required
-                  className="w-full pl-10 pr-12 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  className="w-full pl-10 pr-12 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                   placeholder="••••••••"
                 />
                 <button
@@ -201,12 +205,14 @@ export default function SignUp({ onNavigate }: SignUpProps) {
                   )}
                 </button>
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Must be at least 6 characters</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                {t('auth.fields.passwordHint')}
+              </p>
             </div>
 
             <div>
               <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Confirm Password
+                {t('auth.fields.confirmPassword')}
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
@@ -217,7 +223,7 @@ export default function SignUp({ onNavigate }: SignUpProps) {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   required
-                  className="w-full pl-10 pr-12 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  className="w-full pl-10 pr-12 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                   placeholder="••••••••"
                 />
                 <button
@@ -236,7 +242,7 @@ export default function SignUp({ onNavigate }: SignUpProps) {
 
             <div>
               <label htmlFor="referralCode" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Referral Code (Optional)
+                {t('auth.fields.referralCode')}
               </label>
               <div className="relative">
                 <Gift className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
@@ -246,11 +252,13 @@ export default function SignUp({ onNavigate }: SignUpProps) {
                   name="referralCode"
                   value={formData.referralCode}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                   placeholder="BIOMATH-XXXXX"
                 />
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Get $5 discount with a friend's code</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                {t('auth.fields.referralHint')}
+              </p>
             </div>
 
             <button
@@ -259,29 +267,29 @@ export default function SignUp({ onNavigate }: SignUpProps) {
               disabled={loading || success}
               className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 dark:bg-blue-500 dark:hover:bg-blue-600 dark:active:bg-blue-700 text-white font-semibold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none"
             >
-              {loading ? 'Creating Account...' : 'Create Account'}
+              {loading ? t('auth.signUp.submitting') : t('auth.signUp.submit')}
             </button>
           </form>
 
           <div className="mt-6 text-center">
             <p className="text-gray-600 dark:text-gray-300">
-              Already have an account?{' '}
+              {t('auth.signUp.haveAccount')}{' '}
               <button
                 onClick={() => onNavigate('signin')}
                 className="text-blue-600 dark:text-blue-400 hover:underline font-semibold"
               >
-                Sign in
+                {t('auth.signUp.signInLink')}
               </button>
             </p>
           </div>
         </div>
 
         <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-8">
-          By creating an account, you agree to our Terms of Service and Privacy Policy
+          {t('auth.signUp.legal')}
         </p>
 
         <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-6">
-          © {new Date().getFullYear()} BioMath Core. All rights reserved.
+          {t('auth.signUp.rights', { year: new Date().getFullYear() })}
         </p>
       </div>
     </div>

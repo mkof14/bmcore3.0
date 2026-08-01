@@ -1,4 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import type { TFunction } from 'i18next';
 import { FileText, Plus, Download, MessageSquare, TrendingUp, Clock, Zap, Heart, Activity } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { notifyUserError, notifyUserInfo } from '../lib/adminNotify';
@@ -11,12 +13,12 @@ interface ReportsProps {
   onNavigate: (page: string) => void;
 }
 
-const getReportTypeLabel = (type: string) => {
+const getReportTypeLabel = (type: string, t: TFunction) => {
   switch (type) {
-    case 'general': return 'General Report';
-    case 'thematic': return 'Thematic';
-    case 'dynamic': return 'Dynamic';
-    case 'device_enhanced': return 'Device Enhanced';
+    case 'general': return t('reportsPage.typeGeneral');
+    case 'thematic': return t('reportsPage.typeThematic');
+    case 'dynamic': return t('reportsPage.typeDynamic');
+    case 'device_enhanced': return t('reportsPage.typeDevice');
     default: return type;
   }
 };
@@ -32,6 +34,7 @@ const getReportIcon = (type: string) => {
 };
 
 export default function Reports({ onNavigate }: ReportsProps) {
+  const { t, i18n } = useTranslation();
   const [reports, setReports] = useState<HealthReport[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedReport, setSelectedReport] = useState<HealthReport | null>(null);
@@ -114,51 +117,51 @@ export default function Reports({ onNavigate }: ReportsProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors pt-16 flex items-center justify-center">
+      <div className="min-h-screen bg-page transition-colors pt-16 flex items-center justify-center">
         <div className="text-center">
           <Clock className="h-12 w-12 text-orange-500 mx-auto mb-4 animate-spin" />
-          <p className="text-gray-400">Loading your reports...</p>
+          <p className="text-gray-400">{t('reportsPage.loading')}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors pt-16">
+    <div className="min-h-screen bg-page transition-colors pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-              My Reports
+              {t('reportsPage.title')}
             </h1>
             <button
               onClick={() => setShowCreateFlow(true)}
               className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-600 shadow-lg shadow-orange-600/20 text-white rounded-lg transition-colors"
             >
               <Plus className="h-5 w-5 mr-2" />
-              Create Report
+              {t('reportsPage.create')}
             </button>
           </div>
           <p className="text-xl text-gray-600 dark:text-gray-400">
-            Reports turn data into clear next steps: what's happening, why, and what to do next.
+            {t('reportsPage.subtitle')}
           </p>
         </div>
 
         {reports.length === 0 ? (
-          <div className="bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-xl p-12 text-center border-2 border-dashed border-gray-200 dark:border-gray-700/50">
+          <div className="bg-white dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] rounded-xl p-12 text-center border-2 border-dashed border-gray-200 dark:border-gray-700/50">
             <FileText className="h-16 w-16 text-orange-500 mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-              No reports yet
+              {t('reportsPage.emptyTitle')}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">
-              Create your first report to get a clear summary and personalized next steps.
+              {t('reportsPage.emptyBody')}
             </p>
             <button
               onClick={() => setShowCreateFlow(true)}
               className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-600 shadow-lg shadow-orange-600/20 text-white rounded-lg transition-colors font-semibold"
             >
               <Plus className="h-5 w-5 mr-2" />
-              Create First Report
+              {t('reportsPage.createFirst')}
             </button>
           </div>
         ) : (
@@ -174,7 +177,7 @@ export default function Reports({ onNavigate }: ReportsProps) {
                 >
                   <ReportBrandHeader
                     variant="strip"
-                    subtitle={getReportTypeLabel(report.report_type)}
+                    subtitle={getReportTypeLabel(report.report_type, t)}
                     className="mb-4"
                   />
                   <div className="flex items-start justify-between mb-4">
@@ -184,10 +187,10 @@ export default function Reports({ onNavigate }: ReportsProps) {
                       </div>
                       <div>
                         <h3 className="font-bold text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                          {report.topic || getReportTypeLabel(report.report_type)}
+                          {report.topic || getReportTypeLabel(report.report_type, t)}
                         </h3>
                         <p className="text-sm text-gray-400">
-                          {new Date(report.created_at).toLocaleDateString('en-US', {
+                          {new Date(report.created_at).toLocaleDateString(i18n.resolvedLanguage, {
                             day: 'numeric',
                             month: 'long',
                             year: 'numeric'
@@ -196,7 +199,7 @@ export default function Reports({ onNavigate }: ReportsProps) {
                       </div>
                     </div>
                     <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 text-xs font-semibold rounded">
-                      {getReportTypeLabel(report.report_type)}
+                      {getReportTypeLabel(report.report_type, t)}
                     </span>
                   </div>
 
@@ -213,7 +216,7 @@ export default function Reports({ onNavigate }: ReportsProps) {
                         <span>{report.recommendations.length} recommendations</span>
                       )}
                       {report.second_opinion_a && report.second_opinion_b && (
-                        <span className="text-purple-600 dark:text-purple-400">Multi-Model</span>
+                        <span className="text-purple-600 dark:text-purple-400">{t('reportsPage.multiModel')}</span>
                       )}
                     </div>
                     <div className="flex items-center gap-2">
@@ -228,7 +231,7 @@ export default function Reports({ onNavigate }: ReportsProps) {
                             : 'border-gray-600 text-gray-400'
                         }`}
                       >
-                        {isFavorite ? '★ Favorite' : '☆ Favorite'}
+                        {isFavorite ? '★' : '☆'} {t('reportsPage.favorite')}
                       </button>
                       <TrendingUp className="h-5 w-5 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
                     </div>
@@ -250,6 +253,7 @@ interface CreateReportFlowProps {
 }
 
 function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowProps) {
+  const { t } = useTranslation();
   const [step, setStep] = useState<'type' | 'options' | 'generating'>('type');
   const [reportType, setReportType] = useState<'general' | 'thematic' | 'dynamic' | 'device_enhanced'>('general');
   const [includeSecondOpinion] = useState(true);
@@ -324,20 +328,25 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
 
   if (step === 'generating') {
     return (
-      <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors pt-16 flex items-center justify-center">
+      <div className="min-h-screen bg-page transition-colors pt-16 flex items-center justify-center">
         <div className="text-center max-w-md">
           <Zap className="h-16 w-16 text-orange-500 mx-auto mb-6 animate-pulse" />
           <h2 className="text-2xl font-bold text-white mb-4">
-            Creating your report
+            {t('reportsPage.generatingTitle')}
           </h2>
           <div className="space-y-2 text-gray-400">
-            <p>✓ Gathering latest data</p>
-            <p>✓ Model A: Physiological analysis</p>
-            <p>✓ Model B: Lifestyle analysis</p>
-            <p className="animate-pulse">⏳ Aggregating unified report...</p>
+            <p>✓ {t('reportsPage.generatingGather')}</p>
+            <p>✓ {t('reportsPage.generatingModelA')}</p>
+            <p>✓ {t('reportsPage.generatingModelB')}</p>
+            <p className="animate-pulse">⏳ {t('reportsPage.generatingAggregate')}</p>
           </div>
           <div className="mt-6 grid grid-cols-2 gap-2 text-xs text-gray-500">
-            {['Gather Signals', 'Model A', 'Model B', 'Aggregate'].map((label, idx) => (
+            {[
+              t('reportsPage.pipelineGather'),
+              t('reportsPage.pipelineModelA'),
+              t('reportsPage.pipelineModelB'),
+              t('reportsPage.pipelineAggregate'),
+            ].map((label, idx) => (
               <div
                 key={label}
                 className={`rounded-lg border px-3 py-2 ${
@@ -345,7 +354,7 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
                     ? 'border-green-200 bg-green-50 text-green-700 dark:border-green-700/40 dark:bg-green-900/20 dark:text-green-300'
                     : pipelineStep === idx
                     ? 'border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-700/40 dark:bg-orange-900/20 dark:text-orange-300'
-                    : 'border-gray-200 bg-white text-gray-500 dark:border-gray-800 dark:bg-gray-900/40 dark:text-gray-400'
+                    : 'border-gray-200 bg-white text-gray-500 dark:border-gray-800 dark:bg-[var(--bm-surface)]/40 dark:text-gray-400'
                 }`}
               >
                 {pipelineStep > idx ? '✓' : pipelineStep === idx ? '⏳' : '•'} {label}
@@ -360,7 +369,7 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
               />
             </div>
             <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-              Pipeline progress {Math.round((pipelineStep / 3) * 100)}%
+              {t('reportsPage.pipelineProgress', { percent: Math.round((pipelineStep / 3) * 100) })}
             </p>
           </div>
         </div>
@@ -370,36 +379,35 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
 
   if (step === 'options') {
     return (
-      <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors pt-16">
+      <div className="min-h-screen bg-page transition-colors pt-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <button
             onClick={onBack}
             className="mb-6 text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
           >
-            ← Back
+            ← {t('common.back')}
           </button>
 
           <h1 className="text-3xl font-bold text-white mb-4">
-            Report Settings
+            {t('reportsPage.settingsTitle')}
           </h1>
 
           <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 mb-8 border border-gray-700/50">
             <p className="text-gray-700 dark:text-gray-300">
-              We'll gather your latest data and present the observations in a clear format: what's happening now,
-              why, and what gentle step will help next.
+              {t('reportsPage.settingsIntro')}
             </p>
           </div>
 
           {reportType === 'thematic' && (
             <div className="mb-6">
               <label className="block text-sm font-semibold text-white mb-2">
-                Report Topic
+                {t('reportsPage.topicLabel')}
               </label>
               <input
                 type="text"
                 value={topic}
                 onChange={(e) => setTopic(e.target.value)}
-                placeholder="For example: Why am I not sleeping well?"
+                placeholder={t('reportsPage.topicPlaceholder')}
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white"
               />
             </div>
@@ -415,10 +423,10 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
               />
               <div>
                 <p className="font-semibold text-white">
-                  Second Opinion Engine (Multi-Model) is always on
+                  {t('reportsPage.secondOpinionOn')}
                 </p>
                 <p className="text-sm text-gray-400">
-                  Every report includes two independent analyses plus a unified aggregation.
+                  {t('reportsPage.secondOpinionBody')}
                 </p>
               </div>
             </label>
@@ -428,7 +436,7 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
             onClick={handleCreate}
             className="w-full py-4 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-600 shadow-lg shadow-orange-600/20 text-white rounded-lg font-semibold transition-colors"
           >
-            Create Report
+            {t('reportsPage.create')}
           </button>
         </div>
       </div>
@@ -436,17 +444,17 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors pt-16">
+    <div className="min-h-screen bg-page transition-colors pt-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <button
           onClick={onBack}
           className="mb-6 text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
         >
-          ← Back
+          ← {t('common.back')}
         </button>
 
         <h1 className="text-3xl font-bold text-white mb-8">
-          Choose Report Type
+          {t('reportsPage.chooseType')}
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -459,10 +467,10 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
           >
             <FileText className="h-12 w-12 text-orange-500 mb-4 group-hover:scale-110 transition-transform" />
             <h3 className="text-xl font-bold text-white mb-2">
-              General State Report
+              {t('reportsPage.typeGeneral')}
             </h3>
             <p className="text-gray-400 text-sm">
-              Learn what's happening with your body overall: sleep, energy, recovery, load adaptation
+              {t('reportsPage.typeGeneralBody')}
             </p>
           </button>
 
@@ -475,10 +483,10 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
           >
             <Heart className="h-12 w-12 text-purple-600 dark:text-purple-400 mb-4 group-hover:scale-110 transition-transform" />
             <h3 className="text-xl font-bold text-white mb-2">
-              Explore Specific Topic
+              {t('reportsPage.typeThematic')}
             </h3>
             <p className="text-gray-400 text-sm">
-              Deep analysis of one area: sleep, stress, recovery, nutrition, glucose
+              {t('reportsPage.typeThematicBody')}
             </p>
           </button>
 
@@ -492,14 +500,14 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
           >
             <TrendingUp className="h-12 w-12 text-green-600 dark:text-green-400 mb-4 group-hover:scale-110 transition-transform" />
             <h3 className="text-xl font-bold text-white mb-2">
-              View Dynamics
+              {t('reportsPage.typeDynamic')}
             </h3>
             <p className="text-gray-400 text-sm">
-              Compare state with previous reports and see trends
+              {t('reportsPage.typeDynamicBody')}
             </p>
             {reportCount < 2 && (
               <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-2">
-                Available after creating 2+ reports
+                {t('reportsPage.typeDynamicLocked')}
               </p>
             )}
           </button>
@@ -513,10 +521,10 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
           >
             <Activity className="h-12 w-12 text-teal-600 dark:text-teal-400 mb-4 group-hover:scale-110 transition-transform" />
             <h3 className="text-xl font-bold text-white mb-2">
-              Report with Device Data
+              {t('reportsPage.typeDevice')}
             </h3>
             <p className="text-gray-400 text-sm">
-              Complete analysis with automatic integration of metrics from your devices
+              {t('reportsPage.typeDeviceBody')}
             </p>
           </button>
         </div>
@@ -532,6 +540,7 @@ interface ReportViewProps {
 }
 
 function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
+  const { t, i18n } = useTranslation();
   const [showOpinion, setShowOpinion] = useState<'a' | 'b' | 'both'>('a');
   const [liveReport, setLiveReport] = useState<HealthReport>(report);
   const [editorOpen, setEditorOpen] = useState(false);
@@ -787,13 +796,13 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors pt-16">
+    <div className="min-h-screen bg-page transition-colors pt-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <button
           onClick={onBack}
           className="mb-6 text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
         >
-          ← Back to Reports List
+          ← {t('reportsPage.backToList')}
         </button>
 
         <div className="mb-8">
@@ -802,34 +811,34 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
             subtitle="Health Intelligence Report"
             meta={[
               `Report ID: ${liveReport.id}`,
-              `Type: ${getReportTypeLabel(liveReport.report_type)}`,
+              `${t('reportsPage.typeLabel')}: ${getReportTypeLabel(liveReport.report_type, t)}`,
             ]}
           />
 
           <div className="mt-6 grid md:grid-cols-4 gap-4">
-            <div className="bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <div className="bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
               <p className="text-xs text-gray-500 dark:text-gray-400">Knowledge Signal Score</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">{knowledgeScore.score}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400">{knowledgeScore.freshnessLabel} data context</p>
             </div>
-            <div className="bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <div className="bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
               <p className="text-xs text-gray-500 dark:text-gray-400">Report Quality Score</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">{qualityScore}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400">Based on depth and completeness</p>
             </div>
-            <div className="bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <div className="bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
               <p className="text-xs text-gray-500 dark:text-gray-400">Engine Version</p>
               <p className="text-lg font-semibold text-gray-900 dark:text-white">Second Opinion Engine v1.2</p>
               <p className="text-xs text-gray-500 dark:text-gray-400">Multi-Model enabled</p>
             </div>
-            <div className="bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <div className="bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
               <p className="text-xs text-gray-500 dark:text-gray-400">Report Signature</p>
               <p className="text-lg font-semibold text-gray-900 dark:text-white">{reportSignature}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400">Generated {new Date(liveReport.created_at).toLocaleTimeString('en-US')}</p>
             </div>
           </div>
 
-          <div className="mt-6 bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+          <div className="mt-6 bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">Report Index</p>
             <div className="flex flex-wrap gap-2 text-xs">
               <span className="px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">Summary</span>
@@ -846,7 +855,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
             </div>
           </div>
 
-          <div className="mt-6 bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+          <div className="mt-6 bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">Data Coverage</p>
             <div className="grid md:grid-cols-3 gap-3 text-xs text-gray-700 dark:text-gray-300">
               {[
@@ -857,7 +866,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
                 { key: 'documents', label: 'Documents', count: sourceCounts.documents },
                 { key: 'services', label: 'Services', count: sourceCounts.services },
               ].map((item) => (
-                <div key={item.key} className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3">
+                <div key={item.key} className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-[var(--bm-surface)]/40 p-3">
                   <div className="flex items-center justify-between">
                     <span>{item.label}</span>
                     <span className="text-gray-500">{item.count}</span>
@@ -870,7 +879,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
             </div>
           </div>
 
-          <div className="mt-6 bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+          <div className="mt-6 bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">Pipeline Timeline</p>
             <div className="grid md:grid-cols-4 gap-3 text-xs">
               {[
@@ -879,7 +888,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
                 { label: 'Model B', detail: 'Lifestyle pass' },
                 { label: 'Aggregation', detail: 'Unified report' },
               ].map((step, idx) => (
-                <div key={step.label} className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3">
+                <div key={step.label} className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-[var(--bm-surface)]/40 p-3">
                   <p className="text-gray-900 dark:text-gray-100 font-semibold">{idx + 1}. {step.label}</p>
                   <p className="text-gray-500 dark:text-gray-400">{step.detail}</p>
                 </div>
@@ -888,24 +897,24 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
           </div>
 
           {previousReport && (
-            <div className="mt-6 bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <div className="mt-6 bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
               <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">Consistency Delta (vs previous report)</p>
               <div className="grid md:grid-cols-3 gap-3 text-xs text-gray-700 dark:text-gray-300">
-                <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3">
+                <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-[var(--bm-surface)]/40 p-3">
                   <p className="text-gray-500 dark:text-gray-400">Summary Length</p>
                   <p className="font-semibold">
                     {liveReport.summary.length - previousReport.summary.length >= 0 ? '+' : ''}
                     {liveReport.summary.length - previousReport.summary.length} chars
                   </p>
                 </div>
-                <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3">
+                <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-[var(--bm-surface)]/40 p-3">
                   <p className="text-gray-500 dark:text-gray-400">Insights Count</p>
                   <p className="font-semibold">
                     {liveReport.insights.length - previousReport.insights.length >= 0 ? '+' : ''}
                     {liveReport.insights.length - previousReport.insights.length}
                   </p>
                 </div>
-                <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3">
+                <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-[var(--bm-surface)]/40 p-3">
                   <p className="text-gray-500 dark:text-gray-400">Recommendations</p>
                   <p className="font-semibold">
                     {liveReport.recommendations.length - previousReport.recommendations.length >= 0 ? '+' : ''}
@@ -917,7 +926,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
           )}
 
           {timeline.length > 0 && (
-            <div className="mt-6 bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <div className="mt-6 bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
               <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">Knowledge Timeline</p>
               <div className="space-y-2 text-xs text-gray-600 dark:text-gray-300">
                 {timeline.slice(-6).reverse().map((entry) => (
@@ -938,10 +947,10 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
           <div className="flex items-start justify-between mb-4">
             <div>
               <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                {liveReport.topic || 'State Report'}
+                {liveReport.topic || t('reportsPage.viewDefaultTitle')}
               </h1>
               <p className="text-gray-600 dark:text-gray-400">
-                {new Date(liveReport.created_at).toLocaleDateString('en-US', {
+                {new Date(liveReport.created_at).toLocaleDateString(i18n.resolvedLanguage, {
                   day: 'numeric',
                   month: 'long',
                   year: 'numeric',
@@ -963,64 +972,64 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
                 className="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
               >
                 <MessageSquare className="h-5 w-5 mr-2" />
-                Discuss with AI
+                {t('reportsPage.discuss')}
               </button>
               <button
                 onClick={() => setEditorOpen((prev) => !prev)}
                 className="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 rounded-lg transition-colors"
               >
-                {editorOpen ? 'Close Editor' : 'Edit Report (Local)'}
+                {editorOpen ? t('reportsPage.closeEditor') : t('reportsPage.editLocal')}
               </button>
             </div>
           </div>
         </div>
 
         {editorOpen && (
-          <section className="mb-8 bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-6">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Local Report Editor</h2>
+          <section className="mb-8 bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-6">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">{t('reportsPage.editorTitle')}</h2>
             <div className="grid gap-4">
               <div>
-                <label className="text-xs text-gray-500 dark:text-gray-400">Topic</label>
+                <label className="text-xs text-gray-500 dark:text-gray-400">{t('reportsPage.editorTopic')}</label>
                 <input
                   value={draftTopic}
                   onChange={(e) => setDraftTopic(e.target.value)}
-                  className="mt-1 w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                  className="mt-1 w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
                 />
               </div>
               <div>
-                <label className="text-xs text-gray-500 dark:text-gray-400">Summary</label>
+                <label className="text-xs text-gray-500 dark:text-gray-400">{t('reportsPage.editorSummary')}</label>
                 <textarea
                   value={draftSummary}
                   onChange={(e) => setDraftSummary(e.target.value)}
                   rows={3}
-                  className="mt-1 w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                  className="mt-1 w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
                 />
               </div>
               <div>
-                <label className="text-xs text-gray-500 dark:text-gray-400">Analysis</label>
+                <label className="text-xs text-gray-500 dark:text-gray-400">{t('reportsPage.editorAnalysis')}</label>
                 <textarea
                   value={draftAnalysis}
                   onChange={(e) => setDraftAnalysis(e.target.value)}
                   rows={4}
-                  className="mt-1 w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                  className="mt-1 w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
                 />
               </div>
               <div>
-                <label className="text-xs text-gray-500 dark:text-gray-400">Insights (one per line)</label>
+                <label className="text-xs text-gray-500 dark:text-gray-400">{t('reportsPage.editorInsights')}</label>
                 <textarea
                   value={draftInsights}
                   onChange={(e) => setDraftInsights(e.target.value)}
                   rows={4}
-                  className="mt-1 w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                  className="mt-1 w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
                 />
               </div>
               <div>
-                <label className="text-xs text-gray-500 dark:text-gray-400">Recommendations (Title: Description)</label>
+                <label className="text-xs text-gray-500 dark:text-gray-400">{t('reportsPage.editorRecommendations')}</label>
                 <textarea
                   value={draftRecommendations}
                   onChange={(e) => setDraftRecommendations(e.target.value)}
                   rows={4}
-                  className="mt-1 w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                  className="mt-1 w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
                 />
               </div>
               <div className="flex gap-2">
@@ -1028,40 +1037,40 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
                   onClick={handleSaveDraft}
                   className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg"
                 >
-                  Save Local Changes
+                  {t('reportsPage.saveLocal')}
                 </button>
                 <button
                   onClick={() => setEditorOpen(false)}
                   className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-lg"
                 >
-                  Cancel
+                  {t('common.cancel')}
                 </button>
               </div>
             </div>
           </section>
         )}
 
-        <section className="mb-8 bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-6">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Report Notes</h2>
+        <section className="mb-8 bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-6">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">{t('reportsPage.notes')}</h2>
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             rows={4}
-            className="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
-            placeholder="Add personal notes about this report..."
+            className="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
+            placeholder={t('reportsPage.notesPlaceholder')}
           />
           <div className="mt-3 flex gap-2">
             <button
               onClick={handleSaveNotes}
               className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg"
             >
-              Save Notes
+              {t('reportsPage.saveNotes')}
             </button>
             <button
               onClick={() => setNotes('')}
               className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-lg"
             >
-              Clear
+              {t('reportsPage.clear')}
             </button>
           </div>
         </section>
@@ -1069,7 +1078,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
         <div className="space-y-8">
           <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-xl p-6 border border-gray-700/50">
             <h2 className="text-xl font-bold text-white mb-4">
-              Brief Summary
+              {t('reportsPage.briefSummary')}
             </h2>
             <p className="text-gray-200 dark:text-gray-300 leading-relaxed">
               {formattedSummary}
@@ -1078,7 +1087,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
               onClick={() => setShowWhySummary((prev) => !prev)}
               className="mt-3 text-xs text-orange-400 hover:text-orange-300"
             >
-              {showWhySummary ? 'Hide why' : 'Why this summary?'}
+              {showWhySummary ? t('reportsPage.hideWhy') : t('reportsPage.whySummary')}
             </button>
             {showWhySummary && knowledgeSnapshot && (
               <div className="mt-3 text-xs text-gray-400">
@@ -1105,7 +1114,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
           {liveReport.insights && Array.isArray(liveReport.insights) && liveReport.insights.length > 0 && (
             <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-xl p-6 border border-gray-700/50">
               <h2 className="text-xl font-bold text-white mb-4">
-                Key Insights
+                {t('reportsPage.keyInsights')}
               </h2>
               <ul className="space-y-3">
                 {liveReport.insights.map((insight, idx) => (
@@ -1121,7 +1130,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
                 onClick={() => setShowWhyInsights((prev) => !prev)}
                 className="mt-3 text-xs text-orange-400 hover:text-orange-300"
               >
-                {showWhyInsights ? 'Hide why' : 'Why these insights?'}
+                {showWhyInsights ? t('reportsPage.hideWhy') : t('reportsPage.whyInsights')}
               </button>
               {showWhyInsights && knowledgeSnapshot && (
                 <div className="mt-2 text-xs text-gray-400">
@@ -1133,7 +1142,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
 
           <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-xl p-6 border border-gray-700/50">
             <h2 className="text-xl font-bold text-white mb-4">
-              Detailed Analysis
+              {t('reportsPage.detailedAnalysis')}
             </h2>
             <p className="text-gray-200 dark:text-gray-300 leading-relaxed whitespace-pre-line">
               {formattedAnalysis}
@@ -1143,7 +1152,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
           {liveReport.recommendations && Array.isArray(liveReport.recommendations) && liveReport.recommendations.length > 0 && (
             <section className="bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 rounded-xl p-6 border border-green-200 dark:border-green-800">
               <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                Gentle Steps for Improvement
+                {t('reportsPage.gentleSteps')}
               </h2>
               <div className="space-y-4">
                 {liveReport.recommendations.map((rec, idx) => (
@@ -1157,7 +1166,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
                   </div>
                 ))}
               </div>
-              <div className="mt-4 bg-white dark:bg-gray-900/60 border border-green-200 dark:border-green-800 rounded-lg p-4">
+              <div className="mt-4 bg-white dark:bg-[var(--bm-surface)]/60 border border-green-200 dark:border-green-800 rounded-lg p-4">
                 <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">Action Plan Builder</h3>
                 <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                   {liveReport.recommendations.map((rec, idx) => (
@@ -1183,7 +1192,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
             </section>
           )}
 
-          <section className="bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-6">
+          <section className="bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-6">
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">AI Knowledge Gaps</h2>
             {knowledgeGaps.length === 0 ? (
               <p className="text-sm text-gray-600 dark:text-gray-300">
@@ -1201,7 +1210,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
             )}
           </section>
 
-          <section className="bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-6">
+          <section className="bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-6">
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">AI Dialog Simulator</h2>
             <div className="space-y-3 mb-4">
               {dialog.length === 0 && (
@@ -1225,7 +1234,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
               <input
                 value={dialogInput}
                 onChange={(e) => setDialogInput(e.target.value)}
-                className="flex-1 px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                className="flex-1 px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
                 placeholder="Ask about your report..."
               />
               <button
@@ -1241,7 +1250,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
             <section className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-                  Second Opinion Engine
+                  {t('reportsPage.secondOpinionTitle')}
                 </h2>
                 <div className="flex space-x-2">
                   <button
@@ -1252,7 +1261,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
                         : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300'
                     }`}
                   >
-                    Opinion A
+                    {t('reportsPage.opinionA')}
                   </button>
                   <button
                     onClick={() => setShowOpinion('b')}
@@ -1262,7 +1271,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
                         : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300'
                     }`}
                   >
-                    Opinion B
+                    {t('reportsPage.opinionB')}
                   </button>
                   <button
                     onClick={() => setShowOpinion('both')}
@@ -1306,10 +1315,10 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
               <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                 <div>
                   <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-                    Unified Report (Aggregated)
+                    {t('reportsPage.unifiedTitle')}
                   </h2>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
-                    Two model perspectives merged into one coherent report.
+                    {t('reportsPage.unifiedBody')}
                   </p>
                 </div>
                 <span className="px-3 py-1 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 text-xs font-semibold">
@@ -1317,8 +1326,8 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
                 </span>
               </div>
 
-              <div className="bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-slate-800 rounded-lg p-4 mb-4">
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">Unified Summary</h3>
+              <div className="bg-white dark:bg-[var(--bm-surface)]/60 border border-slate-200 dark:border-slate-800 rounded-lg p-4 mb-4">
+                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">{t('reportsPage.unifiedSummary')}</h3>
                 <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                   {aggregatedOpinion.summary}
                 </p>
@@ -1330,7 +1339,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
               </div>
 
               <div className="grid md:grid-cols-2 gap-4 mb-4">
-                <div className="bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-slate-800 rounded-lg p-4">
+                <div className="bg-white dark:bg-[var(--bm-surface)]/60 border border-slate-200 dark:border-slate-800 rounded-lg p-4">
                   <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">Model Divergence</p>
                   <div className="h-2 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
                     <div
@@ -1342,7 +1351,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
                     Conflict {Math.round(aggregatedOpinion.conflictIndex * 100)}%
                   </p>
                 </div>
-                <div className="bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-slate-800 rounded-lg p-4">
+                <div className="bg-white dark:bg-[var(--bm-surface)]/60 border border-slate-200 dark:border-slate-800 rounded-lg p-4">
                   <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">Unified Confidence</p>
                   <div className="h-2 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
                     <div
@@ -1357,9 +1366,9 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
               </div>
 
               {modelScores && (
-                <div className="bg-white dark:bg-gray-900/60 border border-slate-200 dark:border-slate-800 rounded-lg p-4 mb-4">
+                <div className="bg-white dark:bg-[var(--bm-surface)]/60 border border-slate-200 dark:border-slate-800 rounded-lg p-4 mb-4">
                   <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
-                    Model Comparison Radar
+                    {t('reportsPage.modelRadar')}
                   </h3>
                   <ModelRadarComparison modelA={modelScores.a} modelB={modelScores.b} />
                 </div>
@@ -1369,7 +1378,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
                 {aggregatedOpinion.agreements.length > 0 && (
                   <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-lg p-4">
                     <h3 className="text-sm font-semibold text-emerald-800 dark:text-emerald-200 mb-2">
-                      Key Agreements
+                      {t('reportsPage.agreements')}
                     </h3>
                     <ul className="space-y-2">
                       {aggregatedOpinion.agreements.map((item, idx) => (
@@ -1384,7 +1393,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
                 {aggregatedOpinion.disagreements.length > 0 && (
                   <div className="bg-rose-50 dark:bg-rose-900/20 border border-rose-200 dark:border-rose-800 rounded-lg p-4">
                     <h3 className="text-sm font-semibold text-rose-800 dark:text-rose-200 mb-2">
-                      Key Disagreements
+                      {t('reportsPage.disagreements')}
                     </h3>
                     <ul className="space-y-2">
                       {aggregatedOpinion.disagreements.map((item, idx) => (
@@ -1400,11 +1409,11 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
               {aggregatedOpinion.recommendations.length > 0 && (
                 <div className="mt-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
                   <h3 className="text-sm font-semibold text-blue-800 dark:text-blue-200 mb-2">
-                    Combined Recommendations
+                    {t('reportsPage.combinedRecommendations')}
                   </h3>
                   <div className="grid md:grid-cols-2 gap-3">
                     {aggregatedOpinion.recommendations.map((rec, idx) => (
-                      <div key={idx} className="bg-white dark:bg-gray-900/60 border border-blue-100 dark:border-blue-900 rounded-lg p-3">
+                      <div key={idx} className="bg-white dark:bg-[var(--bm-surface)]/60 border border-blue-100 dark:border-blue-900 rounded-lg p-3">
                         <p className="text-sm font-semibold text-gray-900 dark:text-white">
                           {rec.title}
                         </p>
@@ -1418,9 +1427,9 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
               )}
 
               {aggregatedOpinion.usedSources && aggregatedOpinion.usedSources.length > 0 && (
-                <div className="mt-4 bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-lg p-4">
+                <div className="mt-4 bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-lg p-4">
                   <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                    Sources Used
+                    {t('reportsPage.sourcesUsed')}
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {aggregatedOpinion.usedSources.map((source) => (
@@ -1439,11 +1448,10 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
 
           <section className="bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 rounded-xl p-6 border-2 border-teal-200 dark:border-teal-800">
             <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              Want to turn recommendations into a plan?
+              {t('reportsPage.planTitle')}
             </h2>
             <p className="text-gray-700 dark:text-gray-300 mb-4">
-              I'll help turn the report's findings into an action plan. I'll suggest gentle steps
-              that realistically fit into your life.
+              {t('reportsPage.planBody')}
             </p>
             <button
               onClick={handleCreateGoal}

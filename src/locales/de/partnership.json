@@ -1,0 +1,101 @@
+{
+  "partnership": {
+    "seo": {
+      "title": "Partnerschaften – mit BioMath Core zusammenarbeiten",
+      "description": "Arbeiten Sie mit BioMath Core in den Bereichen Geschäftsentwicklung, Forschung oder klinische Integration zusammen. Senden Sie eine Anfrage zu Vertrieb, gemeinsamem Marketing und Datenpartnerschaften."
+    },
+    "hero": {
+      "label": "Partnerschaften",
+      "title": "Gemeinsam mit BioMath Core aufbauen",
+      "body": "Wir arbeiten mit Praxen, Forschenden und Organisationen zusammen, die unseren Fokus auf Vorsorge, Datenschutz und nachvollziehbare biomathematische Orientierung teilen."
+    },
+    "types": {
+      "label": "Möglichkeiten",
+      "title": "Formen der Zusammenarbeit",
+      "body": "Jede Partnerschaftsform hat einen eigenen Rahmen – von Vertrieb über Forschung bis zur klinischen Integration.",
+      "items": [
+        {
+          "title": "Geschäftsentwicklung",
+          "body": "Vertrieb, gemeinsames Marketing und Marktzugang für Organisationen, die BioMath Core ihrem Publikum anbieten möchten.",
+          "points": ["Modelle zur Umsatzbeteiligung", "Gemeinsame Marketingaktionen", "Zugang zu regionalen Märkten"]
+        },
+        {
+          "title": "Wissenschaft und Forschung",
+          "body": "Zusammenarbeit bei biomathematischer Modellierung, klinischer Validierung und Publikationen auf Basis strukturierter Gesundheitsdaten.",
+          "points": ["Kontrollierter Datenzugang", "Publikationsmöglichkeiten", "Gemeinsame Forschungsprogramme"]
+        },
+        {
+          "title": "Gesundheitsfachkräfte",
+          "body": "Binden Sie das Human Data Model in klinische Abläufe ein – mit Schulung, Unterstützung und Werkzeugen zur Patientenbeobachtung.",
+          "points": ["Einbindung in die Praxis", "Schulung und Unterstützung", "Werkzeuge zur Patientenbeobachtung"]
+        }
+      ]
+    },
+    "why": {
+      "label": "Warum BioMath Core",
+      "title": "Was Partner gewinnen",
+      "body": "Ein Produkt auf Basis der Analyse durch zwei Modelle, nutzergesteuerter Daten und langfristigem Gesundheitskontext – keine isolierten Berichte.",
+      "items": [
+        {
+          "title": "Wachsender Markt",
+          "body": "Ein Markt für digitale Gesundheit von über 350 Mrd. US-Dollar mit steigender Nachfrage nach vorsorgender, nachvollziehbarer Orientierung."
+        },
+        {
+          "title": "Internationale Reichweite",
+          "body": "Erweitern Sie Ihre Wirkung mit einem Produkt, das für internationale Datenschutz- und Compliance-Standards gebaut ist."
+        },
+        {
+          "title": "Engagierte Nutzerinnen und Nutzer",
+          "body": "Zugang zu gesundheitsbewussten Mitgliedern, die ihre Biomarker und ihr langfristiges Wohlbefinden aktiv verfolgen."
+        },
+        {
+          "title": "Analyse mit zwei Modellen",
+          "body": "Biomathematische und klinische Modelle im Zusammenspiel – ein Unterscheidungsmerkmal für Partner wie für Patientinnen und Patienten."
+        }
+      ]
+    },
+    "programs": {
+      "label": "Wege zur Teilnahme",
+      "title": "Drei Wege der Zusammenarbeit",
+      "body": "Organisationen, Mitglieder, die Freunde einladen, und langfristige Fürsprecher starten jeweils an einer anderen Stelle.",
+      "items": [
+        {
+          "title": "Partnerschaftsanfrage",
+          "body": "Für Kliniken, Forschungsgruppen und Unternehmen, die eine formelle Vereinbarung mit BioMath Core möchten.",
+          "action": "Zum Anfrageformular"
+        },
+        {
+          "title": "Freunde einladen",
+          "body": "Mitglieder teilen einen persönlichen Link. Die eingeladene Person erhält einen Rabatt, das Mitglied ein Guthaben auf dem Konto.",
+          "action": "Einladungsprogramm öffnen"
+        },
+        {
+          "title": "Botschafterprogramm",
+          "body": "Für Mitglieder, die BioMath Core regelmäßig empfehlen und höhere Vergütung, Werkzeuge und direkte Unterstützung möchten.",
+          "action": "Botschafterprogramm öffnen"
+        }
+      ]
+    },
+    "form": {
+      "label": "Anfrage",
+      "title": "Kontakt aufnehmen",
+      "body": "Erzählen Sie uns von Ihrer Organisation und der gewünschten Form der Zusammenarbeit. In der Regel antworten wir innerhalb von zwei Werktagen.",
+      "typeLabel": "Art der Partnerschaft",
+      "typePlaceholder": "Art der Partnerschaft wählen",
+      "typeOptions": {
+        "business": "Geschäftsentwicklung",
+        "research": "Forschung und Wissenschaft",
+        "healthcare": "Gesundheitsfachkraft",
+        "technology": "Technische Integration",
+        "other": "Sonstiges"
+      },
+      "contactName": "Ansprechperson",
+      "organization": "Unternehmen / Organisation",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "message": "Nachricht",
+      "submit": "Anfrage senden",
+      "directLabel": "Oder schreiben Sie uns direkt"
+    }
+  }
+}

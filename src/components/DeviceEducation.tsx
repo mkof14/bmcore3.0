@@ -112,7 +112,7 @@ export function AlertsNudgesSection() {
 export function UserSettingsSection() {
   const { t } = useTranslation();
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-slate-50 dark:from-gray-900/40 dark:to-slate-900/40 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+    <div className="bg-gradient-to-br from-gray-50 to-slate-50 dark:from-[var(--bm-surface)]/40 dark:to-slate-900/40 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
       <div className="flex items-start space-x-4">
         <div className="flex-shrink-0 w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
           <Settings className="h-6 w-6 text-gray-600 dark:text-gray-400" />

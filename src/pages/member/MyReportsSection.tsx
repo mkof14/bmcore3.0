@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FileText, Download, Eye, Clock, Plus } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserInfo } from '../../lib/adminNotify';
@@ -16,6 +17,7 @@ interface Report {
 }
 
 export default function MyReportsSection() {
+  const { t } = useTranslation();
   const [reports, setReports] = useState<Report[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterType, setFilterType] = useState('all');
@@ -125,10 +127,10 @@ export default function MyReportsSection() {
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">
           <FileText className="h-8 w-8 text-orange-500" />
-          My Reports
+          {t('member.reports.title')}
         </h1>
         <p className="text-gray-600 dark:text-gray-400">
-          Access and manage all your AI-generated health reports and analyses
+          {t('member.reports.subtitle')}
         </p>
       </div>
 
@@ -139,11 +141,11 @@ export default function MyReportsSection() {
         className="mb-6"
       />
 
-      <div className="mb-6 bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+      <div className="mb-6 bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
         <ReportBrandHeader variant="strip" subtitle="Data Coverage" className="mb-3" />
         <div className="grid md:grid-cols-3 gap-3 text-xs text-gray-700 dark:text-gray-300">
           {['profile', 'devices', 'reports', 'inputs', 'documents', 'services'].map((key) => (
-            <div key={key} className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3">
+            <div key={key} className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-[var(--bm-surface)]/40 p-3">
               <div className="flex items-center justify-between">
                 <span className="capitalize">{key.replace('-', ' ')}</span>
                 <span className="text-gray-500">{coverage[key] || 0}</span>
@@ -158,13 +160,13 @@ export default function MyReportsSection() {
       </div>
 
       <div className="mb-6 grid md:grid-cols-4 gap-4">
-        <div className="bg-blue-50 dark:bg-gradient-to-br dark:from-blue-900/30 dark:via-blue-800/20 dark:to-gray-900 border border-blue-200 dark:border-blue-600/30 rounded-xl p-4">
+        <div className="bg-blue-50 dark:bg-gradient-to-br dark:from-blue-900/30 dark:via-blue-800/20 dark:to-[var(--bm-surface)] border border-blue-200 dark:border-blue-600/30 rounded-xl p-4">
           <FileText className="h-6 w-6 text-blue-600 dark:text-blue-400 mb-2" />
           <p className="text-2xl font-bold text-gray-900 dark:text-white">{reports.length}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">Total Reports</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.reports.totalReports')}</p>
         </div>
 
-        <div className="bg-green-50 dark:bg-gradient-to-br dark:from-green-900/30 dark:via-green-800/20 dark:to-gray-900 border border-green-200 dark:border-green-600/30 rounded-xl p-4">
+        <div className="bg-green-50 dark:bg-gradient-to-br dark:from-green-900/30 dark:via-green-800/20 dark:to-[var(--bm-surface)] border border-green-200 dark:border-green-600/30 rounded-xl p-4">
           <Clock className="h-6 w-6 text-green-600 dark:text-green-400 mb-2" />
           <p className="text-2xl font-bold text-gray-900 dark:text-white">
             {reports.filter(r => r.status === 'completed').length}
@@ -172,7 +174,7 @@ export default function MyReportsSection() {
           <p className="text-xs text-gray-600 dark:text-gray-400">Completed</p>
         </div>
 
-        <div className="bg-orange-50 dark:bg-gradient-to-br dark:from-orange-900/30 dark:via-orange-800/20 dark:to-gray-900 border border-orange-200 dark:border-orange-600/30 rounded-xl p-4">
+        <div className="bg-orange-50 dark:bg-gradient-to-br dark:from-orange-900/30 dark:via-orange-800/20 dark:to-[var(--bm-surface)] border border-orange-200 dark:border-orange-600/30 rounded-xl p-4">
           <Clock className="h-6 w-6 text-orange-600 dark:text-orange-400 mb-2" />
           <p className="text-2xl font-bold text-gray-900 dark:text-white">
             {reports.filter(r => r.status === 'processing').length}
@@ -180,12 +182,12 @@ export default function MyReportsSection() {
           <p className="text-xs text-gray-600 dark:text-gray-400">Processing</p>
         </div>
 
-        <div className="bg-purple-50 dark:bg-gradient-to-br dark:from-purple-900/30 dark:via-purple-800/20 dark:to-gray-900 border border-purple-200 dark:border-purple-600/30 rounded-xl p-4">
+        <div className="bg-purple-50 dark:bg-gradient-to-br dark:from-purple-900/30 dark:via-purple-800/20 dark:to-[var(--bm-surface)] border border-purple-200 dark:border-purple-600/30 rounded-xl p-4">
           <FileText className="h-6 w-6 text-purple-600 dark:text-purple-400 mb-2" />
           <p className="text-2xl font-bold text-gray-900 dark:text-white">
             {reports[0] ? new Date(reports[0].created_at).toLocaleDateString() : 'N/A'}
           </p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">Latest Report</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.reports.latestReport')}</p>
         </div>
       </div>
 
@@ -242,15 +244,15 @@ export default function MyReportsSection() {
       ) : filteredReports.length === 0 ? (
         <div className="text-center py-12">
           <FileText className="h-16 w-16 text-gray-500 dark:text-gray-600 mx-auto mb-4" />
-          <p className="text-gray-700 dark:text-gray-400 mb-2">No reports found</p>
-          <p className="text-sm text-gray-600 dark:text-gray-500">Generate your first AI health report to get started</p>
+          <p className="text-gray-700 dark:text-gray-400 mb-2">{t('member.reports.empty')}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-500">{t('member.reports.emptyHint')}</p>
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredReports.map((report) => (
             <div
               key={report.id}
-              className="bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border border-gray-200 dark:border-gray-700/50 rounded-xl p-6 hover:border-orange-500/30 transition-all cursor-pointer"
+              className="bg-white dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-gray-200 dark:border-gray-700/50 rounded-xl p-6 hover:border-orange-500/30 transition-all cursor-pointer"
             >
               <ReportBrandHeader
                 variant="strip"

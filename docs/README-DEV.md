@@ -16,7 +16,7 @@ Welcome to BioMath Core! This guide will get you up and running in less than 15 
 
 ```bash
 git clone <repository-url>
-cd biomathcore-platform
+cd bmcore3.0
 ```
 
 ### 2. Install Dependencies
@@ -52,7 +52,9 @@ VITE_STRIPE_PUBLISHABLE_KEY=pk_test_xxx
 BMC_KMS_KEY=<generate using command below>
 ```
 
-For the current development phase, `VITE_MOCK_MODE=1` is enough to run the app without real Supabase credentials. Leave live keys empty until you intentionally test backend integrations.
+For local UI work, `VITE_MOCK_MODE=1` in `.env` is enough — `npm run dev` does not need real Supabase credentials. Leave live keys empty until you intentionally test backend integrations.
+
+**Deploy note:** Vercel Production/Preview builds do **not** force mock. Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in the Vercel project env. Use `npm run build:mock` only for local/CI UI compile smoke tests. See `DEPLOYMENT_GUIDE.md` §4.0.
 
 Generate KMS key:
 
@@ -85,12 +87,20 @@ Visit `http://localhost:5173`
 
 ### 6. Create Admin User
 
+**Mock mode (`VITE_MOCK_MODE=1`):** sign in with the mock superadmin email — the mock client returns `is_admin: true`. No SQL needed.
+
+**Real Supabase:** the app never auto-promotes. Grant admin in the DB only:
+
 1. Sign up via UI: `http://localhost:5173/sign-up`
-2. Promote to admin:
+2. In Supabase SQL editor, run `scripts/promote-admin.sql` (or):
 
 ```sql
-UPDATE profiles SET is_admin = true WHERE email = 'your@email.com';
+UPDATE public.profiles
+SET is_admin = true, role = 'superadmin', updated_at = now()
+WHERE email = 'your@email.com';
 ```
+
+3. Reload `/admin`. Email allowlists do **not** grant admin in production.
 
 **Time: ~1 minute**
 
@@ -151,7 +161,7 @@ npm run check            # Lint + typecheck + build
 ## Project Structure
 
 ```
-biomathcore-platform/
+bmcore3.0/
 ├── public/              # Static assets
 ├── src/
 │   ├── components/      # React components
@@ -351,7 +361,7 @@ Vercel auto-deploys `main` branch to production.
 | `VITE_STRIPE_PUBLISHABLE_KEY` | Yes | Stripe publishable key |
 | `BMC_KMS_KEY` | Yes | Master encryption key (32 bytes base64) |
 | `VITE_GA_MEASUREMENT_ID` | No | Google Analytics ID |
-| `VITE_FB_PIXEL_ID` | No | Facebook Pixel ID |
+| `VITE_FACEBOOK_PIXEL_ID` | No | Meta (Facebook) Pixel ID |
 
 ## Getting Help
 

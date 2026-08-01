@@ -78,11 +78,11 @@ jobs:
         run: npm ci
 
       - name: Build application
-        run: npm run build
+        # Compile smoke only — mock avoids requiring live Supabase secrets in CI.
+        # Vercel Production/Preview must set real VITE_SUPABASE_* (no VITE_MOCK_MODE).
+        run: npm run build:mock
         env:
           NODE_ENV: production
-          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
       - name: Check build size
         run: |

@@ -1,0 +1,91 @@
+{
+  "footer": {
+    "partnership": "合作伙伴",
+    "partnershipOpportunities": "合作机会",
+    "news": "新闻",
+    "learningCenter": "学习中心",
+    "inviteFriend": "邀请朋友",
+    "ambassador": "推广大使计划",
+    "commandCenter": "管理中心",
+    "adminPanel": "管理面板",
+    "whyTwoModels": "为何使用两个模型",
+    "privacyTrust": "隐私与信任中心",
+    "legalNote": "BioMath Core 是健康管理服务，不提供医疗照护、诊断或治疗。",
+    "legalGroups": {
+      "documents": "法律文件",
+      "disclaimers": "免责声明",
+      "data": "数据与隐私",
+      "safety": "安全与信任"
+    },
+    "cookiePreferences": "Cookie 设置",
+    "legalContact": "隐私与法务联系方式",
+    "disclaimer": "BioMath Core 是健康管理服务，并非医疗服务。我们不提供诊断、治疗或医疗建议，仅提供健康管理指导和预防性健康支持。如有医疗问题，请务必咨询具备资质的医疗专业人员。",
+    "media": "媒体"
+  },
+  "cookies": {
+    "title": "Cookie 设置",
+    "body": "我们使用 Cookie 来维持网站运行、了解使用情况并记住您的设置。您可以自行选择允许的范围。",
+    "acceptAll": "全部接受",
+    "rejectAll": "全部拒绝",
+    "customize": "自定义",
+    "policiesNote": "您随时可以在页脚更改此选择。",
+    "settingsTitle": "Cookie 详细设置",
+    "back": "返回",
+    "save": "保存设置",
+    "categories": {
+      "necessary": {
+        "title": "必要 Cookie",
+        "body": "网站运行所必需，包括登录与安全功能，无法关闭。"
+      },
+      "analytics": {
+        "title": "分析 Cookie",
+        "body": "帮助我们了解网站的使用情况，以便持续改进。"
+      },
+      "marketing": {
+        "title": "营销 Cookie",
+        "body": "用于展示与您相关的内容和信息。"
+      },
+      "preferences": {
+        "title": "偏好 Cookie",
+        "body": "记住您的语言、主题和其他设置。"
+      }
+    }
+  },
+  "commandCenter": {
+    "title": "管理中心",
+    "subtitle": "实时业务分析和服务指标",
+    "revenueTrend": "收入趋势（过去30天）",
+    "userGrowth": "用户增长（过去30天）",
+    "serviceUsage": "服务使用情况",
+    "reportsEngine": "报告功能"
+  },
+  "catalogReference": {
+    "label": "参考",
+    "defaultTitle": "服务目录",
+    "defaultSubtitle": "{{categories}} 个类别 · {{count}} 项来自实时目录的服务说明。",
+    "searchPlaceholder": "搜索类别或服务…",
+    "empty": "没有匹配的服务。",
+    "servicesCount": "{{count}} 项服务",
+    "openCatalog": "在服务目录中打开 →"
+  },
+  "liveSupportChat": {
+    "title": "在线支持聊天",
+    "subtitle": "我们通常在几分钟内回复",
+    "closeAria": "关闭聊天",
+    "emptyTitle": "欢迎使用支持聊天",
+    "emptyBody": "发送消息后，我们的团队会尽快回复。",
+    "signInTitle": "请登录后聊天",
+    "signInBody": "在线支持需要账户，以便保护对话隐私并关联您的历史记录。",
+    "errorTitle": "聊天不可用",
+    "errorBody": "目前无法打开支持聊天。请重试，或发送邮件至 contact@biomathcore.com。",
+    "retry": "重试",
+    "placeholder": "输入消息…",
+    "hint": "按 Enter 发送，Shift+Enter 换行",
+    "supportTeam": "支持团队",
+    "typing": "{{name}} 正在输入…",
+    "userFallback": "用户",
+    "someoneFallback": "有人",
+    "loadError": "支持聊天加载失败。请重试。",
+    "sendError": "消息发送失败。请重试。"
+  }
+}

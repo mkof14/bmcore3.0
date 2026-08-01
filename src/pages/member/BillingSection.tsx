@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   CreditCard,
   Download,
@@ -13,7 +14,7 @@ import {
   XCircle,
   Zap,
   Shield,
-  Sparkles,
+  Hexagon,
   RefreshCw,
   ExternalLink,
   Info
@@ -65,6 +66,7 @@ interface UsageStats {
 }
 
 export default function BillingSection() {
+  const { t } = useTranslation();
   const [invoices, setInvoices] = useState<Invoice[]>([]);
   const [subscription, setSubscription] = useState<Subscription | null>(null);
   const [plan, setPlan] = useState<SubscriptionPlan | null>(null);
@@ -203,7 +205,7 @@ export default function BillingSection() {
     switch (planId.toLowerCase()) {
       case 'core': return <Shield className="h-8 w-8" />;
       case 'daily': return <Zap className="h-8 w-8" />;
-      case 'max': return <Sparkles className="h-8 w-8" />;
+      case 'max': return <Hexagon className="h-8 w-8" />;
       default: return <CreditCard className="h-8 w-8" />;
     }
   };
@@ -213,7 +215,7 @@ export default function BillingSection() {
       case 'core': return 'from-orange-900/30 via-orange-800/20 border-orange-600/30 text-orange-400';
       case 'daily': return 'from-blue-900/30 via-blue-800/20 border-blue-600/30 text-blue-400';
       case 'max': return 'from-purple-900/30 via-purple-800/20 border-purple-600/30 text-purple-400';
-      default: return 'from-slate-100 via-slate-50 border-slate-200 text-slate-600 dark:from-gray-900/30 dark:via-gray-800/20 dark:border-gray-600/30 dark:text-gray-400';
+      default: return 'from-slate-100 via-slate-50 border-slate-200 text-slate-600 dark:from-[var(--bm-surface)]/30 dark:via-gray-800/20 dark:border-gray-600/30 dark:text-gray-400';
     }
   };
 
@@ -249,7 +251,8 @@ export default function BillingSection() {
 
   const handleUpgradePlan = () => {
     // Navigate to pricing page to select a new plan
-    window.location.href = '#/pricing';
+    window.history.pushState({ page: 'pricing' }, '', '/pricing');
+    window.dispatchEvent(new PopStateEvent('popstate'));
   };
 
   if (loading) {
@@ -265,10 +268,10 @@ export default function BillingSection() {
       <div className="mb-6">
         <h1 className="text-3xl font-semibold text-gray-900 mb-2 flex items-center gap-3">
           <CreditCard className="h-8 w-8 text-orange-500" />
-          Billing & Subscription
+          {t('member.billing.title')}
         </h1>
         <p className="text-gray-600">
-          Manage your subscription, update payment methods, and view your complete payment history
+          {t('member.billing.subtitle')}
         </p>
       </div>
 
@@ -284,7 +287,7 @@ export default function BillingSection() {
         <div className="mb-6 bg-blue-50 border border-blue-200 rounded-2xl p-4 flex items-start gap-3">
           <Info className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
           <div>
-            <h3 className="text-gray-900 font-semibold mb-1">No Active Subscription</h3>
+            <h3 className="text-gray-900 font-semibold mb-1">{t('member.billing.noSubscription')}</h3>
             <p className="text-sm text-gray-600 mb-3">
               You don't have an active subscription yet. Choose a plan to unlock all features and start your health journey!
             </p>
@@ -371,7 +374,7 @@ export default function BillingSection() {
               {getDaysUntilRenewal()} days away
             </span>
           </div>
-          <p className="text-xs text-gray-500 mb-1">Next Billing Date</p>
+          <p className="text-xs text-gray-500 mb-1">{t('member.billing.nextBillingDate')}</p>
           <p className="text-lg font-semibold text-gray-900">
             {subscription ? formatDate(subscription.current_period_end) : 'No subscription'}
           </p>
@@ -413,7 +416,7 @@ export default function BillingSection() {
               {usageStats?.reportsLimit === -1 ? 'Unlimited' : `${usageStats?.reportsUsed}/${usageStats?.reportsLimit}`}
             </span>
           </div>
-          <p className="text-xs text-gray-500 mb-1">Reports This Month</p>
+          <p className="text-xs text-gray-500 mb-1">{t('member.billing.reportsThisMonth')}</p>
           <p className="text-lg font-semibold text-gray-900">{usageStats?.reportsUsed || 0}</p>
           {usageStats && usageStats.reportsLimit !== -1 ? (
             <div className="mt-2 bg-slate-200 rounded-full h-1.5">
@@ -439,7 +442,7 @@ export default function BillingSection() {
               {usageStats?.storageUsed}GB / {usageStats?.storageLimit}GB
             </span>
           </div>
-          <p className="text-xs text-gray-500 mb-1">Storage Used</p>
+          <p className="text-xs text-gray-500 mb-1">{t('member.billing.storageUsed')}</p>
           <p className="text-lg font-semibold text-gray-900">{usageStats?.storageUsed || 0} GB</p>
           {usageStats && (
             <div className="mt-2 bg-slate-200 rounded-full h-1.5">
@@ -467,7 +470,7 @@ export default function BillingSection() {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" />
             <input
               type="text"
-              placeholder="Search invoices..."
+              placeholder={t('member.billing.searchInvoices')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
@@ -478,7 +481,7 @@ export default function BillingSection() {
             onChange={(e) => setStatusFilter(e.target.value)}
             className="px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
           >
-            <option value="all">All Status</option>
+            <option value="all">{t('member.billing.allStatus')}</option>
             <option value="paid">Paid</option>
             <option value="pending">Pending</option>
             <option value="failed">Failed</option>
@@ -505,7 +508,7 @@ export default function BillingSection() {
                     <td colSpan={6} className="px-6 py-12 text-center text-gray-500">
                       <div className="flex flex-col items-center gap-2">
                         <AlertCircle className="h-12 w-12 text-gray-500" />
-                        <p>No invoices found</p>
+                        <p>{t('member.billing.noInvoices')}</p>
                       </div>
                     </td>
                   </tr>
@@ -562,8 +565,8 @@ export default function BillingSection() {
           title="Browse all available plans"
         >
           <ArrowUpRight className="h-6 w-6 text-orange-500 mb-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          <h3 className="text-gray-900 font-semibold mb-1">Upgrade Plan</h3>
-          <p className="text-sm text-gray-600">Get access to more features and higher limits</p>
+          <h3 className="text-gray-900 font-semibold mb-1">{t('member.billing.upgradePlan')}</h3>
+          <p className="text-sm text-gray-600">{t('member.billing.upgradePlanBody')}</p>
         </button>
 
         <button
@@ -572,7 +575,7 @@ export default function BillingSection() {
           title="Manage Billing Cycle"
         >
           <RefreshCw className="h-6 w-6 text-blue-500 mb-2 group-hover:rotate-180 transition-transform duration-500" />
-          <h3 className="text-gray-900 font-semibold mb-1">Change Billing Cycle</h3>
+          <h3 className="text-gray-900 font-semibold mb-1">{t('member.billing.changeCycle')}</h3>
           <p className="text-sm text-gray-600">Switch between monthly and annual billing (save 17%)</p>
         </button>
 
@@ -582,8 +585,8 @@ export default function BillingSection() {
           title="Manage Payment Methods"
         >
           <ExternalLink className="h-6 w-6 text-purple-500 mb-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          <h3 className="text-gray-900 font-semibold mb-1">Payment Methods</h3>
-          <p className="text-sm text-gray-600">Update your credit card and billing information</p>
+          <h3 className="text-gray-900 font-semibold mb-1">{t('member.billing.paymentMethods')}</h3>
+          <p className="text-sm text-gray-600">{t('member.billing.paymentMethodsBody')}</p>
         </button>
       </div>
     </div>

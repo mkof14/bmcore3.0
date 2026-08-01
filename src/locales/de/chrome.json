@@ -1,0 +1,91 @@
+{
+  "footer": {
+    "partnership": "Partnerschaft",
+    "partnershipOpportunities": "Partnerschaftsmöglichkeiten",
+    "news": "Neuigkeiten",
+    "learningCenter": "Lernzentrum",
+    "inviteFriend": "Freunde einladen",
+    "ambassador": "Botschafterprogramm",
+    "commandCenter": "Kontrollzentrum",
+    "adminPanel": "Administrationsbereich",
+    "whyTwoModels": "Warum zwei Modelle",
+    "privacyTrust": "Datenschutz- und Vertrauenszentrum",
+    "legalNote": "BioMath Core ist ein Wellnessdienst. Er bietet keine medizinische Versorgung, keine Diagnose und keine Behandlung.",
+    "legalGroups": {
+      "documents": "Rechtliche Dokumente",
+      "disclaimers": "Hinweise und Haftungsausschlüsse",
+      "data": "Daten und Datenschutz",
+      "safety": "Sicherheit und Vertrauen"
+    },
+    "cookiePreferences": "Cookie-Einstellungen",
+    "legalContact": "Kontakt für Datenschutz und Recht",
+    "disclaimer": "BioMath Core ist ein Wellnessdienst und kein medizinischer Dienst. Wir stellen keine Diagnosen, behandeln nicht und erteilen keinen medizinischen Rat. Wir bieten ausschließlich Orientierung für Wohlbefinden und präventive Gesundheitsunterstützung. Wende dich bei medizinischen Anliegen immer an qualifiziertes medizinisches Fachpersonal.",
+    "media": "Medien"
+  },
+  "cookies": {
+    "title": "Cookie-Einstellungen",
+    "body": "Wir verwenden Cookies, damit die Website funktioniert, um ihre Nutzung zu verstehen und um Ihre Einstellungen zu speichern. Sie entscheiden, was Sie zulassen.",
+    "acceptAll": "Alle akzeptieren",
+    "rejectAll": "Alle ablehnen",
+    "customize": "Anpassen",
+    "policiesNote": "Sie können diese Auswahl jederzeit über die Fußzeile ändern.",
+    "settingsTitle": "Cookie-Auswahl",
+    "back": "Zurück",
+    "save": "Einstellungen speichern",
+    "categories": {
+      "necessary": {
+        "title": "Notwendige Cookies",
+        "body": "Erforderlich für den Betrieb der Website, einschließlich Anmeldung und Sicherheit. Sie lassen sich nicht abschalten."
+      },
+      "analytics": {
+        "title": "Analyse-Cookies",
+        "body": "Helfen uns zu verstehen, wie die Website genutzt wird, damit wir sie verbessern können."
+      },
+      "marketing": {
+        "title": "Marketing-Cookies",
+        "body": "Dienen dazu, Inhalte und Angebote zu zeigen, die für Sie relevant sind."
+      },
+      "preferences": {
+        "title": "Präferenz-Cookies",
+        "body": "Speichern Ihre Sprache, Ihr Design und weitere Einstellungen."
+      }
+    }
+  },
+  "commandCenter": {
+    "title": "Kontrollzentrum",
+    "subtitle": "Geschäftsanalysen und Servicemetriken in Echtzeit",
+    "revenueTrend": "Umsatztrend (letzte 30 Tage)",
+    "userGrowth": "Nutzerwachstum (letzte 30 Tage)",
+    "serviceUsage": "Servicenutzung",
+    "reportsEngine": "Berichtsmodul"
+  },
+  "catalogReference": {
+    "label": "Referenz",
+    "defaultTitle": "Servicekatalog",
+    "defaultSubtitle": "{{categories}} Kategorien · {{count}} Services mit Beschreibungen aus dem Live-Katalog.",
+    "searchPlaceholder": "Kategorien oder Services suchen…",
+    "empty": "Keine passenden Services.",
+    "servicesCount": "{{count}} Services",
+    "openCatalog": "Im Servicekatalog öffnen →"
+  },
+  "liveSupportChat": {
+    "title": "Live-Support-Chat",
+    "subtitle": "Wir antworten in der Regel innerhalb von Minuten",
+    "closeAria": "Chat schließen",
+    "emptyTitle": "Willkommen im Support-Chat",
+    "emptyBody": "Senden Sie eine Nachricht – unser Team meldet sich in Kürze.",
+    "signInTitle": "Zum Chatten anmelden",
+    "signInBody": "Live-Support benötigt ein Konto, damit Ihr Gespräch privat und mit Ihrem Verlauf verbunden bleibt.",
+    "errorTitle": "Chat nicht verfügbar",
+    "errorBody": "Der Support-Chat konnte gerade nicht geöffnet werden. Bitte erneut versuchen oder contact@biomathcore.com schreiben.",
+    "retry": "Erneut versuchen",
+    "placeholder": "Nachricht eingeben…",
+    "hint": "Enter zum Senden, Umschalt+Enter für neue Zeile",
+    "supportTeam": "Support-Team",
+    "typing": "{{name}} tippt…",
+    "userFallback": "Benutzer",
+    "someoneFallback": "Jemand",
+    "loadError": "Support-Chat konnte nicht geladen werden. Bitte erneut versuchen.",
+    "sendError": "Nachricht konnte nicht gesendet werden. Bitte erneut versuchen."
+  }
+}

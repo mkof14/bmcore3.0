@@ -1,0 +1,1004 @@
+{
+  "servicesData": {
+    "categories": {
+      "critical-health": {
+        "name": "בריאות קריטית",
+        "description": "ניטור בריאות מתקדם והערכת סיכונים למצבים רפואיים קריטיים",
+        "services": {
+          "risk-insight": {
+            "name": "תובנת סיכונים",
+            "description": "הערכת סיכונים בריאותית מקיפה באמצעות מודלים ביו-מתמטיים"
+          },
+          "lab-results": {
+            "name": "מסביר תוצאות מעבדה",
+            "description": "פרשנות מבוססת AI של תוצאות בדיקות מעבדה"
+          },
+          "lab-results-trend": {
+            "name": "מגמת תוצאות מעבדה",
+            "description": "השווה תוצאות מעבדה לאורך זמן וזיהוי שינויים משמעותיים, חריגות חוזרות ונשנות ובדיקות מעקב חסרות."
+          },
+          "drug-interaction": {
+            "name": "בודק אינטראקציות בין תרופות",
+            "description": "ניתוח אינטראקציות תרופתיות בזמן אמת"
+          },
+          "medication-reconciliation": {
+            "name": "התאמה תרופתית",
+            "description": "צור רשימת תרופות מאושרת אחת ממרשמים, רשומות רפואיות ומערכי משתמש, וזיהוי כפילויות, התנגשויות והוראות מיושנות."
+          },
+          "symptom-analyzer": {
+            "name": "מנתח סימפטומים",
+            "description": "הערכת סימפטומים אינטליגנטית ושלישית"
+          },
+          "chronic-disease": {
+            "name": "מאמן למחלות כרוניות",
+            "description": "ניהול מותאם אישית למצבים כרוניים"
+          },
+          "medication-adherence": {
+            "name": "דבקות בתרופות בינה מלאכותית",
+            "description": "מעקב ותזכורות חכמים לתרופות"
+          },
+          "care-cost": {
+            "name": "כלי למיטוב עלויות הטיפול",
+            "description": "ניתוח ואופטימיזציה של עלויות שירותי בריאות"
+          },
+          "doctor-visit-prep": {
+            "name": "הכנה לביקור רופא",
+            "description": "הכינו סיכום ביקור תמציתי עם סיבת התור, שינויים אחרונים, תרופות עדכניות, תוצאות רלוונטיות, תסמינים ושאלות."
+          },
+          "prescription-price-comparison": {
+            "name": "השוואת מחירי מרשם",
+            "description": "השווה מחירים זמינים עבור תרופה שנרשמה לפי בית מרקחת, אפשרות גנרית, מינון ואמצעי תשלום."
+          },
+          "post-surgery": {
+            "name": "מעקב אחר התאוששות לאחר ניתוח",
+            "description": "מעקב והכוונה להחלמה"
+          },
+          "clinical-trial": {
+            "name": "מאתר ניסויים קליניים",
+            "description": "התאמה אישית של ניסויים קליניים"
+          },
+          "pre-surgery": {
+            "name": "מוכנות לפני ניתוח",
+            "description": "הערכת הכנה כירורגית"
+          },
+          "rare-disease": {
+            "name": "ניווט למחלות נדירות",
+            "description": "תמיכה בניהול מצב נדיר"
+          },
+          "med-refill": {
+            "name": "ניהול חכם של חידוש מרשמים",
+            "description": "ניהול אוטומטי למילוי מרשם"
+          },
+          "pain-map": {
+            "name": "מפת כאב בינה מלאכותית",
+            "description": "מעקב אחר כאב וניתוח דפוסים"
+          },
+          "vaccination": {
+            "name": "דרכון חיסון",
+            "description": "רישומי חיסונים דיגיטליים"
+          },
+          "post-covid": {
+            "name": "מתכנן פוסט קוביד",
+            "description": "תכנון התאוששות ארוך של COVID"
+          },
+          "genetic-risk": {
+            "name": "חיזוי סיכון למחלות גנטיות",
+            "description": "הערכת סיכונים גנומית"
+          },
+          "emergency-profile": {
+            "name": "פרופיל רפואי חירום",
+            "description": "גישה מהירה למידע בריאותי חירום"
+          },
+          "remote-vitals": {
+            "name": "ניטור חיוניות מרחוק",
+            "description": "מעקב רציף של סימנים חיוניים"
+          }
+        }
+      },
+      "everyday-wellness": {
+        "name": "בריאות יומיומית",
+        "description": "אופטימיזציה בריאותית יומיומית ונהלי בריאות",
+        "services": {
+          "travel-kit": {
+            "name": "ערכת טיולים בריאים",
+            "description": "הכנה לבריאות נסיעות וטיפים"
+          },
+          "goal-assistant": {
+            "name": "עוזר מטרה",
+            "description": "הגדרת מטרות בריאות ומעקב"
+          },
+          "habit-tracker": {
+            "name": "מעקב אחר הרגלים יומיים",
+            "description": "לבנות ולשמור הרגלים בריאים"
+          },
+          "stress-reduction": {
+            "name": "מדריך להפחתת מתח",
+            "description": "ניהול מתח מבוסס ראיות"
+          },
+          "energy-optimizer": {
+            "name": "מייעל רמת אנרגיה",
+            "description": "להגביר ולשמור על האנרגיה היומיומית"
+          },
+          "mind-body": {
+            "name": "תרגילי חיבור גוף-נפש",
+            "description": "שיטות בריאות הוליסטיות"
+          },
+          "affirmations": {
+            "name": "מחולל הצהרות חיוביות",
+            "description": "הודעות חיוביות בהתאמה אישית"
+          },
+          "gratitude": {
+            "name": "הנחיות יומן הכרת תודה",
+            "description": "תרגול הכרת תודה יומיומי"
+          },
+          "digital-wellbeing": {
+            "name": "ציון רווחה דיגיטלית",
+            "description": "אופטימיזציה של שימוש בטכנולוגיה"
+          },
+          "mindful-eating": {
+            "name": "עוזר אכילה מודעת",
+            "description": "שיטות אכילה מודעת"
+          },
+          "work-life": {
+            "name": "יועץ איזון בין עבודה לחיים",
+            "description": "איזון אסטרטגיות אופטימיזציה"
+          },
+          "immunity-booster": {
+            "name": "תוכנית לחיזוק חסינות",
+            "description": "חיזוק מערכת החיסון"
+          },
+          "breathing": {
+            "name": "תרגילי נשימה מודעת",
+            "description": "טכניקות נשימה מודרכות"
+          },
+          "ergonomic": {
+            "name": "הגדרת סביבת עבודה ארגונומית",
+            "description": "אופטימיזציה של בריאות סביבת העבודה"
+          },
+          "social-connection": {
+            "name": "מעקב אחר חיבורים חברתיים",
+            "description": "ניטור רווחה חברתית"
+          }
+        }
+      },
+      "longevity": {
+        "name": "אריכות ימים ואנטי אייג'ינג",
+        "description": "מדע הזדקנות מתקדם ואופטימיזציה של תוחלת חיים",
+        "services": {
+          "biological-age": {
+            "name": "גורמי גיל ביולוגיים",
+            "description": "הערכת גיל ביולוגית אמיתית"
+          },
+          "polygenic-risk": {
+            "name": "מציג סיכונים פוליגני",
+            "description": "ניתוח סיכונים בריאותיים רב-גנים"
+          },
+          "epigenetic-age": {
+            "name": "לוח המחוונים של העידן האפיגנטי",
+            "description": "מעקב אחר גיל מתילציה של DNA"
+          },
+          "pharmacogenomics": {
+            "name": "Matcher Pharmacogenomics",
+            "description": "תאימות לתרופות גנטיות"
+          },
+          "genetic-traits": {
+            "name": "מסביר תכונה גנטית",
+            "description": "הבנת המבנה הגנטי שלך"
+          },
+          "telomere": {
+            "name": "ניתוח אורך טלומרים",
+            "description": "סמן ביולוגי להזדקנות סלולרי"
+          },
+          "nad-optimization": {
+            "name": "מדריך אופטימיזציה של NAD+",
+            "description": "שיפור האנרגיה הסלולרית"
+          },
+          "senolytics": {
+            "name": "המלצת סנוליטיקה",
+            "description": "התערבות הזדקנות סלולרית"
+          },
+          "mitochondrial": {
+            "name": "הערכת בריאות המיטוכונדריה",
+            "description": "אופטימיזציה של מעצמה סלולרית"
+          },
+          "longevity-diet": {
+            "name": "מתכנן דיאטה לאריכות ימים",
+            "description": "תזונה לטווח בריאותי ממושך"
+          },
+          "glycemic-control": {
+            "name": "יועץ בקרת גליקמי",
+            "description": "אופטימיזציה של סוכר בדם"
+          },
+          "cellular-senescence": {
+            "name": "ציון הזדקנות סלולרית",
+            "description": "מעקב אחר הצטברות תאי הזדקנות"
+          },
+          "microbiome": {
+            "name": "ניתוח מגוון מיקרוביום",
+            "description": "חיבור לאריכות ימים לבריאות המעיים"
+          },
+          "gene-expression": {
+            "name": "דוח ביטוי גנים לאריכות ימים",
+            "description": "פעילות גנים הקשורה להזדקנות"
+          },
+          "organ-age": {
+            "name": "הערכת גיל איברים",
+            "description": "ניתוח הזדקנות איברים פרטני"
+          }
+        }
+      },
+      "mental-wellness": {
+        "name": "בריאות נפשית",
+        "description": "בריאות פסיכולוגית ואופטימיזציה קוגניטיבית",
+        "services": {
+          "mindfulness": {
+            "name": "מדריך מיינדפולנס",
+            "description": "שיטות מדיטציה ומודעות"
+          },
+          "motivation": {
+            "name": "בוסטר מוטיבציה",
+            "description": "שיפור דחף פסיכולוגי"
+          },
+          "digital-detox": {
+            "name": "מתכנן ניקוי רעלים דיגיטלי",
+            "description": "אסטרטגיות הפסקת טכנולוגיה"
+          },
+          "gratitude-wall": {
+            "name": "קיר הכרת תודה דיגיטלי",
+            "description": "שיתוף הערכה בקהילה"
+          },
+          "social-battery": {
+            "name": "חיזוי סוללה חברתית",
+            "description": "ניהול אנרגיה חברתית"
+          },
+          "isolation-coach": {
+            "name": "מאמנת לבידוד חברתי",
+            "description": "תמיכה בבניית חיבורים"
+          },
+          "cognitive-performance": {
+            "name": "משפר ביצועים קוגניטיביים",
+            "description": "אופטימיזציה של חדות נפשית"
+          },
+          "emotional-regulation": {
+            "name": "כלי ויסות רגשי",
+            "description": "טכניקות לניהול רגשות"
+          },
+          "cbt-modules": {
+            "name": "מודולי טיפול קוגניטיבי התנהגותי (CBT).",
+            "description": "תרגילי טיפול מבוססי ראיות"
+          },
+          "stress-hormone": {
+            "name": "מעקב אחר הורמוני לחץ",
+            "description": "קורטיזול וסמנים ביולוגיים למתח"
+          },
+          "sleep-mood": {
+            "name": "ניתוח חיבורי שינה-מצב רוח",
+            "description": "מעקב אחר יחסי מנוחה-רגש"
+          }
+        }
+      },
+      "fitness-performance": {
+        "name": "כושר וביצועים",
+        "description": "אימון אתלטי ואופטימיזציה פיזית",
+        "services": {
+          "meal-plan": {
+            "name": "תוכנית ארוחות מותאמת אישית",
+            "description": "תזונה מותאמת אישית למטרות שלך"
+          },
+          "vo2-max": {
+            "name": "הערכת VO₂-Max",
+            "description": "מדידת יכולת אירובית"
+          },
+          "workout-generator": {
+            "name": "מחולל אימון",
+            "description": "תוכניות אימון מבוססות בינה מלאכותית"
+          },
+          "plateau-breaker": {
+            "name": "שובר רמת חוזק",
+            "description": "להתגבר על סטגנציה באימונים"
+          },
+          "tissue-release": {
+            "name": "מפת שחרור רקמות רכות",
+            "description": "הדרכה לשחרור מיופסיאלי"
+          },
+          "body-fat": {
+            "name": "הקרנת מגמת שומן בגוף",
+            "description": "מודל חיזוי קומפוזיציה"
+          },
+          "sport-warmup": {
+            "name": "חימום ספציפי לספורט",
+            "description": "הכנה מותאמת לפעילות"
+          },
+          "cycling-power": {
+            "name": "חיזוי כוח רכיבה על אופניים",
+            "description": "חיזוי ביצועים"
+          },
+          "hrv-breathwork": {
+            "name": "עבודת נשימה של HRV של 2 דקות",
+            "description": "נשימת התאוששות מהירה"
+          },
+          "active-recovery": {
+            "name": "טיימר שחזור פעיל",
+            "description": "תקופות מנוחה אופטימליות"
+          },
+          "desk-stretch": {
+            "name": "הפסקות מתיחה לשולחן",
+            "description": "שגרות ניידות במקום העבודה"
+          },
+          "soft-tissue-map": {
+            "name": "מפת הרקמות הרכות",
+            "description": "הדמיית בריאות השרירים"
+          },
+          "endurance-plan": {
+            "name": "תוכנית אימוני סיבולת",
+            "description": "ביצועים למרחקים ארוכים"
+          },
+          "flexibility": {
+            "name": "מדריך גמישות וניידות",
+            "description": "שיפור טווחי תנועה"
+          },
+          "post-workout": {
+            "name": "מדריך תזונה לאחר אימון",
+            "description": "תזמון תזונת התאוששות"
+          },
+          "injury-prevention": {
+            "name": "תוכנית למניעת פציעות",
+            "description": "הימנעות יזומה מפציעה"
+          },
+          "strength-conditioning": {
+            "name": "מאמן כוח והתניה",
+            "description": "הכשרה מקיפה"
+          },
+          "powerlifting": {
+            "name": "מחולל תוכניות הרמת כוח",
+            "description": "פיתוח חוזק מרבי"
+          },
+          "gait-analysis": {
+            "name": "הפעלת ניתוח הליכה",
+            "description": "הפעלת אופטימיזציה של טפסים"
+          }
+        }
+      },
+      "womens-health": {
+        "name": "בריאות האישה",
+        "description": "שירותי בריאות מיוחדים לנשים",
+        "services": {
+          "cycle-tracker": {
+            "name": "גשש מחזור",
+            "description": "ניטור וחיזוי של מחזור הווסת"
+          },
+          "pregnancy": {
+            "name": "ציר זמן הריון",
+            "description": "הדרכת הריון משבוע לשבוע"
+          },
+          "menopause": {
+            "name": "ניווט גיל המעבר",
+            "description": "תמיכה וניהול מעברים"
+          },
+          "breast-health": {
+            "name": "סיכון לבריאות השד",
+            "description": "מיון והערכת סיכונים"
+          },
+          "hormone-dashboard": {
+            "name": "לוח מחוונים הורמונים",
+            "description": "מעקב הורמונים נשי"
+          },
+          "endometriosis": {
+            "name": "מעקב אחר סימפטומים של אנדומטריוזיס",
+            "description": "תמיכה בניהול מצבים"
+          },
+          "pcos": {
+            "name": "מדריך לתסמונת השחלות הפוליציסטיות (PCOS).",
+            "description": "אופטימיזציה של אורח חיים PCOS"
+          },
+          "pelvic-floor": {
+            "name": "תוכנית אימונים לרצפת האגן",
+            "description": "חיזוק ושיקום"
+          }
+        }
+      },
+      "mens-health": {
+        "name": "בריאות גברים",
+        "description": "שירותי בריאות מיוחדים לגברים",
+        "services": {
+          "androgen": {
+            "name": "לוח המחוונים של אנדרוגן",
+            "description": "ניטור הורמונים גבריים"
+          },
+          "prostate-risk": {
+            "name": "ציון סיכון הערמונית",
+            "description": "הערכת בריאות הערמונית"
+          },
+          "fertility-tracker": {
+            "name": "גשש פוריות",
+            "description": "ייעול פוריות הגבר"
+          },
+          "hair-loss": {
+            "name": "מנבא נשירת שיער",
+            "description": "מעקב התקרחות אנדרוגנית"
+          },
+          "performance-coach": {
+            "name": "מאמן ביצועים",
+            "description": "אופטימיזציה של חיוניות גברית"
+          },
+          "cardiovascular-risk": {
+            "name": "סיכון קרדיווסקולרי לגברים",
+            "description": "בדיקת בריאות הלב"
+          },
+          "hormone-optimization": {
+            "name": "אופטימיזציה של הורמונים גבריים",
+            "description": "איזון טסטוסטרון"
+          },
+          "prostate-health": {
+            "name": "מאמן לבריאות הערמונית",
+            "description": "טיפול פרואקטיבי בערמונית"
+          }
+        }
+      },
+      "beauty-skincare": {
+        "name": "יופי וטיפוח עור",
+        "description": "בריאות דרמטולוגית ואופטימיזציה קוסמטית",
+        "services": {
+          "skincare-routine": {
+            "name": "שגרת טיפוח העור בינה מלאכותית",
+            "description": "משטר טיפוח מותאם אישית"
+          },
+          "uv-forecast": {
+            "name": "תחזית נזקי UV",
+            "description": "חיזוי סיכון חשיפה לשמש"
+          },
+          "dermatology-scan": {
+            "name": "סריקת עור דיגיטלית",
+            "description": "ניתוח מצב עור בינה מלאכותית"
+          },
+          "hair-porosity": {
+            "name": "יועץ לנקבוביות שיער",
+            "description": "אופטימיזציה לטיפוח השיער"
+          },
+          "cosmetic-scan": {
+            "name": "סריקת ברקוד קוסמטית",
+            "description": "ניתוח מרכיבי המוצר"
+          },
+          "facial-massage": {
+            "name": "שגרת עיסוי פנים",
+            "description": "טכניקות ניקוז לימפתי"
+          },
+          "ingredient-conflict": {
+            "name": "קונפליקט מרכיבים",
+            "description": "בודק תאימות מוצרים"
+          },
+          "hair-growth": {
+            "name": "מנבא צמיחת שיער",
+            "description": "אומדן ציר זמן צמיחה"
+          },
+          "anti-aging-skincare": {
+            "name": "יועץ טיפוח אנטי אייג'ינג",
+            "description": "אסטרטגיות נגד גיל"
+          },
+          "sunscreen": {
+            "name": "מנוע המלצת קרם הגנה",
+            "description": "התאמת מוצרי SPF"
+          }
+        }
+      },
+      "nutrition-diet": {
+        "name": "תזונה ודיאטה",
+        "description": "תזונה מבוססת ראיות ואופטימיזציה תזונתית",
+        "services": {
+          "food-swaps": {
+            "name": "החלפת מזון חכמה",
+            "description": "הצעות אלטרנטיביות בריאות יותר"
+          },
+          "rpm": {
+            "name": "ניטור מטופל מרחוק (RPM)",
+            "description": "מעקב התערבות תזונתית"
+          },
+          "hydration": {
+            "name": "נוסחת הידרציה",
+            "description": "יעדי צריכת מים מותאמים אישית"
+          },
+          "label-decoder": {
+            "name": "מפענח תווית תזונה",
+            "description": "פרשנות תווית מזון"
+          },
+          "meal-kit": {
+            "name": "בונה ערכות ארוחות תקציביות",
+            "description": "תכנון תזונה משתלם"
+          },
+          "sodium-potassium": {
+            "name": "מד נתרן-אשלגן",
+            "description": "מעקב אחר מאזן אלקטרוליטים"
+          },
+          "gut-microbiome": {
+            "name": "מנתח מיקרוביום בטן",
+            "description": "הערכת בריאות מערכת העיכול"
+          },
+          "supplement-guide": {
+            "name": "מדריך תוספות מותאם אישית",
+            "description": "השלמה מבוססת ראיות"
+          },
+          "metabolic-rate": {
+            "name": "מחשבון קצב חילוף חומרים",
+            "description": "הערכה קלורית צריכה"
+          },
+          "food-sensitivity": {
+            "name": "מעקב אחר רגישות למזון",
+            "description": "זיהוי חוסר סובלנות"
+          },
+          "electrolyte": {
+            "name": "יועץ מאזן אלקטרוליטים",
+            "description": "אופטימיזציה של מינרלים"
+          },
+          "sustainability": {
+            "name": "ציון קיימות מזון",
+            "description": "מעקב אחר השפעה על הסביבה"
+          },
+          "meal-prep": {
+            "name": "מתכנן הכנת ארוחות",
+            "description": "הכנת ארוחה שבועית"
+          },
+          "recipe-analyzer": {
+            "name": "מנתח תזונה של מתכונים",
+            "description": "פירוט תזונתי של מתכון"
+          },
+          "hydration-goal": {
+            "name": "מגדיר יעדי הידרציה",
+            "description": "תכנון צריכת נוזלים יומית"
+          }
+        }
+      },
+      "sleep-recovery": {
+        "name": "שינה והתאוששות",
+        "description": "אופטימיזציה של שינה ושיפור התאוששות",
+        "services": {
+          "blue-light": {
+            "name": "מתכנן אור כחול",
+            "description": "אופטימיזציה של חשיפה לאור"
+          },
+          "sleep-hygiene": {
+            "name": "מאמן היגיינת שינה",
+            "description": "שיפור סביבת השינה"
+          },
+          "circadian-light": {
+            "name": "מדריך אור צירקדיאן",
+            "description": "יישור קצב טבעי"
+          },
+          "sleep-apnea": {
+            "name": "מסנן דום נשימה בשינה",
+            "description": "זיהוי הפרעות נשימה"
+          },
+          "micro-meditation": {
+            "name": "מחולל מיקרו מדיטציה",
+            "description": "תרגילי הרפיה מהירים"
+          },
+          "sleep-environment": {
+            "name": "מייעל סביבת שינה",
+            "description": "אופטימיזציה של חדר שינה"
+          },
+          "guided-sleep": {
+            "name": "מדיטציית שינה מודרכת",
+            "description": "סיוע בשינה אודיו"
+          },
+          "dream-analysis": {
+            "name": "ניתוח דפוסי חלום",
+            "description": "תובנות איכות שינה"
+          }
+        }
+      },
+      "environmental-health": {
+        "name": "בריאות הסביבה",
+        "description": "ניטור והפחתה של חשיפה סביבתית",
+        "services": {
+          "eco-routine": {
+            "name": "הערכה אקולוגית שגרתית",
+            "description": "הערכת השפעה על הסביבה"
+          },
+          "environmental-exposure": {
+            "name": "חשיפה סביבתית",
+            "description": "מעקב אחר חשיפה לרעלנים"
+          },
+          "pollen-defense": {
+            "name": "הגנת אבקה",
+            "description": "הכנה לעונת האלרגיה"
+          },
+          "noise-map": {
+            "name": "מפת רעש פנימית",
+            "description": "הערכת זיהום קול"
+          },
+          "commute-calorie": {
+            "name": "כלי אופטימיזציית קלוריות נסיעה",
+            "description": "תכנון תחבורה אקטיבי"
+          },
+          "air-quality": {
+            "name": "יועץ איכות אוויר ביתי",
+            "description": "ניטור אוויר פנימי"
+          },
+          "water-quality": {
+            "name": "מוניטור איכות מים",
+            "description": "הערכת מי שתייה"
+          },
+          "mold-exposure": {
+            "name": "הערכת סיכוני חשיפה לעובש",
+            "description": "זיהוי זיהום פטרייתי"
+          }
+        }
+      },
+      "family-health": {
+        "name": "בריאות המשפחה",
+        "description": "ניהול מקיף של שירותי בריאות המשפחה",
+        "services": {
+          "medication-hub": {
+            "name": "מרכז תרופות משפחתיות",
+            "description": "מעקב אחר תרופות ביתיות"
+          },
+          "family-caregiver-access": {
+            "name": "גישה למשפחה ולמטפל",
+            "description": "גישה מבוססת הרשאה לניהול מידע בריאותי ומשימות נבחרות עבור ילד, בן זוג, הורה או מבוגר תלוי."
+          },
+          "child-growth": {
+            "name": "מעקב אחר גדילת ילדים",
+            "description": "ניטור התפתחות ילדים"
+          },
+          "genetic-compatibility": {
+            "name": "בדיקת תאימות גנטית",
+            "description": "תובנות לתכנון משפחה"
+          },
+          "wellness-challenge": {
+            "name": "אתגר בריאות המשפחה",
+            "description": "מטרות בריאות קבוצתיות"
+          },
+          "immunization": {
+            "name": "מתזמן חיסוני ילדים",
+            "description": "ציר זמן של חיסונים"
+          },
+          "first-aid": {
+            "name": "מדריך עזרה ראשונה למשפחה",
+            "description": "פרוטוקולי תגובה לשעת חירום"
+          },
+          "sibling-comparison": {
+            "name": "השוואת בריאות אחים",
+            "description": "השוואת התפתחות"
+          }
+        }
+      },
+      "preventive-medicine": {
+        "name": "רפואה מונעת ואריכות ימים",
+        "description": "מניעת מחלות יזומה ואופטימיזציה בריאותית",
+        "services": {
+          "cancer-screening": {
+            "name": "בדיקת סרטן מותאמת אישית",
+            "description": "פרוטוקולי סקר מבוססי סיכונים"
+          },
+          "preventive-care-due": {
+            "name": "טיפול מונע בשל",
+            "description": "מראה בדיקות מניעתיות, חיסונים ובדיקות מעקב שאמורות להגיע או להסתיים בהתבסס על הפרופיל והרישומים המאושרים של המשתמש."
+          },
+          "cardiovascular-prevention": {
+            "name": "תוכנית למניעת מחלות לב וכלי דם",
+            "description": "אופטימיזציה לבריאות הלב"
+          },
+          "neurodegenerative": {
+            "name": "הערכת סיכונים נוירודגנרטיבית",
+            "description": "הגנה על בריאות המוח"
+          },
+          "inflammation-management": {
+            "name": "תוכנית לניהול דלקות",
+            "description": "הפחתת דלקת מערכתית"
+          },
+          "immune-optimization": {
+            "name": "אופטימיזציה של מערכת החיסון",
+            "description": "שיפור התפקוד החיסוני"
+          },
+          "risk-calculator": {
+            "name": "מחשבון סיכוני בריאות ואיכות חיים",
+            "description": "הערכת סיכונים מקיפה"
+          },
+          "diabetes-prevention": {
+            "name": "תוכנית למניעת סוכרת",
+            "description": "ניהול סוכר בדם"
+          },
+          "metabolic-syndrome": {
+            "name": "מוניטור לתסמונת מטבולית",
+            "description": "מעקב אחר בריאות מטבולית"
+          }
+        }
+      },
+      "biohacking": {
+        "name": "Biohacking וביצועים",
+        "description": "אופטימיזציה מתקדמת של ביצועים אנושיים",
+        "services": {
+          "nootropics": {
+            "name": "מנוע המלצות נוטרופי",
+            "description": "הדרכה משפר קוגניטיבי"
+          },
+          "cryotherapy": {
+            "name": "מחולל פרוטוקול קריותרפיה",
+            "description": "אופטימיזציה של טיפול בקור"
+          },
+          "red-light": {
+            "name": "מדריך טיפול באור אדום",
+            "description": "פרוטוקולים של Photobiomodulation"
+          },
+          "cold-exposure": {
+            "name": "תוכנית אימונים לחשיפה לקור",
+            "description": "הסתגלות למתח הורמטי"
+          },
+          "intermittent-fasting": {
+            "name": "לוח צום לסירוגין",
+            "description": "אכילה מוגבלת בזמן"
+          },
+          "biofeedback": {
+            "name": "מודולי אימון בביופידבק",
+            "description": "ויסות עצמי פיזיולוגי"
+          },
+          "neurofeedback": {
+            "name": "מתכנן מפגשי נוירופידבק",
+            "description": "אופטימיזציה של גלי מוח"
+          },
+          "wearable-integrator": {
+            "name": "אינטגרטור נתונים לביש",
+            "description": "סינתזת נתונים מרובה מכשירים"
+          },
+          "recovery-modalities": {
+            "name": "שיטות התאוששות מותאמות אישית",
+            "description": "פרוטוקולי שחזור מותאמים אישית"
+          },
+          "nootropic-stack": {
+            "name": "בונה שילובי נוטרופיים",
+            "description": "השלים אופטימיזציה של סינרגיה"
+          },
+          "cold-protocol": {
+            "name": "פרוטוקול חשיפה לקור",
+            "description": "הנחייה של אמבט קרח ומקלחת קרה"
+          },
+          "breathwork-optimizer": {
+            "name": "אופטימיזציית עבודת נשימה",
+            "description": "טכניקות נשימה מתקדמות"
+          },
+          "cognitive-enhancement": {
+            "name": "תוכנית לשיפור קוגניטיבי",
+            "description": "שיפור ביצועים נפשיים"
+          },
+          "fasting-calculator": {
+            "name": "מחשבון צום לסירוגין",
+            "description": "אופטימיזציה של חלונות בצום"
+          },
+          "dopamine-reset": {
+            "name": "פרוטוקול איפוס דופמין",
+            "description": "איזון מחדש של נוירוטרנסמיטר"
+          },
+          "sensory-deprivation": {
+            "name": "מדריך חסך חושי",
+            "description": "פרוטוקולי מיכל צף"
+          },
+          "biofeedback-focus": {
+            "name": "אימון ביופידבק לפוקוס",
+            "description": "שיפור תשומת הלב"
+          }
+        }
+      },
+      "senior-care": {
+        "name": "טיפול מבוגרים",
+        "description": "טיפול רפואי מיוחד למבוגרים",
+        "services": {
+          "senior-dashboard": {
+            "name": "לוח מחוונים בכירים",
+            "description": "ניטור בריאות קשישים מקיף"
+          },
+          "caregiver-portal": {
+            "name": "פורטל המטפלים",
+            "description": "תיאום מטפל משפחתי"
+          },
+          "fall-detection": {
+            "name": "התראה לזיהוי נפילה",
+            "description": "תגובת נפילת חירום"
+          },
+          "medication-adherence-senior": {
+            "name": "דבקות בתרופות",
+            "description": "ניהול תרופות בכיר"
+          },
+          "voice-companion": {
+            "name": "מלווה קולי",
+            "description": "עוזר בריאות בינה מלאכותית לקשישים"
+          },
+          "frailty-index": {
+            "name": "אינדקס השבריריות",
+            "description": "הערכת ירידה פיזית"
+          },
+          "medication-reminder": {
+            "name": "מערכת תזכורת לתרופות",
+            "description": "תזכורות אוטומטיות לכדורים"
+          },
+          "fall-prevention": {
+            "name": "תרגילים למניעת נפילה",
+            "description": "אימוני איזון וכוח"
+          },
+          "cognitive-games": {
+            "name": "משחקי בריאות קוגניטיביים",
+            "description": "אימון מוח לקשישים"
+          }
+        }
+      },
+      "eye-health": {
+        "name": "סוויטת בריאות עיניים",
+        "description": "ניטור ואופטימיזציה של בריאות חזותית",
+        "services": {
+          "vision-test": {
+            "name": "בדיקת ראיית דפדפן",
+            "description": "בדיקת חדות ראייה מקוונת"
+          },
+          "retina-scan": {
+            "name": "סריקת רשתית מבוססת בינה מלאכותית",
+            "description": "ניתוח בריאות הרשתית"
+          },
+          "blue-light-filter": {
+            "name": "מסנן אור כחול",
+            "description": "הפחתת עומס עיניים דיגיטלי"
+          },
+          "eye-exercises": {
+            "name": "תזכורות לתרגילי עיניים",
+            "description": "מניעת עייפות חזותית"
+          }
+        }
+      },
+      "digital-therapeutics": {
+        "name": "חנות דיגיטלית לטיפולים",
+        "description": "התערבויות בריאות דיגיטליות מבוססות ראיות",
+        "services": {
+          "insomnia-cbt": {
+            "name": "אפליקציית אינסומניה CBT-I",
+            "description": "טיפול קוגניטיבי התנהגותי עבור נדודי שינה"
+          },
+          "adhd-game": {
+            "name": "ADHD נוירו-משחק",
+            "description": "אימון קשב להפרעות קשב וריכוז"
+          },
+          "anxiety-app": {
+            "name": "אפליקציית ניהול חרדה",
+            "description": "הקלת חרדה מבוססת ראיות"
+          },
+          "pain-relief-vr": {
+            "name": "VR לשיכוך כאב כרוני",
+            "description": "טיפול בכאב במציאות מדומה"
+          },
+          "ptsd-modules": {
+            "name": "מודולי שחזור PTSD",
+            "description": "תמיכה בהחלמה מטראומה"
+          }
+        }
+      },
+      "general-sexual": {
+        "name": "אורך חיים מיני כללי",
+        "description": "אופטימיזציה של בריאות מינית ובריאות מינית מקיפה",
+        "services": {
+          "libido-optimization": {
+            "name": "אופטימיזציה הורמונלית של ליבידו",
+            "description": "איזון הורמונלי לבריאות מינית"
+          },
+          "sexual-biomarkers": {
+            "name": "סמנים ביולוגיים לבריאות מינית",
+            "description": "מעקב אחר מדדי בריאות מרכזיים"
+          },
+          "aphrodisiac-nutrigenomics": {
+            "name": "אפרודיזיאק Nutrigenomics",
+            "description": "תזונת ליבידו המבוססת על גנטיקה"
+          },
+          "microbiome-sexuality": {
+            "name": "מיקרוביום ומיניות",
+            "description": "בריאות המעי קשר מיני"
+          },
+          "neuroplasticity-libido": {
+            "name": "נוירופלסטיות וליבידו",
+            "description": "אימון מוח לתשוקה"
+          },
+          "stress-cortisol": {
+            "name": "ניהול מתח וקורטיזול",
+            "description": "אופטימיזציה של הורמוני לחץ"
+          },
+          "circadian-sexuality": {
+            "name": "מקצבים יומיים ומיניות",
+            "description": "תזמון בריאות מינית"
+          },
+          "physical-fitness-sexuality": {
+            "name": "כושר גופני למיניות",
+            "description": "פעילות גופנית לבריאות מינית"
+          },
+          "peptide-therapy": {
+            "name": "טיפול פפטיד לליבידו",
+            "description": "פרוטוקולי פפטידים מתקדמים"
+          },
+          "xenoestrogen-detox": {
+            "name": "ניקוי רעלים מקסנוסטרוגן",
+            "description": "סילוק משבשי הורמונים"
+          },
+          "psychosexual": {
+            "name": "אופטימיזציה פסיכו-מינית",
+            "description": "שיפור בריאות מינית נפשית"
+          },
+          "partner-sync": {
+            "name": "סנכרון שותף",
+            "description": "תיאום בריאות זוגי"
+          },
+          "fertility-assessment": {
+            "name": "הערכת בריאות פוריות",
+            "description": "הערכת בריאות הרבייה"
+          },
+          "hormone-balance-libido": {
+            "name": "איזון הורמונלי לליבידו",
+            "description": "אופטימיזציה אנדוקרינית"
+          },
+          "sexual-wellness-education": {
+            "name": "חינוך לבריאות מינית",
+            "description": "חינוך מיני מקיף"
+          },
+          "relationship-communication": {
+            "name": "מאמנת תקשורת לזוגיות",
+            "description": "מיומנויות תקשורת אינטימית"
+          }
+        }
+      },
+      "mens-sexual-health": {
+        "name": "בריאות מינית של גברים",
+        "description": "בריאות מינית מיוחדת לגברים",
+        "services": {
+          "vascular-health": {
+            "name": "בריאות כלי הדם לעוצמה",
+            "description": "תפקוד מיני במחזור הדם"
+          },
+          "male-vitality-trt": {
+            "name": "Vitality זכר ו-TRT",
+            "description": "טיפול תחליפי בטסטוסטרון"
+          },
+          "ed-guide": {
+            "name": "מדריך לבעיות זיקפה (ED).",
+            "description": "ניהול ED מקיף"
+          },
+          "sperm-health": {
+            "name": "אופטימיזציה לבריאות הזרע",
+            "description": "שיפור פוריות הגבר"
+          }
+        }
+      },
+      "womens-sexual-health": {
+        "name": "בריאות מינית של נשים",
+        "description": "בריאות מינית מיוחדת לנשים",
+        "services": {
+          "female-hormone-optimization": {
+            "name": "אופטימיזציה הורמונלית נשית",
+            "description": "איזון הורמונים לנשים"
+          },
+          "libido-nutrition": {
+            "name": "תזונה מגבירה ליבידו",
+            "description": "תזונה לתשוקה נשית"
+          },
+          "pelvic-health-program": {
+            "name": "תוכנית לבריאות האגן",
+            "description": "בריאות רצפת האגן"
+          },
+          "menopausal-intimacy": {
+            "name": "יועץ אינטימיות לגיל המעבר",
+            "description": "בריאות מינית בגיל המעבר"
+          }
+        }
+      },
+      "human-data-model": {
+        "name": "מודל נתונים אנושיים",
+        "description": "כלים חוצי קטגוריות שמייבאים, מארגנים ועוקבים אחר מידע בריאותי במודל הנתונים האנושיים.",
+        "services": {
+          "medical-records-import": {
+            "name": "ייבוא ומארגן רשומות רפואיות",
+            "description": "ייבא קובצי PDF, תמונות ורשומות רפואיות, חילץ עובדות מפתח וארגן אבחנות, תרופות, בדיקות, נהלים ותאריכים לתוך מודל הנתונים האנושיים."
+          },
+          "health-timeline": {
+            "name": "ציר זמן בריאות",
+            "description": "תיעוד כרונולוגי של אבחנות, בדיקות, תרופות, נהלים, תסמינים, ביקורים ושינויים בריאותיים חשובים."
+          },
+          "what-changed": {
+            "name": "מה השתנה",
+            "description": "מציג שינויים משמעותיים ברישומי בריאות, תוצאות מעבדה, תרופות, סימפטומים ומדידות מנוטרות לאורך זמן."
+          }
+        }
+      }
+    }
+  }
+}

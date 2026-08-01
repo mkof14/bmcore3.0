@@ -1,0 +1,312 @@
+{
+  "devicesPage": {
+    "badge": "Wearables y sensores",
+    "title": "Mis dispositivos",
+    "subtitle": "Conecta relojes, anillos, sensores de glucosa y dispositivos de salud en casa para que BioMath Core lea tendencias y las explique en lenguaje sencillo.",
+    "connectedTitle": "Dispositivos conectados",
+    "connectTitle": "Conectar una marca",
+    "catalogTitle": "Guía de dispositivos actuales",
+    "catalogIntro": "Lo que la gente usa hoy y qué señales suele aportar cada categoría. Úsalo para elegir según tus objetivos y luego conecta una marca compatible abajo.",
+    "signalsTitle": "Señales que importan",
+    "signalsIntro": "Estas son las capacidades que BioMath Core usa con más frecuencia cuando hay un dispositivo conectado.",
+    "emptyBrands": "Las conexiones de marca en vivo no están disponibles en esta sesión. Aún puedes explorar la guía y conectar más tarde desde la Zona de miembros al iniciar sesión.",
+    "learnMore": "Más información",
+    "hideGuide": "Ocultar guía",
+    "helpChoosing": "Ayuda para elegir",
+    "chooseBrand": "Elige un fabricante para autorizar. Familias compatibles: Apple, Samsung, Google, Fitbit, Garmin, Oura, Ultrahuman, WHOOP, Dexcom, FreeStyle Libre, Withings, Omron y más.",
+    "realtime": "Casi en tiempo real",
+    "syncNow": "Sincronizar ahora",
+    "disconnect": "Desconectar",
+    "frequency": "Frecuencia",
+    "lastSync": "Última sincronización",
+    "status": {
+      "connected": "Conectado",
+      "error": "Acción requerida",
+      "tokenExpired": "Acceso caducado",
+      "disconnected": "Desconectado"
+    },
+    "sync": {
+      "daily": "Diaria",
+      "hourly": "Cada hora",
+      "realtime": "Casi en tiempo real",
+      "manual": "Manual"
+    },
+    "recommendations": {
+      "title": "Cómo elegir",
+      "intro": "Si aún no tienes dispositivo, empieza por el resultado que más te importa:",
+      "sleep": "Sueño y recuperación",
+      "activity": "Actividad y entrenamiento",
+      "glucose": "Patrones de glucosa",
+      "bloodPressure": "Presión arterial",
+      "longTerm": "Tendencias tranquilas a largo plazo",
+      "universal": "Cobertura cotidiana amplia",
+      "values": {
+        "sleep": "Oura Ring, Ultrahuman Ring, WHOOP o Eight Sleep",
+        "activity": "Apple Watch, Garmin, Samsung Galaxy Watch, Fitbit o Polar",
+        "glucose": "Dexcom G7 o FreeStyle Libre (glucosa continua)",
+        "blood_pressure": "Omron o Withings BPM (monitores de manguito validados)",
+        "long_term": "Anillos inteligentes y bandas de recuperación de uso día y noche",
+        "universal": "Apple Watch o Samsung Galaxy Watch más una báscula inteligente"
+      }
+    },
+    "signals": {
+      "continuous_glucose": {
+        "title": "Glucosa continua",
+        "body": "Curvas de glucosa a lo largo del día desde CGM: útiles para comidas, bajones de energía y patrones metabólicos."
+      },
+      "sleep_stages": {
+        "title": "Fases del sueño",
+        "body": "Duración, equilibrio profundo/REM y consistencia nocturna desde relojes, anillos y sistemas de sueño."
+      },
+      "hrv_recovery": {
+        "title": "HRV y recuperación",
+        "body": "Variabilidad de la frecuencia cardíaca y puntuaciones de recuperación que indican cuándo empujar y cuándo descansar."
+      },
+      "blood_pressure": {
+        "title": "Presión arterial",
+        "body": "Lecturas de manguito en casa que siguen la comodidad vascular durante semanas, no un único instante."
+      },
+      "body_composition": {
+        "title": "Peso y composición",
+        "body": "Básculas inteligentes para peso, masa magra y tendencias de composición corporal."
+      },
+      "activity_load": {
+        "title": "Carga de actividad",
+        "body": "Pasos, entrenamientos y esfuerzo para equilibrar la carga con la recuperación."
+      }
+    },
+    "categories": {
+      "smartwatch": {
+        "title": "Smartwatches",
+        "body": "Frecuencia cardíaca, sueño, actividad y a menudo ECG o SpO₂ en la muñeca todo el día."
+      },
+      "smart_ring": {
+        "title": "Anillos inteligentes",
+        "body": "Uso discreto 24/7 para sueño, HRV, temperatura y recuperación."
+      },
+      "recovery": {
+        "title": "Bandas de recuperación",
+        "body": "Bandas centradas en esfuerzo y recuperación, de uso continuo."
+      },
+      "cgm": {
+        "title": "Glucosa continua",
+        "body": "Sensores de estilo clínico que transmiten glucosa la mayor parte del día sin pinchazos frecuentes."
+      },
+      "blood_pressure": {
+        "title": "Monitores de presión arterial",
+        "body": "Manguitos domiciliarios validados para un seguimiento fiable de sistólica/diastólica."
+      },
+      "body_composition": {
+        "title": "Básculas inteligentes",
+        "body": "Estimaciones de peso y composición corporal para tendencias más largas."
+      },
+      "sleep_home": {
+        "title": "Sistemas de sueño en casa",
+        "body": "Seguimiento en la cama de calidad del sueño y vitales nocturnos sin dispositivo de muñeca."
+      }
+    },
+    "items": {
+      "apple_watch": {
+        "name": "Apple Watch",
+        "blurb": "Cobertura cotidiana amplia: frecuencia cardíaca, HRV, sueño, SpO₂, ECG y entrenamientos."
+      },
+      "samsung_galaxy_watch": {
+        "name": "Samsung Galaxy Watch",
+        "blurb": "Métricas de muñeca y, en modelos selectos, soporte de presión arterial sin manguito donde esté disponible."
+      },
+      "garmin": {
+        "name": "Garmin",
+        "blurb": "Carga de entrenamiento, recuperación, sueño y HRV ideales para deporte de resistencia y estructurado."
+      },
+      "google_pixel_watch": {
+        "name": "Google Pixel Watch",
+        "blurb": "Sueño y actividad impulsados por Fitbit en un smartwatch compacto."
+      },
+      "oura": {
+        "name": "Oura Ring",
+        "blurb": "Fases del sueño, preparación, temperatura y HRV desde el anillo."
+      },
+      "ultrahuman": {
+        "name": "Ultrahuman Ring",
+        "blurb": "Anillo ligero para sueño, recuperación y señales diarias orientadas al metabolismo."
+      },
+      "whoop": {
+        "name": "WHOOP",
+        "blurb": "Esfuerzo, recuperación y sueño continuos sin pantalla tradicional."
+      },
+      "dexcom_g7": {
+        "name": "Dexcom G7",
+        "blurb": "Glucosa continua con actualizaciones frecuentes para patrones de comidas y energía."
+      },
+      "freestyle_libre": {
+        "name": "FreeStyle Libre",
+        "blurb": "Sensado flash/continuo de glucosa para conciencia metabólica diaria."
+      },
+      "omron": {
+        "name": "Omron",
+        "blurb": "Manguitos de presión arterial validados y muy usados en casa."
+      },
+      "withings_bpm": {
+        "name": "Withings BPM",
+        "blurb": "Lecturas de manguito conectadas que se integran bien en el historial de salud."
+      },
+      "withings_body": {
+        "name": "Withings Body+",
+        "blurb": "Báscula inteligente para peso y tendencias de composición corporal."
+      },
+      "eight_sleep": {
+        "name": "Eight Sleep",
+        "blurb": "Sistema de cama que registra fases del sueño y vitales nocturnas."
+      },
+      "fitbit": {
+        "name": "Fitbit",
+        "blurb": "Seguimiento accesible de sueño, frecuencia cardíaca, actividad y estrés."
+      },
+      "polar": {
+        "name": "Polar",
+        "blurb": "Frecuencia cardíaca de grado deportivo, carga de entrenamiento y recuperación."
+      }
+    },
+    "capabilities": {
+      "heart_rate": "Frecuencia cardíaca",
+      "hrv": "HRV",
+      "sleep": "Sueño",
+      "spo2": "SpO₂",
+      "activity": "Actividad",
+      "recovery": "Recuperación",
+      "ecg": "ECG",
+      "temperature": "Temperatura",
+      "glucose": "Glucosa",
+      "blood_pressure": "Presión arterial",
+      "weight": "Peso",
+      "body_comp": "Composición corporal",
+      "stress": "Estrés",
+      "clinical_grade": "Grado clínico"
+    },
+    "explain": {
+      "step": "Paso 2 de 3 — Explicación",
+      "howTitle": "Cómo funciona",
+      "howBody": "Solo pedimos acceso a métricas de salud. No vemos ni guardamos inicios de sesión ni contraseñas. Puedes desconectar el dispositivo en cualquier momento.",
+      "point1": "La app recopila las métricas autorizadas de tu dispositivo",
+      "point2": "Interpretamos tendencias y sugerimos pasos calmados",
+      "point3": "Los datos pueden informar informes y la orientación de Health Guide",
+      "privacyLabel": "Privacidad:",
+      "privacyBody": "Tú mantienes el control. Nunca recibimos la contraseña del dispositivo ni podemos controlarlo. Solo recibimos los datos de salud que autorices.",
+      "continue": "Continuar",
+      "back": "Atrás"
+    },
+    "authorize": {
+      "title": "Conceder acceso",
+      "step": "Paso 3 de 3 — Autorización",
+      "intro": "Permite que el dispositivo transmita métricas automáticamente.",
+      "syncTitle": "Frecuencia de sincronización",
+      "syncBody": "Por defecto: a diario por la mañana. Puedes cambiarlo después:",
+      "daily": "Diaria (recomendada)",
+      "multiple": "Varias veces al día",
+      "realtime": "Casi en tiempo real (disponible para tu dispositivo)",
+      "grant": "Conceder acceso",
+      "connecting": "Conectando…",
+      "back": "Atrás"
+    },
+    "success": {
+      "title": "Dispositivo conectado",
+      "body": "BioMath Core actualizará las métricas y las usará en recomendaciones e informes.",
+      "tipLabel": "Consejo:",
+      "tipBody": "El uso regular nos ayuda a seguir la dirección — mejora, descenso o estabilidad — no solo un día aislado."
+    },
+    "footer": {
+      "howTitle": "Cómo funciona",
+      "howBody": "Se recopilan métricas autorizadas (sueño, frecuencia cardíaca, estrés, recuperación, glucosa y más) y se explican en lenguaje sencillo. Nos centramos en tendencias y pasos prácticos, no en volcar números crudos.",
+      "privacyLabel": "Privacidad:",
+      "privacyBody": "Tú controlas la conexión. No conocemos la contraseña del dispositivo ni podemos controlarlo. Desconecta cuando quieras."
+    }
+  },
+  "deviceHints": {
+    "connection": {
+      "strong": "Conectar un dispositivo",
+      "body": "da a BioMath Core señales más precisas. No solo recogemos números: explicamos su significado y lo relacionamos con tu estado y hábitos."
+    },
+    "opening": "Puedes conectar un reloj, anillo, banda, sensor de glucosa, manguito o báscula. Tras conectar, BioMath Core actualiza los datos y puede usarlos en informes y en Health Guide.",
+    "success": {
+      "strong": "Listo.",
+      "body": "La siguiente sincronización ocurre automáticamente. No necesitas hacer nada a mano."
+    },
+    "firstSync": {
+      "title": "Métricas recibidas",
+      "body": "Seguiremos la tendencia, no solo valores aislados."
+    },
+    "why": {
+      "title": "Por qué importa",
+      "body": "Los dispositivos ayudan a notar cambios pronto. Piénsalos como un navegador calmado para carga, recuperación y ajustes suaves — antes de que los síntomas sean la primera alerta."
+    },
+    "errors": {
+      "token_expired": {
+        "title": "Acceso caducado",
+        "message": "El acceso al dispositivo ha caducado. Actualiza el acceso para volver a leer métricas.",
+        "action": "Actualizar acceso"
+      },
+      "no_data": {
+        "title": "Sin datos nuevos",
+        "message": "El dispositivo no envió datos nuevos hoy. Puede que no se haya usado o sincronizado. Lo intentaremos de nuevo automáticamente."
+      },
+      "service_error": {
+        "title": "Fabricante no disponible",
+        "message": "El fabricante no está disponible temporalmente. Reintentaremos la sincronización más tarde."
+      },
+      "manual_disconnect": {
+        "title": "Dispositivo desconectado",
+        "message": "El dispositivo ya no envía datos. Puedes volver a conectarlo cuando quieras.",
+        "action": "Reconectar"
+      },
+      "bluetooth_sync": {
+        "title": "Sincronización con el teléfono",
+        "message": "Es posible que el dispositivo aún no se haya sincronizado con el teléfono. Abre la app del fabricante; el resto suele seguir automáticamente."
+      }
+    },
+    "status": {
+      "connected": "Conectado",
+      "needs_update": "Actualización requerida",
+      "no_data": "Sin datos",
+      "disconnected": "Desconectado"
+    },
+    "scenarios": {
+      "sleep_declined": {
+        "title": "Calidad del sueño disminuida",
+        "message": "El sueño reciente ha sido menos profundo. Puede reflejar carga del sistema nervioso. Podemos sugerir pasos suaves de recuperación."
+      },
+      "sleep_improved": {
+        "title": "Sueño mejorado",
+        "message": "El sueño se ve más estable: una buena señal de que la recuperación mejora."
+      },
+      "hrv_improved": {
+        "title": "HRV mejorando",
+        "message": "La variabilidad de la frecuencia cardíaca mejoró: señal de que el sistema nervioso se recupera."
+      },
+      "hrv_declined": {
+        "title": "HRV en descenso",
+        "message": "El sistema nervioso puede estar sobrecargado. A menudo conviene un modo de recuperación suave."
+      },
+      "activity_high": {
+        "title": "Carga elevada",
+        "message": "La carga es mayor de lo habitual: mantén la recuperación a la vista."
+      },
+      "glucose_unstable": {
+        "title": "Fluctuaciones de glucosa",
+        "message": "La glucosa oscila. Podemos relacionar comidas y hábitos con el patrón, sin lenguaje de diagnóstico."
+      },
+      "blood_pressure_stable": {
+        "title": "Presión arterial estable",
+        "message": "Lecturas estables y normales apoyan la comodidad vascular con el tiempo. Si suben, lo explicamos con calma y sin miedo."
+      }
+    },
+    "healthGuide": {
+      "title": "Cómo Health Guide usa los datos del dispositivo",
+      "templateLabel": "Ejemplo de mensaje",
+      "template": "Según tus últimos datos del dispositivo, vemos una tendencia ____________. No es un diagnóstico, pero sí una señal importante. ¿Quieres una explicación y recomendaciones?",
+      "agreeLabel": "Si aceptas",
+      "agreeBody": "Lo explicaré de dos formas: (1) análisis fisiológico (Opinión A) y (2) explicación conductual y de estilo de vida (Opinión B). Puedes compararlas y elegir lo que encaje.",
+      "secondOpinionLabel": "Segunda opinión",
+      "secondOpinionBody": "Una segunda opinión ayuda a ver las mismas señales desde ángulos fisiológicos y adaptativos — como dos especialistas con estilos de pensamiento distintos."
+    }
+  }
+}

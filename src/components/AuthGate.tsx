@@ -28,7 +28,7 @@ export default function AuthGate({ children }: AuthGateProps) {
 
   if (!ready) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+      <div className="min-h-screen flex items-center justify-center bg-page">
         <LoadingSpinner />
       </div>
     );
@@ -36,7 +36,7 @@ export default function AuthGate({ children }: AuthGateProps) {
 
   if (!session) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
+      <div className="min-h-screen flex items-center justify-center bg-page px-4">
         <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-2xl p-8 text-center border border-gray-200 dark:border-gray-700">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
             Authentication Required
@@ -45,7 +45,7 @@ export default function AuthGate({ children }: AuthGateProps) {
             Please sign in to continue.
           </p>
           <a
-            href="#/signin"
+            href="/signin"
             className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
           >
             Sign In

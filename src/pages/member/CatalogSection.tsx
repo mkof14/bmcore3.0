@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
-import { Check, X, ArrowRight, CheckCircle, Info, Star, Layers, Crown } from 'lucide-react';
-import { Heart, Brain, Users, Activity, Moon, Shield, Apple, Leaf, Eye, Tablet, Hourglass, Dumbbell, Flower2, User, Droplets, HeartHandshake, Smartphone, Fingerprint, Target, Blend } from 'lucide-react';
+import { useMemo, useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Check, X, ArrowRight, CheckCircle, Info, Hexagon, Layers, Crown } from 'lucide-react';
+import { Heart, Brain, Users, Activity, Sun, Moon, Shield, Apple, Leaf, Eye, Tablet, Hourglass, Dumbbell, Flower2, User, Droplets, HeartHandshake, Smartphone, Fingerprint, Target, Blend } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
-import { serviceCategories } from '../../data/services';
+import { serviceCategories, serviceDetailPath } from '../../data/services';
 import ReportBrandHeader from '../../components/report/ReportBrandHeader';
+import { localizeCategory, localizeService } from '../../lib/localizeServices';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Heart, Brain, Users, Activity, Moon, Shield, Apple, Leaf,
+  Heart, Brain, Users, Activity, Sun, Moon, Shield, Apple, Leaf,
   Eye, Tablet, Hourglass, Dumbbell, Flower2, User, Droplets,
   HeartHandshake, Smartphone, Fingerprint, Target, Blend
 };
@@ -26,7 +28,7 @@ const categoryColors: Record<string, { bg: string; text: string; border: string;
   'family-health': { bg: 'bg-orange-500/10', text: 'text-orange-600 dark:text-orange-400', border: 'border-orange-200 dark:border-orange-500/30', icon: 'text-orange-600 dark:text-orange-400' },
   'preventive-medicine': { bg: 'bg-cyan-500/10', text: 'text-cyan-600 dark:text-cyan-400', border: 'border-cyan-200 dark:border-cyan-500/30', icon: 'text-cyan-600 dark:text-cyan-400' },
   'biohacking': { bg: 'bg-blue-500/10', text: 'text-blue-600 dark:text-blue-400', border: 'border-blue-200 dark:border-blue-500/30', icon: 'text-blue-600 dark:text-blue-400' },
-  'senior-care': { bg: 'bg-slate-500/10', text: 'text-slate-700 dark:text-slate-300', border: 'border-slate-200 dark:border-slate-500/30', icon: 'text-slate-700 dark:text-slate-300' },
+  'senior-care': { bg: 'bg-amber-800/10', text: 'text-amber-900 dark:text-amber-500', border: 'border-amber-300 dark:border-amber-700/40', icon: 'text-amber-800 dark:text-amber-500' },
   'eye-health': { bg: 'bg-blue-500/10', text: 'text-blue-600 dark:text-blue-400', border: 'border-blue-200 dark:border-blue-500/30', icon: 'text-blue-600 dark:text-blue-400' },
   'digital-therapeutics': { bg: 'bg-indigo-500/10', text: 'text-indigo-600 dark:text-indigo-400', border: 'border-indigo-200 dark:border-indigo-500/30', icon: 'text-indigo-600 dark:text-indigo-400' },
   'general-sexual': { bg: 'bg-red-500/10', text: 'text-red-600 dark:text-red-400', border: 'border-red-200 dark:border-red-500/30', icon: 'text-red-600 dark:text-red-400' },
@@ -45,9 +47,11 @@ interface SubscriptionPlan {
 
 interface CatalogSectionProps {
   onSectionChange?: (section: string) => void;
+  onOpenService?: (servicePath: string) => void;
 }
 
-export default function CatalogSection({ onSectionChange }: CatalogSectionProps) {
+export default function CatalogSection({ onSectionChange, onOpenService }: CatalogSectionProps) {
+  const { t } = useTranslation();
   const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set());
   const [plans, setPlans] = useState<SubscriptionPlan[]>([]);
   const [loading, setLoading] = useState(true);
@@ -55,6 +59,16 @@ export default function CatalogSection({ onSectionChange }: CatalogSectionProps)
   const [notification, setNotification] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
   const [upgrading, setUpgrading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const localizedCategories = useMemo(
+    () =>
+      serviceCategories.map((category) => ({
+        ...localizeCategory(t, category),
+        services: category.services.map((service) =>
+          localizeService(t, category.id, service),
+        ),
+      })),
+    [t],
+  );
 
   useEffect(() => {
     loadPlansAndSubscription();
@@ -132,7 +146,8 @@ export default function CatalogSection({ onSectionChange }: CatalogSectionProps)
 
       // Redirect to pricing page (public page, not member section)
       setTimeout(() => {
-        window.location.hash = '#/pricing';
+        window.history.pushState({ page: 'pricing' }, '', '/pricing');
+        window.dispatchEvent(new PopStateEvent('popstate'));
       }, 1500);
 
     } catch (error) {
@@ -184,7 +199,7 @@ export default function CatalogSection({ onSectionChange }: CatalogSectionProps)
   const getPlanIcon = (plan: string) => {
     if (plan === 'Core') return (
       <div className="relative">
-        <Star className="h-5 w-5" />
+        <Hexagon className="h-5 w-5" />
         <div className="absolute -top-1 -right-1 w-2 h-2 bg-orange-400 rounded-full"></div>
       </div>
     );
@@ -233,25 +248,62 @@ export default function CatalogSection({ onSectionChange }: CatalogSectionProps)
 
       <section className="text-center mb-8">
         <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
-          Build Your Health Plan
+          {t('member.catalog.title')}
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-2">
-          Choose from 20 health categories and 200+ AI services
+          {t('member.catalog.subtitle')}
         </p>
         <p className="text-gray-600 dark:text-gray-400">
-          Start with any 3 categories for just $19/month
+          {t('member.catalog.hint')}
         </p>
       </section>
 
-      <div className="group relative bg-white/90 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border border-slate-200 dark:border-gray-700/50 rounded-2xl p-6 hover:border-orange-600/50 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-md">
+      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:to-gray-800 sm:p-8">
+          <ReportBrandHeader variant="strip" subtitle="Full Services" className="mb-4" />
+          <div className="mb-6">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{t('member.catalog.openService')}</h3>
+            <p className="mt-1 text-gray-600 dark:text-gray-400">
+              Full commercial workspace: questions, dual AI second opinion, FAQ, learning, reports, and exports.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {localizedCategories.map((category) => {
+              const colors = categoryColors[category.id] || categoryColors['critical-health'];
+              return (
+                <div key={category.id}>
+                  <h4 className={`mb-3 text-sm font-bold ${colors.text}`}>{category.name}</h4>
+                  <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                    {category.services.map((service) => (
+                      <button
+                        key={service.id}
+                        type="button"
+                        onClick={() => onOpenService?.(serviceDetailPath(category.id, service.id))}
+                        className="rounded-xl border border-slate-200 bg-slate-50/80 p-3 text-left transition hover:border-orange-300 hover:bg-white dark:border-gray-700 dark:bg-[var(--bm-surface)]/50 dark:hover:border-orange-500/40"
+                      >
+                        <div className="text-sm font-semibold text-gray-900 dark:text-white">{service.name}</div>
+                        <div className="mt-1 line-clamp-2 text-xs text-gray-600 dark:text-gray-400">
+                          {service.description}
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+
+      <div className="group relative bg-white/90 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-slate-200 dark:border-gray-700/50 rounded-2xl p-6 hover:border-orange-600/50 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-md">
         <ReportBrandHeader variant="strip" subtitle="Plan Calculator" className="mb-4" />
         <div className="absolute inset-0 bg-gradient-to-br from-orange-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
         <div className="relative">
           <div className="flex items-start justify-between mb-6">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">Your Plan Calculator</h2>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">Watch your plan update as you select categories</p>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{t('member.catalog.planCalculator')}</h2>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">{t('member.catalog.planCalculatorHint')}</p>
             </div>
             <div className="text-right">
               <div className="text-4xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
@@ -294,11 +346,11 @@ export default function CatalogSection({ onSectionChange }: CatalogSectionProps)
           </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-5">
-            <div className={`group/card relative bg-white/90 dark:bg-gradient-to-b dark:from-gray-800/50 dark:to-gray-900/50 border-2 rounded-lg p-3 transition-all duration-300 overflow-hidden shadow-sm ${selectedCount <= 3 && selectedCount > 0 ? 'border-orange-500 shadow-lg shadow-orange-500/20' : 'border-slate-200 dark:border-gray-700/40 hover:border-orange-600/40'}`}>
+            <div className={`group/card relative bg-white/90 dark:bg-gradient-to-b dark:from-gray-800/50 dark:to-[var(--bm-surface)]/50 border-2 rounded-lg p-3 transition-all duration-300 overflow-hidden shadow-sm ${selectedCount <= 3 && selectedCount > 0 ? 'border-orange-500 shadow-lg shadow-orange-500/20' : 'border-slate-200 dark:border-gray-700/40 hover:border-orange-600/40'}`}>
               <div className="absolute inset-0 bg-gradient-to-br from-orange-900/0 to-orange-900/5 opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
               <div className="relative">
                 <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover/card:shadow-lg group-hover/card:shadow-orange-600/30 transition-all">
-                  <Star className={`h-5 w-5 text-white`} />
+                  <Hexagon className={`h-5 w-5 text-white`} />
                 </div>
                 <h3 className={`text-center font-bold text-base mb-0.5 ${selectedCount <= 3 && selectedCount > 0 ? 'text-orange-500' : 'text-gray-900 dark:text-white'}`}>Core</h3>
                 <div className="text-center">
@@ -318,7 +370,7 @@ export default function CatalogSection({ onSectionChange }: CatalogSectionProps)
               </div>
             </div>
 
-            <div className={`group/card relative bg-white/90 dark:bg-gradient-to-b dark:from-gray-800/50 dark:to-gray-900/50 border-2 rounded-lg p-3 transition-all duration-300 overflow-hidden shadow-sm ${selectedCount > 3 && selectedCount <= 10 ? 'border-blue-500 shadow-lg shadow-blue-500/20' : 'border-slate-200 dark:border-gray-700/40 hover:border-blue-600/40'}`}>
+            <div className={`group/card relative bg-white/90 dark:bg-gradient-to-b dark:from-gray-800/50 dark:to-[var(--bm-surface)]/50 border-2 rounded-lg p-3 transition-all duration-300 overflow-hidden shadow-sm ${selectedCount > 3 && selectedCount <= 10 ? 'border-blue-500 shadow-lg shadow-blue-500/20' : 'border-slate-200 dark:border-gray-700/40 hover:border-blue-600/40'}`}>
               <div className="absolute inset-0 bg-gradient-to-br from-blue-900/0 to-blue-900/5 opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
               <div className="relative">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover/card:shadow-lg group-hover/card:shadow-blue-600/30 transition-all">
@@ -342,7 +394,7 @@ export default function CatalogSection({ onSectionChange }: CatalogSectionProps)
               </div>
             </div>
 
-            <div className={`group/card relative bg-white/90 dark:bg-gradient-to-b dark:from-gray-800/50 dark:to-gray-900/50 border-2 rounded-lg p-3 transition-all duration-300 overflow-hidden shadow-sm ${selectedCount > 10 ? 'border-slate-600 shadow-lg shadow-slate-500/20' : 'border-slate-200 dark:border-gray-700/40 hover:border-slate-600/40'}`}>
+            <div className={`group/card relative bg-white/90 dark:bg-gradient-to-b dark:from-gray-800/50 dark:to-[var(--bm-surface)]/50 border-2 rounded-lg p-3 transition-all duration-300 overflow-hidden shadow-sm ${selectedCount > 10 ? 'border-slate-600 shadow-lg shadow-slate-500/20' : 'border-slate-200 dark:border-gray-700/40 hover:border-slate-600/40'}`}>
               <div className="absolute inset-0 bg-gradient-to-br from-slate-900/0 to-slate-900/10 opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
               <div className="relative">
                 <div className="w-10 h-10 bg-gradient-to-br from-slate-600 to-slate-700 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover/card:shadow-lg group-hover/card:shadow-slate-600/30 transition-all">
@@ -397,14 +449,14 @@ export default function CatalogSection({ onSectionChange }: CatalogSectionProps)
 
       <section>
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">Select Your Health Categories</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">{t('member.catalog.selectTitle')}</h2>
         <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           Click categories to add them to your plan. Each includes multiple AI services.
         </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {serviceCategories.map((category) => {
+          {localizedCategories.map((category) => {
             const Icon = iconMap[category.icon] || Activity;
             const colors = categoryColors[category.id] || categoryColors['critical-health'];
             const isSelected = selectedCategories.has(category.id);
@@ -413,7 +465,7 @@ export default function CatalogSection({ onSectionChange }: CatalogSectionProps)
               <button
                 key={category.id}
                 onClick={() => toggleCategory(category.id)}
-                className={`group/item relative bg-white/90 dark:bg-gradient-to-b dark:from-gray-800/50 dark:to-gray-900/50 border-2 rounded-xl p-5 transition-all duration-300 hover:scale-105 overflow-hidden shadow-sm ${
+                className={`group/item relative bg-white/90 dark:bg-gradient-to-b dark:from-gray-800/50 dark:to-[var(--bm-surface)]/50 border-2 rounded-xl p-5 transition-all duration-300 hover:scale-105 overflow-hidden shadow-sm ${
                   isSelected
                     ? `${colors.border} shadow-lg`
                     : 'border-slate-200 dark:border-gray-700/40 hover:border-gray-300 dark:hover:border-gray-600/60'
@@ -448,12 +500,12 @@ export default function CatalogSection({ onSectionChange }: CatalogSectionProps)
       </section>
 
       {selectedCount > 0 && (
-        <section className="bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 border border-gray-200 dark:border-gray-800 rounded-2xl p-8">
+        <section className="bg-white dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:to-gray-800 border border-gray-200 dark:border-gray-800 rounded-2xl p-8">
           <ReportBrandHeader variant="strip" subtitle="Selected Categories" className="mb-4" />
           <div className="flex items-start justify-between mb-4">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Your Selected Categories</h3>
-              <p className="text-gray-600 dark:text-gray-400">Review your selections before upgrading</p>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('member.catalog.selectedTitle')}</h3>
+              <p className="text-gray-600 dark:text-gray-400">{t('member.catalog.selectedSubtitle')}</p>
             </div>
             <div className="px-4 py-2 bg-green-100 dark:bg-green-500/20 border border-green-200 dark:border-green-500/30 rounded-lg">
               <span className="text-green-700 dark:text-green-400 font-bold">{selectedCount} selected</span>
@@ -462,7 +514,7 @@ export default function CatalogSection({ onSectionChange }: CatalogSectionProps)
 
           <div className="flex flex-wrap gap-3">
             {Array.from(selectedCategories).map((categoryId) => {
-              const category = serviceCategories.find(c => c.id === categoryId);
+              const category = localizedCategories.find(c => c.id === categoryId);
               if (!category) return null;
 
               const Icon = iconMap[category.icon] || Activity;
@@ -488,13 +540,13 @@ export default function CatalogSection({ onSectionChange }: CatalogSectionProps)
         </section>
       )}
 
-      <section className="bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border border-gray-200 dark:border-gray-700/50 rounded-2xl p-8">
+      <section className="bg-white dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-gray-200 dark:border-gray-700/50 rounded-2xl p-8">
         <div className="flex items-start gap-4">
           <div className="w-12 h-12 bg-blue-100 dark:bg-blue-500/20 border border-blue-200 dark:border-blue-500/30 rounded-lg flex items-center justify-center flex-shrink-0">
             <Info className="h-6 w-6 text-blue-600 dark:text-blue-400" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Next Steps</h3>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t('member.catalog.nextSteps')}</h3>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
               After you upgrade, we'll guide you through health questionnaires that help personalize your insights.
             </p>

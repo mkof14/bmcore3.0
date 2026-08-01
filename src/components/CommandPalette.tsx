@@ -195,7 +195,7 @@ export default function CommandPalette({ isOpen, onClose, onNavigate }: CommandP
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-2xl bg-white dark:bg-gray-900 rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-2xl bg-white dark:bg-[var(--bm-surface)] rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
         <div className="flex items-center gap-3 p-4 border-b border-gray-200 dark:border-gray-700">
           <Search className="h-5 w-5 text-gray-400" />
           <input

@@ -1,0 +1,77 @@
+{
+  "whyTwoModels": {
+    "seo": {
+      "title": "Pourquoi deux modèles — intelligence double dans BioMath Core",
+      "description": "BioMath Core utilise deux modèles indépendants — biomathématique et clinique — pour analyser vos données de santé. Découvrez pourquoi l’analyse double améliore la précision et la confiance."
+    },
+    "hero": {
+      "label": "Intelligence double",
+      "title": "Pourquoi deux modèles ?",
+      "body": "BioMath Core exécute deux analyses indépendantes de vos données de santé — l’une biomathématique, l’autre clinique — puis compare les résultats. Lorsque les deux concordent, la confiance est élevée. Lorsqu’elles divergent, les points méritant une attention particulière sont mis en évidence."
+    },
+    "models": {
+      "label": "Modèles",
+      "title": "Deux regards sur les mêmes données",
+      "body": "Précision mathématique et expertise clinique : chaque modèle apporte une force distincte.",
+      "items": [
+        {
+          "title": "Modèle mathématique",
+          "body": "Analyse purement guidée par les données, à l’aide d’algorithmes biomathématiques et de méthodes statistiques.",
+          "points": [
+            "Reconnaissance de motifs sans biais",
+            "Analyse de corrélations complexes",
+            "Modélisation prédictive",
+            "Détection d’anomalies"
+          ]
+        },
+        {
+          "title": "Modèle clinique",
+          "body": "Analyse fondée sur les preuves, s’appuyant sur les connaissances médicales et les recommandations cliniques.",
+          "points": [
+            "Interprétation du contexte médical",
+            "Recommandations fondées sur les preuves",
+            "Respect des recommandations cliniques",
+            "Évaluation des facteurs de risque"
+          ]
+        }
+      ]
+    },
+    "advantages": {
+      "label": "Avantages",
+      "title": "La force de l’analyse double",
+      "items": [
+        {
+          "title": "Meilleure précision",
+          "body": "La validation croisée entre les modèles réduit les faux positifs et garantit des conclusions fiables."
+        },
+        {
+          "title": "Vue d’ensemble",
+          "body": "Visualisez côte à côte les motifs issus des données et les interprétations cliniques."
+        },
+        {
+          "title": "De meilleures décisions",
+          "body": "Décidez en connaissance de cause grâce à des conclusions étayées par les mathématiques et la médecine."
+        }
+      ]
+    },
+    "secondOpinion": {
+      "label": "Deuxième avis",
+      "title": "L’avantage du deuxième avis",
+      "body": "Comme lorsqu’on demande un deuxième avis médical, notre approche double fournit deux analyses indépendantes de vos données de santé. La concordance entre les modèles renforce la confiance. Un désaccord signale les points qui peuvent nécessiter une attention supplémentaire ou une consultation professionnelle.",
+      "mathTitle": "Forces du modèle mathématique",
+      "mathStrengths": [
+        "Découvre des motifs cachés",
+        "Traite de très grands volumes de données",
+        "Repère des corrélations subtiles",
+        "Anticipe les tendances futures"
+      ],
+      "clinicalTitle": "Forces du modèle clinique",
+      "clinicalStrengths": [
+        "Applique l’expertise médicale",
+        "Tient compte du contexte clinique",
+        "Suit des recommandations fondées sur les preuves",
+        "Privilégie la sécurité et l’efficacité"
+      ]
+    }
+  }
+}

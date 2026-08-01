@@ -1,0 +1,132 @@
+{
+  "about": {
+    "seoTitle": "About Us - Mission, Vision & Team",
+    "seoDescription": "Learn about BioMath Core's mission to build trustworthy wellness intelligence through biomathematics, computational biology, and AI. Discover our founder's journey and our commitment to preventive health.",
+    "mission": {
+      "label": "Mission",
+      "title": "Trustworthy wellness intelligence",
+      "body": "We build practical wellness intelligence at the intersection of <b>biomathematics</b>, <b>computational biology</b>, and <b>AI</b>. BioMath Core helps people and professionals navigate complex health questions with precise, explainable guidance — focused on prevention, wellness, and long-term resilience."
+    },
+    "origins": {
+      "label": "Origins",
+      "title": "Built from applied science",
+      "p1": "BioMath Core grew out of years of work at the intersection of advanced analytics, AI, and human health — turning rigorous models into systems people can actually use.",
+      "p2": "BioMath Core is developed under <a1>Digital Invest Inc.</a1> and shaped by the broader <a2>BioMath Life</a2> vision: science that scales into everyday preventive care.",
+      "p3": "Our approach has been covered by <a3>Healthcare Tech Outlook →</a3>"
+    },
+    "signalNote": "We expand only when the signal is strong — based on real user needs, evidence, and long-term health impact.",
+    "stats": [
+      { "label": "Health categories", "value": "20" },
+      { "label": "Active services", "value": "200+" },
+      { "label": "Research journey", "value": "Since 2008" }
+    ],
+    "team": {
+      "label": "People",
+      "title": "Our team",
+      "subtitle": "Building digital healthcare with science, craft, and long attention.",
+      "p1": "We began in <b>2008</b>, working in digital healthcare and biomathematical modeling across different countries. Over these years we gained deep practical experience, a clear view of real user needs, and expertise integrating science, technology, and human health.",
+      "p2": "By studying needs — from patients to clinicians, from families to corporate programs — we arrived at today's understanding of preventive medicine, wellness management, and long-term health. That understanding became the foundation of our <b>Human Data Model</b>, the core of BioMath Core.",
+      "quote": "<b>BioMath Core</b> is not just a set of tools. It is a living product — able to incorporate services, absorb innovations, and draw on biomathematics, epidemiology, machine learning, and behavioral psychology for the benefit of users.",
+      "p3": "We continuously improve BioMath Core: model accuracy, category coverage, algorithm transparency, and personalization. Plans range from advanced wearables to genomic analytics and longer predictive horizons.",
+      "p4": "Along the way we have worked with engineers, biomathematicians, clinicians, analysts, designers, and researchers who share the same goals. Today we are one team — committed to transparent, human-centered, science-based digital healthcare."
+    },
+    "engine": {
+      "label": "System",
+      "title": "The BioMath Core AI Engine",
+      "subtitle": "A layered system that unifies biological priors, time-series, and context into one inspectable pipeline.",
+      "items": [
+        {
+          "index": "01",
+          "title": "Model-first design",
+          "body": "Biomathematical structures guide learning — reducing overfitting and improving stability."
+        },
+        {
+          "index": "02",
+          "title": "Multi-modal fusion",
+          "body": "Lab results, lifestyle inputs, wearable data, and clinical knowledge aligned into explainable insights."
+        },
+        {
+          "index": "03",
+          "title": "Quality gates",
+          "body": "Validation, uncertainty flags, and human-in-the-loop review for sensitive areas."
+        },
+        {
+          "index": "04",
+          "title": "Outcome orientation",
+          "body": "Recommendations aim at wellness, prevention, and performance — not treatment."
+        }
+      ]
+    },
+    "philosophy": {
+      "label": "Principles",
+      "title": "Our philosophy",
+      "subtitle": "Core ideas that guide product decisions every day.",
+      "items": [
+        {
+          "title": "Data belongs to you",
+          "body": "Only you decide what to share. Your privacy is paramount."
+        },
+        {
+          "title": "Knowledge is power",
+          "body": "Understanding your biomarkers gives you the chance to prevent problems early."
+        },
+        {
+          "title": "AI is an assistant",
+          "body": "Not a doctor. We provide insights to support your health conversations."
+        }
+      ]
+    },
+    "highlights": {
+      "label": "Highlights",
+      "title": "What stands out",
+      "subtitle": "The qualities that make BioMath Core feel different in practice.",
+      "items": [
+        {
+          "title": "Clear AI insights",
+          "body": "Models analyze health signals into clear, inspectable guidance."
+        },
+        {
+          "title": "HIPAA-aligned security",
+          "body": "Enterprise-grade protection with encryption at rest and in transit."
+        },
+        {
+          "title": "Family-aware by design",
+          "body": "Manage health understanding for yourself and the people you care for."
+        },
+        {
+          "title": "Living timeline",
+          "body": "Events accumulate in your Human Data Model — not as isolated reports."
+        }
+      ]
+    },
+    "audience": {
+      "label": "Audience",
+      "title": "Who we serve",
+      "subtitle": "Built for people, families, and organizations that take prevention seriously.",
+      "items": [
+        {
+          "title": "Individual users",
+          "body": "People who want to understand their health metrics and track progress over time."
+        },
+        {
+          "title": "Families",
+          "body": "Caring for loved ones' health, including children and older relatives."
+        },
+        {
+          "title": "Clinics & corporate clients",
+          "body": "Supporting wellness programs and preventive care initiatives."
+        },
+        {
+          "title": "Investors & partners",
+          "body": "Participating in the development of digital health products and partnerships."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to explore BioMath Core?",
+      "description": "See how our multi-model intelligence turns health signals into clear, human guidance.",
+      "primary": "View Services",
+      "secondary": "See Pricing"
+    }
+  }
+}

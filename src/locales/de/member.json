@@ -1,0 +1,224 @@
+{
+  "member": {
+    "zone": {
+      "label": "Mitgliederbereich",
+      "workspace": "Angemeldeter Arbeitsbereich",
+      "backHome": "Zurück zur Startseite",
+      "signOut": "Abmelden",
+      "collapse": "Einklappen"
+    },
+    "nav": {
+      "main": "Allgemein",
+      "supportServices": "Support & Dienste",
+      "healthAnalysis": "Gesundheit & Analyse",
+      "dataDocuments": "Daten & Dokumente",
+      "account": "Konto",
+      "dashboard": "Übersicht",
+      "humanDataModel": "Human Data Model",
+      "healthGuide": "Gesundheitsführer",
+      "devices": "Geräte",
+      "support": "Support",
+      "system": "System",
+      "catalog": "Katalog",
+      "serviceWorkspace": "Dienst-Arbeitsbereich",
+      "questionnaires": "Fragebögen",
+      "reports": "Berichte",
+      "signalHub": "Signal-Hub",
+      "reminders": "Erinnerungen",
+      "secondOpinion": "Zweitmeinung",
+      "medicalFiles": "Medizinische Dateien",
+      "blackBox": "Black Box",
+      "referral": "Empfehlungen",
+      "billing": "Abrechnung",
+      "profile": "Profil",
+      "settings": "Einstellungen"
+    },
+    "gate": {
+      "catalogTitle": "Abonnieren, um den Katalog zu nutzen",
+      "catalogBody": "Wählen Sie ein Abo, um den vollständigen Katalog der Gesundheitsdienste mit 20 Kategorien freizuschalten.",
+      "viewPlans": "Tarife ansehen & abonnieren",
+      "serviceTitle": "Abonnieren, um Dienste zu nutzen",
+      "serviceBody": "Für den vollständigen interaktiven Dienst-Arbeitsbereich ist ein aktiver Tarif erforderlich.",
+      "loadingService": "Dienst wird geladen…"
+    },
+    "welcome": {
+      "title": "Willkommen bei BioMath Core!",
+      "body": "Danke für Ihr Abo! Ihre Zahlung war erfolgreich.",
+      "nextStepTitle": "Nächster Schritt: Wählen Sie Ihre Gesundheitskategorien",
+      "nextStepBody": "Öffnen Sie den Katalog, um die in Ihrem Tarif enthaltenen Kategorien auszuwählen:",
+      "corePlan": "Core-Tarif: bis zu 3 Kategorien",
+      "dailyPlan": "Daily-Tarif: bis zu 10 Kategorien",
+      "maxPlan": "Max-Tarif: alle 20 Kategorien enthalten",
+      "emailNote": "Eine Bestätigungs-E-Mail mit allen Details wurde an Ihren Posteingang gesendet.",
+      "goToCatalog": "Zum Katalog"
+    },
+    "dashboard": {
+      "title": "Übersicht",
+      "subtitle": "Ihre Wellness-Zentrale für den heutigen Zustand, Ziele und Gewohnheiten"
+    },
+    "humanDataModel": {
+      "title": "Human Data Model",
+      "subtitle": "Kernwerkzeuge, die Ihr Modell speisen und erklären: Unterlagen importieren, den Zeitstrahl lesen und relevante Veränderungen erkennen. Getrennt von den Kategoriediensten.",
+      "openWorkspace": "Arbeitsbereich öffnen"
+    },
+    "devices": {
+      "title": "Verbundene Geräte",
+      "subtitle": "Verbinden Sie Ihre Wearables und Gesundheitssensoren für die automatische Datensynchronisierung",
+      "yourDevices": "Ihre Geräte",
+      "activeDevices": "Aktive Geräte",
+      "recentlySynced": "Kürzlich synchronisiert",
+      "supportedDevices": "Unterstützte Geräte",
+      "clickToConnect": "Zum Verbinden klicken"
+    },
+    "billing": {
+      "title": "Abrechnung & Abo",
+      "subtitle": "Verwalten Sie Ihr Abo, aktualisieren Sie Zahlungsmethoden und sehen Sie Ihren vollständigen Zahlungsverlauf",
+      "noSubscription": "Kein aktives Abo",
+      "nextBillingDate": "Nächstes Abrechnungsdatum",
+      "reportsThisMonth": "Berichte in diesem Monat",
+      "storageUsed": "Belegter Speicher",
+      "searchInvoices": "Rechnungen suchen…",
+      "allStatus": "Alle Status",
+      "noInvoices": "Keine Rechnungen gefunden",
+      "upgradePlan": "Tarif erweitern",
+      "upgradePlanBody": "Erhalten Sie Zugriff auf mehr Funktionen und höhere Limits",
+      "changeCycle": "Abrechnungszeitraum ändern",
+      "paymentMethods": "Zahlungsmethoden",
+      "paymentMethodsBody": "Aktualisieren Sie Ihre Kreditkarte und Rechnungsdaten"
+    },
+    "profile": {
+      "title": "Persönliche Angaben",
+      "subtitle": "Verwalten Sie Ihr Profilbild und Ihre eigenen Informationsfelder",
+      "photo": "Profilbild",
+      "basicInfo": "Grunddaten",
+      "fullName": "Vollständiger Name",
+      "imageUrl": "Bild-URL eingeben",
+      "customFields": "Eigene Informationsfelder",
+      "fieldName": "Name des neuen Feldes",
+      "fieldValue": "Wert"
+    },
+    "support": {
+      "title": "Support",
+      "subtitle": "Erhalten Sie Hilfe von unserem Support-Team per Chat oder E-Mail",
+      "liveChat": "Live-Chat",
+      "liveChatBody": "Chatten Sie in Echtzeit mit einem Support-Mitarbeiter",
+      "emailSupport": "E-Mail-Support",
+      "supportHours": "Support-Zeiten",
+      "tickets": "Support-Tickets",
+      "typeMessage": "Nachricht schreiben…",
+      "subjectPlaceholder": "Kurze Beschreibung Ihres Anliegens",
+      "descriptionPlaceholder": "Beschreiben Sie Ihr Anliegen ausführlich…"
+    },
+    "reports": {
+      "title": "Meine Berichte",
+      "subtitle": "Rufen Sie alle Ihre KI-generierten Gesundheitsberichte und Analysen auf und verwalten Sie sie",
+      "totalReports": "Berichte insgesamt",
+      "latestReport": "Neuester Bericht",
+      "empty": "Keine Berichte gefunden",
+      "emptyHint": "Erstellen Sie Ihren ersten Gesundheitsbericht, um zu starten"
+    },
+    "signalHub": {
+      "title": "Signal-Hub",
+      "subtitle": "Eine Live-Karte aller Signale, die Ihre Berichte, Erkenntnisse und Empfehlungen speisen.",
+      "readiness": "Gesamte Datenbereitschaft",
+      "acrossSources": "Über alle Quellen hinweg",
+      "lastRefresh": "Letzte Signalaktualisierung"
+    },
+    "reminders": {
+      "title": "Intelligente Erinnerungen",
+      "subtitle": "Lokale Erinnerungen, damit Ihre Gesundheitsroutinen beständig bleiben.",
+      "create": "Erinnerung erstellen",
+      "titlePlaceholder": "Titel der Erinnerung",
+      "notePlaceholder": "Notiz (optional)"
+    },
+    "secondOpinion": {
+      "title": "Gesundheitliche Zweitmeinung",
+      "subtitle": "Erhalten Sie zwei unabhängige Fachperspektiven zu Ihren Gesundheitsfragen",
+      "researchBacked": "Forschungsgestützt",
+      "analysisTime": "Analysedauer",
+      "submitQuestion": "Frage einreichen",
+      "healthQuestion": "Gesundheitsfrage",
+      "questionPlaceholder": "Zu welcher Gesundheitsfrage brauchen Sie eine Zweitmeinung?",
+      "contextPlaceholder": "Nennen Sie relevante Vorgeschichte, Befunde oder aktuelle Medikamente…",
+      "disclaimer": "Medizinischer Hinweis"
+    },
+    "referral": {
+      "title": "Empfehlungsprogramm",
+      "subtitle": "Laden Sie Freunde ein und erhalten Sie Prämien für jede erfolgreiche Empfehlung",
+      "totalReferrals": "Empfehlungen insgesamt",
+      "totalEarned": "Insgesamt verdient",
+      "yourCode": "Ihr Empfehlungscode",
+      "history": "Empfehlungsverlauf",
+      "empty": "Noch keine Empfehlungen"
+    },
+    "medicalFiles": {
+      "title": "Medizinische Dateien & Dokumente",
+      "subtitle": "Speichern und verwalten Sie Ihre Befunde, Testergebnisse und Gesundheitsdokumente sicher",
+      "legalNotice": "Wichtiger rechtlicher Hinweis",
+      "searchPlaceholder": "Dateien nach Name oder Tags suchen…",
+      "allCategories": "Alle Kategorien",
+      "empty": "Noch keine medizinischen Dateien hochgeladen",
+      "fileName": "Dateiname",
+      "fileUrl": "Datei-URL",
+      "fileType": "Dateityp"
+    },
+    "blackBox": {
+      "title": "Black-Box-Speicher",
+      "subtitle": "Stark verschlüsselter Speicher für Ihre sensibelsten Gesundheitsdaten",
+      "legalNotice": "Kritische rechtliche Verantwortung",
+      "securedFiles": "Gesicherte Dateien",
+      "totalStorage": "Gesamtspeicher",
+      "accessLogs": "Zugriffsprotokolle",
+      "lastAccess": "Letzter Zugriff",
+      "encryptedFiles": "Verschlüsselte Dateien",
+      "empty": "Die Black Box ist leer",
+      "emptyHint": "Laden Sie Ihre sensibelsten Gesundheitsdaten für maximale Sicherheit hoch"
+    },
+    "system": {
+      "title": "System",
+      "subtitle": "Überwachen Sie Systemprozesse und Leistungskennzahlen in Echtzeit",
+      "totalRequests": "Anfragen insgesamt",
+      "activeConnections": "Aktive Verbindungen",
+      "avgResponseTime": "Durchschnittliche Antwortzeit",
+      "errorRate": "Fehlerquote",
+      "apiKeys": "API-Schlüssel",
+      "apiKeysBody": "Verwalten Sie API-Schlüssel für Integrationen von Drittanbietern",
+      "dataExport": "Datenexport",
+      "dataExportBody": "Exportieren Sie Ihre Gesundheitsdaten in verschiedenen Formaten"
+    },
+    "questionnaires": {
+      "title": "Gesundheitsfragebögen",
+      "subtitle": "Vervollständigen Sie Ihr Gesundheitsprofil für personalisierte Empfehlungen und Erkenntnisse",
+      "settings": "Einstellungen"
+    },
+    "reportSettings": {
+      "title": "Berichtseinstellungen",
+      "subtitle": "Legen Sie fest, wie Ihre Berichte formuliert, gegliedert und zugestellt werden"
+    },
+    "catalog": {
+      "title": "Stellen Sie Ihren Gesundheitsplan zusammen",
+      "subtitle": "Wählen Sie aus 20 Gesundheitskategorien und über 200 Diensten",
+      "hint": "Beginnen Sie mit 3 beliebigen Kategorien",
+      "openService": "Dienst öffnen",
+      "planCalculator": "Ihr Tarifrechner",
+      "planCalculatorHint": "Sehen Sie, wie sich Ihr Tarif bei der Auswahl von Kategorien anpasst",
+      "selectTitle": "Wählen Sie Ihre Gesundheitskategorien",
+      "selectedTitle": "Ihre ausgewählten Kategorien",
+      "selectedSubtitle": "Prüfen Sie Ihre Auswahl vor dem Upgrade",
+      "nextSteps": "Nächste Schritte"
+    },
+    "healthGuide": {
+      "ask": "Stellen Sie Ihre Gesundheitsfrage",
+      "askPlaceholder": "Geben Sie hier Ihre Gesundheitsfrage ein…",
+      "keyInsights": "Wichtigste Erkenntnisse",
+      "empty": "Noch keine Fragen gestellt",
+      "emptyHint": "Stellen Sie eine Gesundheitsfrage, um zwei unabhängige Fachperspektiven zu erhalten"
+    },
+    "placeholder": {
+      "comingSoon": "Demnächst",
+      "comingSoonBody": "Wir arbeiten daran, Ihnen diese Funktion bereitzustellen. Bleiben Sie dran.",
+      "ready": "Dieser Bereich ist bereit für die Umsetzung",
+      "plannedFeatures": "Geplante Funktionen:"
+    }
+  }
+}

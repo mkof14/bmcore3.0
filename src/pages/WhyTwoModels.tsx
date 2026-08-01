@@ -1,128 +1,185 @@
-import { Brain, Microscope, Shield, Zap } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
+import { tList } from '../i18n/tList';
+
+type ModelItem = { title: string; body: string; points: string[] };
+type AdvantageItem = { title: string; body: string };
+
+function SectionLabel({ children }: { children: ReactNode }) {
+  return (
+    <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-600 dark:text-orange-400">
+      {children}
+    </p>
+  );
+}
+
+function stepIndex(position: number) {
+  return String(position + 1).padStart(2, '0');
+}
 
 export default function WhyTwoModels() {
+  const { t } = useTranslation();
+
+  const models = tList<ModelItem>(t, 'whyTwoModels.models.items');
+  const advantages = tList<AdvantageItem>(t, 'whyTwoModels.advantages.items');
+  const mathStrengths = tList<string>(t, 'whyTwoModels.secondOpinion.mathStrengths');
+  const clinicalStrengths = tList<string>(t, 'whyTwoModels.secondOpinion.clinicalStrengths');
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/40 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-14">
-          <span className="inline-flex items-center rounded-full border border-orange-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-orange-700 dark:border-white/15 dark:bg-gray-900/60 dark:text-orange-300">
-            Dual Intelligence
-          </span>
-          <h1 className="mt-6 text-4xl md:text-6xl font-semibold tracking-tight text-gray-900 dark:text-white">
-            Why Two AI Models?
-          </h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Our dual-engine approach combines mathematical precision with clinical expertise to provide the most
-            comprehensive health analysis available.
-          </p>
-        </div>
+    <div className="min-h-screen bg-page transition-colors">
+      <SEO
+        title={t('whyTwoModels.seo.title')}
+        description={t('whyTwoModels.seo.description')}
+        keywords={[
+          'dual health models',
+          'biomathematical analysis',
+          'clinical health model',
+          'second opinion health',
+          'explainable health insights',
+        ]}
+        page="why-two-models"
+      />
 
-        <div className="grid lg:grid-cols-2 gap-8 mb-20">
-          <div className="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-xl dark:border-gray-800 dark:bg-gray-900/60">
-            <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 dark:bg-blue-900/30">
-              <Microscope className="w-7 h-7 text-blue-600 dark:text-blue-300" />
-            </div>
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
-              Mathematical Model
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Pure data-driven analysis using advanced mathematical algorithms and statistical methods.
+      <div className="pt-20 pb-16">
+        <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
+          {/* Hero */}
+          <section className="border-b border-[var(--bm-border)] pb-14 pt-8 lg:pb-16 lg:pt-10">
+            <SectionLabel>{t('whyTwoModels.hero.label')}</SectionLabel>
+            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
+              {t('whyTwoModels.hero.title')}
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-lg">
+              {t('whyTwoModels.hero.body')}
             </p>
-            <div className="grid gap-3 text-sm text-gray-700 dark:text-gray-300">
-              <span>Unbiased pattern recognition</span>
-              <span>Complex correlation analysis</span>
-              <span>Predictive modeling</span>
-              <span>Anomaly detection</span>
-            </div>
-          </div>
+          </section>
 
-          <div className="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-xl dark:border-gray-800 dark:bg-gray-900/60">
-            <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-6 dark:bg-orange-900/30">
-              <Brain className="w-7 h-7 text-orange-600 dark:text-orange-300" />
-            </div>
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
-              Clinical Model
+          {/* The two models */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('whyTwoModels.models.label')}</SectionLabel>
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">
+              {t('whyTwoModels.models.title')}
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Evidence-based analysis using medical knowledge and clinical guidelines.
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
+              {t('whyTwoModels.models.body')}
             </p>
-            <div className="grid gap-3 text-sm text-gray-700 dark:text-gray-300">
-              <span>Medical context interpretation</span>
-              <span>Evidence-based recommendations</span>
-              <span>Clinical guideline adherence</span>
-              <span>Risk factor assessment</span>
-            </div>
-          </div>
-        </div>
 
-        <div className="mb-20">
-          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-8 text-center">
-            The Power of Dual Analysis
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-lg dark:border-gray-800 dark:bg-gray-900/60">
-              <div className="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center mb-4 mx-auto dark:bg-emerald-900/30">
-                <Shield className="w-7 h-7 text-emerald-600 dark:text-emerald-300" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Higher Accuracy
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Cross-validation between models reduces false positives and ensures reliable insights
+            <div className="mt-10 grid gap-10 md:grid-cols-2 md:gap-12">
+              {models.map((item, i) => (
+                <article
+                  key={item.title}
+                  className="border border-[var(--bm-border)] bg-[var(--bm-surface)] p-6 sm:p-8"
+                >
+                  <p className="text-[11px] font-semibold tracking-[0.28em] text-orange-600 dark:text-orange-400">
+                    {stepIndex(i)}
+                  </p>
+                  <h3 className="mt-2 text-2xl font-semibold text-gray-900 dark:text-neutral-100">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-[15px]">
+                    {item.body}
+                  </p>
+                  <ul className="mt-5 space-y-2.5">
+                    {item.points.map((point) => (
+                      <li
+                        key={point}
+                        className="flex items-start gap-2.5 text-sm leading-relaxed text-gray-700 dark:text-neutral-300"
+                      >
+                        <span
+                          aria-hidden
+                          className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-orange-500 dark:bg-orange-400"
+                        />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          {/* Advantages */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('whyTwoModels.advantages.label')}</SectionLabel>
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">
+              {t('whyTwoModels.advantages.title')}
+            </h2>
+
+            <div className="mt-10 grid gap-10 md:grid-cols-3 md:gap-8">
+              {advantages.map((item, i) => (
+                <article key={item.title}>
+                  <span
+                    aria-hidden
+                    className="mb-4 block h-px w-8 bg-orange-500/70 dark:bg-orange-400/55"
+                  />
+                  <p className="mb-2 text-[11px] font-semibold tracking-[0.28em] text-orange-600 dark:text-orange-400">
+                    {stepIndex(i)}
+                  </p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-100">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-400">
+                    {item.body}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          {/* Second opinion */}
+          <section className="py-14 lg:py-16">
+            <div className="border border-[var(--bm-border)] bg-[var(--bm-surface)] px-6 py-10 sm:px-10 sm:py-12">
+              <SectionLabel>{t('whyTwoModels.secondOpinion.label')}</SectionLabel>
+              <h2 className="max-w-2xl text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-3xl">
+                {t('whyTwoModels.secondOpinion.title')}
+              </h2>
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-gray-700 dark:text-neutral-300">
+                {t('whyTwoModels.secondOpinion.body')}
               </p>
-            </div>
 
-            <div className="text-center rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-lg dark:border-gray-800 dark:bg-gray-900/60">
-              <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 mx-auto dark:bg-orange-900/30">
-                <Brain className="w-7 h-7 text-orange-600 dark:text-orange-300" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Comprehensive View
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                See both data-driven patterns and clinical interpretations side by side
-              </p>
-            </div>
+              <div className="mt-10 grid gap-10 md:grid-cols-2 md:gap-12">
+                <div>
+                  <h3 className="text-base font-semibold text-gray-900 dark:text-neutral-100">
+                    {t('whyTwoModels.secondOpinion.mathTitle')}
+                  </h3>
+                  <ul className="mt-4 space-y-2.5">
+                    {mathStrengths.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2.5 text-sm leading-relaxed text-gray-600 dark:text-neutral-400"
+                      >
+                        <span
+                          aria-hidden
+                          className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-orange-500 dark:bg-orange-400"
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-            <div className="text-center rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-lg dark:border-gray-800 dark:bg-gray-900/60">
-              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-4 mx-auto dark:bg-blue-900/30">
-                <Zap className="w-7 h-7 text-blue-600 dark:text-blue-300" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Better Decisions
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Make informed choices with insights backed by both mathematics and medicine
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="rounded-3xl border border-gray-900/90 bg-gradient-to-r from-gray-900 to-gray-800 p-10 text-white shadow-2xl">
-          <h2 className="text-3xl font-semibold mb-4">The Second Opinion Advantage</h2>
-          <p className="text-lg opacity-90 mb-8 max-w-3xl">
-            Just like seeking a second medical opinion, our dual AI approach provides you with two independent analyses of your health data. When both models agree, you can have high confidence. When they differ, it highlights areas that may need additional attention or professional consultation.
-          </p>
-          <div className="grid md:grid-cols-2 gap-8 text-sm opacity-85">
-            <div>
-              <h4 className="font-semibold mb-2 text-base opacity-100">Mathematical Model Strengths</h4>
-              <div className="grid gap-1">
-                <span>Discovers hidden patterns</span>
-                <span>Processes vast amounts of data</span>
-                <span>Identifies subtle correlations</span>
-                <span>Predicts future trends</span>
+                <div>
+                  <h3 className="text-base font-semibold text-gray-900 dark:text-neutral-100">
+                    {t('whyTwoModels.secondOpinion.clinicalTitle')}
+                  </h3>
+                  <ul className="mt-4 space-y-2.5">
+                    {clinicalStrengths.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2.5 text-sm leading-relaxed text-gray-600 dark:text-neutral-400"
+                      >
+                        <span
+                          aria-hidden
+                          className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-orange-500 dark:bg-orange-400"
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
-            <div>
-              <h4 className="font-semibold mb-2 text-base opacity-100">Clinical Model Strengths</h4>
-              <div className="grid gap-1">
-                <span>Applies medical expertise</span>
-                <span>Considers clinical context</span>
-                <span>Follows evidence-based guidelines</span>
-                <span>Prioritizes safety and efficacy</span>
-              </div>
-            </div>
-          </div>
+          </section>
         </div>
       </div>
     </div>

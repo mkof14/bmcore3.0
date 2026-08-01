@@ -73,12 +73,12 @@ export default function CommandCenter({ onNavigate }: CommandCenterProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/30 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 pt-20 pb-16">
+    <div className="min-h-screen bg-gradient-to-b from-[var(--bm-page)] via-orange-50/25 to-[var(--bm-page)] dark:from-[var(--bm-page)] dark:via-[var(--bm-surface)] dark:to-[var(--bm-page)] pb-16 pt-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <BackButton onNavigate={onNavigate} />
 
         <div className="mb-8">
-          <span className="inline-flex items-center rounded-full border border-orange-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-orange-700 dark:border-white/15 dark:bg-gray-900/60 dark:text-orange-300">
+          <span className="inline-flex items-center rounded-full border border-orange-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-orange-700 dark:border-white/15 dark:bg-[var(--bm-surface)]/60 dark:text-orange-300">
             Operations
           </span>
           <h1 className="mt-5 text-4xl font-semibold text-gray-900 dark:text-white mb-2">Command Center</h1>
@@ -89,7 +89,7 @@ export default function CommandCenter({ onNavigate }: CommandCenterProps) {
           {cards.map((card, idx) => {
             const Icon = card.icon;
             return (
-              <div key={idx} className="bg-white/90 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border border-slate-200 dark:border-gray-700/50 rounded-2xl p-6 hover:border-orange-600/50 transition-all duration-300 shadow-sm">
+              <div key={idx} className="bg-white/90 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-slate-200 dark:border-gray-700/50 rounded-2xl p-6 hover:border-orange-600/50 transition-all duration-300 shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <Icon className="h-8 w-8 text-orange-500" />
                   <div className={`flex items-center gap-1 text-sm font-medium ${card.positive ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
@@ -105,7 +105,7 @@ export default function CommandCenter({ onNavigate }: CommandCenterProps) {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 mb-8">
-          <div className="bg-white/90 dark:bg-gray-900 border border-slate-200 dark:border-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+          <div className="bg-white/90 dark:bg-[var(--bm-surface)] border border-slate-200 dark:border-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
             <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Revenue Trend (Last 30 Days)</h2>
             <div className="h-64 flex items-end justify-between gap-2">
               {Array.from({ length: 30 }).map((_, i) => {
@@ -121,7 +121,7 @@ export default function CommandCenter({ onNavigate }: CommandCenterProps) {
             </div>
           </div>
 
-          <div className="bg-white/90 dark:bg-gray-900 border border-slate-200 dark:border-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+          <div className="bg-white/90 dark:bg-[var(--bm-surface)] border border-slate-200 dark:border-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
             <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">User Growth (Last 30 Days)</h2>
             <div className="h-64 flex items-end justify-between gap-2">
               {Array.from({ length: 30 }).map((_, i) => {
@@ -138,12 +138,12 @@ export default function CommandCenter({ onNavigate }: CommandCenterProps) {
           </div>
         </div>
 
-        <div className="bg-white/90 dark:bg-gray-900 border border-slate-200 dark:border-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white/90 dark:bg-[var(--bm-surface)] border border-slate-200 dark:border-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
           <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Service Usage</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-gray-600 dark:text-gray-400">AI Health Advisor</span>
+                <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Health Guide</span>
                 <span className="text-sm font-bold text-gray-900 dark:text-white">892</span>
               </div>
               <div className="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-2">

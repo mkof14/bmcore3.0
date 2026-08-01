@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Settings, Lock, Unlock, Info, Save } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError } from '../../lib/adminNotify';
@@ -19,6 +20,7 @@ interface ReportSettings {
 }
 
 export default function ReportSettingsSection() {
+  const { t } = useTranslation();
   const [settings, setSettings] = useState<ReportSettings>({
     detail_level: 'standard',
     tone_style: 'supportive',
@@ -143,7 +145,7 @@ export default function ReportSettingsSection() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-semibold text-gray-900 mb-2">Report Settings</h2>
+          <h2 className="text-3xl font-semibold text-gray-900 mb-2">{t('member.reportSettings.title')}</h2>
           <p className="text-gray-600">
             Personalize how AI-generated reports are created and displayed
           </p>
@@ -314,7 +316,7 @@ export default function ReportSettingsSection() {
         </div>
 
         {!settings.advanced_mode_unlocked && (
-          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+          <div className="bg-gray-50 dark:bg-[var(--bm-surface)] rounded-lg p-4 border border-gray-200 dark:border-gray-700">
             <div className="flex items-start space-x-3">
               <Info className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
               <div className="text-sm text-gray-700 dark:text-gray-300">

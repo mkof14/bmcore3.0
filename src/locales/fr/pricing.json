@@ -1,0 +1,182 @@
+{
+  "pricing": {
+    "seoTitle": "Tarifs — analyse de santé accessible",
+    "seoDescription": "Tarifs transparents pour l'analyse de santé assistée par IA. Core (19 $/mois), Daily (39 $/mois), Max (79 $/mois). Essai gratuit de 5 jours. Remises annuelles. Annulation à tout moment.",
+    "paymentCancelled": "Le paiement a été annulé. Vous pourrez réessayer quand vous le souhaitez.",
+    "perMonth": "mois",
+    "perYear": "an",
+    "trialNote": "Toutes les formules incluent un <b>essai de 5 jours</b>. Annulation possible à tout moment pendant l'essai.",
+    "plans": {
+      "core": {
+        "name": "Core",
+        "description": "L'analyse de santé essentielle pour les particuliers",
+        "categories": "3 catégories",
+        "features": [
+          "Tableau de bord santé simple",
+          "Accès à 3 catégories de services",
+          "10 Go de stockage dans l'Archive de modèles",
+          "Rapports de santé mensuels",
+          "Assistance par e-mail",
+          "Chiffrement des données",
+          "Connexion d'appareils (jusqu'à 2)"
+        ]
+      },
+      "daily": {
+        "name": "Daily",
+        "description": "Insights quotidiens et suivi complet",
+        "categories": "10 catégories",
+        "features": [
+          "Tout ce que contient Core",
+          "10 catégories",
+          "50 Go de stockage dans l'Archive de modèles",
+          "Rapports de santé quotidiens",
+          "Accès à Health Guide",
+          "Assistance e-mail prioritaire",
+          "Connexion d'appareils (jusqu'à 5)",
+          "Intégration des résultats de laboratoire",
+          "Analyse des données génétiques"
+        ]
+      },
+      "max": {
+        "name": "Max",
+        "description": "Couverture complète de l'intelligence santé",
+        "categories": "20 catégories",
+        "features": [
+          "Tout ce que contient Daily",
+          "Les 20 catégories de services",
+          "200 Go de stockage dans l'Archive de modèles",
+          "Insights d'IA en temps réel",
+          "Assistance prioritaire 24/7",
+          "Connexion d'appareils illimitée",
+          "Analytique prédictive avancée",
+          "Génération de rapports personnalisés",
+          "Comptes familiaux (jusqu'à 5 membres)",
+          "Accès à l'API pour les développeurs"
+        ]
+      }
+    },
+    "compare": {
+      "label": "Comparer",
+      "title": "Toutes les fonctionnalités, côte à côte",
+      "featureColumn": "Fonctionnalité",
+      "included": "Inclus",
+      "values": {
+        "basic": "Simple",
+        "advanced": "Avancé",
+        "all20": "Les 20",
+        "n3": "3",
+        "n10": "10",
+        "gb10": "10 Go",
+        "gb50": "50 Go",
+        "gb200": "200 Go",
+        "monthly": "Mensuels",
+        "daily": "Quotidiens",
+        "realtime": "Temps réel",
+        "email": "E-mail",
+        "priorityEmail": "E-mail prioritaire",
+        "priority247": "Prioritaire 24/7",
+        "upTo2": "Jusqu'à 2",
+        "upTo5": "Jusqu'à 5",
+        "unlimited": "Illimité"
+      },
+      "rows": {
+        "dashboard": "Tableau de bord santé",
+        "categories": "Catégories de services",
+        "storage": "Stockage de l'Archive de modèles",
+        "reports": "Rapports de santé",
+        "support": "Assistance",
+        "encryption": "Chiffrement des données",
+        "devices": "Connexion d'appareils",
+        "assistant": "Health Guide",
+        "labs": "Intégration des résultats de laboratoire",
+        "genetics": "Analyse des données génétiques",
+        "predictive": "Analytique prédictive",
+        "customReports": "Génération de rapports personnalisés",
+        "family": "Comptes familiaux",
+        "api": "Accès à l'API"
+      }
+    },
+    "testimonials": {
+      "label": "Témoignages",
+      "title": "Ce que remarquent les utilisateurs",
+      "items": [
+        {
+          "quote": "Parfait pour suivre mes indicateurs de santé de base. Simple et efficace.",
+          "author": "Sarah M.",
+          "plan": "Core"
+        },
+        {
+          "quote": "Health Guide a changé ma façon de comprendre mes données de santé. Ça vaut chaque centime.",
+          "author": "Michael R.",
+          "plan": "Daily"
+        },
+        {
+          "quote": "En tant que professionnelle de santé, l'analytique complète et les comptes familiaux sont inestimables.",
+          "author": "Dre Emily Chen",
+          "plan": "Max"
+        }
+      ]
+    },
+    "why": {
+      "label": "Pourquoi BioMath Core",
+      "title": "Conçu pour une clarté durable",
+      "items": [
+        {
+          "index": "01",
+          "title": "Insights en temps réel",
+          "body": "Un retour immédiat sur vos signaux de santé, avec des modèles qui apprennent de vos habitudes."
+        },
+        {
+          "index": "02",
+          "title": "Sécurité alignée sur HIPAA",
+          "body": "Une protection de niveau entreprise pour que les données sensibles restent privées par défaut."
+        },
+        {
+          "index": "03",
+          "title": "Un accompagnement humain",
+          "body": "Des spécialistes et une aide prioritaire lorsque vous avez besoin de comprendre ce que disent les données."
+        }
+      ]
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Questions fréquentes",
+      "items": [
+        {
+          "question": "Puis-je changer de formule à tout moment ?",
+          "answer": "Oui, vous pouvez passer à une formule supérieure ou inférieure quand vous le souhaitez. Les changements prennent effet immédiatement et le coût est calculé au prorata."
+        },
+        {
+          "question": "Que se passe-t-il après l'essai de 5 jours ?",
+          "answer": "À la fin de votre essai de 5 jours, le paiement est prélevé automatiquement selon la formule et la périodicité choisies. Vous pouvez annuler à tout moment pendant l'essai sans être facturé."
+        },
+        {
+          "question": "Mes données de santé sont-elles sécurisées ?",
+          "answer": "Absolument. Toutes les formules incluent un chiffrement de niveau entreprise, un stockage sécurisé et la conformité aux exigences HIPAA. Vos données de santé ne sont jamais partagées avec des tiers sans votre consentement explicite."
+        },
+        {
+          "question": "Proposez-vous une remise pour la facturation annuelle ?",
+          "answer": "Oui ! La facturation annuelle représente une économie d'environ 17 % par rapport au paiement mensuel. Le prix remisé s'affiche dès que vous sélectionnez la facturation annuelle ci-dessus."
+        }
+      ],
+      "moreTitle": "Envie d'une vue d'ensemble avant de choisir une formule ?",
+      "moreLink": "En savoir plus sur BioMath Core →"
+    },
+    "closing": {
+      "title": "Prêt à démarrer avec un contexte santé plus clair ?",
+      "description": "Commencez par un essai de 5 jours. Élargissez les catégories à mesure que votre Human Data Model s'enrichit.",
+      "primary": "Démarrer l'essai gratuit",
+      "secondary": "Contacter le service commercial",
+      "note": "Aligné sur HIPAA · Chiffré en transit et au repos · Annulation à tout moment"
+    },
+    "errors": {
+      "title": "Erreur de paiement",
+      "dismiss": "Fermer",
+      "notAuthenticated": "Non authentifié",
+      "processingUnavailable": "Le traitement des paiements est indisponible",
+      "notConfigured": "Le système de paiement n'est pas configuré",
+      "configError": "Erreur de configuration du système de paiement",
+      "checkoutFailed": "Le paiement a échoué"
+    }
+  }
+}

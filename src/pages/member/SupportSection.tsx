@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { HeadphonesIcon, Send, Mail, MessageCircle, Plus, Clock } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserInfo, notifyUserSuccess } from '../../lib/adminNotify';
@@ -26,6 +27,7 @@ interface Message {
 }
 
 export default function SupportSection() {
+  const { t } = useTranslation();
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [currentTicket, setCurrentTicket] = useState<Ticket | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -203,9 +205,9 @@ export default function SupportSection() {
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">
           <HeadphonesIcon className="h-8 w-8 text-orange-500" />
-          Support
+          {t('member.support.title')}
         </h1>
-        <p className="text-gray-600 dark:text-gray-400">Get help from our support team via chat or email</p>
+        <p className="text-gray-600 dark:text-gray-400">{t('member.support.subtitle')}</p>
       </div>
 
       <ReportBrandHeader
@@ -219,15 +221,15 @@ export default function SupportSection() {
         <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg">
           <ReportBrandHeader variant="strip" subtitle="Live Chat" className="mb-3" />
           <MessageCircle className="h-6 w-6 text-blue-600 mb-2" />
-          <h3 className="font-semibold text-gray-900 mb-1">Live Chat</h3>
-          <p className="text-xs text-gray-500 mb-3">Chat with support agent in real-time</p>
+          <h3 className="font-semibold text-gray-900 mb-1">{t('member.support.liveChat')}</h3>
+          <p className="text-xs text-gray-500 mb-3">{t('member.support.liveChatBody')}</p>
           <button className="text-xs text-blue-600 hover:text-blue-700">Start Chat →</button>
         </div>
 
         <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg">
           <ReportBrandHeader variant="strip" subtitle="Email Support" className="mb-3" />
           <Mail className="h-6 w-6 text-emerald-600 mb-2" />
-          <h3 className="font-semibold text-gray-900 mb-1">Email Support</h3>
+          <h3 className="font-semibold text-gray-900 mb-1">{t('member.support.emailSupport')}</h3>
           <p className="text-xs text-gray-500 mb-3">support@biomathcore.com</p>
           <p className="text-xs text-gray-500 dark:text-gray-400">Response within 24 hours</p>
         </div>
@@ -235,14 +237,14 @@ export default function SupportSection() {
         <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg">
           <ReportBrandHeader variant="strip" subtitle="Support Hours" className="mb-3" />
           <Clock className="h-6 w-6 text-orange-500 mb-2" />
-          <h3 className="font-semibold text-gray-900 mb-1">Support Hours</h3>
+          <h3 className="font-semibold text-gray-900 mb-1">{t('member.support.supportHours')}</h3>
           <p className="text-xs text-gray-500 mb-1">24/7 for Pro users</p>
           <p className="text-xs text-gray-500">9AM-6PM EST for Basic</p>
         </div>
       </div>
 
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Support Tickets</h3>
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('member.support.tickets')}</h3>
         <div className="flex items-center gap-2">
           <Button size="sm" onClick={loadTickets}>
             Refresh
@@ -293,7 +295,7 @@ export default function SupportSection() {
           )}
         </div>
 
-        <div className="md:col-span-2 bg-white/90 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border border-slate-200 dark:border-gray-700/50 rounded-2xl flex flex-col h-[600px] shadow-lg">
+        <div className="md:col-span-2 bg-white/90 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-slate-200 dark:border-gray-700/50 rounded-2xl flex flex-col h-[600px] shadow-lg">
           <ReportBrandHeader
             variant="strip"
             subtitle="Ticket Details"
@@ -354,7 +356,7 @@ export default function SupportSection() {
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-                    placeholder="Type your message..."
+                    placeholder={t('member.support.typeMessage')}
                     className="flex-1 px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                   <button
@@ -393,7 +395,7 @@ export default function SupportSection() {
                 value={newTicketForm.subject}
                 onChange={(e) => setNewTicketForm({ ...newTicketForm, subject: e.target.value })}
                 className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                placeholder="Brief description of your issue"
+                placeholder={t('member.support.subjectPlaceholder')}
               />
             </div>
 
@@ -435,7 +437,7 @@ export default function SupportSection() {
                 onChange={(e) => setNewTicketForm({ ...newTicketForm, message: e.target.value })}
                 rows={4}
                 className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                placeholder="Describe your issue in detail..."
+                placeholder={t('member.support.descriptionPlaceholder')}
               />
             </div>
           </div>

@@ -1,0 +1,309 @@
+{
+  "auth": {
+    "signIn": {
+      "title": "欢迎回来",
+      "subtitle": "登录以进入你的健康看板",
+      "mockNotice": "本地模拟登录已启用。测试时可使用超级管理员邮箱 {{email}} 与你的密码进入会员专区和管理后台。",
+      "remember": "记住我",
+      "forgot": "忘记密码？",
+      "submit": "登录",
+      "submitting": "正在登录…",
+      "noAccount": "还没有账户？",
+      "signUpLink": "注册",
+      "legal": "登录即表示你同意我们的服务条款与隐私政策",
+      "genericError": "登录时发生错误",
+      "noSession": "登录失败 — 未创建用户会话"
+    },
+    "signUp": {
+      "title": "创建账户",
+      "subtitle": "与 BioMath Core 一起开始你的健康之路",
+      "success": "账户创建成功！正在跳转到登录页…",
+      "verifyEmail": "账户已创建。请先查收邮件完成确认，然后再登录。",
+      "submit": "创建账户",
+      "submitting": "正在创建账户…",
+      "haveAccount": "已经有账户了？",
+      "signInLink": "登录",
+      "legal": "创建账户即表示你同意我们的服务条款与隐私政策",
+      "rights": "© {{year}} BioMath Core. 保留所有权利。",
+      "genericError": "注册时发生错误",
+      "passwordMismatch": "两次输入的密码不一致",
+      "passwordTooShort": "密码至少需要 6 个字符"
+    },
+    "fields": {
+      "email": "电子邮箱",
+      "password": "密码",
+      "confirmPassword": "确认密码",
+      "fullName": "姓名",
+      "fullNamePlaceholder": "张三",
+      "referralCode": "推荐码（选填）",
+      "referralHint": "使用好友的推荐码可享 5 美元优惠",
+      "passwordHint": "至少需要 6 个字符"
+    }
+  },
+  "contactExtra": {
+    "seoTitle": "联系我们 — 与 BioMath Core 取得联系",
+    "seoDescription": "有疑问吗？无论是支持、合作还是其他咨询，都欢迎联系 BioMath Core。我们通常在 24 小时内回复，并提供多种联系方式。",
+    "sent": "已发送",
+    "receivedTitle": "已收到你的消息",
+    "receivedBody": "感谢你的来信。我们的团队会在 24 小时内回复。",
+    "form": {
+      "name": "你的姓名 *",
+      "email": "电子邮箱 *",
+      "company": "公司（选填）",
+      "subject": "主题 *",
+      "message": "消息内容 *",
+      "messagePlaceholder": "请详细描述你的需求…",
+      "submit": "发送消息",
+      "selectSubject": "请选择主题",
+      "subjects": {
+        "general": "一般咨询",
+        "enterprise": "企业方案",
+        "api": "API 接入",
+        "investment": "投资机会",
+        "partnership": "合作",
+        "support": "技术支持"
+      }
+    },
+    "channelsLabel": "联系方式",
+    "channels": {
+      "email": {
+        "title": "电子邮件",
+        "note": "我们会在 24 小时内回复",
+        "body": "适合详细问题、账户事项，以及希望书面留存的内容。"
+      },
+      "chat": {
+        "title": "在线聊天",
+        "body": "营业时间内的快速问题与账户帮助。",
+        "note": "可在本页面打开聊天",
+        "open": "开始聊天",
+        "close": "关闭聊天"
+      },
+      "enterprise": {
+        "title": "企业",
+        "note": "合作与定制部署",
+        "body": "面向诊所、团队、定制部署与合作洽谈。"
+      }
+    },
+    "responseLabel": "回复时间",
+    "response": {
+      "general": "一般咨询",
+      "generalValue": "24 小时",
+      "enterprise": "企业",
+      "enterpriseValue": "12 小时",
+      "support": "技术支持",
+      "supportValue": "48 小时"
+    },
+    "partnershipsLabel": "合作",
+    "partnershipsTitle": "企业与合作咨询",
+    "partnershipsBody": "如需定制方案、企业部署或战略合作，请直接联系我们的专属团队。",
+    "howToReach": "按需求选择：详细问题用电邮；登录后的快速帮助用在线聊天；需要跟进的请求用下方表单。",
+    "choosePathLabel": "联系方式",
+    "choosePathTitle": "选择最清晰的渠道",
+    "formIntro": "合作、技术问题，或希望留下书面记录的内容，请使用表单。",
+    "sidebarTip": "简短账户问题优先用聊天；需要附件、背景说明或更从容回复时，用电邮或表单。"
+  },
+  "content": {
+    "blog": {
+      "seoTitle": "健康与养护博客 — 专家文章与洞察",
+      "seoDescription": "浏览我们关于健康分析、养护优化、预防保健与个体化医疗的文章合集，了解 BioMath Core 的专业视角。",
+      "badge": "博客",
+      "title": "博客",
+      "subtitle": "关于健康、养生与个性化照护未来的洞察、研究与故事",
+      "loadError": "博客加载失败",
+      "errorTitle": "无法加载文章",
+      "emptyTitle": "暂无文章",
+      "emptyBody": "健康洞察、研究与养生故事即将上线，敬请期待。",
+      "searchPlaceholder": "搜索文章…",
+      "allCategories": "全部分类",
+      "noResultsTitle": "没有结果",
+      "noResultsBody": "请换个关键词或分类再试。",
+      "defaultCategory": "健康"
+    },
+    "news": {
+      "badge": "新闻",
+      "title": "新闻",
+      "subtitle": "BioMath Core 的最新动态、公告与重要进展",
+      "loading": "正在加载新闻…",
+      "loadError": "新闻加载失败",
+      "errorTitle": "加载新闻出错",
+      "retry": "重试",
+      "emptyTitle": "暂无新闻。",
+      "emptyBody": "请关注后续更新！",
+      "searchPlaceholder": "搜索新闻…",
+      "noResultsTitle": "没有找到新闻。",
+      "noResultsBody": "请换个关键词再试。",
+      "readMore": "阅读更多"
+    },
+    "shared": {
+      "results": "{{count}} 条结果",
+      "retry": "重试",
+      "clearSearch": "清除搜索",
+      "loadMore": "加载更多",
+      "share": "分享",
+      "copyLink": "复制链接",
+      "linkCopied": "链接已复制",
+      "close": "关闭"
+    },
+    "media": {
+      "seoTitle": "媒体 — 视频、演示文稿与文档",
+      "seoDescription": "观看 BioMath Core 视频，浏览演示文稿，并下载有关健康理解与人类数据模型的文档。",
+      "badge": "媒体",
+      "title": "媒体",
+      "subtitle": "来自 BioMath Core 的视频、演示文稿与文档 — 便于学习与分享的清晰内容。",
+      "loading": "正在加载媒体…",
+      "loadError": "媒体加载失败",
+      "errorTitle": "无法加载媒体",
+      "emptyTitle": "暂无媒体内容",
+      "emptyBody": "已发布的视频、演示文稿和文档将显示在这里。",
+      "noResultsTitle": "此分类暂无内容",
+      "noResultsBody": "请尝试其他标签，或稍后再来查看。",
+      "download": "下载",
+      "open": "打开",
+      "openVideo": "打开视频",
+      "tabs": {
+        "all": "全部",
+        "video": "视频",
+        "presentation": "演示文稿",
+        "document": "文档"
+      },
+      "sections": {
+        "video": "视频",
+        "presentation": "演示文稿",
+        "document": "文档"
+      }
+    }
+  },
+  "apiPage": {
+    "seoTitle": "API 文档 — BioMath Core 开发者接入",
+    "seoDescription": "将 BioMath Core 的生物数学分析能力集成到你的应用与工作流中。REST API 提供符合 HIPAA 要求的安全性、Webhook 与开发者文档。",
+    "label": "开发者 API",
+    "heroTitle": "API 文档",
+    "heroSubtitle": "把 BioMath Core 的生物数学智能接入你的应用、服务与工作流程。",
+    "capabilitiesLabel": "能力",
+    "capabilitiesTitle": "API 提供什么",
+    "features": {
+      "auth": {
+        "title": "API 密钥认证",
+        "body": "通过 API 密钥进行安全认证，权限与调用频率均可配置。"
+      },
+      "rest": {
+        "title": "RESTful 架构",
+        "body": "清晰、可预期的 REST 设计，附有完整文档与示例。"
+      },
+      "security": {
+        "title": "符合 HIPAA 要求的安全性",
+        "body": "企业级安全，静态与传输加密，并提供完整审计日志。"
+      },
+      "webhooks": {
+        "title": "实时 Webhook",
+        "body": "一旦生成新的洞察或预警，立即收到通知。"
+      }
+    },
+    "endpointsLabel": "接口",
+    "endpointsTitle": "核心接口",
+    "endpoints": {
+      "profile": "获取用户资料与生理模型参数",
+      "metrics": "获取当前健康指标与评分",
+      "insights": "访问个性化洞察与建议",
+      "sync": "从外部来源提交新的生理数据",
+      "predictions": "获取健康趋势预测",
+      "reports": "生成完整健康报告"
+    },
+    "quickStartLabel": "快速开始",
+    "quickStartTitle": "认证与响应示例",
+    "authTitle": "认证",
+    "authSteps": [
+      "在开发者后台获取你的 API 密钥",
+      "在 Authorization 请求头中携带该密钥",
+      "所有请求都必须使用 HTTPS"
+    ],
+    "exampleTitle": "响应示例",
+    "requestAccess": "申请 API 权限",
+    "useCasesLabel": "应用场景",
+    "useCasesTitle": "常见的接入场景",
+    "useCases": {
+      "insurance": {
+        "title": "保险项目",
+        "body": "将健康数据用于风险评估、保单定价与会员参与项目。"
+      },
+      "apps": {
+        "title": "健康类应用",
+        "body": "以生物数学洞察与预测分析增强患者监测能力。"
+      },
+      "research": {
+        "title": "研究项目",
+        "body": "为临床研究获取群体层面的分析与个体参与者数据。"
+      },
+      "corporate": {
+        "title": "企业健康管理",
+        "body": "在组织内部署健康追踪，并提供定制看板与报表。"
+      },
+      "fitness": {
+        "title": "健身服务",
+        "body": "以生理状态监测与恢复优化补充训练方案。"
+      },
+      "clinical": {
+        "title": "临床决策支持",
+        "body": "在电子病历工作流程中为临床人员提供可执行的患者洞察。"
+      }
+    },
+    "ctaTitle": "准备好用 BioMath Core 开发了吗？",
+    "ctaBody": "立即开始使用我们的 API。提供企业支持与定制集成。",
+    "contactSales": "联系销售",
+    "viewDocs": "查看完整文档"
+  },
+  "admin": {
+    "media": {
+      "menuLabel": "媒体库",
+      "title": "媒体库",
+      "subtitle": "上传并管理显示在公开媒体页上的视频、演示文稿和文档。",
+      "refresh": "刷新",
+      "addItem": "添加媒体",
+      "editItem": "编辑媒体",
+      "loading": "正在加载媒体…",
+      "loadingBody": "正在获取最新媒体项目。",
+      "loadError": "无法加载媒体项目。",
+      "emptyTitle": "暂无媒体项目",
+      "emptyBody": "添加您的第一个视频、演示文稿或文档。",
+      "published": "已发布",
+      "draft": "草稿",
+      "publish": "发布",
+      "unpublish": "取消发布",
+      "edit": "编辑",
+      "delete": "删除",
+      "orderLabel": "顺序",
+      "confirmDelete": "删除此媒体项目？",
+      "requiredFields": "标题和文件 URL 为必填项",
+      "saveSuccess": "媒体项目已保存",
+      "saveFailed": "保存媒体项目失败",
+      "deleteSuccess": "媒体项目已删除",
+      "deleteFailed": "删除媒体项目失败",
+      "uploadFile": "上传文件",
+      "uploadThumbnail": "上传缩略图",
+      "uploading": "上传中…",
+      "uploadSuccess": "上传完成",
+      "uploadFailed": "上传失败 — 请改为粘贴 URL",
+      "saving": "保存中…",
+      "types": {
+        "video": "视频",
+        "presentation": "演示文稿",
+        "document": "文档"
+      },
+      "fields": {
+        "title": "标题",
+        "description": "描述",
+        "type": "类型",
+        "fileUrl": "文件 URL",
+        "thumbnailUrl": "缩略图 URL（可选）",
+        "sortOrder": "显示顺序",
+        "published": "发布到媒体页"
+      },
+      "placeholders": {
+        "title": "媒体标题",
+        "description": "简短描述",
+        "fileUrl": "https://… 或上传文件",
+        "thumbnailUrl": "https://… 或上传图片"
+      }
+    }
+  }
+}

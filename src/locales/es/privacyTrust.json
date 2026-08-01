@@ -1,0 +1,74 @@
+{
+  "privacyTrust": {
+    "seo": {
+      "title": "Privacidad y confianza: cómo BioMath Core protege tus datos",
+      "description": "Descubre cómo BioMath Core protege tus datos de salud con cifrado, prácticas alineadas con HIPAA, cumplimiento del RGPD y compartición controlada por el usuario. Consulta nuestras políticas de privacidad y prácticas de seguridad."
+    },
+    "hero": {
+      "label": "Privacidad y confianza",
+      "title": "Tus datos, protegidos desde el diseño",
+      "body": "Los datos de salud son profundamente personales. BioMath Core trata su protección como un requisito esencial del producto, con prácticas transparentes y políticas en lenguaje claro."
+    },
+    "commitments": {
+      "label": "Compromisos",
+      "title": "Nuestro compromiso con tu privacidad",
+      "body": "Seis principios que guían cada decisión de producto y de ingeniería.",
+      "items": [
+        {
+          "title": "Cifrado de extremo a extremo",
+          "body": "Los datos de salud se cifran en reposo y en tránsito con AES-256 y TLS estándar del sector."
+        },
+        {
+          "title": "Tú controlas tus datos",
+          "body": "Tú decides qué compartir y quién puede acceder, y puedes exportarlos o eliminarlos cuando quieras."
+        },
+        {
+          "title": "Prácticas alineadas con HIPAA",
+          "body": "Seguimos los requisitos de HIPAA para proteger la información de salud sensible."
+        },
+        {
+          "title": "Infraestructura segura",
+          "body": "Los datos se almacenan en centros de datos certificados SOC 2 con auditorías de seguridad periódicas."
+        },
+        {
+          "title": "Cumplimiento del RGPD",
+          "body": "Cumplimiento total de la normativa europea de protección de datos y de tus derechos."
+        },
+        {
+          "title": "Nunca vendemos datos",
+          "body": "Jamás vendemos tus datos. La privacidad es una restricción de diseño, no una fuente de ingresos."
+        }
+      ]
+    },
+    "policies": {
+      "label": "Políticas",
+      "title": "Transparencia y cumplimiento",
+      "body": "Toda la documentación legal es pública y está escrita en lenguaje claro.",
+      "readMore": "Leer más →",
+      "items": [
+        { "title": "Política de privacidad", "description": "Cómo recopilamos, usamos y protegemos tus datos" },
+        { "title": "Aviso HIPAA", "description": "Nuestro compromiso con la protección de datos sanitarios" },
+        { "title": "Cumplimiento del RGPD", "description": "Estándares europeos de protección de datos y tus derechos" },
+        { "title": "Prácticas de seguridad", "description": "Medidas técnicas y organizativas que aplicamos" },
+        { "title": "Privacidad de los datos", "description": "Tus derechos y nuestras responsabilidades" },
+        { "title": "Confianza y seguridad", "description": "Cómo creamos una experiencia segura y fiable" }
+      ]
+    },
+    "control": {
+      "label": "Control",
+      "title": "Tus datos, bajo tu control",
+      "body": "Tienes derecho a acceder a tus datos, exportarlos o eliminarlos en cualquier momento. Sin preguntas.",
+      "stats": [
+        { "value": "100%", "label": "Propiedad de los datos" },
+        { "value": "0", "label": "Ventas de datos" },
+        { "value": "24/7", "label": "Supervisión de seguridad" }
+      ]
+    },
+    "contact": {
+      "label": "Preguntas",
+      "title": "¿Tienes dudas sobre privacidad?",
+      "body": "Nuestro equipo de privacidad está para ayudarte. Si tienes preguntas sobre cómo protegemos tus datos, escríbenos cuando quieras.",
+      "cta": "Contactar al equipo de privacidad"
+    }
+  }
+}

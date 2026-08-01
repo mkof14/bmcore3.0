@@ -1,0 +1,191 @@
+{
+  "investors": {
+    "seo": {
+      "title": "Inversores: crecimiento y oportunidad en BioMath Core",
+      "description": "Conoce la tracción, el modelo de negocio y la hoja de ruta de BioMath Core. Descubre nuestro trabajo en inteligencia de salud y las oportunidades de colaboración."
+    },
+    "hero": {
+      "label": "Inversores",
+      "title": "Inversión estratégica en inteligencia de salud personal",
+      "body": "BioMath Core convierte datos de salud complejos en orientación personalizada mediante modelado biomatemático e IA: una infraestructura preventiva escalable, con resultados medibles y una economía unitaria clara.",
+      "body2": "Trabajamos con inversores institucionales, socios estratégicos, family offices e inversores particulares. Las estructuras son flexibles: capital, alianzas, licencias o fórmulas mixtas orientadas al valor mutuo.",
+      "ctaContact": "Contactar con el equipo",
+      "ctaSummary": "Resumen",
+      "ctaAbout": "Conócenos"
+    },
+    "partners": {
+      "label": "Socios",
+      "title": "Con quién trabajamos",
+      "body": "Relaciones en todo el espectro inversor: cada perfil aporta un valor distinto y estructuramos la colaboración en consecuencia.",
+      "offerLabel": "Lo que ofrecemos",
+      "items": [
+        {
+          "title": "Fondos institucionales y de capital riesgo",
+          "body": "Inversores de venture y growth centrados en salud digital que buscan productos defendibles con una monetización clara. Nuestro enfoque del encaje producto-mercado, la retención y los ingresos por expansión encaja con los mandatos institucionales.",
+          "offer": "Gobernanza profesional, información transparente, KPI medibles y salas de datos de nivel institucional."
+        },
+        {
+          "title": "Family offices y grandes patrimonios",
+          "body": "Socios a largo plazo que entienden el impacto social de la salud preventiva. Los family offices suelen aportar conocimiento sectorial, acceso a su red y capital paciente.",
+          "offer": "Condiciones flexibles, participación en el consejo asesor y alineación con objetivos de impacto."
+        },
+        {
+          "title": "Inversores corporativos estratégicos",
+          "body": "Proveedores sanitarios, aseguradoras, farmacéuticas y marcas de bienestar utilizan BioMath Core para la vinculación de usuarios, la estratificación de riesgo y la orientación asistencial, con acceso preferente, codesarrollo e información respetuosa con la privacidad.",
+          "offer": "Alianzas de integración, programas piloto e iniciativas conjuntas de éxito del cliente."
+        },
+        {
+          "title": "Business angels y perfiles operativos",
+          "body": "Fundadores y profesionales de salud digital, IA, SaaS y productos de consumo que aportan conocimiento del sector, presentaciones, redes de talento u orientación técnica, no solo capital.",
+          "offer": "Implicación activa, ciclos de feedback de producto y participación temprana en el recorrido."
+        }
+      ]
+    },
+    "traction": {
+      "label": "Tracción",
+      "title": "Tracción actual y fundamentos",
+      "body": "Más allá de la validación conceptual: BioMath Core está en producción, monetiza y muestra una retención y una vinculación que confirman el enfoque.",
+      "productStatusTitle": "Estado del producto",
+      "businessModelTitle": "Validación del modelo de negocio",
+      "stats": [
+        { "label": "Categorías de servicio activas", "value": "20+" },
+        { "label": "Servicios inteligentes", "value": "200+" },
+        { "label": "Arquitectura", "value": "Lista para producción" }
+      ],
+      "points": [
+        {
+          "title": "Niveles de suscripción",
+          "body": "Prueba de 5 días y planes Core, Daily y Max con márgenes brutos del 30–90 %"
+        },
+        {
+          "title": "Monetización",
+          "body": "Suscripciones directas de consumo más una cartera de licencias B2B"
+        },
+        {
+          "title": "Recuperación del CAC",
+          "body": "Objetivo de 6–12 meses a través de canales orgánicos y de alianzas"
+        },
+        {
+          "title": "Retención",
+          "body": "Vinculación a largo plazo mediante una propuesta de valor personalizada"
+        }
+      ]
+    },
+    "technology": {
+      "label": "Tecnología",
+      "title": "Diferenciación técnica y propiedad intelectual",
+      "items": [
+        {
+          "title": "Capa de modelado propia",
+          "body": "Modelos biomatemáticos para trayectorias de salud personalizadas: reglas basadas en evidencia con razonamiento asistido por IA."
+        },
+        {
+          "title": "Integración de datos multimodales",
+          "body": "Cuestionarios, dispositivos, analíticas y datos genéticos procesados en un marco unificado."
+        },
+        {
+          "title": "Resultados explicables",
+          "body": "Cadenas de razonamiento transparentes, no predicciones opacas: esencial para la confianza y el posicionamiento regulatorio."
+        },
+        {
+          "title": "Arquitectura de privacidad",
+          "body": "Recogida mínima, compartición controlada por el usuario y estándares de cifrado que cumplen y superan las expectativas de HIPAA."
+        },
+        {
+          "title": "Infraestructura escalable",
+          "body": "Servicios modulares para ampliar categorías sin rehacer el núcleo."
+        },
+        {
+          "title": "Aprendizaje continuo",
+          "body": "Actualizaciones de los modelos a partir de resultados agregados y anonimizados: más precisión sin comprometer la privacidad."
+        }
+      ]
+    },
+    "model": {
+      "label": "Modelo",
+      "title": "Modelo de negocio",
+      "items": [
+        {
+          "title": "Planes de consumo",
+          "points": ["Prueba de 5 días con suscripción", "Paquetes premium por categoría", "Análisis adicionales opcionales"]
+        },
+        {
+          "title": "Servicios B2B",
+          "points": ["Licencia de módulos", "Programas de marca compartida", "Integraciones centradas en la privacidad"]
+        },
+        {
+          "title": "Servicios de datos (voluntarios)",
+          "points": ["Aprendizajes agregados y anonimizados", "Ciclos de mejora de los modelos", "Reglas estrictas de consentimiento"]
+        }
+      ]
+    },
+    "market": {
+      "label": "Mercado",
+      "title": "Oportunidad de mercado",
+      "items": [
+        { "value": "230.000 M$+", "label": "Mercado global de salud digital en 2030" },
+        { "value": "500 M+", "label": "Usuarios potenciales en todo el mundo" },
+        { "value": "20", "label": "Categorías de servicios de salud" },
+        { "value": "200+", "label": "Servicios inteligentes" }
+      ]
+    },
+    "roadmap": {
+      "label": "Hoja de ruta",
+      "title": "Plan de crecimiento",
+      "items": [
+        {
+          "year": "2025",
+          "title": "Lanzamiento del producto",
+          "body": "Lanzamiento al consumidor, 20 categorías y más de 200 servicios activos"
+        },
+        {
+          "year": "2026",
+          "title": "Expansión B2B",
+          "body": "Alianzas con empresas y programas de bienestar de marca compartida"
+        },
+        {
+          "year": "2027+",
+          "title": "Escala global",
+          "body": "Mercados internacionales y capacidades de IA más avanzadas"
+        }
+      ]
+    },
+    "engine": {
+      "label": "Motor",
+      "title": "El motor de BioMath Core",
+      "body": "Una capa de modelado que convierte datos en bruto en sugerencias personalizadas y sensibles al momento, combinando reglas basadas en evidencia, heurísticas transparentes y asistencia de IA.",
+      "items": [
+        { "title": "Múltiples entradas", "body": "cuestionarios, dispositivos, analíticas y contexto" },
+        { "title": "Resultados explicables", "body": "qué importa ahora y por qué" },
+        { "title": "Privacidad desde el diseño", "body": "datos mínimos, control del usuario y cifrado" },
+        { "title": "Actualización continua", "body": "aprendemos del uso, no de perfiles" }
+      ]
+    },
+    "timing": {
+      "label": "Momento",
+      "title": "Por qué ahora y por qué nosotros",
+      "items": [
+        { "title": "Ejecución ante todo", "body": "Lanzamos funciones útiles y enfocadas, no promesas." },
+        { "title": "Menos fricción", "body": "Interfaz clara, respuestas rápidas y recomendaciones prácticas." },
+        { "title": "Economía unitaria", "body": "Camino hacia márgenes sanos mediante planes modulares." },
+        { "title": "Listos para colaborar", "body": "Diseñado para clínicas y proveedores de bienestar." }
+      ]
+    },
+    "trust": {
+      "label": "Confianza",
+      "title": "Confianza, privacidad y claridad",
+      "body": "La orientación en salud debe respetar a las personas. Recogemos los mínimos datos posibles, mantenemos explicaciones legibles y separamos las sugerencias del diagnóstico. Las páginas legales son públicas y están en lenguaje claro. Crecemos con transparencia, no prometiendo milagros.",
+      "links": [
+        "Política de privacidad",
+        "Condiciones de uso",
+        "Aviso legal",
+        "Aviso HIPAA",
+        "Seguridad"
+      ]
+    },
+    "closing": {
+      "title": "¿Hablamos de una posible colaboración?",
+      "body": "Trabajamos con inversores que comparten una visión de inteligencia de salud basada en evidencia y controlada por el usuario: capital, estrategia o licencias."
+    }
+  }
+}

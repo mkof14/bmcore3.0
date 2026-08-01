@@ -1,0 +1,121 @@
+{
+  "homeExtra": {
+    "sources": {
+      "mri": { "title": "核磁共振报告", "detail": "2024 年 5 月 12 日" },
+      "blood": { "title": "血液检查", "detail": "2024 年 5 月 10 日" },
+      "medications": { "title": "用药", "detail": "赖诺普利 10 毫克 · 自 2024 年 2 月起" },
+      "pressure": { "title": "血压", "detail": "每日测量值" },
+      "genetic": { "title": "基因报告", "detail": "2023 年 12 月 5 日" },
+      "notes": { "title": "医生记录", "detail": "2024 年 4 月 18 日" },
+      "lifestyle": { "title": "生活方式数据", "detail": "睡眠、活动、饮食" }
+    },
+    "insights": {
+      "heading": "清晰的答案，可据此行动。",
+      "pressure": {
+        "text": "更换用药之后，血压开始升高。",
+        "note": "这一规律在你的数据中持续出现。"
+      },
+      "vitaminD": {
+        "text": "维生素 D 已连续数年偏低。",
+        "note": "这可能影响你的精力与情绪。"
+      },
+      "symptoms": {
+        "text": "今天的症状与你的核磁共振结果相似。",
+        "note": "以往的影像检查中也出现过类似结果。"
+      },
+      "agreement": {
+        "text": "三项独立分析得出了相同结论。",
+        "note": "结果的可信度更高。"
+      },
+      "overall": {
+        "text": "整体健康状况平稳，仅有少数方面需要关注。",
+        "note": "请重点关注睡眠、活动与炎症水平。"
+      }
+    },
+    "understand": {
+      "portraitAlt": "一个人静静沉思 —— 处于自身健康历程中心的人",
+      "caption": "Human Data Model",
+      "closingPrefix": "从信息",
+      "closingEmphasis": "到理解"
+    },
+    "timeline": {
+      "source": "来源",
+      "possibleConnection": "可能的关联",
+      "types": {
+        "lab": "检验结果",
+        "diagnosis": "诊断",
+        "medication": "用药",
+        "observation": "观察",
+        "connection": "关联",
+        "followup": "随访"
+      },
+      "sources": {
+        "lab": "检验报告",
+        "physician": "医生记录",
+        "personal": "个人记录",
+        "model": "Human Data Model",
+        "carePlan": "照护计划"
+      },
+      "today": "今天",
+      "events": {
+        "e1": { "title": "常规血液检查", "statement": "胆固醇偏高。" },
+        "e2": { "title": "发现高血压", "statement": "开始用药。" },
+        "e3": { "title": "调整用药", "statement": "更新赖诺普利剂量。" },
+        "e4": {
+          "title": "报告睡眠问题",
+          "statement": "连续数周入睡困难。"
+        },
+        "e5": {
+          "title": "规律出现交汇",
+          "statement": "将用药、睡眠与血压放在一起分析。",
+          "converging": [
+            "调整用药",
+            "报告睡眠问题",
+            "血压升高"
+          ],
+          "conclusion": "这些变化可能彼此相关，建议与你的医生讨论。"
+        },
+        "e6": {
+          "title": "维生素 D 改善",
+          "statement": "数值正在回到预期范围。"
+        },
+        "e7": { "title": "该进行随访", "statement": "已准备好向医生提出的问题。" }
+      },
+      "docs": {
+        "labPanel": "检验项目",
+        "clinicalNote": "临床记录",
+        "clinicalBody": "印象：血压升高。开始治疗并评估生活方式。",
+        "clinicalSign": "— M. Rivera 医生",
+        "rxName": "赖诺普利",
+        "rxDose": "10 毫克 · 每日一次",
+        "rxMeta": "数量：90 · 可续开：2 次",
+        "journal": "难以入睡……\n凌晨 3 点左右醒来。",
+        "questions": "问题",
+        "question1": "血压变化趋势",
+        "question2": "睡眠与用药",
+        "question3": "下次检查"
+      }
+    },
+    "changes": {
+      "source": "来源",
+      "youngAlt": "约 24 岁的年轻人",
+      "midAlt": "约 40 岁的成年人",
+      "laterAlt": "约 60 岁的年长者",
+      "youngAge": "24 岁",
+      "youngBody": "身体健康。\n正在建立生活。",
+      "midAge": "40 岁",
+      "midBody": "新的挑战。\n新的优先事项。",
+      "laterAge": "60 岁",
+      "laterBody": "经验与视野。\n什么最重要。",
+      "closingPrefix": "每一次健康事件",
+      "closingEmphasis": "都会成为你的 Human Data Model 的一部分。",
+      "records": {
+        "r1": { "event": "常规血液检查", "source": "检验机构" },
+        "r2": { "event": "开始用药", "source": "医生" },
+        "r3": { "event": "核磁共振", "source": "影像科" },
+        "r4": { "event": "调整用药", "source": "诊所" },
+        "r5": { "event": "血压改善", "source": "家庭监测" }
+      }
+    }
+  }
+}

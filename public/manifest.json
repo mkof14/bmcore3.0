@@ -1,11 +1,11 @@
 {
-  "name": "BioMath Core - AI Health Intelligence Platform",
+  "name": "BioMath Core — Personalized Health Intelligence",
   "short_name": "BioMath Core",
-  "description": "AI-powered personalized health intelligence. Transform your health data into actionable insights with comprehensive health tracking and analysis.",
+  "description": "BioMath Core turns your health data into clear insights, personalized guidance, and practical next steps with Health Guide.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "background_color": "#22262d",
+  "theme_color": "#22262d",
   "orientation": "portrait-primary",
   "scope": "/",
   "icons": [
@@ -31,17 +31,17 @@
   "categories": ["health", "medical", "lifestyle", "productivity"],
   "screenshots": [
     {
-      "src": "/Screenshot 2025-10-22 at 13.22.17.png",
-      "sizes": "2880x1800",
-      "type": "image/png",
+      "src": "/og-default.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
       "form_factor": "wide"
     }
   ],
   "shortcuts": [
     {
-      "name": "AI Health Assistant",
-      "short_name": "AI Chat",
-      "description": "Chat with your AI health advisor",
+      "name": "Health Guide",
+      "short_name": "Health Guide",
+      "description": "Chat with Health Guide",
       "url": "/member-zone?section=ai-advisor",
       "icons": [
         {

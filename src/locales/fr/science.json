@@ -1,0 +1,129 @@
+{
+  "science": {
+    "seo": {
+      "title": "Science et recherche — modélisation biomathématique de la santé",
+      "description": "Découvrez les fondements scientifiques de BioMath Core : modélisation biomathématique, intégration multi-signaux, analyse génomique et analyse prédictive au service d’une intelligence de santé personnalisée."
+    },
+    "hero": {
+      "label": "Science",
+      "title": "La science derrière BioMath Core",
+      "body": "BioMath Core s’appuie sur des décennies de recherche en biologie des systèmes, en biomathématiques et en modélisation physiologique, mises en œuvre à travers le Human Data Model."
+    },
+    "pillars": {
+      "label": "Fondements",
+      "title": "Piliers scientifiques",
+      "subtitle": "Les disciplines qui façonnent chaque modèle et chaque recommandation.",
+      "items": [
+        {
+          "title": "Modélisation biomathématique",
+          "body": "Les équations différentielles et la biologie des systèmes modélisent la dynamique physiologique, au-delà de la simple reconnaissance de motifs."
+        },
+        {
+          "title": "Intégration multi-signaux",
+          "body": "Variabilité de la fréquence cardiaque, activité, architecture du sommeil et marqueurs métaboliques réunis dans un même cadre."
+        },
+        {
+          "title": "Analyse génomique",
+          "body": "Les prédispositions génétiques à l’inflammation, à la réponse au stress et à l’efficacité métabolique alimentent le modèle."
+        },
+        {
+          "title": "Analyse prédictive",
+          "body": "Les trajectoires de santé sont projetées à partir des tendances actuelles et de l’historique de vos données."
+        },
+        {
+          "title": "Intégration des analyses biologiques",
+          "body": "Des biomarqueurs comme le cortisol, la glycémie, les marqueurs inflammatoires et les niveaux hormonaux sont intégrés directement."
+        },
+        {
+          "title": "Fondé sur les preuves",
+          "body": "Chaque modèle repose sur des travaux évalués par les pairs et est validé au regard de résultats cliniques."
+        }
+      ]
+    },
+    "models": {
+      "label": "Modèles",
+      "title": "Modèles mathématiques",
+      "subtitle": "Contrairement aux approches en boîte noire, nos modèles sont interprétables : chaque prédiction peut être reliée aux facteurs qui la déterminent.",
+      "simplifiedForm": "Forme simplifiée",
+      "interpretationLabel": "Interprétation",
+      "items": [
+        {
+          "name": "Dynamique stress-récupération",
+          "description": "Modélise la relation entre activation sympathique, variabilité de la fréquence cardiaque et capacité de récupération.",
+          "interpretation": "Le stress s’accumule selon les sollicitations (I) et se dissipe selon la récupération (R)."
+        },
+        {
+          "name": "Estimation de l’état métabolique",
+          "description": "Estime la sensibilité à l’insuline, la régulation du glucose et la flexibilité métabolique à partir des données d’activité et de nutrition.",
+          "interpretation": "L’état métabolique est fonction du glucose (G), de l’activité (A), de la nutrition (N) et des hormones (H)."
+        },
+        {
+          "name": "Charge inflammatoire",
+          "description": "Quantifie l’inflammation systémique à partir de la qualité du sommeil, du stress, de l’alimentation et des marqueurs génétiques.",
+          "interpretation": "L’inflammation est une somme pondérée de facteurs liés au mode de vie (f), à laquelle s’ajoute la contribution génétique (g)."
+        },
+        {
+          "name": "Disponibilité énergétique",
+          "description": "Modélise l’énergie disponible pour la performance physique et cognitive selon le sommeil, la nutrition et la récupération.",
+          "interpretation": "L’énergie varie selon le sommeil (S), la nutrition (N) et la dépense liée à l’effort (W)."
+        }
+      ]
+    },
+    "pipeline": {
+      "label": "Processus",
+      "title": "Des données à la compréhension",
+      "subtitle": "Comment des signaux bruts deviennent une information de santé lisible.",
+      "items": [
+        {
+          "title": "Collecte des données",
+          "body": "Les flux continus des objets connectés, les questionnaires périodiques, les résultats d’analyses et les rapports génétiques sont normalisés et alignés dans le temps."
+        },
+        {
+          "title": "Traitement par les modèles",
+          "body": "Les modèles biomathématiques estiment les états physiologiques, projettent des trajectoires et repèrent des motifs."
+        },
+        {
+          "title": "Conseils applicables",
+          "body": "Les résultats sont traduits en recommandations claires : ce qui se passe, pourquoi, et ce qu’il convient d’envisager ensuite."
+        }
+      ]
+    },
+    "approach": {
+      "label": "Approche",
+      "title": "Pourquoi les biomathématiques ?",
+      "items": [
+        {
+          "title": "Explicabilité",
+          "body": "Contrairement aux réseaux de neurones, les modèles mathématiques peuvent être examinés et compris."
+        },
+        {
+          "title": "Stabilité",
+          "body": "Les modèles ne dérivent pas et n’exigent pas de réentraînement permanent avec de nouvelles données."
+        },
+        {
+          "title": "Sobriété",
+          "body": "Ils nécessitent moins de données que les approches d’apprentissage profond."
+        },
+        {
+          "title": "Ancrage biologique",
+          "body": "Les modèles reflètent des mécanismes physiologiques réels, pas de simples corrélations."
+        }
+      ]
+    },
+    "research": {
+      "label": "Recherche",
+      "title": "Travaux publiés",
+      "body": "Notre équipe scientifique publie régulièrement dans des revues à comité de lecture, notamment sur :",
+      "topics": [
+        "La biologie des systèmes du stress et de la récupération",
+        "La modélisation mathématique de la dynamique métabolique",
+        "La variabilité de la fréquence cardiaque et la fonction autonome",
+        "La modélisation prédictive en médecine de précision"
+      ]
+    },
+    "closing": {
+      "title": "Un bien-être fondé sur la science",
+      "body": "BioMath Core met une modélisation biomathématique rigoureuse au service de la prévention au quotidien."
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "science": {
+    "seo": {
+      "title": "Wissenschaft und Forschung – biomathematische Gesundheitsmodellierung",
+      "description": "Entdecken Sie die wissenschaftliche Grundlage von BioMath Core: biomathematische Modellierung, Integration vieler Signale, genomische Analyse und prädiktive Auswertung für personalisierte Gesundheitseinblicke."
+    },
+    "hero": {
+      "label": "Wissenschaft",
+      "title": "Die Wissenschaft hinter BioMath Core",
+      "body": "BioMath Core beruht auf jahrzehntelanger Forschung in Systembiologie, Biomathematik und physiologischer Modellierung – angewendet über das Human Data Model."
+    },
+    "pillars": {
+      "label": "Grundlagen",
+      "title": "Wissenschaftliche Grundpfeiler",
+      "subtitle": "Die Disziplinen, die jedes Modell und jede Empfehlung prägen.",
+      "items": [
+        {
+          "title": "Biomathematische Modellierung",
+          "body": "Differentialgleichungen und Systembiologie bilden physiologische Dynamiken ab – weit über reine Mustererkennung hinaus."
+        },
+        {
+          "title": "Integration vieler Signale",
+          "body": "Herzratenvariabilität, Aktivitätsmuster, Schlafarchitektur und Stoffwechselmarker werden in einem gemeinsamen Rahmen zusammengeführt."
+        },
+        {
+          "title": "Genomische Analyse",
+          "body": "Genetische Veranlagungen für Entzündung, Stressreaktion und Stoffwechseleffizienz fließen in das Modell ein."
+        },
+        {
+          "title": "Prädiktive Auswertung",
+          "body": "Gesundheitsverläufe werden aus aktuellen Mustern und historischen Daten vorausberechnet."
+        },
+        {
+          "title": "Laborwerte einbinden",
+          "body": "Biomarker wie Cortisol, Glukose, Entzündungswerte und Hormonspiegel fließen direkt ein."
+        },
+        {
+          "title": "Evidenzbasiert",
+          "body": "Jedes Modell stützt sich auf begutachtete Forschung und wird an klinischen Ergebnissen validiert."
+        }
+      ]
+    },
+    "models": {
+      "label": "Modelle",
+      "title": "Mathematische Modelle",
+      "subtitle": "Anders als Blackbox-Ansätze sind unsere Modelle nachvollziehbar: Jede Vorhersage lässt sich auf ihre Einflussgrößen zurückführen.",
+      "simplifiedForm": "Vereinfachte Form",
+      "interpretationLabel": "Interpretation",
+      "items": [
+        {
+          "name": "Dynamik von Belastung und Erholung",
+          "description": "Bildet das Zusammenspiel von sympathischer Aktivierung, HRV-Mustern und Erholungsfähigkeit ab.",
+          "interpretation": "Belastung sammelt sich über die Einflüsse (I) an und baut sich über die Erholung (R) ab."
+        },
+        {
+          "name": "Schätzung des Stoffwechselzustands",
+          "description": "Schätzt Insulinempfindlichkeit, Glukoseregulation und metabolische Flexibilität aus Aktivitäts- und Ernährungsdaten.",
+          "interpretation": "Der Stoffwechselzustand ist eine Funktion von Glukose (G), Aktivität (A), Ernährung (N) und Hormonen (H)."
+        },
+        {
+          "name": "Entzündungslast",
+          "description": "Beziffert systemische Entzündung anhand von Schlafqualität, Belastung, Ernährung und genetischen Markern.",
+          "interpretation": "Entzündung ist eine gewichtete Summe von Lebensstilfaktoren (f) zuzüglich des genetischen Anteils (g)."
+        },
+        {
+          "name": "Verfügbare Energie",
+          "description": "Modelliert die für körperliche und geistige Leistung verfügbare Energie anhand von Schlaf, Ernährung und Erholung.",
+          "interpretation": "Die Energie verändert sich durch Schlaf (S), Ernährung (N) und geleistete Arbeit (W)."
+        }
+      ]
+    },
+    "pipeline": {
+      "label": "Ablauf",
+      "title": "Von Daten zu Erkenntnis",
+      "subtitle": "Wie aus Rohsignalen verständliche Gesundheitsinformationen werden.",
+      "items": [
+        {
+          "title": "Datenerfassung",
+          "body": "Laufende Datenströme von Wearables, regelmäßige Fragebögen, Laborwerte und genetische Befunde werden normalisiert und zeitlich abgeglichen."
+        },
+        {
+          "title": "Modellverarbeitung",
+          "body": "Biomathematische Modelle schätzen physiologische Zustände, prognostizieren Verläufe und erkennen Muster."
+        },
+        {
+          "title": "Umsetzbare Orientierung",
+          "body": "Ergebnisse werden in klare Empfehlungen übersetzt: was geschieht, warum, und was als Nächstes zu bedenken ist."
+        }
+      ]
+    },
+    "approach": {
+      "label": "Ansatz",
+      "title": "Warum Biomathematik?",
+      "items": [
+        {
+          "title": "Nachvollziehbarkeit",
+          "body": "Anders als neuronale Netze lassen sich mathematische Modelle prüfen und verstehen."
+        },
+        {
+          "title": "Stabilität",
+          "body": "Die Modelle driften nicht und benötigen kein ständiges Nachtrainieren mit neuen Daten."
+        },
+        {
+          "title": "Effizienz",
+          "body": "Sie brauchen weniger Daten als Ansätze mit tiefem Lernen."
+        },
+        {
+          "title": "Biologische Verankerung",
+          "body": "Die Modelle bilden tatsächliche physiologische Mechanismen ab, nicht nur Korrelationen."
+        }
+      ]
+    },
+    "research": {
+      "label": "Forschung",
+      "title": "Veröffentlichte Forschung",
+      "body": "Unser wissenschaftliches Team veröffentlicht regelmäßig in begutachteten Fachzeitschriften, unter anderem zu:",
+      "topics": [
+        "Systembiologie von Belastung und Erholung",
+        "Mathematische Modellierung der Stoffwechseldynamik",
+        "Herzratenvariabilität und autonome Funktion",
+        "Prädiktive Modellierung in der Präzisionsmedizin"
+      ]
+    },
+    "closing": {
+      "title": "Wissenschaftlich fundierte Gesundheit erleben",
+      "body": "BioMath Core bringt strenge biomathematische Modellierung in die alltägliche Vorsorge."
+    }
+  }
+}

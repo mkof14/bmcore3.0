@@ -1,0 +1,309 @@
+{
+  "auth": {
+    "signIn": {
+      "title": "おかえりなさい",
+      "subtitle": "サインインしてウェルネスダッシュボードにアクセスします",
+      "mockNotice": "ローカルのモック認証が有効です。テスト用にスーパー管理者のメール {{email}} とパスワードでメンバーゾーンと管理画面を開けます。",
+      "remember": "ログイン状態を保持",
+      "forgot": "パスワードをお忘れですか？",
+      "submit": "サインイン",
+      "submitting": "サインインしています...",
+      "noAccount": "アカウントをお持ちでない方",
+      "signUpLink": "新規登録",
+      "legal": "サインインすることで、利用規約とプライバシーポリシーに同意したものとみなされます",
+      "genericError": "サインイン中にエラーが発生しました",
+      "noSession": "サインインに失敗しました — ユーザーセッションが作成されませんでした"
+    },
+    "signUp": {
+      "title": "アカウントを作成",
+      "subtitle": "BioMath Core でウェルネスの歩みを始めましょう",
+      "success": "アカウントを作成しました。サインイン画面に移動します...",
+      "verifyEmail": "アカウントを作成しました。サインインの前にメールで確認を完了してください。",
+      "submit": "アカウントを作成",
+      "submitting": "アカウントを作成しています...",
+      "haveAccount": "すでにアカウントをお持ちですか？",
+      "signInLink": "サインイン",
+      "legal": "アカウントを作成することで、利用規約とプライバシーポリシーに同意したものとみなされます",
+      "rights": "© {{year}} BioMath Core. 無断転載を禁じます。",
+      "genericError": "登録中にエラーが発生しました",
+      "passwordMismatch": "パスワードが一致しません",
+      "passwordTooShort": "パスワードは6文字以上で入力してください"
+    },
+    "fields": {
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "confirmPassword": "パスワードの確認",
+      "fullName": "氏名",
+      "fullNamePlaceholder": "山田 太郎",
+      "referralCode": "紹介コード（任意）",
+      "referralHint": "友人のコードで5ドル割引",
+      "passwordHint": "6文字以上で入力してください"
+    }
+  },
+  "contactExtra": {
+    "seoTitle": "お問い合わせ - BioMath Core への連絡",
+    "seoDescription": "ご質問はありませんか。サポート、提携、その他のお問い合わせは BioMath Core までご連絡ください。通常24時間以内に返信し、複数の連絡手段をご用意しています。",
+    "sent": "送信しました",
+    "receivedTitle": "メッセージを受け付けました",
+    "receivedBody": "お問い合わせありがとうございます。担当チームより24時間以内にご返信します。",
+    "form": {
+      "name": "お名前 *",
+      "email": "メールアドレス *",
+      "company": "会社名（任意）",
+      "subject": "件名 *",
+      "message": "メッセージ *",
+      "messagePlaceholder": "お問い合わせ内容をお書きください...",
+      "submit": "メッセージを送信",
+      "selectSubject": "件名を選択",
+      "subjects": {
+        "general": "一般的なお問い合わせ",
+        "enterprise": "法人向けソリューション",
+        "api": "APIの利用",
+        "investment": "投資のご相談",
+        "partnership": "提携について",
+        "support": "テクニカルサポート"
+      }
+    },
+    "channelsLabel": "連絡手段",
+    "channels": {
+      "email": {
+        "title": "メール",
+        "note": "24時間以内に返信します",
+        "body": "詳しい質問、アカウント関連、書面で残したい内容に最適です。"
+      },
+      "chat": {
+        "title": "ライブチャット",
+        "body": "営業時間中の簡単な質問とアカウントサポート。",
+        "note": "このページからチャットを開けます",
+        "open": "チャットを開始",
+        "close": "チャットを閉じる"
+      },
+      "enterprise": {
+        "title": "法人向け",
+        "note": "提携および個別導入のご相談",
+        "body": "クリニック、チーム、カスタム導入、提携のご相談向けです。"
+      }
+    },
+    "responseLabel": "返信までの目安",
+    "response": {
+      "general": "一般的なお問い合わせ",
+      "generalValue": "24時間",
+      "enterprise": "法人向け",
+      "enterpriseValue": "12時間",
+      "support": "テクニカルサポート",
+      "supportValue": "48時間"
+    },
+    "partnershipsLabel": "提携",
+    "partnershipsTitle": "法人・提携に関するお問い合わせ",
+    "partnershipsBody": "個別のソリューション、法人導入、戦略的提携については、専任チームまで直接ご連絡ください。",
+    "howToReach": "目的に合わせて選んでください。詳しい内容はメール、サインイン後の簡単な質問はライブチャット、記録が必要な依頼は下のフォーム。",
+    "choosePathLabel": "連絡方法",
+    "choosePathTitle": "わかりやすいチャネルを選ぶ",
+    "formIntro": "提携、技術的な質問、文章として残したい内容にはフォームをご利用ください。",
+    "sidebarTip": "短いアカウント質問はチャットが便利です。添付や詳しい背景、落ち着いた返信が必要なときはメールまたはフォームを。"
+  },
+  "content": {
+    "blog": {
+      "seoTitle": "健康とウェルネスのブログ — 専門家による記事と考察",
+      "seoDescription": "健康分析、ウェルネスの最適化、予防ケア、個別化医療についての記事をご覧ください。BioMath Core の専門的な視点をお届けします。",
+      "badge": "ブログ",
+      "title": "ブログ",
+      "subtitle": "健康、ウェルネス、そして個別化されたケアの未来に関する分析・研究・ストーリー",
+      "loadError": "ブログの読み込みに失敗しました",
+      "errorTitle": "記事を読み込めませんでした",
+      "emptyTitle": "記事はまだありません",
+      "emptyBody": "健康に関する分析・研究・ウェルネスのストーリーを近日公開します。",
+      "searchPlaceholder": "記事を検索...",
+      "allCategories": "すべてのカテゴリー",
+      "noResultsTitle": "該当なし",
+      "noResultsBody": "別のキーワードやカテゴリーでお試しください。",
+      "defaultCategory": "健康"
+    },
+    "news": {
+      "badge": "ニュース",
+      "title": "ニュース",
+      "subtitle": "BioMath Core の最新情報、お知らせ、節目のご報告",
+      "loading": "ニュースを読み込んでいます...",
+      "loadError": "ニュースの読み込みに失敗しました",
+      "errorTitle": "ニュースの読み込みエラー",
+      "retry": "再試行",
+      "emptyTitle": "現在ニュースはありません。",
+      "emptyBody": "今後の更新をお待ちください。",
+      "searchPlaceholder": "ニュースを検索...",
+      "noResultsTitle": "ニュースが見つかりません。",
+      "noResultsBody": "別のキーワードでお試しください。",
+      "readMore": "続きを読む"
+    },
+    "shared": {
+      "results": "{{count}} 件",
+      "retry": "再試行",
+      "clearSearch": "検索をクリア",
+      "loadMore": "さらに表示",
+      "share": "共有",
+      "copyLink": "リンクをコピー",
+      "linkCopied": "リンクをコピーしました",
+      "close": "閉じる"
+    },
+    "media": {
+      "seoTitle": "メディア — 動画・プレゼンテーション・資料",
+      "seoDescription": "BioMath Coreの動画を視聴し、プレゼンテーションを閲覧し、健康理解とヒューマンデータモデルに関する資料をダウンロードできます。",
+      "badge": "メディア",
+      "title": "メディア",
+      "subtitle": "BioMath Coreの動画、プレゼンテーション、資料 — 学び、共有するための分かりやすいコンテンツ。",
+      "loading": "メディアを読み込み中…",
+      "loadError": "メディアの読み込みに失敗しました",
+      "errorTitle": "メディアを読み込めません",
+      "emptyTitle": "まだメディアがありません",
+      "emptyBody": "公開された動画、プレゼンテーション、資料がここに表示されます。",
+      "noResultsTitle": "このカテゴリには何もありません",
+      "noResultsBody": "別のタブを試すか、後でもう一度ご確認ください。",
+      "download": "ダウンロード",
+      "open": "開く",
+      "openVideo": "動画を開く",
+      "tabs": {
+        "all": "すべて",
+        "video": "動画",
+        "presentation": "プレゼン",
+        "document": "資料"
+      },
+      "sections": {
+        "video": "動画",
+        "presentation": "プレゼンテーション",
+        "document": "資料"
+      }
+    }
+  },
+  "apiPage": {
+    "seoTitle": "API ドキュメント - BioMath Core 開発者向けアクセス",
+    "seoDescription": "BioMath Core の生物数理的インテリジェンスを、アプリケーションや業務フローに組み込めます。HIPAA に沿ったセキュリティ、Webhook、開発者向けドキュメントを備えた REST API です。",
+    "label": "開発者向けAPI",
+    "heroTitle": "APIドキュメント",
+    "heroSubtitle": "BioMath Core の生体数理インテリジェンスを、アプリケーション・サービス・業務フローに組み込めます。",
+    "capabilitiesLabel": "できること",
+    "capabilitiesTitle": "APIで提供する機能",
+    "features": {
+      "auth": {
+        "title": "APIキー認証",
+        "body": "権限とレート制限を設定できるAPIキーによる安全な認証。"
+      },
+      "rest": {
+        "title": "RESTfulな設計",
+        "body": "分かりやすく予測しやすいREST設計。詳細なドキュメントとサンプル付き。"
+      },
+      "security": {
+        "title": "HIPAAに準じたセキュリティ",
+        "body": "保存時・通信時の暗号化と完全な監査ログを備えた、企業水準のセキュリティ。"
+      },
+      "webhooks": {
+        "title": "リアルタイムWebhook",
+        "body": "新しい所見やアラートが生成された時点で即座に通知を受け取れます。"
+      }
+    },
+    "endpointsLabel": "エンドポイント",
+    "endpointsTitle": "主要なエンドポイント",
+    "endpoints": {
+      "profile": "ユーザープロフィールと生理モデルのパラメータを取得",
+      "metrics": "現在のウェルネス指標とスコアを取得",
+      "insights": "個別の所見と推奨事項にアクセス",
+      "sync": "外部ソースから新しい生理データを送信",
+      "predictions": "予測的な健康推移を取得",
+      "reports": "総合的な健康レポートを生成"
+    },
+    "quickStartLabel": "クイックスタート",
+    "quickStartTitle": "認証とレスポンス例",
+    "authTitle": "認証",
+    "authSteps": [
+      "開発者ダッシュボードでAPIキーを取得します",
+      "Authorization ヘッダーにキーを含めます",
+      "すべてのリクエストはHTTPSを使用してください"
+    ],
+    "exampleTitle": "レスポンス例",
+    "requestAccess": "APIの利用を申請",
+    "useCasesLabel": "活用例",
+    "useCasesTitle": "導入されている領域",
+    "useCases": {
+      "insurance": {
+        "title": "保険プログラム",
+        "body": "リスク評価、保険料設定、加入者エンゲージメントにウェルネスデータを活用できます。"
+      },
+      "apps": {
+        "title": "ヘルスケアアプリ",
+        "body": "生体数理の所見と予測分析で患者モニタリングを強化します。"
+      },
+      "research": {
+        "title": "研究・治験",
+        "body": "臨床研究のために集団レベルの分析と個々の参加者データにアクセスできます。"
+      },
+      "corporate": {
+        "title": "従業員のウェルネス",
+        "body": "専用ダッシュボードとレポートで、組織全体にウェルネス管理を展開できます。"
+      },
+      "fitness": {
+        "title": "フィットネスサービス",
+        "body": "生理状態のモニタリングと回復の最適化でトレーニングプログラムを補強します。"
+      },
+      "clinical": {
+        "title": "臨床意思決定支援",
+        "body": "電子カルテの業務フローに統合し、実行可能な患者所見を臨床現場に提供します。"
+      }
+    },
+    "ctaTitle": "BioMath Core で開発を始めませんか？",
+    "ctaBody": "今すぐAPIをご利用いただけます。法人サポートと個別連携にも対応します。",
+    "contactSales": "営業に問い合わせる",
+    "viewDocs": "ドキュメント全体を見る"
+  },
+  "admin": {
+    "media": {
+      "menuLabel": "メディアライブラリ",
+      "title": "メディアライブラリ",
+      "subtitle": "公開メディアページに表示する動画、プレゼンテーション、資料をアップロードして管理します。",
+      "refresh": "更新",
+      "addItem": "メディアを追加",
+      "editItem": "メディアを編集",
+      "loading": "メディアを読み込み中…",
+      "loadingBody": "最新のメディア項目を取得しています。",
+      "loadError": "メディア項目を読み込めませんでした。",
+      "emptyTitle": "まだメディア項目がありません",
+      "emptyBody": "最初の動画、プレゼンテーション、または資料を追加してください。",
+      "published": "公開中",
+      "draft": "下書き",
+      "publish": "公開する",
+      "unpublish": "非公開にする",
+      "edit": "編集",
+      "delete": "削除",
+      "orderLabel": "表示順",
+      "confirmDelete": "このメディア項目を削除しますか？",
+      "requiredFields": "タイトルとファイルURLは必須です",
+      "saveSuccess": "メディア項目を保存しました",
+      "saveFailed": "保存に失敗しました",
+      "deleteSuccess": "メディア項目を削除しました",
+      "deleteFailed": "削除に失敗しました",
+      "uploadFile": "ファイルをアップロード",
+      "uploadThumbnail": "サムネイルをアップロード",
+      "uploading": "アップロード中…",
+      "uploadSuccess": "アップロード完了",
+      "uploadFailed": "アップロード失敗 — URLを貼り付けてください",
+      "saving": "保存中…",
+      "types": {
+        "video": "動画",
+        "presentation": "プレゼン",
+        "document": "資料"
+      },
+      "fields": {
+        "title": "タイトル",
+        "description": "説明",
+        "type": "種類",
+        "fileUrl": "ファイルURL",
+        "thumbnailUrl": "サムネイルURL（任意）",
+        "sortOrder": "表示順",
+        "published": "メディアページに公開"
+      },
+      "placeholders": {
+        "title": "メディアのタイトル",
+        "description": "短い説明",
+        "fileUrl": "https://… またはファイルをアップロード",
+        "thumbnailUrl": "https://… または画像をアップロード"
+      }
+    }
+  }
+}

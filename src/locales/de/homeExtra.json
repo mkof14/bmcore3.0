@@ -1,0 +1,121 @@
+{
+  "homeExtra": {
+    "sources": {
+      "mri": { "title": "MRT-Befund", "detail": "12. Mai 2024" },
+      "blood": { "title": "Blutuntersuchung", "detail": "10. Mai 2024" },
+      "medications": { "title": "Medikamente", "detail": "Lisinopril 10 mg · seit Februar 2024" },
+      "pressure": { "title": "Blutdruck", "detail": "Tägliche Messwerte" },
+      "genetic": { "title": "Genetischer Bericht", "detail": "5. Dezember 2023" },
+      "notes": { "title": "Arztnotizen", "detail": "18. April 2024" },
+      "lifestyle": { "title": "Lebensstildaten", "detail": "Schlaf, Aktivität, Ernährung" }
+    },
+    "insights": {
+      "heading": "Klare Antworten, mit denen Sie etwas anfangen können.",
+      "pressure": {
+        "text": "Der Blutdruck begann zu steigen, nachdem das Medikament gewechselt wurde.",
+        "note": "Dieses Muster zeigt sich durchgängig in Ihren Daten."
+      },
+      "vitaminD": {
+        "text": "Vitamin D ist seit mehreren Jahren niedrig.",
+        "note": "Das kann Energie und Stimmung beeinflussen."
+      },
+      "symptoms": {
+        "text": "Die heutigen Beschwerden ähneln den Befunden Ihres MRT.",
+        "note": "Ähnliche Befunde traten in früheren Aufnahmen auf."
+      },
+      "agreement": {
+        "text": "Drei unabhängige Analysen kamen zum gleichen Ergebnis.",
+        "note": "Höhere Sicherheit im Ergebnis."
+      },
+      "overall": {
+        "text": "Die allgemeine Gesundheit ist stabil, einzelne Bereiche sollten beobachtet werden.",
+        "note": "Achten Sie auf Schlaf, Aktivität und Entzündungswerte."
+      }
+    },
+    "understand": {
+      "portraitAlt": "Ein Mensch in stiller Reflexion – der Mensch im Zentrum seiner Gesundheitsgeschichte",
+      "caption": "Human Data Model",
+      "closingPrefix": "Von Informationen",
+      "closingEmphasis": "zum Verständnis"
+    },
+    "timeline": {
+      "source": "Quelle",
+      "possibleConnection": "Möglicher Zusammenhang",
+      "types": {
+        "lab": "Laborergebnis",
+        "diagnosis": "Diagnose",
+        "medication": "Medikament",
+        "observation": "Beobachtung",
+        "connection": "Zusammenhang",
+        "followup": "Nachsorge"
+      },
+      "sources": {
+        "lab": "Laborbericht",
+        "physician": "Arztnotiz",
+        "personal": "Persönliches Protokoll",
+        "model": "Human Data Model",
+        "carePlan": "Behandlungsplan"
+      },
+      "today": "HEUTE",
+      "events": {
+        "e1": { "title": "Routine-Blutuntersuchung", "statement": "Cholesterin erhöht." },
+        "e2": { "title": "Bluthochdruck festgestellt", "statement": "Therapie begonnen." },
+        "e3": { "title": "Medikament geändert", "statement": "Lisinopril-Dosierung angepasst." },
+        "e4": {
+          "title": "Schlafprobleme gemeldet",
+          "statement": "Seit mehreren Wochen Einschlafschwierigkeiten."
+        },
+        "e5": {
+          "title": "Muster treffen zusammen",
+          "statement": "Medikament, Schlaf und Blutdruck gemeinsam betrachtet.",
+          "converging": [
+            "Medikament geändert",
+            "Schlafprobleme gemeldet",
+            "Blutdruck gestiegen"
+          ],
+          "conclusion": "Diese Veränderungen könnten zusammenhängen. Besprechen Sie sie mit Ihrer Ärztin oder Ihrem Arzt."
+        },
+        "e6": {
+          "title": "Vitamin D verbessert",
+          "statement": "Die Werte nähern sich dem erwarteten Bereich."
+        },
+        "e7": { "title": "Nachsorge fällig", "statement": "Fragen für das Arztgespräch vorbereitet." }
+      },
+      "docs": {
+        "labPanel": "Laborprofil",
+        "clinicalNote": "Klinische Notiz",
+        "clinicalBody": "Beurteilung: erhöhter Blutdruck. Therapie beginnen und Lebensstil prüfen.",
+        "clinicalSign": "— M. Rivera, Ärztin",
+        "rxName": "Lisinopril",
+        "rxDose": "10 mg · einmal täglich",
+        "rxMeta": "Menge: 90 · Wiederholungen: 2",
+        "journal": "Schwer einzuschlafen…\nAufwachen gegen 3 Uhr.",
+        "questions": "Fragen",
+        "question1": "Blutdruckverlauf",
+        "question2": "Schlaf und Medikament",
+        "question3": "Nächste Laborwerte"
+      }
+    },
+    "changes": {
+      "source": "Quelle",
+      "youngAlt": "Junger Erwachsener, etwa 24 Jahre",
+      "midAlt": "Erwachsener, etwa 40 Jahre",
+      "laterAlt": "Älterer Mensch, etwa 60 Jahre",
+      "youngAge": "24 Jahre",
+      "youngBody": "Gesund.\nBaut sich ein Leben auf.",
+      "midAge": "40 Jahre",
+      "midBody": "Neue Herausforderungen.\nNeue Prioritäten.",
+      "laterAge": "60 Jahre",
+      "laterBody": "Erfahrung. Weitblick.\nWas wirklich zählt.",
+      "closingPrefix": "Jedes Gesundheitsereignis",
+      "closingEmphasis": "wird Teil Ihres Human Data Model.",
+      "records": {
+        "r1": { "event": "Routine-Blutuntersuchung", "source": "Labor" },
+        "r2": { "event": "Medikation begonnen", "source": "Ärztin/Arzt" },
+        "r3": { "event": "MRT", "source": "Radiologie" },
+        "r4": { "event": "Medikation angepasst", "source": "Praxis" },
+        "r5": { "event": "Blutdruck verbessert", "source": "Messung zu Hause" }
+      }
+    }
+  }
+}

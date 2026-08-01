@@ -1,0 +1,309 @@
+{
+  "auth": {
+    "signIn": {
+      "title": "Bienvenido de nuevo",
+      "subtitle": "Inicia sesión para acceder a tu panel de bienestar",
+      "mockNotice": "La autenticación simulada local está activa. Usa el correo de superadministrador {{email}} y tu contraseña para abrir la Zona de Miembro y el Panel de Administración en pruebas.",
+      "remember": "Recordarme",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "submit": "Iniciar sesión",
+      "submitting": "Iniciando sesión...",
+      "noAccount": "¿No tienes una cuenta?",
+      "signUpLink": "Regístrate",
+      "legal": "Al iniciar sesión, aceptas nuestros Términos del Servicio y la Política de Privacidad",
+      "genericError": "Ocurrió un error al iniciar sesión",
+      "noSession": "Error al iniciar sesión: no se creó ninguna sesión de usuario"
+    },
+    "signUp": {
+      "title": "Crea tu cuenta",
+      "subtitle": "Comienza tu camino de bienestar con BioMath Core",
+      "success": "¡Cuenta creada correctamente! Redirigiendo al inicio de sesión...",
+      "verifyEmail": "Cuenta creada. Revisa tu correo para confirmarla antes de iniciar sesión.",
+      "submit": "Crear cuenta",
+      "submitting": "Creando cuenta...",
+      "haveAccount": "¿Ya tienes una cuenta?",
+      "signInLink": "Inicia sesión",
+      "legal": "Al crear una cuenta, aceptas nuestros Términos del Servicio y la Política de Privacidad",
+      "rights": "© {{year}} BioMath Core. Todos los derechos reservados.",
+      "genericError": "Ocurrió un error durante el registro",
+      "passwordMismatch": "Las contraseñas no coinciden",
+      "passwordTooShort": "La contraseña debe tener al menos 6 caracteres"
+    },
+    "fields": {
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "fullName": "Nombre completo",
+      "fullNamePlaceholder": "Juan Pérez",
+      "referralCode": "Código de referencia (opcional)",
+      "referralHint": "Obtén 5 $ de descuento con el código de un amigo",
+      "passwordHint": "Debe tener al menos 6 caracteres"
+    }
+  },
+  "contactExtra": {
+    "seoTitle": "Contacto - Ponte en contacto con BioMath Core",
+    "seoDescription": "¿Tienes preguntas? Escribe a BioMath Core para soporte, colaboraciones o consultas. Normalmente respondemos en 24 horas y ofrecemos varias vías de contacto.",
+    "sent": "Enviado",
+    "receivedTitle": "Mensaje recibido",
+    "receivedBody": "Gracias por escribirnos. Nuestro equipo responderá en menos de 24 horas.",
+    "form": {
+      "name": "Tu nombre *",
+      "email": "Correo electrónico *",
+      "company": "Empresa (opcional)",
+      "subject": "Asunto *",
+      "message": "Mensaje *",
+      "messagePlaceholder": "Cuéntanos más sobre tu consulta...",
+      "submit": "Enviar mensaje",
+      "selectSubject": "Selecciona un asunto",
+      "subjects": {
+        "general": "Consulta general",
+        "enterprise": "Soluciones para empresas",
+        "api": "Acceso a la API",
+        "investment": "Oportunidad de inversión",
+        "partnership": "Colaboración",
+        "support": "Soporte técnico"
+      }
+    },
+    "channelsLabel": "Canales",
+    "channels": {
+      "email": {
+        "title": "Correo electrónico",
+        "note": "Respondemos en menos de 24 horas",
+        "body": "Ideal para preguntas detalladas, temas de cuenta y todo lo que quieras por escrito."
+      },
+      "chat": {
+        "title": "Chat en vivo",
+        "body": "Preguntas rápidas y ayuda con la cuenta en horario laboral.",
+        "note": "Abre el chat desde esta página",
+        "open": "Iniciar chat",
+        "close": "Cerrar chat"
+      },
+      "enterprise": {
+        "title": "Empresas",
+        "note": "Colaboraciones e implementaciones personalizadas",
+        "body": "Para clínicas, equipos, implementaciones a medida y conversaciones de colaboración."
+      }
+    },
+    "responseLabel": "Tiempos de respuesta",
+    "response": {
+      "general": "Consultas generales",
+      "generalValue": "24 horas",
+      "enterprise": "Empresas",
+      "enterpriseValue": "12 horas",
+      "support": "Soporte técnico",
+      "supportValue": "48 horas"
+    },
+    "partnershipsLabel": "Colaboraciones",
+    "partnershipsTitle": "Consultas de empresas y colaboraciones",
+    "partnershipsBody": "Para soluciones personalizadas, implementaciones empresariales o alianzas estratégicas, contacta directamente con nuestro equipo especializado.",
+    "howToReach": "Elige el camino adecuado: correo para preguntas detalladas, chat en vivo para ayuda rápida si has iniciado sesión, o el formulario para una solicitud con seguimiento.",
+    "choosePathLabel": "Cómo contactarnos",
+    "choosePathTitle": "Elige el canal más claro",
+    "formIntro": "Usa el formulario para alianzas, temas técnicos o cualquier cosa que convenga dejar por escrito.",
+    "sidebarTip": "Prefiere el chat para preguntas cortas de cuenta. Prefiere correo o formulario cuando necesites adjuntos, contexto o una respuesta más reflexiva."
+  },
+  "content": {
+    "blog": {
+      "seoTitle": "Blog de salud y bienestar: artículos y análisis de expertos",
+      "seoDescription": "Explora nuestra colección de artículos sobre análisis de salud, optimización del bienestar, prevención y medicina personalizada. Perspectivas expertas de BioMath Core.",
+      "badge": "Blog",
+      "title": "Blog",
+      "subtitle": "Análisis, investigación e historias sobre salud, bienestar y el futuro del cuidado personalizado",
+      "loadError": "No se pudo cargar el blog",
+      "errorTitle": "No se pudieron cargar los artículos",
+      "emptyTitle": "Aún no hay artículos",
+      "emptyBody": "Vuelve pronto para leer análisis de salud, investigación e historias de bienestar.",
+      "searchPlaceholder": "Buscar artículos...",
+      "allCategories": "Todas las categorías",
+      "noResultsTitle": "Sin resultados",
+      "noResultsBody": "Prueba con otro término de búsqueda o categoría.",
+      "defaultCategory": "Salud"
+    },
+    "news": {
+      "badge": "Noticias",
+      "title": "Noticias",
+      "subtitle": "Últimas novedades, anuncios y logros de BioMath Core",
+      "loading": "Cargando noticias...",
+      "loadError": "No se pudieron cargar las noticias",
+      "errorTitle": "Error al cargar las noticias",
+      "retry": "Intentar de nuevo",
+      "emptyTitle": "Todavía no hay noticias.",
+      "emptyBody": "¡Mantente al tanto de las novedades!",
+      "searchPlaceholder": "Buscar noticias...",
+      "noResultsTitle": "No se encontraron noticias.",
+      "noResultsBody": "Prueba con otro término de búsqueda.",
+      "readMore": "Leer más"
+    },
+    "shared": {
+      "results": "{{count}} resultados",
+      "retry": "Intentar de nuevo",
+      "clearSearch": "Borrar búsqueda",
+      "loadMore": "Cargar más",
+      "share": "Compartir",
+      "copyLink": "Copiar enlace",
+      "linkCopied": "Enlace copiado",
+      "close": "Cerrar"
+    },
+    "media": {
+      "seoTitle": "Medios: videos, presentaciones y documentos",
+      "seoDescription": "Mira videos de BioMath Core, explora presentaciones y descarga documentos sobre la comprensión de la salud y el Human Data Model.",
+      "badge": "Medios",
+      "title": "Medios",
+      "subtitle": "Videos, presentaciones y documentos de BioMath Core: material claro para aprender y compartir.",
+      "loading": "Cargando medios…",
+      "loadError": "No se pudieron cargar los medios",
+      "errorTitle": "No se pudieron cargar los medios",
+      "emptyTitle": "Aún no hay medios",
+      "emptyBody": "Aquí aparecerán los videos, presentaciones y documentos publicados.",
+      "noResultsTitle": "Nada en esta categoría",
+      "noResultsBody": "Prueba otra pestaña o vuelve pronto.",
+      "download": "Descargar",
+      "open": "Abrir",
+      "openVideo": "Abrir video",
+      "tabs": {
+        "all": "Todos",
+        "video": "Videos",
+        "presentation": "Presentaciones",
+        "document": "Documentos"
+      },
+      "sections": {
+        "video": "Videos",
+        "presentation": "Presentaciones",
+        "document": "Documentos"
+      }
+    }
+  },
+  "apiPage": {
+    "seoTitle": "Documentación de la API: acceso para desarrolladores de BioMath Core",
+    "seoDescription": "Integra la inteligencia biomatemática de BioMath Core en tus aplicaciones y flujos de trabajo. API REST con seguridad alineada con HIPAA, webhooks y documentación para desarrolladores.",
+    "label": "API para desarrolladores",
+    "heroTitle": "Documentación de la API",
+    "heroSubtitle": "Integra la inteligencia biomatemática de BioMath Core en tus aplicaciones, servicios y flujos de trabajo.",
+    "capabilitiesLabel": "Capacidades",
+    "capabilitiesTitle": "Qué ofrece la API",
+    "features": {
+      "auth": {
+        "title": "Autenticación con clave de API",
+        "body": "Autenticación segura mediante claves de API con permisos y límites de uso configurables."
+      },
+      "rest": {
+        "title": "Arquitectura RESTful",
+        "body": "Diseño REST claro y predecible con documentación completa y ejemplos."
+      },
+      "security": {
+        "title": "Seguridad alineada con HIPAA",
+        "body": "Seguridad de nivel empresarial con cifrado en reposo y en tránsito, y registros de auditoría completos."
+      },
+      "webhooks": {
+        "title": "Webhooks en tiempo real",
+        "body": "Recibe notificaciones inmediatas cuando se generen nuevas conclusiones o alertas."
+      }
+    },
+    "endpointsLabel": "Endpoints",
+    "endpointsTitle": "Endpoints principales",
+    "endpoints": {
+      "profile": "Obtener el perfil del usuario y los parámetros del modelo fisiológico",
+      "metrics": "Consultar las métricas y puntuaciones de bienestar actuales",
+      "insights": "Acceder a conclusiones y recomendaciones personalizadas",
+      "sync": "Enviar nuevos datos fisiológicos desde fuentes externas",
+      "predictions": "Obtener trayectorias de salud predictivas",
+      "reports": "Generar informes de salud completos"
+    },
+    "quickStartLabel": "Inicio rápido",
+    "quickStartTitle": "Autenticación y respuesta de ejemplo",
+    "authTitle": "Autenticación",
+    "authSteps": [
+      "Obtén tu clave de API en el panel para desarrolladores",
+      "Incluye la clave en el encabezado Authorization",
+      "Todas las solicitudes deben usar HTTPS"
+    ],
+    "exampleTitle": "Respuesta de ejemplo",
+    "requestAccess": "Solicitar acceso a la API",
+    "useCasesLabel": "Casos de uso",
+    "useCasesTitle": "Dónde se integra",
+    "useCases": {
+      "insurance": {
+        "title": "Programas de seguros",
+        "body": "Integra datos de bienestar para evaluar riesgos, fijar precios de pólizas y crear programas de participación."
+      },
+      "apps": {
+        "title": "Aplicaciones de salud",
+        "body": "Mejora el seguimiento de pacientes con conclusiones biomatemáticas y análisis predictivo."
+      },
+      "research": {
+        "title": "Estudios de investigación",
+        "body": "Accede a análisis poblacionales y a datos individuales de participantes para investigación clínica."
+      },
+      "corporate": {
+        "title": "Bienestar corporativo",
+        "body": "Implementa el seguimiento del bienestar en tu organización con paneles e informes personalizados."
+      },
+      "fitness": {
+        "title": "Servicios de fitness",
+        "body": "Complementa los programas de entrenamiento con seguimiento del estado fisiológico y optimización de la recuperación."
+      },
+      "clinical": {
+        "title": "Apoyo a la decisión clínica",
+        "body": "Ofrece a los profesionales conclusiones útiles integradas en los flujos de trabajo del historial médico."
+      }
+    },
+    "ctaTitle": "¿Listo para construir con BioMath Core?",
+    "ctaBody": "Empieza hoy con nuestra API. Soporte empresarial e integraciones personalizadas disponibles.",
+    "contactSales": "Contactar con ventas",
+    "viewDocs": "Ver la documentación completa"
+  },
+  "admin": {
+    "media": {
+      "menuLabel": "Biblioteca de medios",
+      "title": "Biblioteca de medios",
+      "subtitle": "Sube y gestiona videos, presentaciones y documentos que se muestran en la página pública de Medios.",
+      "refresh": "Actualizar",
+      "addItem": "Añadir medio",
+      "editItem": "Editar medio",
+      "loading": "Cargando medios…",
+      "loadingBody": "Obteniendo los elementos más recientes.",
+      "loadError": "No se pudieron cargar los medios.",
+      "emptyTitle": "Aún no hay elementos",
+      "emptyBody": "Añade tu primer video, presentación o documento.",
+      "published": "Publicado",
+      "draft": "Borrador",
+      "publish": "Publicar",
+      "unpublish": "Despublicar",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "orderLabel": "Orden",
+      "confirmDelete": "¿Eliminar este elemento?",
+      "requiredFields": "El título y la URL del archivo son obligatorios",
+      "saveSuccess": "Elemento guardado",
+      "saveFailed": "No se pudo guardar el elemento",
+      "deleteSuccess": "Elemento eliminado",
+      "deleteFailed": "No se pudo eliminar el elemento",
+      "uploadFile": "Subir archivo",
+      "uploadThumbnail": "Subir miniatura",
+      "uploading": "Subiendo…",
+      "uploadSuccess": "Carga completada",
+      "uploadFailed": "Error al subir — pega una URL en su lugar",
+      "saving": "Guardando…",
+      "types": {
+        "video": "Video",
+        "presentation": "Presentación",
+        "document": "Documento"
+      },
+      "fields": {
+        "title": "Título",
+        "description": "Descripción",
+        "type": "Tipo",
+        "fileUrl": "URL del archivo",
+        "thumbnailUrl": "URL de la miniatura (opcional)",
+        "sortOrder": "Orden de visualización",
+        "published": "Publicar en la página de Medios"
+      },
+      "placeholders": {
+        "title": "Título del medio",
+        "description": "Breve descripción",
+        "fileUrl": "https://… o sube un archivo",
+        "thumbnailUrl": "https://… o sube una imagen"
+      }
+    }
+  }
+}

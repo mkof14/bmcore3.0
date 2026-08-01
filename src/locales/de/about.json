@@ -1,0 +1,132 @@
+{
+  "about": {
+    "seoTitle": "Über uns – Mission, Vision und Team",
+    "seoDescription": "Erfahren Sie mehr über die Mission von BioMath Core: vertrauenswürdige Wellness-Intelligenz auf Basis von Biomathematik, computergestützter Biologie und KI. Unser Weg und unser Engagement für Prävention.",
+    "mission": {
+      "label": "Mission",
+      "title": "Wellness-Intelligenz, der man vertrauen kann",
+      "body": "Wir entwickeln praxistaugliche Wellness-Intelligenz an der Schnittstelle von <b>Biomathematik</b>, <b>computergestützter Biologie</b> und <b>KI</b>. BioMath Core hilft Menschen und Fachleuten, komplexe Gesundheitsfragen mit präzisen, nachvollziehbaren Empfehlungen zu klären – mit Fokus auf Prävention, Wohlbefinden und langfristige Widerstandskraft."
+    },
+    "origins": {
+      "label": "Ursprung",
+      "title": "Aus angewandter Wissenschaft entstanden",
+      "p1": "BioMath Core ist aus jahrelanger Arbeit an der Schnittstelle von fortgeschrittener Analytik, KI und menschlicher Gesundheit hervorgegangen – aus dem Anspruch, strenge Modelle in Systeme zu übersetzen, die Menschen wirklich nutzen können.",
+      "p2": "BioMath Core wird unter <a1>Digital Invest Inc.</a1> entwickelt und von der übergeordneten Vision von <a2>BioMath Life</a2> geprägt: Wissenschaft, die bis in die alltägliche Prävention skaliert.",
+      "p3": "Über unseren Ansatz berichtete <a3>Healthcare Tech Outlook →</a3>"
+    },
+    "signalNote": "Wir wachsen nur dort, wo das Signal stark ist – auf Basis echter Nutzerbedürfnisse, belastbarer Evidenz und langfristiger gesundheitlicher Wirkung.",
+    "stats": [
+      { "label": "Gesundheitskategorien", "value": "20" },
+      { "label": "Aktive Services", "value": "200+" },
+      { "label": "Forschungsweg", "value": "Seit 2008" }
+    ],
+    "team": {
+      "label": "Menschen",
+      "title": "Unser Team",
+      "subtitle": "Digitale Gesundheit mit Wissenschaft, Handwerk und langem Atem.",
+      "p1": "Wir haben <b>2008</b> begonnen und in verschiedenen Ländern an digitaler Gesundheit und biomathematischer Modellierung gearbeitet. In diesen Jahren haben wir tiefe Praxiserfahrung gesammelt, ein klares Bild echter Nutzerbedürfnisse gewonnen und Expertise darin aufgebaut, Wissenschaft, Technik und menschliche Gesundheit zu verbinden.",
+      "p2": "Indem wir Bedürfnisse untersucht haben – von Patientinnen und Patienten bis zu Behandelnden, von Familien bis zu Unternehmensprogrammen – sind wir zu unserem heutigen Verständnis von Prävention, Wellness-Management und langfristiger Gesundheit gelangt. Dieses Verständnis wurde zum Fundament unseres <b>Human Data Model</b>, dem Kern von BioMath Core.",
+      "quote": "<b>BioMath Core</b> ist nicht nur eine Sammlung von Werkzeugen. Es ist ein lebendiges Produkt – fähig, Services aufzunehmen, Innovationen zu integrieren und aus Biomathematik, Epidemiologie, maschinellem Lernen und Verhaltenspsychologie zum Nutzen der Anwenderinnen und Anwender zu schöpfen.",
+      "p3": "Wir verbessern BioMath Core fortlaufend: Modellgenauigkeit, Kategorienabdeckung, Transparenz der Algorithmen und Personalisierung. Die Vorhaben reichen von fortgeschrittenen Wearables bis zu genomischer Analytik und längeren Prognosehorizonten.",
+      "p4": "Auf diesem Weg haben wir mit Ingenieurinnen und Ingenieuren, Biomathematikern, Behandelnden, Analystinnen, Designern und Forschenden zusammengearbeitet, die dieselben Ziele teilen. Heute sind wir ein Team – verpflichtet auf transparente, menschenzentrierte und wissenschaftlich fundierte digitale Gesundheit."
+    },
+    "engine": {
+      "label": "System",
+      "title": "Die KI-Engine von BioMath Core",
+      "subtitle": "Ein geschichtetes System, das biologisches Vorwissen, Zeitreihen und Kontext in einer nachvollziehbaren Verarbeitungskette zusammenführt.",
+      "items": [
+        {
+          "index": "01",
+          "title": "Modell zuerst",
+          "body": "Biomathematische Strukturen leiten das Lernen – das verringert Überanpassung und erhöht die Stabilität."
+        },
+        {
+          "index": "02",
+          "title": "Multimodale Fusion",
+          "body": "Laborwerte, Lebensstildaten, Wearable-Signale und klinisches Wissen werden zu nachvollziehbaren Erkenntnissen verbunden."
+        },
+        {
+          "index": "03",
+          "title": "Qualitätsprüfungen",
+          "body": "Validierung, Unsicherheitshinweise und menschliche Prüfung in sensiblen Bereichen."
+        },
+        {
+          "index": "04",
+          "title": "Wirkungsorientierung",
+          "body": "Empfehlungen zielen auf Wohlbefinden, Prävention und Leistungsfähigkeit – nicht auf Behandlung."
+        }
+      ]
+    },
+    "philosophy": {
+      "label": "Grundsätze",
+      "title": "Unsere Haltung",
+      "subtitle": "Leitgedanken, die unsere Produktentscheidungen jeden Tag prägen.",
+      "items": [
+        {
+          "title": "Ihre Daten gehören Ihnen",
+          "body": "Nur Sie entscheiden, was Sie teilen. Ihre Privatsphäre steht an erster Stelle."
+        },
+        {
+          "title": "Wissen stärkt",
+          "body": "Wer seine Biomarker versteht, kann Problemen früh vorbeugen."
+        },
+        {
+          "title": "KI ist Unterstützung",
+          "body": "Keine Ärztin und kein Arzt. Wir liefern Erkenntnisse für Ihre Gespräche über Gesundheit."
+        }
+      ]
+    },
+    "highlights": {
+      "label": "Höhepunkte",
+      "title": "Was auffällt",
+      "subtitle": "Die Eigenschaften, die BioMath Core im Alltag spürbar anders machen.",
+      "items": [
+        {
+          "title": "Klare KI-Erkenntnisse",
+          "body": "Modelle verwandeln Gesundheitssignale in klare, überprüfbare Empfehlungen."
+        },
+        {
+          "title": "HIPAA-konforme Sicherheit",
+          "body": "Schutz auf Unternehmensniveau mit Verschlüsselung im Ruhezustand und bei der Übertragung."
+        },
+        {
+          "title": "Für Familien gedacht",
+          "body": "Behalten Sie die Gesundheit für sich selbst und für Ihre Angehörigen im Blick."
+        },
+        {
+          "title": "Lebendige Zeitleiste",
+          "body": "Ereignisse sammeln sich in Ihrem Human Data Model – nicht als isolierte Berichte."
+        }
+      ]
+    },
+    "audience": {
+      "label": "Zielgruppen",
+      "title": "Für wen wir da sind",
+      "subtitle": "Gemacht für Menschen, Familien und Organisationen, die Prävention ernst nehmen.",
+      "items": [
+        {
+          "title": "Privatpersonen",
+          "body": "Menschen, die ihre Gesundheitswerte verstehen und Fortschritte über die Zeit verfolgen wollen."
+        },
+        {
+          "title": "Familien",
+          "body": "Für die Gesundheit von Angehörigen sorgen – auch für Kinder und ältere Verwandte."
+        },
+        {
+          "title": "Kliniken & Firmenkunden",
+          "body": "Unterstützung von Gesundheitsprogrammen und Präventionsinitiativen."
+        },
+        {
+          "title": "Investoren & Partner",
+          "body": "Mitwirkung an der Entwicklung digitaler Gesundheitsprodukte und an Partnerschaften."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Bereit, BioMath Core zu entdecken?",
+      "description": "Sehen Sie, wie unsere Multi-Modell-Intelligenz Gesundheitssignale in klare, menschliche Empfehlungen übersetzt.",
+      "primary": "Services ansehen",
+      "secondary": "Preise ansehen"
+    }
+  }
+}

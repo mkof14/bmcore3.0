@@ -1,0 +1,129 @@
+{
+  "learning": {
+    "title": "学习中心",
+    "subtitle": "通过平和的讲解、简明的图示与建立信心的指引，理解你的健康历程",
+    "searchPlaceholder": "搜索分类、服务或健康术语…",
+    "gettingStarted": "开始使用",
+    "sections": {
+      "pricing": {
+        "title": "价格方案",
+        "body": "从灵活的订阅层级中选择，匹配你的健康之路。所有方案都包含核心服务，进阶层级还可解锁专项评估、设备接入与更高级的 AI 指引。"
+      },
+      "member": {
+        "title": "会员专区",
+        "body": "你的个性化健康看板。在一个安全的位置追踪所有服务的进展、查看报告、管理设备连接、设定健康目标并浏览完整的健康时间线。"
+      },
+      "multiModel": {
+        "title": "多模型报告",
+        "body": "同时运行两种 AI 视角并获得统一摘要，帮助你对比不同角度，得出一个可信的结论。"
+      },
+      "aiGuide": {
+        "title": "AI 系统指南",
+        "body": "了解 AI 处理流程如何运作、记忆深度如何积累，以及知识快照如何塑造每一份报告。"
+      },
+      "services": {
+        "title": "服务指南",
+        "body": "{{count}} 项服务中的每一项都包含清晰说明、引导式评估路径与可执行建议。只需启用当下对你重要的部分 —— 下方可浏览带说明的完整目录。"
+      },
+      "categories": {
+        "title": "分类",
+        "body": "探索 {{categories}} 个健康分类，共包含 {{count}} 项服务。每个分类聚焦于健康的某个特定领域，从关键健康监测到长者照护、长寿与心理健康。"
+      },
+      "signalHub": {
+        "title": "信号中心与行动计划",
+        "body": "查看信号强度、知识深度与报告完备程度，然后把洞察转化为平和、可逐步执行的行动计划。"
+      }
+    },
+    "viewPlans": "查看方案 →",
+    "goToMember": "前往会员专区 →",
+    "browseServices": "浏览全部服务 →",
+    "ai": {
+      "title": "AI 系统入门",
+      "intro": "清晰而平和地介绍 BioMath Core 如何借助多模型智能，把原始信号转化为一份统一报告。",
+      "step": "第 {{number}} 步",
+      "steps": {
+        "intake": {
+          "title": "信号接入",
+          "desc": "设备、问卷、记录、报告"
+        },
+        "snapshot": {
+          "title": "知识快照",
+          "desc": "背景摘要 + 历史深度"
+        },
+        "analysis": {
+          "title": "多模型分析",
+          "desc": "两种 AI 视角并行运行"
+        },
+        "report": {
+          "title": "统一报告",
+          "desc": "合并结论 + 优先级"
+        },
+        "plan": {
+          "title": "行动计划",
+          "desc": "清晰的 7/14/30 天步骤"
+        }
+      },
+      "viewExample": "查看报告示例",
+      "exploreSecondOpinion": "了解第二意见",
+      "exampleLabel": "报告示例",
+      "unifiedSummary": "统一摘要",
+      "exampleTitle": "每日健康洞察",
+      "exampleBody": "精力平稳，恢复负荷略高。睡眠质量较上周提升 12%。",
+      "quality": "质量",
+      "coverage": "覆盖度",
+      "consistency": "稳定性",
+      "planLabel": "行动计划预览",
+      "planTitle": "7 天调整",
+      "planItems": [
+        "睡眠目标：7 小时 30 分钟，并配合睡前放松流程",
+        "恢复：两次训练之间安排 1 天低强度活动",
+        "饮水：每日 2.2 升，从早晨开始"
+      ],
+      "focusTag": "关注点：神经系统平衡",
+      "secondOpinionLabel": "第二意见预览",
+      "modelA": "模型 A · 生理",
+      "modelATitle": "恢复负荷偏高",
+      "modelABody": "睡眠不足与心率变异性下降提示需要 48 小时的恢复窗口。",
+      "modelB": "模型 B · 行为",
+      "modelBTitle": "作息波动",
+      "modelBBody": "较晚进食与作息变动与精力下降相吻合。",
+      "unifiedTitle": "稳定恢复与节律",
+      "unifiedBody": "优先保持睡眠规律，并在两次训练中安排较轻的训练日。",
+      "howToRead": "如何阅读多模型报告：对比模型 A 与模型 B 以获得互补视角，然后以统一摘要作为唯一的行动依据。"
+    },
+    "categoriesTitle": "健康分类",
+    "categoriesIntro": "实时目录中的全部 {{categories}} 个分类与 {{count}} 项服务 —— 展开任意分类即可阅读服务说明。",
+    "servicesCount": "{{count}} 项服务",
+    "openInCatalog": "在服务目录中打开 →",
+    "guide": {
+      "title": "Health Guide",
+      "body": "不确定从何开始？Health Guide 会根据你的需求，帮你找到合适的分类与服务。",
+      "cta": "开始引导之旅"
+    },
+    "secondOpinion": {
+      "title": "第二意见引擎",
+      "body": "同时生成两份报告以及一份统一摘要，包含优先级、清晰结论与一份行动计划。",
+      "cta": "了解第二意见 →"
+    },
+    "quickHelp": {
+      "title": "快速帮助",
+      "cta": "查看常见问题 →"
+    },
+    "referenceTitle": "服务完整索引",
+    "referenceSubtitle": "可搜索的清单，涵盖全部 {{categories}} 个分类与 {{count}} 条服务说明。",
+    "glossaryTitle": "健康术语表",
+    "glossaryIntro": "用简单、实用的语言解释重要的科学与健康概念",
+    "whyItMatters": "为什么重要：",
+    "howItHelps": "有何帮助：",
+    "philosophy": {
+      "title": "我们的教育理念",
+      "body": "学习中心以安心而非信息过载的方式传递知识。我们在数据与日常选择之间搭起桥梁。这里没有说教，只有清晰。我们的语气平和、有科学依据、有人情味，且不构成医疗建议。",
+      "whatTitle": "我们做什么",
+      "whatBody": "清楚解释各项服务及其用途",
+      "howTitle": "我们如何帮助",
+      "howBody": "引导你找到合适的支持",
+      "goalTitle": "我们的目标",
+      "goalBody": "建立你的信心，而不是困惑"
+    }
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "investors": {
+    "seo": {
+      "title": "Investoren – Wachstum und Chancen bei BioMath Core",
+      "description": "Erfahren Sie mehr über Traktion, Geschäftsmodell und Wachstumsplan von BioMath Core sowie über unsere Arbeit an Gesundheitsintelligenz und mögliche Partnerschaften."
+    },
+    "hero": {
+      "label": "Investoren",
+      "title": "Strategisch investieren in persönliche Gesundheitsintelligenz",
+      "body": "BioMath Core macht aus komplexen Gesundheitsdaten personalisierte Orientierung – durch biomathematische Modellierung und KI. Das Ergebnis: eine skalierbare Vorsorgeinfrastruktur mit messbaren Resultaten und klarer Unit Economics.",
+      "body2": "Wir arbeiten mit institutionellen Investoren, strategischen Partnern, Family Offices und Privatinvestoren zusammen. Die Strukturen sind flexibel: Eigenkapital, Partnerschaften, Lizenzen oder Mischformen mit gemeinsamem Nutzen.",
+      "ctaContact": "Team kontaktieren",
+      "ctaSummary": "Zusammenfassung",
+      "ctaAbout": "Mehr über uns"
+    },
+    "partners": {
+      "label": "Partner",
+      "title": "Mit wem wir arbeiten",
+      "body": "Beziehungen über das gesamte Investitionsspektrum – jede Gruppe bringt einen eigenen Mehrwert, und wir gestalten die Zusammenarbeit entsprechend.",
+      "offerLabel": "Was wir bieten",
+      "items": [
+        {
+          "title": "Institutionelle Investoren und VC-Fonds",
+          "body": "Venture- und Growth-Investoren mit Fokus auf digitale Gesundheit, die verteidigungsfähige Produkte mit klarer Monetarisierung suchen. Unser Vorgehen bei Produkt-Markt-Passung, Bindung und Expansionserlösen passt zu institutionellen Mandaten.",
+          "offer": "Professionelle Governance, transparente Berichterstattung, messbare Kennzahlen und Datenräume auf institutionellem Niveau."
+        },
+        {
+          "title": "Family Offices und vermögende Privatpersonen",
+          "body": "Langfristige Partner, die die gesellschaftliche Wirkung von Vorsorge verstehen. Family Offices bringen häufig Branchenwissen, Netzwerkzugang und geduldiges Kapital mit.",
+          "offer": "Flexible Konditionen, beratende Mitwirkung und gemeinsame Ausrichtung auf sinnstiftende Ergebnisse."
+        },
+        {
+          "title": "Strategische Unternehmensinvestoren",
+          "body": "Versorger, Versicherer, Pharmaunternehmen und Wellness-Marken nutzen BioMath Core für Nutzerbindung, Risikoeinstufung und Versorgungssteuerung – mit bevorzugtem Zugang, gemeinsamer Entwicklung und datenschutzkonformen Erkenntnissen.",
+          "offer": "Integrationspartnerschaften, Pilotprogramme und gemeinsame Initiativen für Kundenerfolg."
+        },
+        {
+          "title": "Angel- und Operator-Investoren",
+          "body": "Gründerinnen, Gründer und Operatoren aus Health-Tech, KI, SaaS und Consumer-Produkten, die Fachwissen, Kontakte, Recruiting-Netzwerke oder technische Beratung einbringen – nicht nur Kapital.",
+          "offer": "Aktive Mitwirkung, direkte Produkt-Rückmeldungen und Beteiligung in einer frühen Phase."
+        }
+      ]
+    },
+    "traction": {
+      "label": "Traktion",
+      "title": "Aktuelle Traktion und Kennzahlen",
+      "body": "Über die Konzeptvalidierung hinaus: BioMath Core ist live, erzielt Umsatz und zeigt Bindung und Nutzung, die den Ansatz bestätigen.",
+      "productStatusTitle": "Produktstatus",
+      "businessModelTitle": "Validierung des Geschäftsmodells",
+      "stats": [
+        { "label": "Aktive Servicekategorien", "value": "20+" },
+        { "label": "Intelligente Dienste", "value": "200+" },
+        { "label": "Architektur", "value": "Produktionsreif" }
+      ],
+      "points": [
+        {
+          "title": "Abostufen",
+          "body": "5-Tage-Test sowie die Tarife Core, Daily und Max mit 30–90 % Bruttomarge"
+        },
+        {
+          "title": "Monetarisierung",
+          "body": "Direkte Endkundenabos plus eine Pipeline an B2B-Lizenzen"
+        },
+        {
+          "title": "Amortisation der Akquisekosten",
+          "body": "Ziel von 6–12 Monaten über organische Kanäle und Partnerschaften"
+        },
+        {
+          "title": "Bindung",
+          "body": "Langfristige Nutzung durch personalisierten, spürbaren Mehrwert"
+        }
+      ]
+    },
+    "technology": {
+      "label": "Technologie",
+      "title": "Technische Differenzierung und Schutzrechte",
+      "items": [
+        {
+          "title": "Eigene Modellierungsschicht",
+          "body": "Biomathematische Modelle für individuelle Gesundheitsverläufe – evidenzbasierte Regeln mit KI-gestützter Auswertung."
+        },
+        {
+          "title": "Multimodale Datenintegration",
+          "body": "Fragebögen, Wearables, Laborwerte und genetische Daten werden in einem gemeinsamen Rahmen verarbeitet."
+        },
+        {
+          "title": "Nachvollziehbare Ergebnisse",
+          "body": "Transparente Begründungsketten statt undurchsichtiger Vorhersagen – entscheidend für Vertrauen und regulatorische Einordnung."
+        },
+        {
+          "title": "Datenschutzarchitektur",
+          "body": "Minimale Erhebung, nutzergesteuerte Freigabe und Verschlüsselungsstandards, die HIPAA-Erwartungen erfüllen und übertreffen."
+        },
+        {
+          "title": "Skalierbare Infrastruktur",
+          "body": "Modulare Dienste, sodass neue Kategorien ohne Umbau des Kerns hinzukommen."
+        },
+        {
+          "title": "Kontinuierliches Lernen",
+          "body": "Modellaktualisierungen aus aggregierten, anonymisierten Ergebnissen – mehr Genauigkeit bei gewahrter Privatsphäre."
+        }
+      ]
+    },
+    "model": {
+      "label": "Modell",
+      "title": "Geschäftsmodell",
+      "items": [
+        {
+          "title": "Endkundentarife",
+          "points": ["5-Tage-Test mit Abo", "Premium-Pakete nach Kategorie", "Optionale Zusatzanalysen"]
+        },
+        {
+          "title": "B2B-Leistungen",
+          "points": ["Lizenzierung von Modulen", "Programme unter gemeinsamer Marke", "Integrationen mit Datenschutz zuerst"]
+        },
+        {
+          "title": "Datendienste (freiwillig)",
+          "points": ["Aggregierte, anonymisierte Erkenntnisse", "Kreisläufe zur Modellverbesserung", "Strenge Einwilligungsregeln"]
+        }
+      ]
+    },
+    "market": {
+      "label": "Markt",
+      "title": "Marktchance",
+      "items": [
+        { "value": "230 Mrd. $+", "label": "Weltmarkt für digitale Gesundheit bis 2030" },
+        { "value": "500 Mio.+", "label": "Erreichbare Nutzerinnen und Nutzer weltweit" },
+        { "value": "20", "label": "Kategorien von Gesundheitsdiensten" },
+        { "value": "200+", "label": "Intelligente Dienste" }
+      ]
+    },
+    "roadmap": {
+      "label": "Fahrplan",
+      "title": "Wachstumsfahrplan",
+      "items": [
+        {
+          "year": "2025",
+          "title": "Produktstart",
+          "body": "Start für Endkunden, 20 Kategorien, über 200 aktive Dienste"
+        },
+        {
+          "year": "2026",
+          "title": "B2B-Ausbau",
+          "body": "Unternehmenspartnerschaften und Gesundheitsprogramme unter gemeinsamer Marke"
+        },
+        {
+          "year": "2027+",
+          "title": "Internationale Skalierung",
+          "body": "Neue Märkte und weiterentwickelte KI-Fähigkeiten"
+        }
+      ]
+    },
+    "engine": {
+      "label": "Engine",
+      "title": "Die BioMath Core Engine",
+      "body": "Eine Modellierungsschicht, die Rohdaten in personalisierte, zeitlich passende Vorschläge übersetzt – als Zusammenspiel aus evidenzbasierten Regeln, transparenten Heuristiken und KI-Unterstützung.",
+      "items": [
+        { "title": "Viele Eingangsquellen", "body": "Fragebögen, Wearables, Laborwerte, Kontext" },
+        { "title": "Nachvollziehbare Ergebnisse", "body": "was jetzt zählt – und warum" },
+        { "title": "Datenschutz von Anfang an", "body": "wenig Daten, Nutzerkontrolle, Verschlüsselung" },
+        { "title": "Laufende Aktualisierung", "body": "wir lernen aus der Nutzung, nicht aus Profilen" }
+      ]
+    },
+    "timing": {
+      "label": "Zeitpunkt",
+      "title": "Warum jetzt – und warum wir",
+      "items": [
+        { "title": "Umsetzung zuerst", "body": "Wir liefern fokussierte, nützliche Funktionen statt großer Versprechen." },
+        { "title": "Weniger Reibung", "body": "Klare Bedienung, schnelle Antworten, praktikable Empfehlungen." },
+        { "title": "Unit Economics", "body": "Ein Weg zu gesunden Margen über modulare Tarife." },
+        { "title": "Bereit für Partnerschaften", "body": "Entwickelt für Praxen und Gesundheitsanbieter." }
+      ]
+    },
+    "trust": {
+      "label": "Vertrauen",
+      "title": "Vertrauen, Datenschutz und Klarheit",
+      "body": "Gesundheitsorientierung muss Menschen respektieren. Wir erheben so wenig Daten wie möglich, halten Erklärungen verständlich und trennen Empfehlung klar von Diagnose. Rechtliche Seiten sind öffentlich und verständlich formuliert. Wir wachsen durch Transparenz – nicht durch Heilsversprechen.",
+      "links": [
+        "Datenschutzerklärung",
+        "Nutzungsbedingungen",
+        "Haftungsausschluss",
+        "HIPAA-Hinweis",
+        "Sicherheit"
+      ]
+    },
+    "closing": {
+      "title": "Bereit für ein Gespräch über eine Partnerschaft?",
+      "body": "Wir sprechen mit Investoren, die eine evidenzbasierte, nutzergesteuerte Gesundheitsintelligenz teilen – ob als Beteiligung, strategisch oder über Lizenzen."
+    }
+  }
+}

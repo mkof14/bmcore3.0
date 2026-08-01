@@ -1,0 +1,121 @@
+{
+  "homeExtra": {
+    "sources": {
+      "mri": { "title": "MRI報告書", "detail": "2024年5月12日" },
+      "blood": { "title": "血液検査", "detail": "2024年5月10日" },
+      "medications": { "title": "服薬", "detail": "リシノプリル 10mg ・ 2024年2月から" },
+      "pressure": { "title": "血圧", "detail": "毎日の測定値" },
+      "genetic": { "title": "遺伝子検査報告", "detail": "2023年12月5日" },
+      "notes": { "title": "医師の記録", "detail": "2024年4月18日" },
+      "lifestyle": { "title": "生活習慣データ", "detail": "睡眠・活動・栄養" }
+    },
+    "insights": {
+      "heading": "行動に移せる、明確な答え。",
+      "pressure": {
+        "text": "服薬を変更した後から血圧が上がり始めました。",
+        "note": "この傾向はあなたのデータに一貫して現れています。"
+      },
+      "vitaminD": {
+        "text": "ビタミンDは数年にわたり低い状態が続いています。",
+        "note": "活力や気分に影響している可能性があります。"
+      },
+      "symptoms": {
+        "text": "今日の症状はMRIの所見と似ています。",
+        "note": "以前の画像でも同様の所見が見られました。"
+      },
+      "agreement": {
+        "text": "3つの独立した分析が同じ結論に達しました。",
+        "note": "結果の確かさが高まります。"
+      },
+      "overall": {
+        "text": "全体の健康状態は安定しており、いくつか注意したい点があります。",
+        "note": "睡眠、活動、炎症に注目してください。"
+      }
+    },
+    "understand": {
+      "portraitAlt": "静かに考えごとをする人 — 自身の健康の歴史の中心にいる人間",
+      "caption": "Human Data Model",
+      "closingPrefix": "情報から",
+      "closingEmphasis": "理解へ"
+    },
+    "timeline": {
+      "source": "出典",
+      "possibleConnection": "考えられる関連",
+      "types": {
+        "lab": "検査結果",
+        "diagnosis": "診断",
+        "medication": "服薬",
+        "observation": "観察",
+        "connection": "関連",
+        "followup": "フォローアップ"
+      },
+      "sources": {
+        "lab": "検査報告書",
+        "physician": "医師の記録",
+        "personal": "本人の記録",
+        "model": "Human Data Model",
+        "carePlan": "ケアプラン"
+      },
+      "today": "今日",
+      "events": {
+        "e1": { "title": "定期の血液検査", "statement": "コレステロールが高値。" },
+        "e2": { "title": "高血圧を確認", "statement": "服薬を開始。" },
+        "e3": { "title": "服薬を変更", "statement": "リシノプリルの用量を更新。" },
+        "e4": {
+          "title": "睡眠の問題を申告",
+          "statement": "数週間にわたり寝つきが悪い状態。"
+        },
+        "e5": {
+          "title": "傾向が重なる",
+          "statement": "服薬・睡眠・血圧をまとめて確認。",
+          "converging": [
+            "服薬を変更",
+            "睡眠の問題を申告",
+            "血圧が上昇"
+          ],
+          "conclusion": "これらの変化は関連している可能性があります。担当医にご相談ください。"
+        },
+        "e6": {
+          "title": "ビタミンDが改善",
+          "statement": "値が想定範囲に近づきました。"
+        },
+        "e7": { "title": "フォローアップの時期", "statement": "医師への質問を準備済み。" }
+      },
+      "docs": {
+        "labPanel": "検査項目",
+        "clinicalNote": "診療記録",
+        "clinicalBody": "所見：血圧上昇。治療を開始し、生活習慣を確認する。",
+        "clinicalSign": "— M. リベラ医師",
+        "rxName": "リシノプリル",
+        "rxDose": "10 mg ・ 1日1回",
+        "rxMeta": "数量：90 ・ 再処方：2回",
+        "journal": "寝つきが悪い…\n午前3時ごろに目が覚める。",
+        "questions": "質問",
+        "question1": "血圧の推移",
+        "question2": "睡眠と服薬",
+        "question3": "次回の検査"
+      }
+    },
+    "changes": {
+      "source": "出典",
+      "youngAlt": "24歳ごろの若い成人",
+      "midAlt": "40歳ごろの成人",
+      "laterAlt": "60歳ごろの年配の人",
+      "youngAge": "24歳",
+      "youngBody": "健康。\n生活を築く時期。",
+      "midAge": "40歳",
+      "midBody": "新しい課題。\n新しい優先順位。",
+      "laterAge": "60歳",
+      "laterBody": "経験と視野。\n本当に大切なもの。",
+      "closingPrefix": "健康上の出来事はすべて",
+      "closingEmphasis": "あなたの Human Data Model の一部になります。",
+      "records": {
+        "r1": { "event": "定期の血液検査", "source": "検査機関" },
+        "r2": { "event": "服薬を開始", "source": "医師" },
+        "r3": { "event": "MRI", "source": "放射線科" },
+        "r4": { "event": "服薬を調整", "source": "クリニック" },
+        "r5": { "event": "血圧が改善", "source": "自宅での測定" }
+      }
+    }
+  }
+}

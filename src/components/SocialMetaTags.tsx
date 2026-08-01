@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
+import { pageToPath, type AppPage } from '../lib/routing';
 
 interface SocialMetaTagsProps {
   title: string;
   description: string;
   image?: string;
+  /** Absolute path (e.g. `/blog`). Prefer `page` when the route key is known. */
   url?: string;
+  page?: AppPage | string;
   type?: 'website' | 'article' | 'profile' | 'product';
   author?: string;
   publishedTime?: string;
@@ -17,19 +20,41 @@ interface SocialMetaTagsProps {
   siteName?: string;
 }
 
+/**
+ * Client-side social meta helper. Share image guidance: use 1200×630 landscape
+ * (public/og-default.jpg / .webp). Language is not URL-based — do not invent locale paths.
+ */
 const DEFAULT_VALUES = {
   siteName: 'BioMath Core',
-  defaultImage: '/biomathcore_emblem_1024.png',
+  defaultImage: '/og-default.jpg',
+  ogImageWidth: '1200',
+  ogImageHeight: '630',
   twitterSite: '@biomathcore',
   locale: 'en_US',
-  baseUrl: 'https://biomathcore.com'
+  baseUrl: import.meta.env.VITE_APP_URL || 'https://biomathcore.com',
 };
+
+function normalizePath(path: string): string {
+  if (!path || path === '/') return '/';
+  const withSlash = path.startsWith('/') ? path : `/${path}`;
+  return withSlash.replace(/\/+$/, '') || '/';
+}
+
+function resolvePath(url?: string, page?: string): string {
+  if (url) return normalizePath(url);
+  if (page) return normalizePath(pageToPath(page));
+  if (typeof window !== 'undefined') {
+    return normalizePath(window.location.pathname || '/');
+  }
+  return '/';
+}
 
 export default function SocialMetaTags({
   title,
   description,
   image = DEFAULT_VALUES.defaultImage,
   url,
+  page,
   type = 'website',
   author,
   publishedTime,
@@ -39,11 +64,16 @@ export default function SocialMetaTags({
   twitterSite = DEFAULT_VALUES.twitterSite,
   twitterCreator,
   locale = DEFAULT_VALUES.locale,
-  siteName = DEFAULT_VALUES.siteName
+  siteName = DEFAULT_VALUES.siteName,
 }: SocialMetaTagsProps) {
   useEffect(() => {
-    const fullUrl = url ? `${DEFAULT_VALUES.baseUrl}${url}` : DEFAULT_VALUES.baseUrl;
-    const fullImage = image.startsWith('http') ? image : `${DEFAULT_VALUES.baseUrl}${image}`;
+    const base = DEFAULT_VALUES.baseUrl.replace(/\/+$/, '');
+    const path = resolvePath(url, page);
+    const fullUrl = path === '/' ? `${base}/` : `${base}${path}`;
+    const fullImage = image.startsWith('http')
+      ? image
+      : `${base}${image.startsWith('/') ? image : `/${image}`}`;
+    const usingDefaultOg = image === DEFAULT_VALUES.defaultImage;
 
     const metaTags: Record<string, string> = {
       'og:site_name': siteName,
@@ -52,8 +82,7 @@ export default function SocialMetaTags({
       'og:type': type,
       'og:url': fullUrl,
       'og:image': fullImage,
-      'og:image:width': '1200',
-      'og:image:height': '630',
+      'og:image:secure_url': fullImage,
       'og:image:alt': title,
       'og:locale': locale,
 
@@ -64,13 +93,15 @@ export default function SocialMetaTags({
       'twitter:image': fullImage,
       'twitter:image:alt': title,
 
-      'fb:app_id': '1234567890',
-
       'pinterest:description': description,
       'pinterest:media': fullImage,
-
-      'linkedin:owner': siteName
     };
+
+    if (usingDefaultOg) {
+      metaTags['og:image:width'] = DEFAULT_VALUES.ogImageWidth;
+      metaTags['og:image:height'] = DEFAULT_VALUES.ogImageHeight;
+      metaTags['og:image:type'] = 'image/jpeg';
+    }
 
     if (twitterCreator) {
       metaTags['twitter:creator'] = twitterCreator;
@@ -92,14 +123,16 @@ export default function SocialMetaTags({
     }
 
     Object.entries(metaTags).forEach(([name, content]) => {
-      const property = name.startsWith('og:') ||
-                       name.startsWith('article:') ||
-                       name.startsWith('fb:') ||
-                       name.startsWith('profile:')
-        ? 'property'
-        : 'name';
+      const property =
+        name.startsWith('og:') ||
+        name.startsWith('article:') ||
+        name.startsWith('profile:')
+          ? 'property'
+          : 'name';
 
-      let element = document.querySelector(`meta[${property}="${name}"]`) as HTMLMetaElement;
+      let element = document.querySelector(
+        `meta[${property}="${name}"]`,
+      ) as HTMLMetaElement;
 
       if (!element) {
         element = document.createElement('meta');
@@ -109,15 +142,23 @@ export default function SocialMetaTags({
 
       element.setAttribute('content', content);
     });
-
-    const whatsappMeta = document.createElement('meta');
-    whatsappMeta.setAttribute('property', 'og:image:secure_url');
-    whatsappMeta.setAttribute('content', fullImage);
-    document.head.appendChild(whatsappMeta);
-
-    return () => {
-    };
-  }, [title, description, image, url, type, author, publishedTime, modifiedTime, tags, twitterCard, twitterSite, twitterCreator, locale, siteName]);
+  }, [
+    title,
+    description,
+    image,
+    url,
+    page,
+    type,
+    author,
+    publishedTime,
+    modifiedTime,
+    tags,
+    twitterCard,
+    twitterSite,
+    twitterCreator,
+    locale,
+    siteName,
+  ]);
 
   return null;
 }

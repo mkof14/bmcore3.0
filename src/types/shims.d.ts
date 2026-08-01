@@ -7,14 +7,6 @@ declare module "clsx" {
   export function clsx(...args: any[]): string;
 }
 
-declare module "web-vitals" {
-  export type ReportHandler = (metric: any) => void;
-  export function getCLS(onReport: ReportHandler): void;
-  export function getFID(onReport: ReportHandler): void;
-  export function getFCP(onReport: ReportHandler): void;
-  export function getLCP(onReport: ReportHandler): void;
-  export function getTTFB(onReport: ReportHandler): void;
-}
 
 interface SpeechRecognitionResultList {
   length: number;
@@ -46,12 +38,14 @@ interface SpeechRecognition extends EventTarget {
   continuous: boolean;
   interimResults: boolean;
   lang: string;
+  maxAlternatives?: number;
   onstart: ((this: SpeechRecognition, ev: Event) => any) | null;
   onresult: ((this: SpeechRecognition, ev: SpeechRecognitionEvent) => any) | null;
   onerror: ((this: SpeechRecognition, ev: SpeechRecognitionErrorEvent) => any) | null;
   onend: ((this: SpeechRecognition, ev: Event) => any) | null;
   start(): void;
   stop(): void;
+  abort(): void;
 }
 
 interface Window {

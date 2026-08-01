@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Send, X, Loader } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '../lib/supabase';
 import { useSession } from '../hooks/useSession';
 import TypingIndicator from './TypingIndicator';
@@ -20,12 +21,14 @@ interface LiveSupportChatProps {
 }
 
 export default function LiveSupportChat({ isOpen, onClose }: LiveSupportChatProps) {
+  const { t } = useTranslation();
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [roomId, setRoomId] = useState<string | null>(null);
   const [isTyping, setIsTyping] = useState(false);
   const [typingUsers, setTypingUsers] = useState<string[]>([]);
+  const [initError, setInitError] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const user = useSession();
@@ -33,100 +36,144 @@ export default function LiveSupportChat({ isOpen, onClose }: LiveSupportChatProp
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, []);
-  const setupRealtimeSubscriptions = useCallback((roomId: string) => {
-    const messageChannel = supabase
-      .channel(`room:${roomId}:messages`)
-      .on(
-        'postgres_changes',
-        {
-          event: 'INSERT',
-          schema: 'public',
-          table: 'chat_messages',
-          filter: `room_id=eq.${roomId}`,
-        },
-        async (payload) => {
-          const { data: profile } = await supabase
-            .from('profiles')
-            .select('first_name, last_name, is_admin')
-            .eq('id', payload.new.user_id)
-            .maybeSingle();
 
-          const newMsg: Message = {
-            id: payload.new.id,
-            content: payload.new.content,
-            user_id: payload.new.user_id,
-            created_at: payload.new.created_at,
-            sender_name: profile
-              ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() || 'User'
-              : 'User',
-            is_support: profile?.is_admin || false,
-          };
+  const setupRealtimeSubscriptions = useCallback(
+    (currentRoomId: string) => {
+      const messageChannel = supabase
+        .channel(`room:${currentRoomId}:messages`)
+        .on(
+          'postgres_changes',
+          {
+            event: 'INSERT',
+            schema: 'public',
+            table: 'chat_messages',
+            filter: `room_id=eq.${currentRoomId}`,
+          },
+          async (payload) => {
+            const { data: profile } = await supabase
+              .from('profiles')
+              .select('first_name, last_name, is_admin')
+              .eq('id', payload.new.user_id)
+              .maybeSingle();
 
-          setMessages((prev) => [...prev, newMsg]);
-        }
-      )
-      .subscribe();
+            const newMsg: Message = {
+              id: payload.new.id,
+              content: payload.new.content,
+              user_id: payload.new.user_id,
+              created_at: payload.new.created_at,
+              sender_name: profile
+                ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() ||
+                  t('liveSupportChat.userFallback')
+                : t('liveSupportChat.userFallback'),
+              is_support: profile?.is_admin || false,
+            };
 
-    const typingChannel = supabase
-      .channel(`room:${roomId}:typing`)
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'chat_typing_indicators',
-          filter: `room_id=eq.${roomId}`,
-        },
-        async (payload) => {
-          if (payload.eventType === 'INSERT' || payload.eventType === 'UPDATE') {
-            if (payload.new.user_id !== user?.id) {
+            setMessages((prev) => [...prev, newMsg]);
+          },
+        )
+        .subscribe();
+
+      const typingChannel = supabase
+        .channel(`room:${currentRoomId}:typing`)
+        .on(
+          'postgres_changes',
+          {
+            event: '*',
+            schema: 'public',
+            table: 'chat_typing_indicators',
+            filter: `room_id=eq.${currentRoomId}`,
+          },
+          async (payload) => {
+            if (payload.eventType === 'INSERT' || payload.eventType === 'UPDATE') {
+              if (payload.new.user_id !== user?.id) {
+                const { data: profile } = await supabase
+                  .from('profiles')
+                  .select('first_name, last_name')
+                  .eq('id', payload.new.user_id)
+                  .maybeSingle();
+
+                const name = profile
+                  ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() ||
+                    t('liveSupportChat.someoneFallback')
+                  : t('liveSupportChat.someoneFallback');
+
+                setTypingUsers((prev) => (prev.includes(name) ? prev : [...prev, name]));
+
+                setTimeout(() => {
+                  setTypingUsers((prev) => prev.filter((n) => n !== name));
+                }, 5000);
+              }
+            } else if (payload.eventType === 'DELETE') {
               const { data: profile } = await supabase
                 .from('profiles')
                 .select('first_name, last_name')
-                .eq('id', payload.new.user_id)
+                .eq('id', payload.old.user_id)
                 .maybeSingle();
 
               const name = profile
-                ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() || 'Someone'
-                : 'Someone';
+                ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() ||
+                  t('liveSupportChat.someoneFallback')
+                : t('liveSupportChat.someoneFallback');
 
-              setTypingUsers((prev) => {
-                if (!prev.includes(name)) {
-                  return [...prev, name];
-                }
-                return prev;
-              });
-
-              setTimeout(() => {
-                setTypingUsers((prev) => prev.filter((n) => n !== name));
-              }, 5000);
+              setTypingUsers((prev) => prev.filter((n) => n !== name));
             }
-          } else if (payload.eventType === 'DELETE') {
-            const { data: profile } = await supabase
-              .from('profiles')
-              .select('first_name, last_name')
-              .eq('id', payload.old.user_id)
-              .maybeSingle();
+          },
+        )
+        .subscribe();
 
-            const name = profile
-              ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() || 'Someone'
-              : 'Someone';
+      return () => {
+        messageChannel.unsubscribe();
+        typingChannel.unsubscribe();
+      };
+    },
+    [t, user],
+  );
 
-            setTypingUsers((prev) => prev.filter((n) => n !== name));
-          }
-        }
+  const loadMessages = async (currentRoomId: string) => {
+    const { data, error } = await supabase
+      .from('chat_messages')
+      .select(
+        `
+        id,
+        content,
+        user_id,
+        created_at,
+        profiles:user_id (
+          first_name,
+          last_name,
+          is_admin
+        )
+      `,
       )
-      .subscribe();
+      .eq('room_id', currentRoomId)
+      .order('created_at', { ascending: true })
+      .limit(100);
 
-    return () => {
-      messageChannel.unsubscribe();
-      typingChannel.unsubscribe();
-    };
-  }, [user]);
+    if (!error && data) {
+      const formattedMessages = (data as Array<Record<string, unknown>>).map((msg) => {
+        const profileRaw = msg.profiles;
+        const profile = Array.isArray(profileRaw) ? profileRaw[0] : profileRaw;
+        const p = profile as { first_name?: string; last_name?: string; is_admin?: boolean } | null;
+        return {
+          id: msg.id as string,
+          content: msg.content as string,
+          user_id: msg.user_id as string,
+          created_at: msg.created_at as string,
+          sender_name: p
+            ? `${p.first_name || ''} ${p.last_name || ''}`.trim() || t('liveSupportChat.userFallback')
+            : t('liveSupportChat.userFallback'),
+          is_support: p?.is_admin || false,
+        };
+      });
+      setMessages(formattedMessages);
+    }
+  };
+
   const initializeChat = useCallback(async () => {
     if (!user) return;
 
     setLoading(true);
+    setInitError(false);
     try {
       const { data: existingRooms } = await supabase
         .from('chat_rooms')
@@ -163,60 +210,26 @@ export default function LiveSupportChat({ isOpen, onClose }: LiveSupportChatProp
       setRoomId(currentRoomId);
       await loadMessages(currentRoomId);
       setupRealtimeSubscriptions(currentRoomId);
-    } catch (error) {
-      notifyUserError('Support chat failed to load. Please try again.');
+    } catch {
+      setInitError(true);
+      notifyUserError(t('liveSupportChat.loadError'));
     } finally {
       setLoading(false);
     }
-  }, [user, setupRealtimeSubscriptions]);
+  }, [setupRealtimeSubscriptions, t, user]);
 
   useEffect(() => {
     if (isOpen && user) {
-      initializeChat();
+      void initializeChat();
+    }
+    if (!isOpen) {
+      setInitError(false);
     }
   }, [isOpen, user, initializeChat]);
 
   useEffect(() => {
     scrollToBottom();
   }, [messages, scrollToBottom]);
-
-  const loadMessages = async (roomId: string) => {
-    const { data, error } = await supabase
-      .from('chat_messages')
-      .select(`
-        id,
-        content,
-        user_id,
-        created_at,
-        profiles:user_id (
-          first_name,
-          last_name,
-          is_admin
-        )
-      `)
-      .eq('room_id', roomId)
-      .order('created_at', { ascending: true })
-      .limit(100);
-
-    if (!error && data) {
-      const formattedMessages = (data as any[]).map((msg) => {
-        const profile = Array.isArray(msg.profiles) ? msg.profiles[0] : msg.profiles;
-        return {
-          id: msg.id,
-          content: msg.content,
-          user_id: msg.user_id,
-          created_at: msg.created_at,
-          sender_name: profile
-            ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() || 'User'
-            : 'User',
-          is_support: profile?.is_admin || false,
-        };
-      });
-      setMessages(formattedMessages);
-    }
-  };
-
-  
 
   const handleTyping = async () => {
     if (!roomId || !user) return;
@@ -272,12 +285,13 @@ export default function LiveSupportChat({ isOpen, onClose }: LiveSupportChatProp
 
     if (error) {
       setNewMessage(messageText);
+      notifyUserError(t('liveSupportChat.sendError'));
     }
   };
 
   const formatTime = (timestamp: string) => {
     const date = new Date(timestamp);
-    return date.toLocaleTimeString('en-US', {
+    return date.toLocaleTimeString(undefined, {
       hour: '2-digit',
       minute: '2-digit',
     });
@@ -286,36 +300,65 @@ export default function LiveSupportChat({ isOpen, onClose }: LiveSupportChatProp
   if (!isOpen) return null;
 
   return (
-    <div className="fixed bottom-4 right-20 w-96 h-[600px] bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 flex flex-col z-40">
-      <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-t-xl">
+    <div className="fixed bottom-4 right-4 z-40 flex h-[min(600px,calc(100vh-6rem))] w-[min(24rem,calc(100vw-2rem))] flex-col rounded-2xl border border-[var(--bm-border)] bg-surface shadow-2xl sm:right-6">
+      <div className="flex items-center justify-between rounded-t-2xl border-b border-orange-700/20 bg-gradient-to-r from-orange-600 to-orange-700 p-4 text-white">
         <div>
-          <h3 className="font-semibold text-lg">Live Support Chat</h3>
-          <p className="text-xs text-green-100">We typically respond within minutes</p>
+          <h3 className="text-lg font-semibold">{t('liveSupportChat.title')}</h3>
+          <p className="text-xs text-orange-100">{t('liveSupportChat.subtitle')}</p>
         </div>
         <button
+          type="button"
           onClick={onClose}
-          className="p-2 hover:bg-white/20 rounded-lg transition-colors"
-          aria-label="Close chat"
+          className="rounded-lg p-2 transition-colors hover:bg-white/20"
+          aria-label={t('liveSupportChat.closeAria')}
         >
           <X className="h-5 w-5" />
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-900">
-        {loading ? (
-          <div className="flex items-center justify-center h-full">
-            <Loader className="h-8 w-8 animate-spin text-green-600" />
+      <div className="flex-1 space-y-4 overflow-y-auto bg-page p-4">
+        {!user ? (
+          <div className="flex h-full flex-col items-center justify-center px-4 text-center">
+            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900/30">
+              <Send className="h-8 w-8 text-orange-600 dark:text-orange-400" />
+            </div>
+            <p className="mb-2 font-medium text-gray-900 dark:text-neutral-100">
+              {t('liveSupportChat.signInTitle')}
+            </p>
+            <p className="text-sm text-gray-600 dark:text-neutral-300">
+              {t('liveSupportChat.signInBody')}
+            </p>
+          </div>
+        ) : loading ? (
+          <div className="flex h-full items-center justify-center">
+            <Loader className="h-8 w-8 animate-spin text-orange-600 dark:text-orange-400" />
+          </div>
+        ) : initError ? (
+          <div className="flex h-full flex-col items-center justify-center px-4 text-center">
+            <p className="mb-2 font-medium text-gray-900 dark:text-neutral-100">
+              {t('liveSupportChat.errorTitle')}
+            </p>
+            <p className="mb-4 text-sm text-gray-600 dark:text-neutral-300">
+              {t('liveSupportChat.errorBody')}
+            </p>
+            <button
+              type="button"
+              onClick={() => void initializeChat()}
+              className="rounded-lg bg-orange-500 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-400"
+            >
+              {t('liveSupportChat.retry')}
+            </button>
           </div>
         ) : messages.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full text-center px-4">
-            <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4">
-              <Send className="h-8 w-8 text-green-600 dark:text-green-400" />
+          <div className="flex h-full flex-col items-center justify-center px-4 text-center">
+            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900/30">
+              <Send className="h-8 w-8 text-orange-600 dark:text-orange-400" />
             </div>
-            <p className="text-gray-600 dark:text-gray-400 mb-2">
-              Welcome to Support Chat!
+            <p className="mb-2 font-medium text-gray-900 dark:text-neutral-100">
+              {t('liveSupportChat.emptyTitle')}
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-500">
-              Send a message and our team will respond shortly.
+            <p className="text-sm text-gray-600 dark:text-neutral-300">
+              {t('liveSupportChat.emptyBody')}
             </p>
           </div>
         ) : (
@@ -323,38 +366,36 @@ export default function LiveSupportChat({ isOpen, onClose }: LiveSupportChatProp
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex ${
-                  message.user_id === user?.id ? 'justify-end' : 'justify-start'
-                }`}
+                className={`flex ${message.user_id === user?.id ? 'justify-end' : 'justify-start'}`}
               >
                 <div
                   className={`max-w-[80%] rounded-2xl px-4 py-2 ${
                     message.user_id === user?.id
-                      ? 'bg-green-600 text-white'
+                      ? 'bg-orange-600 text-white'
                       : message.is_support
-                      ? 'bg-blue-100 dark:bg-blue-900/30 text-gray-900 dark:text-white border border-blue-200 dark:border-blue-800'
-                      : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700'
+                        ? 'border border-orange-200 bg-orange-50 text-gray-900 dark:border-orange-800 dark:bg-orange-950/40 dark:text-neutral-100'
+                        : 'border border-[var(--bm-border)] bg-surface text-gray-900 dark:text-neutral-100'
                   }`}
                 >
                   {message.user_id !== user?.id && (
                     <p
-                      className={`text-xs font-semibold mb-1 ${
+                      className={`mb-1 text-xs font-semibold ${
                         message.is_support
-                          ? 'text-blue-700 dark:text-blue-400'
-                          : 'text-gray-600 dark:text-gray-400'
+                          ? 'text-orange-700 dark:text-orange-300'
+                          : 'text-gray-600 dark:text-neutral-400'
                       }`}
                     >
-                      {message.is_support ? '🎧 Support Team' : message.sender_name}
+                      {message.is_support
+                        ? t('liveSupportChat.supportTeam')
+                        : message.sender_name}
                     </p>
                   )}
-                  <p className="text-sm whitespace-pre-wrap break-words">
-                    {message.content}
-                  </p>
+                  <p className="whitespace-pre-wrap break-words text-sm">{message.content}</p>
                   <p
-                    className={`text-xs mt-1 ${
+                    className={`mt-1 text-xs ${
                       message.user_id === user?.id
-                        ? 'text-green-100'
-                        : 'text-gray-500 dark:text-gray-500'
+                        ? 'text-orange-100'
+                        : 'text-gray-500 dark:text-neutral-400'
                     }`}
                   >
                     {formatTime(message.created_at)}
@@ -364,10 +405,10 @@ export default function LiveSupportChat({ isOpen, onClose }: LiveSupportChatProp
             ))}
             {typingUsers.length > 0 && (
               <div className="flex justify-start">
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl px-4 py-2">
+                <div className="rounded-2xl border border-[var(--bm-border)] bg-surface px-4 py-2">
                   <TypingIndicator />
-                  <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                    {typingUsers[0]} is typing...
+                  <p className="mt-1 text-xs text-gray-500 dark:text-neutral-400">
+                    {t('liveSupportChat.typing', { name: typingUsers[0] })}
                   </p>
                 </div>
               </div>
@@ -379,35 +420,36 @@ export default function LiveSupportChat({ isOpen, onClose }: LiveSupportChatProp
 
       <form
         onSubmit={sendMessage}
-        className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-b-xl"
+        className="rounded-b-2xl border-t border-[var(--bm-border)] bg-surface p-4"
       >
         <div className="flex items-end space-x-2">
           <textarea
             value={newMessage}
             onChange={(e) => {
               setNewMessage(e.target.value);
-              handleTyping();
+              void handleTyping();
             }}
             onKeyDown={(e) => {
               if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
-                sendMessage(e);
+                void sendMessage(e);
               }
             }}
-            placeholder="Type your message..."
+            placeholder={t('liveSupportChat.placeholder')}
             rows={2}
-            className="flex-1 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none text-sm"
+            disabled={!user || loading || initError}
+            className="flex-1 resize-none rounded-lg border border-[var(--bm-border)] bg-page px-4 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:border-transparent focus:ring-2 focus:ring-orange-500 disabled:cursor-not-allowed disabled:opacity-60 dark:text-neutral-100 dark:placeholder:text-neutral-400"
           />
           <button
             type="submit"
-            disabled={!newMessage.trim()}
-            className="p-3 bg-green-600 hover:bg-green-700 disabled:bg-gray-300 dark:disabled:bg-gray-700 text-white rounded-lg transition-colors disabled:cursor-not-allowed"
+            disabled={!user || !newMessage.trim() || loading || initError}
+            className="rounded-lg bg-orange-600 p-3 text-white transition-colors hover:bg-orange-500 disabled:cursor-not-allowed disabled:bg-gray-300 dark:disabled:bg-[var(--bm-border)]"
           >
             <Send className="h-5 w-5" />
           </button>
         </div>
-        <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-          Press Enter to send, Shift+Enter for new line
+        <p className="mt-2 text-xs text-gray-500 dark:text-neutral-400">
+          {t('liveSupportChat.hint')}
         </p>
       </form>
     </div>

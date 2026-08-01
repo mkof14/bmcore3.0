@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Sun,
   Target,
@@ -25,6 +26,7 @@ interface DashboardSectionProps {
 }
 
 export default function DashboardSection({ onBack }: DashboardSectionProps = {}) {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(true);
   const [todaySnapshot, setTodaySnapshot] = useState<DailySnapshot | null>(null);
   const [activeGoals, setActiveGoals] = useState<UserGoal[]>([]);
@@ -185,15 +187,15 @@ export default function DashboardSection({ onBack }: DashboardSectionProps = {})
       {onBack && <BackButton onClick={onBack} label="Back to Home" />}
       <div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-          Dashboard
+          {t('member.dashboard.title')}
         </h1>
         <p className="text-gray-600 dark:text-gray-400">
-          Your wellness command center for today's state, goals, and habits
+          {t('member.dashboard.subtitle')}
         </p>
       </div>
 
       {!todaySnapshot ? (
-        <div className="bg-white/90 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-xl p-8 border-2 border-dashed border-slate-200 dark:border-gray-700/50 text-center shadow-sm">
+        <div className="bg-white/90 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] rounded-xl p-8 border-2 border-dashed border-slate-200 dark:border-gray-700/50 text-center shadow-sm">
           <Sun className="h-12 w-12 text-orange-500 mx-auto mb-4" />
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
             Ready for today's snapshot?
@@ -370,7 +372,7 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
 
 function GoalsCard({ goals, onCreateGoal }: { goals: UserGoal[]; onCreateGoal: () => void }) {
   return (
-    <div className="bg-white/90 dark:bg-gray-900 rounded-xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm">
+    <div className="bg-white/90 dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm">
       <ReportBrandHeader
         title="BioMath Core"
         subtitle="Goals Overview"
@@ -463,7 +465,7 @@ function HabitsCard({
   };
 
   return (
-    <div className="bg-white/90 dark:bg-gray-900 rounded-xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm">
+    <div className="bg-white/90 dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm">
       <ReportBrandHeader
         title="BioMath Core"
         subtitle="Habit Tracker"
@@ -588,7 +590,7 @@ function LatestReportCard({ report }: { report: HealthReport }) {
 
 function QuickActionsCard() {
   return (
-    <div className="bg-white/90 dark:bg-gray-900 rounded-xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm">
+    <div className="bg-white/90 dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm">
       <ReportBrandHeader
         title="BioMath Core"
         subtitle="Quick Actions"

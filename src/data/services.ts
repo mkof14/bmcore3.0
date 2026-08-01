@@ -2,6 +2,13 @@ export interface Service {
   id: string;
   name: string;
   description: string;
+  scope?: 'category' | 'human-data-model';
+  status?: 'available' | 'planned' | 'integration-required';
+  acceptedInputs?: string[];
+  outputs?: string[];
+  contributesToHumanDataModel?: boolean;
+  requiresUserConfirmation?: boolean;
+  relatedServiceIds?: string[];
 }
 
 export interface ServiceCategory {
@@ -12,6 +19,65 @@ export interface ServiceCategory {
   services: Service[];
 }
 
+/** Routing / group id for cross-category Human Data Model services — not a 21st medical category. */
+export const HUMAN_DATA_MODEL_GROUP_ID = 'human-data-model';
+
+/**
+ * Shared Human Data Model services.
+ * Not assigned to a single medical category; browsable via this group.
+ */
+export const humanDataModelServices: Service[] = [
+  {
+    id: 'medical-records-import',
+    name: 'Medical Records Import & Organizer',
+    description:
+      'Import medical PDFs, images and records, extract key facts, and organize diagnoses, medications, tests, procedures and dates into the Human Data Model.',
+    scope: 'human-data-model',
+    status: 'available',
+    acceptedInputs: ['pdf', 'image', 'medical-record'],
+    outputs: ['diagnoses', 'medications', 'lab-results', 'procedures', 'dates', 'source-document'],
+    contributesToHumanDataModel: true,
+    requiresUserConfirmation: true,
+    relatedServiceIds: ['health-timeline', 'what-changed', 'lab-results', 'lab-results-trend'],
+  },
+  {
+    id: 'health-timeline',
+    name: 'Health Timeline',
+    description:
+      'A chronological record of diagnoses, tests, medications, procedures, symptoms, visits and important health changes.',
+    scope: 'human-data-model',
+    status: 'available',
+    acceptedInputs: ['hdm-records', 'confirmed-extractions', 'user-entries'],
+    outputs: ['timeline-events', 'source-links', 'conflict-flags', 'duplicates'],
+    contributesToHumanDataModel: true,
+    requiresUserConfirmation: false,
+    relatedServiceIds: ['medical-records-import', 'what-changed', 'doctor-visit-prep'],
+  },
+  {
+    id: 'what-changed',
+    name: 'What Changed',
+    description:
+      'Shows meaningful changes in health records, laboratory results, medications, symptoms and monitored measurements over time.',
+    scope: 'human-data-model',
+    status: 'available',
+    acceptedInputs: ['timeline-events', 'lab-series', 'medication-list', 'symptoms', 'measurements'],
+    outputs: ['change-events', 'source-links', 'significance-flags'],
+    contributesToHumanDataModel: true,
+    requiresUserConfirmation: false,
+    relatedServiceIds: ['health-timeline', 'lab-results-trend', 'medication-reconciliation'],
+  },
+];
+
+/** Synthetic browse group for shared HDM services — kept outside serviceCategories (still 20 categories). */
+export const humanDataModelCategory: ServiceCategory = {
+  id: HUMAN_DATA_MODEL_GROUP_ID,
+  name: 'Human Data Model',
+  description:
+    'Cross-category tools that import, organize and track health information in the Human Data Model.',
+  icon: 'Database',
+  services: humanDataModelServices,
+};
+
 export const serviceCategories: ServiceCategory[] = [
   {
     id: 'critical-health',
@@ -21,11 +87,63 @@ export const serviceCategories: ServiceCategory[] = [
     services: [
       { id: 'risk-insight', name: 'Risk Insight', description: 'Comprehensive health risk assessment using biomathematical models' },
       { id: 'lab-results', name: 'Lab Results Explainer', description: 'AI-powered interpretation of laboratory test results' },
+      {
+        id: 'lab-results-trend',
+        name: 'Lab Results Trend',
+        description:
+          'Compare laboratory results over time and identify meaningful changes, repeated abnormalities and missing follow-up tests.',
+        scope: 'category',
+        status: 'available',
+        acceptedInputs: ['lab-reports', 'prior-results'],
+        outputs: ['trend-series', 'abnormality-flags', 'missing-follow-up', 'source-links'],
+        contributesToHumanDataModel: true,
+        requiresUserConfirmation: false,
+        relatedServiceIds: ['lab-results', 'what-changed', 'medical-records-import'],
+      },
       { id: 'drug-interaction', name: 'Drug-Drug Interaction Checker', description: 'Real-time medication interaction analysis' },
+      {
+        id: 'medication-reconciliation',
+        name: 'Medication Reconciliation',
+        description:
+          'Create one confirmed medication list from prescriptions, medical records and user entries, and identify duplicates, conflicts and outdated instructions.',
+        scope: 'category',
+        status: 'available',
+        acceptedInputs: ['prescriptions', 'medical-records', 'user-entries', 'otc', 'supplements', 'allergies'],
+        outputs: ['confirmed-medication-list', 'duplicate-flags', 'dosage-conflicts', 'source-attribution'],
+        contributesToHumanDataModel: true,
+        requiresUserConfirmation: true,
+        relatedServiceIds: ['drug-interaction', 'medication-adherence', 'medical-records-import'],
+      },
       { id: 'symptom-analyzer', name: 'Symptom Analyzer', description: 'Intelligent symptom assessment and triage' },
       { id: 'chronic-disease', name: 'Chronic Disease Coach', description: 'Personalized management for chronic conditions' },
       { id: 'medication-adherence', name: 'AI Medication Adherence', description: 'Smart medication tracking and reminders' },
       { id: 'care-cost', name: 'Care Cost Optimizer', description: 'Healthcare cost analysis and optimization' },
+      {
+        id: 'doctor-visit-prep',
+        name: 'Doctor Visit Prep',
+        description:
+          'Prepare a concise visit summary with the reason for the appointment, recent changes, current medications, relevant results, symptoms and questions.',
+        scope: 'category',
+        status: 'available',
+        acceptedInputs: ['timeline-events', 'medications', 'lab-results', 'symptoms', 'visit-reason'],
+        outputs: ['visit-summary', 'question-list', 'print-export', 'post-visit-notes'],
+        contributesToHumanDataModel: true,
+        requiresUserConfirmation: true,
+        relatedServiceIds: ['health-timeline', 'what-changed', 'medication-reconciliation'],
+      },
+      {
+        id: 'prescription-price-comparison',
+        name: 'Prescription Price Comparison',
+        description:
+          'Compare available prices for a prescribed medication by pharmacy, generic option, dosage and payment method.',
+        scope: 'category',
+        status: 'integration-required',
+        acceptedInputs: ['medication-name', 'dosage', 'quantity', 'location'],
+        outputs: ['price-comparisons', 'generic-options', 'data-source', 'update-time'],
+        contributesToHumanDataModel: false,
+        requiresUserConfirmation: false,
+        relatedServiceIds: ['medication-reconciliation', 'med-refill', 'care-cost'],
+      },
       { id: 'post-surgery', name: 'Post-Surgery Recovery Tracker', description: 'Recovery monitoring and guidance' },
       { id: 'clinical-trial', name: 'Clinical Trial Finder', description: 'Personalized clinical trial matching' },
       { id: 'pre-surgery', name: 'Pre-Surgery Readiness', description: 'Surgical preparation assessment' },
@@ -43,7 +161,7 @@ export const serviceCategories: ServiceCategory[] = [
     id: 'everyday-wellness',
     name: 'Everyday Wellness',
     description: 'Daily health optimization and wellness practices',
-    icon: 'Sparkles',
+    icon: 'Sun',
     services: [
       { id: 'travel-kit', name: 'Healthy Travel Kit', description: 'Travel health preparation and tips' },
       { id: 'goal-assistant', name: 'Goal Assistant', description: 'Health goal setting and tracking' },
@@ -167,7 +285,7 @@ export const serviceCategories: ServiceCategory[] = [
     id: 'beauty-skincare',
     name: 'Beauty & Skincare',
     description: 'Dermatological health and cosmetic optimization',
-    icon: 'Sparkles',
+    icon: 'Droplets',
     services: [
       { id: 'skincare-routine', name: 'AI Skincare Routine', description: 'Personalized skincare regimen' },
       { id: 'uv-forecast', name: 'UV Damage Forecast', description: 'Sun exposure risk prediction' },
@@ -243,6 +361,19 @@ export const serviceCategories: ServiceCategory[] = [
     icon: 'Users',
     services: [
       { id: 'medication-hub', name: 'Family Medication Hub', description: 'Household medication tracking' },
+      {
+        id: 'family-caregiver-access',
+        name: 'Family & Caregiver Access',
+        description:
+          'Permission-based access for managing selected health information and tasks for a child, spouse, parent or dependent adult.',
+        scope: 'category',
+        status: 'available',
+        acceptedInputs: ['person-profiles', 'relationships', 'permissions'],
+        outputs: ['access-grants', 'shared-medications', 'shared-appointments', 'shared-results', 'emergency-info', 'audit-log'],
+        contributesToHumanDataModel: true,
+        requiresUserConfirmation: true,
+        relatedServiceIds: ['medication-hub', 'emergency-profile', 'doctor-visit-prep'],
+      },
       { id: 'child-growth', name: 'Child Growth Tracker', description: 'Pediatric development monitoring' },
       { id: 'genetic-compatibility', name: 'Genetic Compatibility Screening', description: 'Family planning insights' },
       { id: 'wellness-challenge', name: 'Family Wellness Challenge', description: 'Group health goals' },
@@ -258,6 +389,19 @@ export const serviceCategories: ServiceCategory[] = [
     icon: 'Shield',
     services: [
       { id: 'cancer-screening', name: 'Personalized Cancer Screening', description: 'Risk-based screening protocols' },
+      {
+        id: 'preventive-care-due',
+        name: 'Preventive Care Due',
+        description:
+          'Shows preventive screenings, vaccinations and follow-up checks that are due, upcoming or completed based on the user’s confirmed profile and records.',
+        scope: 'category',
+        status: 'available',
+        acceptedInputs: ['profile', 'age', 'sex', 'history', 'records', 'vaccinations'],
+        outputs: ['overdue-items', 'due-soon-items', 'completed-items', 'guideline-source', 'rationale'],
+        contributesToHumanDataModel: true,
+        requiresUserConfirmation: true,
+        relatedServiceIds: ['cancer-screening', 'vaccination', 'immunization', 'health-timeline'],
+      },
       { id: 'cardiovascular-prevention', name: 'Cardiovascular Disease Prevention Plan', description: 'Heart health optimization' },
       { id: 'neurodegenerative', name: 'Neurodegenerative Risk Assessment', description: 'Brain health protection' },
       { id: 'inflammation-management', name: 'Inflammation Management Program', description: 'Systemic inflammation reduction' },
@@ -383,3 +527,60 @@ export const serviceCategories: ServiceCategory[] = [
     ]
   }
 ];
+
+/** Live count from data — grows automatically when services are added. */
+export function categoryServiceCount(categoryId: string): number {
+  if (categoryId === HUMAN_DATA_MODEL_GROUP_ID) {
+    return humanDataModelServices.length;
+  }
+  return serviceCategories.find((c) => c.id === categoryId)?.services.length ?? 0;
+}
+
+export function getServiceCategory(categoryId: string): ServiceCategory | undefined {
+  if (categoryId === HUMAN_DATA_MODEL_GROUP_ID) return humanDataModelCategory;
+  return serviceCategories.find((c) => c.id === categoryId);
+}
+
+/** Path form used by App / ServiceDetail: `categoryId/serviceId` or `human-data-model/serviceId`. */
+export function serviceDetailPath(categoryId: string, serviceId: string): string {
+  return `${categoryId}/${serviceId}`;
+}
+
+/**
+ * Resolve a service from `categoryId/serviceId`, `human-data-model/serviceId`, or a bare `serviceId`.
+ * Category catalog remains the 20 medical categories; HDM shared services resolve via the HDM group.
+ */
+export function resolveServiceRef(
+  ref: string,
+): { category: ServiceCategory; service: Service } | null {
+  if (!ref) return null;
+  const [maybeCategoryId, maybeServiceId] = ref.split('/');
+
+  if (maybeServiceId) {
+    const category = getServiceCategory(maybeCategoryId);
+    const service = category?.services.find((s) => s.id === maybeServiceId);
+    if (category && service) return { category, service };
+    return null;
+  }
+
+  const hdm = humanDataModelServices.find((s) => s.id === maybeCategoryId);
+  if (hdm) return { category: humanDataModelCategory, service: hdm };
+
+  for (const category of serviceCategories) {
+    const service = category.services.find((s) => s.id === maybeCategoryId);
+    if (service) return { category, service };
+  }
+  return null;
+}
+
+/** All services across the 20 categories plus shared Human Data Model services. */
+export function totalServiceCount(): number {
+  return (
+    serviceCategories.reduce((sum, c) => sum + c.services.length, 0) +
+    humanDataModelServices.length
+  );
+}
+
+export function isHumanDataModelService(serviceId: string): boolean {
+  return humanDataModelServices.some((s) => s.id === serviceId);
+}

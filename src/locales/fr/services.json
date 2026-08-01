@@ -1,0 +1,172 @@
+{
+  "services": {
+    "seo": {
+      "title": "Services et tarifs — formules d’analyse de santé",
+      "description": "Choisissez la formule Core, Daily ou Max pour une analyse de santé intelligente. Essai gratuit de 5 jours, plus de 200 services répartis sur 20 catégories de santé. À partir de 19 $ par mois. Sécurisé et conforme à la loi HIPAA."
+    },
+    "hero": {
+      "label": "Services",
+      "title": "Choisissez la profondeur de votre Human Data Model",
+      "body": "Chaque formule élargit ce que le modèle peut observer. Plus de catégories, c’est un contexte plus riche — et des conseils plus clairs.",
+      "monthly": "Mensuel",
+      "yearly": "Annuel",
+      "yearlySaving": "−17 %"
+    },
+    "plans": {
+      "mostPopular": "Le plus choisi",
+      "perMonth": "/mois",
+      "perYear": "/an",
+      "getStarted": "Commencer",
+      "trialNote": "Toutes les formules comprennent un <strong>essai de 5 jours</strong>. Vous pouvez annuler à tout moment pendant l’essai.",
+      "items": [
+        {
+          "name": "Core",
+          "description": "L’essentiel de l’analyse de santé, à titre individuel",
+          "categories": "3 catégories",
+          "features": [
+            "Tableau de bord santé de base",
+            "Accès à 3 catégories de services",
+            "10 Go de stockage dans l’Archive du modèle",
+            "Rapports de santé mensuels",
+            "Assistance par e-mail",
+            "Chiffrement des données",
+            "Connexion d’appareils (jusqu’à 2)"
+          ]
+        },
+        {
+          "name": "Daily",
+          "description": "Un éclairage quotidien et un suivi complet",
+          "categories": "10 catégories",
+          "features": [
+            "Tout ce que contient Core",
+            "10 catégories",
+            "50 Go de stockage dans l’Archive du modèle",
+            "Rapports de santé quotidiens",
+            "Accès au Health Guide",
+            "Assistance prioritaire par e-mail",
+            "Connexion d’appareils (jusqu’à 5)",
+            "Intégration des résultats de laboratoire",
+            "Analyse des données génétiques"
+          ]
+        },
+        {
+          "name": "Max",
+          "description": "Une intelligence santé complète pour un suivi exigeant",
+          "categories": "20 catégories",
+          "features": [
+            "Tout ce que contient Daily",
+            "Les 20 catégories de services",
+            "200 Go de stockage dans l’Archive du modèle",
+            "Analyses par IA en temps réel",
+            "Assistance prioritaire 24h/24 et 7j/7",
+            "Connexion d’appareils illimitée",
+            "Analyse prédictive avancée",
+            "Génération de rapports sur mesure",
+            "Comptes famille (jusqu’à 5 membres)",
+            "Accès à l’API pour les développeurs"
+          ]
+        }
+      ]
+    },
+    "compare": {
+      "label": "Comparer",
+      "title": "Toutes les fonctionnalités, côte à côte",
+      "featureHeader": "Fonctionnalité",
+      "included": "Inclus",
+      "rows": [
+        { "name": "Tableau de bord santé", "core": "De base", "daily": "Avancé", "max": "Avancé" },
+        { "name": "Catégories de services", "core": "3", "daily": "10", "max": "Les 20" },
+        { "name": "Stockage de l’Archive du modèle", "core": "10 Go", "daily": "50 Go", "max": "200 Go" },
+        { "name": "Rapports de santé", "core": "Mensuels", "daily": "Quotidiens", "max": "En temps réel" },
+        { "name": "Assistance", "core": "E-mail", "daily": "E-mail prioritaire", "max": "Prioritaire 24h/24" },
+        { "name": "Chiffrement des données", "core": true, "daily": true, "max": true },
+        { "name": "Connexion d’appareils", "core": "Jusqu’à 2", "daily": "Jusqu’à 5", "max": "Illimitée" },
+        { "name": "Health Guide", "core": false, "daily": true, "max": true },
+        { "name": "Intégration des résultats de laboratoire", "core": false, "daily": true, "max": true },
+        { "name": "Analyse des données génétiques", "core": false, "daily": true, "max": true },
+        { "name": "Analyse prédictive", "core": false, "daily": false, "max": true },
+        { "name": "Génération de rapports sur mesure", "core": false, "daily": false, "max": true },
+        { "name": "Comptes famille", "core": false, "daily": false, "max": "Jusqu’à 5" },
+        { "name": "Accès à l’API", "core": false, "daily": false, "max": true }
+      ]
+    },
+    "testimonials": {
+      "label": "Témoignages",
+      "title": "Ce que les utilisateurs remarquent",
+      "items": [
+        {
+          "quote": "Parfait pour suivre mes indicateurs de santé de base. Simple et efficace.",
+          "author": "Sarah M.",
+          "plan": "Core"
+        },
+        {
+          "quote": "Le Health Guide a changé ma façon de comprendre mes données de santé. Ça vaut chaque centime.",
+          "author": "Michael R.",
+          "plan": "Daily"
+        },
+        {
+          "quote": "En tant que professionnelle de santé, l’analyse complète et les comptes famille sont précieux.",
+          "author": "Dre Emily Chen",
+          "plan": "Max"
+        }
+      ]
+    },
+    "why": {
+      "label": "Pourquoi BioMath Core",
+      "title": "Conçu pour une clarté durable",
+      "items": [
+        {
+          "title": "Des signaux au bon moment",
+          "body": "Un retour sur vos signaux de santé à mesure que les modèles apprennent vos tendances."
+        },
+        {
+          "title": "Sécurité alignée sur la HIPAA",
+          "body": "Une protection de niveau professionnel pour que les données sensibles restent privées par défaut."
+        },
+        {
+          "title": "Un accompagnement humain",
+          "body": "Des spécialistes et une aide prioritaire lorsque vous voulez comprendre ce que disent les données."
+        }
+      ]
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Questions fréquentes",
+      "items": [
+        {
+          "question": "Puis-je changer de formule à tout moment ?",
+          "answer": "Oui, vous pouvez passer à une formule supérieure ou inférieure quand vous le souhaitez. Les changements prennent effet immédiatement et le montant est calculé au prorata."
+        },
+        {
+          "question": "Que se passe-t-il après l’essai de 5 jours ?",
+          "answer": "À la fin de l’essai de 5 jours, le paiement est prélevé automatiquement selon la formule et la période de facturation choisies. Vous pouvez annuler à tout moment pendant l’essai sans être facturé."
+        },
+        {
+          "question": "Mes données de santé sont-elles protégées ?",
+          "answer": "Tout à fait. Toutes les formules incluent un chiffrement de niveau professionnel, un stockage sécurisé et le respect de la réglementation HIPAA. Vos données de santé ne sont jamais transmises à des tiers sans votre consentement explicite."
+        },
+        {
+          "question": "Proposez-vous une remise pour la facturation annuelle ?",
+          "answer": "Oui ! La facturation annuelle représente une économie d’environ 17 % par rapport au paiement mensuel. Le tarif remisé s’affiche dès que vous sélectionnez la facturation annuelle ci-dessus."
+        }
+      ],
+      "moreText": "Envie d’une vue d’ensemble avant de choisir une formule ?",
+      "moreCta": "En savoir plus sur BioMath Core →"
+    },
+    "closing": {
+      "title": "Prêt à démarrer avec un contexte de santé plus clair ?",
+      "body": "Commencez par un essai de 5 jours. Ajoutez des catégories à mesure que votre Human Data Model s’enrichit.",
+      "ctaTrial": "Démarrer l’essai gratuit",
+      "ctaContact": "Contacter l’équipe commerciale",
+      "footnote": "Aligné sur la HIPAA · Chiffré en transit et au repos · Annulation à tout moment"
+    },
+    "errors": {
+      "title": "Erreur de paiement",
+      "dismiss": "Fermer",
+      "priceNotConfigured": "Aucun identifiant de prix Stripe n’est configuré pour cette formule.",
+      "subscriptionFailed": "La création de l’abonnement a échoué",
+      "notAuthenticated": "Vous n’êtes pas connecté",
+      "paymentFailed": "Le paiement a échoué"
+    }
+  }
+}

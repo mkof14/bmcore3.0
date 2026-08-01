@@ -1,0 +1,100 @@
+{
+  "summary": {
+    "label": "Overview",
+    "logoAlt": "BioMath Core",
+    "healthIntelligence": "Personal health intelligence",
+    "healthIntelligenceSub": "A clearer way to navigate your health — led by understanding, not by more charts.",
+    "principle": {
+      "label": "Principle",
+      "title": "Built around meaning",
+      "p1": "BioMath Core helps people gain mastery over their health through understanding, interpretation, and guided decisions. Unlike wellness apps, clinical portals, or wearable dashboards, it is not built around metrics or treatment — it is built around <strong>meaning</strong>.",
+      "p2": "It does not track more — it explains better. You do not only receive data; you learn how to read your own biology with clarity that continues over time."
+    },
+    "guide": {
+      "label": "Guide",
+      "title": "The Health Guide",
+      "lead": "The primary way you meet BioMath Core — guidance before navigation.",
+      "items": [
+        {
+          "title": "Contextual guidance",
+          "body": "Instead of searching menus for insight, the Health Guide surfaces the right service, interpretation, or next step when it matters."
+        },
+        {
+          "title": "Active decisions",
+          "body": "You move from passively receiving numbers to deciding with context. The first screen shows what matters now — and what to do next."
+        },
+        {
+          "title": "A living home screen",
+          "body": "The home view reorganizes around relevance, personal risk signals, and actions — not a static list of widgets you have to assemble."
+        },
+        {
+          "title": "Direction over status",
+          "body": "Status alone is not enough. The focus is direction: what changed, why it matters, and the next intelligent step."
+        }
+      ]
+    },
+    "flow": {
+      "label": "Flow",
+      "title": "Three-phase service flow",
+      "items": [
+        {
+          "title": "Readiness",
+          "body": "Before a report is generated, a guided check makes sure key context is present and you understand what influences accuracy."
+        },
+        {
+          "title": "Dual-intelligence generation",
+          "body": "Two reasoning engines produce assessments independently. Comparing them surfaces alignment or divergence — a second view that exposes reasoning, not just a second score."
+        },
+        {
+          "title": "Interpretation",
+          "body": "After generation, the Health Guide explains meaning — not only output — and points toward next actions, learning, or longer-term tracking. Each service stays useful over time."
+        }
+      ]
+    },
+    "plans": {
+      "label": "Plans",
+      "title": "Depth-based access",
+      "body": "A base subscription with deeper add-ons — progress through demonstration, not locked features.",
+      "items": [
+        { "name": "Core", "focus": "Awareness" },
+        { "name": "Daily", "focus": "Active guidance" },
+        { "name": "Max", "focus": "Anticipatory insight" }
+      ],
+      "note": "Tiers grow capability, not a feature checklist. Add-ons extend interpretive depth when they are most relevant — accelerators, not upsell traps."
+    },
+    "data": {
+      "label": "Data",
+      "title": "Data philosophy",
+      "items": [
+        {
+          "title": "Minimal and meaning-driven",
+          "body": "We ask for relevance, not completeness. Questions appear when they change interpretation — not for bureaucracy."
+        },
+        {
+          "title": "Cumulative understanding",
+          "body": "Personalization works at the routing level: what you see and learn shifts with ongoing health signals. The longer you stay, the clearer the picture becomes."
+        }
+      ]
+    },
+    "position": {
+      "label": "Position",
+      "title": "Where BioMath Core sits",
+      "p1": "BioMath Core does not compete with telemedicine, wellness apps, or wearables — it completes them. It is the reasoning layer modern health tools have been missing: the bridge between health data and health understanding.",
+      "p2": "You are not buying reports. You are building literacy — the ability to navigate your wellbeing with agency and foresight.",
+      "quote": "“You become someone who can read your body and act on understanding, not guesswork.”"
+    },
+    "closing": {
+      "label": "Closing",
+      "title": "Not another health app",
+      "p1": "BioMath Core is personal health intelligence that stays with you across time, adapts as you change, and moves health from something reactive to something you can govern with clarity.",
+      "p2": "Understanding is the highest form of health empowerment. BioMath Core exists to deliver that understanding — continuously, carefully, and personally."
+    },
+    "explore": {
+      "title": "Continue exploring",
+      "viewServices": "View services",
+      "seePricing": "See pricing",
+      "getStarted": "Get started",
+      "readSummary": "Read summary"
+    }
+  }
+}

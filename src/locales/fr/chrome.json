@@ -1,0 +1,91 @@
+{
+  "footer": {
+    "partnership": "Partenariat",
+    "partnershipOpportunities": "Possibilités de partenariat",
+    "news": "Actualités",
+    "learningCenter": "Centre d’apprentissage",
+    "inviteFriend": "Parrainer un proche",
+    "ambassador": "Programme d’ambassadeurs",
+    "commandCenter": "Centre de contrôle",
+    "adminPanel": "Panneau d’administration",
+    "whyTwoModels": "Pourquoi deux modèles",
+    "privacyTrust": "Centre de confidentialité et de confiance",
+    "legalNote": "BioMath Core est un service de bien-être. Il ne fournit ni soins médicaux, ni diagnostic, ni traitement.",
+    "legalGroups": {
+      "documents": "Documents juridiques",
+      "disclaimers": "Avertissements",
+      "data": "Données et confidentialité",
+      "safety": "Sécurité et confiance"
+    },
+    "cookiePreferences": "Préférences de cookies",
+    "legalContact": "Contact confidentialité et juridique",
+    "disclaimer": "BioMath Core est un service de bien-être, et non un service médical. Nous ne posons pas de diagnostic, ne traitons pas et ne donnons pas de conseils médicaux. Nous proposons uniquement des orientations de bien-être et un soutien préventif. Consultez toujours des professionnels de santé qualifiés pour toute préoccupation médicale.",
+    "media": "Médias"
+  },
+  "cookies": {
+    "title": "Préférences de cookies",
+    "body": "Nous utilisons des cookies pour faire fonctionner le site, comprendre son utilisation et mémoriser vos réglages. Vous choisissez ce que vous autorisez.",
+    "acceptAll": "Tout accepter",
+    "rejectAll": "Tout refuser",
+    "customize": "Personnaliser",
+    "policiesNote": "Vous pouvez modifier ce choix à tout moment depuis le pied de page.",
+    "settingsTitle": "Réglages des cookies",
+    "back": "Retour",
+    "save": "Enregistrer les préférences",
+    "categories": {
+      "necessary": {
+        "title": "Cookies nécessaires",
+        "body": "Indispensables au fonctionnement du site, y compris la connexion et la sécurité. Ils ne peuvent pas être désactivés."
+      },
+      "analytics": {
+        "title": "Cookies de mesure d’audience",
+        "body": "Nous aident à comprendre comment le site est utilisé afin de l’améliorer."
+      },
+      "marketing": {
+        "title": "Cookies marketing",
+        "body": "Servent à présenter des contenus et des offres qui vous concernent."
+      },
+      "preferences": {
+        "title": "Cookies de préférences",
+        "body": "Mémorisent votre langue, votre thème et vos autres réglages."
+      }
+    }
+  },
+  "commandCenter": {
+    "title": "Centre de contrôle",
+    "subtitle": "Analyses d’activité et indicateurs de service en temps réel",
+    "revenueTrend": "Évolution des revenus (30 derniers jours)",
+    "userGrowth": "Croissance des utilisateurs (30 derniers jours)",
+    "serviceUsage": "Utilisation des services",
+    "reportsEngine": "Moteur de rapports"
+  },
+  "catalogReference": {
+    "label": "Référence",
+    "defaultTitle": "Catalogue de services",
+    "defaultSubtitle": "{{categories}} catégories · {{count}} services avec descriptions du catalogue actuel.",
+    "searchPlaceholder": "Rechercher des catégories ou services…",
+    "empty": "Aucun service correspondant.",
+    "servicesCount": "{{count}} services",
+    "openCatalog": "Ouvrir dans le catalogue de services →"
+  },
+  "liveSupportChat": {
+    "title": "Chat d’assistance en direct",
+    "subtitle": "Nous répondons généralement en quelques minutes",
+    "closeAria": "Fermer le chat",
+    "emptyTitle": "Bienvenue dans le chat d’assistance",
+    "emptyBody": "Envoyez un message et notre équipe répondra bientôt.",
+    "signInTitle": "Connectez-vous pour discuter",
+    "signInBody": "L’assistance en direct nécessite un compte pour garder la conversation privée et liée à votre historique.",
+    "errorTitle": "Chat indisponible",
+    "errorBody": "Impossible d’ouvrir le chat pour le moment. Réessayez ou écrivez à contact@biomathcore.com.",
+    "retry": "Réessayer",
+    "placeholder": "Écrivez votre message…",
+    "hint": "Entrée pour envoyer, Maj+Entrée pour une nouvelle ligne",
+    "supportTeam": "Équipe d’assistance",
+    "typing": "{{name}} écrit…",
+    "userFallback": "Utilisateur",
+    "someoneFallback": "Quelqu’un",
+    "loadError": "Échec du chargement du chat d’assistance. Réessayez.",
+    "sendError": "Échec de l’envoi du message. Réessayez."
+  }
+}

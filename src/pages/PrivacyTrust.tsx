@@ -1,176 +1,176 @@
-import { Shield, Lock, Eye, FileCheck, Server, UserCheck } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
+import BackButton from '../components/BackButton';
+import SEO from '../components/SEO';
+import { tList } from '../i18n/tList';
 
 interface NavigationProps {
   onNavigate: (page: string) => void;
 }
 
-export default function PrivacyTrust({ onNavigate }: NavigationProps) {
-  const features = [
-    {
-      icon: Lock,
-      title: "End-to-End Encryption",
-      description: "Your health data is encrypted at rest and in transit using industry-standard AES-256 encryption."
-    },
-    {
-      icon: Eye,
-      title: "You Control Your Data",
-      description: "You decide what data to share, who can access it, and can delete it at any time."
-    },
-    {
-      icon: Shield,
-      title: "HIPAA Compliant",
-      description: "Our platform meets all HIPAA requirements for protecting sensitive health information."
-    },
-    {
-      icon: Server,
-      title: "Secure Infrastructure",
-      description: "Data stored in SOC 2 certified data centers with regular security audits."
-    },
-    {
-      icon: FileCheck,
-      title: "GDPR Compliant",
-      description: "Full compliance with European data protection regulations and user rights."
-    },
-    {
-      icon: UserCheck,
-      title: "No Data Selling",
-      description: "We never sell your data. Your privacy is our top priority, not a revenue stream."
-    }
-  ];
+type Commitment = { title: string; body: string };
+type Policy = { title: string; description: string };
+type Stat = { value: string; label: string };
 
-  const policies = [
-    {
-      title: "Privacy Policy",
-      description: "Comprehensive details on how we collect, use, and protect your data",
-      page: "privacy-policy"
-    },
-    {
-      title: "HIPAA Notice",
-      description: "Our commitment to HIPAA compliance and healthcare data protection",
-      page: "hipaa-notice"
-    },
-    {
-      title: "GDPR Compliance",
-      description: "How we meet European data protection standards",
-      page: "gdpr"
-    },
-    {
-      title: "Security Practices",
-      description: "Technical and organizational measures we take to protect your data",
-      page: "security"
-    },
-    {
-      title: "Data Privacy",
-      description: "Your rights and our responsibilities regarding your personal data",
-      page: "data-privacy"
-    },
-    {
-      title: "Trust & Safety",
-      description: "Our commitment to creating a safe and trustworthy platform",
-      page: "trust-safety"
-    }
-  ];
+const POLICY_PAGES = [
+  'privacy-policy',
+  'hipaa-notice',
+  'gdpr',
+  'security',
+  'data-privacy',
+  'trust-safety',
+];
+
+function SectionLabel({ children }: { children: ReactNode }) {
+  return (
+    <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-600 dark:text-orange-400">
+      {children}
+    </p>
+  );
+}
+
+export default function PrivacyTrust({ onNavigate }: NavigationProps) {
+  const { t } = useTranslation();
+
+  const commitments = tList<Commitment>(t, 'privacyTrust.commitments.items');
+  const policies = tList<Policy>(t, 'privacyTrust.policies.items');
+  const stats = tList<Stat>(t, 'privacyTrust.control.stats');
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/40 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-14">
-          <span className="inline-flex items-center rounded-full border border-orange-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-orange-700 dark:border-white/15 dark:bg-gray-900/60 dark:text-orange-300">
-            Privacy & Trust
-          </span>
-          <div className="mx-auto mt-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-100 dark:bg-orange-900/30">
-            <Shield className="w-8 h-8 text-orange-600 dark:text-orange-400" />
-          </div>
-          <h1 className="mt-6 text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-4">
-            Privacy & Trust Center
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Your health data is deeply personal. We take its protection seriously with industry-leading security measures and transparent practices.
-          </p>
-        </div>
+    <div className="min-h-screen bg-page transition-colors">
+      <SEO
+        title={t('privacyTrust.seo.title')}
+        description={t('privacyTrust.seo.description')}
+        keywords={[
+          'biomath core privacy',
+          'health data security',
+          'HIPAA compliance',
+          'GDPR health data',
+          'data ownership',
+        ]}
+        page="privacy-trust"
+      />
 
-        <div className="mb-24">
-          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-12 text-center">
-            Our Commitment to Your Privacy
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <div key={index} className="bg-white/90 dark:bg-gray-900/60 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-gray-800 hover:shadow-xl transition-shadow">
-                  <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-orange-600 dark:text-orange-400" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {feature.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+      <div className="pt-20 pb-16">
+        <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
+          <BackButton onNavigate={onNavigate} />
 
-        <div className="mb-24">
-          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-12 text-center">
-            Transparency & Compliance
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {policies.map((policy, index) => (
-              <button
-                key={index}
-                onClick={() => onNavigate(policy.page)}
-                className="bg-white/90 dark:bg-gray-900/60 rounded-2xl p-6 shadow-md border border-slate-200 dark:border-gray-800 hover:border-orange-500 dark:hover:border-orange-500 transition-all text-left group"
-              >
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
-                  {policy.title}
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  {policy.description}
-                </p>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 text-white">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-semibold mb-4">Your Data, Your Control</h2>
-            <p className="text-lg opacity-90 mb-8">
-              We believe in complete transparency. You have the right to access, export, or delete your data at any time. No questions asked.
+          {/* Hero */}
+          <section className="border-b border-[var(--bm-border)] pb-14 pt-8 lg:pb-16 lg:pt-10">
+            <SectionLabel>{t('privacyTrust.hero.label')}</SectionLabel>
+            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
+              {t('privacyTrust.hero.title')}
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-lg">
+              {t('privacyTrust.hero.body')}
             </p>
-            <div className="grid md:grid-cols-3 gap-8 text-sm">
-              <div>
-                <div className="text-4xl font-bold mb-2">100%</div>
-                <div className="opacity-90">Data Ownership</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">0</div>
-                <div className="opacity-90">Data Sales</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">24/7</div>
-                <div className="opacity-90">Security Monitoring</div>
-              </div>
-            </div>
-          </div>
-        </div>
+          </section>
 
-        <div className="mt-16 bg-white/90 dark:bg-gray-900/60 rounded-3xl p-8 border border-slate-200 dark:border-gray-800 shadow-lg">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-            Questions About Privacy?
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
-            Our privacy team is here to help. If you have any questions about how we protect your data, please don't hesitate to reach out.
-          </p>
-          <button
-            onClick={() => onNavigate('contact')}
-            className="bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors"
-          >
-            Contact Privacy Team
-          </button>
+          {/* Commitments */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('privacyTrust.commitments.label')}</SectionLabel>
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">
+              {t('privacyTrust.commitments.title')}
+            </h2>
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
+              {t('privacyTrust.commitments.body')}
+            </p>
+
+            <ol className="m-0 mt-10 grid list-none gap-8 p-0 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-10">
+              {commitments.map((item, i) => (
+                <li key={item.title} className="border-t border-[var(--bm-border)] pt-5">
+                  <p className="text-[11px] font-semibold tracking-[0.28em] text-orange-600 dark:text-orange-400">
+                    {String(i + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="mt-2 text-lg font-semibold text-gray-900 dark:text-neutral-100">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-[15px]">
+                    {item.body}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          {/* Policies */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('privacyTrust.policies.label')}</SectionLabel>
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">
+              {t('privacyTrust.policies.title')}
+            </h2>
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
+              {t('privacyTrust.policies.body')}
+            </p>
+
+            <div className="mt-10 grid gap-px overflow-hidden border border-[var(--bm-border)] bg-[var(--bm-border)] sm:grid-cols-2 lg:grid-cols-3">
+              {policies.map((policy, i) => {
+                const page = POLICY_PAGES[i];
+                return (
+                  <button
+                    key={page ?? policy.title}
+                    type="button"
+                    onClick={() => page && onNavigate(page)}
+                    className="bg-page px-6 py-7 text-left transition-colors hover:bg-[var(--bm-surface)] sm:px-7 sm:py-8 dark:bg-[var(--bm-page)]"
+                  >
+                    <h3 className="text-base font-semibold text-gray-900 dark:text-neutral-100">
+                      {policy.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-400">
+                      {policy.description}
+                    </p>
+                    <span className="mt-4 inline-block text-sm font-semibold text-orange-700 transition-colors group-hover:text-orange-600 dark:text-orange-400">
+                      {t('privacyTrust.policies.readMore')}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* Data control stats */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('privacyTrust.control.label')}</SectionLabel>
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">
+              {t('privacyTrust.control.title')}
+            </h2>
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
+              {t('privacyTrust.control.body')}
+            </p>
+
+            <dl className="mt-10 grid gap-8 sm:grid-cols-3">
+              {stats.map((stat) => (
+                <div key={stat.label} className="border-t border-[var(--bm-border)] pt-5">
+                  <dt className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-500 dark:text-neutral-500">
+                    {stat.label}
+                  </dt>
+                  <dd className="mt-2 text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+                    {stat.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+
+          {/* Contact */}
+          <section className="py-14 lg:py-16">
+            <div className="border border-[var(--bm-border)] bg-[var(--bm-surface)] px-6 py-12 sm:px-10">
+              <SectionLabel>{t('privacyTrust.contact.label')}</SectionLabel>
+              <h2 className="max-w-2xl text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-3xl">
+                {t('privacyTrust.contact.title')}
+              </h2>
+              <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
+                {t('privacyTrust.contact.body')}
+              </p>
+              <button
+                type="button"
+                onClick={() => onNavigate('contact')}
+                className="mt-8 bg-orange-500 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/40"
+              >
+                {t('privacyTrust.contact.cta')}
+              </button>
+            </div>
+          </section>
         </div>
       </div>
     </div>

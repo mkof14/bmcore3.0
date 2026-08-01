@@ -1,70 +1,47 @@
 # BioMath Core - Robots.txt
 # https://biomathcore.com/robots.txt
-# Last Updated: 2025-10-23
+# Last Updated: 2026-08-01
+#
+# Language preference is cookie/localStorage (not URL paths). Do not invent /es/, /ru/, etc.
 
 # Default crawler rules
 User-agent: *
 Allow: /
 
-# Allow all main pages
-Allow: /about
-Allow: /services
-Allow: /pricing
-Allow: /science
-Allow: /blog
-Allow: /news
-Allow: /careers
-Allow: /contact
-Allow: /faq
-Allow: /learning-center
-Allow: /devices
-Allow: /investors
-Allow: /partnership
-Allow: /ambassador
-Allow: /referral
-
-# Allow legal pages
-Allow: /privacy-policy
-Allow: /terms-of-service
-Allow: /data-privacy
-Allow: /gdpr
-Allow: /hipaa-notice
-Allow: /security
-Allow: /disclaimer
-Allow: /trust-safety
-
-# Disallow member areas
+# Private / auth surfaces
 Disallow: /member-zone
 Disallow: /admin-panel
+Disallow: /admin
 Disallow: /command-center
+Disallow: /config-system
+Disallow: /signin
+Disallow: /signup
 Disallow: /sign-in
 Disallow: /sign-up
+Disallow: /redeem-invitation
 
-# Disallow API endpoints and internal paths
+# Internal / tooling paths
 Disallow: /api/
 Disallow: /_next/
-Disallow: /assets/
-Disallow: /*.json$
-Disallow: /*.xml$
+
+# Tracking query noise (path still crawlable without these params)
 Disallow: /*?*utm_
 Disallow: /*?*ref=
 Disallow: /*?*source=
 
-# Googlebot specific rules
+# Googlebot
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 0
 
-# Bingbot specific rules
+# Bingbot
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
 
-# Allow Google Image Bot
+# Images
 User-agent: Googlebot-Image
 Allow: /
 
-# Disallow bad bots
+# Aggressive SEO scrapers
 User-agent: AhrefsBot
 Disallow: /
 
@@ -77,5 +54,4 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-# Sitemap location
 Sitemap: https://biomathcore.com/sitemap.xml

@@ -1,0 +1,1004 @@
+{
+  "servicesData": {
+    "categories": {
+      "critical-health": {
+        "name": "Salud crítica",
+        "description": "Monitoreo de salud avanzado y evaluación de riesgos para condiciones médicas críticas",
+        "services": {
+          "risk-insight": {
+            "name": "Perspectiva del riesgo",
+            "description": "Evaluación integral de riesgos para la salud mediante modelos biomatemáticos."
+          },
+          "lab-results": {
+            "name": "Explicador de resultados de laboratorio",
+            "description": "Interpretación basada en IA de los resultados de las pruebas de laboratorio"
+          },
+          "lab-results-trend": {
+            "name": "Tendencia de resultados de laboratorio",
+            "description": "Compare los resultados de laboratorio a lo largo del tiempo e identifique cambios significativos, anomalías repetidas y pruebas de seguimiento faltantes."
+          },
+          "drug-interaction": {
+            "name": "Comprobador de interacciones entre fármacos",
+            "description": "Análisis de interacción de medicamentos en tiempo real."
+          },
+          "medication-reconciliation": {
+            "name": "Conciliación de medicamentos",
+            "description": "Cree una lista de medicamentos confirmados a partir de recetas, registros médicos y entradas de usuarios, e identifique duplicados, conflictos e instrucciones obsoletas."
+          },
+          "symptom-analyzer": {
+            "name": "Analizador de síntomas",
+            "description": "Evaluación y triaje inteligente de síntomas"
+          },
+          "chronic-disease": {
+            "name": "Entrenador de enfermedades crónicas",
+            "description": "Manejo personalizado de enfermedades crónicas."
+          },
+          "medication-adherence": {
+            "name": "Adherencia a la medicación con IA",
+            "description": "Seguimiento inteligente de medicamentos y recordatorios"
+          },
+          "care-cost": {
+            "name": "Optimizador de costos de atención",
+            "description": "Análisis y optimización de costes sanitarios."
+          },
+          "doctor-visit-prep": {
+            "name": "Preparación para la visita al médico",
+            "description": "Prepare un resumen conciso de la visita con el motivo de la cita, cambios recientes, medicamentos actuales, resultados relevantes, síntomas y preguntas."
+          },
+          "prescription-price-comparison": {
+            "name": "Comparación de precios de medicamentos recetados",
+            "description": "Compare los precios disponibles de un medicamento recetado por farmacia, opción genérica, dosis y método de pago."
+          },
+          "post-surgery": {
+            "name": "Rastreador de recuperación posquirúrgica",
+            "description": "Monitoreo y orientación de recuperación"
+          },
+          "clinical-trial": {
+            "name": "Buscador de ensayos clínicos",
+            "description": "Emparejamiento personalizado de ensayos clínicos"
+          },
+          "pre-surgery": {
+            "name": "Preparación previa a la cirugía",
+            "description": "Evaluación de preparación quirúrgica."
+          },
+          "rare-disease": {
+            "name": "Navegador de enfermedades raras",
+            "description": "Soporte para la gestión de enfermedades raras"
+          },
+          "med-refill": {
+            "name": "Recarga de Smart Med",
+            "description": "Gestión automatizada de resurtido de recetas"
+          },
+          "pain-map": {
+            "name": "Mapa de dolor de IA",
+            "description": "Seguimiento del dolor y análisis de patrones."
+          },
+          "vaccination": {
+            "name": "Pasaporte de vacunación",
+            "description": "Registros de vacunación digitales"
+          },
+          "post-covid": {
+            "name": "Planificador post-COVID",
+            "description": "Planificación de recuperación a largo plazo de COVID"
+          },
+          "genetic-risk": {
+            "name": "Predicción del riesgo de enfermedades genéticas",
+            "description": "Evaluación de riesgos genómicos"
+          },
+          "emergency-profile": {
+            "name": "Perfil médico de emergencia",
+            "description": "Información de salud de emergencia de acceso rápido"
+          },
+          "remote-vitals": {
+            "name": "Monitoreo remoto de signos vitales",
+            "description": "Seguimiento continuo de signos vitales."
+          }
+        }
+      },
+      "everyday-wellness": {
+        "name": "Bienestar diario",
+        "description": "Prácticas diarias de optimización de la salud y bienestar.",
+        "services": {
+          "travel-kit": {
+            "name": "Kit de viaje saludable",
+            "description": "Consejos y preparación de salud para viajes"
+          },
+          "goal-assistant": {
+            "name": "Asistente de goles",
+            "description": "Establecimiento y seguimiento de objetivos de salud"
+          },
+          "habit-tracker": {
+            "name": "Rastreador de hábitos diarios",
+            "description": "Desarrollar y mantener hábitos saludables."
+          },
+          "stress-reduction": {
+            "name": "Guía de reducción del estrés",
+            "description": "Manejo del estrés basado en evidencia"
+          },
+          "energy-optimizer": {
+            "name": "Optimizador de nivel de energía",
+            "description": "Aumentar y mantener la energía diaria"
+          },
+          "mind-body": {
+            "name": "Ejercicios de conexión cuerpo-mente",
+            "description": "Prácticas de bienestar holístico"
+          },
+          "affirmations": {
+            "name": "Generador de afirmaciones positivas",
+            "description": "Mensajes positivos personalizados"
+          },
+          "gratitude": {
+            "name": "Indicaciones del diario de gratitud",
+            "description": "Práctica diaria de gratitud"
+          },
+          "digital-wellbeing": {
+            "name": "Puntuación de bienestar digital",
+            "description": "Optimización del uso de la tecnología."
+          },
+          "mindful-eating": {
+            "name": "Asistente de alimentación consciente",
+            "description": "Prácticas de alimentación consciente"
+          },
+          "work-life": {
+            "name": "Asesor de equilibrio entre vida personal y laboral",
+            "description": "Estrategias de optimización del equilibrio"
+          },
+          "immunity-booster": {
+            "name": "Plan de refuerzo de inmunidad",
+            "description": "Fortalecimiento del sistema inmunológico"
+          },
+          "breathing": {
+            "name": "Ejercicios de respiración consciente",
+            "description": "Técnicas de respiración guiada."
+          },
+          "ergonomic": {
+            "name": "Configuración ergonómica del espacio de trabajo",
+            "description": "Optimización de la salud del espacio de trabajo"
+          },
+          "social-connection": {
+            "name": "Rastreador de conexiones sociales",
+            "description": "Monitoreo del bienestar social"
+          }
+        }
+      },
+      "longevity": {
+        "name": "Longevidad y antienvejecimiento",
+        "description": "Ciencia avanzada del envejecimiento y optimización de la esperanza de vida",
+        "services": {
+          "biological-age": {
+            "name": "Factores de edad biológica",
+            "description": "Evaluación de la verdadera edad biológica"
+          },
+          "polygenic-risk": {
+            "name": "Visor de riesgos poligénicos",
+            "description": "Análisis de riesgos para la salud de múltiples genes."
+          },
+          "epigenetic-age": {
+            "name": "Panel de control de edad epigenética",
+            "description": "Seguimiento de la edad de metilación del ADN"
+          },
+          "pharmacogenomics": {
+            "name": "Comparador de farmacogenómica",
+            "description": "Compatibilidad genética con medicamentos"
+          },
+          "genetic-traits": {
+            "name": "Explicación del rasgo genético",
+            "description": "Comprender su composición genética"
+          },
+          "telomere": {
+            "name": "Análisis de la longitud de los telómeros",
+            "description": "Biomarcador de envejecimiento celular"
+          },
+          "nad-optimization": {
+            "name": "Guía de optimización de NAD+",
+            "description": "Mejora de la energía celular"
+          },
+          "senolytics": {
+            "name": "Recomendación de senolíticos",
+            "description": "Intervención de senescencia celular."
+          },
+          "mitochondrial": {
+            "name": "Evaluación de la salud mitocondrial",
+            "description": "Optimización de la potencia celular"
+          },
+          "longevity-diet": {
+            "name": "Planificador de dieta de longevidad",
+            "description": "Nutrición para una salud prolongada"
+          },
+          "glycemic-control": {
+            "name": "Asesor de control glucémico",
+            "description": "Optimización del azúcar en sangre"
+          },
+          "cellular-senescence": {
+            "name": "Puntuación de senescencia celular",
+            "description": "Seguimiento de la acumulación de células envejecidas"
+          },
+          "microbiome": {
+            "name": "Análisis de la diversidad del microbioma",
+            "description": "Conexión entre la salud intestinal y la longevidad"
+          },
+          "gene-expression": {
+            "name": "Informe de expresión genética de longevidad",
+            "description": "Actividad genética relacionada con el envejecimiento"
+          },
+          "organ-age": {
+            "name": "Evaluación de la edad de los órganos",
+            "description": "Análisis del envejecimiento de órganos individuales."
+          }
+        }
+      },
+      "mental-wellness": {
+        "name": "Bienestar mental",
+        "description": "Salud psicológica y optimización cognitiva.",
+        "services": {
+          "mindfulness": {
+            "name": "Guía de atención plena",
+            "description": "Prácticas de meditación y conciencia."
+          },
+          "motivation": {
+            "name": "Refuerzo de motivación",
+            "description": "Mejora del impulso psicológico"
+          },
+          "digital-detox": {
+            "name": "Planificador de desintoxicación digital",
+            "description": "Estrategias de ruptura tecnológica"
+          },
+          "gratitude-wall": {
+            "name": "Muro de gratitud digital",
+            "description": "Compartir agradecimiento de la comunidad"
+          },
+          "social-battery": {
+            "name": "Predicción de batería social",
+            "description": "Gestión social de la energía"
+          },
+          "isolation-coach": {
+            "name": "Entrenador de aislamiento social",
+            "description": "Soporte para la creación de conexiones"
+          },
+          "cognitive-performance": {
+            "name": "Mejorador del rendimiento cognitivo",
+            "description": "Optimización de la agudeza mental"
+          },
+          "emotional-regulation": {
+            "name": "Herramientas de regulación emocional",
+            "description": "Técnicas de gestión de emociones."
+          },
+          "cbt-modules": {
+            "name": "Módulos de terapia cognitivo-conductual (TCC)",
+            "description": "Ejercicios de terapia basada en evidencia"
+          },
+          "stress-hormone": {
+            "name": "Rastreador de hormonas del estrés",
+            "description": "Cortisol y biomarcadores de estrés."
+          },
+          "sleep-mood": {
+            "name": "Análisis de la conexión entre el sueño y el estado de ánimo",
+            "description": "Seguimiento de la relación descanso-emoción"
+          }
+        }
+      },
+      "fitness-performance": {
+        "name": "Fitness y rendimiento",
+        "description": "Entrenamiento atlético y optimización física.",
+        "services": {
+          "meal-plan": {
+            "name": "Plan de alimentación personalizado",
+            "description": "Nutrición personalizada para tus objetivos"
+          },
+          "vo2-max": {
+            "name": "Evaluación de VO₂-Max",
+            "description": "Medición de la capacidad aeróbica"
+          },
+          "workout-generator": {
+            "name": "Generador de entrenamiento",
+            "description": "Programas de entrenamiento impulsados por IA"
+          },
+          "plateau-breaker": {
+            "name": "Rompedor de meseta de fuerza",
+            "description": "Superar el estancamiento del entrenamiento"
+          },
+          "tissue-release": {
+            "name": "Mapa de liberación de tejidos blandos",
+            "description": "Guía de liberación miofascial"
+          },
+          "body-fat": {
+            "name": "Proyección de tendencia de grasa corporal",
+            "description": "Modelado de predicción de composición."
+          },
+          "sport-warmup": {
+            "name": "Calentamiento específico para deportes",
+            "description": "Preparación adaptada a la actividad"
+          },
+          "cycling-power": {
+            "name": "Predicción de potencia en bicicleta",
+            "description": "Previsión de rendimiento"
+          },
+          "hrv-breathwork": {
+            "name": "Respiración HRV de 2 minutos",
+            "description": "Respiración de recuperación rápida"
+          },
+          "active-recovery": {
+            "name": "Temporizador de recuperación activa",
+            "description": "Periodos de descanso optimizados"
+          },
+          "desk-stretch": {
+            "name": "Descansos para estirar el escritorio",
+            "description": "Rutinas de movilidad laboral"
+          },
+          "soft-tissue-map": {
+            "name": "Mapa de tejidos blandos",
+            "description": "Visualización de la salud muscular."
+          },
+          "endurance-plan": {
+            "name": "Plan de entrenamiento de resistencia",
+            "description": "Rendimiento de larga distancia"
+          },
+          "flexibility": {
+            "name": "Guía de flexibilidad y movilidad",
+            "description": "Mejora del rango de movimiento."
+          },
+          "post-workout": {
+            "name": "Guía de nutrición post-entrenamiento",
+            "description": "Momento de la nutrición de recuperación"
+          },
+          "injury-prevention": {
+            "name": "Plan de prevención de lesiones",
+            "description": "Prevención proactiva de lesiones"
+          },
+          "strength-conditioning": {
+            "name": "Entrenador de fuerza y acondicionamiento",
+            "description": "Formación integral"
+          },
+          "powerlifting": {
+            "name": "Generador de programas de levantamiento de pesas",
+            "description": "Desarrollo de fuerza máxima"
+          },
+          "gait-analysis": {
+            "name": "Análisis de la marcha al correr",
+            "description": "Optimización de formularios en ejecución"
+          }
+        }
+      },
+      "womens-health": {
+        "name": "Salud de la Mujer",
+        "description": "Atención sanitaria especializada para la mujer.",
+        "services": {
+          "cycle-tracker": {
+            "name": "Rastreador de ciclo",
+            "description": "Monitoreo y predicción del ciclo menstrual."
+          },
+          "pregnancy": {
+            "name": "Cronología del embarazo",
+            "description": "Guía de embarazo semana a semana"
+          },
+          "menopause": {
+            "name": "Navegador de menopausia",
+            "description": "Apoyo y gestión de la transición"
+          },
+          "breast-health": {
+            "name": "Riesgo para la salud de los senos",
+            "description": "Detección y evaluación de riesgos"
+          },
+          "hormone-dashboard": {
+            "name": "Panel hormonal",
+            "description": "Seguimiento de hormonas femeninas"
+          },
+          "endometriosis": {
+            "name": "Rastreador de síntomas de endometriosis",
+            "description": "Soporte de gestión de condiciones"
+          },
+          "pcos": {
+            "name": "Guía sobre el síndrome de ovario poliquístico (SOP)",
+            "description": "Optimización del estilo de vida del SOP"
+          },
+          "pelvic-floor": {
+            "name": "Plan de ejercicios del suelo pélvico",
+            "description": "Fortalecimiento y rehabilitación"
+          }
+        }
+      },
+      "mens-health": {
+        "name": "Salud de los hombres",
+        "description": "Atención sanitaria especializada para hombres.",
+        "services": {
+          "androgen": {
+            "name": "Panel de andrógenos",
+            "description": "Monitoreo de hormonas masculinas"
+          },
+          "prostate-risk": {
+            "name": "Puntuación de riesgo de próstata",
+            "description": "Evaluación de la salud de la próstata"
+          },
+          "fertility-tracker": {
+            "name": "Rastreador de fertilidad",
+            "description": "Optimización de la fertilidad masculina"
+          },
+          "hair-loss": {
+            "name": "Predictor de caída del cabello",
+            "description": "Seguimiento de la alopecia androgénica"
+          },
+          "performance-coach": {
+            "name": "Entrenador de rendimiento",
+            "description": "Optimización de la vitalidad masculina"
+          },
+          "cardiovascular-risk": {
+            "name": "Riesgo cardiovascular para los hombres",
+            "description": "Examen de salud del corazón"
+          },
+          "hormone-optimization": {
+            "name": "Optimización hormonal masculina",
+            "description": "Equilibrio de testosterona"
+          },
+          "prostate-health": {
+            "name": "Entrenador de salud de próstata",
+            "description": "Cuidado proactivo de la próstata"
+          }
+        }
+      },
+      "beauty-skincare": {
+        "name": "Belleza y cuidado de la piel",
+        "description": "Salud dermatológica y optimización cosmética.",
+        "services": {
+          "skincare-routine": {
+            "name": "Rutina de cuidado de la piel con IA",
+            "description": "Régimen de cuidado de la piel personalizado"
+          },
+          "uv-forecast": {
+            "name": "Pronóstico de daños UV",
+            "description": "Predicción del riesgo de exposición al sol"
+          },
+          "dermatology-scan": {
+            "name": "Exploración dermatológica digital",
+            "description": "Análisis de la condición de la piel por IA"
+          },
+          "hair-porosity": {
+            "name": "Asesor de Porosidad Capilar",
+            "description": "Optimización del cuidado del cabello"
+          },
+          "cosmetic-scan": {
+            "name": "Escaneo de códigos de barras cosméticos",
+            "description": "Análisis de ingredientes del producto."
+          },
+          "facial-massage": {
+            "name": "Rutina de masaje facial",
+            "description": "Técnicas de drenaje linfático."
+          },
+          "ingredient-conflict": {
+            "name": "Conflicto de ingredientes",
+            "description": "Comprobador de compatibilidad del producto"
+          },
+          "hair-growth": {
+            "name": "Predictor del crecimiento del cabello",
+            "description": "Estimación del cronograma de crecimiento"
+          },
+          "anti-aging-skincare": {
+            "name": "Asesor de cuidado de la piel antienvejecimiento",
+            "description": "Estrategias que desafían la edad"
+          },
+          "sunscreen": {
+            "name": "Motor de recomendación de protección solar",
+            "description": "Combinación de productos SPF"
+          }
+        }
+      },
+      "nutrition-diet": {
+        "name": "Nutrición y dieta",
+        "description": "Nutrición basada en evidencia y optimización dietética",
+        "services": {
+          "food-swaps": {
+            "name": "Intercambios de alimentos inteligentes",
+            "description": "Sugerencias alternativas más saludables"
+          },
+          "rpm": {
+            "name": "Monitoreo remoto de pacientes (RPM)",
+            "description": "Seguimiento de intervenciones nutricionales"
+          },
+          "hydration": {
+            "name": "Fórmula de hidratación",
+            "description": "Objetivos personalizados de ingesta de agua"
+          },
+          "label-decoder": {
+            "name": "Decodificador de etiquetas nutricionales",
+            "description": "Interpretación de las etiquetas de los alimentos"
+          },
+          "meal-kit": {
+            "name": "Creador de kits de comidas económicos",
+            "description": "Planificación nutricional asequible"
+          },
+          "sodium-potassium": {
+            "name": "Medidor de sodio-potasio",
+            "description": "Seguimiento del equilibrio electrolítico"
+          },
+          "gut-microbiome": {
+            "name": "Analizador de microbioma intestinal",
+            "description": "Evaluación de la salud digestiva."
+          },
+          "supplement-guide": {
+            "name": "Guía de suplementos personalizada",
+            "description": "Suplementación basada en evidencia"
+          },
+          "metabolic-rate": {
+            "name": "Calculadora de tasa metabólica",
+            "description": "Estimación de necesidades calóricas"
+          },
+          "food-sensitivity": {
+            "name": "Rastreador de sensibilidad alimentaria",
+            "description": "Identificación de intolerancia"
+          },
+          "electrolyte": {
+            "name": "Asesor de equilibrio electrolítico",
+            "description": "Optimización de minerales"
+          },
+          "sustainability": {
+            "name": "Puntuación de sostenibilidad alimentaria",
+            "description": "Seguimiento del impacto ambiental"
+          },
+          "meal-prep": {
+            "name": "Planificador de preparación de comidas",
+            "description": "Preparación de comida semanal"
+          },
+          "recipe-analyzer": {
+            "name": "Analizador de nutrientes de recetas",
+            "description": "Desglose nutricional de la receta"
+          },
+          "hydration-goal": {
+            "name": "Establecedor de objetivos de hidratación",
+            "description": "Planificación de la ingesta diaria de líquidos."
+          }
+        }
+      },
+      "sleep-recovery": {
+        "name": "Sueño y recuperación",
+        "description": "Optimización del sueño y mejora de la recuperación.",
+        "services": {
+          "blue-light": {
+            "name": "Planificador de luz azul",
+            "description": "Optimización de la exposición a la luz."
+          },
+          "sleep-hygiene": {
+            "name": "Entrenador de higiene del sueño",
+            "description": "Mejora del ambiente de sueño"
+          },
+          "circadian-light": {
+            "name": "Guía de luz circadiana",
+            "description": "Alineación del ritmo natural"
+          },
+          "sleep-apnea": {
+            "name": "Evaluación de apnea del sueño",
+            "description": "Detección de trastornos respiratorios"
+          },
+          "micro-meditation": {
+            "name": "Generador de micromeditación",
+            "description": "Ejercicios de relajación rápida."
+          },
+          "sleep-environment": {
+            "name": "Optimizador del entorno del sueño",
+            "description": "Optimización del dormitorio"
+          },
+          "guided-sleep": {
+            "name": "Meditación guiada para dormir",
+            "description": "Asistencia de audio para dormir"
+          },
+          "dream-analysis": {
+            "name": "Análisis de patrones de sueños",
+            "description": "Información sobre la calidad del sueño"
+          }
+        }
+      },
+      "environmental-health": {
+        "name": "Salud Ambiental",
+        "description": "Monitoreo y mitigación de la exposición ambiental",
+        "services": {
+          "eco-routine": {
+            "name": "Evaluación de eco-rutina",
+            "description": "Evaluación de impacto ambiental"
+          },
+          "environmental-exposure": {
+            "name": "Exposición ambiental",
+            "description": "Seguimiento de la exposición a toxinas"
+          },
+          "pollen-defense": {
+            "name": "Defensa del polen",
+            "description": "Preparación para la temporada de alergias"
+          },
+          "noise-map": {
+            "name": "Mapa de ruido interior",
+            "description": "Evaluación de la contaminación acústica."
+          },
+          "commute-calorie": {
+            "name": "Optimizador de calorías de viaje",
+            "description": "Planificación activa del transporte"
+          },
+          "air-quality": {
+            "name": "Asesor de calidad del aire en el hogar",
+            "description": "Monitoreo del aire interior"
+          },
+          "water-quality": {
+            "name": "Monitor de calidad del agua",
+            "description": "Evaluación del agua potable"
+          },
+          "mold-exposure": {
+            "name": "Evaluación de riesgos de exposición al moho",
+            "description": "Detección de contaminación por hongos"
+          }
+        }
+      },
+      "family-health": {
+        "name": "Salud Familiar",
+        "description": "Gestión integral de la salud familiar",
+        "services": {
+          "medication-hub": {
+            "name": "Centro de medicación familiar",
+            "description": "Seguimiento de medicamentos en el hogar"
+          },
+          "family-caregiver-access": {
+            "name": "Acceso para familiares y cuidadores",
+            "description": "Acceso basado en permisos para administrar información de salud y tareas seleccionadas para un niño, cónyuge, padre o adulto dependiente."
+          },
+          "child-growth": {
+            "name": "Rastreador de crecimiento infantil",
+            "description": "Monitoreo del desarrollo pediátrico."
+          },
+          "genetic-compatibility": {
+            "name": "Detección de compatibilidad genética",
+            "description": "Ideas sobre planificación familiar"
+          },
+          "wellness-challenge": {
+            "name": "Desafío de bienestar familiar",
+            "description": "Objetivos de salud del grupo"
+          },
+          "immunization": {
+            "name": "Programador de vacunación infantil",
+            "description": "Cronograma de vacunación"
+          },
+          "first-aid": {
+            "name": "Guía familiar de primeros auxilios",
+            "description": "Protocolos de respuesta a emergencias"
+          },
+          "sibling-comparison": {
+            "name": "Comparación de salud de hermanos",
+            "description": "Evaluación comparativa del desarrollo"
+          }
+        }
+      },
+      "preventive-medicine": {
+        "name": "Medicina preventiva y longevidad",
+        "description": "Prevención proactiva de enfermedades y optimización de la salud.",
+        "services": {
+          "cancer-screening": {
+            "name": "Detección de cáncer personalizada",
+            "description": "Protocolos de detección basados en el riesgo"
+          },
+          "preventive-care-due": {
+            "name": "Atención preventiva debida",
+            "description": "Muestra exámenes preventivos, vacunas y controles de seguimiento vencidos, próximos o completados según el perfil y los registros confirmados del usuario."
+          },
+          "cardiovascular-prevention": {
+            "name": "Plan de Prevención de Enfermedades Cardiovasculares",
+            "description": "Optimización de la salud del corazón"
+          },
+          "neurodegenerative": {
+            "name": "Evaluación de riesgos neurodegenerativos",
+            "description": "Protección de la salud cerebral"
+          },
+          "inflammation-management": {
+            "name": "Programa de manejo de la inflamación",
+            "description": "Reducción de la inflamación sistémica"
+          },
+          "immune-optimization": {
+            "name": "Optimización del sistema inmunológico",
+            "description": "Mejora de la función inmune"
+          },
+          "risk-calculator": {
+            "name": "Calculadora de riesgos para la salud y el bienestar",
+            "description": "Evaluación integral de riesgos"
+          },
+          "diabetes-prevention": {
+            "name": "Programa de prevención de diabetes",
+            "description": "Manejo del azúcar en sangre"
+          },
+          "metabolic-syndrome": {
+            "name": "Monitor de síndrome metabólico",
+            "description": "Seguimiento de la salud metabólica"
+          }
+        }
+      },
+      "biohacking": {
+        "name": "Biohacking y rendimiento",
+        "description": "Optimización avanzada del desempeño humano",
+        "services": {
+          "nootropics": {
+            "name": "Motor de recomendación de nootrópicos",
+            "description": "Orientación para potenciadores cognitivos"
+          },
+          "cryotherapy": {
+            "name": "Generador de protocolos de crioterapia",
+            "description": "Optimización de la terapia de frío"
+          },
+          "red-light": {
+            "name": "Guía de terapia de luz roja",
+            "description": "Protocolos de fotobiomodulación"
+          },
+          "cold-exposure": {
+            "name": "Plan de entrenamiento de exposición al frío",
+            "description": "Adaptación al estrés hormético."
+          },
+          "intermittent-fasting": {
+            "name": "Horario de ayuno intermitente",
+            "description": "Comer con tiempo restringido"
+          },
+          "biofeedback": {
+            "name": "Módulos de capacitación en biorretroalimentación",
+            "description": "Autorregulación fisiológica"
+          },
+          "neurofeedback": {
+            "name": "Planificador de sesiones de neurofeedback",
+            "description": "Optimización de ondas cerebrales"
+          },
+          "wearable-integrator": {
+            "name": "Integrador de datos portátil",
+            "description": "Síntesis de datos multidispositivo"
+          },
+          "recovery-modalities": {
+            "name": "Modalidades de recuperación personalizadas",
+            "description": "Protocolos de recuperación personalizados"
+          },
+          "nootropic-stack": {
+            "name": "Generador de pilas de nootrópicos",
+            "description": "Optimización de la sinergia del suplemento"
+          },
+          "cold-protocol": {
+            "name": "Protocolo de exposición al frío",
+            "description": "Guía para baños de hielo y duchas frías"
+          },
+          "breathwork-optimizer": {
+            "name": "Optimizador de respiración",
+            "description": "Técnicas avanzadas de respiración."
+          },
+          "cognitive-enhancement": {
+            "name": "Plan de mejora cognitiva",
+            "description": "Aumento del rendimiento mental"
+          },
+          "fasting-calculator": {
+            "name": "Calculadora de ayuno intermitente",
+            "description": "Optimización de la ventana de ayuno"
+          },
+          "dopamine-reset": {
+            "name": "Protocolo de reinicio de dopamina",
+            "description": "Reequilibrio de neurotransmisores"
+          },
+          "sensory-deprivation": {
+            "name": "Guía de privación sensorial",
+            "description": "Protocolos del tanque de flotación"
+          },
+          "biofeedback-focus": {
+            "name": "Entrenamiento de biorretroalimentación para concentrarse",
+            "description": "Mejora de la atención"
+          }
+        }
+      },
+      "senior-care": {
+        "name": "Cuidado de personas mayores",
+        "description": "Atención médica especializada para adultos mayores",
+        "services": {
+          "senior-dashboard": {
+            "name": "Panel de control para personas mayores",
+            "description": "Seguimiento integral de la salud de las personas mayores"
+          },
+          "caregiver-portal": {
+            "name": "Portal del cuidador",
+            "description": "Coordinación de cuidadores familiares."
+          },
+          "fall-detection": {
+            "name": "Alerta de detección de caídas",
+            "description": "Respuesta de emergencia a caídas"
+          },
+          "medication-adherence-senior": {
+            "name": "Adherencia a la medicación",
+            "description": "Manejo de medicamentos de alto nivel"
+          },
+          "voice-companion": {
+            "name": "Compañero de voz",
+            "description": "Asistente de salud con IA para personas mayores"
+          },
+          "frailty-index": {
+            "name": "Índice de fragilidad",
+            "description": "Evaluación del deterioro físico"
+          },
+          "medication-reminder": {
+            "name": "Sistema de recordatorio de medicamentos",
+            "description": "Recordatorios automáticos de pastillas"
+          },
+          "fall-prevention": {
+            "name": "Ejercicios de prevención de caídas",
+            "description": "Entrenamiento de equilibrio y fuerza."
+          },
+          "cognitive-games": {
+            "name": "Juegos de salud cognitiva",
+            "description": "Entrenamiento cerebral para personas mayores"
+          }
+        }
+      },
+      "eye-health": {
+        "name": "Suite de salud ocular",
+        "description": "Monitoreo y optimización de la salud visual.",
+        "services": {
+          "vision-test": {
+            "name": "Prueba de visión del navegador",
+            "description": "Pruebas de agudeza visual en línea"
+          },
+          "retina-scan": {
+            "name": "IA de escaneo de retina",
+            "description": "Análisis de la salud de la retina"
+          },
+          "blue-light-filter": {
+            "name": "Filtro de luz azul",
+            "description": "Reducción de la fatiga visual digital"
+          },
+          "eye-exercises": {
+            "name": "Recordatorios de ejercicios oculares",
+            "description": "Prevención de la fatiga visual"
+          }
+        }
+      },
+      "digital-therapeutics": {
+        "name": "Tienda de Terapéutica Digital",
+        "description": "Intervenciones de salud digital basadas en evidencia",
+        "services": {
+          "insomnia-cbt": {
+            "name": "Aplicación Insomnio CBT-I",
+            "description": "Terapia cognitivo conductual para el insomnio"
+          },
+          "adhd-game": {
+            "name": "Neurojuego TDAH",
+            "description": "Entrenamiento de la atención para el TDAH"
+          },
+          "anxiety-app": {
+            "name": "Aplicación para el manejo de la ansiedad",
+            "description": "Alivio de la ansiedad basado en evidencia"
+          },
+          "pain-relief-vr": {
+            "name": "VR para aliviar el dolor crónico",
+            "description": "Manejo del dolor en realidad virtual"
+          },
+          "ptsd-modules": {
+            "name": "Módulos de recuperación de PTSD",
+            "description": "Apoyo para la recuperación de traumas"
+          }
+        }
+      },
+      "general-sexual": {
+        "name": "Longevidad sexual general",
+        "description": "Optimización integral de la salud y el bienestar sexual",
+        "services": {
+          "libido-optimization": {
+            "name": "Optimización hormonal de la libido",
+            "description": "Equilibrio hormonal para la salud sexual"
+          },
+          "sexual-biomarkers": {
+            "name": "Biomarcadores de salud sexual",
+            "description": "Seguimiento de indicadores clave de salud"
+          },
+          "aphrodisiac-nutrigenomics": {
+            "name": "Nutrigenómica afrodisíaca",
+            "description": "Nutrición de la libido basada en la genética"
+          },
+          "microbiome-sexuality": {
+            "name": "Microbioma y sexualidad",
+            "description": "Conexión sexual para la salud intestinal"
+          },
+          "neuroplasticity-libido": {
+            "name": "Neuroplasticidad y libido",
+            "description": "Entrenamiento cerebral para el deseo"
+          },
+          "stress-cortisol": {
+            "name": "Manejo del estrés y el cortisol",
+            "description": "Optimización de la hormona del estrés"
+          },
+          "circadian-sexuality": {
+            "name": "Ritmos circadianos y sexualidad",
+            "description": "Momento del bienestar sexual"
+          },
+          "physical-fitness-sexuality": {
+            "name": "Aptitud física para la sexualidad",
+            "description": "Ejercicio para la salud sexual"
+          },
+          "peptide-therapy": {
+            "name": "Terapia con péptidos para la libido",
+            "description": "Protocolos de péptidos avanzados"
+          },
+          "xenoestrogen-detox": {
+            "name": "Desintoxicación con xenoestrógenos",
+            "description": "Eliminación de disruptores hormonales"
+          },
+          "psychosexual": {
+            "name": "Optimización psicosexual",
+            "description": "Mejora de la salud sexual mental"
+          },
+          "partner-sync": {
+            "name": "Sincronización de socios",
+            "description": "Coordinación de salud de pareja"
+          },
+          "fertility-assessment": {
+            "name": "Evaluación de salud y fertilidad",
+            "description": "Evaluación de salud reproductiva"
+          },
+          "hormone-balance-libido": {
+            "name": "Equilibrio hormonal para la libido",
+            "description": "Optimización endocrina"
+          },
+          "sexual-wellness-education": {
+            "name": "Educación sobre bienestar sexual",
+            "description": "Educación sexual integral"
+          },
+          "relationship-communication": {
+            "name": "Entrenador de comunicación de relaciones",
+            "description": "Habilidades de comunicación íntima."
+          }
+        }
+      },
+      "mens-sexual-health": {
+        "name": "La salud sexual de los hombres",
+        "description": "Bienestar sexual especializado para hombres",
+        "services": {
+          "vascular-health": {
+            "name": "Salud vascular para potencia",
+            "description": "Función sexual circulatoria"
+          },
+          "male-vitality-trt": {
+            "name": "Vitalidad masculina y TRT",
+            "description": "Terapia de reemplazo de testosterona"
+          },
+          "ed-guide": {
+            "name": "Guía para la disfunción eréctil (DE)",
+            "description": "Gestión integral de urgencias"
+          },
+          "sperm-health": {
+            "name": "Optimización de la salud del esperma",
+            "description": "Mejora de la fertilidad masculina"
+          }
+        }
+      },
+      "womens-sexual-health": {
+        "name": "Salud sexual de la mujer",
+        "description": "Bienestar sexual especializado para mujeres",
+        "services": {
+          "female-hormone-optimization": {
+            "name": "Optimización hormonal femenina",
+            "description": "Equilibrio hormonal de las mujeres"
+          },
+          "libido-nutrition": {
+            "name": "Nutrición que estimula la libido",
+            "description": "Nutrición para el deseo femenino."
+          },
+          "pelvic-health-program": {
+            "name": "Programa de salud pélvica",
+            "description": "Bienestar del suelo pélvico"
+          },
+          "menopausal-intimacy": {
+            "name": "Asesor de intimidad menopáusica",
+            "description": "Bienestar sexual en la menopausia"
+          }
+        }
+      },
+      "human-data-model": {
+        "name": "Modelo de datos humanos",
+        "description": "Herramientas de categorías cruzadas que importan, organizan y rastrean información de salud en el modelo de datos humanos.",
+        "services": {
+          "medical-records-import": {
+            "name": "Importación y organizador de registros médicos",
+            "description": "Importe archivos PDF, imágenes y registros médicos, extraiga datos clave y organice diagnósticos, medicamentos, pruebas, procedimientos y fechas en el modelo de datos humanos."
+          },
+          "health-timeline": {
+            "name": "Cronología de salud",
+            "description": "Un registro cronológico de diagnósticos, pruebas, medicamentos, procedimientos, síntomas, visitas y cambios importantes de salud."
+          },
+          "what-changed": {
+            "name": "¿Qué cambió?",
+            "description": "Muestra cambios significativos en los registros médicos, resultados de laboratorio, medicamentos, síntomas y mediciones monitoreadas a lo largo del tiempo."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,312 @@
+{
+  "devicesPage": {
+    "badge": "可穿戴与传感器",
+    "title": "我的设备",
+    "subtitle": "连接手表、戒指、血糖传感器和家用健康设备，让 BioMath Core 读取趋势并用通俗语言解释。",
+    "connectedTitle": "已连接设备",
+    "connectTitle": "连接品牌",
+    "catalogTitle": "现代设备指南",
+    "catalogIntro": "当下常见的设备，以及各类别通常提供的信号。按目标选购后，在下方连接支持的品牌。",
+    "signalsTitle": "关键信号",
+    "signalsIntro": "设备连接后，BioMath Core 最常使用的能力。",
+    "emptyBrands": "本次会话无法使用实时品牌连接。你仍可浏览上方指南，登录后在会员区再连接。",
+    "learnMore": "了解更多",
+    "hideGuide": "隐藏指南",
+    "helpChoosing": "选型帮助",
+    "chooseBrand": "选择要授权的厂商。支持 Apple、Samsung、Google、Fitbit、Garmin、Oura、Ultrahuman、WHOOP、Dexcom、FreeStyle Libre、Withings、Omron 等。",
+    "realtime": "近实时",
+    "syncNow": "立即同步",
+    "disconnect": "断开",
+    "frequency": "频率",
+    "lastSync": "上次同步",
+    "status": {
+      "connected": "已连接",
+      "error": "需要处理",
+      "tokenExpired": "访问已过期",
+      "disconnected": "已断开"
+    },
+    "sync": {
+      "daily": "每日",
+      "hourly": "每小时",
+      "realtime": "近实时",
+      "manual": "手动"
+    },
+    "recommendations": {
+      "title": "如何选择",
+      "intro": "若还没有设备，从你最在意的结果开始：",
+      "sleep": "睡眠与恢复",
+      "activity": "活动与训练",
+      "glucose": "血糖模式",
+      "bloodPressure": "血压",
+      "longTerm": "平稳的长期趋势",
+      "universal": "广泛的日常覆盖",
+      "values": {
+        "sleep": "Oura Ring、Ultrahuman Ring、WHOOP 或 Eight Sleep",
+        "activity": "Apple Watch、Garmin、Samsung Galaxy Watch、Fitbit 或 Polar",
+        "glucose": "Dexcom G7 或 FreeStyle Libre（连续血糖）",
+        "blood_pressure": "Omron 或 Withings BPM（经验证的袖带式）",
+        "long_term": "昼夜佩戴的智能戒指与恢复手环",
+        "universal": "Apple Watch 或 Samsung Galaxy Watch，并搭配智能秤"
+      }
+    },
+    "signals": {
+      "continuous_glucose": {
+        "title": "连续血糖",
+        "body": "来自 CGM 的全天血糖曲线，有助于理解进餐、能量低谷与代谢模式。"
+      },
+      "sleep_stages": {
+        "title": "睡眠分期",
+        "body": "手表、戒指与睡眠系统提供的时长、深睡/REM 平衡与夜间一致性。"
+      },
+      "hrv_recovery": {
+        "title": "HRV 与恢复",
+        "body": "心率变异性与恢复评分，提示何时加码、何时休息。"
+      },
+      "blood_pressure": {
+        "title": "血压",
+        "body": "家用袖带读数，跟踪数周血管舒适度，而非单次快照。"
+      },
+      "body_composition": {
+        "title": "体重与体成分",
+        "body": "智能秤用于体重、瘦体重与体成分趋势。"
+      },
+      "activity_load": {
+        "title": "活动负荷",
+        "body": "步数、训练与负荷，以便与恢复保持平衡。"
+      }
+    },
+    "categories": {
+      "smartwatch": {
+        "title": "智能手表",
+        "body": "全天手腕心率、睡眠、活动，常含 ECG 或 SpO₂。"
+      },
+      "smart_ring": {
+        "title": "智能戒指",
+        "body": "低调的 24/7 佩戴，用于睡眠、HRV、体温与恢复。"
+      },
+      "recovery": {
+        "title": "恢复手环",
+        "body": "持续佩戴、聚焦负荷与恢复的手环。"
+      },
+      "cgm": {
+        "title": "连续血糖",
+        "body": "临床级传感器，大多时间无需频繁指尖采血即可传输血糖。"
+      },
+      "blood_pressure": {
+        "title": "血压计",
+        "body": "经验证的家用袖带，可靠跟踪收缩压/舒张压。"
+      },
+      "body_composition": {
+        "title": "智能秤",
+        "body": "体重与体成分估计，适合更长趋势。"
+      },
+      "sleep_home": {
+        "title": "居家睡眠系统",
+        "body": "床基追踪睡眠质量与夜间生命体征，无需腕部设备。"
+      }
+    },
+    "capabilities": {
+      "heart_rate": "心率",
+      "hrv": "HRV",
+      "sleep": "睡眠",
+      "spo2": "SpO₂",
+      "activity": "活动",
+      "recovery": "恢复",
+      "ecg": "ECG",
+      "temperature": "体温",
+      "glucose": "血糖",
+      "blood_pressure": "血压",
+      "weight": "体重",
+      "body_comp": "体成分",
+      "stress": "压力",
+      "clinical_grade": "临床级"
+    },
+    "explain": {
+      "step": "第 2/3 步 — 说明",
+      "howTitle": "如何运作",
+      "howBody": "我们仅请求健康指标访问。看不到也不存储登录与密码。你可随时断开设备。",
+      "point1": "应用从你的设备收集已授权指标",
+      "point2": "我们解读趋势并建议平和的下一步",
+      "point3": "数据可用于报告与 Health Guide 指引",
+      "privacyLabel": "隐私：",
+      "privacyBody": "控制权在你。我们永不获取设备密码，也无法控制设备。仅接收你授权的健康数据。",
+      "continue": "继续",
+      "back": "返回"
+    },
+    "authorize": {
+      "title": "授予访问",
+      "step": "第 3/3 步 — 授权",
+      "intro": "允许设备自动传输指标。",
+      "syncTitle": "同步频率",
+      "syncBody": "默认：每天早晨。之后可更改：",
+      "daily": "每日（推荐）",
+      "multiple": "每天多次",
+      "realtime": "近实时（你的设备可用）",
+      "grant": "授予访问",
+      "connecting": "连接中…",
+      "back": "返回"
+    },
+    "success": {
+      "title": "设备已连接",
+      "body": "BioMath Core 将更新指标，并用于建议与报告。",
+      "tipLabel": "提示：",
+      "tipBody": "规律佩戴有助于跟踪方向——改善、下降或稳定——而不仅是某一天。"
+    },
+    "footer": {
+      "howTitle": "如何运作",
+      "howBody": "收集已授权指标（睡眠、心率、压力、恢复、血糖等）并用通俗语言解释。我们关注趋势与可执行的下一步，而不是原始数字堆砌。",
+      "privacyLabel": "隐私：",
+      "privacyBody": "你控制连接。我们不知道设备密码，也无法控制设备。可随时断开。"
+    },
+    "items": {
+      "apple_watch": {
+        "name": "Apple Watch",
+        "blurb": "广泛日常覆盖：心率、HRV、睡眠、SpO₂、ECG 与运动。"
+      },
+      "samsung_galaxy_watch": {
+        "name": "Samsung Galaxy Watch",
+        "blurb": "手腕指标；部分机型在可用地区支持无袖带血压。"
+      },
+      "garmin": {
+        "name": "Garmin",
+        "blurb": "适合成耐力与结构化运动的训练负荷、恢复、睡眠与 HRV。"
+      },
+      "google_pixel_watch": {
+        "name": "Google Pixel Watch",
+        "blurb": "基于 Fitbit 的睡眠与活动，形态紧凑。"
+      },
+      "oura": {
+        "name": "Oura Ring",
+        "blurb": "戒指提供的睡眠分期、准备度、体温与 HRV。"
+      },
+      "ultrahuman": {
+        "name": "Ultrahuman Ring",
+        "blurb": "轻量戒指，关注睡眠、恢复与偏代谢的日常信号。"
+      },
+      "whoop": {
+        "name": "WHOOP",
+        "blurb": "无传统屏幕的持续负荷、恢复与睡眠。"
+      },
+      "dexcom_g7": {
+        "name": "Dexcom G7",
+        "blurb": "高频更新的连续血糖，利于进餐与能量模式洞察。"
+      },
+      "freestyle_libre": {
+        "name": "FreeStyle Libre",
+        "blurb": "闪扫/连续血糖感应，用于日常代谢觉察。"
+      },
+      "omron": {
+        "name": "Omron",
+        "blurb": "广泛使用的家用验证血压袖带。"
+      },
+      "withings_bpm": {
+        "name": "Withings BPM",
+        "blurb": "可干净同步到健康历史的互联袖带读数。"
+      },
+      "withings_body": {
+        "name": "Withings Body+",
+        "blurb": "用于体重与体成分趋势的智能秤。"
+      },
+      "eight_sleep": {
+        "name": "Eight Sleep",
+        "blurb": "追踪睡眠分期与夜间生命体征的床系统。"
+      },
+      "fitbit": {
+        "name": "Fitbit",
+        "blurb": "易上手的睡眠、心率、活动与压力追踪。"
+      },
+      "polar": {
+        "name": "Polar",
+        "blurb": "运动级心率、训练负荷与恢复指标。"
+      }
+    }
+  },
+  "deviceHints": {
+    "connection": {
+      "strong": "连接设备",
+      "body": "能为 BioMath Core 提供更精确的信号。我们不只收集数字——会解释含义，并关联你的状态与习惯。"
+    },
+    "opening": "可连接手表、戒指、手环、血糖传感器、袖带或体重秤。连接后，BioMath Core 会更新数据，并可用于报告与 Health Guide。",
+    "success": {
+      "strong": "完成。",
+      "body": "下次同步会自动进行。无需手动操作。"
+    },
+    "firstSync": {
+      "title": "已收到指标",
+      "body": "我们会跟踪趋势，而不仅是单个数值。"
+    },
+    "why": {
+      "title": "为什么重要",
+      "body": "设备有助于更早发现变化。可把它当作负荷、恢复与温和调整的冷静导航——在症状成为第一警报之前。"
+    },
+    "errors": {
+      "token_expired": {
+        "title": "访问已过期",
+        "message": "设备访问已过期。请刷新访问以再次读取指标。",
+        "action": "刷新访问"
+      },
+      "no_data": {
+        "title": "无新数据",
+        "message": "设备今天未发送新数据。可能未佩戴或未同步。我们将自动重试。"
+      },
+      "service_error": {
+        "title": "厂商不可用",
+        "message": "厂商暂时不可用。稍后将重试同步。"
+      },
+      "manual_disconnect": {
+        "title": "设备已断开",
+        "message": "设备不再发送数据。你可随时重新连接。",
+        "action": "重新连接"
+      },
+      "bluetooth_sync": {
+        "title": "手机同步",
+        "message": "设备可能尚未与手机同步。打开厂商应用后，其余步骤通常会自动完成。"
+      }
+    },
+    "status": {
+      "connected": "已连接",
+      "needs_update": "需要更新",
+      "no_data": "无数据",
+      "disconnected": "已断开"
+    },
+    "scenarios": {
+      "sleep_declined": {
+        "title": "睡眠质量下降",
+        "message": "近期睡眠更深不足。可能反映神经系统负荷。我们可以建议温和的恢复步骤。"
+      },
+      "sleep_improved": {
+        "title": "睡眠改善",
+        "message": "睡眠看起来更稳定——恢复改善的好信号。"
+      },
+      "hrv_improved": {
+        "title": "HRV 改善",
+        "message": "心率变异性提高——神经系统正在恢复的信号。"
+      },
+      "hrv_declined": {
+        "title": "HRV 下降",
+        "message": "神经系统可能过热。温和恢复模式往往是更好的下一步。"
+      },
+      "activity_high": {
+        "title": "负荷偏高",
+        "message": "负荷高于往常——请关注恢复。"
+      },
+      "glucose_unstable": {
+        "title": "血糖波动",
+        "message": "血糖在波动。我们可以把进餐与习惯关联到模式上——不用诊断语言。"
+      },
+      "blood_pressure_stable": {
+        "title": "血压稳定",
+        "message": "稳定正常的读数长期支持血管舒适。若升高，我们会平静解释，不制造恐惧。"
+      }
+    },
+    "healthGuide": {
+      "title": "Health Guide 如何使用设备数据",
+      "templateLabel": "示例提示",
+      "template": "根据你最新的设备数据，我们看到趋势 ____________。这不是诊断，但是重要信号。需要解释与建议吗？",
+      "agreeLabel": "若你同意",
+      "agreeBody": "我将用两种方式说明：(1) 生理分析（意见 A）与 (2) 行为与生活方式解释（意见 B）。你可以比较并选择合适的。",
+      "secondOpinionLabel": "第二意见",
+      "secondOpinionBody": "第二意见帮助从生理与适应角度看待同一信号——像两位思维风格不同的专家。"
+    }
+  }
+}

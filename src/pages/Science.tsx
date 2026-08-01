@@ -1,244 +1,264 @@
-import { Brain, Activity, Dna, LineChart, FlaskConical, BookOpen } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
+import { tList } from '../i18n/tList';
 
-export default function Science() {
+type Pillar = { title: string; body: string };
+type MathModel = { name: string; description: string; interpretation: string };
+type PipelineStep = { title: string; body: string };
+type ApproachItem = { title: string; body: string };
+
+/** Notation is language-neutral and stays outside the locale packs. */
+const EQUATIONS = ['dS/dt = α·I − β·R', 'M(t) = f(G, A, N, H)', 'I = Σ(wi · fi) + ge', 'E = E₀ + ΔS + ΔN − ΔW'];
+
+function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <>
-      <SEO
-        title="Science & Research - Biomathematical Health Modeling"
-        description="Discover the scientific foundation of BioMath Core: biomathematical modeling, multi-signal integration, genomic analysis, and predictive analytics for personalized health intelligence."
-        keywords={['biomathematics', 'health modeling', 'systems biology', 'predictive analytics', 'genomic analysis', 'physiological dynamics', 'computational biology']}
-        url="/science"
-      />
-      <ScienceContent />
-    </>
+    <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-600 dark:text-orange-400">
+      {children}
+    </p>
   );
 }
 
-function ScienceContent() {
-  const pillars = [
-    {
-      icon: Brain,
-      title: 'Biomathematical Modeling',
-      description: 'We use differential equations and systems biology to model physiological dynamics, not just pattern recognition.'
-    },
-    {
-      icon: Activity,
-      title: 'Multi-Signal Integration',
-      description: 'Combining heart rate variability, activity patterns, sleep architecture, and metabolic markers into unified models.'
-    },
-    {
-      icon: Dna,
-      title: 'Genomic Analysis',
-      description: 'Incorporating genetic predispositions for inflammation, stress response, and metabolic efficiency.'
-    },
-    {
-      icon: LineChart,
-      title: 'Predictive Analytics',
-      description: 'Forecasting health trajectories based on current patterns and historical data.'
-    },
-    {
-      icon: FlaskConical,
-      title: 'Lab Integration',
-      description: 'Incorporating biomarkers like cortisol, glucose, inflammation markers, and hormone levels.'
-    },
-    {
-      icon: BookOpen,
-      title: 'Evidence-Based',
-      description: 'Every model is grounded in peer-reviewed research and validated against clinical outcomes.'
-    }
-  ];
+function SectionHeading({
+  id,
+  title,
+  subtitle,
+}: {
+  id?: string;
+  title: string;
+  subtitle?: string;
+}) {
+  return (
+    <header className="mb-10 max-w-2xl lg:mb-12">
+      <h2
+        id={id}
+        className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl"
+      >
+        {title}
+      </h2>
+      {subtitle && (
+        <p className="mt-3 text-base leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-lg">
+          {subtitle}
+        </p>
+      )}
+    </header>
+  );
+}
 
-  const models = [
-    {
-      name: 'Stress-Recovery Dynamics',
-      description: 'Models the relationship between sympathetic activation, HRV patterns, and recovery capacity.',
-      equations: 'dS/dt = α·I - β·R',
-      interpretation: 'Stress accumulates based on inputs (I) and dissipates based on recovery (R).'
-    },
-    {
-      name: 'Metabolic State Estimation',
-      description: 'Estimates insulin sensitivity, glucose regulation, and metabolic flexibility from activity and nutrition data.',
-      equations: 'M(t) = f(G, A, N, H)',
-      interpretation: 'Metabolic state is a function of glucose (G), activity (A), nutrition (N), and hormones (H).'
-    },
-    {
-      name: 'Inflammatory Load',
-      description: 'Quantifies systemic inflammation based on sleep quality, stress, diet, and genetic markers.',
-      equations: 'I = Σ(wi · fi) + ge',
-      interpretation: 'Inflammation is weighted sum of lifestyle factors (f) plus genetic contribution (g).'
-    },
-    {
-      name: 'Energy Availability',
-      description: 'Models available energy for physical and cognitive performance based on sleep, nutrition, and recovery.',
-      equations: 'E = E₀ + ΔS + ΔN - ΔW',
-      interpretation: 'Energy changes based on sleep (S), nutrition (N), and work output (W).'
-    }
-  ];
+export default function Science() {
+  const { t } = useTranslation();
+
+  const pillars = tList<Pillar>(t, 'science.pillars.items');
+  const models = tList<MathModel>(t, 'science.models.items');
+  const pipeline = tList<PipelineStep>(t, 'science.pipeline.items');
+  const approach = tList<ApproachItem>(t, 'science.approach.items');
+  const researchTopics = tList<string>(t, 'science.research.topics');
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors pt-16">
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[radial-gradient(circle_at_top,_#fff6ed,_transparent_55%),linear-gradient(135deg,#f8fafc,white)] dark:bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.18),_transparent_55%),linear-gradient(135deg,#0f172a,#020617)]">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-orange-200/80 bg-white/70 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-700 backdrop-blur dark:bg-white/10 dark:text-orange-200 dark:border-orange-300/20 mb-6">
-              Science
-            </div>
-            <h1 className="text-5xl font-semibold tracking-tight text-gray-900 dark:text-white mb-6">The Science Behind BioMath Core</h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Our platform is built on decades of research in systems biology, biomathematics, and physiological modeling.
+    <div className="min-h-screen bg-page transition-colors">
+      <SEO
+        title={t('science.seo.title')}
+        description={t('science.seo.description')}
+        keywords={[
+          'biomathematics',
+          'health modeling',
+          'systems biology',
+          'predictive analytics',
+          'genomic analysis',
+          'physiological dynamics',
+          'computational biology',
+        ]}
+        url="/science"
+      />
+
+      <div className="pt-20 pb-16">
+        <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
+          {/* Hero */}
+          <section className="border-b border-[var(--bm-border)] pb-14 pt-8 lg:pb-16 lg:pt-10">
+            <SectionLabel>{t('science.hero.label')}</SectionLabel>
+            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
+              {t('science.hero.title')}
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-lg">
+              {t('science.hero.body')}
             </p>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-semibold text-gray-900 dark:text-white mb-12 text-center">Core Scientific Pillars</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pillars.map((pillar, index) => (
-              <div key={index} className="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-200 dark:border-gray-800 hover:border-blue-400 transition-all shadow-sm">
-                <pillar.icon className="h-12 w-12 text-blue-600 dark:text-blue-400 mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{pillar.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400">{pillar.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+          {/* Pillars */}
+          <section
+            className="border-b border-[var(--bm-border)] py-14 lg:py-16"
+            aria-labelledby="science-pillars"
+          >
+            <SectionLabel>{t('science.pillars.label')}</SectionLabel>
+            <SectionHeading
+              id="science-pillars"
+              title={t('science.pillars.title')}
+              subtitle={t('science.pillars.subtitle')}
+            />
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-gray-950">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-semibold text-gray-900 dark:text-white mb-4">
-              Mathematical Models
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Unlike black-box AI, our models are interpretable and explainable. Every prediction can be traced back to its underlying drivers.
-            </p>
-          </div>
+            <ol className="m-0 grid list-none gap-8 p-0 sm:gap-10 md:grid-cols-2 md:gap-x-12 md:gap-y-12">
+              {pillars.map((pillar, i) => (
+                <li key={pillar.title} className="border-t border-[var(--bm-border)] pt-5">
+                  <p className="text-[11px] font-semibold tracking-[0.28em] text-orange-600 dark:text-orange-400">
+                    {String(i + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="mt-2 text-lg font-semibold text-gray-900 dark:text-neutral-100">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-[15px]">
+                    {pillar.body}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </section>
 
-          <div className="space-y-8">
-            {models.map((model, index) => (
-              <div key={index} className="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-800 shadow-sm">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-8">
-                  <div className="flex-1 mb-6 lg:mb-0">
-                    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">{model.name}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4">{model.description}</p>
-                    <div className="inline-block bg-blue-50 dark:bg-blue-900/20 px-4 py-2 rounded-lg">
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Simplified Form:</p>
-                      <code className="text-blue-700 dark:text-blue-300 font-mono font-semibold">{model.equations}</code>
+          {/* Mathematical Models */}
+          <section
+            className="border-b border-[var(--bm-border)] py-14 lg:py-16"
+            aria-labelledby="science-models"
+          >
+            <SectionLabel>{t('science.models.label')}</SectionLabel>
+            <SectionHeading
+              id="science-models"
+              title={t('science.models.title')}
+              subtitle={t('science.models.subtitle')}
+            />
+
+            <div className="space-y-0">
+              {models.map((model, i) => (
+                <article
+                  key={model.name}
+                  className="border-t border-[var(--bm-border)] py-8 first:border-t-0 first:pt-0"
+                >
+                  <p className="text-[11px] font-semibold tracking-[0.28em] text-orange-600 dark:text-orange-400">
+                    {String(i + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="mt-2 text-2xl font-semibold text-gray-900 dark:text-neutral-100">
+                    {model.name}
+                  </h3>
+                  <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-gray-700 dark:text-neutral-300">
+                    {model.description}
+                  </p>
+                  <div className="mt-6 grid gap-6 md:grid-cols-2 md:gap-10">
+                    <div className="border border-[var(--bm-border)] bg-[var(--bm-surface)] px-5 py-4">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-neutral-500">
+                        {t('science.models.simplifiedForm')}
+                      </p>
+                      <code
+                        dir="ltr"
+                        className="mt-2 block font-mono text-base font-semibold text-gray-900 dark:text-neutral-100"
+                      >
+                        {EQUATIONS[i]}
+                      </code>
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-neutral-500">
+                        {t('science.models.interpretationLabel')}
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-[15px]">
+                        {model.interpretation}
+                      </p>
                     </div>
                   </div>
-                  <div className="lg:w-1/3 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 p-6 rounded-lg">
-                    <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Interpretation:</p>
-                    <p className="text-gray-600 dark:text-gray-400">{model.interpretation}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                </article>
+              ))}
+            </div>
+          </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-semibold text-gray-900 dark:text-white mb-12 text-center">
-            From Data to Insight
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-4">
-                <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">1</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Data Collection</h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Continuous streams from wearables, periodic surveys, lab results, and genetic reports are normalized and time-aligned.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-4">
-                <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">2</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Model Processing</h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Biomathematical models process the data to estimate physiological states, predict trajectories, and identify patterns.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-4">
-                <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">3</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Actionable Insights</h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Results are translated into clear recommendations: what's happening, why it's happening, and what to do about it.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+          {/* Pipeline */}
+          <section
+            className="border-b border-[var(--bm-border)] py-14 lg:py-16"
+            aria-labelledby="science-pipeline"
+          >
+            <SectionLabel>{t('science.pipeline.label')}</SectionLabel>
+            <SectionHeading
+              id="science-pipeline"
+              title={t('science.pipeline.title')}
+              subtitle={t('science.pipeline.subtitle')}
+            />
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-950 via-gray-950 to-slate-900">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="text-white">
-              <h2 className="text-4xl font-semibold mb-6">Why Biomathematics?</h2>
-              <div className="space-y-4 text-lg text-slate-200">
-                <p>
-                  <strong className="text-white">Explainability:</strong> Unlike neural networks, mathematical models can be interrogated and understood.
+            <div className="grid gap-10 md:grid-cols-3 md:gap-8">
+              {pipeline.map((step, i) => (
+                <article key={step.title}>
+                  <span
+                    aria-hidden
+                    className="mb-4 block h-px w-8 bg-orange-500/70 dark:bg-orange-400/55"
+                  />
+                  <p className="mb-2 text-[11px] font-semibold tracking-[0.28em] text-orange-600 dark:text-orange-400">
+                    {String(i + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-100">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-400">
+                    {step.body}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          {/* Why Biomathematics + Research */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <div className="grid gap-14 md:grid-cols-2 md:gap-12">
+              <div>
+                <SectionLabel>{t('science.approach.label')}</SectionLabel>
+                <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-3xl">
+                  {t('science.approach.title')}
+                </h2>
+                <ul className="mt-6 space-y-5">
+                  {approach.map((item) => (
+                    <li key={item.title} className="border-t border-[var(--bm-border)] pt-4">
+                      <h3 className="font-semibold text-gray-900 dark:text-neutral-100">
+                        {item.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-gray-600 dark:text-neutral-400">
+                        {item.body}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <SectionLabel>{t('science.research.label')}</SectionLabel>
+                <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-3xl">
+                  {t('science.research.title')}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-[15px]">
+                  {t('science.research.body')}
                 </p>
-                <p>
-                  <strong className="text-white">Stability:</strong> Models don't drift or require constant retraining with new data.
-                </p>
-                <p>
-                  <strong className="text-white">Efficiency:</strong> Smaller data requirements compared to deep learning approaches.
-                </p>
-                <p>
-                  <strong className="text-white">Biological Grounding:</strong> Models reflect actual physiological mechanisms, not just correlations.
-                </p>
+                <ul className="mt-6 space-y-3">
+                  {researchTopics.map((topic) => (
+                    <li key={topic} className="flex gap-3">
+                      <span
+                        aria-hidden
+                        className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-orange-500 dark:bg-orange-400"
+                      />
+                      <span className="text-sm leading-relaxed text-gray-700 dark:text-neutral-300">
+                        {topic}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-            <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10">
-              <h3 className="text-2xl font-semibold text-white mb-4">Published Research</h3>
-              <p className="text-slate-200 mb-6">
-                Our scientific team has published extensively in peer-reviewed journals on topics including:
-              </p>
-              <ul className="space-y-2 text-slate-200">
-                <li className="flex items-start">
-                  <span className="mr-2">•</span>
-                  <span>Systems biology of stress and recovery</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-2">•</span>
-                  <span>Mathematical modeling of metabolic dynamics</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-2">•</span>
-                  <span>Heart rate variability and autonomic function</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-2">•</span>
-                  <span>Predictive modeling in precision medicine</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-semibold text-gray-900 dark:text-white mb-6">
-            Experience Science-Backed Wellness
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
-            Join thousands who trust BioMath Core for evidence-based health insights.
-          </p>
-          <button className="px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-lg transition-colors">
-            Explore the Platform
-          </button>
+          {/* Closing */}
+          <section className="py-14 lg:py-16">
+            <div className="border border-[var(--bm-border)] bg-[var(--bm-surface)] px-6 py-12 text-center sm:px-10">
+              <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-3xl">
+                {t('science.closing.title')}
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
+                {t('science.closing.body')}
+              </p>
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

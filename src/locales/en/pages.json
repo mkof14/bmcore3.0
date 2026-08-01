@@ -1,0 +1,685 @@
+{
+  "auth": {
+    "signIn": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to access your wellness dashboard",
+      "mockNotice": "Local mock auth is on. Use superadmin email {{email}} and your password to open Member Zone and Admin for testing.",
+      "remember": "Remember me",
+      "forgot": "Forgot password?",
+      "submit": "Sign In",
+      "submitting": "Signing in...",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up",
+      "legal": "By signing in, you agree to our Terms of Service and Privacy Policy",
+      "genericError": "An error occurred during sign in",
+      "noSession": "Sign in failed — no user session created"
+    },
+    "signUp": {
+      "title": "Create Your Account",
+      "subtitle": "Start your wellness journey with BioMath Core",
+      "success": "Account created successfully! Redirecting to sign in...",
+      "verifyEmail": "Account created. Please check your email to confirm before signing in.",
+      "submit": "Create Account",
+      "submitting": "Creating Account...",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign in",
+      "legal": "By creating an account, you agree to our Terms of Service and Privacy Policy",
+      "rights": "© {{year}} BioMath Core. All rights reserved.",
+      "genericError": "An error occurred during sign up",
+      "passwordMismatch": "Passwords do not match",
+      "passwordTooShort": "Password must be at least 6 characters"
+    },
+    "fields": {
+      "email": "Email Address",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "John Doe",
+      "referralCode": "Referral Code (Optional)",
+      "referralHint": "Get $5 discount with a friend's code",
+      "passwordHint": "Must be at least 6 characters"
+    }
+  },
+  "homeExtra": {
+    "sources": {
+      "mri": {
+        "title": "MRI Report",
+        "detail": "May 12, 2024"
+      },
+      "blood": {
+        "title": "Blood Test",
+        "detail": "May 10, 2024"
+      },
+      "medications": {
+        "title": "Medications",
+        "detail": "Lisinopril 10mg · since Feb 2024"
+      },
+      "pressure": {
+        "title": "Blood Pressure",
+        "detail": "Daily readings"
+      },
+      "genetic": {
+        "title": "Genetic Report",
+        "detail": "Dec 5, 2023"
+      },
+      "notes": {
+        "title": "Doctor Notes",
+        "detail": "Apr 18, 2024"
+      },
+      "lifestyle": {
+        "title": "Lifestyle Data",
+        "detail": "Sleep, activity, nutrition"
+      }
+    },
+    "insights": {
+      "heading": "Clear answers you can act on.",
+      "pressure": {
+        "text": "Blood pressure started increasing after medication changed.",
+        "note": "This pattern appears consistently in your data."
+      },
+      "vitaminD": {
+        "text": "Vitamin D has remained low for several years.",
+        "note": "This may be affecting energy and mood."
+      },
+      "symptoms": {
+        "text": "Today's symptoms resemble your MRI findings.",
+        "note": "Similar findings appeared in previous scans."
+      },
+      "agreement": {
+        "text": "Three independent analyses reached the same conclusion.",
+        "note": "Greater confidence in the result."
+      },
+      "overall": {
+        "text": "Overall health is stable, with a few areas to watch.",
+        "note": "Focus on sleep, activity, and inflammation."
+      }
+    },
+    "understand": {
+      "portraitAlt": "A person in quiet reflection — the human at the center of their health history",
+      "caption": "Human Data Model",
+      "closingPrefix": "From information",
+      "closingEmphasis": "to understanding"
+    },
+    "timeline": {
+      "source": "Source",
+      "possibleConnection": "Possible connection",
+      "types": {
+        "lab": "Lab result",
+        "diagnosis": "Diagnosis",
+        "medication": "Medication",
+        "observation": "Observation",
+        "connection": "Connection",
+        "followup": "Follow-up"
+      },
+      "sources": {
+        "lab": "Lab report",
+        "physician": "Physician note",
+        "personal": "Personal log",
+        "model": "Human Data Model",
+        "carePlan": "Care plan"
+      },
+      "today": "TODAY",
+      "events": {
+        "e1": {
+          "title": "Routine blood test",
+          "statement": "Cholesterol elevated."
+        },
+        "e2": {
+          "title": "Hypertension noted",
+          "statement": "Medication started."
+        },
+        "e3": {
+          "title": "Medication changed",
+          "statement": "Lisinopril dosage updated."
+        },
+        "e4": {
+          "title": "Sleep issues reported",
+          "statement": "Trouble falling asleep for several weeks."
+        },
+        "e5": {
+          "title": "Patterns meet",
+          "statement": "Medication, sleep, and blood pressure reviewed together.",
+          "converging": [
+            "Medication changed",
+            "Sleep issues reported",
+            "Blood pressure increased"
+          ],
+          "conclusion": "These changes may be related. Review with your physician."
+        },
+        "e6": {
+          "title": "Vitamin D improved",
+          "statement": "Levels returned toward the expected range."
+        },
+        "e7": {
+          "title": "Follow-up due",
+          "statement": "Questions prepared for physician."
+        }
+      },
+      "docs": {
+        "labPanel": "Lab panel",
+        "clinicalNote": "Clinical note",
+        "clinicalBody": "Impression: elevated blood pressure. Begin therapy and lifestyle review.",
+        "clinicalSign": "— M. Rivera, MD",
+        "rxName": "Lisinopril",
+        "rxDose": "10 mg · once daily",
+        "rxMeta": "Qty: 90 · Refills: 2",
+        "journal": "Trouble falling asleep…\nwaking around 3am.",
+        "questions": "Questions",
+        "question1": "Blood pressure trend",
+        "question2": "Sleep and medication",
+        "question3": "Next labs"
+      }
+    },
+    "changes": {
+      "source": "Source",
+      "youngAlt": "Young adult around age 24",
+      "midAlt": "Adult around age 40",
+      "laterAlt": "Older adult around age 60",
+      "youngAge": "Age 24",
+      "youngBody": "Healthy.\nBuilding life.",
+      "midAge": "Age 40",
+      "midBody": "New challenges.\nNew priorities.",
+      "laterAge": "Age 60",
+      "laterBody": "Experience. Perspective.\nWhat matters most.",
+      "closingPrefix": "Every health event",
+      "closingEmphasis": "becomes part of your Human Data Model.",
+      "records": {
+        "r1": {
+          "event": "Routine blood test",
+          "source": "Laboratory"
+        },
+        "r2": {
+          "event": "Medication started",
+          "source": "Physician"
+        },
+        "r3": {
+          "event": "MRI",
+          "source": "Radiology"
+        },
+        "r4": {
+          "event": "Medication adjusted",
+          "source": "Clinic"
+        },
+        "r5": {
+          "event": "Blood pressure improved",
+          "source": "Home monitoring"
+        }
+      }
+    }
+  },
+  "contactExtra": {
+    "seoTitle": "Contact Us - Get in Touch with BioMath Core",
+    "seoDescription": "Have questions? Contact BioMath Core for support, partnerships, or inquiries. We typically respond within 24 hours. Multiple contact options available.",
+    "sent": "Sent",
+    "receivedTitle": "Message received",
+    "receivedBody": "Thank you for reaching out. Our team will respond within 24 hours.",
+    "form": {
+      "name": "Your name *",
+      "email": "Email address *",
+      "company": "Company (optional)",
+      "subject": "Subject *",
+      "message": "Message *",
+      "messagePlaceholder": "Tell us more about your inquiry...",
+      "submit": "Send message",
+      "selectSubject": "Select a subject",
+      "subjects": {
+        "general": "General inquiry",
+        "enterprise": "Enterprise solutions",
+        "api": "API access",
+        "investment": "Investment opportunity",
+        "partnership": "Partnership",
+        "support": "Technical support"
+      }
+    },
+    "channelsLabel": "Channels",
+    "channels": {
+      "email": {
+        "title": "Email",
+        "note": "We respond within 24 hours",
+        "body": "Best for detailed questions, account topics, and anything you want in writing."
+      },
+      "chat": {
+        "title": "Live chat",
+        "body": "Quick questions and account help during business hours.",
+        "note": "Open chat from this page",
+        "open": "Start chat",
+        "close": "Close chat"
+      },
+      "enterprise": {
+        "title": "Enterprise",
+        "note": "Partnerships and custom deployments",
+        "body": "For clinics, teams, custom deployments, and partnership conversations."
+      }
+    },
+    "responseLabel": "Response times",
+    "response": {
+      "general": "General inquiries",
+      "generalValue": "24 hours",
+      "enterprise": "Enterprise",
+      "enterpriseValue": "12 hours",
+      "support": "Technical support",
+      "supportValue": "48 hours"
+    },
+    "partnershipsLabel": "Partnerships",
+    "partnershipsTitle": "Enterprise and partnership inquiries",
+    "partnershipsBody": "For custom solutions, enterprise deployments, or strategic partnerships, reach our dedicated team directly.",
+    "howToReach": "Choose the path that fits: email for detailed questions, live chat for quick help while signed in, or the form below for a tracked request.",
+    "choosePathLabel": "Ways to reach us",
+    "choosePathTitle": "Pick the clearest channel",
+    "formIntro": "Use the form for partnerships, technical questions, or anything that benefits from a written record.",
+    "sidebarTip": "Prefer chat for short account questions. Prefer email or the form when you need attachments, context, or a slower thoughtful reply."
+  },
+  "programs": {
+    "referral": {
+      "label": "Referral program",
+      "heroTitle": "Share health, earn rewards",
+      "heroSubtitle": "Invite friends to BioMath Core and earn credits with every successful referral.",
+      "statsLabel": "Your stats",
+      "totalReferred": "Total referred",
+      "creditsEarned": "Credits earned",
+      "activeReferrals": "Active referrals",
+      "howLabel": "How it works",
+      "howTitle": "Three simple steps",
+      "steps": {
+        "share": {
+          "title": "Share your unique code",
+          "body": "Send it to friends via email or social media."
+        },
+        "discount": {
+          "title": "Friend gets $5 discount",
+          "body": "Applied instantly at signup."
+        },
+        "credit": {
+          "title": "You earn $10 credit",
+          "body": "Added instantly after confirmed signup."
+        }
+      },
+      "rewardTitle": "Reward details",
+      "perReferral": "You earn per referral",
+      "friendDiscount": "Friend gets discount",
+      "notes": [
+        "No limits on referrals",
+        "Credits never expire",
+        "Use for subscriptions and upgrades"
+      ],
+      "shareLabel": "Share",
+      "codeTitle": "Your referral code",
+      "permanentCode": "Permanent code",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "shareLink": "Share link",
+      "inviteTitle": "Send invitation via email",
+      "invitePlaceholder": "Friend's email address",
+      "send": "Send",
+      "inviteSent": "Invitation sent successfully!",
+      "socialTitle": "Share on social media",
+      "shareText": "Discover BioMath Core — wellness intelligence that helps you understand your body. Join me and get $5 off!",
+      "detailsLabel": "Details",
+      "detailsTitle": "Program details",
+      "eligibility": "Eligibility",
+      "eligibilityItems": [
+        "Friend must be a new user",
+        "Code must be entered during signup",
+        "Only one referral code per account"
+      ],
+      "fraud": "Fraud protection",
+      "fraudItems": [
+        "No self-referrals allowed",
+        "No duplicate accounts",
+        "Abusive behavior voids rewards"
+      ],
+      "upgradeQuestion": "Refer 10+ friends?",
+      "upgradePrefix": "You may qualify for our",
+      "upgradeLink": "Ambassador Program",
+      "upgradeSuffix": "with enhanced rewards."
+    },
+    "ambassador": {
+      "label": "Ambassador program",
+      "heroTitle": "Become a wellness multiplier",
+      "heroSubtitle": "Share BioMath Core authentically and earn enhanced rewards while helping others discover calm, supportive guidance.",
+      "pathsLabel": "Paths",
+      "pathsTitle": "What makes an Ambassador?",
+      "paths": {
+        "organic": {
+          "title": "Organic growth",
+          "body": "Loyal users who refer 10+ friends become eligible for automatic Ambassador upgrade with enhanced benefits."
+        },
+        "direct": {
+          "title": "Direct application",
+          "body": "Wellness coaches, health educators, content creators, and community leaders can apply directly through our form below."
+        }
+      },
+      "rewardsLabel": "Rewards",
+      "rewardsTitle": "What you get",
+      "rewards": {
+        "higher": {
+          "title": "Higher rewards",
+          "body": "Earn $20 per referral (2× standard rate) with tier-based scaling opportunities."
+        },
+        "priority": {
+          "title": "Priority access",
+          "body": "Early feature testing, priority support, and an exclusive Ambassador dashboard."
+        },
+        "tools": {
+          "title": "Co-branded tools",
+          "body": "Dedicated materials, social assets, optional landing page, and sharing toolkit."
+        }
+      },
+      "benefitsLabel": "Benefits",
+      "benefitsTitle": "Ambassador benefits",
+      "benefits": {
+        "enhanced": {
+          "title": "Enhanced rewards",
+          "body": "Double the standard referral rate with scaling tiers."
+        },
+        "dashboard": {
+          "title": "Dedicated dashboard",
+          "body": "Track cohort, lifetime rewards, and ambassador tier level."
+        },
+        "materials": {
+          "title": "Co-branded materials",
+          "body": "Professional social assets and sharing toolkit."
+        },
+        "support": {
+          "title": "Priority support",
+          "body": "Direct access to the BioMath Core team for questions."
+        },
+        "features": {
+          "title": "Early features",
+          "body": "Beta testing and preview access to new capabilities."
+        },
+        "revenue": {
+          "title": "Revenue-sharing growth",
+          "body": "Eligibility for advanced partnership models."
+        }
+      },
+      "guidelinesLabel": "Guidelines",
+      "guidelinesTitle": "Ambassador responsibilities",
+      "guidelinesIntro": "As an ambassador, we ask that you share authentically and maintain our wellness-first values:",
+      "responsibilities": [
+        "Share BioMath Core authentically based on personal experience.",
+        "Use wellness-first language that is supportive, not prescriptive.",
+        "Never make medical or diagnostic claims.",
+        "Avoid spam, misleading advertising, or incentive manipulation."
+      ],
+      "applyLabel": "Apply",
+      "applyTitle": "Apply to become an Ambassador",
+      "submitted": "Submitted",
+      "receivedTitle": "Application received",
+      "receivedBody": "Thank you for your interest in becoming a BioMath Core Ambassador. Our team will review your application and reach out within 3–5 business days.",
+      "form": {
+        "fullName": "Full name *",
+        "email": "Email address *",
+        "country": "Country/region *",
+        "audience": "Audience type *",
+        "selectType": "Select type...",
+        "audienceOptions": {
+          "users": "General users",
+          "clients": "Coaching clients",
+          "followers": "Social followers",
+          "community": "Community members",
+          "other": "Other"
+        },
+        "hasReferrals": "Do you currently use our referral program? *",
+        "yes": "Yes",
+        "no": "No",
+        "motivation": "Why do you want to become an ambassador? *",
+        "motivationPlaceholder": "Share your motivation and how you'd like to contribute...",
+        "socialLink": "Website or social link (optional)",
+        "submit": "Submit application"
+      },
+      "footerQuestion": "Already have 10+ referrals?",
+      "footerPrefix": "Check your",
+      "footerLink": "Member Zone",
+      "footerSuffix": "for automatic upgrade eligibility."
+    },
+    "careers": {
+      "label": "Careers",
+      "heroTitle": "Build wellness intelligence with us",
+      "heroSubtitle": "Join a team working at the intersection of biomathematics, computational biology, and preventive health.",
+      "whyLabel": "Why join",
+      "whyTitle": "Why BioMath Core?",
+      "why": {
+        "innovation": {
+          "title": "Innovation-driven",
+          "body": "Work on biomathematics and AI with real health impact."
+        },
+        "impact": {
+          "title": "Impact-focused",
+          "body": "Help people improve their health through preventive wellness."
+        },
+        "growth": {
+          "title": "Growth-oriented",
+          "body": "Continuous learning and development in a science-first team."
+        }
+      },
+      "openLabel": "Open roles",
+      "openTitle": "Current openings",
+      "loading": "Loading positions...",
+      "loadError": "Careers load failed",
+      "errorTitle": "Error loading positions",
+      "retry": "Try again",
+      "emptyTitle": "No open positions at the moment.",
+      "emptyBody": "Check back soon or send your CV to careers@biomathcore.com",
+      "searchPlaceholder": "Search roles...",
+      "clearSearch": "Clear search",
+      "allTypes": "All types",
+      "results": "{{count}} results",
+      "noMatchTitle": "No roles match your search.",
+      "noMatchBody": "Try different keywords or filters.",
+      "loadMore": "Load more",
+      "share": "Share",
+      "copyLink": "Copy link",
+      "linkCopied": "Link copied",
+      "close": "Close",
+      "overview": "Role overview",
+      "responsibilities": "Responsibilities",
+      "requirements": "Requirements",
+      "salaryRange": "Salary range"
+    }
+  },
+  "content": {
+    "blog": {
+      "seoTitle": "Health & Wellness Blog - Expert Articles & Insights",
+      "seoDescription": "Explore our collection of articles on health analytics, wellness optimization, preventive care, and personalized medicine. Expert insights from BioMath Core.",
+      "badge": "Blog",
+      "title": "Blog",
+      "subtitle": "Insights, research, and stories about health, wellness, and the future of personalized care",
+      "loadError": "Blog load failed",
+      "errorTitle": "Failed to Load Articles",
+      "emptyTitle": "No Articles Yet",
+      "emptyBody": "Check back soon for health insights, research, and wellness stories.",
+      "searchPlaceholder": "Search articles...",
+      "allCategories": "All categories",
+      "noResultsTitle": "No Results",
+      "noResultsBody": "Try a different search term or category.",
+      "defaultCategory": "Health"
+    },
+    "news": {
+      "badge": "News",
+      "title": "News",
+      "subtitle": "Latest updates, announcements, and milestones from BioMath Core",
+      "loading": "Loading news...",
+      "loadError": "News load failed",
+      "errorTitle": "Error Loading News",
+      "retry": "Try Again",
+      "emptyTitle": "No news available yet.",
+      "emptyBody": "Stay tuned for updates!",
+      "searchPlaceholder": "Search news...",
+      "noResultsTitle": "No news found.",
+      "noResultsBody": "Try a different search term.",
+      "readMore": "Read more"
+    },
+    "shared": {
+      "results": "{{count}} results",
+      "retry": "Try Again",
+      "clearSearch": "Clear search",
+      "loadMore": "Load more",
+      "share": "Share",
+      "copyLink": "Copy link",
+      "linkCopied": "Link copied",
+      "close": "Close"
+    },
+    "media": {
+      "seoTitle": "Media - Videos, Presentations & Documents",
+      "seoDescription": "Watch BioMath Core videos, browse presentations, and download documents about health understanding and the Human Data Model.",
+      "badge": "Media",
+      "title": "Media",
+      "subtitle": "Videos, presentations, and documents from BioMath Core — clear material for learning and sharing.",
+      "loading": "Loading media…",
+      "loadError": "Media load failed",
+      "errorTitle": "Unable to load media",
+      "emptyTitle": "No media yet",
+      "emptyBody": "Published videos, presentations, and documents will appear here.",
+      "noResultsTitle": "Nothing in this category",
+      "noResultsBody": "Try another tab or check back soon.",
+      "download": "Download",
+      "open": "Open",
+      "openVideo": "Open video",
+      "tabs": {
+        "all": "All",
+        "video": "Videos",
+        "presentation": "Presentations",
+        "document": "Documents"
+      },
+      "sections": {
+        "video": "Videos",
+        "presentation": "Presentations",
+        "document": "Documents"
+      }
+    }
+  },
+  "apiPage": {
+    "seoTitle": "API Documentation - BioMath Core Developer Access",
+    "seoDescription": "Integrate BioMath Core biomathematical intelligence into your applications and workflows. REST API with HIPAA-aligned security, webhooks, and developer documentation.",
+    "label": "Developer API",
+    "heroTitle": "API documentation",
+    "heroSubtitle": "Integrate BioMath Core's biomathematical intelligence into your applications, services, and workflows.",
+    "capabilitiesLabel": "Capabilities",
+    "capabilitiesTitle": "What the API provides",
+    "features": {
+      "auth": {
+        "title": "API key authentication",
+        "body": "Secure authentication using API keys with configurable permissions and rate limits."
+      },
+      "rest": {
+        "title": "RESTful architecture",
+        "body": "Clean, predictable REST API design with comprehensive documentation and examples."
+      },
+      "security": {
+        "title": "HIPAA-aligned security",
+        "body": "Enterprise-grade security with encryption at rest and in transit, full audit logs."
+      },
+      "webhooks": {
+        "title": "Real-time webhooks",
+        "body": "Receive instant notifications when new insights or alerts are generated."
+      }
+    },
+    "endpointsLabel": "Endpoints",
+    "endpointsTitle": "Core endpoints",
+    "endpoints": {
+      "profile": "Retrieve user profile and physiological model parameters",
+      "metrics": "Get current wellness metrics and scores",
+      "insights": "Access personalized insights and recommendations",
+      "sync": "Submit new physiological data from external sources",
+      "predictions": "Retrieve predictive health trajectories",
+      "reports": "Generate comprehensive health reports"
+    },
+    "quickStartLabel": "Quick start",
+    "quickStartTitle": "Authentication and example response",
+    "authTitle": "Authentication",
+    "authSteps": [
+      "Get your API key from the developer dashboard",
+      "Include the key in the Authorization header",
+      "All requests must use HTTPS"
+    ],
+    "exampleTitle": "Example response",
+    "requestAccess": "Request API access",
+    "useCasesLabel": "Use cases",
+    "useCasesTitle": "Where teams integrate",
+    "useCases": {
+      "insurance": {
+        "title": "Insurance programs",
+        "body": "Integrate wellness data for risk assessment, policy pricing, and member engagement programs."
+      },
+      "apps": {
+        "title": "Healthcare apps",
+        "body": "Enhance patient monitoring with biomathematical insights and predictive analytics."
+      },
+      "research": {
+        "title": "Research studies",
+        "body": "Access population-level analytics and individual participant data for clinical research."
+      },
+      "corporate": {
+        "title": "Corporate wellness",
+        "body": "Deploy wellness tracking across your organization with custom dashboards and reporting."
+      },
+      "fitness": {
+        "title": "Fitness services",
+        "body": "Augment training programs with physiological state monitoring and recovery optimization."
+      },
+      "clinical": {
+        "title": "Clinical decision support",
+        "body": "Provide clinicians with actionable patient insights integrated into EHR workflows."
+      }
+    },
+    "ctaTitle": "Ready to build with BioMath Core?",
+    "ctaBody": "Get started with our API today. Enterprise support and custom integrations available.",
+    "contactSales": "Contact sales",
+    "viewDocs": "View full documentation"
+  },
+  "admin": {
+    "media": {
+      "menuLabel": "Media Library",
+      "title": "Media Library",
+      "subtitle": "Upload and manage videos, presentations, and documents shown on the public Media page.",
+      "refresh": "Refresh",
+      "addItem": "Add media",
+      "editItem": "Edit media",
+      "loading": "Loading media…",
+      "loadingBody": "Fetching the latest media items.",
+      "loadError": "Unable to load media items.",
+      "emptyTitle": "No media items yet",
+      "emptyBody": "Add your first video, presentation, or document.",
+      "published": "Published",
+      "draft": "Draft",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "edit": "Edit",
+      "delete": "Delete",
+      "orderLabel": "Order",
+      "confirmDelete": "Delete this media item?",
+      "requiredFields": "Title and file URL are required",
+      "saveSuccess": "Media item saved",
+      "saveFailed": "Failed to save media item",
+      "deleteSuccess": "Media item deleted",
+      "deleteFailed": "Failed to delete media item",
+      "uploadFile": "Upload file",
+      "uploadThumbnail": "Upload thumbnail",
+      "uploading": "Uploading…",
+      "uploadSuccess": "Upload complete",
+      "uploadFailed": "Upload failed — paste a URL instead",
+      "saving": "Saving…",
+      "types": {
+        "video": "Video",
+        "presentation": "Presentation",
+        "document": "Document"
+      },
+      "fields": {
+        "title": "Title",
+        "description": "Description",
+        "type": "Type",
+        "fileUrl": "File URL",
+        "thumbnailUrl": "Thumbnail URL (optional)",
+        "sortOrder": "Display order",
+        "published": "Publish on Media page"
+      },
+      "placeholders": {
+        "title": "Media title",
+        "description": "Short description",
+        "fileUrl": "https://… or upload a file",
+        "thumbnailUrl": "https://… or upload an image"
+      }
+    }
+  }
+}

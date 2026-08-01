@@ -1,0 +1,74 @@
+{
+  "privacyTrust": {
+    "seo": {
+      "title": "Privacy & Trust - How BioMath Core Protects Your Data",
+      "description": "Learn how BioMath Core protects your health data with encryption, HIPAA-aligned practices, GDPR compliance, and user-controlled sharing. Read our privacy policies and security practices."
+    },
+    "hero": {
+      "label": "Privacy & Trust",
+      "title": "Your data, protected by design",
+      "body": "Health data is deeply personal. BioMath Core treats its protection as a core product requirement — with transparent practices and plain-language policies."
+    },
+    "commitments": {
+      "label": "Commitments",
+      "title": "Our commitment to your privacy",
+      "body": "Six principles that guide every product and engineering decision.",
+      "items": [
+        {
+          "title": "End-to-end encryption",
+          "body": "Health data is encrypted at rest and in transit using AES-256 and industry-standard TLS."
+        },
+        {
+          "title": "You control your data",
+          "body": "You decide what to share, who can access it, and can export or delete it at any time."
+        },
+        {
+          "title": "HIPAA-aligned practices",
+          "body": "We follow HIPAA requirements for protecting sensitive health information."
+        },
+        {
+          "title": "Secure infrastructure",
+          "body": "Data stored in SOC 2 certified data centers with regular security audits."
+        },
+        {
+          "title": "GDPR compliance",
+          "body": "Full compliance with European data protection regulations and user rights."
+        },
+        {
+          "title": "No data selling",
+          "body": "We never sell your data. Privacy is a design constraint, not a revenue stream."
+        }
+      ]
+    },
+    "policies": {
+      "label": "Policies",
+      "title": "Transparency & compliance",
+      "body": "Full legal documentation is public and written in plain language.",
+      "readMore": "Read more →",
+      "items": [
+        { "title": "Privacy Policy", "description": "How we collect, use, and protect your data" },
+        { "title": "HIPAA Notice", "description": "Our commitment to healthcare data protection" },
+        { "title": "GDPR Compliance", "description": "European data protection standards and your rights" },
+        { "title": "Security Practices", "description": "Technical and organizational measures we take" },
+        { "title": "Data Privacy", "description": "Your rights and our responsibilities" },
+        { "title": "Trust & Safety", "description": "Creating a safe and trustworthy experience" }
+      ]
+    },
+    "control": {
+      "label": "Control",
+      "title": "Your data, your control",
+      "body": "You have the right to access, export, or delete your data at any time. No questions asked.",
+      "stats": [
+        { "value": "100%", "label": "Data ownership" },
+        { "value": "0", "label": "Data sales" },
+        { "value": "24/7", "label": "Security monitoring" }
+      ]
+    },
+    "contact": {
+      "label": "Questions",
+      "title": "Questions about privacy?",
+      "body": "Our privacy team is here to help. If you have questions about how we protect your data, reach out anytime.",
+      "cta": "Contact privacy team"
+    }
+  }
+}

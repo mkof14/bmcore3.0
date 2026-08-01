@@ -1,0 +1,91 @@
+{
+  "footer": {
+    "partnership": "Colaboración",
+    "partnershipOpportunities": "Oportunidades de colaboración",
+    "news": "Noticias",
+    "learningCenter": "Centro de aprendizaje",
+    "inviteFriend": "Invita a un amigo",
+    "ambassador": "Programa de embajadores",
+    "commandCenter": "Centro de mando",
+    "adminPanel": "Panel de administración",
+    "whyTwoModels": "Por qué dos modelos",
+    "privacyTrust": "Centro de privacidad y confianza",
+    "legalNote": "BioMath Core es un servicio de bienestar. No presta atención médica ni realiza diagnósticos o tratamientos.",
+    "legalGroups": {
+      "documents": "Documentos legales",
+      "disclaimers": "Avisos y limitaciones",
+      "data": "Datos y privacidad",
+      "safety": "Seguridad y confianza"
+    },
+    "cookiePreferences": "Preferencias de cookies",
+    "legalContact": "Contacto de privacidad y legal",
+    "disclaimer": "BioMath Core es un servicio de bienestar, no un servicio médico. No diagnosticamos, tratamos ni ofrecemos consejo médico. Solo ofrecemos orientación de bienestar y apoyo preventivo. Consulta siempre a profesionales sanitarios cualificados ante cualquier problema médico.",
+    "media": "Medios"
+  },
+  "cookies": {
+    "title": "Preferencias de cookies",
+    "body": "Usamos cookies para que el sitio funcione, para entender cómo se utiliza y para recordar tus ajustes. Tú eliges qué permitir.",
+    "acceptAll": "Aceptar todas",
+    "rejectAll": "Rechazar todas",
+    "customize": "Personalizar",
+    "policiesNote": "Puedes cambiar esta elección en cualquier momento desde el pie de página.",
+    "settingsTitle": "Ajustes de cookies",
+    "back": "Atrás",
+    "save": "Guardar preferencias",
+    "categories": {
+      "necessary": {
+        "title": "Cookies necesarias",
+        "body": "Imprescindibles para que el sitio funcione, incluidos el inicio de sesión y la seguridad. No se pueden desactivar."
+      },
+      "analytics": {
+        "title": "Cookies analíticas",
+        "body": "Nos ayudan a ver cómo se usa el sitio para poder mejorarlo."
+      },
+      "marketing": {
+        "title": "Cookies de marketing",
+        "body": "Se usan para mostrar contenidos y ofertas que te resulten relevantes."
+      },
+      "preferences": {
+        "title": "Cookies de preferencias",
+        "body": "Recuerdan tu idioma, el tema y otros ajustes."
+      }
+    }
+  },
+  "commandCenter": {
+    "title": "Centro de mando",
+    "subtitle": "Analítica de negocio y métricas de servicio en tiempo real",
+    "revenueTrend": "Tendencia de ingresos (últimos 30 días)",
+    "userGrowth": "Crecimiento de usuarios (últimos 30 días)",
+    "serviceUsage": "Uso de los servicios",
+    "reportsEngine": "Motor de informes"
+  },
+  "catalogReference": {
+    "label": "Referencia",
+    "defaultTitle": "Catálogo de servicios",
+    "defaultSubtitle": "{{categories}} categorías · {{count}} servicios con descripciones del catálogo en vivo.",
+    "searchPlaceholder": "Buscar categorías o servicios…",
+    "empty": "No hay servicios coincidentes.",
+    "servicesCount": "{{count}} servicios",
+    "openCatalog": "Abrir en el catálogo de servicios →"
+  },
+  "liveSupportChat": {
+    "title": "Chat de soporte en vivo",
+    "subtitle": "Normalmente respondemos en minutos",
+    "closeAria": "Cerrar chat",
+    "emptyTitle": "Bienvenido al chat de soporte",
+    "emptyBody": "Envía un mensaje y nuestro equipo responderá pronto.",
+    "signInTitle": "Inicia sesión para chatear",
+    "signInBody": "El soporte en vivo necesita una cuenta para mantener la conversación privada y vinculada a tu historial.",
+    "errorTitle": "Chat no disponible",
+    "errorBody": "No pudimos abrir el chat ahora. Reintenta o escribe a contact@biomathcore.com.",
+    "retry": "Reintentar",
+    "placeholder": "Escribe tu mensaje…",
+    "hint": "Enter para enviar, Shift+Enter para nueva línea",
+    "supportTeam": "Equipo de soporte",
+    "typing": "{{name}} está escribiendo…",
+    "userFallback": "Usuario",
+    "someoneFallback": "Alguien",
+    "loadError": "No se pudo cargar el chat de soporte. Inténtalo de nuevo.",
+    "sendError": "No se pudo enviar el mensaje. Inténtalo de nuevo."
+  }
+}

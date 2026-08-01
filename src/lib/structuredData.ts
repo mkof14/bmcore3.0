@@ -1,3 +1,5 @@
+import { getSocialSameAs } from '../config/social';
+
 export interface Organization {
   '@context': 'https://schema.org';
   '@type': 'Organization' | 'MedicalOrganization';
@@ -185,28 +187,35 @@ export function generateOrganizationSchema(): Organization {
     '@context': 'https://schema.org',
     '@type': 'MedicalOrganization',
     name: 'BioMath Core',
-    description: 'AI-Powered Personalized Health Intelligence Platform',
+    description:
+      'BioMath Core turns your health data into clear insights, personalized guidance, and practical next steps with Health Guide.',
     url: 'https://biomathcore.com',
     logo: 'https://biomathcore.com/biomathcore_emblem_1024.png',
-    sameAs: [
-      'https://twitter.com/biomathcore',
-      'https://www.linkedin.com/company/biomathcore',
-      'https://github.com/biomathcore',
-      'https://www.facebook.com/biomathcore'
-    ],
+    sameAs: getSocialSameAs(),
     contactPoint: [
       {
         '@type': 'ContactPoint',
         contactType: 'Customer Service',
         email: 'support@biomathcore.com',
-        availableLanguage: ['English', 'Russian'],
+        availableLanguage: [
+          'English',
+          'Spanish',
+          'French',
+          'German',
+          'Japanese',
+          'Hebrew',
+          'Chinese',
+          'Arabic',
+          'Ukrainian',
+          'Russian',
+        ],
         areaServed: 'Worldwide'
       },
       {
         '@type': 'ContactPoint',
         contactType: 'Sales',
         email: 'sales@biomathcore.com',
-        availableLanguage: ['English', 'Russian']
+        availableLanguage: ['English', 'Spanish', 'Russian']
       }
     ]
   };

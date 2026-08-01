@@ -1,0 +1,172 @@
+{
+  "services": {
+    "seo": {
+      "title": "Servicios y precios: planes de analítica de salud",
+      "description": "Elige entre los planes Core, Daily o Max de analítica de salud inteligente. Prueba gratuita de 5 días, más de 200 servicios en 20 categorías de salud. Desde 19 $ al mes. Seguro y conforme con HIPAA."
+    },
+    "hero": {
+      "label": "Servicios",
+      "title": "Elige la profundidad de tu Human Data Model",
+      "body": "Cada plan amplía lo que el modelo puede ver. Más categorías significan más contexto y orientación más clara.",
+      "monthly": "Mensual",
+      "yearly": "Anual",
+      "yearlySaving": "−17 %"
+    },
+    "plans": {
+      "mostPopular": "Más elegido",
+      "perMonth": "/mes",
+      "perYear": "/año",
+      "getStarted": "Empezar",
+      "trialNote": "Todos los planes incluyen una <strong>prueba de 5 días</strong>. Puedes cancelar cuando quieras durante la prueba.",
+      "items": [
+        {
+          "name": "Core",
+          "description": "Analítica de salud esencial para uso personal",
+          "categories": "3 categorías",
+          "features": [
+            "Panel de salud básico",
+            "Acceso a 3 categorías de servicios",
+            "10 GB de almacenamiento en el Archivo del Modelo",
+            "Informes de salud mensuales",
+            "Soporte por correo electrónico",
+            "Cifrado de datos",
+            "Conexión de dispositivos (hasta 2)"
+          ]
+        },
+        {
+          "name": "Daily",
+          "description": "Información diaria y seguimiento completo",
+          "categories": "10 categorías",
+          "features": [
+            "Todo lo de Core",
+            "10 categorías",
+            "50 GB de almacenamiento en el Archivo del Modelo",
+            "Informes de salud diarios",
+            "Acceso a Health Guide",
+            "Soporte prioritario por correo electrónico",
+            "Conexión de dispositivos (hasta 5)",
+            "Integración de resultados de laboratorio",
+            "Análisis de datos genéticos"
+          ]
+        },
+        {
+          "name": "Max",
+          "description": "Inteligencia de salud completa para un seguimiento exigente",
+          "categories": "20 categorías",
+          "features": [
+            "Todo lo de Daily",
+            "Las 20 categorías de servicios",
+            "200 GB de almacenamiento en el Archivo del Modelo",
+            "Información con IA en tiempo real",
+            "Soporte prioritario 24/7",
+            "Conexión de dispositivos ilimitada",
+            "Analítica predictiva avanzada",
+            "Generación de informes personalizados",
+            "Cuentas familiares (hasta 5 miembros)",
+            "Acceso a la API para desarrolladores"
+          ]
+        }
+      ]
+    },
+    "compare": {
+      "label": "Comparar",
+      "title": "Todas las funciones, una al lado de la otra",
+      "featureHeader": "Función",
+      "included": "Incluido",
+      "rows": [
+        { "name": "Panel de salud", "core": "Básico", "daily": "Avanzado", "max": "Avanzado" },
+        { "name": "Categorías de servicios", "core": "3", "daily": "10", "max": "Las 20" },
+        { "name": "Almacenamiento del Archivo del Modelo", "core": "10 GB", "daily": "50 GB", "max": "200 GB" },
+        { "name": "Informes de salud", "core": "Mensuales", "daily": "Diarios", "max": "En tiempo real" },
+        { "name": "Soporte", "core": "Correo electrónico", "daily": "Correo prioritario", "max": "Prioritario 24/7" },
+        { "name": "Cifrado de datos", "core": true, "daily": true, "max": true },
+        { "name": "Conexión de dispositivos", "core": "Hasta 2", "daily": "Hasta 5", "max": "Ilimitada" },
+        { "name": "Health Guide", "core": false, "daily": true, "max": true },
+        { "name": "Integración de resultados de laboratorio", "core": false, "daily": true, "max": true },
+        { "name": "Análisis de datos genéticos", "core": false, "daily": true, "max": true },
+        { "name": "Analítica predictiva", "core": false, "daily": false, "max": true },
+        { "name": "Generación de informes personalizados", "core": false, "daily": false, "max": true },
+        { "name": "Cuentas familiares", "core": false, "daily": false, "max": "Hasta 5" },
+        { "name": "Acceso a la API", "core": false, "daily": false, "max": true }
+      ]
+    },
+    "testimonials": {
+      "label": "Voces",
+      "title": "Lo que notan las personas usuarias",
+      "items": [
+        {
+          "quote": "Perfecto para seguir mis métricas de salud básicas. Sencillo y eficaz.",
+          "author": "Sarah M.",
+          "plan": "Core"
+        },
+        {
+          "quote": "Health Guide cambió mi forma de entender mis datos de salud. Vale cada céntimo.",
+          "author": "Michael R.",
+          "plan": "Daily"
+        },
+        {
+          "quote": "Como profesional sanitaria, la analítica completa y las cuentas familiares son de un valor enorme.",
+          "author": "Dra. Emily Chen",
+          "plan": "Max"
+        }
+      ]
+    },
+    "why": {
+      "label": "Por qué BioMath Core",
+      "title": "Pensado para una claridad duradera",
+      "items": [
+        {
+          "title": "Información a tiempo",
+          "body": "Respuestas sobre tus señales de salud a medida que los modelos aprenden de tus patrones."
+        },
+        {
+          "title": "Seguridad alineada con HIPAA",
+          "body": "Protección de nivel empresarial para que los datos sensibles sigan siendo privados por defecto."
+        },
+        {
+          "title": "Apoyo humano",
+          "body": "Especialistas y ayuda prioritaria cuando necesitas entender qué significan los datos."
+        }
+      ]
+    },
+    "faq": {
+      "label": "Preguntas frecuentes",
+      "title": "Preguntas habituales",
+      "items": [
+        {
+          "question": "¿Puedo cambiar de plan cuando quiera?",
+          "answer": "Sí, puedes subir o bajar de plan en cualquier momento. Los cambios se aplican de inmediato y prorrateamos el importe correspondiente."
+        },
+        {
+          "question": "¿Qué ocurre cuando termina la prueba de 5 días?",
+          "answer": "Al terminar la prueba de 5 días se cobra automáticamente el plan y el periodo de facturación que hayas elegido. Puedes cancelar en cualquier momento durante la prueba sin ningún cargo."
+        },
+        {
+          "question": "¿Están seguros mis datos de salud?",
+          "answer": "Sin duda. Todos los planes incluyen cifrado de nivel empresarial, almacenamiento seguro y cumplimiento de la normativa HIPAA. Tus datos de salud nunca se comparten con terceros sin tu consentimiento explícito."
+        },
+        {
+          "question": "¿Hay descuento por facturación anual?",
+          "answer": "Sí. La facturación anual ahorra aproximadamente un 17 % frente al pago mensual. Verás el precio con descuento al seleccionar la facturación anual arriba."
+        }
+      ],
+      "moreText": "¿Quieres una visión más completa antes de elegir un plan?",
+      "moreCta": "Conoce más sobre BioMath Core →"
+    },
+    "closing": {
+      "title": "¿Listo para empezar con un contexto de salud más claro?",
+      "body": "Empieza con una prueba de 5 días. Amplía categorías a medida que crece tu Human Data Model.",
+      "ctaTrial": "Empezar la prueba gratuita",
+      "ctaContact": "Hablar con ventas",
+      "footnote": "Alineado con HIPAA · Cifrado en tránsito y en reposo · Cancela cuando quieras"
+    },
+    "errors": {
+      "title": "Error de pago",
+      "dismiss": "Cerrar",
+      "priceNotConfigured": "No hay un ID de precio de Stripe configurado para este plan.",
+      "subscriptionFailed": "No se pudo crear la suscripción",
+      "notAuthenticated": "Sesión no iniciada",
+      "paymentFailed": "El pago no se completó"
+    }
+  }
+}

@@ -1,0 +1,426 @@
+{
+  "faq": {
+    "seoTitle": "常见问题",
+    "seoDescription": "查看关于 BioMath Core 的常见问题解答：服务、价格、数据安全、报告等。快速找到健康数据分析方面的答案。",
+    "categoriesOrg": {
+      "question": "各类别是如何划分的？",
+      "answer": "BioMath Core 提供 {{categoryCount}} 个健康类别和 {{serviceCount}} 项服务（含 Human Data Model 工具）。每个类别按真实生活需求归类服务——重点健康、睡眠、营养、长寿、长者照护等。"
+    },
+    "hdmQuestion": "{{name}} 包含哪些内容？",
+    "categoryQuestion": "{{name}} 中有哪些服务？",
+    "catalogRef": {
+      "title": "浏览每项服务的说明",
+      "subtitle": "完整的实时目录——展开一个类别，即可查看每项服务的名称与说明。"
+    },
+    "cta": {
+      "title": "还有疑问吗？",
+      "body": "关于账户、账单和服务的问题，我们的团队随时为您解答。",
+      "button": "联系支持团队"
+    },
+    "sections": [
+      {
+        "id": "approach",
+        "title": "了解我们的理念",
+        "items": [
+          {
+            "id": "what-makes-different",
+            "question": "BioMath Core 与其他健康类应用有何不同？",
+            "answer": "我们不是记录数字，而是把身体发出的信号转化为意义，再转化为清晰、温和、贴合个人的建议。我们看重理解而非信息轰炸，看重安心而非紧迫，看重解读而非诊断。"
+          },
+          {
+            "id": "is-this-medical",
+            "question": "这是医学诊断工具吗？",
+            "answer": "不是。BioMath Core 是聚焦解读、科普与预防的健康智能服务。我们帮助您理解身体每天的反应，但绝不诊断疾病。当某些情况需要专业关注时，我们会明确提示。"
+          },
+          {
+            "id": "ux-tone",
+            "question": "我能得到什么样的建议？",
+            "answer": "我们的建议是陪伴式的，而非命令式；是通俗的，而非技术性的。我们不使用制造恐惧的措辞。您永远不会「失败」，只是在学习。每一条洞察都旨在增强信心、减轻压力，而不是制造焦虑。"
+          }
+        ]
+      },
+      {
+        "id": "getting-started",
+        "title": "开始使用",
+        "items": [
+          {
+            "id": "what-is",
+            "question": "什么是 BioMath Core？",
+            "answer": "BioMath Core 是一项健康智能服务，帮助您理解身体每天的反应，并以清晰、温和、贴合个人的行动加以引导。它带来更清楚的认识、情绪上的安心和主动的自我照护，而不带来临床压力。"
+          },
+          {
+            "id": "who-for",
+            "question": "BioMath Core 适合谁？",
+            "answer": "适合希望获得清晰解释、平和说明和循序渐进改善的人——而不是医学术语或满屏数字的仪表盘。无论是初学者、忙碌的职场人士、注重养生的用户，还是希望长期改善健康的任何人，都适用。"
+          },
+          {
+            "id": "need-medical",
+            "question": "使用它需要医学知识吗？",
+            "answer": "不需要。所有内容都用通俗语言说明。报告、目标和建议的措辞，就像在与一位人类教练交谈，而不是与临床医生对话。"
+          },
+          {
+            "id": "is-medical",
+            "question": "这是医疗服务吗？",
+            "answer": "不是。BioMath Core 是健康服务，并非医疗机构。它不诊断也不治疗疾病。"
+          },
+          {
+            "id": "need-devices",
+            "question": "开始使用需要设备吗？",
+            "answer": "不需要。仅凭问卷即可开始。设备能让报告更精确，但并非必需。"
+          }
+        ]
+      },
+      {
+        "id": "subscriptions",
+        "title": "订阅与付款",
+        "items": [
+          {
+            "id": "purchase",
+            "question": "如何购买订阅？",
+            "answer": "您可以在定价页面直接订阅。付款完成后，会员专区内的进阶功能即会解锁。"
+          },
+          {
+            "id": "plans",
+            "question": "每个方案包含什么？",
+            "answer": "基础版：标准报告、核心助手、设备连接与仪表盘。\n专业版：第二意见、更深入的洞察、PDF 导出与智能提醒。\n企业版：团队功能、分析能力与专属上手指导。"
+          },
+          {
+            "id": "free-start",
+            "question": "可以免费开始吗？",
+            "answer": "可以。升级之前，初始设置流程是免费的。"
+          },
+          {
+            "id": "change-plan",
+            "question": "如何升级或降级？",
+            "answer": "您可以随时在账户设置中更换方案。"
+          },
+          {
+            "id": "cancel",
+            "question": "如何取消订阅？",
+            "answer": "在账单设置中一键即可取消。在当前计费周期结束前，您仍可继续使用。"
+          }
+        ]
+      },
+      {
+        "id": "onboarding",
+        "title": "初始设置与问卷",
+        "items": [
+          {
+            "id": "why-questionnaires",
+            "question": "为什么需要填写问卷？",
+            "answer": "问卷让系统了解您的基线状态，从而提供贴合个人的背景信息，而不是泛泛的建议。"
+          },
+          {
+            "id": "onboarding-time",
+            "question": "初始设置需要多久？",
+            "answer": "通常 3 到 5 分钟。"
+          },
+          {
+            "id": "skip-questions",
+            "question": "可以跳过部分问题吗？",
+            "answer": "可以。您可以跳过，稍后再补充。"
+          },
+          {
+            "id": "update-answers",
+            "question": "之后可以修改答案吗？",
+            "answer": "可以，随时在会员专区中修改。"
+          },
+          {
+            "id": "refresh-frequency",
+            "question": "多久更新一次答案比较好？",
+            "answer": "当您的健康习惯、睡眠规律、工作强度或生活方式发生变化时。"
+          }
+        ]
+      },
+      {
+        "id": "categories",
+        "title": "类别与服务",
+        "items": [
+          {
+            "id": "use-all",
+            "question": "必须使用所有类别吗？",
+            "answer": "不必。只使用与您相关的部分即可，没有任何强制。"
+          },
+          {
+            "id": "add-services",
+            "question": "以后可以添加更多服务吗？",
+            "answer": "可以。您随时能在服务目录或会员专区中启用新的服务。"
+          },
+          {
+            "id": "which-service",
+            "question": "我怎么知道哪项服务适合我？",
+            "answer": "BioMath Core 会依据您当天的快照和最新报告给出建议。您也可以在下方目录或学习中心中查看每项服务的说明。"
+          },
+          {
+            "id": "adaptive",
+            "question": "服务是固定的还是会自适应？",
+            "answer": "会自适应——内容会随着您的数据和进展不断演进。"
+          }
+        ]
+      },
+      {
+        "id": "member-zone",
+        "title": "会员专区",
+        "items": [
+          {
+            "id": "what-member-zone",
+            "question": "什么是会员专区？",
+            "answer": "这是您的个人交互式仪表盘，所有功能都在这里：报告、目标、快照、设备、第二意见和对话。"
+          },
+          {
+            "id": "dashboard-features",
+            "question": "在仪表盘上可以做什么？",
+            "answer": "您可以看到当前状态、变化趋势、今日目标、近期进展，以及一个轻松可行的下一步。"
+          },
+          {
+            "id": "daily-snapshot",
+            "question": "什么是每日快照？",
+            "answer": "对「您今天的身体状态如何」的简短说明，并附上一条温和的建议。"
+          },
+          {
+            "id": "goals-habits",
+            "question": "目标和习惯是如何运作的？",
+            "answer": "您可以选择与自身生理状态相关的小行动。BioMath Core 会自动调整难度。"
+          },
+          {
+            "id": "nudges",
+            "question": "什么是温和提醒？",
+            "answer": "基于您当前状态而非定时器的简短鼓励式提示。"
+          },
+          {
+            "id": "download-reports",
+            "question": "可以下载我的报告吗？",
+            "answer": "可以。专业版支持导出 PDF。"
+          },
+          {
+            "id": "devices-connect",
+            "question": "可以连接和断开设备吗？",
+            "answer": "可以，随时都行。"
+          },
+          {
+            "id": "signal-hub",
+            "question": "什么是 Signal Hub？",
+            "answer": "Signal Hub 汇总您已启用的数据来源、信号强度和近期变化，让您了解报告的依据是什么。"
+          },
+          {
+            "id": "report-favorites",
+            "question": "可以保存和整理报告吗？",
+            "answer": "可以。您能把报告加入收藏，并添加个人备注以便快速查阅。"
+          }
+        ]
+      },
+      {
+        "id": "health-guide",
+        "title": "Health Guide",
+        "items": [
+          {
+            "id": "assistant-features",
+            "question": "助手能做什么？",
+            "answer": "它会解释您的状态、协助解读报告、用通俗语言回答健康相关问题，并把洞察转化为行动。"
+          },
+          {
+            "id": "text-voice",
+            "question": "只支持文字，还是也支持语音？",
+            "answer": "文字与（专业版中的）语音互动都支持。"
+          },
+          {
+            "id": "vs-chatbots",
+            "question": "它与聊天机器人有什么不同？",
+            "answer": "它依据您的个人背景和当前状态作答，而不是给出通用答案。"
+          },
+          {
+            "id": "step-by-step",
+            "question": "它能一步步指导我吗？",
+            "answer": "可以。它能像一位人类向导那样，带您走完一份报告、一个计划或一套日常安排。"
+          },
+          {
+            "id": "learning",
+            "question": "助手会随时间学习吗？",
+            "answer": "会——它会记住您偏好的表达风格（简明说明或深入解析）。"
+          },
+          {
+            "id": "multi-model-mode",
+            "question": "什么是多模型模式？",
+            "answer": "多模型模式会同时运行多个 AI 视角，以拓宽分析广度，有助于同时呈现生理层面和行为层面的洞察。"
+          }
+        ]
+      },
+      {
+        "id": "second-opinion",
+        "title": "第二意见",
+        "items": [
+          {
+            "id": "second-opinion-what",
+            "question": "BioMath Core 中的「第二意见」是什么？",
+            "answer": "这项功能会呈现两个 AI 模型给出的两种解读——生理视角与行为视角。"
+          },
+          {
+            "id": "why-two-models",
+            "question": "为什么要用两个模型？",
+            "answer": "因为健康不止一个维度——既有身体的反应，也有生活方式的影响。"
+          },
+          {
+            "id": "when-use-second",
+            "question": "什么时候适合使用第二意见？",
+            "answer": "当您想要更深入的分析、更多的安心感，或另一种解释角度时。"
+          },
+          {
+            "id": "compare-merge",
+            "question": "可以对比或合并它们吗？",
+            "answer": "可以。您能并排对比，并合并成一份最终摘要。"
+          },
+          {
+            "id": "aggregated-report",
+            "question": "汇总报告是如何生成的？",
+            "answer": "系统会把两个模型中最有把握的发现合并为一份统一报告，并给出清晰的优先级和单一行动计划。"
+          },
+          {
+            "id": "replace-doctor",
+            "question": "第二意见能取代医生吗？",
+            "answer": "不能。它是对人工照护的补充，并不取代医疗专业人员。"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "title": "报告与洞察",
+        "items": [
+          {
+            "id": "report-quality",
+            "question": "什么是报告质量评分？",
+            "answer": "这是基于信号覆盖面、一致性和数据新鲜度的清晰度与可靠性指标，帮助您判断当前报告的可信程度。"
+          },
+          {
+            "id": "data-coverage",
+            "question": "数据覆盖度是什么意思？",
+            "answer": "它显示您在设备、问卷、备注和报告等方面的输入完整程度。覆盖度越高，背景信息越充分。"
+          },
+          {
+            "id": "knowledge-snapshot",
+            "question": "什么是知识快照？",
+            "answer": "快照是 BioMath Core 依据您最新的信号与历史记录，对您当前健康状态形成的理解。"
+          },
+          {
+            "id": "action-plan",
+            "question": "什么是行动计划生成器？",
+            "answer": "它把洞察转化为 7 天、14 天和 30 天的步骤，并配有优先级和勾选框，让进展既有条理又不费力。"
+          }
+        ]
+      },
+      {
+        "id": "ai-systems",
+        "title": "AI 系统",
+        "items": [
+          {
+            "id": "ai-pipeline",
+            "question": "AI 报告流程是如何运作的？",
+            "answer": "系统先从您的设备、问卷、备注和报告中收集信号，汇总为知识快照；随后并行执行多模型分析，并把最有把握的发现合并为一份统一报告。"
+          },
+          {
+            "id": "memory-depth",
+            "question": "什么是记忆深度？",
+            "answer": "记忆深度反映系统在生成报告时可调用的相关历史与背景信息的多少。您添加的信号越多，它就越深。"
+          },
+          {
+            "id": "knowledge-timeline",
+            "question": "什么是知识时间线？",
+            "answer": "它按时间列出您的信号与报告中的关键变化，让您看清背景信息如何随时间演变。"
+          },
+          {
+            "id": "report-styles",
+            "question": "可以更换报告的呈现方式吗？",
+            "answer": "可以。您可根据需要的详细程度，选择快速摘要、均衡分析或完整的深度解读。"
+          }
+        ]
+      },
+      {
+        "id": "devices",
+        "title": "设备与监测",
+        "items": [
+          {
+            "id": "supported-devices",
+            "question": "支持哪些设备？",
+            "answer": "Apple Watch、三星、Fitbit、Amazon Halo、Oura、连续血糖监测仪，以及其他通过认证的设备。"
+          },
+          {
+            "id": "connect-device",
+            "question": "如何连接设备？",
+            "answer": "通过会员专区中分步引导的连接流程完成。"
+          },
+          {
+            "id": "store-data",
+            "question": "你们会存储原始健康数据吗？",
+            "answer": "不会。我们解读的是指标，无需保存原始数据流。"
+          },
+          {
+            "id": "syncing-stops",
+            "question": "如果同步中断怎么办？",
+            "answer": "您会收到提醒，一键即可重新连接。"
+          },
+          {
+            "id": "disable-sharing",
+            "question": "可以关闭数据共享吗？",
+            "answer": "可以——在设置中即刻关闭。"
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "隐私与安全",
+        "items": [
+          {
+            "id": "data-protection",
+            "question": "我的数据如何受到保护？",
+            "answer": "我们采用加密、个人身份信息隔离以及匿名化处理层。"
+          },
+          {
+            "id": "sell-data",
+            "question": "你们会出售或交换数据吗？",
+            "answer": "不会。我们从不出售、授权或以任何方式变现个人健康数据。"
+          },
+          {
+            "id": "request-deletion",
+            "question": "可以申请删除数据吗？",
+            "answer": "可以。我们按需提供数据删除。"
+          },
+          {
+            "id": "export-data",
+            "question": "可以导出我的数据吗？",
+            "answer": "可以，支持 PDF 或原始 JSON 摘要。"
+          },
+          {
+            "id": "data-storage",
+            "question": "数据存放在哪里？",
+            "answer": "存放在符合现行隐私标准的安全数据中心。"
+          }
+        ]
+      },
+      {
+        "id": "wellness-vs-medical",
+        "title": "健康服务与医疗的区别",
+        "items": [
+          {
+            "id": "diagnostic-tool",
+            "question": "这是诊断工具吗？",
+            "answer": "不是。它是提供洞察与引导的服务，而非诊断系统。"
+          },
+          {
+            "id": "emergency",
+            "question": "遇到医疗紧急情况该怎么办？",
+            "answer": "请联系急救服务或医生。BioMath Core 不适用于紧急救治。"
+          },
+          {
+            "id": "replace-doctor-medical",
+            "question": "它能取代我的医生吗？",
+            "answer": "不能——它是对专业医疗的补充。"
+          },
+          {
+            "id": "share-with-doctor",
+            "question": "可以把结果分享给医生吗？",
+            "answer": "可以。您随时能导出或出示报告。"
+          }
+        ]
+      }
+    ]
+  }
+}

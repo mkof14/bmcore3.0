@@ -28,7 +28,7 @@ export default function PaymentConfirmationModal({
 
   return (
     <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4 overflow-y-auto">
-      <div className="bg-gradient-to-b from-gray-900 to-gray-950 rounded-2xl max-w-2xl w-full border border-gray-800 my-8 max-h-[90vh] overflow-y-auto">
+      <div className="bg-gradient-to-b from-[var(--bm-surface)] to-[var(--bm-page)] rounded-2xl max-w-2xl w-full border border-gray-800 my-8 max-h-[90vh] overflow-y-auto">
         <div className="p-6 border-b border-gray-800 flex items-center justify-between sticky top-0 bg-gray-900 z-10">
           <div>
             <h2 className="text-2xl font-bold text-white">Confirm Your Subscription</h2>

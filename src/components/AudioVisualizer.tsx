@@ -28,7 +28,7 @@ export default function AudioVisualizer({ isActive, type, intensity = 0.5 }: Aud
   }, [isActive, intensity, barsCount]);
 
   const getBarColor = (index: number) => {
-    if (!isActive) return 'bg-gray-700';
+    if (!isActive) return 'bg-gray-300 dark:bg-neutral-600';
 
     if (type === 'microphone') {
       const colors = [
@@ -42,37 +42,28 @@ export default function AudioVisualizer({ isActive, type, intensity = 0.5 }: Aud
         'bg-orange-600',
       ];
       return colors[index];
-    } else {
-      const colors = [
-        'bg-blue-600',
-        'bg-blue-500',
-        'bg-cyan-500',
-        'bg-teal-400',
-        'bg-teal-400',
-        'bg-cyan-500',
-        'bg-blue-500',
-        'bg-blue-600',
-      ];
-      return colors[index];
     }
+
+    const colors = [
+      'bg-orange-600',
+      'bg-orange-500',
+      'bg-orange-400',
+      'bg-amber-500',
+      'bg-amber-400',
+      'bg-orange-400',
+      'bg-orange-500',
+      'bg-orange-600',
+    ];
+    return colors[index];
   };
 
   return (
-    <div className="flex items-center gap-0.5 h-6">
+    <div className="flex h-5 items-center gap-0.5" aria-hidden>
       {barHeights.map((height, index) => (
         <div
           key={index}
-          className={`w-1 rounded-full transition-all duration-100 ${getBarColor(index)} ${
-            isActive ? 'shadow-lg' : ''
-          }`}
-          style={{
-            height: `${height}%`,
-            boxShadow: isActive
-              ? type === 'microphone'
-                ? '0 0 8px rgba(251, 146, 60, 0.6)'
-                : '0 0 8px rgba(59, 130, 246, 0.6)'
-              : 'none',
-          }}
+          className={`w-0.5 rounded-full transition-all duration-100 ${getBarColor(index)}`}
+          style={{ height: `${Math.max(18, height)}%` }}
         />
       ))}
     </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { User, Camera, Save, Plus, Trash2 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserInfo, notifyUserSuccess } from '../../lib/adminNotify';
@@ -16,6 +17,7 @@ interface Profile {
 }
 
 export default function PersonalInfoSection() {
+  const { t } = useTranslation();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -182,10 +184,10 @@ export default function PersonalInfoSection() {
       <div className="mb-6">
         <h1 className="text-3xl font-semibold text-gray-900 mb-2 flex items-center gap-3">
           <User className="h-8 w-8 text-orange-500" />
-          Personal Information
+          {t('member.profile.title')}
         </h1>
         <p className="text-gray-600">
-          Manage your profile photo and custom information fields
+          {t('member.profile.subtitle')}
         </p>
       </div>
 
@@ -200,7 +202,7 @@ export default function PersonalInfoSection() {
         <div className="md:col-span-1">
           <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-lg">
             <ReportBrandHeader variant="strip" subtitle="Profile Photo" className="mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Profile Photo</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('member.profile.photo')}</h3>
             <div className="flex flex-col items-center">
               <div className="relative mb-4">
                 {profile.avatar_url ? (
@@ -236,7 +238,7 @@ export default function PersonalInfoSection() {
                 type="text"
                 value={profile.avatar_url || ''}
                 onChange={(e) => setProfile({ ...profile, avatar_url: e.target.value })}
-                placeholder="Enter image URL"
+                placeholder={t('member.profile.imageUrl')}
                 className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
               />
               <div className="text-xs text-gray-500 mt-2 text-center space-y-1">
@@ -251,10 +253,10 @@ export default function PersonalInfoSection() {
         <div className="md:col-span-2">
           <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-lg">
             <ReportBrandHeader variant="strip" subtitle="Basic Information" className="mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Basic Information</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('member.profile.basicInfo')}</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t('member.profile.fullName')}</label>
                 <input
                   type="text"
                   value={profile.name || ''}
@@ -313,7 +315,7 @@ export default function PersonalInfoSection() {
 
           <div className="mt-6 bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-lg">
             <ReportBrandHeader variant="strip" subtitle="Custom Fields" className="mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Custom Information Fields</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('member.profile.customFields')}</h3>
             <p className="text-sm text-gray-600 mb-4">
               Add any additional information you consider important for your health profile
             </p>
@@ -359,14 +361,14 @@ export default function PersonalInfoSection() {
                 value={newField.key}
                 onChange={(e) => setNewField({ ...newField, key: e.target.value })}
                 className="flex-1 px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                placeholder="New field name"
+                placeholder={t('member.profile.fieldName')}
               />
               <input
                 type="text"
                 value={newField.value}
                 onChange={(e) => setNewField({ ...newField, value: e.target.value })}
                 className="flex-1 px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                placeholder="Value"
+                placeholder={t('member.profile.fieldValue')}
               />
               <button
                 onClick={addCustomField}

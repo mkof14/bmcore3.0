@@ -1,0 +1,1004 @@
+{
+  "servicesData": {
+    "categories": {
+      "critical-health": {
+        "name": "الصحة الحرجة",
+        "description": "المراقبة الصحية المتقدمة وتقييم المخاطر للحالات الطبية الحرجة",
+        "services": {
+          "risk-insight": {
+            "name": "نظرة المخاطر",
+            "description": "تقييم شامل للمخاطر الصحية باستخدام نماذج الرياضيات الحيوية"
+          },
+          "lab-results": {
+            "name": "شارح نتائج المختبر",
+            "description": "تفسير مدعوم بالذكاء الاصطناعي لنتائج الاختبارات المعملية"
+          },
+          "lab-results-trend": {
+            "name": "اتجاه نتائج المختبر",
+            "description": "قارن نتائج المختبر مع مرور الوقت وحدد التغييرات المهمة والتشوهات المتكررة واختبارات المتابعة المفقودة."
+          },
+          "drug-interaction": {
+            "name": "مدقق التفاعل بين الأدوية والأدوية",
+            "description": "تحليل التفاعل الدوائي في الوقت الحقيقي"
+          },
+          "medication-reconciliation": {
+            "name": "التوفيق الدواء",
+            "description": "قم بإنشاء قائمة أدوية مؤكدة واحدة من الوصفات الطبية والسجلات الطبية وإدخالات المستخدم، وحدد التكرارات والتعارضات والتعليمات القديمة."
+          },
+          "symptom-analyzer": {
+            "name": "محلل الأعراض",
+            "description": "تقييم الأعراض الذكية والفرز"
+          },
+          "chronic-disease": {
+            "name": "مدرب الأمراض المزمنة",
+            "description": "إدارة شخصية للحالات المزمنة"
+          },
+          "medication-adherence": {
+            "name": "الالتزام بالأدوية باستخدام الذكاء الاصطناعي",
+            "description": "تتبع الأدوية الذكية والتذكير"
+          },
+          "care-cost": {
+            "name": "محسن تكلفة الرعاية",
+            "description": "تحليل تكلفة الرعاية الصحية وتحسينها"
+          },
+          "doctor-visit-prep": {
+            "name": "زيارة الطبيب الإعدادية",
+            "description": "قم بإعداد ملخص زيارة موجز مع سبب الموعد والتغييرات الأخيرة والأدوية الحالية والنتائج ذات الصلة والأعراض والأسئلة."
+          },
+          "prescription-price-comparison": {
+            "name": "مقارنة أسعار الوصفات الطبية",
+            "description": "قارن الأسعار المتاحة للأدوية الموصوفة من الصيدلية والخيار العام والجرعة وطريقة الدفع."
+          },
+          "post-surgery": {
+            "name": "متتبع التعافي بعد الجراحة",
+            "description": "مراقبة الاسترداد والتوجيه"
+          },
+          "clinical-trial": {
+            "name": "مكتشف التجارب السريرية",
+            "description": "مطابقة التجارب السريرية الشخصية"
+          },
+          "pre-surgery": {
+            "name": "الاستعداد قبل الجراحة",
+            "description": "تقييم التحضير الجراحي"
+          },
+          "rare-disease": {
+            "name": "مستكشف الأمراض النادرة",
+            "description": "دعم لإدارة الحالات النادرة"
+          },
+          "med-refill": {
+            "name": "إعادة تعبئة ميد الذكية",
+            "description": "الإدارة الآلية لإعادة صرف الوصفات الطبية"
+          },
+          "pain-map": {
+            "name": "خريطة الألم بالذكاء الاصطناعي",
+            "description": "تتبع الألم وتحليل الأنماط"
+          },
+          "vaccination": {
+            "name": "جواز التطعيم",
+            "description": "سجلات التحصين الرقمية"
+          },
+          "post-covid": {
+            "name": "مخطط ما بعد كوفيد",
+            "description": "التخطيط الطويل للتعافي من فيروس كورونا"
+          },
+          "genetic-risk": {
+            "name": "التنبؤ بمخاطر الأمراض الوراثية",
+            "description": "تقييم المخاطر الجينومية"
+          },
+          "emergency-profile": {
+            "name": "الملف الطبي للطوارئ",
+            "description": "الوصول السريع إلى المعلومات الصحية في حالات الطوارئ"
+          },
+          "remote-vitals": {
+            "name": "مراقبة العناصر الحيوية عن بعد",
+            "description": "متابعة مستمرة للعلامات الحيوية"
+          }
+        }
+      },
+      "everyday-wellness": {
+        "name": "العافية اليومية",
+        "description": "تحسين الصحة اليومية وممارسات العافية",
+        "services": {
+          "travel-kit": {
+            "name": "طقم سفر صحي",
+            "description": "الاستعدادات الصحية للسفر والنصائح"
+          },
+          "goal-assistant": {
+            "name": "مساعد الهدف",
+            "description": "تحديد الأهداف الصحية وتتبعها"
+          },
+          "habit-tracker": {
+            "name": "تعقب العادة اليومية",
+            "description": "بناء والحفاظ على العادات الصحية"
+          },
+          "stress-reduction": {
+            "name": "دليل الحد من التوتر",
+            "description": "إدارة الإجهاد المبني على الأدلة"
+          },
+          "energy-optimizer": {
+            "name": "محسن مستوى الطاقة",
+            "description": "تعزيز الطاقة اليومية والحفاظ عليها"
+          },
+          "mind-body": {
+            "name": "تمارين الاتصال بين العقل والجسم",
+            "description": "ممارسات العافية الشاملة"
+          },
+          "affirmations": {
+            "name": "مولد التأكيد الإيجابي",
+            "description": "رسائل إيجابية شخصية"
+          },
+          "gratitude": {
+            "name": "مطالبات مجلة الامتنان",
+            "description": "ممارسة الامتنان اليومية"
+          },
+          "digital-wellbeing": {
+            "name": "نقاط الرفاهية الرقمية",
+            "description": "تحسين استخدام التكنولوجيا"
+          },
+          "mindful-eating": {
+            "name": "مساعد الأكل اليقظ",
+            "description": "ممارسات الأكل الواعية"
+          },
+          "work-life": {
+            "name": "مستشار التوازن بين العمل والحياة",
+            "description": "استراتيجيات تحسين التوازن"
+          },
+          "immunity-booster": {
+            "name": "خطة تعزيز المناعة",
+            "description": "تقوية جهاز المناعة"
+          },
+          "breathing": {
+            "name": "تمارين التنفس الواعي",
+            "description": "تقنيات التنفس الموجهة"
+          },
+          "ergonomic": {
+            "name": "إعداد مساحة العمل المريحة",
+            "description": "تحسين صحة مساحة العمل"
+          },
+          "social-connection": {
+            "name": "تعقب الاتصال الاجتماعي",
+            "description": "مراقبة الصحة الاجتماعية"
+          }
+        }
+      },
+      "longevity": {
+        "name": "طول العمر ومكافحة الشيخوخة",
+        "description": "علوم الشيخوخة المتقدمة وتحسين العمر",
+        "services": {
+          "biological-age": {
+            "name": "عوامل العصر البيولوجي",
+            "description": "تقييم العمر البيولوجي الحقيقي"
+          },
+          "polygenic-risk": {
+            "name": "عارض المخاطر الجينية",
+            "description": "تحليل المخاطر الصحية متعددة الجينات"
+          },
+          "epigenetic-age": {
+            "name": "لوحة معلومات العمر اللاجيني",
+            "description": "تتبع عمر مثيلة الحمض النووي"
+          },
+          "pharmacogenomics": {
+            "name": "متطابق علم الصيدلة الجيني",
+            "description": "توافق الأدوية الوراثية"
+          },
+          "genetic-traits": {
+            "name": "مفسر الصفات الوراثية",
+            "description": "فهم التركيب الجيني الخاص بك"
+          },
+          "telomere": {
+            "name": "تحليل طول التيلومير",
+            "description": "العلامات الحيوية للشيخوخة الخلوية"
+          },
+          "nad-optimization": {
+            "name": "دليل التحسين NAD+",
+            "description": "تعزيز الطاقة الخلوية"
+          },
+          "senolytics": {
+            "name": "توصية سينوليتيكش",
+            "description": "تدخل الشيخوخة الخلوية"
+          },
+          "mitochondrial": {
+            "name": "تقييم صحة الميتوكوندريا",
+            "description": "تحسين القوة الخلوية"
+          },
+          "longevity-diet": {
+            "name": "مخطط النظام الغذائي لطول العمر",
+            "description": "التغذية لفترة صحية ممتدة"
+          },
+          "glycemic-control": {
+            "name": "مستشار مراقبة نسبة السكر في الدم",
+            "description": "تحسين نسبة السكر في الدم"
+          },
+          "cellular-senescence": {
+            "name": "نقاط الشيخوخة الخلوية",
+            "description": "تتبع تراكم الخلايا الشيخوخة"
+          },
+          "microbiome": {
+            "name": "تحليل التنوع الميكروبيوم",
+            "description": "اتصال صحة الأمعاء بطول العمر"
+          },
+          "gene-expression": {
+            "name": "تقرير التعبير الجيني لطول العمر",
+            "description": "النشاط الجيني المرتبط بالشيخوخة"
+          },
+          "organ-age": {
+            "name": "تقييم عمر العضو",
+            "description": "تحليل شيخوخة الأعضاء الفردية"
+          }
+        }
+      },
+      "mental-wellness": {
+        "name": "العافية العقلية",
+        "description": "الصحة النفسية والتحسين المعرفي",
+        "services": {
+          "mindfulness": {
+            "name": "دليل اليقظة",
+            "description": "ممارسات التأمل والتوعية"
+          },
+          "motivation": {
+            "name": "الداعم الدافع",
+            "description": "تعزيز الدافع النفسي"
+          },
+          "digital-detox": {
+            "name": "مخطط التخلص من السموم الرقمي",
+            "description": "استراتيجيات كسر التكنولوجيا"
+          },
+          "gratitude-wall": {
+            "name": "جدار الامتنان الرقمي",
+            "description": "مشاركة تقدير المجتمع"
+          },
+          "social-battery": {
+            "name": "التنبؤ الاجتماعي للبطارية",
+            "description": "إدارة الطاقة الاجتماعية"
+          },
+          "isolation-coach": {
+            "name": "مدرب العزلة الاجتماعية",
+            "description": "دعم بناء الاتصال"
+          },
+          "cognitive-performance": {
+            "name": "محسن الأداء المعرفي",
+            "description": "تحسين الحدة العقلية"
+          },
+          "emotional-regulation": {
+            "name": "أدوات التنظيم العاطفي",
+            "description": "تقنيات إدارة العواطف"
+          },
+          "cbt-modules": {
+            "name": "وحدات العلاج السلوكي المعرفي (CBT).",
+            "description": "تمارين العلاج المبني على الأدلة"
+          },
+          "stress-hormone": {
+            "name": "متتبع هرمون التوتر",
+            "description": "الكورتيزول والمؤشرات الحيوية للإجهاد"
+          },
+          "sleep-mood": {
+            "name": "تحليل اتصال النوم والمزاج",
+            "description": "تتبع العلاقة بين الراحة والعاطفة"
+          }
+        }
+      },
+      "fitness-performance": {
+        "name": "اللياقة والأداء",
+        "description": "التدريب الرياضي والتحسين البدني",
+        "services": {
+          "meal-plan": {
+            "name": "خطة وجبة شخصية",
+            "description": "التغذية المخصصة لأهدافك"
+          },
+          "vo2-max": {
+            "name": "تقييم VO₂-Max",
+            "description": "قياس القدرة الهوائية"
+          },
+          "workout-generator": {
+            "name": "مولد تجريب",
+            "description": "برامج تدريبية مدعومة بالذكاء الاصطناعي"
+          },
+          "plateau-breaker": {
+            "name": "قوة هضبة الكسارة",
+            "description": "التغلب على ركود التدريب"
+          },
+          "tissue-release": {
+            "name": "خريطة إطلاق الأنسجة الرخوة",
+            "description": "توجيه الافراج عن الليفي العضلي"
+          },
+          "body-fat": {
+            "name": "إسقاط اتجاه الدهون في الجسم",
+            "description": "نمذجة التنبؤ بالتكوين"
+          },
+          "sport-warmup": {
+            "name": "الإحماء الخاص بالرياضة",
+            "description": "إعداد مخصص للنشاط"
+          },
+          "cycling-power": {
+            "name": "التنبؤ بقوة ركوب الدراجات",
+            "description": "التنبؤ بالأداء"
+          },
+          "hrv-breathwork": {
+            "name": "التنفس بمعدل HRV لمدة دقيقتين",
+            "description": "التنفس الانتعاش السريع"
+          },
+          "active-recovery": {
+            "name": "مؤقت الاسترداد النشط",
+            "description": "فترات الراحة الأمثل"
+          },
+          "desk-stretch": {
+            "name": "فواصل التمدد المكتبية",
+            "description": "إجراءات التنقل في مكان العمل"
+          },
+          "soft-tissue-map": {
+            "name": "خريطة الأنسجة الرخوة",
+            "description": "تصور صحة العضلات"
+          },
+          "endurance-plan": {
+            "name": "خطة التدريب على التحمل",
+            "description": "الأداء لمسافات طويلة"
+          },
+          "flexibility": {
+            "name": "دليل المرونة والتنقل",
+            "description": "نطاق تحسين الحركة"
+          },
+          "post-workout": {
+            "name": "دليل التغذية بعد التمرين",
+            "description": "توقيت التغذية الانتعاش"
+          },
+          "injury-prevention": {
+            "name": "خطة الوقاية من الإصابات",
+            "description": "تجنب الإصابة بشكل استباقي"
+          },
+          "strength-conditioning": {
+            "name": "مدرب القوة والتكييف",
+            "description": "التدريب الشامل"
+          },
+          "powerlifting": {
+            "name": "مولد برنامج رفع الاثقال",
+            "description": "تنمية القوة القصوى"
+          },
+          "gait-analysis": {
+            "name": "تشغيل تحليل المشية",
+            "description": "تشغيل تحسين النموذج"
+          }
+        }
+      },
+      "womens-health": {
+        "name": "صحة المرأة",
+        "description": "رعاية صحية متخصصة للنساء",
+        "services": {
+          "cycle-tracker": {
+            "name": "تعقب دورة",
+            "description": "مراقبة الدورة الشهرية والتنبؤ بها"
+          },
+          "pregnancy": {
+            "name": "الجدول الزمني للحمل",
+            "description": "إرشادات الحمل أسبوعًا بعد أسبوع"
+          },
+          "menopause": {
+            "name": "متصفح انقطاع الطمث",
+            "description": "دعم وإدارة التحول"
+          },
+          "breast-health": {
+            "name": "مخاطر صحة الثدي",
+            "description": "الفحص وتقييم المخاطر"
+          },
+          "hormone-dashboard": {
+            "name": "لوحة الهرمونات",
+            "description": "تتبع الهرمونات الأنثوية"
+          },
+          "endometriosis": {
+            "name": "متتبع أعراض بطانة الرحم",
+            "description": "دعم إدارة الحالة"
+          },
+          "pcos": {
+            "name": "دليل متلازمة المبيض المتعدد الكيسات (PCOS).",
+            "description": "تحسين نمط حياة PCOS"
+          },
+          "pelvic-floor": {
+            "name": "خطة تمرين قاع الحوض",
+            "description": "تعزيز وإعادة التأهيل"
+          }
+        }
+      },
+      "mens-health": {
+        "name": "صحة الرجل",
+        "description": "رعاية صحية متخصصة للرجال",
+        "services": {
+          "androgen": {
+            "name": "لوحة تحكم الاندروجين",
+            "description": "مراقبة هرمونات الذكورة"
+          },
+          "prostate-risk": {
+            "name": "درجة مخاطر البروستاتا",
+            "description": "تقييم صحة البروستاتا"
+          },
+          "fertility-tracker": {
+            "name": "تعقب الخصوبة",
+            "description": "تحسين خصوبة الرجل"
+          },
+          "hair-loss": {
+            "name": "توقع تساقط الشعر",
+            "description": "تتبع الثعلبة الاندروجينية"
+          },
+          "performance-coach": {
+            "name": "مدرب الأداء",
+            "description": "تحسين حيوية الذكور"
+          },
+          "cardiovascular-risk": {
+            "name": "مخاطر القلب والأوعية الدموية للرجال",
+            "description": "فحص صحة القلب"
+          },
+          "hormone-optimization": {
+            "name": "تحسين هرمون الذكورة",
+            "description": "توازن هرمون التستوستيرون"
+          },
+          "prostate-health": {
+            "name": "مدرب صحة البروستاتا",
+            "description": "رعاية البروستاتا الاستباقية"
+          }
+        }
+      },
+      "beauty-skincare": {
+        "name": "الجمال والعناية بالبشرة",
+        "description": "الصحة الجلدية وتحسين مستحضرات التجميل",
+        "services": {
+          "skincare-routine": {
+            "name": "روتين العناية بالبشرة بالذكاء الاصطناعي",
+            "description": "نظام شخصي للعناية بالبشرة"
+          },
+          "uv-forecast": {
+            "name": "توقعات أضرار الأشعة فوق البنفسجية",
+            "description": "التنبؤ بمخاطر التعرض لأشعة الشمس"
+          },
+          "dermatology-scan": {
+            "name": "المسح الرقمي للأمراض الجلدية",
+            "description": "تحليل حالة الجلد بالذكاء الاصطناعي"
+          },
+          "hair-porosity": {
+            "name": "مستشار مسامية الشعر",
+            "description": "تحسين العناية بالشعر"
+          },
+          "cosmetic-scan": {
+            "name": "مسح الباركود التجميلي",
+            "description": "تحليل مكونات المنتج"
+          },
+          "facial-massage": {
+            "name": "روتين تدليك الوجه",
+            "description": "تقنيات التصريف اللمفاوي"
+          },
+          "ingredient-conflict": {
+            "name": "صراع المكونات",
+            "description": "مدقق توافق المنتج"
+          },
+          "hair-growth": {
+            "name": "توقع نمو الشعر",
+            "description": "تقدير الجدول الزمني للنمو"
+          },
+          "anti-aging-skincare": {
+            "name": "مستشار العناية بالبشرة ومكافحة الشيخوخة",
+            "description": "استراتيجيات تحدي العمر"
+          },
+          "sunscreen": {
+            "name": "محرك توصية واقي الشمس",
+            "description": "مطابقة منتج SPF"
+          }
+        }
+      },
+      "nutrition-diet": {
+        "name": "التغذية والنظام الغذائي",
+        "description": "التغذية القائمة على الأدلة وتحسين النظام الغذائي",
+        "services": {
+          "food-swaps": {
+            "name": "مقايضة الغذاء الذكية",
+            "description": "اقتراحات بديلة أكثر صحة"
+          },
+          "rpm": {
+            "name": "مراقبة المريض عن بعد (RPM)",
+            "description": "تتبع التدخل الغذائي"
+          },
+          "hydration": {
+            "name": "صيغة الترطيب",
+            "description": "أهداف كمية المياه الشخصية"
+          },
+          "label-decoder": {
+            "name": "وحدة فك رموز الملصقات الغذائية",
+            "description": "تفسير التسمية الغذائية"
+          },
+          "meal-kit": {
+            "name": "منشئ مجموعة وجبات الميزانية",
+            "description": "تخطيط التغذية بأسعار معقولة"
+          },
+          "sodium-potassium": {
+            "name": "مقياس الصوديوم والبوتاسيوم",
+            "description": "تتبع توازن المنحل بالكهرباء"
+          },
+          "gut-microbiome": {
+            "name": "محلل الميكروبيوم المعوي",
+            "description": "تقييم صحة الجهاز الهضمي"
+          },
+          "supplement-guide": {
+            "name": "دليل المكملات الشخصية",
+            "description": "المكملات القائمة على الأدلة"
+          },
+          "metabolic-rate": {
+            "name": "حاسبة معدل الأيض",
+            "description": "تقدير الاحتياجات من السعرات الحرارية"
+          },
+          "food-sensitivity": {
+            "name": "تعقب حساسية الغذاء",
+            "description": "تحديد التعصب"
+          },
+          "electrolyte": {
+            "name": "مستشار توازن المنحل بالكهرباء",
+            "description": "تحسين المعادن"
+          },
+          "sustainability": {
+            "name": "درجة الاستدامة الغذائية",
+            "description": "تتبع الأثر البيئي"
+          },
+          "meal-prep": {
+            "name": "مخطط إعداد الوجبات",
+            "description": "إعداد الوجبات الأسبوعية"
+          },
+          "recipe-analyzer": {
+            "name": "وصفة محلل المغذيات",
+            "description": "وصفة الانهيار الغذائي"
+          },
+          "hydration-goal": {
+            "name": "محدد أهداف الترطيب",
+            "description": "التخطيط اليومي لاستهلاك السوائل"
+          }
+        }
+      },
+      "sleep-recovery": {
+        "name": "النوم والتعافي",
+        "description": "تحسين النوم وتعزيز التعافي",
+        "services": {
+          "blue-light": {
+            "name": "مخطط الضوء الأزرق",
+            "description": "تحسين التعرض للضوء"
+          },
+          "sleep-hygiene": {
+            "name": "مدرب نظافة النوم",
+            "description": "تحسين بيئة النوم"
+          },
+          "circadian-light": {
+            "name": "دليل الضوء اليومي",
+            "description": "محاذاة الإيقاع الطبيعي"
+          },
+          "sleep-apnea": {
+            "name": "جهاز فحص توقف التنفس أثناء النوم",
+            "description": "كشف اضطراب التنفس"
+          },
+          "micro-meditation": {
+            "name": "مولد التأمل الجزئي",
+            "description": "تمارين الاسترخاء السريعة"
+          },
+          "sleep-environment": {
+            "name": "محسن بيئة النوم",
+            "description": "تحسين غرفة النوم"
+          },
+          "guided-sleep": {
+            "name": "التأمل الموجه للنوم",
+            "description": "المساعدة في النوم الصوتي"
+          },
+          "dream-analysis": {
+            "name": "تحليل نمط الحلم",
+            "description": "رؤى جودة النوم"
+          }
+        }
+      },
+      "environmental-health": {
+        "name": "صحة البيئة",
+        "description": "رصد التعرض البيئي والتخفيف من آثاره",
+        "services": {
+          "eco-routine": {
+            "name": "التقييم البيئي الروتيني",
+            "description": "تقييم الأثر البيئي"
+          },
+          "environmental-exposure": {
+            "name": "التعرض البيئي",
+            "description": "تتبع التعرض للسموم"
+          },
+          "pollen-defense": {
+            "name": "الدفاع عن حبوب اللقاح",
+            "description": "الاستعداد لموسم الحساسية"
+          },
+          "noise-map": {
+            "name": "خريطة الضوضاء الداخلية",
+            "description": "تقييم التلوث الصوتي"
+          },
+          "commute-calorie": {
+            "name": "تخفيف السعرات الحرارية محسن",
+            "description": "تخطيط النقل النشط"
+          },
+          "air-quality": {
+            "name": "مستشار جودة الهواء المنزلي",
+            "description": "مراقبة الهواء الداخلي"
+          },
+          "water-quality": {
+            "name": "مراقبة جودة المياه",
+            "description": "تقييم مياه الشرب"
+          },
+          "mold-exposure": {
+            "name": "تقييم مخاطر التعرض للعفن",
+            "description": "كشف التلوث الفطري"
+          }
+        }
+      },
+      "family-health": {
+        "name": "صحة الأسرة",
+        "description": "إدارة الرعاية الصحية الشاملة للأسرة",
+        "services": {
+          "medication-hub": {
+            "name": "مركز طب الأسرة",
+            "description": "تتبع الأدوية المنزلية"
+          },
+          "family-caregiver-access": {
+            "name": "وصول الأسرة ومقدمي الرعاية",
+            "description": "الوصول المستند إلى الإذن لإدارة المعلومات والمهام الصحية المحددة للطفل أو الزوج أو الوالد أو الشخص البالغ المعال."
+          },
+          "child-growth": {
+            "name": "تعقب نمو الطفل",
+            "description": "مراقبة نمو الأطفال"
+          },
+          "genetic-compatibility": {
+            "name": "فحص التوافق الجيني",
+            "description": "رؤى تنظيم الأسرة"
+          },
+          "wellness-challenge": {
+            "name": "تحدي العافية العائلية",
+            "description": "الأهداف الصحية الجماعية"
+          },
+          "immunization": {
+            "name": "جدول تحصين الطفل",
+            "description": "الجدول الزمني للتطعيم"
+          },
+          "first-aid": {
+            "name": "دليل الإسعافات الأولية للأسرة",
+            "description": "بروتوكولات الاستجابة للطوارئ"
+          },
+          "sibling-comparison": {
+            "name": "مقارنة صحة الأخوة",
+            "description": "المقارنة التنموية"
+          }
+        }
+      },
+      "preventive-medicine": {
+        "name": "الطب الوقائي وطول العمر",
+        "description": "الوقاية الاستباقية من الأمراض وتحسين الصحة",
+        "services": {
+          "cancer-screening": {
+            "name": "الفحص الشخصي للسرطان",
+            "description": "بروتوكولات الفحص على أساس المخاطر"
+          },
+          "preventive-care-due": {
+            "name": "الرعاية الوقائية المستحقة",
+            "description": "يعرض الفحوصات الوقائية والتطعيمات وفحوصات المتابعة المستحقة أو القادمة أو المكتملة بناءً على الملف الشخصي والسجلات المؤكدة للمستخدم."
+          },
+          "cardiovascular-prevention": {
+            "name": "خطة الوقاية من أمراض القلب والأوعية الدموية",
+            "description": "تحسين صحة القلب"
+          },
+          "neurodegenerative": {
+            "name": "تقييم مخاطر التنكس العصبي",
+            "description": "حماية صحة الدماغ"
+          },
+          "inflammation-management": {
+            "name": "برنامج إدارة الالتهابات",
+            "description": "الحد من الالتهابات الجهازية"
+          },
+          "immune-optimization": {
+            "name": "تحسين نظام المناعة",
+            "description": "تعزيز وظيفة المناعة"
+          },
+          "risk-calculator": {
+            "name": "حاسبة مخاطر الصحة والعافية",
+            "description": "تقييم شامل للمخاطر"
+          },
+          "diabetes-prevention": {
+            "name": "برنامج الوقاية من مرض السكري",
+            "description": "إدارة نسبة السكر في الدم"
+          },
+          "metabolic-syndrome": {
+            "name": "مراقب المتلازمة الأيضية",
+            "description": "تتبع الصحة الأيضية"
+          }
+        }
+      },
+      "biohacking": {
+        "name": "الاختراق الحيوي والأداء",
+        "description": "تحسين الأداء البشري المتقدم",
+        "services": {
+          "nootropics": {
+            "name": "محرك توصية منشط الذهن",
+            "description": "التوجيه المعزز المعرفي"
+          },
+          "cryotherapy": {
+            "name": "مولد بروتوكول العلاج بالتبريد",
+            "description": "تحسين العلاج البارد"
+          },
+          "red-light": {
+            "name": "دليل العلاج بالضوء الأحمر",
+            "description": "بروتوكولات التعديل الحيوي الضوئي"
+          },
+          "cold-exposure": {
+            "name": "خطة التدريب على التعرض للبرد",
+            "description": "التكيف مع الإجهاد الهرموني"
+          },
+          "intermittent-fasting": {
+            "name": "جدول الصيام المتقطع",
+            "description": "الأكل مقيد بالوقت"
+          },
+          "biofeedback": {
+            "name": "وحدات التدريب على الارتجاع البيولوجي",
+            "description": "التنظيم الذاتي الفسيولوجي"
+          },
+          "neurofeedback": {
+            "name": "مخطط جلسة الارتجاع العصبي",
+            "description": "تحسين الفكرة الرائعة"
+          },
+          "wearable-integrator": {
+            "name": "مُتكامل البيانات القابل للارتداء",
+            "description": "تجميع البيانات متعدد الأجهزة"
+          },
+          "recovery-modalities": {
+            "name": "طرق الاسترداد الشخصية",
+            "description": "بروتوكولات الاسترداد المخصصة"
+          },
+          "nootropic-stack": {
+            "name": "منشئ المكدس منشط الذهن",
+            "description": "تكملة تحسين التآزر"
+          },
+          "cold-protocol": {
+            "name": "بروتوكول التعرض البارد",
+            "description": "حمام جليدي وإرشادات الدش البارد"
+          },
+          "breathwork-optimizer": {
+            "name": "محسن التنفس",
+            "description": "تقنيات التنفس المتقدمة"
+          },
+          "cognitive-enhancement": {
+            "name": "خطة التعزيز المعرفي",
+            "description": "تعزيز الأداء العقلي"
+          },
+          "fasting-calculator": {
+            "name": "حاسبة الصيام المتقطع",
+            "description": "تحسين نافذة الصيام"
+          },
+          "dopamine-reset": {
+            "name": "بروتوكول إعادة تعيين الدوبامين",
+            "description": "إعادة توازن الناقلات العصبية"
+          },
+          "sensory-deprivation": {
+            "name": "دليل الحرمان الحسي",
+            "description": "بروتوكولات الخزان العائم"
+          },
+          "biofeedback-focus": {
+            "name": "التدريب على الارتجاع البيولوجي للتركيز",
+            "description": "تعزيز الانتباه"
+          }
+        }
+      },
+      "senior-care": {
+        "name": "رعاية كبار السن",
+        "description": "الرعاية الصحية المتخصصة لكبار السن",
+        "services": {
+          "senior-dashboard": {
+            "name": "لوحة القيادة العليا",
+            "description": "المراقبة الشاملة لصحة المسنين"
+          },
+          "caregiver-portal": {
+            "name": "بوابة مقدمي الرعاية",
+            "description": "تنسيق مقدمي الرعاية الأسرية"
+          },
+          "fall-detection": {
+            "name": "تنبيه الكشف عن السقوط",
+            "description": "الاستجابة للسقوط في حالات الطوارئ"
+          },
+          "medication-adherence-senior": {
+            "name": "الالتزام بالدواء",
+            "description": "إدارة الأدوية العليا"
+          },
+          "voice-companion": {
+            "name": "رفيق الصوت",
+            "description": "مساعد صحي لمنظمة العفو الدولية لكبار السن"
+          },
+          "frailty-index": {
+            "name": "مؤشر الضعف",
+            "description": "تقييم التدهور الجسدي"
+          },
+          "medication-reminder": {
+            "name": "نظام تذكير الدواء",
+            "description": "تذكير حبوب منع الحمل الآلي"
+          },
+          "fall-prevention": {
+            "name": "تمارين الوقاية من السقوط",
+            "description": "تدريب التوازن والقوة"
+          },
+          "cognitive-games": {
+            "name": "ألعاب الصحة المعرفية",
+            "description": "تدريب الدماغ لكبار السن"
+          }
+        }
+      },
+      "eye-health": {
+        "name": "جناح صحة العين",
+        "description": "مراقبة الصحة البصرية وتحسينها",
+        "services": {
+          "vision-test": {
+            "name": "اختبار رؤية المتصفح",
+            "description": "اختبار حدة البصر عبر الإنترنت"
+          },
+          "retina-scan": {
+            "name": "مسح شبكية العين بالذكاء الاصطناعي",
+            "description": "تحليل صحة الشبكية"
+          },
+          "blue-light-filter": {
+            "name": "مرشح الضوء الأزرق",
+            "description": "تقليل إجهاد العين الرقمي"
+          },
+          "eye-exercises": {
+            "name": "تذكيرات تمرين العين",
+            "description": "الوقاية من التعب البصري"
+          }
+        }
+      },
+      "digital-therapeutics": {
+        "name": "متجر العلاجات الرقمية",
+        "description": "التدخلات الصحية الرقمية القائمة على الأدلة",
+        "services": {
+          "insomnia-cbt": {
+            "name": "تطبيق الأرق CBT-I",
+            "description": "العلاج السلوكي المعرفي للأرق"
+          },
+          "adhd-game": {
+            "name": "لعبة ADHD العصبية",
+            "description": "تدريب الانتباه لاضطراب فرط الحركة ونقص الانتباه"
+          },
+          "anxiety-app": {
+            "name": "تطبيق إدارة القلق",
+            "description": "تخفيف القلق المبني على الأدلة"
+          },
+          "pain-relief-vr": {
+            "name": "تخفيف الآلام المزمنة VR",
+            "description": "إدارة الألم بالواقع الافتراضي"
+          },
+          "ptsd-modules": {
+            "name": "وحدات التعافي من اضطراب ما بعد الصدمة",
+            "description": "دعم التعافي من الصدمات"
+          }
+        }
+      },
+      "general-sexual": {
+        "name": "طول العمر الجنسي العام",
+        "description": "الصحة الجنسية الشاملة وتحسين العافية",
+        "services": {
+          "libido-optimization": {
+            "name": "تحسين الهرمونات الرغبة الجنسية",
+            "description": "التوازن الهرموني للصحة الجنسية"
+          },
+          "sexual-biomarkers": {
+            "name": "المؤشرات الحيوية للصحة الجنسية",
+            "description": "تتبع المؤشرات الصحية الرئيسية"
+          },
+          "aphrodisiac-nutrigenomics": {
+            "name": "علم التغذية مثير للشهوة الجنسية",
+            "description": "تغذية الرغبة الجنسية على أساس وراثي"
+          },
+          "microbiome-sexuality": {
+            "name": "الميكروبيوم والجنس",
+            "description": "صحة الأمعاء والاتصال الجنسي"
+          },
+          "neuroplasticity-libido": {
+            "name": "المرونة العصبية والرغبة الجنسية",
+            "description": "تدريب الدماغ على الرغبة"
+          },
+          "stress-cortisol": {
+            "name": "إدارة الإجهاد والكورتيزول",
+            "description": "تحسين هرمون التوتر"
+          },
+          "circadian-sexuality": {
+            "name": "إيقاعات الساعة البيولوجية والجنس",
+            "description": "توقيت العافية الجنسية"
+          },
+          "physical-fitness-sexuality": {
+            "name": "اللياقة البدنية للجنس",
+            "description": "ممارسة الرياضة من أجل الصحة الجنسية"
+          },
+          "peptide-therapy": {
+            "name": "العلاج الببتيد للرغبة الجنسية",
+            "description": "بروتوكولات الببتيد المتقدمة"
+          },
+          "xenoestrogen-detox": {
+            "name": "إزالة السموم من هرمون الاستروجين",
+            "description": "القضاء على اختلال الهرمونات"
+          },
+          "psychosexual": {
+            "name": "التحسين النفسي الجنسي",
+            "description": "تعزيز الصحة الجنسية النفسية"
+          },
+          "partner-sync": {
+            "name": "مزامنة الشركاء",
+            "description": "التنسيق الصحي بين الزوجين"
+          },
+          "fertility-assessment": {
+            "name": "تقييم صحة الخصوبة",
+            "description": "تقييم الصحة الإنجابية"
+          },
+          "hormone-balance-libido": {
+            "name": "توازن الهرمونات للرغبة الجنسية",
+            "description": "تحسين الغدد الصماء"
+          },
+          "sexual-wellness-education": {
+            "name": "تعليم الصحة الجنسية",
+            "description": "التربية الجنسية الشاملة"
+          },
+          "relationship-communication": {
+            "name": "مدرب علاقات تواصل",
+            "description": "مهارات التواصل الحميمية"
+          }
+        }
+      },
+      "mens-sexual-health": {
+        "name": "الصحة الجنسية للرجال",
+        "description": "الصحة الجنسية المتخصصة للرجال",
+        "services": {
+          "vascular-health": {
+            "name": "صحة الأوعية الدموية للفعالية",
+            "description": "الوظيفة الجنسية للدورة الدموية"
+          },
+          "male-vitality-trt": {
+            "name": "حيوية الذكور و TRT",
+            "description": "العلاج ببدائل التستوستيرون"
+          },
+          "ed-guide": {
+            "name": "دليل الضعف الجنسي (ED).",
+            "description": "إدارة شاملة للضعف الجنسي"
+          },
+          "sperm-health": {
+            "name": "تحسين صحة الحيوانات المنوية",
+            "description": "تعزيز خصوبة الرجال"
+          }
+        }
+      },
+      "womens-sexual-health": {
+        "name": "الصحة الجنسية للمرأة",
+        "description": "الصحة الجنسية المتخصصة للنساء",
+        "services": {
+          "female-hormone-optimization": {
+            "name": "تحسين الهرمونات الأنثوية",
+            "description": "توازن الهرمونات عند النساء"
+          },
+          "libido-nutrition": {
+            "name": "التغذية لتعزيز الرغبة الجنسية",
+            "description": "التغذية لرغبة الإناث"
+          },
+          "pelvic-health-program": {
+            "name": "برنامج صحة الحوض",
+            "description": "عافية قاع الحوض"
+          },
+          "menopausal-intimacy": {
+            "name": "مستشار العلاقة الحميمة بعد انقطاع الطمث",
+            "description": "انقطاع الطمث العافية الجنسية"
+          }
+        }
+      },
+      "human-data-model": {
+        "name": "نموذج البيانات البشرية",
+        "description": "أدوات عبر الفئات تقوم باستيراد المعلومات الصحية وتنظيمها وتتبعها في نموذج البيانات البشرية.",
+        "services": {
+          "medical-records-import": {
+            "name": "استيراد السجلات الطبية وتنظيمها",
+            "description": "قم باستيراد ملفات PDF والصور والسجلات الطبية، واستخرج الحقائق الأساسية، وقم بتنظيم التشخيصات والأدوية والاختبارات والإجراءات والتواريخ في نموذج البيانات البشرية."
+          },
+          "health-timeline": {
+            "name": "الجدول الزمني للصحة",
+            "description": "سجل زمني للتشخيصات والاختبارات والأدوية والإجراءات والأعراض والزيارات والتغيرات الصحية الهامة."
+          },
+          "what-changed": {
+            "name": "ما تغير",
+            "description": "يُظهر تغييرات ذات معنى في السجلات الصحية ونتائج المختبرات والأدوية والأعراض والقياسات المراقبة مع مرور الوقت."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,426 @@
+{
+  "faq": {
+    "seoTitle": "FAQ – Häufige Fragen",
+    "seoDescription": "Antworten auf die häufigsten Fragen zu BioMath Core: Services, Preise, Datensicherheit, Berichte und mehr. Schnelle Antworten rund um Ihre Gesundheitsanalyse.",
+    "categoriesOrg": {
+      "question": "Wie sind die Kategorien aufgebaut?",
+      "answer": "BioMath Core umfasst {{categoryCount}} Gesundheitskategorien und {{serviceCount}} Services (einschließlich der Werkzeuge des Human Data Model). Jede Kategorie bündelt Services nach einem realen Bedarf – kritische Gesundheit, Schlaf, Ernährung, Langlebigkeit, Seniorenbetreuung und mehr."
+    },
+    "hdmQuestion": "Was ist in {{name}} enthalten?",
+    "categoryQuestion": "Welche Services gehören zu {{name}}?",
+    "catalogRef": {
+      "title": "Alle Servicebeschreibungen durchsuchen",
+      "subtitle": "Vollständiger Live-Katalog – öffnen Sie eine Kategorie, um Name und Beschreibung jedes Service zu lesen."
+    },
+    "cta": {
+      "title": "Noch Fragen offen?",
+      "body": "Unser Team hilft bei Fragen zu Konto, Abrechnung und Services.",
+      "button": "Support kontaktieren"
+    },
+    "sections": [
+      {
+        "id": "approach",
+        "title": "Unser Ansatz",
+        "items": [
+          {
+            "id": "what-makes-different",
+            "question": "Was unterscheidet BioMath Core von anderen Wellness-Apps?",
+            "answer": "Statt Zahlen zu protokollieren, übersetzen wir die Signale Ihres Körpers in Bedeutung und daraus in klare, behutsame und persönliche Empfehlungen. Uns geht es um Verstehen statt Reizüberflutung. Um Zuversicht statt Dringlichkeit. Um Deutung statt Diagnose."
+          },
+          {
+            "id": "is-this-medical",
+            "question": "Ist das ein medizinisches Diagnosewerkzeug?",
+            "answer": "Nein. BioMath Core ist Wellness-Intelligenz mit Fokus auf Deutung, Wissensvermittlung und Prävention. Wir helfen Ihnen zu verstehen, wie Ihr Körper Tag für Tag reagiert, stellen aber niemals medizinische Diagnosen. Wenn etwas professionelle Abklärung braucht, sagen wir es klar."
+          },
+          {
+            "id": "ux-tone",
+            "question": "Was darf ich von den Empfehlungen erwarten?",
+            "answer": "Unsere Empfehlungen begleiten, statt vorzuschreiben. Sie sind einfach, nicht technisch. Wir arbeiten nicht mit Angstsprache. Sie „versagen“ nie – Sie lernen. Jeder Hinweis soll Ihr Vertrauen stärken und Stress abbauen, nicht Sorgen erzeugen."
+          }
+        ]
+      },
+      {
+        "id": "getting-started",
+        "title": "Erste Schritte",
+        "items": [
+          {
+            "id": "what-is",
+            "question": "Was ist BioMath Core?",
+            "answer": "BioMath Core ist Wellness-Intelligenz, die Ihnen hilft zu verstehen, wie Ihr Körper Tag für Tag reagiert, und Sie mit klaren, behutsamen und persönlichen Schritten begleitet. Das schafft Klarheit, emotionale Sicherheit und aktive Selbstfürsorge – ohne klinischen Druck."
+          },
+          {
+            "id": "who-for",
+            "question": "Für wen ist BioMath Core gedacht?",
+            "answer": "Für Menschen, die Klarheit, ruhige Erklärungen und schrittweise Verbesserung wollen – kein Fachchinesisch und keine Dashboards voller Zahlen. BioMath Core eignet sich für Einsteiger, vielbeschäftigte Berufstätige, Wellness-Interessierte und alle, die langfristig an ihrer Gesundheit arbeiten."
+          },
+          {
+            "id": "need-medical",
+            "question": "Brauche ich medizinisches Vorwissen?",
+            "answer": "Nein. Alles wird in einfacher Sprache erklärt. Berichte, Ziele und Empfehlungen sind so formuliert, als sprächen Sie mit einem menschlichen Coach – nicht mit einer Ärztin oder einem Arzt."
+          },
+          {
+            "id": "is-medical",
+            "question": "Ist das ein medizinischer Dienst?",
+            "answer": "Nein. BioMath Core ist ein Wellness-Dienst, kein medizinischer Leistungserbringer. Es werden keine Krankheiten diagnostiziert oder behandelt."
+          },
+          {
+            "id": "need-devices",
+            "question": "Brauche ich Geräte für den Start?",
+            "answer": "Nein. Sie können allein mit den Fragebögen beginnen. Geräte machen die Berichte genauer, sind aber optional."
+          }
+        ]
+      },
+      {
+        "id": "subscriptions",
+        "title": "Abo & Zahlung",
+        "items": [
+          {
+            "id": "purchase",
+            "question": "Wie schließe ich ein Abo ab?",
+            "answer": "Sie können direkt auf der Preisseite abonnieren. Nach dem Kauf werden die erweiterten Funktionen im Mitgliederbereich freigeschaltet."
+          },
+          {
+            "id": "plans",
+            "question": "Was ist in den einzelnen Tarifen enthalten?",
+            "answer": "Basic: Standardberichte, Kernassistent, Geräte und Dashboards.\nPro: Zweitmeinung, tiefere Analysen, PDF-Export und smarte Impulse.\nEnterprise: Team-Funktionen, Analytik und persönliches Onboarding."
+          },
+          {
+            "id": "free-start",
+            "question": "Kann ich kostenlos starten?",
+            "answer": "Ja. Das Onboarding ist kostenlos, bevor Sie upgraden."
+          },
+          {
+            "id": "change-plan",
+            "question": "Wie wechsle ich den Tarif?",
+            "answer": "Sie können den Tarif jederzeit in Ihren Kontoeinstellungen ändern."
+          },
+          {
+            "id": "cancel",
+            "question": "Wie kündige ich mein Abo?",
+            "answer": "Sie kündigen mit einem Klick in den Abrechnungseinstellungen. Ihr Zugang bleibt bis zum Ende des Abrechnungszeitraums aktiv."
+          }
+        ]
+      },
+      {
+        "id": "onboarding",
+        "title": "Onboarding & Fragebögen",
+        "items": [
+          {
+            "id": "why-questionnaires",
+            "question": "Warum muss ich Fragebögen ausfüllen?",
+            "answer": "Sie ermöglichen dem System, Ihren Ausgangspunkt zu verstehen und persönlichen Kontext statt allgemeiner Tipps zu liefern."
+          },
+          {
+            "id": "onboarding-time",
+            "question": "Wie lange dauert das Onboarding?",
+            "answer": "In der Regel 3–5 Minuten."
+          },
+          {
+            "id": "skip-questions",
+            "question": "Kann ich Fragen überspringen?",
+            "answer": "Ja. Sie können sie überspringen und später ergänzen."
+          },
+          {
+            "id": "update-answers",
+            "question": "Kann ich Antworten später ändern?",
+            "answer": "Ja, jederzeit im Mitgliederbereich."
+          },
+          {
+            "id": "refresh-frequency",
+            "question": "Wie oft sollte ich meine Antworten aktualisieren?",
+            "answer": "Immer dann, wenn sich Ihre Gesundheitsroutinen, Ihr Schlaf, Ihre Arbeitsbelastung oder Ihr Lebensstil ändern."
+          }
+        ]
+      },
+      {
+        "id": "categories",
+        "title": "Kategorien & Services",
+        "items": [
+          {
+            "id": "use-all",
+            "question": "Muss ich alle Kategorien nutzen?",
+            "answer": "Nein. Sie nutzen nur, was für Sie relevant ist – nichts wird vorgegeben."
+          },
+          {
+            "id": "add-services",
+            "question": "Kann ich später weitere Services hinzufügen?",
+            "answer": "Ja. Sie können jederzeit neue Services im Servicekatalog oder im Mitgliederbereich aktivieren."
+          },
+          {
+            "id": "which-service",
+            "question": "Woher weiß ich, welcher Service zu mir passt?",
+            "answer": "BioMath Core orientiert sich an Ihrer Tagesmomentaufnahme und Ihrem jüngsten Bericht. Sie können außerdem jede Servicebeschreibung im Katalog unten oder im Learning Center nachlesen."
+          },
+          {
+            "id": "adaptive",
+            "question": "Sind die Services statisch oder adaptiv?",
+            "answer": "Sie sind adaptiv – die Inhalte entwickeln sich mit Ihren Daten und Fortschritten."
+          }
+        ]
+      },
+      {
+        "id": "member-zone",
+        "title": "Mitgliederbereich",
+        "items": [
+          {
+            "id": "what-member-zone",
+            "question": "Was ist der Mitgliederbereich?",
+            "answer": "Ihr persönliches, interaktives Dashboard, in dem alle Funktionen zusammenlaufen: Berichte, Ziele, Momentaufnahmen, Geräte, Zweitmeinung und Chat."
+          },
+          {
+            "id": "dashboard-features",
+            "question": "Was kann ich im Dashboard tun?",
+            "answer": "Sie sehen Ihren aktuellen Zustand, Ihren Trend, Ihre Ziele für heute, jüngste Fortschritte und einen behutsamen nächsten Schritt."
+          },
+          {
+            "id": "daily-snapshot",
+            "question": "Was ist die tägliche Momentaufnahme?",
+            "answer": "Eine kurze Erklärung, „wie es Ihrem System heute geht“, plus eine sanfte Empfehlung."
+          },
+          {
+            "id": "goals-habits",
+            "question": "Wie funktionieren Ziele und Gewohnheiten?",
+            "answer": "Sie wählen kleine Schritte, die zu Ihrer Physiologie passen. BioMath Core passt den Schwierigkeitsgrad automatisch an."
+          },
+          {
+            "id": "nudges",
+            "question": "Was sind Impulse?",
+            "answer": "Kurze, unterstützende Hinweise auf Basis Ihres Zustands – nicht auf Basis von Timern."
+          },
+          {
+            "id": "download-reports",
+            "question": "Kann ich meine Berichte herunterladen?",
+            "answer": "Ja. Der PDF-Export ist in Pro enthalten."
+          },
+          {
+            "id": "devices-connect",
+            "question": "Kann ich Geräte verbinden und trennen?",
+            "answer": "Ja, jederzeit."
+          },
+          {
+            "id": "signal-hub",
+            "question": "Was ist der Signal Hub?",
+            "answer": "Der Signal Hub fasst Ihre aktiven Datenquellen, die Signalstärke und jüngste Veränderungen zusammen, damit Sie nachvollziehen können, worauf Ihre Berichte beruhen."
+          },
+          {
+            "id": "report-favorites",
+            "question": "Kann ich Berichte speichern und ordnen?",
+            "answer": "Ja. Sie können Berichte als Favoriten markieren und persönliche Notizen für den schnellen Zugriff hinzufügen."
+          }
+        ]
+      },
+      {
+        "id": "health-guide",
+        "title": "Health Guide",
+        "items": [
+          {
+            "id": "assistant-features",
+            "question": "Was kann der Assistent?",
+            "answer": "Er erklärt Ihren Zustand, hilft bei Berichten, beantwortet Gesundheitsfragen in verständlicher Sprache und übersetzt Erkenntnisse in Handlungen."
+          },
+          {
+            "id": "text-voice",
+            "question": "Nur Text oder auch Sprache?",
+            "answer": "Beides: Text und – in Pro – Sprachinteraktion."
+          },
+          {
+            "id": "vs-chatbots",
+            "question": "Wie unterscheidet sich das von Chatbots?",
+            "answer": "Er nutzt Ihren persönlichen Kontext und Zustand statt allgemeiner Antworten."
+          },
+          {
+            "id": "step-by-step",
+            "question": "Kann er mich Schritt für Schritt führen?",
+            "answer": "Ja. Er kann Sie durch einen Bericht, einen Plan oder eine Routine führen wie eine menschliche Begleitung."
+          },
+          {
+            "id": "learning",
+            "question": "Lernt der Assistent mit der Zeit?",
+            "answer": "Ja – er merkt sich Ihre Stilvorlieben (einfache oder tiefgehende Erklärungen)."
+          },
+          {
+            "id": "multi-model-mode",
+            "question": "Was ist der Multi-Modell-Modus?",
+            "answer": "Im Multi-Modell-Modus laufen mehrere KI-Perspektiven gleichzeitig, um die Analyse zu verbreitern. So treten sowohl physiologische als auch verhaltensbezogene Erkenntnisse hervor."
+          }
+        ]
+      },
+      {
+        "id": "second-opinion",
+        "title": "Zweitmeinung",
+        "items": [
+          {
+            "id": "second-opinion-what",
+            "question": "Was ist die „Zweitmeinung“ in BioMath Core?",
+            "answer": "Eine Funktion, bei der Sie zwei Deutungen von zwei KI-Modellen sehen – die physiologische und die verhaltensbezogene Sicht."
+          },
+          {
+            "id": "why-two-models",
+            "question": "Warum zwei Modelle?",
+            "answer": "Weil Gesundheit mehr als eine Dimension hat – die Reaktion des Körpers und den Einfluss des Lebensstils."
+          },
+          {
+            "id": "when-use-second",
+            "question": "Wann sollte ich die Zweitmeinung nutzen?",
+            "answer": "Immer dann, wenn Sie mehr Tiefe, mehr Sicherheit oder eine andere Erklärweise möchten."
+          },
+          {
+            "id": "compare-merge",
+            "question": "Kann ich sie vergleichen oder zusammenführen?",
+            "answer": "Ja. Sie können sie nebeneinander vergleichen und zu einer abschließenden Zusammenfassung verbinden."
+          },
+          {
+            "id": "aggregated-report",
+            "question": "Wie funktioniert der zusammengeführte Bericht?",
+            "answer": "Das System verbindet die aussagekräftigsten Erkenntnisse beider Modelle zu einem einheitlichen Bericht – mit klaren Prioritäten und einem einzigen Aktionsplan."
+          },
+          {
+            "id": "replace-doctor",
+            "question": "Ersetzt die Zweitmeinung eine Ärztin oder einen Arzt?",
+            "answer": "Nein. Sie ergänzt die menschliche Betreuung – sie ersetzt keine medizinischen Fachpersonen."
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "title": "Berichte & Erkenntnisse",
+        "items": [
+          {
+            "id": "report-quality",
+            "question": "Was ist der Berichtsqualitätswert?",
+            "answer": "Ein Indikator für Klarheit und Verlässlichkeit auf Basis von Signalabdeckung, Konsistenz und Datenaktualität. Er zeigt, wie belastbar der aktuelle Bericht ist."
+          },
+          {
+            "id": "data-coverage",
+            "question": "Was bedeutet Datenabdeckung?",
+            "answer": "Sie zeigt, wie vollständig Ihre Eingaben über Geräte, Fragebögen, Notizen und Berichte hinweg sind. Mehr Abdeckung bedeutet mehr Kontext."
+          },
+          {
+            "id": "knowledge-snapshot",
+            "question": "Was ist eine Wissens-Momentaufnahme?",
+            "answer": "Eine Momentaufnahme ist das aktuelle Verständnis, das BioMath Core von Ihrem Gesundheitszustand hat – aufgebaut aus Ihren jüngsten Signalen und Ihrer Historie."
+          },
+          {
+            "id": "action-plan",
+            "question": "Was ist der Aktionsplan-Baukasten?",
+            "answer": "Er übersetzt Erkenntnisse in Schritte für 7, 14 und 30 Tage – mit Prioritäten und Checkboxen, damit Fortschritt strukturiert und entspannt bleibt."
+          }
+        ]
+      },
+      {
+        "id": "ai-systems",
+        "title": "KI-Systeme",
+        "items": [
+          {
+            "id": "ai-pipeline",
+            "question": "Wie funktioniert die KI-Berichtskette?",
+            "answer": "Signale werden aus Ihren Geräten, Fragebögen, Notizen und Berichten gesammelt und zu einer Wissens-Momentaufnahme verdichtet. Die Multi-Modell-Analyse läuft parallel, und die stärksten Erkenntnisse werden zu einem einheitlichen Bericht zusammengeführt."
+          },
+          {
+            "id": "memory-depth",
+            "question": "Was ist Gedächtnistiefe?",
+            "answer": "Die Gedächtnistiefe zeigt, wie viel relevante Historie und Kontext das System beim Erstellen Ihres Berichts heranziehen kann. Sie wächst, je mehr Signale Sie hinzufügen."
+          },
+          {
+            "id": "knowledge-timeline",
+            "question": "Was ist die Wissens-Zeitleiste?",
+            "answer": "Eine Zeitleiste der wichtigsten Veränderungen in Ihren Signalen und Berichten, damit Sie sehen, wie sich Ihr Kontext entwickelt."
+          },
+          {
+            "id": "report-styles",
+            "question": "Kann ich den Berichtsstil ändern?",
+            "answer": "Ja. Je nach gewünschtem Detailgrad sehen Sie eine Kurzfassung, eine ausgewogene Analyse oder eine ausführliche Tiefenanalyse."
+          }
+        ]
+      },
+      {
+        "id": "devices",
+        "title": "Geräte & Monitoring",
+        "items": [
+          {
+            "id": "supported-devices",
+            "question": "Welche Geräte werden unterstützt?",
+            "answer": "Apple Watch, Samsung, Fitbit, Amazon Halo, Oura, kontinuierliche Glukosemessgeräte und weitere zertifizierte Geräte."
+          },
+          {
+            "id": "connect-device",
+            "question": "Wie verbinde ich ein Gerät?",
+            "answer": "Über einen geführten Schritt-für-Schritt-Ablauf im Mitgliederbereich."
+          },
+          {
+            "id": "store-data",
+            "question": "Speichern Sie rohe Gesundheitsdaten?",
+            "answer": "Nein. Wir interpretieren Kennzahlen – Rohdatenströme müssen wir nicht speichern."
+          },
+          {
+            "id": "syncing-stops",
+            "question": "Was passiert, wenn die Synchronisierung stoppt?",
+            "answer": "Sie erhalten eine Erinnerung und können mit einem Klick neu verbinden."
+          },
+          {
+            "id": "disable-sharing",
+            "question": "Kann ich die Datenfreigabe deaktivieren?",
+            "answer": "Ja – sofort in den Einstellungen."
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Datenschutz & Sicherheit",
+        "items": [
+          {
+            "id": "data-protection",
+            "question": "Wie werden meine Daten geschützt?",
+            "answer": "Wir nutzen Verschlüsselung, die Trennung personenbezogener Daten und Anonymisierungsschichten."
+          },
+          {
+            "id": "sell-data",
+            "question": "Verkaufen oder handeln Sie mit Daten?",
+            "answer": "Nein. Wir verkaufen, lizenzieren oder monetarisieren persönliche Gesundheitsdaten niemals."
+          },
+          {
+            "id": "request-deletion",
+            "question": "Kann ich eine Löschung verlangen?",
+            "answer": "Ja. Die Datenlöschung ist auf Anfrage möglich."
+          },
+          {
+            "id": "export-data",
+            "question": "Kann ich meine Daten exportieren?",
+            "answer": "Ja, als PDF oder als JSON-Rohzusammenfassung."
+          },
+          {
+            "id": "data-storage",
+            "question": "Wo werden die Daten gespeichert?",
+            "answer": "In sicheren Rechenzentren, die aktuellen Datenschutzstandards entsprechen."
+          }
+        ]
+      },
+      {
+        "id": "wellness-vs-medical",
+        "title": "Wellness vs. Medizin",
+        "items": [
+          {
+            "id": "diagnostic-tool",
+            "question": "Ist das ein Diagnosewerkzeug?",
+            "answer": "Nein. Es ist ein Dienst für Erkenntnisse und Orientierung, kein Diagnosesystem."
+          },
+          {
+            "id": "emergency",
+            "question": "Was tue ich im medizinischen Notfall?",
+            "answer": "Wenden Sie sich an den Rettungsdienst oder eine Ärztin bzw. einen Arzt. BioMath Core ist nicht für Notfallversorgung gedacht."
+          },
+          {
+            "id": "replace-doctor-medical",
+            "question": "Kann das meine Ärztin oder meinen Arzt ersetzen?",
+            "answer": "Nein – es ergänzt die professionelle Versorgung."
+          },
+          {
+            "id": "share-with-doctor",
+            "question": "Kann ich Ergebnisse mit meiner Ärztin oder meinem Arzt teilen?",
+            "answer": "Ja. Sie können Berichte jederzeit exportieren oder vorzeigen."
+          }
+        ]
+      }
+    ]
+  }
+}

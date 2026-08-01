@@ -1,0 +1,172 @@
+{
+  "services": {
+    "seo": {
+      "title": "服务与价格 — 健康分析方案",
+      "description": "在 Core、Daily、Max 方案中选择智能健康分析。5 天免费试用，20 个健康类别下 200 多项服务，每月 19 美元起。安全且符合 HIPAA 要求。"
+    },
+    "hero": {
+      "label": "服务",
+      "title": "选择你的 Human Data Model 深度",
+      "body": "方案越完整，模型能看到的范围越广。类别越多，背景信息越丰富，给出的建议也越清晰。",
+      "monthly": "按月",
+      "yearly": "按年",
+      "yearlySaving": "−17%"
+    },
+    "plans": {
+      "mostPopular": "最多人选择",
+      "perMonth": "/月",
+      "perYear": "/年",
+      "getStarted": "开始使用",
+      "trialNote": "所有方案均包含<strong>5 天试用</strong>，试用期内可随时取消。",
+      "items": [
+        {
+          "name": "Core",
+          "description": "面向个人的基础健康分析",
+          "categories": "3 个类别",
+          "features": [
+            "基础健康面板",
+            "可使用 3 个服务类别",
+            "10 GB 模型档案存储空间",
+            "每月健康报告",
+            "电子邮件支持",
+            "数据加密",
+            "设备连接（最多 2 台）"
+          ]
+        },
+        {
+          "name": "Daily",
+          "description": "每日洞察与全面记录",
+          "categories": "10 个类别",
+          "features": [
+            "包含 Core 的全部内容",
+            "10 个类别",
+            "50 GB 模型档案存储空间",
+            "每日健康报告",
+            "可使用 Health Guide",
+            "优先电子邮件支持",
+            "设备连接（最多 5 台）",
+            "化验结果接入",
+            "基因数据分析"
+          ]
+        },
+        {
+          "name": "Max",
+          "description": "面向深度追踪的完整健康分析",
+          "categories": "20 个类别",
+          "features": [
+            "包含 Daily 的全部内容",
+            "全部 20 个服务类别",
+            "200 GB 模型档案存储空间",
+            "实时 AI 洞察",
+            "7×24 小时优先支持",
+            "设备连接不限数量",
+            "进阶预测分析",
+            "自定义报告生成",
+            "家庭账户（最多 5 位成员）",
+            "面向开发者的 API 访问"
+          ]
+        }
+      ]
+    },
+    "compare": {
+      "label": "对比",
+      "title": "全部功能一目了然",
+      "featureHeader": "功能",
+      "included": "包含",
+      "rows": [
+        { "name": "健康面板", "core": "基础", "daily": "进阶", "max": "进阶" },
+        { "name": "服务类别", "core": "3", "daily": "10", "max": "全部 20 个" },
+        { "name": "模型档案存储空间", "core": "10 GB", "daily": "50 GB", "max": "200 GB" },
+        { "name": "健康报告", "core": "每月", "daily": "每日", "max": "实时" },
+        { "name": "支持服务", "core": "电子邮件", "daily": "优先电子邮件", "max": "7×24 小时优先" },
+        { "name": "数据加密", "core": true, "daily": true, "max": true },
+        { "name": "设备连接", "core": "最多 2 台", "daily": "最多 5 台", "max": "不限" },
+        { "name": "Health Guide", "core": false, "daily": true, "max": true },
+        { "name": "化验结果接入", "core": false, "daily": true, "max": true },
+        { "name": "基因数据分析", "core": false, "daily": true, "max": true },
+        { "name": "预测分析", "core": false, "daily": false, "max": true },
+        { "name": "自定义报告生成", "core": false, "daily": false, "max": true },
+        { "name": "家庭账户", "core": false, "daily": false, "max": "最多 5 位" },
+        { "name": "API 访问", "core": false, "daily": false, "max": true }
+      ]
+    },
+    "testimonials": {
+      "label": "用户声音",
+      "title": "用户的真实感受",
+      "items": [
+        {
+          "quote": "用来记录基础健康指标刚刚好，简单又实用。",
+          "author": "萨拉·M",
+          "plan": "Core"
+        },
+        {
+          "quote": "Health Guide 改变了我理解自己健康数据的方式，物有所值。",
+          "author": "迈克尔·R",
+          "plan": "Daily"
+        },
+        {
+          "quote": "作为医疗从业者，全面的分析和家庭账户对我非常有价值。",
+          "author": "陈艾米莉医生",
+          "plan": "Max"
+        }
+      ]
+    },
+    "why": {
+      "label": "为什么选择 BioMath Core",
+      "title": "为长期的清晰而设计",
+      "items": [
+        {
+          "title": "及时的提示",
+          "body": "模型逐步了解你的规律，并就健康信号给出反馈。"
+        },
+        {
+          "title": "符合 HIPAA 的安全标准",
+          "body": "企业级防护，敏感数据默认保持私密。"
+        },
+        {
+          "title": "有人可以求助",
+          "body": "当你想弄清数据的含义时，专业人员会优先为你解答。"
+        }
+      ]
+    },
+    "faq": {
+      "label": "常见问题",
+      "title": "常见问题",
+      "items": [
+        {
+          "question": "我可以随时更换方案吗？",
+          "answer": "可以，你随时都能升级或降级方案。变更立即生效，费用会按比例结算。"
+        },
+        {
+          "question": "5 天试用结束后会怎样？",
+          "answer": "5 天试用结束后，系统会按你选择的方案和计费周期自动扣款。试用期内随时可以取消，不会产生费用。"
+        },
+        {
+          "question": "我的健康数据安全吗？",
+          "answer": "完全安全。所有方案都包含企业级加密、安全存储，并符合 HIPAA 规定。未经你的明确同意，我们绝不会将健康数据提供给第三方。"
+        },
+        {
+          "question": "按年付费有优惠吗？",
+          "answer": "有。按年付费比按月付费大约节省 17%。在上方选择按年计费即可看到优惠后的价格。"
+        }
+      ],
+      "moreText": "想在选择方案前先了解全貌吗？",
+      "moreCta": "进一步了解 BioMath Core →"
+    },
+    "closing": {
+      "title": "准备好用更清晰的方式认识自己的健康了吗？",
+      "body": "先从 5 天试用开始。随着 Human Data Model 不断丰富，再逐步增加类别。",
+      "ctaTrial": "开始免费试用",
+      "ctaContact": "联系销售",
+      "footnote": "符合 HIPAA · 传输与存储全程加密 · 随时可取消"
+    },
+    "errors": {
+      "title": "支付出错",
+      "dismiss": "关闭",
+      "priceNotConfigured": "该方案尚未配置 Stripe 价格 ID。",
+      "subscriptionFailed": "订阅创建失败",
+      "notAuthenticated": "尚未登录",
+      "paymentFailed": "支付未完成"
+    }
+  }
+}

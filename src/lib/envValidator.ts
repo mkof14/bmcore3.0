@@ -41,11 +41,11 @@ export function validateEnv(): void {
   );
 
   if (missing.length > 0) {
-    console.warn(
-      'Missing required environment variables; using client fallbacks:',
-      missing.join(', ')
+    throw new EnvValidationError(
+      `Missing required environment variables: ${missing.join(', ')}. ` +
+        'Set them for live Supabase, or enable VITE_MOCK_MODE=1 for local/dev only.',
+      missing,
     );
-    return;
   }
 
   if (isProduction) {
@@ -86,11 +86,17 @@ export function isDevelopment(): boolean {
 }
 
 export function getSupabaseUrl(): string {
-  return getEnv('VITE_SUPABASE_URL', 'https://mock.supabase.co');
+  if (import.meta.env.VITE_MOCK_MODE === '1') {
+    return getEnv('VITE_SUPABASE_URL', 'https://mock.supabase.co');
+  }
+  return getEnv('VITE_SUPABASE_URL');
 }
 
 export function getSupabaseAnonKey(): string {
-  return getEnv('VITE_SUPABASE_ANON_KEY', 'mock-anon-key');
+  if (import.meta.env.VITE_MOCK_MODE === '1') {
+    return getEnv('VITE_SUPABASE_ANON_KEY', 'mock-anon-key');
+  }
+  return getEnv('VITE_SUPABASE_ANON_KEY');
 }
 
 export function getGAMeasurementId(): string | undefined {

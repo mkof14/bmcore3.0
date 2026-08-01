@@ -18,7 +18,7 @@ export default function ReportBrandHeader({
   if (variant === 'strip') {
     return (
       <div
-        className={`flex flex-wrap items-center justify-between gap-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/50 px-3 py-2 ${className}`}
+        className={`flex flex-wrap items-center justify-between gap-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-[var(--bm-surface)]/50 px-3 py-2 ${className}`}
       >
         <div className="flex items-center gap-2">
           <img src="/logo-header.png" alt="BioMath Core" className="h-6 w-auto" />
@@ -34,7 +34,7 @@ export default function ReportBrandHeader({
 
   return (
     <div
-      className={`bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm ${
+      className={`bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm ${
         compact ? 'p-4' : 'p-6'
       } ${className}`}
     >

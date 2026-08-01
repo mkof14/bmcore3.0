@@ -1,0 +1,101 @@
+{
+  "partnership": {
+    "seo": {
+      "title": "Partenariats — collaborer avec BioMath Core",
+      "description": "Devenez partenaire de BioMath Core pour le développement commercial, la recherche ou l’intégration clinique. Envoyez une demande pour explorer la distribution, le marketing conjoint et les partenariats de données."
+    },
+    "hero": {
+      "label": "Partenariats",
+      "title": "Construire avec BioMath Core",
+      "body": "Nous travaillons avec des cliniques, des équipes de recherche et des organisations qui partagent notre attention à la prévention, à la confidentialité et à un accompagnement biomathématique explicable."
+    },
+    "types": {
+      "label": "Opportunités",
+      "title": "Nos formes de collaboration",
+      "body": "Chaque type de partenariat a son propre périmètre : distribution, recherche ou intégration clinique.",
+      "items": [
+        {
+          "title": "Développement commercial",
+          "body": "Distribution, marketing conjoint et accès au marché pour les organisations qui souhaitent proposer BioMath Core à leur public.",
+          "points": ["Modèles de partage des revenus", "Actions de marketing conjoint", "Accès aux marchés régionaux"]
+        },
+        {
+          "title": "Scientifiques et chercheurs",
+          "body": "Collaboration sur la modélisation biomathématique, la validation clinique et la publication de travaux à partir de données de santé structurées.",
+          "points": ["Accès encadré aux données", "Possibilités de publication", "Programmes de recherche conjoints"]
+        },
+        {
+          "title": "Professionnels de santé",
+          "body": "Intégrez le Human Data Model dans vos parcours cliniques, avec formation, accompagnement et outils de suivi des patients.",
+          "points": ["Intégration au cabinet", "Formation et accompagnement", "Outils de suivi des patients"]
+        }
+      ]
+    },
+    "why": {
+      "label": "Pourquoi BioMath Core",
+      "title": "Ce qu’y gagnent nos partenaires",
+      "body": "Un produit fondé sur une analyse à deux modèles, des données maîtrisées par l’utilisateur et un contexte de santé de long terme — pas des rapports isolés.",
+      "items": [
+        {
+          "title": "Un marché en croissance",
+          "body": "Un marché de la santé numérique de plus de 350 Md$, avec une demande croissante d’accompagnement préventif et explicable."
+        },
+        {
+          "title": "Une portée internationale",
+          "body": "Étendez votre impact grâce à un produit conçu pour les normes internationales de confidentialité et de conformité."
+        },
+        {
+          "title": "Des utilisateurs engagés",
+          "body": "Accès à des membres attentifs à leur santé, qui suivent activement leurs biomarqueurs et leur bien-être sur la durée."
+        },
+        {
+          "title": "Une analyse à deux modèles",
+          "body": "Modèles biomathématique et clinique associés : un facteur de différenciation pour les partenaires comme pour les patients."
+        }
+      ]
+    },
+    "programs": {
+      "label": "Façons de participer",
+      "title": "Trois façons de travailler avec nous",
+      "body": "Les organisations, les membres qui invitent leurs proches et celles et ceux qui nous recommandent sur la durée n’ont pas le même point de départ.",
+      "items": [
+        {
+          "title": "Demande de partenariat",
+          "body": "Pour les cliniques, les équipes de recherche et les entreprises qui souhaitent un accord formel avec BioMath Core.",
+          "action": "Aller au formulaire de demande"
+        },
+        {
+          "title": "Parrainer un proche",
+          "body": "Les membres partagent un lien personnel. Le proche reçoit une remise et le membre obtient un crédit sur son compte.",
+          "action": "Ouvrir le programme de parrainage"
+        },
+        {
+          "title": "Programme d’ambassadeurs",
+          "body": "Pour les membres qui recommandent régulièrement BioMath Core et souhaitent des récompenses, des outils et un accompagnement renforcés.",
+          "action": "Ouvrir le programme d’ambassadeurs"
+        }
+      ]
+    },
+    "form": {
+      "label": "Demande",
+      "title": "Contactez-nous",
+      "body": "Parlez-nous de votre organisation et du type de partenariat envisagé. Nous répondons généralement sous deux jours ouvrés.",
+      "typeLabel": "Type de partenariat",
+      "typePlaceholder": "Choisissez un type de partenariat",
+      "typeOptions": {
+        "business": "Développement commercial",
+        "research": "Recherche et science",
+        "healthcare": "Professionnel de santé",
+        "technology": "Intégration technologique",
+        "other": "Autre"
+      },
+      "contactName": "Nom du contact",
+      "organization": "Entreprise / organisation",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "message": "Message",
+      "submit": "Envoyer la demande",
+      "directLabel": "Ou écrivez-nous directement"
+    }
+  }
+}

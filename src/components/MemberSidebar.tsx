@@ -1,6 +1,6 @@
 import {
   LayoutDashboard,
-  Sparkles,
+  Brain,
   Watch,
   HeadphonesIcon,
   Settings2,
@@ -14,11 +14,13 @@ import {
   User,
   Settings,
   Database,
+  Waypoints,
   Bell,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface MemberSidebarProps {
   currentSection: string;
@@ -27,58 +29,68 @@ interface MemberSidebarProps {
 }
 
 export default function MemberSidebar({ currentSection, onSectionChange, hasActiveSubscription = false }: MemberSidebarProps) {
+  const { t } = useTranslation();
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const menuSections = [
     {
-      title: 'Main',
+      title: t('member.nav.main'),
       items: [
-        { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-        { id: 'ai-assistant', label: 'AI Advisor', icon: Sparkles },
-        { id: 'devices', label: 'Devices', icon: Watch },
+        { id: 'dashboard', label: t('member.nav.dashboard'), icon: LayoutDashboard },
+        { id: 'human-data-model', label: t('member.nav.humanDataModel'), icon: Waypoints },
+        { id: 'ai-assistant', label: t('member.nav.healthGuide'), icon: Scale },
+        { id: 'devices', label: t('member.nav.devices'), icon: Watch },
       ]
     },
     {
-      title: 'Support & Services',
+      title: t('member.nav.supportServices'),
       items: [
-        { id: 'support', label: 'Support', icon: HeadphonesIcon },
-        { id: 'system', label: 'System', icon: Settings2 },
-        { id: 'catalog', label: 'Catalog', icon: BookOpen },
+        { id: 'support', label: t('member.nav.support'), icon: HeadphonesIcon },
+        { id: 'system', label: t('member.nav.system'), icon: Settings2 },
+        { id: 'catalog', label: t('member.nav.catalog'), icon: BookOpen },
       ]
     },
     {
-      title: 'Health & Analysis',
+      title: t('member.nav.healthAnalysis'),
       items: [
-        { id: 'questionnaires', label: 'Questionnaires', icon: ClipboardList },
-        { id: 'reports', label: 'Reports', icon: FileText },
-        { id: 'signal-hub', label: 'Signal Hub', icon: Database },
-        { id: 'reminders', label: 'Reminders', icon: Bell },
-        { id: 'second-opinion', label: 'Second Opinion', icon: Scale },
+        { id: 'questionnaires', label: t('member.nav.questionnaires'), icon: ClipboardList },
+        { id: 'reports', label: t('member.nav.reports'), icon: FileText },
+        { id: 'signal-hub', label: t('member.nav.signalHub'), icon: Database },
+        { id: 'reminders', label: t('member.nav.reminders'), icon: Bell },
+        { id: 'second-opinion', label: t('member.nav.secondOpinion'), icon: Scale },
       ]
     },
     {
-      title: 'Data & Documents',
+      title: t('member.nav.dataDocuments'),
       items: [
-        { id: 'medical-files', label: 'Medical Files', icon: FolderLock },
-        { id: 'black-box', label: 'Black Box', icon: FolderLock },
+        { id: 'medical-files', label: t('member.nav.medicalFiles'), icon: FolderLock },
+        { id: 'black-box', label: t('member.nav.blackBox'), icon: FolderLock },
       ]
     },
     {
-      title: 'Account',
+      title: t('member.nav.account'),
       items: [
-        { id: 'referral', label: 'Referral', icon: Users },
-        { id: 'billing', label: 'Billing', icon: CreditCard },
-        { id: 'profile', label: 'Profile', icon: User },
-        { id: 'settings', label: 'Settings', icon: Settings },
+        { id: 'referral', label: t('member.nav.referral'), icon: Users },
+        { id: 'billing', label: t('member.nav.billing'), icon: CreditCard },
+        { id: 'profile', label: t('member.nav.profile'), icon: User },
+        { id: 'settings', label: t('member.nav.settings'), icon: Settings },
       ]
     }
   ];
 
   return (
-    <aside className={`fixed left-0 top-16 bottom-0 bg-gradient-to-b from-gray-100 to-gray-50 dark:from-gray-900 dark:to-gray-950 border-r border-gray-200 dark:border-gray-800/50 transition-all duration-300 z-40 ${
+    <aside className={`fixed left-0 top-16 bottom-0 z-40 border-r border-theme bg-gradient-to-b from-[var(--bm-header)] to-[var(--bm-page)] transition-all duration-300 dark:from-[var(--bm-surface)] dark:to-[var(--bm-page)] ${
       isCollapsed ? 'w-20' : 'w-64'
     }`}>
       <div className="h-full flex flex-col">
+        {!isCollapsed && (
+          <div className="border-b border-orange-200/80 bg-orange-50/90 px-4 py-3 dark:border-orange-500/20 dark:bg-orange-950/40">
+            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-orange-600 dark:text-orange-400">
+              {t('member.zone.label')}
+            </p>
+            <p className="mt-0.5 text-xs text-gray-600 dark:text-gray-400">{t('member.zone.workspace')}</p>
+          </div>
+        )}
         <div className="flex-1 overflow-y-auto py-6 px-3">
           {menuSections.map((section, sectionIndex) => (
             <div key={sectionIndex} className="mb-6">
@@ -135,7 +147,7 @@ export default function MemberSidebar({ currentSection, onSectionChange, hasActi
             ) : (
               <>
                 <ChevronLeft className="h-5 w-5" />
-                <span className="text-sm">Collapse</span>
+                <span className="text-sm">{t('member.zone.collapse')}</span>
               </>
             )}
           </button>

@@ -8,6 +8,7 @@ const ALLOWED_TABLES = new Set([
   "profiles",
   "invitations",
   "marketing_documents",
+  "media_items",
   "blog_posts",
   "testimonials",
   "news_items",

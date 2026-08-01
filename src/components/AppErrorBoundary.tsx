@@ -22,7 +22,7 @@ export default class AppErrorBoundary extends Component<AppErrorBoundaryProps, A
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-gray-950 text-gray-100 flex items-center justify-center p-6">
+        <div className="min-h-screen bg-page text-gray-100 flex items-center justify-center p-6">
           <div className="max-w-lg w-full rounded-2xl border border-red-500/30 bg-red-500/10 p-6">
             <h1 className="text-xl font-semibold text-red-200 mb-3">App Runtime Error</h1>
             <p className="text-sm text-red-100">{this.state.message}</p>

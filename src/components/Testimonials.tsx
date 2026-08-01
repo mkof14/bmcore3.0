@@ -86,7 +86,7 @@ export default function Testimonials() {
 
   if (loading) {
     return (
-      <div className="py-16 bg-gray-50 dark:bg-gray-900">
+      <div className="py-16 bg-gray-50 dark:bg-[var(--bm-surface)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-64 mx-auto mb-4 animate-pulse"></div>
@@ -107,7 +107,7 @@ export default function Testimonials() {
   }
 
   return (
-    <div className="py-16 bg-gray-50 dark:bg-gray-900">
+    <div className="py-16 bg-gray-50 dark:bg-[var(--bm-surface)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">

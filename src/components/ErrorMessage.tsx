@@ -107,7 +107,7 @@ export function ErrorPage({
   onNavigateHome?: () => void;
 }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-page px-4">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <XCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />

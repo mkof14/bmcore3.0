@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Activity, Database, FileText, Sparkles, TrendingUp, RefreshCw } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Activity, Database, FileText, Radar, TrendingUp, RefreshCw } from 'lucide-react';
 import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 import { loadKnowledgeSnapshot, loadKnowledgeTimeline } from '../../lib/secondOpinionEngine';
 import { supabase } from '../../lib/supabase';
@@ -11,6 +12,7 @@ type TimelineEntry = {
 };
 
 export default function SignalHubSection() {
+  const { t } = useTranslation();
   const [userId, setUserId] = useState('guest');
   const [snapshot, setSnapshot] = useState(() => loadKnowledgeSnapshot('guest'));
   const [timeline, setTimeline] = useState<TimelineEntry[]>(loadKnowledgeTimeline('guest') as TimelineEntry[]);
@@ -63,41 +65,41 @@ export default function SignalHubSection() {
       <div className="mb-6">
         <h1 className="text-3xl font-semibold text-gray-900 mb-2 flex items-center gap-3">
           <Database className="h-8 w-8 text-orange-500" />
-          Signal Hub
+          {t('member.signalHub.title')}
         </h1>
         <p className="text-gray-600">
-          A live map of every signal feeding your reports, insights, and recommendations.
+          {t('member.signalHub.subtitle')}
         </p>
       </div>
 
       <ReportBrandHeader title="BioMath Core" subtitle="Signal Hub" variant="strip" className="mb-6" />
 
       <div className="grid md:grid-cols-3 gap-4 mb-6">
-        <div className="bg-white dark:bg-gray-900 rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
           <ReportBrandHeader variant="strip" subtitle="Signal Score" className="mb-3" />
           <p className="text-2xl font-bold text-gray-900 dark:text-white">{signalScore}</p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">Overall data readiness</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{t('member.signalHub.readiness')}</p>
         </div>
-        <div className="bg-white dark:bg-gray-900 rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
           <ReportBrandHeader variant="strip" subtitle="Total Signals" className="mb-3" />
           <p className="text-2xl font-bold text-gray-900 dark:text-white">{snapshot?.totalSignals || 0}</p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">Across all sources</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{t('member.signalHub.acrossSources')}</p>
         </div>
-        <div className="bg-white dark:bg-gray-900 rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
           <ReportBrandHeader variant="strip" subtitle="Latest Update" className="mb-3" />
           <p className="text-sm font-semibold text-gray-900 dark:text-white">
             {snapshot?.updatedAt ? new Date(snapshot.updatedAt).toLocaleString('en-US') : 'No updates yet'}
           </p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">Last signal refresh</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{t('member.signalHub.lastRefresh')}</p>
         </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-4 mb-6">
-        <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-800">
+        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-gray-200 dark:border-gray-800">
           <ReportBrandHeader variant="strip" subtitle="Sources" className="mb-4" />
           <div className="grid grid-cols-2 gap-3 text-sm text-gray-700 dark:text-gray-300">
             {sourceCards.map((source) => (
-              <div key={source.key} className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40 p-3">
+              <div key={source.key} className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-[var(--bm-surface)]/40 p-3">
                 <div className="flex items-center justify-between">
                   <span className="font-semibold capitalize">{source.key.replace('-', ' ')}</span>
                   <span className="text-xs text-gray-500">{source.count}</span>
@@ -113,11 +115,11 @@ export default function SignalHubSection() {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-800">
+        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-gray-200 dark:border-gray-800">
           <ReportBrandHeader variant="strip" subtitle="Impact Radar" className="mb-4" />
           <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
             <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-orange-500" />
+              <Radar className="h-4 w-4 text-orange-500" />
               Reports draw from every source to increase clarity.
             </div>
             <div className="flex items-center gap-2">
@@ -136,7 +138,7 @@ export default function SignalHubSection() {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-800 mb-6">
+      <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-gray-200 dark:border-gray-800 mb-6">
         <ReportBrandHeader variant="strip" subtitle="Signal Trendline" className="mb-4" />
         {trendPoints.length === 0 ? (
           <p className="text-sm text-gray-500">No signal history yet.</p>
@@ -154,7 +156,7 @@ export default function SignalHubSection() {
         <p className="mt-2 text-xs text-gray-500">Recent signal activity (last 12 updates).</p>
       </div>
 
-      <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-800">
+      <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-gray-200 dark:border-gray-800">
         <div className="flex items-center justify-between mb-4">
           <ReportBrandHeader variant="strip" subtitle="Signal Timeline" />
           <button

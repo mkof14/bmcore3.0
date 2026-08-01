@@ -1,5 +1,6 @@
 import { BookOpen, Calendar, ArrowRight, Share2, Copy, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '../lib/supabase';
 import BackButton from '../components/BackButton';
 import SEO from '../components/SEO';
@@ -8,6 +9,7 @@ import ErrorMessage from '../components/ErrorMessage';
 import EmptyState from '../components/EmptyState';
 import { generateArticleSchema, injectStructuredData } from '../lib/structuredData';
 import { notifyUserInfo } from '../lib/adminNotify';
+import { getContentSearchParams } from '../lib/routing';
 
 interface BlogProps {
   onNavigate: (page: string) => void;
@@ -25,6 +27,7 @@ interface BlogPost {
 }
 
 export default function Blog({ onNavigate }: BlogProps) {
+  const { t } = useTranslation();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>('');
@@ -42,7 +45,7 @@ export default function Blog({ onNavigate }: BlogProps) {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setSelectedPost(null);
-        window.location.hash = '#/blog';
+        window.history.pushState({ page: 'blog' }, '', '/blog');
       }
     };
     window.addEventListener('keydown', onKeyDown);
@@ -62,21 +65,21 @@ export default function Blog({ onNavigate }: BlogProps) {
         .limit(12);
 
       if (fetchError) {
-        setError('Blog load failed');
+        setError(t('content.blog.loadError'));
         return;
       }
 
       const loadedPosts = data || [];
       setPosts(loadedPosts);
 
-      const params = new URLSearchParams(window.location.hash.split('?')[1] || '');
+      const params = getContentSearchParams();
       const slug = params.get('post');
       if (slug) {
         const match = loadedPosts.find((post) => post.slug === slug);
         if (match) setSelectedPost(match);
       }
-    } catch (err) {
-      setError('Blog load failed');
+    } catch {
+      setError(t('content.blog.loadError'));
     } finally {
       setLoading(false);
     }
@@ -99,14 +102,14 @@ export default function Blog({ onNavigate }: BlogProps) {
   const visiblePosts = filteredPosts.slice(0, visibleCount);
 
   const handleCopyLink = (post: BlogPost) => {
-    const link = `${window.location.origin}/#/blog?post=${post.slug}`;
+    const link = `${window.location.origin}/blog?post=${post.slug}`;
     navigator.clipboard.writeText(link);
-    window.location.hash = `#/blog?post=${post.slug}`;
-    notifyUserInfo('Link copied');
+    window.history.pushState({ page: 'blog' }, '', `/blog?post=${post.slug}`);
+    notifyUserInfo(t('content.shared.linkCopied'));
   };
 
   const handleShare = async (post: BlogPost) => {
-    const link = `${window.location.origin}/#/blog?post=${post.slug}`;
+    const link = `${window.location.origin}/blog?post=${post.slug}`;
     if (navigator.share) {
       await navigator.share({
         title: post.title,
@@ -119,10 +122,10 @@ export default function Blog({ onNavigate }: BlogProps) {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 pt-20 pb-16">
+    <div className="min-h-screen bg-page pt-20 pb-16">
       <SEO
-        title="Health & Wellness Blog - Expert Articles & Insights"
-        description="Explore our collection of articles on health analytics, wellness optimization, preventive care, and personalized medicine. Expert insights from BioMath Core."
+        title={t('content.blog.seoTitle')}
+        description={t('content.blog.seoDescription')}
         keywords={['health blog', 'wellness articles', 'health insights', 'preventive care tips', 'personalized medicine blog', 'health technology articles']}
         url="/blog"
       />
@@ -131,11 +134,13 @@ export default function Blog({ onNavigate }: BlogProps) {
 
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-orange-200/80 bg-white/70 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-700 backdrop-blur dark:bg-white/10 dark:text-orange-200 dark:border-orange-300/20 mb-6">
-            Blog
+            {t('content.blog.badge')}
           </div>
-          <h1 className="text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 dark:text-white mb-6">Blog</h1>
+          <h1 className="text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 dark:text-white mb-6">
+            {t('content.blog.title')}
+          </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Insights, research, and stories about health, wellness, and the future of personalized care
+            {t('content.blog.subtitle')}
           </p>
         </div>
 
@@ -148,7 +153,7 @@ export default function Blog({ onNavigate }: BlogProps) {
         {error && (
           <div className="py-12">
             <ErrorMessage
-              title="Failed to Load Articles"
+              title={t('content.blog.errorTitle')}
               message={error}
               onRetry={loadPosts}
             />
@@ -159,8 +164,8 @@ export default function Blog({ onNavigate }: BlogProps) {
           <div className="py-20">
             <EmptyState
               icon={BookOpen}
-              title="No Articles Yet"
-              description="Check back soon for health insights, research, and wellness stories."
+              title={t('content.blog.emptyTitle')}
+              description={t('content.blog.emptyBody')}
             />
           </div>
         )}
@@ -176,21 +181,21 @@ export default function Blog({ onNavigate }: BlogProps) {
                     setSearchQuery(e.target.value);
                     setVisibleCount(6);
                   }}
-                  placeholder="Search articles..."
-                  className="w-full px-4 py-2 pr-10 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  placeholder={t('content.blog.searchPlaceholder')}
+                  className="w-full px-4 py-2 pr-10 bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery('')}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 dark:hover:text-white"
-                    aria-label="Clear search"
+                    aria-label={t('content.shared.clearSearch')}
                   >
                     <X className="h-4 w-4" />
                   </button>
                 )}
               </div>
               <div className="text-sm text-gray-500 dark:text-gray-400">
-                {filteredPosts.length} results
+                {t('content.shared.results', { count: filteredPosts.length })}
               </div>
               <select
                 value={categoryFilter}
@@ -198,9 +203,9 @@ export default function Blog({ onNavigate }: BlogProps) {
                   setCategoryFilter(e.target.value);
                   setVisibleCount(6);
                 }}
-                className="w-full md:w-56 px-4 py-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full md:w-56 px-4 py-2 bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
               >
-                <option value="all">All categories</option>
+                <option value="all">{t('content.blog.allCategories')}</option>
                 {categories.map((category) => (
                   <option key={category} value={category}>
                     {category}
@@ -213,8 +218,8 @@ export default function Blog({ onNavigate }: BlogProps) {
               <div className="py-20">
                 <EmptyState
                   icon={BookOpen}
-                  title="No Results"
-                  description="Try a different search term or category."
+                  title={t('content.blog.noResultsTitle')}
+                  description={t('content.blog.noResultsBody')}
                 />
               </div>
             ) : (
@@ -225,9 +230,9 @@ export default function Blog({ onNavigate }: BlogProps) {
                       key={post.id}
                       onClick={() => {
                         setSelectedPost(post);
-                        window.location.hash = `#/blog?post=${post.slug}`;
+                        window.history.pushState({ page: 'blog' }, '', `/blog?post=${post.slug}`);
                       }}
-                      className="group relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden hover:border-orange-400/60 transition-all duration-300 cursor-pointer shadow-sm"
+                      className="group relative bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden hover:border-orange-400/60 transition-all duration-300 cursor-pointer shadow-sm"
                     >
                       {post.featured_image && (
                         <div className="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
@@ -268,7 +273,7 @@ export default function Blog({ onNavigate }: BlogProps) {
                       onClick={() => setVisibleCount((count) => count + 6)}
                       className="px-6 py-3 bg-gray-900 text-white rounded-lg transition-colors hover:bg-gray-800"
                     >
-                      Load more
+                      {t('content.shared.loadMore')}
                     </button>
                   </div>
                 )}
@@ -284,15 +289,15 @@ export default function Blog({ onNavigate }: BlogProps) {
           onClick={(event) => {
             if (event.target === event.currentTarget) {
               setSelectedPost(null);
-              window.location.hash = '#/blog';
+              window.history.pushState({ page: 'blog' }, '', '/blog');
             }
           }}
         >
-          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-xl">
+          <div className="bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-800 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-xl">
             <div className="p-6 border-b border-gray-200 dark:border-gray-800 flex items-start justify-between gap-4">
               <div>
                 <p className="text-xs text-orange-500 font-semibold tracking-wider uppercase mb-2">
-                  {selectedPost.category || 'Health'}
+                  {selectedPost.category || t('content.blog.defaultCategory')}
                 </p>
                 <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">
                   {selectedPost.title}
@@ -305,30 +310,30 @@ export default function Blog({ onNavigate }: BlogProps) {
                 <button
                   onClick={() => handleShare(selectedPost)}
                   className="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white bg-gray-100 dark:bg-gray-800/60 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-colors"
-                  title="Share"
+                  title={t('content.shared.share')}
                 >
                   <Share2 className="h-4 w-4" />
                 </button>
                 <button
                   onClick={() => handleCopyLink(selectedPost)}
                   className="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white bg-gray-100 dark:bg-gray-800/60 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-colors"
-                  title="Copy link"
+                  title={t('content.shared.copyLink')}
                 >
                   <Copy className="h-4 w-4" />
                 </button>
                 <button
                   onClick={() => {
                     setSelectedPost(null);
-                    window.location.hash = '#/blog';
+                    window.history.pushState({ page: 'blog' }, '', '/blog');
                   }}
                   className="px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white bg-gray-100 dark:bg-gray-800/60 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-colors"
                 >
-                  Close
+                  {t('content.shared.close')}
                 </button>
               </div>
             </div>
             {selectedPost.featured_image && (
-              <div className="aspect-video bg-gray-100 dark:bg-gray-900">
+              <div className="aspect-video bg-gray-100 dark:bg-[var(--bm-surface)]">
                 <img
                   src={selectedPost.featured_image}
                   alt={selectedPost.title}

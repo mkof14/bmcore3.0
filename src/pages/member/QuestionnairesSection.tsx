@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Check, Lock, Save, Globe, Ruler } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError } from '../../lib/adminNotify';
@@ -21,6 +22,7 @@ interface QuestionnaireData {
 }
 
 export default function QuestionnairesSection() {
+  const { t } = useTranslation();
   const [currentSection, setCurrentSection] = useState<QuestionnaireSection>('categories');
   const [responses, setResponses] = useState<Record<QuestionnaireSection, QuestionnaireData>>({
     categories: {},
@@ -227,9 +229,9 @@ export default function QuestionnairesSection() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-3xl font-semibold text-gray-900 mb-2">Health Questionnaires</h1>
+        <h1 className="text-3xl font-semibold text-gray-900 mb-2">{t('member.questionnaires.title')}</h1>
         <p className="text-gray-600">
-          Complete your health profile to receive personalized recommendations and insights
+          {t('member.questionnaires.subtitle')}
         </p>
       </div>
 
@@ -246,7 +248,7 @@ export default function QuestionnairesSection() {
         <div className="bg-white/90 rounded-2xl border border-slate-200 p-4 sticky top-4 shadow-lg">
           <ReportBrandHeader variant="strip" subtitle="Settings & Sections" className="mb-4" />
           <div className="mb-4 pb-4 border-b border-slate-200">
-            <h3 className="font-semibold text-gray-900 mb-3">Settings</h3>
+            <h3 className="font-semibold text-gray-900 mb-3">{t('member.questionnaires.settings')}</h3>
 
             <button
               onClick={toggleUnitSystem}
@@ -452,7 +454,7 @@ function CategoriesForm({ data, onChange }: any) {
         <select
           value={data.primary_priority || ''}
           onChange={(e) => onChange('primary_priority', e.target.value)}
-          className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+          className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
         >
           <option value="">Select priority...</option>
           <option value="prevention">Prevention</option>
@@ -482,7 +484,7 @@ function PersonalInfoForm({ data, onChange, unitSystem }: any) {
             type="text"
             value={data.full_name || ''}
             onChange={(e) => onChange('full_name', e.target.value)}
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
           />
         </div>
 
@@ -493,7 +495,7 @@ function PersonalInfoForm({ data, onChange, unitSystem }: any) {
           <select
             value={data.biological_sex || ''}
             onChange={(e) => onChange('biological_sex', e.target.value)}
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
           >
             <option value="">Select...</option>
             <option value="male">Male</option>
@@ -509,7 +511,7 @@ function PersonalInfoForm({ data, onChange, unitSystem }: any) {
             type="date"
             value={data.date_of_birth || ''}
             onChange={(e) => onChange('date_of_birth', e.target.value)}
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
           />
         </div>
 
@@ -521,7 +523,7 @@ function PersonalInfoForm({ data, onChange, unitSystem }: any) {
             type="text"
             value={data.country || ''}
             onChange={(e) => onChange('country', e.target.value)}
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
           />
         </div>
 
@@ -533,7 +535,7 @@ function PersonalInfoForm({ data, onChange, unitSystem }: any) {
             type="number"
             value={data.height || ''}
             onChange={(e) => onChange('height', e.target.value)}
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
           />
         </div>
 
@@ -545,7 +547,7 @@ function PersonalInfoForm({ data, onChange, unitSystem }: any) {
             type="number"
             value={data.weight || ''}
             onChange={(e) => onChange('weight', e.target.value)}
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
           />
         </div>
       </div>
@@ -596,7 +598,7 @@ function MedicalHistoryForm({ data, onChange }: any) {
             value={data.conditions_list || ''}
             onChange={(e) => onChange('conditions_list', e.target.value)}
             rows={4}
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
             placeholder="List your conditions..."
           />
         </div>
@@ -648,7 +650,7 @@ function MedicationsForm({ data, onChange }: any) {
             value={data.medications_list || ''}
             onChange={(e) => onChange('medications_list', e.target.value)}
             rows={4}
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
             placeholder="Medication name, dosage, frequency..."
           />
         </div>
@@ -700,7 +702,7 @@ function AllergiesForm({ data, onChange }: any) {
             value={data.allergies_list || ''}
             onChange={(e) => onChange('allergies_list', e.target.value)}
             rows={4}
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
             placeholder="Type of allergy, severity, reactions..."
           />
         </div>
@@ -726,7 +728,7 @@ function VitalSignsForm({ data, onChange, unitSystem }: any) {
             type="number"
             value={data.resting_heart_rate || ''}
             onChange={(e) => onChange('resting_heart_rate', e.target.value)}
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
           />
         </div>
 
@@ -739,7 +741,7 @@ function VitalSignsForm({ data, onChange, unitSystem }: any) {
             value={data.blood_pressure || ''}
             onChange={(e) => onChange('blood_pressure', e.target.value)}
             placeholder="120/80"
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
           />
         </div>
       </div>
@@ -763,7 +765,7 @@ function LifestyleForm({ data, onChange }: any) {
           <select
             value={data.smoking_status || ''}
             onChange={(e) => onChange('smoking_status', e.target.value)}
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
           >
             <option value="">Select...</option>
             <option value="never">Never</option>
@@ -779,7 +781,7 @@ function LifestyleForm({ data, onChange }: any) {
           <select
             value={data.alcohol_consumption || ''}
             onChange={(e) => onChange('alcohol_consumption', e.target.value)}
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
           >
             <option value="">Select...</option>
             <option value="none">None</option>
@@ -797,7 +799,7 @@ function LifestyleForm({ data, onChange }: any) {
             type="number"
             value={data.exercise_frequency || ''}
             onChange={(e) => onChange('exercise_frequency', e.target.value)}
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
           />
         </div>
 
@@ -810,7 +812,7 @@ function LifestyleForm({ data, onChange }: any) {
             step="0.5"
             value={data.sleep_duration || ''}
             onChange={(e) => onChange('sleep_duration', e.target.value)}
-            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-gray-100"
           />
         </div>
       </div>
@@ -833,7 +835,7 @@ function PsychologicalHealthForm({ data, onChange }: any) {
         <select
           value={data.mood_stability || ''}
           onChange={(e) => onChange('mood_stability', e.target.value)}
-          className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900"
+          className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)]"
         >
           <option value="">Select...</option>
           <option value="very_stable">Very Stable</option>
@@ -894,7 +896,7 @@ function MensSexualHealthForm({ data, onChange }: any) {
         <select
           value={data.sexual_interest_trend || ''}
           onChange={(e) => onChange('sexual_interest_trend', e.target.value)}
-          className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-gray-900"
+          className="w-full px-4 py-2 border border-slate-200 dark:border-gray-700/50 rounded-lg bg-white dark:bg-[var(--bm-surface)]"
         >
           <option value="">Select...</option>
           <option value="increasing">Increasing</option>

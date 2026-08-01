@@ -1,0 +1,91 @@
+{
+  "footer": {
+    "partnership": "パートナーシップ",
+    "partnershipOpportunities": "提携の機会",
+    "news": "ニュース",
+    "learningCenter": "ラーニングセンター",
+    "inviteFriend": "友人を招待",
+    "ambassador": "アンバサダープログラム",
+    "commandCenter": "管理センター",
+    "adminPanel": "管理パネル",
+    "whyTwoModels": "2つのモデルを使う理由",
+    "privacyTrust": "プライバシーと信頼センター",
+    "legalNote": "BioMath Core はウェルネスサービスです。医療の提供、診断、治療は行いません。",
+    "legalGroups": {
+      "documents": "法的文書",
+      "disclaimers": "免責事項",
+      "data": "データとプライバシー",
+      "safety": "安全とセキュリティ"
+    },
+    "cookiePreferences": "Cookie の設定",
+    "legalContact": "プライバシー・法務の窓口",
+    "disclaimer": "BioMath Coreはウェルネスサービスであり、医療サービスではありません。診断、治療、医療上の助言は行いません。ウェルネスと予防的な健康支援のための案内のみを提供します。医療上の懸念については、必ず資格を持つ医療専門家にご相談ください。",
+    "media": "メディア"
+  },
+  "cookies": {
+    "title": "Cookie の設定",
+    "body": "サイトの動作維持、利用状況の把握、設定の保存のために Cookie を使用します。許可する範囲はお客様が選べます。",
+    "acceptAll": "すべて許可",
+    "rejectAll": "すべて拒否",
+    "customize": "個別に設定",
+    "policiesNote": "この選択はフッターからいつでも変更できます。",
+    "settingsTitle": "Cookie の詳細設定",
+    "back": "戻る",
+    "save": "設定を保存",
+    "categories": {
+      "necessary": {
+        "title": "必須 Cookie",
+        "body": "ログインやセキュリティなど、サイトの動作に必要です。無効にはできません。"
+      },
+      "analytics": {
+        "title": "分析 Cookie",
+        "body": "サイトの利用状況を把握し、改善に役立てます。"
+      },
+      "marketing": {
+        "title": "マーケティング Cookie",
+        "body": "お客様に関連する情報やご案内を表示するために使用します。"
+      },
+      "preferences": {
+        "title": "設定 Cookie",
+        "body": "言語やテーマなどの設定を記憶します。"
+      }
+    }
+  },
+  "commandCenter": {
+    "title": "管理センター",
+    "subtitle": "事業分析とサービス指標をリアルタイムで表示",
+    "revenueTrend": "収益の推移（過去30日）",
+    "userGrowth": "利用者数の推移（過去30日）",
+    "serviceUsage": "サービス利用状況",
+    "reportsEngine": "レポート機能"
+  },
+  "catalogReference": {
+    "label": "参照",
+    "defaultTitle": "サービスカタログ",
+    "defaultSubtitle": "{{categories}} カテゴリ · ライブカタログの説明付きサービス {{count}} 件。",
+    "searchPlaceholder": "カテゴリまたはサービスを検索…",
+    "empty": "一致するサービスがありません。",
+    "servicesCount": "{{count}} 件のサービス",
+    "openCatalog": "サービスカタログで開く →"
+  },
+  "liveSupportChat": {
+    "title": "ライブサポートチャット",
+    "subtitle": "通常は数分以内に返信します",
+    "closeAria": "チャットを閉じる",
+    "emptyTitle": "サポートチャットへようこそ",
+    "emptyBody": "メッセージを送ると、まもなくチームが返信します。",
+    "signInTitle": "チャットにはサインインが必要です",
+    "signInBody": "会話を非公開に保ち、履歴とつなぐため、ライブサポートにはアカウントが必要です。",
+    "errorTitle": "チャットを利用できません",
+    "errorBody": "現在サポートチャットを開けませんでした。再試行するか、contact@biomathcore.com へメールしてください。",
+    "retry": "再試行",
+    "placeholder": "メッセージを入力…",
+    "hint": "Enter で送信、Shift+Enter で改行",
+    "supportTeam": "サポートチーム",
+    "typing": "{{name}} が入力中…",
+    "userFallback": "ユーザー",
+    "someoneFallback": "誰か",
+    "loadError": "サポートチャットの読み込みに失敗しました。もう一度お試しください。",
+    "sendError": "メッセージを送信できませんでした。もう一度お試しください。"
+  }
+}

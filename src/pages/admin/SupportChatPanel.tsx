@@ -374,7 +374,7 @@ export default function SupportChatPanel() {
   };
 
   return (
-    <div className="flex h-[calc(100vh-200px)] bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700">
+    <div className="flex h-[calc(100vh-200px)] bg-white dark:bg-[var(--bm-surface)] rounded-xl border border-gray-200 dark:border-gray-700">
       <div className="w-80 border-r border-gray-200 dark:border-gray-700 flex flex-col">
         <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center space-x-2 mb-3">
@@ -390,7 +390,7 @@ export default function SupportChatPanel() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search conversations..."
-              className="w-full pl-10 pr-4 py-2 text-sm rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 text-sm rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
 
@@ -486,7 +486,7 @@ export default function SupportChatPanel() {
               </p>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-900">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-[var(--bm-surface)]">
               {loadingMessages ? (
                 <div className="flex items-center justify-center py-6">
                   <Loader className="h-5 w-5 animate-spin text-blue-600" />
@@ -593,7 +593,7 @@ export default function SupportChatPanel() {
                   }}
                   placeholder="Type your response..."
                   rows={3}
-                  className="flex-1 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-sm"
+                  className="flex-1 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-sm"
                 />
                 <button
                   type="submit"

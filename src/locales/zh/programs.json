@@ -1,0 +1,175 @@
+{
+  "programs": {
+    "referral": {
+      "label": "推荐计划",
+      "heroTitle": "分享健康，收获回馈",
+      "heroSubtitle": "邀请好友加入 BioMath Core，每一次成功推荐都能获得额度。",
+      "statsLabel": "你的数据",
+      "totalReferred": "累计推荐",
+      "creditsEarned": "已获额度",
+      "activeReferrals": "有效推荐",
+      "howLabel": "运作方式",
+      "howTitle": "三个简单步骤",
+      "steps": {
+        "share": { "title": "分享你的专属推荐码", "body": "通过邮件或社交平台发送给好友。" },
+        "discount": { "title": "好友立减 5 美元", "body": "注册时即时生效。" },
+        "credit": { "title": "你获得 10 美元额度", "body": "好友注册确认后立即到账。" }
+      },
+      "rewardTitle": "回馈详情",
+      "perReferral": "每次推荐可得",
+      "friendDiscount": "好友可享优惠",
+      "notes": [
+        "推荐次数不限",
+        "额度永不过期",
+        "可用于订阅与升级"
+      ],
+      "shareLabel": "分享",
+      "codeTitle": "你的推荐码",
+      "permanentCode": "长期有效的推荐码",
+      "copy": "复制",
+      "copied": "已复制！",
+      "shareLink": "分享链接",
+      "inviteTitle": "通过邮件发送邀请",
+      "invitePlaceholder": "好友的电子邮箱",
+      "send": "发送",
+      "inviteSent": "邀请已成功发送！",
+      "socialTitle": "分享到社交平台",
+      "shareText": "推荐 BioMath Core —— 帮助你理解自己身体的健康洞察。一起加入，立减 5 美元！",
+      "detailsLabel": "详情",
+      "detailsTitle": "计划详情",
+      "eligibility": "参与条件",
+      "eligibilityItems": [
+        "好友必须是新用户",
+        "推荐码需在注册时填写",
+        "每个账户仅可使用一个推荐码"
+      ],
+      "fraud": "防范违规",
+      "fraudItems": [
+        "不得自我推荐",
+        "不得使用重复账户",
+        "存在滥用行为将取消回馈"
+      ],
+      "upgradeQuestion": "推荐了 10 位以上好友？",
+      "upgradePrefix": "你可能符合我们的",
+      "upgradeLink": "大使计划",
+      "upgradeSuffix": "条件，回馈更高。"
+    },
+    "ambassador": {
+      "label": "大使计划",
+      "heroTitle": "成为健康理念的传递者",
+      "heroSubtitle": "真诚分享 BioMath Core，获得更高回馈，同时帮助更多人发现平和而有支持感的健康指引。",
+      "pathsLabel": "参与途径",
+      "pathsTitle": "什么样的人适合成为大使？",
+      "paths": {
+        "organic": {
+          "title": "自然成长",
+          "body": "推荐超过 10 位好友的长期用户，可自动升级为大使并获得更多权益。"
+        },
+        "direct": {
+          "title": "直接申请",
+          "body": "健康教练、健康教育者、内容创作者与社群负责人，可通过下方表单直接申请。"
+        }
+      },
+      "rewardsLabel": "回馈",
+      "rewardsTitle": "你能获得什么",
+      "rewards": {
+        "higher": {
+          "title": "更高回馈",
+          "body": "每次推荐可得 20 美元（标准的两倍），并可按等级进一步提升。"
+        },
+        "priority": {
+          "title": "优先权益",
+          "body": "新功能抢先体验、优先支持，以及专属的大使看板。"
+        },
+        "tools": {
+          "title": "联合品牌工具",
+          "body": "专属素材、社交媒体资源、可选落地页与分享工具包。"
+        }
+      },
+      "benefitsLabel": "权益",
+      "benefitsTitle": "大使权益",
+      "benefits": {
+        "enhanced": { "title": "更高回馈", "body": "标准推荐回馈的两倍，并可按等级提升。" },
+        "dashboard": { "title": "专属看板", "body": "查看你的推荐群体、累计回馈与大使等级。" },
+        "materials": { "title": "联合品牌素材", "body": "专业社交素材与分享工具包。" },
+        "support": { "title": "优先支持", "body": "有疑问可直接联系 BioMath Core 团队。" },
+        "features": { "title": "抢先体验", "body": "参与内测，提前使用新功能。" },
+        "revenue": { "title": "收益分成", "body": "有机会参与更进阶的合作模式。" }
+      },
+      "guidelinesLabel": "准则",
+      "guidelinesTitle": "大使的责任",
+      "guidelinesIntro": "作为大使，我们希望你真诚分享，并坚持以健康为先的价值观：",
+      "responsibilities": [
+        "基于个人真实体验分享 BioMath Core。",
+        "使用以健康为先的语言：给予支持，而非下达指示。",
+        "切勿作出医疗或诊断方面的断言。",
+        "避免垃圾信息、误导性广告或滥用激励机制。"
+      ],
+      "applyLabel": "申请",
+      "applyTitle": "申请成为大使",
+      "submitted": "已提交",
+      "receivedTitle": "已收到申请",
+      "receivedBody": "感谢你对 BioMath Core 大使计划的关注。我们的团队会审阅你的申请，并在 3–5 个工作日内与你联系。",
+      "form": {
+        "fullName": "姓名 *",
+        "email": "电子邮箱 *",
+        "country": "国家/地区 *",
+        "audience": "受众类型 *",
+        "selectType": "请选择类型…",
+        "audienceOptions": {
+          "users": "普通用户",
+          "clients": "教练客户",
+          "followers": "社交平台粉丝",
+          "community": "社群成员",
+          "other": "其他"
+        },
+        "hasReferrals": "你目前在使用我们的推荐计划吗？ *",
+        "yes": "是",
+        "no": "否",
+        "motivation": "你为什么想成为大使？ *",
+        "motivationPlaceholder": "请分享你的动力以及希望如何参与…",
+        "socialLink": "网站或社交主页链接（选填）",
+        "submit": "提交申请"
+      },
+      "footerQuestion": "已有 10 位以上推荐？",
+      "footerPrefix": "请在",
+      "footerLink": "会员专区",
+      "footerSuffix": "中查看是否符合自动升级条件。"
+    },
+    "careers": {
+      "label": "加入我们",
+      "heroTitle": "与我们一起构建健康洞察",
+      "heroSubtitle": "加入一个横跨生物数学、计算生物学与预防健康的团队。",
+      "whyLabel": "为什么加入",
+      "whyTitle": "为什么选择 BioMath Core？",
+      "why": {
+        "innovation": { "title": "以创新驱动", "body": "从事生物数学与人工智能工作，带来真实的健康影响。" },
+        "impact": { "title": "以成效为本", "body": "通过预防性健康管理，帮助人们改善自身健康。" },
+        "growth": { "title": "重视成长", "body": "在以科学为先的团队中持续学习与成长。" }
+      },
+      "openLabel": "开放职位",
+      "openTitle": "当前招聘",
+      "loading": "正在加载职位…",
+      "loadError": "招聘信息加载失败",
+      "errorTitle": "加载职位出错",
+      "retry": "重试",
+      "emptyTitle": "目前没有开放职位。",
+      "emptyBody": "请稍后再来查看，或将简历发送至 careers@biomathcore.com",
+      "searchPlaceholder": "搜索职位…",
+      "clearSearch": "清除搜索",
+      "allTypes": "全部类型",
+      "results": "{{count}} 条结果",
+      "noMatchTitle": "没有符合条件的职位。",
+      "noMatchBody": "请尝试其他关键词或筛选条件。",
+      "loadMore": "加载更多",
+      "share": "分享",
+      "copyLink": "复制链接",
+      "linkCopied": "链接已复制",
+      "close": "关闭",
+      "overview": "职位概述",
+      "responsibilities": "工作职责",
+      "requirements": "任职要求",
+      "salaryRange": "薪资范围"
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "partnership": {
+    "seo": {
+      "title": "Partnerships - Work With BioMath Core",
+      "description": "Partner with BioMath Core on business development, research collaboration, or clinical integration. Submit an inquiry to explore distribution, co-marketing, and data partnerships."
+    },
+    "hero": {
+      "label": "Partnerships",
+      "title": "Build with BioMath Core",
+      "body": "We work with clinics, researchers, and organizations that share our focus on preventive health, privacy, and explainable biomathematical guidance."
+    },
+    "types": {
+      "label": "Opportunities",
+      "title": "How we collaborate",
+      "body": "Each partnership type has a distinct scope — from distribution to research to clinical integration.",
+      "items": [
+        {
+          "title": "Business development",
+          "body": "Distribution, co-marketing, and market access for organizations that want to bring BioMath Core to their audience.",
+          "points": ["Revenue sharing models", "Co-marketing initiatives", "Regional market access"]
+        },
+        {
+          "title": "Scientists & researchers",
+          "body": "Collaboration on biomathematical modeling, clinical validation, and published research using structured health data.",
+          "points": ["Controlled data access", "Publication opportunities", "Joint research programs"]
+        },
+        {
+          "title": "Healthcare professionals",
+          "body": "Integrate the Human Data Model into clinical workflows — with training, support, and patient monitoring tools.",
+          "points": ["Practice integration", "Training & support", "Patient monitoring tools"]
+        }
+      ]
+    },
+    "why": {
+      "label": "Why BioMath Core",
+      "title": "What partners gain",
+      "body": "A product grounded in dual-model analysis, user-controlled data, and long-term health context — not isolated reports.",
+      "items": [
+        {
+          "title": "Growing market",
+          "body": "$350B+ digital health market with rising demand for preventive, explainable guidance."
+        },
+        {
+          "title": "Global reach",
+          "body": "Extend your impact through a product built for international privacy and compliance standards."
+        },
+        {
+          "title": "Engaged users",
+          "body": "Access to health-conscious members who actively track biomarkers and long-term wellness."
+        },
+        {
+          "title": "Dual-model intelligence",
+          "body": "Biomathematical and clinical models working together — a differentiator for partners and patients alike."
+        }
+      ]
+    },
+    "programs": {
+      "label": "Ways to take part",
+      "title": "Three ways to work with us",
+      "body": "Organizations, members inviting friends, and long-term advocates each start in a different place.",
+      "items": [
+        {
+          "title": "Partnership inquiry",
+          "body": "For clinics, research groups, and companies that want a formal agreement with BioMath Core.",
+          "action": "Go to the inquiry form"
+        },
+        {
+          "title": "Invite a friend",
+          "body": "Members share a personal link. The friend gets a discount and the member earns account credit.",
+          "action": "Open the invite program"
+        },
+        {
+          "title": "Ambassador program",
+          "body": "For members who recommend BioMath Core regularly and want higher rewards, tools, and direct support.",
+          "action": "Open the ambassador program"
+        }
+      ]
+    },
+    "form": {
+      "label": "Inquiry",
+      "title": "Contact us",
+      "body": "Tell us about your organization and the kind of partnership you have in mind. We typically respond within two business days.",
+      "typeLabel": "Partnership type",
+      "typePlaceholder": "Select partnership type",
+      "typeOptions": {
+        "business": "Business Development",
+        "research": "Research & Science",
+        "healthcare": "Healthcare Professional",
+        "technology": "Technology Integration",
+        "other": "Other"
+      },
+      "contactName": "Contact name",
+      "organization": "Company / organization",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "submit": "Submit inquiry",
+      "directLabel": "Or reach us directly"
+    }
+  }
+}

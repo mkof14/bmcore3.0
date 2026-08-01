@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import { Sparkles, Send, Brain, AlertCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Send, AlertCircle, Scale, Brain } from 'lucide-react';
+
 import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 
 export default function AIHealthAdvisorSection() {
+  const { t } = useTranslation();
   const [question, setQuestion] = useState('');
   const [loading, setLoading] = useState(false);
   const [responses, setResponses] = useState<{
@@ -35,30 +38,30 @@ export default function AIHealthAdvisorSection() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-3xl font-semibold text-gray-900 mb-2 flex items-center gap-3">
-          <Sparkles className="h-8 w-8 text-orange-500" />
-          AI Health Advisor
+        <h1 className="text-3xl font-semibold text-gray-900 dark:text-neutral-100 mb-2">
+          {t('healthGuide.memberTitle')}
         </h1>
-        <p className="text-gray-600">
-          Get dual AI expert opinions on your health questions for comprehensive insights
+        <p className="text-gray-600 dark:text-neutral-400">
+          {t('healthGuide.memberSubtitle')}
         </p>
       </div>
 
       <ReportBrandHeader
         title="BioMath Core"
-        subtitle="AI Health Advisor"
+        subtitle={t('healthGuide.name')}
         variant="strip"
         className="mb-6"
       />
 
-      <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-2xl">
+      <div className="mb-6 border border-amber-500/25 bg-amber-500/10 p-4">
         <div className="flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+          <AlertCircle className="h-5 w-5 text-amber-700 dark:text-amber-300 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-sm text-yellow-700 font-medium mb-1">Medical Disclaimer</p>
-            <p className="text-xs text-yellow-700/80">
-              AI responses are for informational purposes only. Always consult qualified healthcare
-              professionals for medical advice, diagnosis, or treatment.
+            <p className="text-sm text-amber-800 dark:text-amber-200 font-medium mb-1">
+              {t('healthGuide.medicalDisclaimer')}
+            </p>
+            <p className="text-xs text-amber-800/80 dark:text-amber-200/80">
+              {t('healthGuide.medicalDisclaimerBody')}
             </p>
           </div>
         </div>
@@ -66,14 +69,14 @@ export default function AIHealthAdvisorSection() {
 
       <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-lg mb-6">
         <ReportBrandHeader variant="strip" subtitle="Ask Your Question" className="mb-4" />
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Ask Your Health Question</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('member.healthGuide.ask')}</h3>
         <div className="space-y-4">
           <textarea
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             onKeyPress={handleKeyPress}
             rows={4}
-            placeholder="Type your health question here... (e.g., 'What are the benefits of regular exercise for heart health?')"
+            placeholder={t('member.healthGuide.askPlaceholder')}
             className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
           />
           <button
@@ -156,7 +159,7 @@ export default function AIHealthAdvisorSection() {
               <ReportBrandHeader variant="strip" subtitle="Opinion #2" className="mb-4" />
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 bg-emerald-100 border border-emerald-200 rounded-lg">
-                  <Brain className="h-5 w-5 text-emerald-600" />
+                  <Scale className="h-5 w-5 text-emerald-600" />
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-gray-900">AI Opinion #2</h4>
@@ -181,7 +184,7 @@ export default function AIHealthAdvisorSection() {
 
           <div className="mt-6 bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-lg">
             <ReportBrandHeader variant="strip" subtitle="Key Insights" className="mb-4" />
-            <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Insights</h4>
+            <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('member.healthGuide.keyInsights')}</h4>
             <ul className="space-y-2 text-sm text-gray-700">
               <li className="flex items-start gap-2">
                 <span className="text-orange-500 mt-1">•</span>
@@ -212,8 +215,8 @@ export default function AIHealthAdvisorSection() {
       {!loading && !responses.opinion1 && (
         <div className="text-center py-12">
           <Brain className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-          <p className="text-gray-600 mb-2">No questions asked yet</p>
-          <p className="text-sm text-gray-500">Ask a health question to get dual AI expert opinions</p>
+          <p className="text-gray-600 mb-2">{t('member.healthGuide.empty')}</p>
+          <p className="text-sm text-gray-500">{t('member.healthGuide.emptyHint')}</p>
         </div>
       )}
     </div>

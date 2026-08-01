@@ -5,6 +5,14 @@ export default {
   theme: {
     extend: {
       colors: {
+        page: {
+          DEFAULT: '#ebe8e2',
+          dark: '#22262d',
+        },
+        surface: {
+          DEFAULT: '#f4f2ec',
+          dark: '#2a2f37',
+        },
         dark: {
           50: '#f8fafc',
           100: '#f1f5f9',
@@ -12,21 +20,21 @@ export default {
           300: '#cbd5e1',
           400: '#94a3b8',
           500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617',
+          600: '#4d5663',
+          700: '#373d47',
+          800: '#30363f',
+          900: '#272d35',
+          950: '#22262d',
         },
       },
       backgroundColor: {
-        'dark-primary': '#0f172a',
-        'dark-secondary': '#1e293b',
-        'dark-tertiary': '#334155',
+        'dark-primary': '#22262d',
+        'dark-secondary': '#2a2f37',
+        'dark-tertiary': '#30363f',
       },
       borderColor: {
-        'dark-primary': '#334155',
-        'dark-secondary': '#475569',
+        'dark-primary': '#373d47',
+        'dark-secondary': '#4d5663',
       },
       textColor: {
         'dark-primary': '#f8fafc',

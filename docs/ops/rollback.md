@@ -34,7 +34,7 @@ Immediate rollback triggers:
 
 ```bash
 # List recent deployments
-vercel ls biomathcore-platform
+vercel ls bmcore3.0
 
 # Rollback to specific deployment
 vercel rollback [deployment-url]
@@ -52,7 +52,7 @@ vercel rollback --target [deployment-id]
 echo "🔄 Rolling back to previous deployment..."
 
 # Get the second most recent production deployment
-PREVIOUS=$(vercel ls biomathcore-platform --prod | head -2 | tail -1 | awk '{print $1}')
+PREVIOUS=$(vercel ls bmcore3.0 --prod | head -2 | tail -1 | awk '{print $1}')
 
 echo "Found previous deployment: $PREVIOUS"
 echo "Rolling back in 5 seconds... (Ctrl+C to cancel)"

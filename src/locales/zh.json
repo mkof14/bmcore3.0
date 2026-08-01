@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于",
+    "pricing": "价格",
+    "allServices": "全部服务",
+    "memberZone": "会员区",
+    "investors": "投资者",
+    "signInUp": "登录/注册",
+    "signOut": "退出登录",
+    "admin": "管理",
+    "language": "语言"
+  },
+  "footer": {
+    "tagline": "基于生物数学的健康智能，帮助你理解身体。",
+    "navigation": "导航",
+    "resources": "资源",
+    "company": "公司",
+    "legal": "法律",
+    "newsletter": "通讯",
+    "darkMode": "深色模式",
+    "lightMode": "浅色模式",
+    "devices": "设备",
+    "science": "科学",
+    "howItWorks": "如何运作",
+    "faq": "常见问题",
+    "contact": "联系",
+    "blog": "博客",
+    "careers": "招聘",
+    "partnership": "合作",
+    "privacy": "隐私",
+    "terms": "条款",
+    "security": "安全",
+    "rights": "保留所有权利。",
+    "legalSafety": "法律与安全",
+    "memberArea": "会员区",
+    "infoHelp": "信息与帮助"
+  },
+  "common": {
+    "getStarted": "开始使用",
+    "learnMore": "了解更多",
+    "viewPricing": "查看价格",
+    "viewServices": "查看服务",
+    "contactTeam": "联系团队",
+    "back": "返回",
+    "loading": "加载中…",
+    "continue": "继续",
+    "cancel": "取消",
+    "save": "保存",
+    "search": "搜索",
+    "close": "关闭"
+  },
+  "healthGuide": {
+    "name": "健康向导",
+    "tagline": "清晰的健康指引，双重视角",
+    "welcome": "你好！我是你的健康向导。我可以对健康问题提供两种互补视角。打开“第二意见”以获得更完整的看法。",
+    "askAnything": "问我任何健康相关的问题…",
+    "askDual": "请求双重视角…",
+    "secondOpinion": "第二意见",
+    "on": "开",
+    "listening": "正在聆听…",
+    "speaking": "正在说话…",
+    "disclaimer": "健康指引 • 非医疗诊断",
+    "dualModeHint": "第二意见模式：你将收到两种视角——循证与情境。",
+    "analyzing": "正在用双模型分析…",
+    "dualAnalysis": "双意见分析",
+    "open": "打开健康向导",
+    "close": "关闭健康向导",
+    "tooltipAsk": "问我任何健康相关的问题",
+    "memberTitle": "健康向导",
+    "memberSubtitle": "获得关于健康问题的双重专家视角",
+    "askQuestion": "提出你的健康问题",
+    "medicalDisclaimer": "医疗免责声明",
+    "medicalDisclaimerBody": "回复仅供参考。诊断或治疗请务必咨询合格的医疗专业人士。",
+    "detectedLang": "正在以{{lang}}回复"
+  },
+  "home": {
+    "heroTitle": "伴随一生的 Human Data Model",
+    "heroSubtitle": "每一个重要的健康事件都会成为活模型的一部分——理解随你一同成长。",
+    "ctaExplore": "探索服务",
+    "ctaHow": "如何运作",
+    "modelTitle": "Human Data Model",
+    "modelSubtitle": "基于经过核实的健康信息构建。",
+    "section2": "第 2 部分",
+    "whatTitle": "你能理解什么？",
+    "whatSubtitle": "当信息彼此分隔时，Human Data Model 帮助揭示难以察觉的关联。",
+    "section3": "第 3 部分",
+    "timelineTitle": "人体数据时间线",
+    "timelineSubtitle": "在情境中理解你的健康历程。",
+    "openTimeline": "打开你的时间线",
+    "section4": "第 4 部分",
+    "changesTitle1": "一切都会改变。",
+    "changesTitle2": "Human Data Model 会记得。",
+    "changesSubtitle": "每一件重要的健康事件都会成为你终身 Human Data Model 的一部分。",
+    "cta": {
+      "title": "准备更清晰地了解您的健康了吗？",
+      "description": "从适合您的方案开始。Health Guide 帮助您理解自己的 Human Data Model。",
+      "primary": "查看价格",
+      "secondary": "创建账户"
+    }
+  },
+  "about": {
+    "label": "关于 BioMath Core",
+    "title": "使命、愿景与 BioMath Core 背后的人",
+    "subtitle": "为精准、透明与以人为本的智能而设计的数字健康与生物数学分析。"
+  },
+  "pricing": {
+    "label": "价格",
+    "title": "选择 Human Data Model 的深度",
+    "subtitle": "每个方案都会扩展模型可见范围。更多类别意味着更丰富的语境与更清晰的指引。",
+    "monthly": "按月",
+    "yearly": "按年",
+    "mostPopular": "最受欢迎",
+    "getStarted": "开始使用",
+    "trialNote": "所有方案包含 5 天试用。试用期内可随时取消。"
+  },
+  "investors": {
+    "label": "投资者",
+    "title": "个人健康智能的战略投资",
+    "subtitle": "BioMath Core 通过生物数学建模与人工智能，将复杂健康数据转化为个性化指引。"
+  },
+  "summary": {
+    "label": "概览",
+    "healthIntelligence": "个人健康智能",
+    "healthIntelligenceSub": "更清晰地导航健康——由理解引领，而非更多图表。",
+    "advisorTitle": "健康向导",
+    "advisorLead": "认识 BioMath Core 的主要方式——先指引，再导航。"
+  },
+  "catalog": {
+    "label": "服务目录",
+    "title": "浏览全部 BioMath Core 服务",
+    "subtitle": "围绕 Human Data Model 组织的专业类别。",
+    "backToCategories": "返回分类",
+    "searchPlaceholder": "搜索分类或服务…",
+    "clearSearch": "清除搜索",
+    "showingServices": "显示 {{count}} 项服务",
+    "showingServiceOne": "显示 {{count}} 项服务"
+  },
+  "faq": {
+    "label": "常见问题",
+    "title": "常见问题",
+    "healthGuideSection": "健康向导",
+    "heroTitle": "关于 BioMath Core 的常见问题",
+    "heroSubtitle": "服务、订阅、Human Data Model、隐私以及指导如何运作。"
+  },
+  "contact": {
+    "label": "联系",
+    "title": "联系我们",
+    "healthGuideHint": "如需健康指引，请使用会员区中的健康向导。",
+    "heroTitle": "联系 BioMath Core 团队",
+    "heroSubtitle": "关于服务、合作或企业部署的问题——我们随时协助。",
+    "noteLabel": "注意：",
+    "noteBody": "此渠道用于商务咨询、合作与账户问题。健康指导请使用会员区中的 Health Guide。",
+    "messageLabel": "留言",
+    "sendMessage": "发送消息"
+  },
+  "adminGate": {
+    "title": "拒绝访问",
+    "body": "您没有管理员权限。必须由运维人员在数据库中授予管理员；仅登录不会提升账户权限。",
+    "goHome": "返回首页"
+  }
+}

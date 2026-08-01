@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "pricing": "Preise",
+    "allServices": "Alle Dienste",
+    "memberZone": "Mitgliederbereich",
+    "investors": "Investoren",
+    "signInUp": "Anmelden/Registrieren",
+    "signOut": "Abmelden",
+    "admin": "Admin",
+    "language": "Sprache"
+  },
+  "footer": {
+    "tagline": "Biomathematik-basierte Wellness-Intelligenz zum Verstehen Ihres Körpers.",
+    "navigation": "Navigation",
+    "resources": "Ressourcen",
+    "company": "Unternehmen",
+    "legal": "Rechtliches",
+    "newsletter": "Newsletter",
+    "darkMode": "Dunkelmodus",
+    "lightMode": "Hellmodus",
+    "devices": "Geräte",
+    "science": "Wissenschaft",
+    "howItWorks": "So funktioniert’s",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "careers": "Karriere",
+    "partnership": "Partnerschaft",
+    "privacy": "Datenschutz",
+    "terms": "Bedingungen",
+    "security": "Sicherheit",
+    "rights": "Alle Rechte vorbehalten.",
+    "legalSafety": "Recht & Sicherheit",
+    "memberArea": "Mitgliederbereich",
+    "infoHelp": "Info & Hilfe"
+  },
+  "common": {
+    "getStarted": "Loslegen",
+    "learnMore": "Mehr erfahren",
+    "viewPricing": "Preise ansehen",
+    "viewServices": "Dienste ansehen",
+    "contactTeam": "Team kontaktieren",
+    "back": "Zurück",
+    "loading": "Laden…",
+    "continue": "Weiter",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "search": "Suchen",
+    "close": "Schließen"
+  },
+  "healthGuide": {
+    "name": "Gesundheitsführer",
+    "tagline": "Klare Wellness-Orientierung mit doppelter Perspektive",
+    "welcome": "Hallo! Ich bin Ihr Gesundheitsführer. Ich kann zwei ergänzende Perspektiven anbieten. Aktivieren Sie „Zweitmeinung“ für einen volleren Überblick.",
+    "askAnything": "Fragen Sie mich alles zu Ihrer Gesundheit…",
+    "askDual": "Doppelte Perspektiven anfragen…",
+    "secondOpinion": "Zweitmeinung",
+    "on": "AN",
+    "listening": "Hört zu…",
+    "speaking": "Spricht…",
+    "disclaimer": "Wellness-Orientierung • Keine medizinische Diagnose",
+    "dualModeHint": "Zweitmeinungsmodus: Sie erhalten zwei Perspektiven — evidenzbasiert und kontextuell.",
+    "analyzing": "Analyse mit Dualmodellen…",
+    "dualAnalysis": "Dual-Meinungsanalyse",
+    "open": "Gesundheitsführer öffnen",
+    "close": "Gesundheitsführer schließen",
+    "tooltipAsk": "Fragen Sie mich alles zu Ihrer Gesundheit",
+    "memberTitle": "Gesundheitsführer",
+    "memberSubtitle": "Erhalten Sie duale Expertenperspektiven zu Ihren Gesundheitsfragen",
+    "askQuestion": "Stellen Sie Ihre Gesundheitsfrage",
+    "medicalDisclaimer": "Medizinischer Hinweis",
+    "medicalDisclaimerBody": "Antworten dienen nur der Information. Konsultieren Sie stets qualifizierte Fachkräfte.",
+    "detectedLang": "Antwort auf {{lang}}"
+  },
+  "home": {
+    "heroTitle": "Ihr lebenslanges Human Data Model",
+    "heroSubtitle": "Jedes wichtige Gesundheitsereignis wird Teil eines lebendigen Modells — damit Verständnis mit Ihnen wächst.",
+    "ctaExplore": "Dienste entdecken",
+    "ctaHow": "So funktioniert’s",
+    "modelTitle": "Human Data Model",
+    "modelSubtitle": "Aufgebaut aus verifizierten Gesundheitsinformationen.",
+    "section2": "Abschnitt 2",
+    "whatTitle": "Was können Sie verstehen?",
+    "whatSubtitle": "Ihr Human Data Model hilft, Verbindungen zu erkennen, die schwer sichtbar sind, wenn Informationen getrennt bleiben.",
+    "section3": "Abschnitt 3",
+    "timelineTitle": "Human Data Timeline",
+    "timelineSubtitle": "Ihre Gesundheitsgeschichte, im Kontext verstanden.",
+    "openTimeline": "Ihre Timeline öffnen",
+    "section4": "Abschnitt 4",
+    "changesTitle1": "Alles verändert sich.",
+    "changesTitle2": "Human Data Model erinnert sich.",
+    "changesSubtitle": "Jedes wichtige Gesundheitsereignis wird Teil Ihres lebenslangen Human Data Model.",
+    "cta": {
+      "title": "Bereit, Ihre Gesundheit klarer zu sehen?",
+      "description": "Starten Sie mit dem passenden Plan. Health Guide hilft Ihnen, Ihr Human Data Model zu verstehen.",
+      "primary": "Preise ansehen",
+      "secondary": "Konto erstellen"
+    }
+  },
+  "about": {
+    "label": "Über BioMath Core",
+    "title": "Mission, Vision und die Menschen hinter BioMath Core",
+    "subtitle": "Digitale Gesundheit und Biomathematik-Analytik für Präzision, Transparenz und menschenzentrierte Intelligenz."
+  },
+  "pricing": {
+    "label": "Preise",
+    "title": "Wählen Sie die Tiefe Ihres Human Data Model",
+    "subtitle": "Jeder Plan erweitert, was das Modell sehen kann. Mehr Kategorien bedeuten mehr Kontext — und klarere Orientierung.",
+    "monthly": "Monatlich",
+    "yearly": "Jährlich",
+    "mostPopular": "Beliebteste",
+    "getStarted": "Loslegen",
+    "trialNote": "Alle Pläne enthalten eine 5-Tage-Testphase. Jederzeit während der Testphase kündbar."
+  },
+  "investors": {
+    "label": "Investoren",
+    "title": "Strategische Investition in persönliche Gesundheitsintelligenz",
+    "subtitle": "BioMath Core wandelt komplexe Gesundheitsdaten durch biomathematische Modellierung und KI in personalisierte Orientierung um."
+  },
+  "summary": {
+    "label": "Überblick",
+    "healthIntelligence": "Persönliche Gesundheitsintelligenz",
+    "healthIntelligenceSub": "Ein klarerer Weg, Ihre Gesundheit zu navigieren — geleitet von Verständnis, nicht von mehr Diagrammen.",
+    "advisorTitle": "Der Gesundheitsführer",
+    "advisorLead": "Der wichtigste Einstieg in BioMath Core — Orientierung vor Navigation."
+  },
+  "catalog": {
+    "label": "Dienstkatalog",
+    "title": "Alle BioMath-Core-Dienste durchsuchen",
+    "subtitle": "Spezialisierte Kategorien rund um das Human Data Model.",
+    "backToCategories": "Zurück zu Kategorien",
+    "searchPlaceholder": "Kategorien oder Services suchen...",
+    "clearSearch": "Suche löschen",
+    "showingServices": "{{count}} Services angezeigt",
+    "showingServiceOne": "{{count}} Service angezeigt"
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "Häufige Fragen",
+    "healthGuideSection": "Gesundheitsführer",
+    "heroTitle": "Häufige Fragen zu BioMath Core",
+    "heroSubtitle": "Services, Abos, Human Data Model, Datenschutz und wie Orientierung funktioniert."
+  },
+  "contact": {
+    "label": "Kontakt",
+    "title": "Kontakt aufnehmen",
+    "healthGuideHint": "Für Wellness-Orientierung nutzen Sie den Gesundheitsführer im Mitgliederbereich.",
+    "heroTitle": "Das BioMath-Core-Team erreichen",
+    "heroSubtitle": "Fragen zu Services, Partnerschaften oder Enterprise — wir helfen gerne.",
+    "noteLabel": "Hinweis:",
+    "noteBody": "Dieser Kanal ist für Geschäftsanfragen, Partnerschaften und Kontofragen. Für Wellness-Orientierung nutzen Sie den Health Guide im Mitgliederbereich.",
+    "messageLabel": "Nachricht",
+    "sendMessage": "Nachricht senden"
+  },
+  "adminGate": {
+    "title": "Zugriff verweigert",
+    "body": "Sie haben keine Admin-Rechte. Ein Operator muss Admin in der Datenbank vergeben; die Anmeldung allein erhöht Ihr Konto nicht.",
+    "goHome": "Zur Startseite"
+  }
+}

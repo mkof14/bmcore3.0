@@ -1,0 +1,132 @@
+{
+  "about": {
+    "seoTitle": "Sobre nosotros: misión, visión y equipo",
+    "seoDescription": "Conoce la misión de BioMath Core: construir inteligencia de bienestar fiable mediante biomatemáticas, biología computacional e IA. Descubre nuestro recorrido y nuestro compromiso con la salud preventiva.",
+    "mission": {
+      "label": "Misión",
+      "title": "Inteligencia de bienestar en la que confiar",
+      "body": "Construimos inteligencia de bienestar práctica en la intersección de las <b>biomatemáticas</b>, la <b>biología computacional</b> y la <b>IA</b>. BioMath Core ayuda a personas y profesionales a resolver preguntas complejas de salud con orientación precisa y explicable, centrada en la prevención, el bienestar y la resiliencia a largo plazo."
+    },
+    "origins": {
+      "label": "Orígenes",
+      "title": "Nacido de la ciencia aplicada",
+      "p1": "BioMath Core surgió de años de trabajo en la intersección de la analítica avanzada, la IA y la salud humana, convirtiendo modelos rigurosos en sistemas que las personas pueden usar de verdad.",
+      "p2": "BioMath Core se desarrolla bajo <a1>Digital Invest Inc.</a1> y se inspira en la visión más amplia de <a2>BioMath Life</a2>: ciencia que escala hasta el cuidado preventivo del día a día.",
+      "p3": "Nuestro enfoque ha sido cubierto por <a3>Healthcare Tech Outlook →</a3>"
+    },
+    "signalNote": "Solo crecemos cuando la señal es fuerte: en función de necesidades reales de los usuarios, de la evidencia y del impacto en la salud a largo plazo.",
+    "stats": [
+      { "label": "Categorías de salud", "value": "20" },
+      { "label": "Servicios activos", "value": "200+" },
+      { "label": "Trayectoria de investigación", "value": "Desde 2008" }
+    ],
+    "team": {
+      "label": "Personas",
+      "title": "Nuestro equipo",
+      "subtitle": "Construimos salud digital con ciencia, oficio y atención sostenida.",
+      "p1": "Empezamos en <b>2008</b>, trabajando en salud digital y modelado biomatemático en distintos países. Durante estos años acumulamos una experiencia práctica profunda, una visión clara de las necesidades reales de los usuarios y experiencia integrando ciencia, tecnología y salud humana.",
+      "p2": "Estudiando necesidades —de pacientes a clínicos, de familias a programas corporativos— llegamos a nuestra comprensión actual de la medicina preventiva, la gestión del bienestar y la salud a largo plazo. Esa comprensión se convirtió en la base de nuestro <b>Human Data Model</b>, el núcleo de BioMath Core.",
+      "quote": "<b>BioMath Core</b> no es solo un conjunto de herramientas. Es un producto vivo, capaz de incorporar servicios, absorber innovaciones y apoyarse en las biomatemáticas, la epidemiología, el aprendizaje automático y la psicología del comportamiento en beneficio de los usuarios.",
+      "p3": "Mejoramos BioMath Core de forma continua: precisión de los modelos, cobertura de categorías, transparencia de los algoritmos y personalización. Nuestros planes abarcan desde wearables avanzados hasta analítica genómica y horizontes predictivos más largos.",
+      "p4": "En el camino hemos trabajado con ingenieros, biomatemáticos, clínicos, analistas, diseñadores e investigadores que comparten los mismos objetivos. Hoy somos un solo equipo, comprometido con una salud digital transparente, centrada en las personas y basada en la ciencia."
+    },
+    "engine": {
+      "label": "Sistema",
+      "title": "El motor de IA de BioMath Core",
+      "subtitle": "Un sistema por capas que unifica conocimientos biológicos previos, series temporales y contexto en un único proceso inspeccionable.",
+      "items": [
+        {
+          "index": "01",
+          "title": "Diseño centrado en el modelo",
+          "body": "Las estructuras biomatemáticas guían el aprendizaje, reduciendo el sobreajuste y mejorando la estabilidad."
+        },
+        {
+          "index": "02",
+          "title": "Fusión multimodal",
+          "body": "Resultados de laboratorio, hábitos de vida, datos de wearables y conocimiento clínico alineados en insights explicables."
+        },
+        {
+          "index": "03",
+          "title": "Controles de calidad",
+          "body": "Validación, indicadores de incertidumbre y revisión humana en las áreas sensibles."
+        },
+        {
+          "index": "04",
+          "title": "Orientación a resultados",
+          "body": "Las recomendaciones apuntan al bienestar, la prevención y el rendimiento, no al tratamiento."
+        }
+      ]
+    },
+    "philosophy": {
+      "label": "Principios",
+      "title": "Nuestra filosofía",
+      "subtitle": "Ideas centrales que guían cada día nuestras decisiones de producto.",
+      "items": [
+        {
+          "title": "Los datos son tuyos",
+          "body": "Solo tú decides qué compartir. Tu privacidad es lo primero."
+        },
+        {
+          "title": "El conocimiento da poder",
+          "body": "Entender tus biomarcadores te da la oportunidad de prevenir problemas a tiempo."
+        },
+        {
+          "title": "La IA es un apoyo",
+          "body": "No es un médico. Ofrecemos insights para acompañar tus conversaciones sobre salud."
+        }
+      ]
+    },
+    "highlights": {
+      "label": "Destacados",
+      "title": "Lo que nos distingue",
+      "subtitle": "Las cualidades que hacen que BioMath Core se sienta diferente en la práctica.",
+      "items": [
+        {
+          "title": "Insights de IA claros",
+          "body": "Los modelos convierten las señales de salud en orientación clara y verificable."
+        },
+        {
+          "title": "Seguridad alineada con HIPAA",
+          "body": "Protección de nivel empresarial con cifrado en reposo y en tránsito."
+        },
+        {
+          "title": "Pensado para la familia",
+          "body": "Gestiona la comprensión de la salud para ti y para las personas a tu cargo."
+        },
+        {
+          "title": "Cronología viva",
+          "body": "Los eventos se acumulan en tu Human Data Model, no como informes aislados."
+        }
+      ]
+    },
+    "audience": {
+      "label": "Público",
+      "title": "A quién servimos",
+      "subtitle": "Creado para personas, familias y organizaciones que se toman en serio la prevención.",
+      "items": [
+        {
+          "title": "Usuarios individuales",
+          "body": "Personas que quieren entender sus métricas de salud y seguir su progreso a lo largo del tiempo."
+        },
+        {
+          "title": "Familias",
+          "body": "Cuidar la salud de los seres queridos, incluidos niños y familiares mayores."
+        },
+        {
+          "title": "Clínicas y clientes corporativos",
+          "body": "Apoyo a programas de bienestar e iniciativas de cuidado preventivo."
+        },
+        {
+          "title": "Inversores y socios",
+          "body": "Participación en el desarrollo de productos de salud digital y en alianzas."
+        }
+      ]
+    },
+    "cta": {
+      "title": "¿Listo para descubrir BioMath Core?",
+      "description": "Comprueba cómo nuestra inteligencia multimodelo convierte las señales de salud en orientación clara y humana.",
+      "primary": "Ver servicios",
+      "secondary": "Ver precios"
+    }
+  }
+}

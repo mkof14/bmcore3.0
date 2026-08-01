@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "pricing": "Pricing",
+    "allServices": "All Services",
+    "memberZone": "Member Zone",
+    "investors": "Investors",
+    "signInUp": "Sign In/Up",
+    "signOut": "Sign Out",
+    "admin": "Admin",
+    "language": "Language"
+  },
+  "footer": {
+    "tagline": "Biomathematics-based wellness intelligence for understanding your body.",
+    "navigation": "Navigation",
+    "resources": "Resources",
+    "company": "Company",
+    "legal": "Legal",
+    "newsletter": "Newsletter",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "devices": "Devices",
+    "science": "Science",
+    "howItWorks": "How it works",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "blog": "Blog",
+    "careers": "Careers",
+    "partnership": "Partnership",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "security": "Security",
+    "rights": "All rights reserved.",
+    "legalSafety": "Legal & Safety",
+    "memberArea": "Member Area",
+    "infoHelp": "Info & Help"
+  },
+  "common": {
+    "getStarted": "Get started",
+    "learnMore": "Learn more",
+    "viewPricing": "View pricing",
+    "viewServices": "View services",
+    "contactTeam": "Contact the team",
+    "back": "Back",
+    "loading": "Loading…",
+    "continue": "Continue",
+    "cancel": "Cancel",
+    "save": "Save",
+    "search": "Search",
+    "close": "Close"
+  },
+  "healthGuide": {
+    "name": "Health Guide",
+    "tagline": "Clear wellness guidance with dual perspective",
+    "welcome": "Hello! I'm your Health Guide. I can offer two complementary perspectives on your health questions. Toggle \"Second Opinion\" for a fuller view.",
+    "askAnything": "Ask me anything about your health…",
+    "askDual": "Ask for dual perspectives…",
+    "secondOpinion": "Second Opinion",
+    "on": "ON",
+    "listening": "Listening…",
+    "speaking": "Speaking…",
+    "disclaimer": "Wellness guidance • Not medical diagnosis",
+    "dualModeHint": "Dual Opinion mode: you'll receive two perspectives — evidence-based and contextual.",
+    "analyzing": "Analyzing with dual models…",
+    "dualAnalysis": "Dual Opinion Analysis",
+    "open": "Open Health Guide",
+    "close": "Close Health Guide",
+    "tooltipAsk": "Ask me anything about your health",
+    "memberTitle": "Health Guide",
+    "memberSubtitle": "Get dual expert perspectives on your health questions",
+    "askQuestion": "Ask your health question",
+    "medicalDisclaimer": "Medical Disclaimer",
+    "medicalDisclaimerBody": "Responses are for informational purposes only. Always consult qualified healthcare professionals for medical advice, diagnosis, or treatment.",
+    "detectedLang": "Replying in {{lang}}"
+  },
+  "home": {
+    "heroTitle": "Your lifelong Human Data Model",
+    "heroSubtitle": "Every important health event becomes part of a living model — so understanding grows with you.",
+    "ctaExplore": "Explore services",
+    "ctaHow": "How it works",
+    "modelTitle": "Human Data Model",
+    "modelSubtitle": "Built from verified health information.",
+    "section2": "Section 2",
+    "whatTitle": "What can you understand?",
+    "whatSubtitle": "Your Human Data Model helps reveal connections that are difficult to notice when information stays separated.",
+    "section3": "Section 3",
+    "timelineTitle": "Human Data Timeline",
+    "timelineSubtitle": "Your health history, understood in context.",
+    "openTimeline": "Open your timeline",
+    "section4": "Section 4",
+    "changesTitle1": "Everything changes.",
+    "changesTitle2": "Human Data Model remembers.",
+    "changesSubtitle": "Every important health event becomes part of your lifelong Human Data Model.",
+    "cta": {
+      "title": "Ready to see your health more clearly?",
+      "description": "Start with a plan that fits you. Health Guide helps you make sense of your Human Data Model.",
+      "primary": "View pricing",
+      "secondary": "Create account"
+    }
+  },
+  "about": {
+    "label": "About BioMath Core",
+    "title": "Mission, vision, and the people behind BioMath Core",
+    "subtitle": "Digital health and biomath analytics engineered for precision, transparency, and human-centered intelligence."
+  },
+  "pricing": {
+    "label": "Pricing",
+    "title": "Choose the depth of your Human Data Model",
+    "subtitle": "Each plan expands what the model can see. More categories mean richer context — and clearer guidance.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "mostPopular": "Most popular",
+    "getStarted": "Get started",
+    "trialNote": "All plans include a 5-day trial. Cancel anytime during the trial."
+  },
+  "investors": {
+    "label": "Investors",
+    "title": "Strategic investment in personal health intelligence",
+    "subtitle": "BioMath Core turns complex health data into personalized guidance through biomathematical modeling and AI."
+  },
+  "summary": {
+    "label": "Overview",
+    "healthIntelligence": "Personal health intelligence",
+    "healthIntelligenceSub": "A clearer way to navigate your health — led by understanding, not by more charts.",
+    "advisorTitle": "The Health Guide",
+    "advisorLead": "The primary way you meet BioMath Core — guidance before navigation."
+  },
+  "catalog": {
+    "label": "Services catalog",
+    "title": "Browse all BioMath Core services",
+    "subtitle": "Explore specialized categories organized around the Human Data Model.",
+    "backToCategories": "Back to categories",
+    "searchPlaceholder": "Search categories or services...",
+    "clearSearch": "Clear search",
+    "showingServices": "Showing {{count}} services",
+    "showingServiceOne": "Showing {{count}} service"
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "Common questions",
+    "healthGuideSection": "Health Guide",
+    "heroTitle": "Common questions about BioMath Core",
+    "heroSubtitle": "Services, subscriptions, the Human Data Model, privacy, and how guidance works in practice."
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Get in touch",
+    "healthGuideHint": "For wellness guidance, use the Health Guide in the Member Zone.",
+    "heroTitle": "Reach the BioMath Core team",
+    "heroSubtitle": "Questions about services, partnerships, or enterprise deployments — we are here to help.",
+    "noteLabel": "Note:",
+    "noteBody": "This channel is for business inquiries, partnerships, and account questions. For wellness guidance, use the Health Guide in the Member Zone.",
+    "messageLabel": "Message",
+    "sendMessage": "Send a message"
+  },
+  "adminGate": {
+    "title": "Access Denied",
+    "body": "You do not have admin privileges. An operator must grant admin in the database; signing in alone does not elevate your account.",
+    "goHome": "Go to Home"
+  }
+}

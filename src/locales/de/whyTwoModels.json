@@ -1,0 +1,77 @@
+{
+  "whyTwoModels": {
+    "seo": {
+      "title": "Warum zwei Modelle – duale Intelligenz in BioMath Core",
+      "description": "BioMath Core analysiert Ihre Gesundheitsdaten mit zwei unabhängigen Modellen – einem biomathematischen und einem klinischen. Erfahren Sie, warum die duale Analyse Genauigkeit und Vertrauen erhöht."
+    },
+    "hero": {
+      "label": "Duale Intelligenz",
+      "title": "Warum zwei Modelle?",
+      "body": "BioMath Core führt zwei unabhängige Analysen Ihrer Gesundheitsdaten durch – eine biomathematische und eine klinische – und vergleicht die Ergebnisse. Stimmen beide überein, ist die Aussagekraft hoch. Weichen sie voneinander ab, werden Bereiche hervorgehoben, die genauere Aufmerksamkeit verdienen."
+    },
+    "models": {
+      "label": "Modelle",
+      "title": "Zwei Blickwinkel auf dieselben Daten",
+      "body": "Mathematische Präzision und klinische Expertise – jedes Modell bringt eine eigene Stärke ein.",
+      "items": [
+        {
+          "title": "Mathematisches Modell",
+          "body": "Rein datengetriebene Analyse mit biomathematischen Algorithmen und statistischen Verfahren.",
+          "points": [
+            "Unvoreingenommene Mustererkennung",
+            "Analyse komplexer Zusammenhänge",
+            "Prädiktive Modellierung",
+            "Erkennung von Auffälligkeiten"
+          ]
+        },
+        {
+          "title": "Klinisches Modell",
+          "body": "Evidenzbasierte Analyse auf Grundlage medizinischen Wissens und klinischer Leitlinien.",
+          "points": [
+            "Interpretation des medizinischen Kontexts",
+            "Evidenzbasierte Empfehlungen",
+            "Einhaltung klinischer Leitlinien",
+            "Bewertung von Risikofaktoren"
+          ]
+        }
+      ]
+    },
+    "advantages": {
+      "label": "Vorteile",
+      "title": "Die Stärke der dualen Analyse",
+      "items": [
+        {
+          "title": "Höhere Genauigkeit",
+          "body": "Die Kreuzvalidierung zwischen den Modellen reduziert Fehlalarme und sichert verlässliche Erkenntnisse."
+        },
+        {
+          "title": "Vollständiger Überblick",
+          "body": "Sehen Sie datenbasierte Muster und klinische Deutungen direkt nebeneinander."
+        },
+        {
+          "title": "Bessere Entscheidungen",
+          "body": "Entscheiden Sie fundiert – gestützt auf Mathematik und Medizin zugleich."
+        }
+      ]
+    },
+    "secondOpinion": {
+      "label": "Zweitmeinung",
+      "title": "Der Vorteil einer Zweitmeinung",
+      "body": "Wie bei einer ärztlichen Zweitmeinung liefert unser duales Vorgehen zwei unabhängige Analysen Ihrer Gesundheitsdaten. Übereinstimmung schafft Vertrauen. Abweichungen markieren Bereiche, die zusätzliche Aufmerksamkeit oder eine fachliche Beratung erfordern können.",
+      "mathTitle": "Stärken des mathematischen Modells",
+      "mathStrengths": [
+        "Deckt verborgene Muster auf",
+        "Verarbeitet sehr große Datenmengen",
+        "Erkennt feine Zusammenhänge",
+        "Prognostiziert künftige Entwicklungen"
+      ],
+      "clinicalTitle": "Stärken des klinischen Modells",
+      "clinicalStrengths": [
+        "Bringt medizinische Expertise ein",
+        "Berücksichtigt den klinischen Kontext",
+        "Folgt evidenzbasierten Leitlinien",
+        "Stellt Sicherheit und Wirksamkeit voran"
+      ]
+    }
+  }
+}

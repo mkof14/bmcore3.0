@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { LogOut, ArrowLeft, CheckCircle, X } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { notifyUserError } from '../lib/adminNotify';
+import { userHasMemberAccess } from '../lib/memberAccess';
 import MemberSidebar from '../components/MemberSidebar';
 import DashboardSection from './member/DashboardSection';
 import PlaceholderSection from './member/PlaceholderSection';
@@ -19,8 +21,11 @@ import SystemSection from './member/SystemSection';
 import ReferralSection from './member/ReferralSection';
 import MyReportsSection from './member/MyReportsSection';
 import CatalogSection from './member/CatalogSection';
+import HumanDataModelSection from './member/HumanDataModelSection';
 import SignalHubSection from './member/SignalHubSection';
 import RemindersSection from './member/RemindersSection';
+import ServiceDetail from './ServiceDetail';
+import WorkspaceStatusBanner from '../components/WorkspaceStatusBanner';
 import {
   Sparkles,
   Watch,
@@ -38,15 +43,37 @@ import {
 } from 'lucide-react';
 
 interface MemberZoneProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: string, data?: string) => void;
   onSignOut: () => void;
+  initialServiceRef?: string;
 }
 
-export default function MemberZone({ onNavigate, onSignOut }: MemberZoneProps) {
-  const [currentSection, setCurrentSection] = useState('dashboard');
+export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = '' }: MemberZoneProps) {
+  const { t } = useTranslation();
+  const [currentSection, setCurrentSection] = useState(initialServiceRef ? 'service-workspace' : 'dashboard');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [hasActiveSubscription, setHasActiveSubscription] = useState(false);
+  const [subChecked, setSubChecked] = useState(false);
+  const [activeServiceRef, setActiveServiceRef] = useState(initialServiceRef);
+
+  useEffect(() => {
+    if (initialServiceRef) {
+      setActiveServiceRef(initialServiceRef);
+      setCurrentSection('service-workspace');
+      return;
+    }
+    try {
+      const pending = sessionStorage.getItem('bmcore.pendingService');
+      if (pending) {
+        sessionStorage.removeItem('bmcore.pendingService');
+        setActiveServiceRef(pending);
+        setCurrentSection('service-workspace');
+      }
+    } catch {
+      /* ignore */
+    }
+  }, [initialServiceRef]);
 
   useEffect(() => {
     // Check subscription status
@@ -68,18 +95,17 @@ export default function MemberZone({ onNavigate, onSignOut }: MemberZoneProps) {
   const checkSubscription = async () => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      if (!user) {
+        setHasActiveSubscription(false);
+        return;
+      }
 
-      const { data: subscription } = await supabase
-        .from('user_subscriptions')
-        .select('status')
-        .eq('user_id', user.id)
-        .in('status', ['active', 'trialing'])
-        .maybeSingle();
-
-      setHasActiveSubscription(!!subscription);
+      const hasAccess = await userHasMemberAccess(user.id, user.email);
+      setHasActiveSubscription(hasAccess);
     } catch (error) {
       notifyUserError('Subscription status load failed');
+    } finally {
+      setSubChecked(true);
     }
   };
 
@@ -136,6 +162,16 @@ export default function MemberZone({ onNavigate, onSignOut }: MemberZoneProps) {
       case 'dashboard':
         return <DashboardSection />;
 
+      case 'human-data-model':
+        return (
+          <HumanDataModelSection
+            onOpenService={(servicePath) => {
+              setActiveServiceRef(servicePath);
+              setCurrentSection('service-workspace');
+            }}
+          />
+        );
+
       case 'ai-assistant':
         return <AIHealthAdvisorSection />;
 
@@ -156,22 +192,74 @@ export default function MemberZone({ onNavigate, onSignOut }: MemberZoneProps) {
               <div className="bg-white/90 border border-orange-200 rounded-3xl p-12 max-w-2xl shadow-xl">
                 <CreditCard className="w-16 h-16 text-orange-500 mx-auto mb-6" />
                 <h2 className="text-3xl font-semibold text-gray-900 mb-4">
-                  Subscribe to Access Catalog
+                  {t('member.gate.catalogTitle')}
                 </h2>
                 <p className="text-lg text-gray-600 mb-8">
-                  Choose a subscription plan to unlock access to our comprehensive health services catalog with 20+ categories.
+                  {t('member.gate.catalogBody')}
                 </p>
                 <button
                   onClick={() => onNavigate('pricing')}
                   className="px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold transition-all text-lg"
                 >
-                  View Plans & Subscribe
+                  {t('member.gate.viewPlans')}
                 </button>
               </div>
             </div>
           );
         }
-        return <CatalogSection onSectionChange={setCurrentSection} />;
+        return (
+          <CatalogSection
+            onSectionChange={setCurrentSection}
+            onOpenService={(servicePath) => {
+              setActiveServiceRef(servicePath);
+              setCurrentSection('service-workspace');
+            }}
+          />
+        );
+
+      case 'service-workspace':
+        if (!subChecked) {
+          return (
+            <div className="flex min-h-[40vh] items-center justify-center text-sm text-gray-500">
+              {t('member.gate.loadingService')}
+            </div>
+          );
+        }
+        if (!hasActiveSubscription) {
+          return (
+            <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
+              <div className="max-w-2xl rounded-3xl border border-orange-200 bg-white/90 p-12 shadow-xl">
+                <CreditCard className="mx-auto mb-6 h-16 w-16 text-orange-500" />
+                <h2 className="mb-4 text-3xl font-semibold text-gray-900">{t('member.gate.serviceTitle')}</h2>
+                <p className="mb-8 text-lg text-gray-600">
+                  {t('member.gate.serviceBody')}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('pricing')}
+                  className="rounded-lg bg-orange-500 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-orange-600"
+                >
+                  {t('member.gate.viewPlans')}
+                </button>
+              </div>
+            </div>
+          );
+        }
+        return (
+          <ServiceDetail
+            embedded
+            serviceId={activeServiceRef}
+            onBack={() => setCurrentSection('catalog')}
+            onNavigate={(page, data) => {
+              if (page === 'service-detail' && data) {
+                setActiveServiceRef(data);
+                setCurrentSection('service-workspace');
+                return;
+              }
+              onNavigate(page, data);
+            }}
+          />
+        );
 
       case 'questionnaires':
         return <QuestionnairesSection />;
@@ -211,30 +299,62 @@ export default function MemberZone({ onNavigate, onSignOut }: MemberZoneProps) {
     }
   };
 
+  const sectionLabels: Record<string, string> = {
+    dashboard: t('member.nav.dashboard'),
+    'human-data-model': t('member.nav.humanDataModel'),
+    'ai-assistant': t('member.nav.healthGuide'),
+    devices: t('member.nav.devices'),
+    support: t('member.nav.support'),
+    system: t('member.nav.system'),
+    catalog: t('member.nav.catalog'),
+    'service-workspace': t('member.nav.serviceWorkspace'),
+    questionnaires: t('member.nav.questionnaires'),
+    reports: t('member.nav.reports'),
+    'signal-hub': t('member.nav.signalHub'),
+    reminders: t('member.nav.reminders'),
+    'second-opinion': t('member.nav.secondOpinion'),
+    'medical-files': t('member.nav.medicalFiles'),
+    'black-box': t('member.nav.blackBox'),
+    referral: t('member.nav.referral'),
+    billing: t('member.nav.billing'),
+    profile: t('member.nav.profile'),
+    settings: t('member.nav.settings'),
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/30 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors pt-16">
+    <div className="min-h-screen bg-gradient-to-b from-[var(--bm-page)] via-orange-50/25 to-[var(--bm-page)] dark:from-[var(--bm-page)] dark:via-[var(--bm-surface)] dark:to-[var(--bm-page)] transition-colors pt-16">
       <MemberSidebar
-        currentSection={currentSection}
+        currentSection={currentSection === 'service-workspace' ? 'catalog' : currentSection}
         onSectionChange={setCurrentSection}
         hasActiveSubscription={hasActiveSubscription}
       />
 
       <div className="ml-64 transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex justify-between items-center mb-6">
+        <div
+          className={`mx-auto px-6 py-8 ${
+            currentSection === 'service-workspace' ? 'max-w-6xl' : 'max-w-7xl'
+          }`}
+        >
+          <WorkspaceStatusBanner
+            zone="member"
+            sectionLabel={sectionLabels[currentSection] || currentSection}
+            className="mb-4"
+          />
+
+          <div className="mb-6 flex items-center justify-between">
             <button
               onClick={() => onNavigate('home')}
-              className="flex items-center space-x-2 px-4 py-2 bg-white/90 dark:from-gray-800 dark:to-gray-900 border border-slate-200 dark:border-gray-700/50 hover:border-orange-300 text-gray-700 dark:text-gray-300 rounded-lg transition-all duration-300 shadow-sm"
+              className="flex items-center space-x-2 px-4 py-2 bg-white/90 dark:from-gray-800 dark:to-[var(--bm-surface)] border border-slate-200 dark:border-gray-700/50 hover:border-orange-300 text-gray-700 dark:text-gray-300 rounded-lg transition-all duration-300 shadow-sm"
             >
               <ArrowLeft className="h-5 w-5" />
-              <span>Back to Home</span>
+              <span>{t('member.zone.backHome')}</span>
             </button>
             <button
               onClick={handleSignOut}
-              className="flex items-center space-x-2 px-4 py-2 bg-white/90 dark:from-gray-800 dark:to-gray-900 border border-slate-200 dark:border-gray-700/50 hover:border-orange-300 text-gray-700 dark:text-gray-300 rounded-lg transition-all duration-300 shadow-sm"
+              className="flex items-center space-x-2 px-4 py-2 bg-white/90 dark:from-gray-800 dark:to-[var(--bm-surface)] border border-slate-200 dark:border-gray-700/50 hover:border-orange-300 text-gray-700 dark:text-gray-300 rounded-lg transition-all duration-300 shadow-sm"
             >
               <LogOut className="h-5 w-5" />
-              <span>Sign Out</span>
+              <span>{t('member.zone.signOut')}</span>
             </button>
           </div>
 
@@ -258,38 +378,38 @@ export default function MemberZone({ onNavigate, onSignOut }: MemberZoneProps) {
               </div>
 
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                🎉 Welcome to BioMath Core!
+                {t('member.welcome.title')}
               </h2>
 
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                Thank you for your subscription! Your payment was successful.
+                {t('member.welcome.body')}
               </p>
 
-              <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-6 mb-6 text-left">
+              <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-6 mb-6 text-start">
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-3">
-                  🎯 Next Step: Choose Your Health Categories
+                  {t('member.welcome.nextStepTitle')}
                 </h3>
                 <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
-                  Visit the <strong>Catalog</strong> to select health service categories based on your plan:
+                  {t('member.welcome.nextStepBody')}
                 </p>
                 <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                    <span><strong>Core Plan:</strong> Choose up to 3 categories</span>
+                    <span>{t('member.welcome.corePlan')}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                    <span><strong>Daily Plan:</strong> Choose up to 10 categories</span>
+                    <span>{t('member.welcome.dailyPlan')}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                    <span><strong>Max Plan:</strong> All 20 categories included!</span>
+                    <span>{t('member.welcome.maxPlan')}</span>
                   </li>
                 </ul>
               </div>
 
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-                A confirmation email has been sent to your inbox with all the details.
+                {t('member.welcome.emailNote')}
               </p>
 
               <button
@@ -302,7 +422,7 @@ export default function MemberZone({ onNavigate, onSignOut }: MemberZoneProps) {
                 }}
                 className="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-xl font-semibold transition-all transform hover:scale-105 shadow-lg"
               >
-                Go to Catalog
+                {t('member.welcome.goToCatalog')}
               </button>
             </div>
           </div>

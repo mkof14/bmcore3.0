@@ -202,7 +202,7 @@ export default function SecondOpinionComparison({
             onClick={() => handlePreferenceClick('neither')}
             className={`p-4 rounded-lg border-2 transition-all ${
               selectedPreference === 'neither'
-                ? 'border-gray-600 dark:border-gray-400 bg-gray-50 dark:bg-gray-900/20'
+                ? 'border-gray-600 dark:border-gray-400 bg-gray-50 dark:bg-[var(--bm-surface)]/20'
                 : 'border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500'
             }`}
           >
@@ -237,7 +237,7 @@ export default function SecondOpinionComparison({
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[var(--bm-surface)] text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
             rows={3}
             placeholder="Share any thoughts about the comparison..."
           />
@@ -252,7 +252,7 @@ export default function SecondOpinionComparison({
         </button>
       </div>
 
-      <div className="bg-gray-100 dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+      <div className="bg-gray-100 dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-gray-200 dark:border-gray-700">
         <h4 className="font-semibold text-gray-900 dark:text-white mb-2">About Second Opinion</h4>
         <p className="text-sm text-gray-600 dark:text-gray-400">
           The Second Opinion feature uses two different AI models with distinct reasoning approaches to analyze your health data.

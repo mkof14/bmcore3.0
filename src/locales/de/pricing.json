@@ -1,0 +1,182 @@
+{
+  "pricing": {
+    "seoTitle": "Tarife – bezahlbare Gesundheitsanalytik",
+    "seoDescription": "Transparente Preise für Gesundheitsanalytik mit KI. Core (19 $/Monat), Daily (39 $/Monat), Max (79 $/Monat). 5 Tage kostenlos testen. Jahresrabatte. Jederzeit kündbar.",
+    "paymentCancelled": "Die Zahlung wurde abgebrochen. Sie können es jederzeit erneut versuchen.",
+    "perMonth": "Monat",
+    "perYear": "Jahr",
+    "trialNote": "Alle Tarife enthalten eine <b>5-tägige Testphase</b>. Während der Testphase jederzeit kündbar.",
+    "plans": {
+      "core": {
+        "name": "Core",
+        "description": "Grundlegende Gesundheitsanalytik für Einzelpersonen",
+        "categories": "3 Kategorien",
+        "features": [
+          "Einfaches Gesundheits-Dashboard",
+          "Zugang zu 3 Servicekategorien",
+          "10 GB Speicher im Modellarchiv",
+          "Monatliche Gesundheitsberichte",
+          "Support per E-Mail",
+          "Datenverschlüsselung",
+          "Geräteanbindung (bis zu 2 Geräte)"
+        ]
+      },
+      "daily": {
+        "name": "Daily",
+        "description": "Tägliche Erkenntnisse und umfassendes Tracking",
+        "categories": "10 Kategorien",
+        "features": [
+          "Alles aus Core",
+          "10 Kategorien",
+          "50 GB Speicher im Modellarchiv",
+          "Tägliche Gesundheitsberichte",
+          "Zugang zum Health Guide",
+          "Bevorzugter E-Mail-Support",
+          "Geräteanbindung (bis zu 5 Geräte)",
+          "Einbindung von Laborwerten",
+          "Analyse genetischer Daten"
+        ]
+      },
+      "max": {
+        "name": "Max",
+        "description": "Vollständige Abdeckung der Gesundheitsintelligenz",
+        "categories": "20 Kategorien",
+        "features": [
+          "Alles aus Daily",
+          "Alle 20 Servicekategorien",
+          "200 GB Speicher im Modellarchiv",
+          "KI-Erkenntnisse in Echtzeit",
+          "Bevorzugter Support rund um die Uhr",
+          "Unbegrenzte Geräteanbindung",
+          "Fortgeschrittene prädiktive Analytik",
+          "Individuelle Berichtserstellung",
+          "Familienkonten (bis zu 5 Mitglieder)",
+          "API-Zugang für Entwickler"
+        ]
+      }
+    },
+    "compare": {
+      "label": "Vergleich",
+      "title": "Alle Funktionen im direkten Vergleich",
+      "featureColumn": "Funktion",
+      "included": "Enthalten",
+      "values": {
+        "basic": "Einfach",
+        "advanced": "Erweitert",
+        "all20": "Alle 20",
+        "n3": "3",
+        "n10": "10",
+        "gb10": "10 GB",
+        "gb50": "50 GB",
+        "gb200": "200 GB",
+        "monthly": "Monatlich",
+        "daily": "Täglich",
+        "realtime": "In Echtzeit",
+        "email": "E-Mail",
+        "priorityEmail": "Bevorzugte E-Mail",
+        "priority247": "Bevorzugt, rund um die Uhr",
+        "upTo2": "Bis zu 2",
+        "upTo5": "Bis zu 5",
+        "unlimited": "Unbegrenzt"
+      },
+      "rows": {
+        "dashboard": "Gesundheits-Dashboard",
+        "categories": "Servicekategorien",
+        "storage": "Speicher im Modellarchiv",
+        "reports": "Gesundheitsberichte",
+        "support": "Support",
+        "encryption": "Datenverschlüsselung",
+        "devices": "Geräteanbindung",
+        "assistant": "Health Guide",
+        "labs": "Einbindung von Laborwerten",
+        "genetics": "Analyse genetischer Daten",
+        "predictive": "Prädiktive Analytik",
+        "customReports": "Individuelle Berichtserstellung",
+        "family": "Familienkonten",
+        "api": "API-Zugang"
+      }
+    },
+    "testimonials": {
+      "label": "Stimmen",
+      "title": "Was Nutzerinnen und Nutzer bemerken",
+      "items": [
+        {
+          "quote": "Perfekt, um meine grundlegenden Gesundheitswerte zu verfolgen. Einfach und wirksam.",
+          "author": "Sarah M.",
+          "plan": "Core"
+        },
+        {
+          "quote": "Der Health Guide hat verändert, wie ich meine Gesundheitsdaten verstehe. Jeden Cent wert.",
+          "author": "Michael R.",
+          "plan": "Daily"
+        },
+        {
+          "quote": "Als Fachkraft im Gesundheitswesen sind die umfassende Analytik und die Familienkonten unbezahlbar.",
+          "author": "Dr. Emily Chen",
+          "plan": "Max"
+        }
+      ]
+    },
+    "why": {
+      "label": "Warum BioMath Core",
+      "title": "Gebaut für dauerhafte Klarheit",
+      "items": [
+        {
+          "index": "01",
+          "title": "Erkenntnisse in Echtzeit",
+          "body": "Sofortige Rückmeldung zu Ihren Gesundheitssignalen – mit Modellen, die aus Ihren Mustern lernen."
+        },
+        {
+          "index": "02",
+          "title": "HIPAA-konforme Sicherheit",
+          "body": "Schutz auf Unternehmensniveau, damit sensible Daten standardmäßig privat bleiben."
+        },
+        {
+          "index": "03",
+          "title": "Menschlicher Support",
+          "body": "Fachleute und bevorzugte Hilfe, wenn Sie wissen möchten, was die Daten bedeuten."
+        }
+      ]
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Häufige Fragen",
+      "items": [
+        {
+          "question": "Kann ich den Tarif jederzeit wechseln?",
+          "answer": "Ja, Sie können jederzeit hoch- oder herunterstufen. Änderungen greifen sofort, und wir rechnen die Kosten anteilig ab."
+        },
+        {
+          "question": "Was passiert nach der 5-tägigen Testphase?",
+          "answer": "Nach Ablauf der 5 Tage wird der Betrag automatisch entsprechend Ihrem Tarif und Abrechnungszeitraum abgebucht. Während der Testphase können Sie jederzeit kostenfrei kündigen."
+        },
+        {
+          "question": "Sind meine Gesundheitsdaten sicher?",
+          "answer": "Absolut. Alle Tarife enthalten Verschlüsselung auf Unternehmensniveau, sichere Datenspeicherung und die Einhaltung der HIPAA-Vorgaben. Ihre Gesundheitsdaten werden ohne Ihre ausdrückliche Zustimmung niemals an Dritte weitergegeben."
+        },
+        {
+          "question": "Gibt es Rabatte bei jährlicher Zahlung?",
+          "answer": "Ja! Die Jahreszahlung spart rund 17 % gegenüber der monatlichen Zahlung. Den reduzierten Preis sehen Sie, sobald Sie oben die jährliche Abrechnung wählen."
+        }
+      ],
+      "moreTitle": "Möchten Sie das große Ganze sehen, bevor Sie sich entscheiden?",
+      "moreLink": "Mehr über BioMath Core erfahren →"
+    },
+    "closing": {
+      "title": "Bereit für mehr Klarheit über Ihre Gesundheit?",
+      "description": "Starten Sie mit einer 5-tägigen Testphase. Erweitern Sie Kategorien, während Ihr Human Data Model wächst.",
+      "primary": "Kostenlose Testphase starten",
+      "secondary": "Vertrieb kontaktieren",
+      "note": "HIPAA-konform · Verschlüsselt bei Übertragung und Speicherung · Jederzeit kündbar"
+    },
+    "errors": {
+      "title": "Zahlungsfehler",
+      "dismiss": "Schließen",
+      "notAuthenticated": "Nicht angemeldet",
+      "processingUnavailable": "Zahlungsabwicklung nicht verfügbar",
+      "notConfigured": "Zahlungssystem nicht konfiguriert",
+      "configError": "Konfigurationsfehler im Zahlungssystem",
+      "checkoutFailed": "Bezahlvorgang fehlgeschlagen"
+    }
+  }
+}

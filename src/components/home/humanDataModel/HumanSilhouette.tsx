@@ -1,0 +1,387 @@
+import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import type { TFunction } from 'i18next';
+import { categoryAccent } from '../../../data/categoryTheme';
+import {
+  categoryServiceCount,
+  getServiceCategory,
+} from '../../../data/services';
+import {
+  BODY_CUBES,
+  CATEGORY_AT,
+  CATEGORY_META,
+  RADIUS,
+} from './geometry';
+import { categoryIcon } from './icons';
+import {
+  HUMAN_ASPECT,
+  HUMAN_H,
+  HUMAN_SRC_DARK,
+  HUMAN_SRC_DARK_480,
+  HUMAN_SRC_LIGHT,
+  HUMAN_SRC_LIGHT_480,
+  HUMAN_W,
+} from './humanAsset';
+import { localizeCategory } from '../../../lib/localizeServices';
+
+interface Props {
+  dark: boolean;
+  onSelectCategory: (id: string) => void;
+}
+
+function hexToRgba(hex: string, alpha: number): string {
+  const h = hex.replace('#', '');
+  const n = parseInt(h.length === 3 ? h.split('').map((c) => c + c).join('') : h, 16);
+  const r = (n >> 16) & 255;
+  const g = (n >> 8) & 255;
+  const b = n & 255;
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+/** +40% figure and category cubes vs previous layout. */
+const SCALE = 1.4;
+
+/** Catalog order 01–10 left, 11–20 right. */
+const LEFT_IDS = [
+  'critical-health',
+  'everyday-wellness',
+  'longevity',
+  'mental-wellness',
+  'fitness-performance',
+  'womens-health',
+  'mens-health',
+  'beauty-skincare',
+  'nutrition-diet',
+  'sleep-recovery',
+] as const;
+
+const RIGHT_IDS = [
+  'environmental-health',
+  'family-health',
+  'preventive-medicine',
+  'biohacking',
+  'senior-care',
+  'eye-health',
+  'digital-therapeutics',
+  'general-sexual',
+  'mens-sexual-health',
+  'womens-sexual-health',
+] as const;
+
+type SideItem = {
+  id: string;
+  name: string;
+  color: string;
+  number: number;
+  serviceCount: number;
+};
+
+function sideItems(t: TFunction, ids: readonly string[]): SideItem[] {
+  return ids.map((id) => {
+    const cat = getServiceCategory(id);
+    const meta = CATEGORY_META[id];
+    return {
+      id,
+      name: cat ? localizeCategory(t, cat).name : id,
+      color: categoryAccent(id),
+      number: meta?.number ?? 0,
+      serviceCount: categoryServiceCount(id),
+    };
+  });
+}
+
+function CategoryColumn({
+  items,
+  align,
+  dark,
+  hovered,
+  onHover,
+  onSelect,
+}: {
+  items: SideItem[];
+  align: 'left' | 'right';
+  dark: boolean;
+  hovered: string | null;
+  onHover: (id: string | null) => void;
+  onSelect: (id: string) => void;
+}) {
+  const restColor = dark ? '#E2E8F0' : '#0F172A';
+  const muteColor = dark ? 'rgba(226,232,240,0.55)' : 'rgba(15,23,42,0.48)';
+  const towardFigure = align === 'left' ? 'border-r' : 'border-l';
+
+  return (
+    <nav
+      className={`flex w-[min(40vw,300px)] shrink-0 flex-col justify-center gap-3 sm:w-[320px] sm:gap-3.5 lg:w-[360px] lg:gap-4 ${
+        align === 'right' ? 'items-start text-left' : 'items-end text-right'
+      }`}
+      aria-label={align === 'left' ? 'Categories left' : 'Categories right'}
+    >
+      {items.map((item) => {
+        const isHot = hovered === item.id;
+        const Icon = categoryIcon(item.id);
+        const rowDir = align === 'left' ? 'flex-row-reverse' : 'flex-row';
+        return (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => onSelect(item.id)}
+            onMouseEnter={() => onHover(item.id)}
+            onMouseLeave={() => onHover(null)}
+            onFocus={() => onHover(item.id)}
+            onBlur={() => onHover(null)}
+            className={`group relative max-w-full ${towardFigure} px-3 py-2 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400/60 sm:px-3.5 sm:py-2.5 ${rowDir} flex items-center gap-3`}
+            style={{
+              color: isHot ? item.color : restColor,
+              opacity: hovered && !isHot ? 0.38 : 1,
+              transform: isHot ? 'scale(1.04) translateY(-1px)' : 'scale(1)',
+              transformOrigin: align === 'left' ? 'right center' : 'left center',
+              borderColor: isHot ? item.color : dark ? 'rgba(226,232,240,0.14)' : 'rgba(15,23,42,0.12)',
+              background: isHot
+                ? `linear-gradient(${align === 'left' ? '270deg' : '90deg'}, ${hexToRgba(item.color, dark ? 0.2 : 0.12)} 0%, transparent 92%)`
+                : 'transparent',
+            }}
+          >
+            <span
+              className="flex h-10 w-10 shrink-0 items-center justify-center transition-all duration-200 sm:h-11 sm:w-11"
+              style={{
+                color: isHot ? item.color : restColor,
+                backgroundColor: isHot
+                  ? hexToRgba(item.color, dark ? 0.28 : 0.16)
+                  : dark
+                    ? 'rgba(226,232,240,0.1)'
+                    : 'rgba(15,23,42,0.06)',
+                boxShadow: isHot ? `inset 0 0 0 1px ${hexToRgba(item.color, 0.55)}` : 'none',
+              }}
+            >
+              <Icon className="h-5 w-5 sm:h-[1.35rem] sm:w-[1.35rem]" strokeWidth={isHot ? 2.35 : 1.9} />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span
+                className="block font-semibold uppercase tabular-nums tracking-[0.22em]"
+                style={{
+                  fontSize: '0.72rem',
+                  color: isHot ? item.color : muteColor,
+                  letterSpacing: isHot ? '0.28em' : '0.22em',
+                  transition: 'color 200ms ease, letter-spacing 200ms ease',
+                }}
+              >
+                {String(item.number).padStart(2, '0')}
+              </span>
+              <span
+                className="mt-0.5 block font-semibold leading-[1.2] tracking-tight sm:leading-[1.15]"
+                style={{
+                  fontSize: isHot ? 'clamp(1.05rem, 1.05vw + 0.55rem, 1.4rem)' : 'clamp(0.98rem, 0.9vw + 0.55rem, 1.28rem)',
+                  transition: 'font-size 200ms ease, color 200ms ease',
+                }}
+              >
+                {item.name}
+              </span>
+              <span
+                className="mt-1 block font-medium tabular-nums tracking-wide"
+                style={{
+                  fontSize: '0.78rem',
+                  color: isHot ? item.color : muteColor,
+                  opacity: isHot ? 0.95 : 0.85,
+                  transition: 'color 200ms ease, opacity 200ms ease',
+                }}
+              >
+                {item.serviceCount} {item.serviceCount === 1 ? 'service' : 'services'}
+              </span>
+            </span>
+          </button>
+        );
+      })}
+    </nav>
+  );
+}
+
+/**
+ * Sharp human + 20 category cubes, with colored text columns on both sides.
+ */
+export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
+  const { t } = useTranslation();
+  const [hovered, setHovered] = useState<string | null>(null);
+
+  const baseW = BODY_CUBES[0]?.sizeW ?? 16;
+  const baseH = BODY_CUBES[0]?.sizeH ?? 7.3;
+  const sizeW = baseW * SCALE;
+  const sizeH = baseH * SCALE;
+
+  const leftCategories = useMemo(() => sideItems(t, LEFT_IDS), [t]);
+  const rightCategories = useMemo(() => sideItems(t, RIGHT_IDS), [t]);
+
+  const primaryByCell = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const [id, pos] of Object.entries(CATEGORY_AT)) {
+      map.set(`${pos.c}:${pos.r}`, id);
+    }
+    return map;
+  }, []);
+
+  const cubes = useMemo(() => {
+    return BODY_CUBES.flatMap((cell) => {
+      const key = `${cell.c}:${cell.r}`;
+      const primaryId = primaryByCell.get(key);
+      if (!primaryId) return [];
+      const cat = getServiceCategory(primaryId);
+      const meta = CATEGORY_META[primaryId];
+      const color = categoryAccent(primaryId);
+      return [
+        {
+          key,
+          categoryId: primaryId,
+          name: cat ? localizeCategory(t, cat).name : primaryId,
+          serviceCount: categoryServiceCount(primaryId),
+          left: cell.left + (baseW - sizeW) / 2,
+          top: cell.top + (baseH - sizeH) / 2,
+          color,
+          number: meta?.number ?? 0,
+        },
+      ];
+    });
+  }, [primaryByCell, baseW, baseH, sizeW, sizeH, t]);
+
+  return (
+    <div className="relative mx-auto flex w-full max-w-[1480px] items-stretch justify-center gap-4 px-2 sm:gap-8 sm:px-4 lg:gap-12">
+      <CategoryColumn
+        items={leftCategories}
+        align="left"
+        dark={dark}
+        hovered={hovered}
+        onHover={setHovered}
+        onSelect={onSelectCategory}
+      />
+
+      <div
+        className="relative shrink-0"
+        style={{
+          height: 'min(90vh, 1232px)',
+          aspectRatio: HUMAN_ASPECT,
+          maxWidth: 'min(52vw, 728px)',
+          width: 'auto',
+        }}
+      >
+        <div
+          className="pointer-events-none absolute inset-[1%] rounded-[40%] blur-3xl"
+          style={{
+            opacity: dark ? 0.35 : 0.18,
+            background: dark
+              ? 'radial-gradient(ellipse at 50% 35%, rgba(120, 145, 175, 0.28), transparent 70%)'
+              : 'radial-gradient(ellipse at 50% 35%, rgba(180, 170, 150, 0.28), transparent 70%)',
+          }}
+          aria-hidden
+        />
+
+        <img
+          key={dark ? 'hdm-dark' : 'hdm-light'}
+          src={`${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=10`}
+          srcSet={`${dark ? HUMAN_SRC_DARK_480 : HUMAN_SRC_LIGHT_480}?v=10 480w, ${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=10 800w`}
+          sizes="(max-width: 640px) 48vw, min(52vw, 728px)"
+          alt="Human Data Model"
+          width={HUMAN_W}
+          height={HUMAN_H}
+          fetchPriority="high"
+          decoding="async"
+          className="pointer-events-none absolute inset-0 z-10 h-full w-full object-fill select-none transition-[filter,opacity] duration-200 ease-out"
+          style={{
+            filter: dark
+              ? 'brightness(0.78) contrast(1.05)'
+              : 'brightness(1.02) contrast(1.03) saturate(1.05)',
+          }}
+          draggable={false}
+        />
+
+        <div className="absolute inset-0 z-20" style={{ perspective: 900 }}>
+          {cubes.map((cube) => {
+            const hoverKey = cube.categoryId;
+            const isHot = hovered === hoverKey;
+            const critical = cube.categoryId === 'critical-health';
+
+            return (
+              <button
+                key={cube.key}
+                type="button"
+                onClick={() => onSelectCategory(cube.categoryId)}
+                onMouseEnter={() => setHovered(hoverKey)}
+                onMouseLeave={() => setHovered(null)}
+                onFocus={() => setHovered(hoverKey)}
+                onBlur={() => setHovered(null)}
+                className="absolute focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+                style={{
+                  left: `${cube.left}%`,
+                  top: `${cube.top}%`,
+                  width: `${sizeW}%`,
+                  height: `${sizeH}%`,
+                  borderRadius: RADIUS * SCALE,
+                  zIndex: isHot ? 50 : critical ? 28 : 24,
+                  transform: isHot
+                    ? 'scale(1.22) translateZ(40px)'
+                    : 'scale(1) translateZ(0)',
+                  transition:
+                    'transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease, background-color 220ms ease, border-color 220ms ease',
+                  backgroundColor: isHot
+                    ? hexToRgba(cube.color, dark ? 0.42 : 0.4)
+                    : dark
+                      ? 'rgba(226,232,240,0.14)'
+                      : 'rgba(248,250,252,0.28)',
+                  border: isHot
+                    ? `2.5px solid ${cube.color}`
+                    : dark
+                      ? '2px solid rgba(226,232,240,0.42)'
+                      : '2px solid rgba(148,163,184,0.55)',
+                  boxShadow: isHot
+                    ? `0 16px 36px rgba(0,0,0,0.45), 0 0 24px ${cube.color}88`
+                    : critical
+                      ? '0 0 0 1.5px rgba(255,255,255,0.55), 0 4px 14px rgba(0,0,0,0.2)'
+                      : dark
+                        ? '0 3px 10px rgba(0,0,0,0.25)'
+                        : '0 3px 10px rgba(15,23,42,0.1)',
+                  cursor: 'pointer',
+                }}
+                aria-label={`${cube.name}, ${cube.serviceCount} services`}
+                title={`${cube.name} · ${cube.serviceCount} services`}
+              >
+                <span
+                  className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center font-semibold tabular-nums"
+                  style={{
+                    color: isHot
+                      ? '#F8FAFC'
+                      : dark
+                        ? 'rgba(226,232,240,0.7)'
+                        : 'rgba(71,85,105,0.75)',
+                    textShadow: isHot ? '0 1px 8px rgba(0,0,0,0.55)' : undefined,
+                    transition: 'color 220ms ease',
+                  }}
+                >
+                  <span style={{ fontSize: isHot ? '1.25rem' : '1.05rem', lineHeight: 1 }}>
+                    {cube.serviceCount}
+                  </span>
+                  <span
+                    style={{
+                      marginTop: 2,
+                      fontSize: '0.55rem',
+                      letterSpacing: '0.06em',
+                      textTransform: 'uppercase',
+                      opacity: isHot ? 0.95 : 0.65,
+                    }}
+                  >
+                    svc
+                  </span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <CategoryColumn
+        items={rightCategories}
+        align="right"
+        dark={dark}
+        hovered={hovered}
+        onHover={setHovered}
+        onSelect={onSelectCategory}
+      />
+    </div>
+  );
+}

@@ -1,0 +1,1004 @@
+{
+  "servicesData": {
+    "categories": {
+      "critical-health": {
+        "name": "重大な健康状態",
+        "description": "高度な健康モニタリングと重篤な病状のリスク評価",
+        "services": {
+          "risk-insight": {
+            "name": "リスクインサイト",
+            "description": "生物数学モデルを使用した包括的な健康リスク評価"
+          },
+          "lab-results": {
+            "name": "検査結果の説明者",
+            "description": "AI を活用した臨床検査結果の解釈"
+          },
+          "lab-results-trend": {
+            "name": "ラボ結果の傾向",
+            "description": "検査結果を経時的に比較し、意味のある変化、繰り返される異常、フォローアップ検査の欠落を特定します。"
+          },
+          "drug-interaction": {
+            "name": "薬物間相互作用チェッカー",
+            "description": "リアルタイムの薬物相互作用分析"
+          },
+          "medication-reconciliation": {
+            "name": "投薬調整",
+            "description": "処方箋、医療記録、ユーザー入力から確認済みの薬剤リストを 1 つ作成し、重複、矛盾、古い指示を特定します。"
+          },
+          "symptom-analyzer": {
+            "name": "症状アナライザー",
+            "description": "インテリジェントな症状評価とトリアージ"
+          },
+          "chronic-disease": {
+            "name": "慢性疾患コーチ",
+            "description": "慢性疾患の個別管理"
+          },
+          "medication-adherence": {
+            "name": "AIによる服薬アドヒアランス",
+            "description": "スマートな薬の追跡とリマインダー"
+          },
+          "care-cost": {
+            "name": "ケアコストオプティマイザー",
+            "description": "医療費の分析と最適化"
+          },
+          "doctor-visit-prep": {
+            "name": "医師の診察の準備",
+            "description": "予約の理由、最近の変更、現在の投薬、関連する結果、症状、質問を含めた簡潔な訪問概要を準備します。"
+          },
+          "prescription-price-comparison": {
+            "name": "処方箋価格の比較",
+            "description": "処方薬の入手可能な価格を薬局、ジェネリックオプション、用量、支払い方法ごとに比較します。"
+          },
+          "post-surgery": {
+            "name": "手術後の回復状況トラッカー",
+            "description": "回復の監視と指導"
+          },
+          "clinical-trial": {
+            "name": "臨床試験ファインダー",
+            "description": "パーソナライズされた臨床試験のマッチング"
+          },
+          "pre-surgery": {
+            "name": "手術前の準備",
+            "description": "手術準備の評価"
+          },
+          "rare-disease": {
+            "name": "希少疾患ナビゲーター",
+            "description": "レアコンディション管理のサポート"
+          },
+          "med-refill": {
+            "name": "スマートメッド リフィル",
+            "description": "自動処方箋補充管理"
+          },
+          "pain-map": {
+            "name": "AIペインマップ",
+            "description": "痛みの追跡とパターン分析"
+          },
+          "vaccination": {
+            "name": "予防接種パスポート",
+            "description": "デジタル予防接種記録"
+          },
+          "post-covid": {
+            "name": "ポストコロナプランナー",
+            "description": "長期にわたる新型コロナウイルス回復計画"
+          },
+          "genetic-risk": {
+            "name": "遺伝病のリスク予測",
+            "description": "ゲノムリスク評価"
+          },
+          "emergency-profile": {
+            "name": "緊急医療プロファイル",
+            "description": "緊急時の健康情報にすぐにアクセスできる"
+          },
+          "remote-vitals": {
+            "name": "遠隔バイタルモニタリング",
+            "description": "継続的なバイタルサインの追跡"
+          }
+        }
+      },
+      "everyday-wellness": {
+        "name": "毎日の健康",
+        "description": "毎日の健康の最適化とウェルネスの実践",
+        "services": {
+          "travel-kit": {
+            "name": "ヘルシートラベルキット",
+            "description": "旅行中の健康への備えとヒント"
+          },
+          "goal-assistant": {
+            "name": "ゴールアシスタント",
+            "description": "健康目標の設定と追跡"
+          },
+          "habit-tracker": {
+            "name": "毎日の習慣トラッカー",
+            "description": "健康的な習慣を築き、維持する"
+          },
+          "stress-reduction": {
+            "name": "ストレス軽減ガイド",
+            "description": "科学的根拠に基づいたストレス管理"
+          },
+          "energy-optimizer": {
+            "name": "エネルギーレベルオプティマイザー",
+            "description": "日々のエネルギーを高めて維持する"
+          },
+          "mind-body": {
+            "name": "心と体のつながりのエクササイズ",
+            "description": "ホリスティックな健康実践"
+          },
+          "affirmations": {
+            "name": "ポジティブアファーメーションジェネレーター",
+            "description": "パーソナライズされたポジティブなメッセージ"
+          },
+          "gratitude": {
+            "name": "感謝ジャーナルのプロンプト",
+            "description": "日々の感謝の習慣"
+          },
+          "digital-wellbeing": {
+            "name": "デジタルウェルビーイングスコア",
+            "description": "テクノロジー利用の最適化"
+          },
+          "mindful-eating": {
+            "name": "マインドフル・イーティング・アシスタント",
+            "description": "意識的な食事習慣"
+          },
+          "work-life": {
+            "name": "ワークライフバランスアドバイザー",
+            "description": "バランスの最適化戦略"
+          },
+          "immunity-booster": {
+            "name": "免疫力アッププラン",
+            "description": "免疫システムの強化"
+          },
+          "breathing": {
+            "name": "マインドフルな呼吸法",
+            "description": "ガイド付き呼吸法"
+          },
+          "ergonomic": {
+            "name": "人間工学に基づいたワークスペースのセットアップ",
+            "description": "ワークスペースの健全性の最適化"
+          },
+          "social-connection": {
+            "name": "ソーシャルコネクショントラッカー",
+            "description": "ソーシャルウェルネスモニタリング"
+          }
+        }
+      },
+      "longevity": {
+        "name": "長寿と老化防止",
+        "description": "先進的な老化科学と寿命の最適化",
+        "services": {
+          "biological-age": {
+            "name": "生物学的年齢要因",
+            "description": "真の生物学的年齢評価"
+          },
+          "polygenic-risk": {
+            "name": "多遺伝子リスクビューア",
+            "description": "複数遺伝子の健康リスク分析"
+          },
+          "epigenetic-age": {
+            "name": "エピジェネティック年齢ダッシュボード",
+            "description": "DNAメチル化年齢追跡"
+          },
+          "pharmacogenomics": {
+            "name": "薬理ゲノミクスマッチャー",
+            "description": "遺伝子治療の適合性"
+          },
+          "genetic-traits": {
+            "name": "遺伝形質の説明者",
+            "description": "自分の遺伝子構造を理解する"
+          },
+          "telomere": {
+            "name": "テロメア長分析",
+            "description": "細胞老化バイオマーカー"
+          },
+          "nad-optimization": {
+            "name": "NAD+ 最適化ガイド",
+            "description": "細胞エネルギーの強化"
+          },
+          "senolytics": {
+            "name": "セノリティクスの推奨事項",
+            "description": "細胞老化介入"
+          },
+          "mitochondrial": {
+            "name": "ミトコンドリアの健康評価",
+            "description": "セルラーパワーハウスの最適化"
+          },
+          "longevity-diet": {
+            "name": "長寿ダイエットプランナー",
+            "description": "健康寿命を延ばすための栄養"
+          },
+          "glycemic-control": {
+            "name": "血糖コントロールアドバイザー",
+            "description": "血糖値の最適化"
+          },
+          "cellular-senescence": {
+            "name": "細胞老化スコア",
+            "description": "老化細胞蓄積の追跡"
+          },
+          "microbiome": {
+            "name": "マイクロバイオーム多様性分析",
+            "description": "腸の健康と長寿の関係"
+          },
+          "gene-expression": {
+            "name": "長寿遺伝子発現レポート",
+            "description": "老化に関連する遺伝子活性"
+          },
+          "organ-age": {
+            "name": "臓器年齢の評価",
+            "description": "個々の臓器の老化分析"
+          }
+        }
+      },
+      "mental-wellness": {
+        "name": "メンタルウェルネス",
+        "description": "心理的健康と認知の最適化",
+        "services": {
+          "mindfulness": {
+            "name": "マインドフルネスガイド",
+            "description": "瞑想と意識の実践"
+          },
+          "motivation": {
+            "name": "モチベーションブースター",
+            "description": "心理的ドライブの強化"
+          },
+          "digital-detox": {
+            "name": "デジタル デトックス プランナー",
+            "description": "テクノロジーブレーク戦略"
+          },
+          "gratitude-wall": {
+            "name": "デジタル感謝の壁",
+            "description": "コミュニティへの感謝の共有"
+          },
+          "social-battery": {
+            "name": "ソーシャルバッテリーの予測",
+            "description": "社会的エネルギー管理"
+          },
+          "isolation-coach": {
+            "name": "社会的孤立コーチ",
+            "description": "つながり構築サポート"
+          },
+          "cognitive-performance": {
+            "name": "認知能力向上剤",
+            "description": "精神の鋭さの最適化"
+          },
+          "emotional-regulation": {
+            "name": "感情制御ツール",
+            "description": "感情管理テクニック"
+          },
+          "cbt-modules": {
+            "name": "認知行動療法 (CBT) モジュール",
+            "description": "科学的根拠に基づいた治療演習"
+          },
+          "stress-hormone": {
+            "name": "ストレスホルモントラッカー",
+            "description": "コルチゾールとストレスバイオマーカー"
+          },
+          "sleep-mood": {
+            "name": "睡眠と気分の関係分析",
+            "description": "休息と感情の関係追跡"
+          }
+        }
+      },
+      "fitness-performance": {
+        "name": "フィットネスとパフォーマンス",
+        "description": "アスレティックトレーニングと身体の最適化",
+        "services": {
+          "meal-plan": {
+            "name": "パーソナライズされた食事プラン",
+            "description": "目標に合わせたカスタム栄養"
+          },
+          "vo2-max": {
+            "name": "VO₂-Max の評価",
+            "description": "有酸素能力測定"
+          },
+          "workout-generator": {
+            "name": "ワークアウトジェネレーター",
+            "description": "AIを活用したトレーニングプログラム"
+          },
+          "plateau-breaker": {
+            "name": "ストレングスプラトーブレイカー",
+            "description": "トレーニングの停滞を克服する"
+          },
+          "tissue-release": {
+            "name": "軟部組織リリースマップ",
+            "description": "筋膜リリースガイダンス"
+          },
+          "body-fat": {
+            "name": "体脂肪傾向予測",
+            "description": "組成予測モデリング"
+          },
+          "sport-warmup": {
+            "name": "スポーツ特有のウォームアップ",
+            "description": "アクティビティに合わせた準備"
+          },
+          "cycling-power": {
+            "name": "サイクリングパワー予測",
+            "description": "業績予測"
+          },
+          "hrv-breathwork": {
+            "name": "2分間のHRV呼吸法",
+            "description": "素早い回復呼吸"
+          },
+          "active-recovery": {
+            "name": "アクティブリカバリタイマー",
+            "description": "最適化された休憩時間"
+          },
+          "desk-stretch": {
+            "name": "デスクストレッチ休憩",
+            "description": "職場の移動ルーチン"
+          },
+          "soft-tissue-map": {
+            "name": "軟組織マップ",
+            "description": "筋肉の健康状態の可視化"
+          },
+          "endurance-plan": {
+            "name": "持久力トレーニング計画",
+            "description": "長距離性能"
+          },
+          "flexibility": {
+            "name": "柔軟性とモビリティのガイド",
+            "description": "可動域の改善"
+          },
+          "post-workout": {
+            "name": "トレーニング後の栄養ガイド",
+            "description": "回復栄養のタイミング"
+          },
+          "injury-prevention": {
+            "name": "傷害予防計画",
+            "description": "積極的な怪我の回避"
+          },
+          "strength-conditioning": {
+            "name": "ストレングス&コンディショニングコーチ",
+            "description": "総合研修"
+          },
+          "powerlifting": {
+            "name": "パワーリフティング プログラム ジェネレーター",
+            "description": "最大限の筋力開発"
+          },
+          "gait-analysis": {
+            "name": "ランニング歩行分析",
+            "description": "ランニングフォームの最適化"
+          }
+        }
+      },
+      "womens-health": {
+        "name": "女性の健康",
+        "description": "女性に特化したヘルスケア",
+        "services": {
+          "cycle-tracker": {
+            "name": "サイクルトラッカー",
+            "description": "月経周期のモニタリングと予測"
+          },
+          "pregnancy": {
+            "name": "妊娠のタイムライン",
+            "description": "週ごとの妊娠指導"
+          },
+          "menopause": {
+            "name": "更年期ナビゲーター",
+            "description": "移行のサポートと管理"
+          },
+          "breast-health": {
+            "name": "乳房の健康リスク",
+            "description": "スクリーニングとリスク評価"
+          },
+          "hormone-dashboard": {
+            "name": "ホルモンダッシュボード",
+            "description": "女性ホルモンの追跡"
+          },
+          "endometriosis": {
+            "name": "子宮内膜症の症状トラッカー",
+            "description": "コンディション管理サポート"
+          },
+          "pcos": {
+            "name": "多嚢胞性卵巣症候群 (PCOS) ガイド",
+            "description": "PCOS ライフスタイルの最適化"
+          },
+          "pelvic-floor": {
+            "name": "骨盤底筋運動計画",
+            "description": "強化とリハビリ"
+          }
+        }
+      },
+      "mens-health": {
+        "name": "男性の健康",
+        "description": "男性のための特化したヘルスケア",
+        "services": {
+          "androgen": {
+            "name": "アンドロゲン ダッシュボード",
+            "description": "男性ホルモンのモニタリング"
+          },
+          "prostate-risk": {
+            "name": "前立腺リスクスコア",
+            "description": "前立腺の健康評価"
+          },
+          "fertility-tracker": {
+            "name": "妊孕性トラッカー",
+            "description": "男性の生殖能力の最適化"
+          },
+          "hair-loss": {
+            "name": "脱毛予測器",
+            "description": "アンドロゲン性脱毛症の追跡"
+          },
+          "performance-coach": {
+            "name": "パフォーマンスコーチ",
+            "description": "男性の活力の最適化"
+          },
+          "cardiovascular-risk": {
+            "name": "男性の心血管リスク",
+            "description": "心臓の健康診断"
+          },
+          "hormone-optimization": {
+            "name": "男性ホルモンの最適化",
+            "description": "テストステロンのバランス"
+          },
+          "prostate-health": {
+            "name": "前立腺ヘルスコーチ",
+            "description": "積極的な前立腺ケア"
+          }
+        }
+      },
+      "beauty-skincare": {
+        "name": "美容とスキンケア",
+        "description": "皮膚科の健康と美容の最適化",
+        "services": {
+          "skincare-routine": {
+            "name": "AI スキンケア ルーチン",
+            "description": "パーソナライズされたスキンケア療法"
+          },
+          "uv-forecast": {
+            "name": "紫外線ダメージ予測",
+            "description": "日光曝露リスク予測"
+          },
+          "dermatology-scan": {
+            "name": "デジタル皮膚科スキャン",
+            "description": "AIによる肌状態分析"
+          },
+          "hair-porosity": {
+            "name": "毛髪毛穴アドバイザー",
+            "description": "ヘアケアの最適化"
+          },
+          "cosmetic-scan": {
+            "name": "化粧品バーコードスキャン",
+            "description": "製品の成分分析"
+          },
+          "facial-massage": {
+            "name": "フェイシャルマッサージルーチン",
+            "description": "リンパドレナージ技術"
+          },
+          "ingredient-conflict": {
+            "name": "成分の競合",
+            "description": "製品互換性チェッカー"
+          },
+          "hair-growth": {
+            "name": "発毛予測器",
+            "description": "成長スケジュールの推定"
+          },
+          "anti-aging-skincare": {
+            "name": "アンチエイジングスキンケアアドバイザー",
+            "description": "時代を超えた戦略"
+          },
+          "sunscreen": {
+            "name": "日焼け止めレコメンデーション エンジン",
+            "description": "SPF製品のマッチング"
+          }
+        }
+      },
+      "nutrition-diet": {
+        "name": "栄養と食事",
+        "description": "科学的根拠に基づいた栄養と食事の最適化",
+        "services": {
+          "food-swaps": {
+            "name": "スマートな食品交換",
+            "description": "より健康的な代替案の提案"
+          },
+          "rpm": {
+            "name": "遠隔患者モニタリング (RPM)",
+            "description": "栄養介入の追跡"
+          },
+          "hydration": {
+            "name": "水分補給フォーミュラ",
+            "description": "パーソナライズされた水分摂取目標"
+          },
+          "label-decoder": {
+            "name": "栄養ラベルデコーダー",
+            "description": "食品ラベルの解釈"
+          },
+          "meal-kit": {
+            "name": "予算ミールキットビルダー",
+            "description": "手頃な価格の栄養計画"
+          },
+          "sodium-potassium": {
+            "name": "ナトリウム・カリウム計",
+            "description": "電解質バランスの追跡"
+          },
+          "gut-microbiome": {
+            "name": "腸内マイクロバイオームアナライザー",
+            "description": "消化器の健康評価"
+          },
+          "supplement-guide": {
+            "name": "パーソナライズされたサプリメントガイド",
+            "description": "証拠に基づいた補足"
+          },
+          "metabolic-rate": {
+            "name": "代謝率計算ツール",
+            "description": "必要カロリーの推定"
+          },
+          "food-sensitivity": {
+            "name": "食物過敏症トラッカー",
+            "description": "不耐性の識別"
+          },
+          "electrolyte": {
+            "name": "電解質バランスアドバイザー",
+            "description": "ミネラルの最適化"
+          },
+          "sustainability": {
+            "name": "食品の持続可能性スコア",
+            "description": "環境影響の追跡"
+          },
+          "meal-prep": {
+            "name": "食事準備プランナー",
+            "description": "毎週の食事の準備"
+          },
+          "recipe-analyzer": {
+            "name": "レシピ栄養分析装置",
+            "description": "レシピの栄養内訳"
+          },
+          "hydration-goal": {
+            "name": "水分補給の目標設定者",
+            "description": "毎日の水分摂取計画"
+          }
+        }
+      },
+      "sleep-recovery": {
+        "name": "睡眠と回復",
+        "description": "睡眠の最適化と回復の強化",
+        "services": {
+          "blue-light": {
+            "name": "ブルーライトプランナー",
+            "description": "露光の最適化"
+          },
+          "sleep-hygiene": {
+            "name": "睡眠衛生コーチ",
+            "description": "睡眠環境の改善"
+          },
+          "circadian-light": {
+            "name": "概日光ガイド",
+            "description": "自然なリズム調整"
+          },
+          "sleep-apnea": {
+            "name": "睡眠時無呼吸スクリーナー",
+            "description": "呼吸障害の検出"
+          },
+          "micro-meditation": {
+            "name": "マイクロ瞑想ジェネレーター",
+            "description": "簡単なリラクゼーションエクササイズ"
+          },
+          "sleep-environment": {
+            "name": "睡眠環境オプティマイザー",
+            "description": "寝室の最適化"
+          },
+          "guided-sleep": {
+            "name": "ガイド付き睡眠瞑想",
+            "description": "音声による睡眠補助"
+          },
+          "dream-analysis": {
+            "name": "夢パターン分析",
+            "description": "睡眠の質に関する洞察"
+          }
+        }
+      },
+      "environmental-health": {
+        "name": "環境衛生",
+        "description": "環境暴露のモニタリングと緩和",
+        "services": {
+          "eco-routine": {
+            "name": "エコルーチン評価",
+            "description": "環境影響評価"
+          },
+          "environmental-exposure": {
+            "name": "環境暴露",
+            "description": "毒素暴露の追跡"
+          },
+          "pollen-defense": {
+            "name": "花粉防御",
+            "description": "アレルギーシーズンへの備え"
+          },
+          "noise-map": {
+            "name": "屋内騒音マップ",
+            "description": "騒音公害評価"
+          },
+          "commute-calorie": {
+            "name": "通勤カロリーオプティマイザー",
+            "description": "アクティブな交通計画"
+          },
+          "air-quality": {
+            "name": "家庭用空気質アドバイザー",
+            "description": "室内空気モニタリング"
+          },
+          "water-quality": {
+            "name": "水質モニター",
+            "description": "飲料水の評価"
+          },
+          "mold-exposure": {
+            "name": "カビ暴露リスク評価",
+            "description": "真菌汚染の検出"
+          }
+        }
+      },
+      "family-health": {
+        "name": "家族の健康",
+        "description": "家族の包括的な健康管理",
+        "services": {
+          "medication-hub": {
+            "name": "家族薬ハブ",
+            "description": "家庭薬の追跡"
+          },
+          "family-caregiver-access": {
+            "name": "家族と介護者のアクセス",
+            "description": "子供、配偶者、親、扶養家族の選択された健康情報とタスクを管理するための許可ベースのアクセス。"
+          },
+          "child-growth": {
+            "name": "子供の成長トラッカー",
+            "description": "小児の発達モニタリング"
+          },
+          "genetic-compatibility": {
+            "name": "遺伝子適合性スクリーニング",
+            "description": "家族計画に関する洞察"
+          },
+          "wellness-challenge": {
+            "name": "ファミリーウェルネスチャレンジ",
+            "description": "グループの健康目標"
+          },
+          "immunization": {
+            "name": "小児予防接種スケジューラー",
+            "description": "ワクチン接種のタイムライン"
+          },
+          "first-aid": {
+            "name": "家族の応急処置ガイド",
+            "description": "緊急対応プロトコル"
+          },
+          "sibling-comparison": {
+            "name": "兄弟の健康状態の比較",
+            "description": "発達ベンチマーク"
+          }
+        }
+      },
+      "preventive-medicine": {
+        "name": "予防医学と長寿",
+        "description": "予防的な病気の予防と健康の最適化",
+        "services": {
+          "cancer-screening": {
+            "name": "個別化されたがんスクリーニング",
+            "description": "リスクベースのスクリーニングプロトコル"
+          },
+          "preventive-care-due": {
+            "name": "予防医療の期限",
+            "description": "ユーザーの確認されたプロフィールと記録に基づいて、予定されている、予定されている、または完了した予防的検査、ワクチン接種、フォローアップ検査を表示します。"
+          },
+          "cardiovascular-prevention": {
+            "name": "心血管疾患予防計画",
+            "description": "心臓の健康の最適化"
+          },
+          "neurodegenerative": {
+            "name": "神経変性リスク評価",
+            "description": "脳の健康の保護"
+          },
+          "inflammation-management": {
+            "name": "炎症管理プログラム",
+            "description": "全身炎症の軽減"
+          },
+          "immune-optimization": {
+            "name": "免疫システムの最適化",
+            "description": "免疫機能の向上"
+          },
+          "risk-calculator": {
+            "name": "健康とウェルネスのリスク計算ツール",
+            "description": "総合的なリスク評価"
+          },
+          "diabetes-prevention": {
+            "name": "糖尿病予防プログラム",
+            "description": "血糖管理"
+          },
+          "metabolic-syndrome": {
+            "name": "メタボリックシンドロームモニター",
+            "description": "代謝の健康状態の追跡"
+          }
+        }
+      },
+      "biohacking": {
+        "name": "バイオハッキングとパフォーマンス",
+        "description": "高度な人間のパフォーマンスの最適化",
+        "services": {
+          "nootropics": {
+            "name": "向知性レコメンデーション エンジン",
+            "description": "認知機能向上のガイダンス"
+          },
+          "cryotherapy": {
+            "name": "凍結療法プロトコルジェネレーター",
+            "description": "寒冷療法の最適化"
+          },
+          "red-light": {
+            "name": "レッドライトセラピーガイド",
+            "description": "光生体調節プロトコル"
+          },
+          "cold-exposure": {
+            "name": "寒冷曝露トレーニング計画",
+            "description": "ホルメシスストレスへの適応"
+          },
+          "intermittent-fasting": {
+            "name": "断続的な絶食スケジュール",
+            "description": "時間制限のある食事"
+          },
+          "biofeedback": {
+            "name": "バイオフィードバックトレーニングモジュール",
+            "description": "生理的自己調節"
+          },
+          "neurofeedback": {
+            "name": "ニューロフィードバックセッションプランナー",
+            "description": "脳波の最適化"
+          },
+          "wearable-integrator": {
+            "name": "ウェアラブルデータインテグレーター",
+            "description": "マルチデバイスのデータ合成"
+          },
+          "recovery-modalities": {
+            "name": "個別の回復手段",
+            "description": "カスタムリカバリプロトコル"
+          },
+          "nootropic-stack": {
+            "name": "向知性スタックビルダー",
+            "description": "サプリメントの相乗効果の最適化"
+          },
+          "cold-protocol": {
+            "name": "低温暴露プロトコル",
+            "description": "アイスバスと冷水シャワーの指導"
+          },
+          "breathwork-optimizer": {
+            "name": "ブレスワークオプティマイザー",
+            "description": "高度な呼吸法"
+          },
+          "cognitive-enhancement": {
+            "name": "認知機能向上計画",
+            "description": "精神的パフォーマンスの向上"
+          },
+          "fasting-calculator": {
+            "name": "断続的絶食計算ツール",
+            "description": "空腹時ウィンドウの最適化"
+          },
+          "dopamine-reset": {
+            "name": "ドーパミンリセットプロトコル",
+            "description": "神経伝達物質のリバランス"
+          },
+          "sensory-deprivation": {
+            "name": "感覚遮断ガイド",
+            "description": "フロートタンクのプロトコル"
+          },
+          "biofeedback-focus": {
+            "name": "集中力を高めるバイオフィードバックトレーニング",
+            "description": "注意力の強化"
+          }
+        }
+      },
+      "senior-care": {
+        "name": "シニアケア",
+        "description": "高齢者向けの専門医療",
+        "services": {
+          "senior-dashboard": {
+            "name": "シニアダッシュボード",
+            "description": "包括的な高齢者の健康モニタリング"
+          },
+          "caregiver-portal": {
+            "name": "介護者ポータル",
+            "description": "家族介護者の調整"
+          },
+          "fall-detection": {
+            "name": "転倒検知アラート",
+            "description": "転倒時の緊急対応"
+          },
+          "medication-adherence-senior": {
+            "name": "服薬アドヒアランス",
+            "description": "上級の服薬管理"
+          },
+          "voice-companion": {
+            "name": "音声コンパニオン",
+            "description": "高齢者向けAI健康アシスタント"
+          },
+          "frailty-index": {
+            "name": "虚弱指数",
+            "description": "体力の衰えの評価"
+          },
+          "medication-reminder": {
+            "name": "服薬リマインダーシステム",
+            "description": "自動錠剤リマインダー"
+          },
+          "fall-prevention": {
+            "name": "転倒予防体操",
+            "description": "バランスと筋力トレーニング"
+          },
+          "cognitive-games": {
+            "name": "認知健康ゲーム",
+            "description": "シニアのための脳トレーニング"
+          }
+        }
+      },
+      "eye-health": {
+        "name": "アイヘルススイート",
+        "description": "視覚的な健康状態の監視と最適化",
+        "services": {
+          "vision-test": {
+            "name": "ブラウザ視力テスト",
+            "description": "オンライン視力検査"
+          },
+          "retina-scan": {
+            "name": "網膜スキャンAI",
+            "description": "網膜の健康分析"
+          },
+          "blue-light-filter": {
+            "name": "ブルーライトフィルター",
+            "description": "デジタルによる眼精疲労の軽減"
+          },
+          "eye-exercises": {
+            "name": "目の運動リマインダー",
+            "description": "視覚疲労の予防"
+          }
+        }
+      },
+      "digital-therapeutics": {
+        "name": "デジタルセラピューティクスストア",
+        "description": "証拠に基づいたデジタル健康介入",
+        "services": {
+          "insomnia-cbt": {
+            "name": "不眠症CBT-Iアプリ",
+            "description": "不眠症に対する認知行動療法"
+          },
+          "adhd-game": {
+            "name": "ADHD ニューロゲーム",
+            "description": "ADHD向けの注意力トレーニング"
+          },
+          "anxiety-app": {
+            "name": "不安管理アプリ",
+            "description": "証拠に基づいた不安の軽減"
+          },
+          "pain-relief-vr": {
+            "name": "慢性疼痛緩和VR",
+            "description": "仮想現実による痛みの管理"
+          },
+          "ptsd-modules": {
+            "name": "PTSD回復モジュール",
+            "description": "トラウマ回復サポート"
+          }
+        }
+      },
+      "general-sexual": {
+        "name": "一般的な性的寿命",
+        "description": "包括的な性的健康とウェルネスの最適化",
+        "services": {
+          "libido-optimization": {
+            "name": "性欲ホルモンの最適化",
+            "description": "性的健康のためのホルモンバランス"
+          },
+          "sexual-biomarkers": {
+            "name": "性的健康バイオマーカー",
+            "description": "主要な健康指標の追跡"
+          },
+          "aphrodisiac-nutrigenomics": {
+            "name": "媚薬ニュートリゲノミクス",
+            "description": "遺伝に基づいたリビドー栄養学"
+          },
+          "microbiome-sexuality": {
+            "name": "マイクロバイオームとセクシュアリティ",
+            "description": "腸の健康と性的関係"
+          },
+          "neuroplasticity-libido": {
+            "name": "神経可塑性と性欲",
+            "description": "欲望のための脳トレーニング"
+          },
+          "stress-cortisol": {
+            "name": "ストレスとコルチゾールの管理",
+            "description": "ストレスホルモンの最適化"
+          },
+          "circadian-sexuality": {
+            "name": "概日リズムとセクシュアリティ",
+            "description": "性的健康のタイミングを計る"
+          },
+          "physical-fitness-sexuality": {
+            "name": "セクシュアリティのための体力",
+            "description": "性的健康のための運動"
+          },
+          "peptide-therapy": {
+            "name": "性欲に対するペプチド療法",
+            "description": "高度なペプチドプロトコル"
+          },
+          "xenoestrogen-detox": {
+            "name": "ゼノエストロゲンの解毒",
+            "description": "ホルモンかく乱物質の除去"
+          },
+          "psychosexual": {
+            "name": "心理性的最適化",
+            "description": "精神的性的健康の向上"
+          },
+          "partner-sync": {
+            "name": "パートナーの同期",
+            "description": "夫婦の健康コーディネート"
+          },
+          "fertility-assessment": {
+            "name": "生殖能力の健康評価",
+            "description": "リプロダクティブヘルス評価"
+          },
+          "hormone-balance-libido": {
+            "name": "性欲のためのホルモンバランス",
+            "description": "内分泌の最適化"
+          },
+          "sexual-wellness-education": {
+            "name": "セクシャルウェルネス教育",
+            "description": "総合的な性教育"
+          },
+          "relationship-communication": {
+            "name": "人間関係コミュニケーションコーチ",
+            "description": "親密なコミュニケーションスキル"
+          }
+        }
+      },
+      "mens-sexual-health": {
+        "name": "男性の性的健康",
+        "description": "男性向けに特化したセクシャルウェルネス",
+        "services": {
+          "vascular-health": {
+            "name": "血管の健康を維持して効力を発揮",
+            "description": "循環性機能"
+          },
+          "male-vitality-trt": {
+            "name": "男性の活力とTRT",
+            "description": "テストステロン補充療法"
+          },
+          "ed-guide": {
+            "name": "勃起不全（ED）ガイド",
+            "description": "包括的なED管理"
+          },
+          "sperm-health": {
+            "name": "精子の健康の最適化",
+            "description": "男性の生殖能力の向上"
+          }
+        }
+      },
+      "womens-sexual-health": {
+        "name": "女性の性的健康",
+        "description": "女性に特化したセクシャルウェルネス",
+        "services": {
+          "female-hormone-optimization": {
+            "name": "女性ホルモンの最適化",
+            "description": "女性ホルモンバランス"
+          },
+          "libido-nutrition": {
+            "name": "性欲を高める栄養",
+            "description": "女性の欲求を満たす栄養"
+          },
+          "pelvic-health-program": {
+            "name": "骨盤健康プログラム",
+            "description": "骨盤底の健康"
+          },
+          "menopausal-intimacy": {
+            "name": "更年期親密アドバイザー",
+            "description": "更年期障害の性的健康"
+          }
+        }
+      },
+      "human-data-model": {
+        "name": "ヒューマンデータモデル",
+        "description": "ヒューマン データ モデルの健康情報をインポート、整理、追跡するカテゴリ横断ツール。",
+        "services": {
+          "medical-records-import": {
+            "name": "医療記録のインポートとオーガナイザー",
+            "description": "医療 PDF、画像、記録をインポートし、重要な事実を抽出し、診断、投薬、検査、手順、日付をヒューマン データ モデルに整理します。"
+          },
+          "health-timeline": {
+            "name": "健康タイムライン",
+            "description": "診断、検査、投薬、処置、症状、訪問、重要な健康変化の時系列の記録。"
+          },
+          "what-changed": {
+            "name": "何が変わったのか",
+            "description": "健康記録、検査結果、投薬、症状、監視された測定値の時間の経過に伴う意味のある変化を示します。"
+          }
+        }
+      }
+    }
+  }
+}

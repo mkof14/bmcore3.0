@@ -1,18 +1,34 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect, useRef, lazy, Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from './lib/supabase';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import AIAssistantButton from './components/AIAssistantButton';
-import AIHealthAssistant from './components/AIHealthAssistant';
 import CookieBanner from './components/CookieBanner';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
 import PWAUpdatePrompt from './components/PWAUpdatePrompt';
 import CommandPalette from './components/CommandPalette';
-import { analytics, identifyUser } from './lib/analytics';
+import { analytics, identifyUser, initAnalytics } from './lib/analytics';
+import { userHasMemberAccess } from './lib/memberAccess';
 import { useServiceWorker } from './hooks/useServiceWorker';
+import { initWebVitals } from './lib/webVitals';
 import AdminGate from './components/AdminGate';
 import AdminToast from './components/AdminToast';
 import Home from './pages/Home';
+import {
+  type AppPage,
+  parseLocation,
+  syncUrl,
+} from './lib/routing';
+
+function PageFallback() {
+  const { t } = useTranslation();
+  return (
+    <div className="flex min-h-[40vh] items-center justify-center" role="status" aria-live="polite">
+      <p className="text-sm text-gray-500 dark:text-gray-400">{t('common.loading')}</p>
+    </div>
+  );
+}
 
 const About = lazy(() => import('./pages/About'));
 const Services = lazy(() => import('./pages/Services'));
@@ -25,7 +41,7 @@ const SignIn = lazy(() => import('./pages/SignIn'));
 const SignUp = lazy(() => import('./pages/SignUp'));
 const MemberZone = lazy(() => import('./pages/MemberZone'));
 const ServicesCatalog = lazy(() => import('./pages/ServicesCatalog'));
-const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
+const ServicePublicPage = lazy(() => import('./pages/ServicePublicPage'));
 const Devices = lazy(() => import('./pages/Devices'));
 const Reports = lazy(() => import('./pages/Reports'));
 const FAQ = lazy(() => import('./pages/FAQ'));
@@ -36,6 +52,7 @@ const BiomathCoreSummary = lazy(() => import('./pages/BiomathCoreSummary'));
 const SummaryText = lazy(() => import('./pages/SummaryText'));
 const Blog = lazy(() => import('./pages/Blog'));
 const News = lazy(() => import('./pages/News'));
+const Media = lazy(() => import('./pages/Media'));
 const Careers = lazy(() => import('./pages/Careers'));
 const CommandCenter = lazy(() => import('./pages/CommandCenter'));
 const AdminPanel = lazy(() => import('./pages/AdminPanel'));
@@ -53,44 +70,59 @@ const HowItWorks = lazy(() => import('./pages/HowItWorks'));
 const WhyTwoModels = lazy(() => import('./pages/WhyTwoModels'));
 const PrivacyTrust = lazy(() => import('./pages/PrivacyTrust'));
 const ConfigSystem = lazy(() => import('./pages/admin/ConfigSystem'));
-const Saven = lazy(() => import('./pages/Saven'));
+const SecondOpinionDemo = lazy(() => import('./pages/SecondOpinionDemo'));
+/** Health Guide panel — kept off the critical path until first open. */
+const AIHealthAssistant = lazy(() => import('./components/AIHealthAssistant'));
 
-type Page = 'home' | 'about' | 'services' | 'pricing' | 'investors' | 'science' | 'api' | 'contact' | 'signin' | 'signup' | 'member' | 'member-zone' | 'services-catalog' | 'service-detail' | 'devices' | 'reports' | 'faq' | 'referral' | 'ambassador' | 'learning' | 'learning-center' | 'biomath-core-summary' | 'summary-text' | 'blog' | 'news' | 'careers' | 'command-center' | 'admin-panel' | 'config-system' | 'privacy-policy' | 'terms-of-service' | 'disclaimer' | 'hipaa-notice' | 'security' | 'gdpr' | 'data-privacy' | 'trust-safety' | 'partnership' | 'how-it-works' | 'why-two-models' | 'privacy-trust' | 'redeem-invitation' | 'saven';
+type Page = AppPage;
 
-const getInitialPage = (): Page => {
-  if (typeof window !== 'undefined' && (window.location.pathname.startsWith('/saven') || window.location.pathname.startsWith('/app/saven'))) {
-    return 'saven';
-  }
-
-  return 'home';
-};
+function readInitialRoute() {
+  return parseLocation();
+}
 
 function App() {
   // VERSION: 2025-10-20-01:48 - Force HMR refresh
-  const [currentPage, setCurrentPage] = useState<Page>(getInitialPage);
-  const [serviceDetailId, setServiceDetailId] = useState<string>('');
-  const [categoryFilter, setCategoryFilter] = useState<string>('');
+  const initialRoute = readInitialRoute();
+  const [currentPage, setCurrentPage] = useState<Page>(initialRoute.page);
+  const [serviceDetailId, setServiceDetailId] = useState<string>(initialRoute.serviceDetailId);
+  const [categoryFilter, setCategoryFilter] = useState<string>(initialRoute.categoryFilter);
+  const [memberServiceRef, setMemberServiceRef] = useState<string>(initialRoute.memberServiceRef);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAssistantOpen, setIsAssistantOpen] = useState(false);
+  /** Mount Health Guide chunk only after first open (button stays eager/light). */
+  const [assistantMounted, setAssistantMounted] = useState(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const { isUpdateAvailable, updateServiceWorker } = useServiceWorker();
+  const isAuthenticatedRef = useRef(isAuthenticated);
 
-  // Check subscription status
-  const checkSubscription = async (userId: string) => {
-    try {
-      const { data } = await supabase
-        .from('user_subscriptions')
-        .select('status')
-        .eq('user_id', userId)
-        .in('status', ['active', 'trialing'])
-        .maybeSingle();
+  useEffect(() => {
+    isAuthenticatedRef.current = isAuthenticated;
+  }, [isAuthenticated]);
 
-      return !!data;
-    } catch (error) {
-      console.error('Error checking subscription:', error);
-      return false;
-    } 
+  // Check subscription / admin / dev-member access
+  const checkSubscription = async (userId: string, email?: string | null) => {
+    return userHasMemberAccess(userId, email);
   };
+
+  const applyRoute = (route: ReturnType<typeof parseLocation>) => {
+    setServiceDetailId(route.serviceDetailId);
+    setCategoryFilter(route.categoryFilter);
+    setMemberServiceRef(route.memberServiceRef);
+    setCurrentPage(route.page);
+  };
+
+  const goToPage = (page: Page, data?: string, options?: { replace?: boolean }) => {
+    setCurrentPage(page);
+    syncUrl(page, data, { replace: options?.replace });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    // Consent-gated: loads GA/Pixel only when biomath_cookie_preferences.analytics is true
+    // (or after cookieConsentUpdated). Missing VITE_GA_* / Pixel IDs fail soft.
+    initAnalytics();
+    initWebVitals();
+  }, []);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -99,7 +131,7 @@ function App() {
         identifyUser(session.user.id, {
           email: session.user.email
         });
-        checkSubscription(session.user.id);
+        checkSubscription(session.user.id, session.user.email);
       }
     });
 
@@ -109,7 +141,7 @@ function App() {
         identifyUser(session.user.id, {
           email: session.user.email
         });
-        checkSubscription(session.user.id);
+        checkSubscription(session.user.id, session.user.email);
       } 
     });
 
@@ -119,6 +151,49 @@ function App() {
   useEffect(() => {
     analytics.page(currentPage);
   }, [currentPage]);
+
+  // Normalize legacy hash URLs (#/pricing → /pricing) once on mount
+  useEffect(() => {
+    const route = parseLocation();
+    if (route.normalizeUrl) {
+      window.history.replaceState(
+        { page: route.page, data: route.serviceDetailId || route.categoryFilter || null },
+        '',
+        route.normalizeUrl,
+      );
+    }
+  }, []);
+
+  // Browser back/forward + legacy hash navigations from older links
+  useEffect(() => {
+    const syncFromLocation = () => {
+      applyRoute(parseLocation());
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const onPopState = () => syncFromLocation();
+    const onHashChange = () => {
+      if (window.location.hash.startsWith('#/')) {
+        const route = parseLocation();
+        applyRoute(route);
+        if (route.normalizeUrl) {
+          window.history.replaceState(
+            { page: route.page, data: route.serviceDetailId || route.categoryFilter || null },
+            '',
+            route.normalizeUrl,
+          );
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
+
+    window.addEventListener('popstate', onPopState);
+    window.addEventListener('hashchange', onHashChange);
+    return () => {
+      window.removeEventListener('popstate', onPopState);
+      window.removeEventListener('hashchange', onHashChange);
+    };
+  }, []);
 
   useEffect(() => {
     const handleOpenCommandPalette = () => setIsCommandPaletteOpen(true);
@@ -134,39 +209,88 @@ function App() {
   }, []);
 
   const handleNavigate = async (page: string, data?: string) => {
-    // Special handling for member-zone/member pages
-    if ((page === 'member' || page === 'member-zone') && !isAuthenticated) {
-      setCurrentPage('signin');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Member zone: require auth; plan check skipped for superadmin / mock session
+    if ((page === 'member' || page === 'member-zone') && !isAuthenticatedRef.current) {
+      setCategoryFilter('');
+      setMemberServiceRef('');
+      goToPage('signin', undefined, { replace: false });
       return;
     }
 
-    // If trying to access member zone, check subscription
-    if ((page === 'member' || page === 'member-zone') && isAuthenticated) {
-      // Get current user
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const hasActiveSub = await checkSubscription(user.id);
-        if (!hasActiveSub) {
-          // No subscription - redirect to pricing
-          setCurrentPage('pricing');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          return;
-        }
+    if ((page === 'member' || page === 'member-zone') && isAuthenticatedRef.current) {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      // If session user missing (stale flag), force sign-in again
+      if (!user) {
+        setIsAuthenticated(false);
+        setCategoryFilter('');
+        setMemberServiceRef('');
+        goToPage('signin');
+        return;
       }
+      const hasAccess = await checkSubscription(user.id, user.email);
+      if (!hasAccess) {
+        setCategoryFilter('');
+        setMemberServiceRef('');
+        goToPage('pricing');
+        return;
+      }
+      setMemberServiceRef(data || '');
+      setCategoryFilter('');
+      setServiceDetailId('');
+      goToPage('member-zone', data);
+      return;
     }
 
+    // Public service pages = description-only preview (same for HDM + category services).
+    // Signed-in members with access open the FULL workspace in Member Zone — except
+    // Human Data Model shared tools stay on the public description page from Home/public.
     if (page === 'service-detail' && data) {
+      const isHdmPublicPreview = data.startsWith('human-data-model/');
+      if (isAuthenticatedRef.current && !isHdmPublicPreview) {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        if (user) {
+          const hasAccess = await checkSubscription(user.id, user.email);
+          if (hasAccess) {
+            try {
+              sessionStorage.setItem('bmcore.pendingService', data);
+            } catch {
+              /* ignore */
+            }
+            setMemberServiceRef(data);
+            setServiceDetailId(data);
+            setCategoryFilter('');
+            goToPage('member-zone', data);
+            return;
+          }
+        }
+      }
       setServiceDetailId(data);
-      setCurrentPage('service-detail');
-    } else if (page === 'services-catalog' && data) {
-      setCategoryFilter(data);
-      setCurrentPage('services-catalog');
-    } else {
       setCategoryFilter('');
-      setCurrentPage(page as Page);
+      setMemberServiceRef('');
+      goToPage('service-detail', data);
+      return;
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (page === 'services-catalog' && data) {
+      setCategoryFilter(data);
+      setServiceDetailId('');
+      setMemberServiceRef('');
+      goToPage('services-catalog', data);
+      return;
+    }
+
+    setCategoryFilter('');
+    if (page !== 'service-detail') {
+      setServiceDetailId('');
+    }
+    if (page !== 'member' && page !== 'member-zone') {
+      setMemberServiceRef('');
+    }
+    goToPage(page as Page, data);
   };
 
   const handleSignIn = () => {
@@ -190,13 +314,15 @@ function App() {
       case 'services-catalog':
         return <ServicesCatalog onNavigate={handleNavigate} initialCategory={categoryFilter} />;
       case 'service-detail':
-        return <ServiceDetail onNavigate={handleNavigate} serviceId={serviceDetailId} />;
+        // Public preview only. Members with access are redirected to Member Zone workspace above.
+        return <ServicePublicPage onNavigate={handleNavigate} serviceId={serviceDetailId} />;
       case 'investors':
         return <Investors onNavigate={handleNavigate} />;
       case 'science':
         return <Science />;
       case 'api':
-        return <API onNavigate={handleNavigate} />;
+        // Developer documentation is an internal tool: reachable from the Admin panel only.
+        return <AdminGate onNavigate={handleNavigate}><API onNavigate={handleNavigate} /></AdminGate>;
       case 'contact':
         return <Contact onNavigate={handleNavigate} />;
       case 'faq':
@@ -208,7 +334,12 @@ function App() {
       case 'member':
       case 'member-zone':
         return isAuthenticated ? (
-          <MemberZone onNavigate={handleNavigate} onSignOut={handleSignOut} />
+          <MemberZone
+            key={memberServiceRef || 'member-zone'}
+            onNavigate={handleNavigate}
+            onSignOut={handleSignOut}
+            initialServiceRef={memberServiceRef}
+          />
         ) : (
           <SignIn onNavigate={handleNavigate} onSignIn={handleSignIn} />
         );
@@ -239,6 +370,8 @@ function App() {
         return <Blog onNavigate={handleNavigate} />;
       case 'news':
         return <News onNavigate={handleNavigate} />;
+      case 'media':
+        return <Media onNavigate={handleNavigate} />;
       case 'careers':
         return <Careers onNavigate={handleNavigate} />;
       case 'command-center':
@@ -273,8 +406,8 @@ function App() {
         return <WhyTwoModels />;
       case 'privacy-trust':
         return <PrivacyTrust onNavigate={handleNavigate} />;
-      case 'saven':
-        return <Saven onNavigate={handleNavigate} />;
+      case 'second-opinion-demo':
+        return <SecondOpinionDemo onNavigate={handleNavigate} />;
       default:
         return <Home onNavigate={handleNavigate} />;
     }
@@ -283,27 +416,45 @@ function App() {
   const showHeaderFooter = currentPage !== 'signin' && currentPage !== 'signup';
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors">
+    <div className="min-h-screen bg-page transition-colors">
       <AdminToast />
-      {showHeaderFooter && <Header onNavigate={handleNavigate} currentPage={currentPage} />}
+      {showHeaderFooter && (
+        <Header
+          onNavigate={handleNavigate}
+          currentPage={currentPage}
+          isAuthenticated={isAuthenticated}
+          onSignOut={handleSignOut}
+        />
+      )}
       <main>
-        <Suspense fallback={null}>
+        <Suspense fallback={<PageFallback />}>
           {renderPage()}
         </Suspense>
       </main>
       {showHeaderFooter && <Footer onNavigate={handleNavigate} />}
 
       <AIAssistantButton
-        onClick={() => setIsAssistantOpen(!isAssistantOpen)}
+        onClick={() => {
+          if (isAssistantOpen) {
+            setIsAssistantOpen(false);
+            return;
+          }
+          setAssistantMounted(true);
+          setIsAssistantOpen(true);
+        }}
         isOpen={isAssistantOpen}
       />
 
-      <AIHealthAssistant
-        isOpen={isAssistantOpen}
-        onClose={() => setIsAssistantOpen(false)}
-      />
+      {assistantMounted && (
+        <Suspense fallback={null}>
+          <AIHealthAssistant
+            isOpen={isAssistantOpen}
+            onClose={() => setIsAssistantOpen(false)}
+          />
+        </Suspense>
+      )}
 
-      <CookieBanner />
+      <CookieBanner onNavigate={handleNavigate} />
 
       <PWAInstallPrompt />
 

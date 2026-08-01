@@ -1,0 +1,312 @@
+{
+  "devicesPage": {
+    "badge": "ウェアラブルとセンサー",
+    "title": "マイデバイス",
+    "subtitle": "時計、リング、血糖センサー、家庭用健康機器を連携すると、BioMath Core が傾向を読み取り、わかりやすい言葉で説明します。",
+    "connectedTitle": "連携済みデバイス",
+    "connectTitle": "ブランドを連携",
+    "catalogTitle": "最新デバイスガイド",
+    "catalogIntro": "いま使われている機器と、各カテゴリが示す主な信号です。目的に合う機材を選び、下で対応ブランドを連携してください。",
+    "signalsTitle": "重要な信号",
+    "signalsIntro": "デバイス連携時に BioMath Core が特によく使う能力です。",
+    "emptyBrands": "このセッションではライブのブランド連携は利用できません。上のガイドは閲覧でき、ログイン後にメンバーゾーンから連携できます。",
+    "learnMore": "詳しく見る",
+    "hideGuide": "ガイドを隠す",
+    "helpChoosing": "選び方のヒント",
+    "chooseBrand": "認可するメーカーを選びます。Apple、Samsung、Google、Fitbit、Garmin、Oura、Ultrahuman、WHOOP、Dexcom、FreeStyle Libre、Withings、Omron などに対応。",
+    "realtime": "ほぼリアルタイム",
+    "syncNow": "今すぐ同期",
+    "disconnect": "切断",
+    "frequency": "頻度",
+    "lastSync": "最終同期",
+    "status": {
+      "connected": "連携中",
+      "error": "対応が必要",
+      "tokenExpired": "アクセス期限切れ",
+      "disconnected": "切断済み"
+    },
+    "sync": {
+      "daily": "毎日",
+      "hourly": "毎時",
+      "realtime": "ほぼリアルタイム",
+      "manual": "手動"
+    },
+    "recommendations": {
+      "title": "選び方",
+      "intro": "まだ端末がない場合は、いちばん大切な成果から始めましょう：",
+      "sleep": "睡眠と回復",
+      "activity": "活動とトレーニング",
+      "glucose": "血糖パターン",
+      "bloodPressure": "血圧",
+      "longTerm": "落ち着いた長期トレンド",
+      "universal": "幅広い日常カバー",
+      "values": {
+        "sleep": "Oura Ring、Ultrahuman Ring、WHOOP、または Eight Sleep",
+        "activity": "Apple Watch、Garmin、Samsung Galaxy Watch、Fitbit、または Polar",
+        "glucose": "Dexcom G7 または FreeStyle Libre（持続血糖）",
+        "blood_pressure": "Omron または Withings BPM（検証済みカフ式）",
+        "long_term": "昼夜装着のスマートリングや回復バンド",
+        "universal": "Apple Watch または Samsung Galaxy Watch にスマートスケールを併用"
+      }
+    },
+    "signals": {
+      "continuous_glucose": {
+        "title": "持続血糖",
+        "body": "CGM による一日の血糖曲線。食事、エネルギー低下、代謝パターンの把握に役立ちます。"
+      },
+      "sleep_stages": {
+        "title": "睡眠ステージ",
+        "body": "時計・リング・睡眠システムによる時間、深い睡眠/REM のバランス、夜間の一貫性。"
+      },
+      "hrv_recovery": {
+        "title": "HRV と回復",
+        "body": "心拍変動と回復スコアで、追い込む時と休む時の目安になります。"
+      },
+      "blood_pressure": {
+        "title": "血圧",
+        "body": "家庭用カフ測定で、一回限りではなく数週間の血管の快適さを追います。"
+      },
+      "body_composition": {
+        "title": "体重と体組成",
+        "body": "スマートスケールで体重、除脂肪量、体組成の傾向を見ます。"
+      },
+      "activity_load": {
+        "title": "活動負荷",
+        "body": "歩数・ワークアウト・負荷を回復とバランスさせます。"
+      }
+    },
+    "categories": {
+      "smartwatch": {
+        "title": "スマートウォッチ",
+        "body": "手首で終日の心拍、睡眠、活動、しばしば ECG や SpO₂。"
+      },
+      "smart_ring": {
+        "title": "スマートリング",
+        "body": "睡眠、HRV、体温、回復のための目立たない 24 時間装着。"
+      },
+      "recovery": {
+        "title": "リカバリーバンド",
+        "body": "負荷と回復に焦点を当てた連続装着バンド。"
+      },
+      "cgm": {
+        "title": "持続血糖",
+        "body": "臨床寄りのセンサーが、頻回の穿刺なしで一日の多く血糖を送信。"
+      },
+      "blood_pressure": {
+        "title": "血圧計",
+        "body": "収縮期/拡張期を信頼して追う検証済み家庭用カフ。"
+      },
+      "body_composition": {
+        "title": "スマートスケール",
+        "body": "より長い傾向のための体重と体組成の推定。"
+      },
+      "sleep_home": {
+        "title": "家庭用睡眠システム",
+        "body": "手首デバイスなしで睡眠の質と夜間バイタルをベッドで追跡。"
+      }
+    },
+    "capabilities": {
+      "heart_rate": "心拍",
+      "hrv": "HRV",
+      "sleep": "睡眠",
+      "spo2": "SpO₂",
+      "activity": "活動",
+      "recovery": "回復",
+      "ecg": "ECG",
+      "temperature": "体温",
+      "glucose": "血糖",
+      "blood_pressure": "血圧",
+      "weight": "体重",
+      "body_comp": "体組成",
+      "stress": "ストレス",
+      "clinical_grade": "臨床グレード"
+    },
+    "explain": {
+      "step": "ステップ 2 / 3 — 説明",
+      "howTitle": "仕組み",
+      "howBody": "健康指標へのアクセスのみを依頼します。ログインやパスワードは見ず、保存しません。いつでも切断できます。",
+      "point1": "アプリが許可された指標をデバイスから収集します",
+      "point2": "傾向を解釈し、落ち着いた次の一歩を提案します",
+      "point3": "データはレポートや Health Guide の案内に使えます",
+      "privacyLabel": "プライバシー：",
+      "privacyBody": "管理はあなたにあります。デバイスのパスワードは受け取らず、操作もできません。許可した健康データのみ受け取ります。",
+      "continue": "続ける",
+      "back": "戻る"
+    },
+    "authorize": {
+      "title": "アクセスを許可",
+      "step": "ステップ 3 / 3 — 認可",
+      "intro": "デバイスが指標を自動送信することを許可します。",
+      "syncTitle": "同期頻度",
+      "syncBody": "既定：毎朝。後から変更できます：",
+      "daily": "毎日（推奨）",
+      "multiple": "1 日に複数回",
+      "realtime": "ほぼリアルタイム（お使いのデバイスで利用可）",
+      "grant": "アクセスを許可",
+      "connecting": "連携中…",
+      "back": "戻る"
+    },
+    "success": {
+      "title": "デバイスを連携しました",
+      "body": "BioMath Core が指標を更新し、推奨とレポートに使います。",
+      "tipLabel": "ヒント：",
+      "tipBody": "定期的な装着は、単日だけでなく改善・悪化・安定という方向を追う助けになります。"
+    },
+    "footer": {
+      "howTitle": "仕組み",
+      "howBody": "許可された指標（睡眠、心拍、ストレス、回復、血糖など）を収集し、わかりやすい言葉で説明します。生の数値の羅列ではなく、傾向と実務的な次の一歩に焦点を当てます。",
+      "privacyLabel": "プライバシー：",
+      "privacyBody": "連携はあなたが管理します。デバイスのパスワードは知らず、操作もできません。いつでも切断できます。"
+    },
+    "items": {
+      "apple_watch": {
+        "name": "Apple Watch",
+        "blurb": "日常を広くカバー：心拍、HRV、睡眠、SpO₂、ECG、ワークアウト。"
+      },
+      "samsung_galaxy_watch": {
+        "name": "Samsung Galaxy Watch",
+        "blurb": "手首の指標。対応モデルではカフレス血圧も（地域・機種による）。"
+      },
+      "garmin": {
+        "name": "Garmin",
+        "blurb": "持久系や計画的なスポーツ向けの負荷、回復、睡眠、HRV。"
+      },
+      "google_pixel_watch": {
+        "name": "Google Pixel Watch",
+        "blurb": "Fitbit 連携の睡眠と活動をコンパクトなスマートウォッチで。"
+      },
+      "oura": {
+        "name": "Oura Ring",
+        "blurb": "リングによる睡眠ステージ、準備度、体温、HRV。"
+      },
+      "ultrahuman": {
+        "name": "Ultrahuman Ring",
+        "blurb": "睡眠・回復・代謝寄りの日常信号向けの軽いリング。"
+      },
+      "whoop": {
+        "name": "WHOOP",
+        "blurb": "従来型画面なしで負荷・回復・睡眠を継続計測。"
+      },
+      "dexcom_g7": {
+        "name": "Dexcom G7",
+        "blurb": "食事とエネルギーのパターン把握向けの高頻度持続血糖。"
+      },
+      "freestyle_libre": {
+        "name": "FreeStyle Libre",
+        "blurb": "日常の代謝把握向けのフラッシュ/持続血糖センシング。"
+      },
+      "omron": {
+        "name": "Omron",
+        "blurb": "家庭で広く使われる検証済み血圧カフ。"
+      },
+      "withings_bpm": {
+        "name": "Withings BPM",
+        "blurb": "健康履歴にきれいに同期する接続型カフ測定。"
+      },
+      "withings_body": {
+        "name": "Withings Body+",
+        "blurb": "体重と体組成の傾向向けスマートスケール。"
+      },
+      "eight_sleep": {
+        "name": "Eight Sleep",
+        "blurb": "睡眠ステージと夜間バイタルを追うベッドシステム。"
+      },
+      "fitbit": {
+        "name": "Fitbit",
+        "blurb": "睡眠、心拍、活動、ストレスの取りやすいトラッキング。"
+      },
+      "polar": {
+        "name": "Polar",
+        "blurb": "スポーツ向け心拍、トレーニング負荷、回復指標。"
+      }
+    }
+  },
+  "deviceHints": {
+    "connection": {
+      "strong": "デバイスの連携は",
+      "body": "BioMath Core により精密な信号を与えます。数値を集めるだけでなく、意味を説明し、状態や習慣と結びつけます。"
+    },
+    "opening": "時計、リング、バンド、血糖センサー、カフ、スケールを連携できます。連携後、BioMath Core はデータを更新し、レポートや Health Guide で使えます。",
+    "success": {
+      "strong": "完了。",
+      "body": "次の同期は自動です。手動操作は不要です。"
+    },
+    "firstSync": {
+      "title": "指標を受信しました",
+      "body": "単一値ではなく傾向を追います。"
+    },
+    "why": {
+      "title": "なぜ重要か",
+      "body": "デバイスは変化を早く気づかせます。症状が最初の警告になる前に、負荷・回復・穏やかな調整のナビゲーターとして使えます。"
+    },
+    "errors": {
+      "token_expired": {
+        "title": "アクセス期限切れ",
+        "message": "デバイスアクセスの期限が切れました。指標を再読取するにはアクセスを更新してください。",
+        "action": "アクセスを更新"
+      },
+      "no_data": {
+        "title": "新しいデータなし",
+        "message": "本日、新しいデータが届いていません。未装着か未同期の可能性があります。自動で再試行します。"
+      },
+      "service_error": {
+        "title": "メーカー利用不可",
+        "message": "メーカーが一時的に利用できません。後で同期を再試行します。"
+      },
+      "manual_disconnect": {
+        "title": "デバイス切断",
+        "message": "デバイスはデータを送信していません。いつでも再連携できます。",
+        "action": "再連携"
+      },
+      "bluetooth_sync": {
+        "title": "スマホ同期",
+        "message": "端末がまだスマホと同期していない可能性があります。メーカーアプリを開くと、多くの場合あとは自動です。"
+      }
+    },
+    "status": {
+      "connected": "連携中",
+      "needs_update": "更新が必要",
+      "no_data": "データなし",
+      "disconnected": "切断済み"
+    },
+    "scenarios": {
+      "sleep_declined": {
+        "title": "睡眠の質が低下",
+        "message": "最近の睡眠が浅めです。神経系の負荷を反映しているかもしれません。穏やかな回復ステップを提案できます。"
+      },
+      "sleep_improved": {
+        "title": "睡眠が改善",
+        "message": "睡眠がより安定しています — 回復が良くなっている良いサインです。"
+      },
+      "hrv_improved": {
+        "title": "HRV が改善",
+        "message": "心拍変動が改善 — 神経系が回復しているサインです。"
+      },
+      "hrv_declined": {
+        "title": "HRV が低下",
+        "message": "神経系が張り詰めているかもしれません。穏やかな回復モードが次の一歩になることが多いです。"
+      },
+      "activity_high": {
+        "title": "負荷が高め",
+        "message": "負荷がいつもより高いです — 回復を意識しましょう。"
+      },
+      "glucose_unstable": {
+        "title": "血糖の変動",
+        "message": "血糖が振れています。診断の言葉ではなく、食事や習慣との関係を整理できます。"
+      },
+      "blood_pressure_stable": {
+        "title": "血圧は安定",
+        "message": "安定した正常値は長期の血管の快適さを支えます。上昇時は恐れを煽らず落ち着いて説明します。"
+      }
+    },
+    "healthGuide": {
+      "title": "Health Guide がデバイスデータを使う方法",
+      "templateLabel": "例のプロンプト",
+      "template": "最新のデバイスデータから、傾向 ____________ が見えます。診断ではありませんが重要な信号です。説明と推奨が必要ですか？",
+      "agreeLabel": "同意する場合",
+      "agreeBody": "2 通りで説明します：(1) 生理学的分析（意見 A）と (2) 行動・ライフスタイルの説明（意見 B）。比較して合う方を選べます。",
+      "secondOpinionLabel": "セカンドオピニオン",
+      "secondOpinionBody": "セカンドオピニオンは同じ信号を生理学的・適応的な角度から見ます — 思考スタイルの違う二人の専門家のようなものです。"
+    }
+  }
+}

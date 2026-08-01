@@ -1,0 +1,172 @@
+{
+  "services": {
+    "seo": {
+      "title": "Leistungen & Preise – Tarife für Gesundheitsanalysen",
+      "description": "Wählen Sie zwischen den Tarifen Core, Daily und Max für intelligente Gesundheitsanalysen. 5 Tage kostenlos testen, über 200 Dienste in 20 Gesundheitskategorien. Ab 19 $ im Monat. Sicher und HIPAA-konform."
+    },
+    "hero": {
+      "label": "Leistungen",
+      "title": "Bestimmen Sie die Tiefe Ihres Human Data Model",
+      "body": "Jeder Tarif erweitert, was das Modell sehen kann. Mehr Kategorien bedeuten mehr Kontext – und klarere Empfehlungen.",
+      "monthly": "Monatlich",
+      "yearly": "Jährlich",
+      "yearlySaving": "−17 %"
+    },
+    "plans": {
+      "mostPopular": "Am häufigsten gewählt",
+      "perMonth": "/Monat",
+      "perYear": "/Jahr",
+      "getStarted": "Loslegen",
+      "trialNote": "Alle Tarife enthalten eine <strong>5-tägige Testphase</strong>. Sie können während der Testphase jederzeit kündigen.",
+      "items": [
+        {
+          "name": "Core",
+          "description": "Grundlegende Gesundheitsanalysen für Einzelpersonen",
+          "categories": "3 Kategorien",
+          "features": [
+            "Einfaches Gesundheits-Dashboard",
+            "Zugang zu 3 Servicekategorien",
+            "10 GB Speicher im Modellarchiv",
+            "Monatliche Gesundheitsberichte",
+            "Support per E-Mail",
+            "Datenverschlüsselung",
+            "Geräteanbindung (bis zu 2 Geräte)"
+          ]
+        },
+        {
+          "name": "Daily",
+          "description": "Tägliche Erkenntnisse und umfassende Verlaufsdaten",
+          "categories": "10 Kategorien",
+          "features": [
+            "Alles aus Core",
+            "10 Kategorien",
+            "50 GB Speicher im Modellarchiv",
+            "Tägliche Gesundheitsberichte",
+            "Zugang zum Health Guide",
+            "Bevorzugter Support per E-Mail",
+            "Geräteanbindung (bis zu 5 Geräte)",
+            "Einbindung von Laborergebnissen",
+            "Auswertung genetischer Daten"
+          ]
+        },
+        {
+          "name": "Max",
+          "description": "Vollständige Gesundheitsintelligenz für anspruchsvolle Verläufe",
+          "categories": "20 Kategorien",
+          "features": [
+            "Alles aus Daily",
+            "Alle 20 Servicekategorien",
+            "200 GB Speicher im Modellarchiv",
+            "KI-Erkenntnisse in Echtzeit",
+            "Bevorzugter Support rund um die Uhr",
+            "Unbegrenzte Geräteanbindung",
+            "Erweiterte vorausschauende Analysen",
+            "Individuelle Berichtserstellung",
+            "Familienkonten (bis zu 5 Mitglieder)",
+            "API-Zugang für Entwicklerinnen und Entwickler"
+          ]
+        }
+      ]
+    },
+    "compare": {
+      "label": "Vergleich",
+      "title": "Alle Funktionen im direkten Vergleich",
+      "featureHeader": "Funktion",
+      "included": "Enthalten",
+      "rows": [
+        { "name": "Gesundheits-Dashboard", "core": "Einfach", "daily": "Erweitert", "max": "Erweitert" },
+        { "name": "Servicekategorien", "core": "3", "daily": "10", "max": "Alle 20" },
+        { "name": "Speicher im Modellarchiv", "core": "10 GB", "daily": "50 GB", "max": "200 GB" },
+        { "name": "Gesundheitsberichte", "core": "Monatlich", "daily": "Täglich", "max": "In Echtzeit" },
+        { "name": "Support", "core": "E-Mail", "daily": "Bevorzugte E-Mail", "max": "Rund um die Uhr" },
+        { "name": "Datenverschlüsselung", "core": true, "daily": true, "max": true },
+        { "name": "Geräteanbindung", "core": "Bis zu 2", "daily": "Bis zu 5", "max": "Unbegrenzt" },
+        { "name": "Health Guide", "core": false, "daily": true, "max": true },
+        { "name": "Einbindung von Laborergebnissen", "core": false, "daily": true, "max": true },
+        { "name": "Auswertung genetischer Daten", "core": false, "daily": true, "max": true },
+        { "name": "Vorausschauende Analysen", "core": false, "daily": false, "max": true },
+        { "name": "Individuelle Berichtserstellung", "core": false, "daily": false, "max": true },
+        { "name": "Familienkonten", "core": false, "daily": false, "max": "Bis zu 5" },
+        { "name": "API-Zugang", "core": false, "daily": false, "max": true }
+      ]
+    },
+    "testimonials": {
+      "label": "Stimmen",
+      "title": "Was Nutzerinnen und Nutzer bemerken",
+      "items": [
+        {
+          "quote": "Ideal, um meine grundlegenden Gesundheitswerte zu verfolgen. Einfach und wirksam.",
+          "author": "Sarah M.",
+          "plan": "Core"
+        },
+        {
+          "quote": "Der Health Guide hat verändert, wie ich meine Gesundheitsdaten verstehe. Jeden Cent wert.",
+          "author": "Michael R.",
+          "plan": "Daily"
+        },
+        {
+          "quote": "Als Ärztin sind die umfassenden Auswertungen und die Familienkonten für mich unverzichtbar.",
+          "author": "Dr. Emily Chen",
+          "plan": "Max"
+        }
+      ]
+    },
+    "why": {
+      "label": "Warum BioMath Core",
+      "title": "Für dauerhafte Klarheit gebaut",
+      "items": [
+        {
+          "title": "Rückmeldung zur rechten Zeit",
+          "body": "Hinweise zu Ihren Gesundheitssignalen, während die Modelle Ihre Muster kennenlernen."
+        },
+        {
+          "title": "Sicherheit nach HIPAA-Maßstab",
+          "body": "Schutz auf Unternehmensniveau, damit sensible Daten standardmäßig privat bleiben."
+        },
+        {
+          "title": "Menschliche Unterstützung",
+          "body": "Fachleute und bevorzugte Hilfe, wenn Sie wissen möchten, was die Daten bedeuten."
+        }
+      ]
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Häufige Fragen",
+      "items": [
+        {
+          "question": "Kann ich den Tarif jederzeit wechseln?",
+          "answer": "Ja, Sie können jederzeit in einen höheren oder niedrigeren Tarif wechseln. Änderungen gelten sofort, und wir rechnen die Kosten anteilig ab."
+        },
+        {
+          "question": "Was passiert nach der 5-tägigen Testphase?",
+          "answer": "Nach Ablauf der 5 Testtage wird automatisch der gewählte Tarif für den gewählten Abrechnungszeitraum berechnet. Während der Testphase können Sie jederzeit kostenfrei kündigen."
+        },
+        {
+          "question": "Sind meine Gesundheitsdaten sicher?",
+          "answer": "Ja, ohne Einschränkung. Alle Tarife umfassen Verschlüsselung auf Unternehmensniveau, sichere Speicherung und die Einhaltung der HIPAA-Vorgaben. Ihre Gesundheitsdaten werden ohne Ihre ausdrückliche Einwilligung niemals an Dritte weitergegeben."
+        },
+        {
+          "question": "Gibt es einen Rabatt bei jährlicher Zahlung?",
+          "answer": "Ja! Die jährliche Zahlung spart rund 17 % gegenüber der monatlichen Zahlung. Den ermäßigten Preis sehen Sie, sobald Sie oben die jährliche Abrechnung wählen."
+        }
+      ],
+      "moreText": "Möchten Sie sich vor der Tarifwahl ein vollständigeres Bild machen?",
+      "moreCta": "Mehr über BioMath Core erfahren →"
+    },
+    "closing": {
+      "title": "Bereit für mehr Klarheit über Ihre Gesundheit?",
+      "body": "Beginnen Sie mit der 5-tägigen Testphase. Erweitern Sie die Kategorien, während Ihr Human Data Model wächst.",
+      "ctaTrial": "Kostenlose Testphase starten",
+      "ctaContact": "Vertrieb kontaktieren",
+      "footnote": "HIPAA-konform · Verschlüsselt bei Übertragung und Speicherung · Jederzeit kündbar"
+    },
+    "errors": {
+      "title": "Fehler bei der Zahlung",
+      "dismiss": "Schließen",
+      "priceNotConfigured": "Für diesen Tarif ist keine Stripe-Preis-ID hinterlegt.",
+      "subscriptionFailed": "Das Abonnement konnte nicht angelegt werden",
+      "notAuthenticated": "Nicht angemeldet",
+      "paymentFailed": "Die Zahlung ist fehlgeschlagen"
+    }
+  }
+}

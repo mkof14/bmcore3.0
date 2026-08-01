@@ -1,26 +1,119 @@
-import { useState, useEffect } from 'react';
-import { Shield, ChevronDown, Check, Zap, Users } from 'lucide-react';
+import { useState, useEffect, useMemo } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
+import { ChevronDown } from 'lucide-react';
 import BackButton from '../components/BackButton';
 import PaymentConfirmationModal from '../components/PaymentConfirmationModal';
 import { supabase } from '../lib/supabase';
 import SEO from '../components/SEO';
-import ComparisonTable from '../components/ComparisonTable';
-import { TrustBadgesCompact } from '../components/TrustSignals';
-import Testimonials from '../components/Testimonials';
 import { generateProductSchema, injectStructuredData } from '../lib/structuredData';
 
 interface PricingProps {
   onNavigate: (page: string) => void;
 }
 
+type PlanId = 'core' | 'daily' | 'max';
+
+type PlanDef = {
+  id: PlanId;
+  monthlyPrice: number;
+  yearlyPrice: number;
+  categoryCount: string;
+  popular?: boolean;
+};
+
+type Plan = PlanDef & {
+  name: string;
+  description: string;
+  categories: string;
+  features: string[];
+};
+
+const PLAN_DEFS: PlanDef[] = [
+  { id: 'core', monthlyPrice: 19, yearlyPrice: 190, categoryCount: '3' },
+  { id: 'daily', monthlyPrice: 39, yearlyPrice: 390, categoryCount: '10', popular: true },
+  { id: 'max', monthlyPrice: 79, yearlyPrice: 790, categoryCount: '20' },
+];
+
+/** String cells reference `pricing.compare.values.*`; booleans render as a dot or dash. */
+const COMPARISON: ReadonlyArray<{
+  key: string;
+  core: boolean | string;
+  daily: boolean | string;
+  max: boolean | string;
+}> = [
+  { key: 'dashboard', core: 'basic', daily: 'advanced', max: 'advanced' },
+  { key: 'categories', core: 'n3', daily: 'n10', max: 'all20' },
+  { key: 'storage', core: 'gb10', daily: 'gb50', max: 'gb200' },
+  { key: 'reports', core: 'monthly', daily: 'daily', max: 'realtime' },
+  { key: 'support', core: 'email', daily: 'priorityEmail', max: 'priority247' },
+  { key: 'encryption', core: true, daily: true, max: true },
+  { key: 'devices', core: 'upTo2', daily: 'upTo5', max: 'unlimited' },
+  { key: 'assistant', core: false, daily: true, max: true },
+  { key: 'labs', core: false, daily: true, max: true },
+  { key: 'genetics', core: false, daily: true, max: true },
+  { key: 'predictive', core: false, daily: false, max: true },
+  { key: 'customReports', core: false, daily: false, max: true },
+  { key: 'family', core: false, daily: false, max: 'upTo5' },
+  { key: 'api', core: false, daily: false, max: true },
+];
+
+type Testimonial = { quote: string; author: string; plan: string };
+type Reason = { index: string; title: string; body: string };
+type FaqEntry = { question: string; answer: string };
+
+function CellValue({ value, includedLabel }: { value: boolean | string; includedLabel: string }) {
+  if (typeof value === 'boolean') {
+    return value ? (
+      <span
+        aria-label={includedLabel}
+        className="inline-block h-1.5 w-1.5 rounded-full bg-orange-500 dark:bg-orange-400"
+      />
+    ) : (
+      <span className="text-gray-400 dark:text-neutral-600">—</span>
+    );
+  }
+  return <span className="text-gray-700 dark:text-neutral-300">{value}</span>;
+}
+
 export default function Pricing({ onNavigate }: PricingProps) {
+  const { t } = useTranslation();
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly');
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-  const [selectedPlan, setSelectedPlan] = useState<any>(null);
+  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [paymentStatus, setPaymentStatus] = useState<'cancelled' | null>(null);
+
+  const plans = useMemo<Plan[]>(
+    () =>
+      PLAN_DEFS.map((def) => {
+        const features = t(`pricing.plans.${def.id}.features`, { returnObjects: true }) as unknown;
+        return {
+          ...def,
+          name: t(`pricing.plans.${def.id}.name`),
+          description: t(`pricing.plans.${def.id}.description`),
+          categories: t(`pricing.plans.${def.id}.categories`),
+          features: Array.isArray(features) ? (features as string[]) : [],
+        };
+      }),
+    [t]
+  );
+
+  const testimonials = useMemo<Testimonial[]>(() => {
+    const raw = t('pricing.testimonials.items', { returnObjects: true }) as unknown;
+    return Array.isArray(raw) ? (raw as Testimonial[]) : [];
+  }, [t]);
+
+  const reasons = useMemo<Reason[]>(() => {
+    const raw = t('pricing.why.items', { returnObjects: true }) as unknown;
+    return Array.isArray(raw) ? (raw as Reason[]) : [];
+  }, [t]);
+
+  const faqs = useMemo<FaqEntry[]>(() => {
+    const raw = t('pricing.faq.items', { returnObjects: true }) as unknown;
+    return Array.isArray(raw) ? (raw as FaqEntry[]) : [];
+  }, [t]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -31,135 +124,8 @@ export default function Pricing({ onNavigate }: PricingProps) {
     }
   }, []);
 
-  const plans = [
-    {
-      id: 'core',
-      name: 'Core',
-      description: 'Essential health analytics for individuals',
-      monthlyPrice: 19,
-      yearlyPrice: 190,
-      categories: '3 Categories',
-      features: [
-        'Basic health dashboard',
-        '3 service categories access',
-        '10 GB Model Archive storage',
-        'Monthly health reports',
-        'Email support',
-        'Data encryption',
-        'Device connectivity (up to 2 devices)'
-      ]
-    },
-    {
-      id: 'daily',
-      name: 'Daily',
-      description: 'Daily insights and comprehensive tracking',
-      monthlyPrice: 39,
-      yearlyPrice: 390,
-      categories: '10 Categories',
-      popular: true,
-      features: [
-        'Everything in Core',
-        '10 Categories',
-        '50 GB Model Archive storage',
-        'Daily health reports',
-        'AI Assistant access',
-        'Priority email support',
-        'Device connectivity (up to 5 devices)',
-        'Lab results integration',
-        'Genetic data analysis'
-      ]
-    },
-    {
-      id: 'max',
-      name: 'Max',
-      description: 'Complete health intelligence platform',
-      monthlyPrice: 79,
-      yearlyPrice: 790,
-      categories: '20 Categories',
-      features: [
-        'Everything in Daily',
-        'All 20 service categories',
-        '200 GB Model Archive storage',
-        'Real-time AI insights',
-        '24/7 priority support',
-        'Unlimited device connectivity',
-        'Advanced predictive analytics',
-        'Custom report generation',
-        'Family accounts (up to 5 members)',
-        'API access for developers'
-      ]
-    }
-  ];
-
-  const comparisonFeatures = [
-    { name: 'Health dashboard', core: 'Basic', daily: 'Advanced', max: 'Advanced' },
-    { name: 'Service categories', core: '3', daily: '10 Categories', max: 'All 20' },
-    { name: 'Model Archive storage', core: '10 GB', daily: '50 GB', max: '200 GB' },
-    { name: 'Health reports', core: 'Monthly', daily: 'Daily', max: 'Real-time' },
-    { name: 'Support', core: 'Email', daily: 'Priority email', max: '24/7 priority' },
-    { name: 'Data encryption', core: true, daily: true, max: true },
-    { name: 'Device connectivity', core: 'Up to 2', daily: 'Up to 5', max: 'Unlimited' },
-    { name: 'AI Assistant', core: false, daily: true, max: true },
-    { name: 'Lab results integration', core: false, daily: true, max: true },
-    { name: 'Genetic data analysis', core: false, daily: true, max: true },
-    { name: 'Predictive analytics', core: false, daily: false, max: true },
-    { name: 'Custom report generation', core: false, daily: false, max: true },
-    { name: 'Family accounts', core: false, daily: false, max: 'Up to 5' },
-    { name: 'API access', core: false, daily: false, max: true }
-  ];
-
-  const testimonials = [
-    {
-      quote: "Perfect for tracking my basic health metrics. Simple and effective.",
-      author: "Sarah M.",
-      plan: "Core"
-    },
-    {
-      quote: "The AI Assistant has transformed how I understand my health data. Worth every penny.",
-      author: "Michael R.",
-      plan: "Daily"
-    },
-    {
-      quote: "As a healthcare professional, the comprehensive analytics and family accounts are invaluable.",
-      author: "Dr. Emily Chen",
-      plan: "Max"
-    }
-  ];
-
-  const faqs = [
-    {
-      question: 'Can I switch plans at any time?',
-      answer: 'Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we\'ll prorate the cost accordingly.'
-    },
-    {
-      question: 'What happens after the 5-day trial?',
-      answer: 'After your 5-day trial ends, you\'ll be automatically charged based on your selected plan and billing period. You can cancel anytime during the trial without being charged.'
-    },
-    {
-      question: 'Is my health data secure?',
-      answer: 'Absolutely. All plans include enterprise-grade encryption, secure data storage, and compliance with HIPAA regulations. Your health data is never shared with third parties without your explicit consent.'
-    },
-    {
-      question: 'Do you offer discounts for annual billing?',
-      answer: 'Yes! Annual billing saves you approximately 17% compared to monthly payments. You\'ll see the discounted price when you select yearly billing above.'
-    }
-  ];
-
-  const getPrice = (plan: typeof plans[0]) => {
-    return billingPeriod === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice;
-  };
-
-  const getPlanBadgeColor = (planName: string) => {
-    switch(planName.toLowerCase()) {
-      case 'core': return 'text-orange-500';
-      case 'daily': return 'text-orange-500';
-      case 'max': return 'text-orange-500';
-      default: return 'text-orange-500';
-    }
-  };
-
   useEffect(() => {
-    plans.forEach(plan => {
+    plans.forEach((plan) => {
       const price = billingPeriod === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice;
       const productSchema = generateProductSchema({
         name: `BioMath Core ${plan.name} Plan`,
@@ -169,186 +135,280 @@ export default function Pricing({ onNavigate }: PricingProps) {
         currency: 'USD',
         availability: 'https://schema.org/InStock',
         rating: 4.8,
-        reviewCount: 127
+        reviewCount: 127,
       });
       injectStructuredData(productSchema);
     });
-  }, [billingPeriod]);
+  }, [billingPeriod, plans]);
+
+  const getPrice = (plan: Plan) =>
+    billingPeriod === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice;
+
+  const cellValue = (value: boolean | string) =>
+    typeof value === 'boolean' ? value : t(`pricing.compare.values.${value}`);
+
+  async function handleSelectPlan(plan: Plan) {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      onNavigate('signin');
+      return;
+    }
+
+    setSelectedPlan(plan);
+    setShowConfirmation(true);
+    setError(null);
+  }
+
+  async function handleConfirmPayment() {
+    if (!selectedPlan) return;
+
+    setIsProcessing(true);
+    setError(null);
+
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user) {
+        throw new Error('Not authenticated');
+      }
+
+      setError(t('pricing.errors.processingUnavailable'));
+      setIsProcessing(false);
+    } catch (err: any) {
+      if (err.message && err.message.includes('REDIRECT')) {
+        return;
+      }
+
+      if (err.message && err.message.includes('Stripe secret key not configured')) {
+        setError(t('pricing.errors.notConfigured'));
+      } else if (err.message && err.message.includes('Missing required environment variables')) {
+        setError(t('pricing.errors.configError'));
+      } else if (err.message === 'Not authenticated') {
+        setError(t('pricing.errors.notAuthenticated'));
+      } else {
+        setError(err.message || t('pricing.errors.checkoutFailed'));
+      }
+
+      setIsProcessing(false);
+    }
+  }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors">
+    <div className="min-h-screen bg-page text-gray-900 transition-colors dark:text-neutral-100">
       <SEO
-        title="Pricing Plans - Affordable Health Analytics"
-        description="Transparent pricing for AI-powered health analytics. Core ($19/mo), Daily ($39/mo), Max ($59/mo). 5-day free trial. Annual discounts available. Cancel anytime."
-        keywords={['health analytics cost', 'wellness subscription pricing', 'health monitoring plans', 'affordable health tracking', 'AI health service cost']}
+        title={t('pricing.seoTitle')}
+        description={t('pricing.seoDescription')}
+        keywords={[
+          'health analytics cost',
+          'wellness subscription pricing',
+          'health monitoring plans',
+          'affordable health tracking',
+          'AI health service cost',
+        ]}
         url="/pricing"
       />
+
       <div className="pt-20 pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
           <BackButton onNavigate={onNavigate} />
 
           {paymentStatus === 'cancelled' && (
-            <div className="mb-8 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg text-center">
-              <p className="text-yellow-700 dark:text-yellow-400 font-medium">
-                Payment was cancelled. You can try again whenever you're ready.
+            <div className="mb-8 border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-center">
+              <p className="text-sm font-medium text-amber-800 dark:text-amber-300">
+                {t('pricing.paymentCancelled')}
               </p>
             </div>
           )}
 
-          <section className="text-center mb-16 mt-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-orange-200/80 bg-white/70 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-700 backdrop-blur dark:bg-white/10 dark:text-orange-200 dark:border-orange-300/20 mb-4">
-              Pricing Plans
-            </div>
-            <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-6 text-gray-900 dark:text-white">
-              Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-500">Plan</span>
+          {/* Hero */}
+          <section className="border-b border-[var(--bm-border)] pb-12 pt-8 text-center lg:pb-14 lg:pt-10">
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-600 dark:text-orange-400">
+              {t('pricing.label')}
+            </p>
+            <h1 className="mx-auto max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
+              {t('pricing.title')}
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto">
-              Each plan expands the Human Data Model. More categories = deeper insights.
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-lg">
+              {t('pricing.subtitle')}
             </p>
 
-            <div className="inline-flex items-center bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full p-1">
+            <div className="mt-9 inline-flex items-center border border-[var(--bm-border)] bg-[var(--bm-surface)] p-1">
               <button
+                type="button"
                 onClick={() => setBillingPeriod('monthly')}
-                className={`px-8 py-2.5 rounded-full text-sm font-semibold transition-all ${
+                className={`px-7 py-2.5 text-sm font-semibold transition-colors ${
                   billingPeriod === 'monthly'
-                    ? 'bg-white text-gray-900'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                    ? 'bg-gray-900 text-white dark:bg-neutral-100 dark:text-gray-900'
+                    : 'text-gray-600 hover:text-gray-900 dark:text-neutral-400 dark:hover:text-neutral-100'
                 }`}
               >
-                Monthly
+                {t('pricing.monthly')}
               </button>
               <button
+                type="button"
                 onClick={() => setBillingPeriod('yearly')}
-                className={`px-8 py-2.5 rounded-full text-sm font-semibold transition-all ${
+                className={`px-7 py-2.5 text-sm font-semibold transition-colors ${
                   billingPeriod === 'yearly'
-                    ? 'bg-white text-gray-900'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                    ? 'bg-gray-900 text-white dark:bg-neutral-100 dark:text-gray-900'
+                    : 'text-gray-600 hover:text-gray-900 dark:text-neutral-400 dark:hover:text-neutral-100'
                 }`}
               >
-                Yearly
+                {t('pricing.yearly')}
+                <span className="ml-2 text-[11px] font-medium text-orange-600 dark:text-orange-400">
+                  −17%
+                </span>
               </button>
             </div>
           </section>
 
-          <section className="mb-20">
-            <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {/* Plans */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <div className="grid gap-6 md:grid-cols-3 md:gap-5 lg:gap-6">
               {plans.map((plan) => {
                 const price = getPrice(plan);
-                const isPopular = plan.popular;
+                const isPopular = Boolean(plan.popular);
 
                 return (
-                  <div
+                  <article
                     key={plan.id}
-                    className={`relative bg-white dark:bg-gray-900 rounded-2xl p-8 border ${
-                      isPopular ? 'border-blue-500/70 shadow-[0_0_0_1px_rgba(59,130,246,0.35),0_20px_60px_-30px_rgba(59,130,246,0.35)]' : 'border-gray-200 dark:border-gray-800'
-                    } transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-lg`}
+                    className={`relative flex flex-col border bg-[var(--bm-surface)] p-7 sm:p-8 ${
+                      isPopular
+                        ? 'border-orange-500/55 dark:border-orange-400/45'
+                        : 'border-[var(--bm-border)]'
+                    }`}
                   >
                     {isPopular && (
-                      <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                        <span className="bg-orange-500 text-white px-6 py-1 rounded-full text-xs font-bold">
-                          Most Popular
-                        </span>
-                      </div>
+                      <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-orange-600 dark:text-orange-400">
+                        {t('pricing.mostPopular')}
+                      </p>
                     )}
 
-                    <div className="mb-6">
-                      <h3 className="text-2xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-white">{plan.name}</h3>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{plan.description}</p>
+                    <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+                      {plan.name}
+                    </h2>
+                    <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-400">
+                      {plan.description}
+                    </p>
+
+                    <div className="mt-6 flex items-baseline gap-1.5">
+                      <span className="text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl">
+                        ${price}
+                      </span>
+                      <span className="text-sm text-gray-500 dark:text-neutral-500">
+                        /{billingPeriod === 'monthly' ? t('pricing.perMonth') : t('pricing.perYear')}
+                      </span>
                     </div>
 
-                    <div className="mb-6">
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">${price}</span>
-                        <span className="text-gray-500 dark:text-gray-400">/{billingPeriod === 'monthly' ? 'month' : 'year'}</span>
-                      </div>
-                    </div>
-
-                    <div className="mb-6 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-600 dark:to-blue-800 rounded-xl p-8 flex flex-col items-center shadow-sm">
-                      <div className="w-24 h-24 bg-white/80 dark:bg-white/10 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm border border-blue-200/60 dark:border-white/10">
-                        <span className="text-5xl font-bold text-gray-900 dark:text-white">
-                          {plan.id === 'core' ? '3' : plan.id === 'daily' ? '10' : '20'}
-                        </span>
-                      </div>
-                      <div className="text-gray-900 dark:text-white font-bold text-xl">
+                    <div className="mt-6 border-t border-[var(--bm-border)] pt-5">
+                      <p className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+                        {plan.categoryCount}
+                      </p>
+                      <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-neutral-500">
                         {plan.categories}
-                      </div>
+                      </p>
                     </div>
 
-                    <ul className="space-y-3 mb-8">
-                      {plan.features.map((feature, index) => (
-                        <li key={index} className="flex items-start gap-2 text-sm">
-                          <span className="text-orange-400 mt-1">●</span>
-                          <span className="text-gray-700 dark:text-gray-200">{feature}</span>
+                    <ul className="mt-6 flex-1 space-y-2.5">
+                      {plan.features.map((feature) => (
+                        <li
+                          key={feature}
+                          className="flex items-start gap-2.5 text-sm leading-relaxed text-gray-700 dark:text-neutral-300"
+                        >
+                          <span
+                            aria-hidden
+                            className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-orange-500 dark:bg-orange-400"
+                          />
+                          {feature}
                         </li>
                       ))}
                     </ul>
 
                     <button
+                      type="button"
                       onClick={() => handleSelectPlan(plan)}
-                      className={`w-full py-3 rounded-lg font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${
+                      className={`mt-8 w-full py-3 text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/40 ${
                         isPopular
-                          ? 'bg-orange-500 hover:bg-orange-400 text-white shadow-lg shadow-orange-500/20'
-                          : 'bg-gray-900 hover:bg-gray-800 text-white border border-gray-900'
+                          ? 'bg-orange-500 text-white hover:bg-orange-400'
+                          : 'bg-gray-900 text-white hover:bg-gray-800 dark:bg-neutral-100 dark:text-gray-900 dark:hover:bg-white'
                       }`}
                     >
-                      Get Started
+                      {t('pricing.getStarted')}
                     </button>
-                  </div>
+                  </article>
                 );
               })}
             </div>
+
+            <p className="mt-8 text-center text-sm text-gray-600 dark:text-neutral-400">
+              <Trans
+                i18nKey="pricing.trialNote"
+                components={{
+                  b: <span className="font-medium text-gray-900 dark:text-neutral-100" />,
+                }}
+              />
+            </p>
           </section>
 
-          <section className="mb-20">
-            <h2 className="text-4xl font-semibold text-center mb-12">Compare All Features</h2>
+          {/* Compare */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <header className="mb-10 max-w-2xl">
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-600 dark:text-orange-400">
+                {t('pricing.compare.label')}
+              </p>
+              <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">
+                {t('pricing.compare.title')}
+              </h2>
+            </header>
 
-            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm">
+            <div className="overflow-hidden border border-[var(--bm-border)] bg-[var(--bm-surface)]">
               <div className="overflow-x-auto">
-                <table className="w-full">
+                <table className="w-full min-w-[640px]">
                   <thead>
-                    <tr className="border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950">
-                      <th className="text-left py-5 px-6 font-semibold text-gray-900 dark:text-white">Feature</th>
-                      <th className="text-center py-5 px-6 font-semibold text-gray-900 dark:text-white">Core</th>
-                      <th className="text-center py-5 px-6 font-semibold text-gray-900 dark:text-white">Daily</th>
-                      <th className="text-center py-5 px-6 font-semibold text-gray-900 dark:text-white">Max</th>
+                    <tr className="border-b border-[var(--bm-border)] bg-page">
+                      <th className="px-5 py-4 text-left text-sm font-semibold text-gray-900 dark:text-neutral-100 sm:px-6">
+                        {t('pricing.compare.featureColumn')}
+                      </th>
+                      <th className="px-4 py-4 text-center text-sm font-semibold text-gray-900 dark:text-neutral-100">
+                        {t('pricing.plans.core.name')}
+                      </th>
+                      <th className="px-4 py-4 text-center text-sm font-semibold text-orange-600 dark:text-orange-400">
+                        {t('pricing.plans.daily.name')}
+                      </th>
+                      <th className="px-4 py-4 text-center text-sm font-semibold text-gray-900 dark:text-neutral-100">
+                        {t('pricing.plans.max.name')}
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
-                    {comparisonFeatures.map((feature, index) => (
-                      <tr key={index} className="border-b border-gray-200/70 dark:border-gray-800/50 last:border-0">
-                        <td className="py-4 px-6 text-gray-900 dark:text-white">{feature.name}</td>
-                        <td className="py-4 px-6 text-center">
-                          {typeof feature.core === 'boolean' ? (
-                            feature.core ? (
-                              <span className="inline-block w-2 h-2 bg-blue-500 rounded-full"></span>
-                            ) : (
-                              <span className="text-gray-400">—</span>
-                            )
-                          ) : (
-                            <span className="text-gray-600 dark:text-gray-300">{feature.core}</span>
-                          )}
+                    {COMPARISON.map((feature) => (
+                      <tr
+                        key={feature.key}
+                        className="border-b border-[var(--bm-border)] last:border-0"
+                      >
+                        <td className="px-5 py-3.5 text-sm text-gray-900 dark:text-neutral-100 sm:px-6">
+                          {t(`pricing.compare.rows.${feature.key}`)}
                         </td>
-                        <td className="py-4 px-6 text-center">
-                          {typeof feature.daily === 'boolean' ? (
-                            feature.daily ? (
-                              <span className="inline-block w-2 h-2 bg-orange-500 rounded-full"></span>
-                            ) : (
-                              <span className="text-gray-400">—</span>
-                            )
-                          ) : (
-                            <span className="text-gray-600 dark:text-gray-300">{feature.daily}</span>
-                          )}
+                        <td className="px-4 py-3.5 text-center text-sm">
+                          <CellValue
+                            value={cellValue(feature.core)}
+                            includedLabel={t('pricing.compare.included')}
+                          />
                         </td>
-                        <td className="py-4 px-6 text-center">
-                          {typeof feature.max === 'boolean' ? (
-                            feature.max ? (
-                              <span className="inline-block w-2 h-2 bg-blue-500 rounded-full"></span>
-                            ) : (
-                              <span className="text-gray-400">—</span>
-                            )
-                          ) : (
-                            <span className="text-gray-600 dark:text-gray-300">{feature.max}</span>
-                          )}
+                        <td className="px-4 py-3.5 text-center text-sm">
+                          <CellValue
+                            value={cellValue(feature.daily)}
+                            includedLabel={t('pricing.compare.included')}
+                          />
+                        </td>
+                        <td className="px-4 py-3.5 text-center text-sm">
+                          <CellValue
+                            value={cellValue(feature.max)}
+                            includedLabel={t('pricing.compare.included')}
+                          />
                         </td>
                       </tr>
                     ))}
@@ -358,150 +418,171 @@ export default function Pricing({ onNavigate }: PricingProps) {
             </div>
           </section>
 
-          <section className="mb-20">
-            <h2 className="text-4xl font-semibold text-center mb-12">What Our Users Say</h2>
+          {/* Testimonials */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <header className="mb-10 max-w-2xl">
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-600 dark:text-orange-400">
+                {t('pricing.testimonials.label')}
+              </p>
+              <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">
+                {t('pricing.testimonials.title')}
+              </h2>
+            </header>
 
-            <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800 shadow-sm"
-                >
-                  <p className="text-gray-600 dark:text-gray-300 italic mb-6">"{testimonial.quote}"</p>
-                  <div className="flex items-center justify-between">
-                    <span className="font-semibold text-gray-900 dark:text-white">{testimonial.author}</span>
-                    <span className={`text-sm font-semibold ${getPlanBadgeColor(testimonial.plan)}`}>
-                      {testimonial.plan}
+            <div className="grid gap-8 md:grid-cols-3 md:gap-10">
+              {testimonials.map((item) => (
+                <figure key={item.author} className="border-t border-[var(--bm-border)] pt-5">
+                  <blockquote className="text-[15px] leading-relaxed text-gray-700 dark:text-neutral-300">
+                    “{item.quote}”
+                  </blockquote>
+                  <figcaption className="mt-5 flex items-center justify-between gap-3 text-sm">
+                    <span className="font-medium text-gray-900 dark:text-neutral-100">
+                      {item.author}
                     </span>
-                  </div>
-                </div>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-orange-600 dark:text-orange-400">
+                      {item.plan}
+                    </span>
+                  </figcaption>
+                </figure>
               ))}
             </div>
           </section>
 
-          <section className="mb-20">
-            <div className="text-center mb-12">
-              <Shield className="w-16 h-16 text-orange-500 mx-auto mb-6" />
-              <h2 className="text-4xl font-semibold mb-4">Frequently Asked Questions</h2>
-            </div>
+          {/* Why */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <header className="mb-10 max-w-2xl">
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-600 dark:text-orange-400">
+                {t('pricing.why.label')}
+              </p>
+              <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">
+                {t('pricing.why.title')}
+              </h2>
+            </header>
 
-            <div className="max-w-4xl mx-auto space-y-4">
-              {faqs.map((faq, index) => (
-                <div
-                  key={index}
-                  className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm"
-                >
-                  <button
-                    onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                    className="w-full px-8 py-5 flex items-center justify-between text-left hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
-                  >
-                    <span className="font-semibold text-gray-900 dark:text-white text-lg">{faq.question}</span>
-                    <ChevronDown
-                      className={`w-5 h-5 text-gray-400 transition-transform ${
-                        openFAQ === index ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
-                  {openFAQ === index && (
-                    <div className="px-8 pb-6 text-gray-600 dark:text-gray-400">
-                      {faq.answer}
-                    </div>
-                  )}
-                </div>
+            <div className="grid gap-10 md:grid-cols-3 md:gap-8">
+              {reasons.map((item) => (
+                <article key={item.index}>
+                  <span
+                    aria-hidden
+                    className="mb-4 block h-px w-8 bg-orange-500/70 dark:bg-orange-400/55"
+                  />
+                  <p className="mb-2 text-[11px] font-semibold tracking-[0.28em] text-orange-600 dark:text-orange-400">
+                    {item.index}
+                  </p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-100">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-400">
+                    {item.body}
+                  </p>
+                </article>
               ))}
             </div>
+          </section>
 
-            <div className="mt-16 max-w-4xl mx-auto bg-gradient-to-br from-gray-900 to-gray-950 rounded-2xl border border-gray-800 p-12 text-center">
-              <p className="text-xl text-gray-200 mb-4">
-                All plans include a <span className="font-bold text-white">5-day trial</span> with payment details required upfront.
+          {/* FAQ */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <header className="mb-10 max-w-2xl">
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-600 dark:text-orange-400">
+                {t('pricing.faq.label')}
+              </p>
+              <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">
+                {t('pricing.faq.title')}
+              </h2>
+            </header>
+
+            <div className="mx-auto max-w-3xl divide-y divide-[var(--bm-border)] border-y border-[var(--bm-border)]">
+              {faqs.map((faq, index) => {
+                const open = openFAQ === index;
+                return (
+                  <div key={faq.question}>
+                    <button
+                      type="button"
+                      onClick={() => setOpenFAQ(open ? null : index)}
+                      className="flex w-full items-center justify-between gap-4 py-5 text-left transition-colors hover:text-orange-600 dark:hover:text-orange-400"
+                      aria-expanded={open}
+                    >
+                      <span className="text-base font-semibold text-gray-900 dark:text-neutral-100">
+                        {faq.question}
+                      </span>
+                      <ChevronDown
+                        className={`h-5 w-5 flex-shrink-0 text-gray-400 transition-transform dark:text-neutral-500 ${
+                          open ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                    {open && (
+                      <p className="pb-5 pr-10 text-sm leading-relaxed text-gray-600 dark:text-neutral-400">
+                        {faq.answer}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mx-auto mt-12 max-w-3xl border-l-2 border-orange-500/70 pl-5 dark:border-orange-400/55">
+              <p className="text-base leading-relaxed text-gray-700 dark:text-neutral-300">
+                {t('pricing.faq.moreTitle')}
               </p>
               <button
+                type="button"
                 onClick={() => onNavigate('about')}
-                className="text-orange-500 hover:text-orange-400 font-semibold inline-flex items-center gap-2 transition-colors"
+                className="mt-2 text-sm font-semibold text-orange-700 transition-colors hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300"
               >
-                Learn more about our platform →
+                {t('pricing.faq.moreLink')}
               </button>
             </div>
           </section>
 
-          <section className="mb-20">
-            <h2 className="text-4xl font-semibold text-center mb-12">Why Choose BioMath Core?</h2>
-
-            <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800 shadow-sm">
-                <div className="w-12 h-12 bg-orange-50 border border-orange-200 rounded-lg flex items-center justify-center mb-4">
-                  <Zap className="w-6 h-6 text-orange-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Real-Time Insights</h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Get instant feedback on your health data with AI-powered analysis that learns from your patterns.
-                </p>
-              </div>
-
-              <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800 shadow-sm">
-                <div className="w-12 h-12 bg-blue-50 border border-blue-200 rounded-lg flex items-center justify-center mb-4">
-                  <Shield className="w-6 h-6 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">HIPAA Compliant</h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Your health data is protected with enterprise-grade security and full HIPAA compliance.
-                </p>
-              </div>
-
-              <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800 shadow-sm">
-                <div className="w-12 h-12 bg-cyan-50 border border-cyan-200 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="w-6 h-6 text-cyan-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Expert Support</h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Access to health data specialists and priority support to help you understand your insights.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="mb-20">
-            <div className="max-w-4xl mx-auto bg-gradient-to-br from-slate-950 via-gray-950 to-slate-900 border border-slate-800/80 rounded-2xl p-12 text-center shadow-xl shadow-slate-900/30">
-              <h2 className="text-3xl font-bold text-white mb-4">Ready to Transform Your Health?</h2>
-              <p className="text-xl text-slate-300 mb-8">
-                Join thousands of users who are taking control of their health with data-driven insights.
+          {/* Closing CTA */}
+          <section className="py-14 lg:py-16">
+            <div className="border border-[var(--bm-border)] bg-[var(--bm-surface)] px-6 py-12 text-center sm:px-10">
+              <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-3xl">
+                {t('pricing.closing.title')}
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
+                {t('pricing.closing.description')}
               </p>
-              <div className="flex items-center justify-center gap-4">
+              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
                 <button
+                  type="button"
                   onClick={() => handleSelectPlan(plans[1])}
-                  className="px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold transition-all"
+                  className="w-full bg-orange-500 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400 sm:w-auto"
                 >
-                  Start Your Free Trial
+                  {t('pricing.closing.primary')}
                 </button>
                 <button
+                  type="button"
                   onClick={() => onNavigate('contact')}
-                  className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white rounded-lg font-semibold transition-all border border-gray-700"
+                  className="w-full border border-[var(--bm-border)] bg-page px-8 py-3.5 text-sm font-semibold text-gray-900 transition-colors hover:border-orange-500/40 dark:text-neutral-100 sm:w-auto"
                 >
-                  Contact Sales
+                  {t('pricing.closing.secondary')}
                 </button>
               </div>
             </div>
+
+            <p className="mt-8 text-center text-xs tracking-wide text-gray-500 dark:text-neutral-500">
+              {t('pricing.closing.note')}
+            </p>
           </section>
         </div>
       </div>
 
       {error && (
-        <div className="fixed bottom-4 right-4 bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg max-w-md z-50">
+        <div className="fixed bottom-4 right-4 z-50 max-w-md border border-red-500/30 bg-red-600 px-5 py-4 text-white shadow-lg">
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1">
-              <div className="font-bold mb-1">Payment Error</div>
+              <div className="mb-1 font-semibold">{t('pricing.errors.title')}</div>
               <div className="text-sm">{error}</div>
-              <div className="text-xs mt-2 opacity-80">
-                Tip: Open browser console (F12) for detailed error information
-              </div>
             </div>
             <button
+              type="button"
               onClick={() => setError(null)}
-              className="text-white hover:text-gray-200 transition-colors"
+              className="text-white/80 transition-colors hover:text-white"
+              aria-label={t('pricing.errors.dismiss')}
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              ✕
             </button>
           </div>
         </div>
@@ -517,72 +598,15 @@ export default function Pricing({ onNavigate }: PricingProps) {
           onConfirm={handleConfirmPayment}
           plan={{
             name: selectedPlan.name,
-            price: billingPeriod === 'monthly' ? selectedPlan.monthlyPrice : selectedPlan.yearlyPrice,
+            price:
+              billingPeriod === 'monthly' ? selectedPlan.monthlyPrice : selectedPlan.yearlyPrice,
             billingPeriod,
             categories: selectedPlan.categories,
-            features: selectedPlan.features
+            features: selectedPlan.features,
           }}
           isProcessing={isProcessing}
         />
       )}
-
-      <TrustBadgesCompact />
-
-      <ComparisonTable />
-
-      <Testimonials />
     </div>
   );
-
-  async function handleSelectPlan(plan: any) {
-
-    const { data: { user } } = await supabase.auth.getUser();
-
-    if (!user) {
-      onNavigate('signin');
-      return;
-    }
-
-    setSelectedPlan(plan);
-    setShowConfirmation(true);
-    setError(null);
-  }
-
-  async function handleConfirmPayment() {
-    if (!selectedPlan) {
-      return;
-    }
-
-
-    setIsProcessing(true);
-    setError(null);
-
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        throw new Error('Not authenticated');
-      }
-
-
-      setError('Payment processing unavailable');
-      setIsProcessing(false);
-    } catch (err: any) {
-
-      // Don't show error if it's just a redirect issue
-      if (err.message && err.message.includes('REDIRECT')) {
-        return;
-      }
-
-      // Check for Stripe configuration issues
-      if (err.message && err.message.includes('Stripe secret key not configured')) {
-        setError('Payment system not configured');
-      } else if (err.message && err.message.includes('Missing required environment variables')) {
-        setError('Payment system configuration error');
-      } else {
-        setError(err.message || 'Checkout failed');
-      }
-
-      setIsProcessing(false);
-    }
-  }
 }

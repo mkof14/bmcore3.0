@@ -24,6 +24,7 @@ export default function SiteMapManager() {
     { id: 'reports', name: 'Reports', path: '/reports', icon: BarChart3, enabled: true, category: 'main', description: 'Reports' },
     { id: 'news', name: 'News', path: '/news', icon: Newspaper, enabled: true, category: 'main', description: 'News' },
     { id: 'blog', name: 'Blog', path: '/blog', icon: FileText, enabled: true, category: 'main', description: 'Blog' },
+    { id: 'media', name: 'Media', path: '/media', icon: FileText, enabled: true, category: 'main', description: 'Videos, presentations, and documents' },
     { id: 'careers', name: 'Careers', path: '/careers', icon: Briefcase, enabled: true, category: 'main', description: 'Careers' },
     { id: 'contact', name: 'Contact', path: '/contact', icon: Phone, enabled: true, category: 'main', description: 'Contact' },
     { id: 'faq', name: 'FAQ', path: '/faq', icon: HelpCircle, enabled: true, category: 'main', description: 'Frequently Asked Questions' },

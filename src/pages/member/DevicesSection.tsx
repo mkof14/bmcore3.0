@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Watch, Plus, Trash2, RefreshCw, Check, X, Activity } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserSuccess } from '../../lib/adminNotify';
@@ -28,6 +29,7 @@ const DEVICE_TYPES = [
 ];
 
 export default function DevicesSection() {
+  const { t } = useTranslation();
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(true);
   const [showConnectModal, setShowConnectModal] = useState(false);
@@ -133,10 +135,10 @@ export default function DevicesSection() {
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">
           <Watch className="h-8 w-8 text-orange-500" />
-          Connected Devices
+          {t('member.devices.title')}
         </h1>
         <p className="text-gray-600 dark:text-gray-400">
-          Connect your wearables and health sensors for automatic data synchronization
+          {t('member.devices.subtitle')}
         </p>
       </div>
 
@@ -148,28 +150,28 @@ export default function DevicesSection() {
       />
 
       <div className="mb-6 grid md:grid-cols-3 gap-4">
-        <div className="bg-blue-50 dark:bg-gradient-to-br dark:from-blue-900/30 dark:via-blue-800/20 dark:to-gray-900 border border-blue-200 dark:border-blue-600/30 rounded-xl p-4">
+        <div className="bg-blue-50 dark:bg-gradient-to-br dark:from-blue-900/30 dark:via-blue-800/20 dark:to-[var(--bm-surface)] border border-blue-200 dark:border-blue-600/30 rounded-xl p-4">
           <ReportBrandHeader variant="strip" subtitle="Active Devices" className="mb-3" />
           <Activity className="h-6 w-6 text-blue-600 dark:text-blue-400 mb-2" />
           <p className="text-2xl font-bold text-gray-900 dark:text-white">{devices.filter(d => d.status === 'connected').length}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">Active Devices</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.devices.activeDevices')}</p>
         </div>
-        <div className="bg-green-50 dark:bg-gradient-to-br dark:from-green-900/30 dark:via-green-800/20 dark:to-gray-900 border border-green-200 dark:border-green-600/30 rounded-xl p-4">
+        <div className="bg-green-50 dark:bg-gradient-to-br dark:from-green-900/30 dark:via-green-800/20 dark:to-[var(--bm-surface)] border border-green-200 dark:border-green-600/30 rounded-xl p-4">
           <ReportBrandHeader variant="strip" subtitle="Recently Synced" className="mb-3" />
           <RefreshCw className="h-6 w-6 text-green-600 dark:text-green-400 mb-2" />
           <p className="text-2xl font-bold text-gray-900 dark:text-white">{devices.filter(d => d.last_sync).length}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">Recently Synced</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.devices.recentlySynced')}</p>
         </div>
-        <div className="bg-orange-50 dark:bg-gradient-to-br dark:from-orange-900/30 dark:via-orange-800/20 dark:to-gray-900 border border-orange-200 dark:border-orange-600/30 rounded-xl p-4">
+        <div className="bg-orange-50 dark:bg-gradient-to-br dark:from-orange-900/30 dark:via-orange-800/20 dark:to-[var(--bm-surface)] border border-orange-200 dark:border-orange-600/30 rounded-xl p-4">
           <ReportBrandHeader variant="strip" subtitle="Supported Devices" className="mb-3" />
           <Watch className="h-6 w-6 text-orange-600 dark:text-orange-400 mb-2" />
           <p className="text-2xl font-bold text-gray-900 dark:text-white">{DEVICE_TYPES.length}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">Supported Devices</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.devices.supportedDevices')}</p>
         </div>
       </div>
 
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Your Devices</h3>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('member.devices.yourDevices')}</h3>
         <div className="flex items-center gap-2">
           <Button size="sm" onClick={() => loadDevices()}>
             Refresh
@@ -198,7 +200,7 @@ export default function DevicesSection() {
           {devices.map((device) => (
             <div
               key={device.id}
-              className="bg-white/90 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border border-slate-200 dark:border-gray-700/50 rounded-xl p-6 hover:border-orange-500/30 transition-all shadow-sm"
+              className="bg-white/90 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-slate-200 dark:border-gray-700/50 rounded-xl p-6 hover:border-orange-500/30 transition-all shadow-sm"
             >
               <ReportBrandHeader
                 variant="strip"
@@ -283,7 +285,7 @@ export default function DevicesSection() {
               >
                 <div className="text-4xl mb-3">{device.icon}</div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{device.name}</h3>
-                <p className="text-sm text-gray-600">Click to connect</p>
+                <p className="text-sm text-gray-600">{t('member.devices.clickToConnect')}</p>
               </button>
             ))}
           </div>

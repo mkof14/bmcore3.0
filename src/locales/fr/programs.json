@@ -1,0 +1,175 @@
+{
+  "programs": {
+    "referral": {
+      "label": "Programme de parrainage",
+      "heroTitle": "Partagez la santé, gagnez des récompenses",
+      "heroSubtitle": "Invitez vos amis sur BioMath Core et gagnez des crédits à chaque parrainage validé.",
+      "statsLabel": "Vos statistiques",
+      "totalReferred": "Total de parrainages",
+      "creditsEarned": "Crédits gagnés",
+      "activeReferrals": "Parrainages actifs",
+      "howLabel": "Comment ça marche",
+      "howTitle": "Trois étapes simples",
+      "steps": {
+        "share": { "title": "Partagez votre code unique", "body": "Envoyez-le à vos amis par e-mail ou sur les réseaux sociaux." },
+        "discount": { "title": "Votre ami reçoit 5 $ de réduction", "body": "Appliquée immédiatement à l'inscription." },
+        "credit": { "title": "Vous gagnez 10 $ de crédit", "body": "Ajoutés immédiatement après confirmation de l'inscription." }
+      },
+      "rewardTitle": "Détail des récompenses",
+      "perReferral": "Vous gagnez par parrainage",
+      "friendDiscount": "Votre ami reçoit une réduction",
+      "notes": [
+        "Aucune limite de parrainages",
+        "Les crédits n'expirent jamais",
+        "Utilisables pour les abonnements et les mises à niveau"
+      ],
+      "shareLabel": "Partager",
+      "codeTitle": "Votre code de parrainage",
+      "permanentCode": "Code permanent",
+      "copy": "Copier",
+      "copied": "Copié !",
+      "shareLink": "Lien de partage",
+      "inviteTitle": "Envoyer une invitation par e-mail",
+      "invitePlaceholder": "Adresse e-mail de votre ami",
+      "send": "Envoyer",
+      "inviteSent": "Invitation envoyée avec succès !",
+      "socialTitle": "Partager sur les réseaux sociaux",
+      "shareText": "Découvrez BioMath Core — une intelligence du bien-être qui vous aide à comprendre votre corps. Rejoignez-moi et obtenez 5 $ de réduction !",
+      "detailsLabel": "Détails",
+      "detailsTitle": "Détails du programme",
+      "eligibility": "Conditions d'éligibilité",
+      "eligibilityItems": [
+        "Votre ami doit être un nouvel utilisateur",
+        "Le code doit être saisi lors de l'inscription",
+        "Un seul code de parrainage par compte"
+      ],
+      "fraud": "Protection contre la fraude",
+      "fraudItems": [
+        "L'auto-parrainage n'est pas autorisé",
+        "Les comptes en double sont interdits",
+        "Tout comportement abusif annule les récompenses"
+      ],
+      "upgradeQuestion": "Plus de 10 amis parrainés ?",
+      "upgradePrefix": "Vous pouvez être éligible à notre",
+      "upgradeLink": "Programme Ambassadeur",
+      "upgradeSuffix": "aux récompenses renforcées."
+    },
+    "ambassador": {
+      "label": "Programme ambassadeur",
+      "heroTitle": "Devenez un multiplicateur de bien-être",
+      "heroSubtitle": "Partagez BioMath Core avec authenticité et gagnez des récompenses renforcées tout en aidant d'autres personnes à découvrir un accompagnement calme et bienveillant.",
+      "pathsLabel": "Parcours",
+      "pathsTitle": "Qu'est-ce qui fait un ambassadeur ?",
+      "paths": {
+        "organic": {
+          "title": "Croissance organique",
+          "body": "Les utilisateurs fidèles qui parrainent plus de 10 amis peuvent passer automatiquement au statut d'ambassadeur, avec des avantages renforcés."
+        },
+        "direct": {
+          "title": "Candidature directe",
+          "body": "Coachs bien-être, éducateurs santé, créateurs de contenu et responsables de communauté peuvent candidater via le formulaire ci-dessous."
+        }
+      },
+      "rewardsLabel": "Récompenses",
+      "rewardsTitle": "Ce que vous obtenez",
+      "rewards": {
+        "higher": {
+          "title": "Récompenses supérieures",
+          "body": "Gagnez 20 $ par parrainage (2× le taux standard), avec une progression par palier."
+        },
+        "priority": {
+          "title": "Accès prioritaire",
+          "body": "Tests anticipés des fonctionnalités, support prioritaire et tableau de bord ambassadeur exclusif."
+        },
+        "tools": {
+          "title": "Outils co-brandés",
+          "body": "Supports dédiés, visuels pour les réseaux sociaux, page d'atterrissage optionnelle et kit de partage."
+        }
+      },
+      "benefitsLabel": "Avantages",
+      "benefitsTitle": "Avantages ambassadeur",
+      "benefits": {
+        "enhanced": { "title": "Récompenses renforcées", "body": "Le double du taux de parrainage standard, avec des paliers évolutifs." },
+        "dashboard": { "title": "Tableau de bord dédié", "body": "Suivez votre cohorte, vos récompenses cumulées et votre niveau d'ambassadeur." },
+        "materials": { "title": "Supports co-brandés", "body": "Visuels professionnels pour les réseaux et kit de partage." },
+        "support": { "title": "Support prioritaire", "body": "Accès direct à l'équipe BioMath Core pour vos questions." },
+        "features": { "title": "Fonctionnalités en avant-première", "body": "Tests bêta et accès anticipé aux nouvelles capacités." },
+        "revenue": { "title": "Partage de revenus", "body": "Éligibilité à des modèles de partenariat avancés." }
+      },
+      "guidelinesLabel": "Règles",
+      "guidelinesTitle": "Responsabilités de l'ambassadeur",
+      "guidelinesIntro": "En tant qu'ambassadeur, nous vous demandons de partager avec authenticité et de respecter nos valeurs centrées sur le bien-être :",
+      "responsibilities": [
+        "Partagez BioMath Core avec authenticité, à partir de votre expérience personnelle.",
+        "Employez un langage centré sur le bien-être : encourageant, jamais prescriptif.",
+        "Ne formulez jamais d'affirmations médicales ou diagnostiques.",
+        "Évitez le spam, la publicité trompeuse et la manipulation des incitations."
+      ],
+      "applyLabel": "Candidater",
+      "applyTitle": "Candidater pour devenir ambassadeur",
+      "submitted": "Envoyé",
+      "receivedTitle": "Candidature reçue",
+      "receivedBody": "Merci de votre intérêt pour le programme Ambassadeur BioMath Core. Notre équipe examinera votre candidature et vous contactera sous 3 à 5 jours ouvrés.",
+      "form": {
+        "fullName": "Nom complet *",
+        "email": "Adresse e-mail *",
+        "country": "Pays ou région *",
+        "audience": "Type d'audience *",
+        "selectType": "Sélectionnez un type...",
+        "audienceOptions": {
+          "users": "Utilisateurs grand public",
+          "clients": "Clients en coaching",
+          "followers": "Abonnés sur les réseaux",
+          "community": "Membres d'une communauté",
+          "other": "Autre"
+        },
+        "hasReferrals": "Utilisez-vous déjà notre programme de parrainage ? *",
+        "yes": "Oui",
+        "no": "Non",
+        "motivation": "Pourquoi souhaitez-vous devenir ambassadeur ? *",
+        "motivationPlaceholder": "Partagez votre motivation et la façon dont vous souhaitez contribuer...",
+        "socialLink": "Site web ou lien vers vos réseaux (facultatif)",
+        "submit": "Envoyer la candidature"
+      },
+      "footerQuestion": "Vous avez déjà plus de 10 parrainages ?",
+      "footerPrefix": "Consultez votre",
+      "footerLink": "Espace Membre",
+      "footerSuffix": "pour vérifier votre éligibilité à la mise à niveau automatique."
+    },
+    "careers": {
+      "label": "Carrières",
+      "heroTitle": "Construisez l'intelligence du bien-être avec nous",
+      "heroSubtitle": "Rejoignez une équipe à la croisée de la biomathématique, de la biologie computationnelle et de la santé préventive.",
+      "whyLabel": "Pourquoi nous rejoindre",
+      "whyTitle": "Pourquoi BioMath Core ?",
+      "why": {
+        "innovation": { "title": "Portés par l'innovation", "body": "Travaillez sur la biomathématique et l'IA avec un impact réel sur la santé." },
+        "impact": { "title": "Centrés sur l'impact", "body": "Aidez les gens à améliorer leur santé grâce au bien-être préventif." },
+        "growth": { "title": "Tournés vers la progression", "body": "Apprentissage et développement continus dans une équipe qui place la science en premier." }
+      },
+      "openLabel": "Postes ouverts",
+      "openTitle": "Offres actuelles",
+      "loading": "Chargement des postes...",
+      "loadError": "Échec du chargement des offres",
+      "errorTitle": "Erreur lors du chargement des offres",
+      "retry": "Réessayer",
+      "emptyTitle": "Aucun poste ouvert pour le moment.",
+      "emptyBody": "Revenez bientôt ou envoyez votre CV à careers@biomathcore.com",
+      "searchPlaceholder": "Rechercher un poste...",
+      "clearSearch": "Effacer la recherche",
+      "allTypes": "Tous les types",
+      "results": "{{count}} résultats",
+      "noMatchTitle": "Aucun poste ne correspond à votre recherche.",
+      "noMatchBody": "Essayez d'autres mots-clés ou filtres.",
+      "loadMore": "Afficher plus",
+      "share": "Partager",
+      "copyLink": "Copier le lien",
+      "linkCopied": "Lien copié",
+      "close": "Fermer",
+      "overview": "Présentation du poste",
+      "responsibilities": "Responsabilités",
+      "requirements": "Profil recherché",
+      "salaryRange": "Fourchette de salaire"
+    }
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "programs": {
+    "referral": {
+      "label": "Programa de referidos",
+      "heroTitle": "Comparte salud, gana recompensas",
+      "heroSubtitle": "Invita a tus amigos a BioMath Core y gana créditos con cada referido confirmado.",
+      "statsLabel": "Tus estadísticas",
+      "totalReferred": "Total de referidos",
+      "creditsEarned": "Créditos ganados",
+      "activeReferrals": "Referidos activos",
+      "howLabel": "Cómo funciona",
+      "howTitle": "Tres pasos sencillos",
+      "steps": {
+        "share": { "title": "Comparte tu código único", "body": "Envíalo a tus amigos por correo o redes sociales." },
+        "discount": { "title": "Tu amigo recibe 5 $ de descuento", "body": "Se aplica al instante al registrarse." },
+        "credit": { "title": "Tú ganas 10 $ de crédito", "body": "Se añade al instante tras confirmar el registro." }
+      },
+      "rewardTitle": "Detalles de la recompensa",
+      "perReferral": "Ganas por referido",
+      "friendDiscount": "Tu amigo recibe un descuento",
+      "notes": [
+        "Sin límite de referidos",
+        "Los créditos nunca caducan",
+        "Úsalos en suscripciones y mejoras de plan"
+      ],
+      "shareLabel": "Compartir",
+      "codeTitle": "Tu código de referencia",
+      "permanentCode": "Código permanente",
+      "copy": "Copiar",
+      "copied": "¡Copiado!",
+      "shareLink": "Enlace para compartir",
+      "inviteTitle": "Enviar invitación por correo",
+      "invitePlaceholder": "Correo electrónico de tu amigo",
+      "send": "Enviar",
+      "inviteSent": "¡Invitación enviada correctamente!",
+      "socialTitle": "Compartir en redes sociales",
+      "shareText": "Descubre BioMath Core: inteligencia de bienestar que te ayuda a entender tu cuerpo. Únete y consigue 5 $ de descuento.",
+      "detailsLabel": "Detalles",
+      "detailsTitle": "Detalles del programa",
+      "eligibility": "Requisitos",
+      "eligibilityItems": [
+        "Tu amigo debe ser un usuario nuevo",
+        "El código debe introducirse durante el registro",
+        "Solo un código de referencia por cuenta"
+      ],
+      "fraud": "Protección contra fraude",
+      "fraudItems": [
+        "No se permiten autorreferencias",
+        "No se permiten cuentas duplicadas",
+        "El comportamiento abusivo anula las recompensas"
+      ],
+      "upgradeQuestion": "¿Más de 10 amigos referidos?",
+      "upgradePrefix": "Puedes optar a nuestro",
+      "upgradeLink": "Programa de Embajadores",
+      "upgradeSuffix": "con recompensas mejoradas."
+    },
+    "ambassador": {
+      "label": "Programa de embajadores",
+      "heroTitle": "Multiplica el bienestar",
+      "heroSubtitle": "Comparte BioMath Core con autenticidad y gana recompensas mejoradas mientras ayudas a otros a descubrir una orientación tranquila y cercana.",
+      "pathsLabel": "Vías",
+      "pathsTitle": "¿Qué define a un embajador?",
+      "paths": {
+        "organic": {
+          "title": "Crecimiento orgánico",
+          "body": "Los usuarios fieles que refieren a más de 10 amigos pueden ascender automáticamente a embajador con beneficios mejorados."
+        },
+        "direct": {
+          "title": "Solicitud directa",
+          "body": "Entrenadores de bienestar, educadores de salud, creadores de contenido y líderes de comunidad pueden solicitarlo en el formulario de abajo."
+        }
+      },
+      "rewardsLabel": "Recompensas",
+      "rewardsTitle": "Qué obtienes",
+      "rewards": {
+        "higher": {
+          "title": "Recompensas mayores",
+          "body": "Gana 20 $ por referido (el doble de la tarifa estándar) con posibilidad de escalar por niveles."
+        },
+        "priority": {
+          "title": "Acceso prioritario",
+          "body": "Pruebas anticipadas de funciones, soporte prioritario y un panel exclusivo para embajadores."
+        },
+        "tools": {
+          "title": "Herramientas de marca compartida",
+          "body": "Materiales propios, recursos para redes sociales, página de destino opcional y kit para compartir."
+        }
+      },
+      "benefitsLabel": "Beneficios",
+      "benefitsTitle": "Beneficios del embajador",
+      "benefits": {
+        "enhanced": { "title": "Recompensas mejoradas", "body": "El doble de la tarifa estándar de referidos, con niveles escalables." },
+        "dashboard": { "title": "Panel dedicado", "body": "Sigue tu grupo de referidos, recompensas acumuladas y nivel de embajador." },
+        "materials": { "title": "Materiales de marca compartida", "body": "Recursos profesionales para redes y kit para compartir." },
+        "support": { "title": "Soporte prioritario", "body": "Acceso directo al equipo de BioMath Core para tus dudas." },
+        "features": { "title": "Funciones anticipadas", "body": "Pruebas beta y acceso previo a nuevas capacidades." },
+        "revenue": { "title": "Reparto de ingresos", "body": "Posibilidad de acceder a modelos avanzados de colaboración." }
+      },
+      "guidelinesLabel": "Directrices",
+      "guidelinesTitle": "Responsabilidades del embajador",
+      "guidelinesIntro": "Como embajador, te pedimos que compartas con autenticidad y mantengas nuestros valores centrados en el bienestar:",
+      "responsibilities": [
+        "Comparte BioMath Core con autenticidad, a partir de tu experiencia personal.",
+        "Usa un lenguaje centrado en el bienestar: de apoyo, nunca prescriptivo.",
+        "No hagas afirmaciones médicas ni diagnósticas.",
+        "Evita el spam, la publicidad engañosa y la manipulación de incentivos."
+      ],
+      "applyLabel": "Solicitar",
+      "applyTitle": "Solicita ser embajador",
+      "submitted": "Enviado",
+      "receivedTitle": "Solicitud recibida",
+      "receivedBody": "Gracias por tu interés en ser embajador de BioMath Core. Nuestro equipo revisará tu solicitud y te contactará en un plazo de 3 a 5 días laborables.",
+      "form": {
+        "fullName": "Nombre completo *",
+        "email": "Correo electrónico *",
+        "country": "País o región *",
+        "audience": "Tipo de audiencia *",
+        "selectType": "Selecciona un tipo...",
+        "audienceOptions": {
+          "users": "Usuarios generales",
+          "clients": "Clientes de coaching",
+          "followers": "Seguidores en redes",
+          "community": "Miembros de una comunidad",
+          "other": "Otro"
+        },
+        "hasReferrals": "¿Usas actualmente nuestro programa de referidos? *",
+        "yes": "Sí",
+        "no": "No",
+        "motivation": "¿Por qué quieres ser embajador? *",
+        "motivationPlaceholder": "Cuéntanos tu motivación y cómo te gustaría contribuir...",
+        "socialLink": "Web o enlace a redes sociales (opcional)",
+        "submit": "Enviar solicitud"
+      },
+      "footerQuestion": "¿Ya tienes más de 10 referidos?",
+      "footerPrefix": "Consulta tu",
+      "footerLink": "Zona de Miembro",
+      "footerSuffix": "para ver si cumples los requisitos del ascenso automático."
+    },
+    "careers": {
+      "label": "Empleo",
+      "heroTitle": "Construye inteligencia de bienestar con nosotros",
+      "heroSubtitle": "Únete a un equipo que trabaja en la intersección de la biomatemática, la biología computacional y la salud preventiva.",
+      "whyLabel": "Por qué unirte",
+      "whyTitle": "¿Por qué BioMath Core?",
+      "why": {
+        "innovation": { "title": "Impulsados por la innovación", "body": "Trabaja con biomatemática e IA con impacto real en la salud." },
+        "impact": { "title": "Centrados en el impacto", "body": "Ayuda a las personas a mejorar su salud mediante el bienestar preventivo." },
+        "growth": { "title": "Orientados al crecimiento", "body": "Aprendizaje y desarrollo continuos en un equipo con la ciencia primero." }
+      },
+      "openLabel": "Vacantes",
+      "openTitle": "Ofertas actuales",
+      "loading": "Cargando vacantes...",
+      "loadError": "No se pudieron cargar las vacantes",
+      "errorTitle": "Error al cargar las vacantes",
+      "retry": "Intentar de nuevo",
+      "emptyTitle": "No hay vacantes abiertas en este momento.",
+      "emptyBody": "Vuelve pronto o envía tu CV a careers@biomathcore.com",
+      "searchPlaceholder": "Buscar puestos...",
+      "clearSearch": "Borrar búsqueda",
+      "allTypes": "Todos los tipos",
+      "results": "{{count}} resultados",
+      "noMatchTitle": "Ningún puesto coincide con tu búsqueda.",
+      "noMatchBody": "Prueba con otras palabras clave o filtros.",
+      "loadMore": "Cargar más",
+      "share": "Compartir",
+      "copyLink": "Copiar enlace",
+      "linkCopied": "Enlace copiado",
+      "close": "Cerrar",
+      "overview": "Descripción del puesto",
+      "responsibilities": "Responsabilidades",
+      "requirements": "Requisitos",
+      "salaryRange": "Rango salarial"
+    }
+  }
+}

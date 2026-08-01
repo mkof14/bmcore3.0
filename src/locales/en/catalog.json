@@ -1,0 +1,19 @@
+{
+  "catalog": {
+    "seoTitle": "Services Catalog - 200+ Health Analytics Services",
+    "seoDescription": "Explore BioMath Core's full catalog of health analytics services across 20 categories. Find the right wellness insights for your goals.",
+    "searchServicesPlaceholder": "Search services...",
+    "servicesInCategory": "{{count}} services in this category",
+    "servicesCount": "{{count}} services",
+    "showingCategories": "Showing {{count}} categories",
+    "showingCategoryOne": "Showing {{count}} category",
+    "noCategories": "No categories found matching your search.",
+    "noServices": "No services found matching your search.",
+    "multiModel": "Multi-model analysis",
+    "ctaLabel": "Get started",
+    "ctaTitle": "Choose a plan for your Human Data Model",
+    "ctaBody": "Each plan unlocks more categories and deeper guidance across the services catalog.",
+    "viewPricing": "View pricing",
+    "trialNote": "All plans include a 5-day trial · Cancel anytime"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "whyTwoModels": {
+    "seo": {
+      "title": "Why Two Models - Dual Intelligence in BioMath Core",
+      "description": "BioMath Core uses two independent models — biomathematical and clinical — to analyze your health data. Learn why dual analysis improves accuracy and confidence."
+    },
+    "hero": {
+      "label": "Dual intelligence",
+      "title": "Why two models?",
+      "body": "BioMath Core runs two independent analyses on your health data — one biomathematical, one clinical — and compares the results. When both agree, confidence is high. When they differ, it highlights areas worth closer attention."
+    },
+    "models": {
+      "label": "Models",
+      "title": "Two lenses on the same data",
+      "body": "Mathematical precision and clinical expertise — each model brings a distinct strength.",
+      "items": [
+        {
+          "title": "Mathematical model",
+          "body": "Pure data-driven analysis using biomathematical algorithms and statistical methods.",
+          "points": [
+            "Unbiased pattern recognition",
+            "Complex correlation analysis",
+            "Predictive modeling",
+            "Anomaly detection"
+          ]
+        },
+        {
+          "title": "Clinical model",
+          "body": "Evidence-based analysis using medical knowledge and clinical guidelines.",
+          "points": [
+            "Medical context interpretation",
+            "Evidence-based recommendations",
+            "Clinical guideline adherence",
+            "Risk factor assessment"
+          ]
+        }
+      ]
+    },
+    "advantages": {
+      "label": "Advantages",
+      "title": "The power of dual analysis",
+      "items": [
+        {
+          "title": "Higher accuracy",
+          "body": "Cross-validation between models reduces false positives and ensures reliable insights."
+        },
+        {
+          "title": "Comprehensive view",
+          "body": "See both data-driven patterns and clinical interpretations side by side."
+        },
+        {
+          "title": "Better decisions",
+          "body": "Make informed choices with insights backed by both mathematics and medicine."
+        }
+      ]
+    },
+    "secondOpinion": {
+      "label": "Second opinion",
+      "title": "The second opinion advantage",
+      "body": "Just like seeking a second medical opinion, our dual approach provides two independent analyses of your health data. Agreement between models builds confidence. Disagreement flags areas that may need additional attention or professional consultation.",
+      "mathTitle": "Mathematical model strengths",
+      "mathStrengths": [
+        "Discovers hidden patterns",
+        "Processes vast amounts of data",
+        "Identifies subtle correlations",
+        "Predicts future trends"
+      ],
+      "clinicalTitle": "Clinical model strengths",
+      "clinicalStrengths": [
+        "Applies medical expertise",
+        "Considers clinical context",
+        "Follows evidence-based guidelines",
+        "Prioritizes safety and efficacy"
+      ]
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { X } from 'lucide-react';
 
 interface AIAssistantButtonProps {
@@ -7,91 +7,45 @@ interface AIAssistantButtonProps {
 }
 
 export default function AIAssistantButton({ onClick, isOpen }: AIAssistantButtonProps) {
-
-  useEffect(() => {
-    if (!isOpen) {
-      // This is just to ensure the component re-renders for the animation if needed
-    }
-  }, [isOpen]);
+  const { t } = useTranslation();
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
-      <style>{`
-        @keyframes breathe {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
-        }
-
-        @keyframes pulse-ring {
-          0% {
-            transform: scale(1);
-            opacity: 0.8;
-          }
-          50% {
-            transform: scale(1.2);
-            opacity: 0.4;
-          }
-          100% {
-            transform: scale(1.4);
-            opacity: 0;
-          }
-        }
-
-        @keyframes gradient-shift {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-
-        .breathing-button {
-          animation: breathe 3s ease-in-out infinite;
-        }
-
-        .pulse-ring {
-          animation: pulse-ring 2s ease-out infinite;
-        }
-
-        .gradient-bg {
-          background: linear-gradient(135deg, #c2410c 0%, #1e3a8a 40%, #991b1b 80%, #ea580c 100%);
-          background-size: 200% 200%;
-          animation: gradient-shift 4s ease infinite;
-        }
-      `}</style>
-
-      {!isOpen && (
-        <>
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-700 via-blue-900 to-red-800 pulse-ring" />
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-700 via-blue-900 to-red-800 pulse-ring" style={{ animationDelay: '1s' }} />
-        </>
-      )}
-
+    <div className="group fixed bottom-5 right-5 z-50 sm:bottom-6 sm:right-6">
       <button
+        type="button"
         onClick={onClick}
-        className={`relative w-16 h-16 rounded-full shadow-2xl transition-all duration-300 ${
+        className={`relative flex h-9 w-9 items-center justify-center overflow-hidden border transition-colors sm:h-10 sm:w-10 ${
           isOpen
-            ? 'bg-red-500 hover:bg-red-600'
-            : 'breathing-button'
-        } flex items-center justify-center group overflow-hidden`}
-        aria-label={isOpen ? 'Close AI Advisor' : 'Open AI Advisor'}
+            ? 'border-orange-500/50 bg-orange-500 text-white hover:bg-orange-400'
+            : 'border-[var(--bm-border)] bg-[var(--bm-surface)] hover:border-orange-500/40'
+        }`}
+        aria-label={isOpen ? t('healthGuide.close') : t('healthGuide.open')}
       >
         {isOpen ? (
-          <X className="h-7 w-7 text-white transition-transform group-hover:rotate-90" />
+          <X className="h-4 w-4" />
         ) : (
           <img
-            src="/Copilot_20251022_203134.png"
-            alt="AI Health Advisor"
-            className="w-full h-full object-cover transition-transform group-hover:scale-110"
+            src="/health-guide-avatar.webp"
+            alt=""
+            width={128}
+            height={128}
+            decoding="async"
+            className="h-full w-full object-cover"
           />
         )}
-
-        <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse" />
+        {!isOpen && (
+          <span className="absolute right-0.5 top-0.5 h-1.5 w-1.5 rounded-full bg-emerald-500 ring-1 ring-[var(--bm-surface)]" />
+        )}
       </button>
 
       {!isOpen && (
-        <div className="absolute bottom-20 right-0 w-48 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-          <div className="bg-gray-900 text-white text-sm py-2 px-3 rounded-lg shadow-xl">
-            AI Health Advisor
-            <div className="text-xs text-gray-400 mt-1">Ask me anything about your health</div>
-          </div>
+        <div className="pointer-events-none absolute bottom-12 right-0 hidden w-40 border border-[var(--bm-border)] bg-[var(--bm-surface)] px-2.5 py-1.5 opacity-0 shadow-md transition-opacity group-hover:opacity-100 sm:block">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-600 dark:text-orange-400">
+            {t('healthGuide.name')}
+          </p>
+          <p className="mt-0.5 text-[11px] leading-snug text-gray-500 dark:text-neutral-400">
+            {t('healthGuide.tooltipAsk')}
+          </p>
         </div>
       )}
     </div>

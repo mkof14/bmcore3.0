@@ -1,0 +1,312 @@
+{
+  "devicesPage": {
+    "badge": "Wearables & sensors",
+    "title": "My Devices",
+    "subtitle": "Connect watches, rings, glucose sensors, and home health devices so BioMath Core can read trends and explain them in plain language.",
+    "connectedTitle": "Connected devices",
+    "connectTitle": "Connect a brand",
+    "catalogTitle": "Modern device guide",
+    "catalogIntro": "What people use today — and which signals each category usually provides. Use this to choose gear that matches your goals, then connect a supported brand below.",
+    "signalsTitle": "Signals that matter",
+    "signalsIntro": "These are the capabilities BioMath Core uses most often when a device is connected.",
+    "emptyBrands": "Live brand connections are not available in this session. You can still explore the guide above and connect later from Member Zone when signed in.",
+    "learnMore": "Learn more",
+    "hideGuide": "Hide guide",
+    "helpChoosing": "Help choosing",
+    "chooseBrand": "Choose a manufacturer to authorize. Supported families include Apple, Samsung, Google, Fitbit, Garmin, Oura, Ultrahuman, WHOOP, Dexcom, FreeStyle Libre, Withings, Omron, and more.",
+    "realtime": "Near real-time",
+    "syncNow": "Sync now",
+    "disconnect": "Disconnect",
+    "frequency": "Frequency",
+    "lastSync": "Last sync",
+    "status": {
+      "connected": "Connected",
+      "error": "Action required",
+      "tokenExpired": "Access expired",
+      "disconnected": "Disconnected"
+    },
+    "sync": {
+      "daily": "Daily",
+      "hourly": "Hourly",
+      "realtime": "Near real-time",
+      "manual": "Manual"
+    },
+    "recommendations": {
+      "title": "How to choose",
+      "intro": "If you do not own a device yet, start with the outcome you care about most:",
+      "sleep": "Sleep & recovery",
+      "activity": "Activity & training",
+      "glucose": "Glucose patterns",
+      "bloodPressure": "Blood pressure",
+      "longTerm": "Quiet long-term trends",
+      "universal": "Broad everyday coverage",
+      "values": {
+        "sleep": "Oura Ring, Ultrahuman Ring, WHOOP, or Eight Sleep",
+        "activity": "Apple Watch, Garmin, Samsung Galaxy Watch, Fitbit, or Polar",
+        "glucose": "Dexcom G7 or FreeStyle Libre (continuous glucose)",
+        "blood_pressure": "Omron or Withings BPM (validated cuff-style monitors)",
+        "long_term": "Smart rings and recovery bands worn day and night",
+        "universal": "Apple Watch or Samsung Galaxy Watch plus a smart scale"
+      }
+    },
+    "signals": {
+      "continuous_glucose": {
+        "title": "Continuous glucose",
+        "body": "Day-long glucose curves from CGMs — useful for meals, energy dips, and metabolic patterns."
+      },
+      "sleep_stages": {
+        "title": "Sleep stages",
+        "body": "Duration, deep/REM balance, and overnight consistency from watches, rings, and sleep systems."
+      },
+      "hrv_recovery": {
+        "title": "HRV & recovery",
+        "body": "Heart-rate variability and recovery scores that hint when to push and when to rest."
+      },
+      "blood_pressure": {
+        "title": "Blood pressure",
+        "body": "Home cuff readings that track vascular comfort over weeks — not a one-off snapshot."
+      },
+      "body_composition": {
+        "title": "Weight & composition",
+        "body": "Smart scales for weight, lean mass, and body-composition trends."
+      },
+      "activity_load": {
+        "title": "Activity load",
+        "body": "Steps, workouts, and strain so load can be balanced with recovery."
+      }
+    },
+    "categories": {
+      "smartwatch": {
+        "title": "Smartwatches",
+        "body": "All-day heart rate, sleep, activity, and often ECG or SpO₂ on the wrist."
+      },
+      "smart_ring": {
+        "title": "Smart rings",
+        "body": "Discreet 24/7 wear for sleep, HRV, temperature, and recovery."
+      },
+      "recovery": {
+        "title": "Recovery bands",
+        "body": "Strain and recovery focused bands worn continuously."
+      },
+      "cgm": {
+        "title": "Continuous glucose",
+        "body": "Clinical-style sensors that stream glucose without finger sticks for most of the day."
+      },
+      "blood_pressure": {
+        "title": "Blood pressure monitors",
+        "body": "Validated home cuffs for reliable systolic/diastolic tracking."
+      },
+      "body_composition": {
+        "title": "Smart scales",
+        "body": "Weight and body-composition estimates for longer trends."
+      },
+      "sleep_home": {
+        "title": "Home sleep systems",
+        "body": "Bed-based tracking for sleep quality and overnight vitals without a wrist device."
+      }
+    },
+    "items": {
+      "apple_watch": {
+        "name": "Apple Watch",
+        "blurb": "Broad everyday coverage: heart rate, HRV, sleep, SpO₂, ECG, and workouts."
+      },
+      "samsung_galaxy_watch": {
+        "name": "Samsung Galaxy Watch",
+        "blurb": "Wrist metrics plus select models with cuffless blood-pressure support where available."
+      },
+      "garmin": {
+        "name": "Garmin",
+        "blurb": "Training load, recovery, sleep, and HRV suited to endurance and structured sport."
+      },
+      "google_pixel_watch": {
+        "name": "Google Pixel Watch",
+        "blurb": "Fitbit-backed sleep and activity with a compact smartwatch experience."
+      },
+      "oura": {
+        "name": "Oura Ring",
+        "blurb": "Ring-based sleep staging, readiness, temperature, and HRV."
+      },
+      "ultrahuman": {
+        "name": "Ultrahuman Ring",
+        "blurb": "Lightweight ring for sleep, recovery, and metabolic-leaning daily signals."
+      },
+      "whoop": {
+        "name": "WHOOP",
+        "blurb": "Continuous strain, recovery, and sleep coaching without a traditional screen."
+      },
+      "dexcom_g7": {
+        "name": "Dexcom G7",
+        "blurb": "Continuous glucose with frequent updates for meal and energy pattern insight."
+      },
+      "freestyle_libre": {
+        "name": "FreeStyle Libre",
+        "blurb": "Flash/continuous glucose sensing for day-to-day metabolic awareness."
+      },
+      "omron": {
+        "name": "Omron",
+        "blurb": "Widely used validated blood-pressure cuffs for home monitoring."
+      },
+      "withings_bpm": {
+        "name": "Withings BPM",
+        "blurb": "Connected cuff readings that sync cleanly into a health history."
+      },
+      "withings_body": {
+        "name": "Withings Body+",
+        "blurb": "Smart scale for weight and body-composition trends."
+      },
+      "eight_sleep": {
+        "name": "Eight Sleep",
+        "blurb": "Bed system tracking sleep stages and overnight vitals."
+      },
+      "fitbit": {
+        "name": "Fitbit",
+        "blurb": "Accessible sleep, heart rate, activity, and stress tracking."
+      },
+      "polar": {
+        "name": "Polar",
+        "blurb": "Sport-grade heart rate, training load, and recovery metrics."
+      }
+    },
+    "capabilities": {
+      "heart_rate": "Heart rate",
+      "hrv": "HRV",
+      "sleep": "Sleep",
+      "spo2": "SpO₂",
+      "activity": "Activity",
+      "recovery": "Recovery",
+      "ecg": "ECG",
+      "temperature": "Temperature",
+      "glucose": "Glucose",
+      "blood_pressure": "Blood pressure",
+      "weight": "Weight",
+      "body_comp": "Body composition",
+      "stress": "Stress",
+      "clinical_grade": "Clinical-grade"
+    },
+    "explain": {
+      "step": "Step 2 of 3 — Explanation",
+      "howTitle": "How it works",
+      "howBody": "We only request access to health metrics. We do not see or store logins and passwords. You can disconnect the device at any time.",
+      "point1": "The app collects authorized metrics from your device",
+      "point2": "We interpret trends and suggest calm next steps",
+      "point3": "Data can inform reports and Health Guide guidance",
+      "privacyLabel": "Privacy:",
+      "privacyBody": "You stay in control. We never receive your device password and cannot control the device. We only receive the health data you authorize.",
+      "continue": "Continue",
+      "back": "Back"
+    },
+    "authorize": {
+      "title": "Grant access",
+      "step": "Step 3 of 3 — Authorization",
+      "intro": "Allow the device to transmit metrics automatically.",
+      "syncTitle": "Sync frequency",
+      "syncBody": "Default: daily in the morning. You can change this later:",
+      "daily": "Daily (recommended)",
+      "multiple": "Multiple times per day",
+      "realtime": "Near real-time (available for your device)",
+      "grant": "Grant access",
+      "connecting": "Connecting…",
+      "back": "Back"
+    },
+    "success": {
+      "title": "Device connected",
+      "body": "BioMath Core will update metrics and use them in recommendations and reports.",
+      "tipLabel": "Tip:",
+      "tipBody": "Regular wear helps us track direction — improving, declining, or stable — not only a single day."
+    },
+    "footer": {
+      "howTitle": "How it works",
+      "howBody": "Authorized metrics (sleep, heart rate, stress, recovery, glucose, and more) are collected and explained in plain language. We focus on trends and practical next steps — not raw dumps of numbers.",
+      "privacyLabel": "Privacy:",
+      "privacyBody": "You control the connection. We do not know your device password and cannot control the device. Disconnect anytime."
+    }
+  },
+  "deviceHints": {
+    "connection": {
+      "strong": "Connecting a device",
+      "body": "gives BioMath Core more precise signals. We do not only collect numbers — we explain their meaning and relate them to your state and habits."
+    },
+    "opening": "You can connect a watch, ring, band, glucose sensor, cuff, or scale. After connecting, BioMath Core updates data and can use it in reports and Health Guide guidance.",
+    "success": {
+      "strong": "Done.",
+      "body": "The next sync happens automatically. You do not need to do anything manually."
+    },
+    "firstSync": {
+      "title": "Metrics received",
+      "body": "We will track the trend, not just single values."
+    },
+    "why": {
+      "title": "Why this matters",
+      "body": "Devices help notice changes early. Think of them as a calm navigator for load, recovery, and gentle adjustments — before symptoms become the first alert."
+    },
+    "errors": {
+      "token_expired": {
+        "title": "Access expired",
+        "message": "Device access has expired. Refresh access so metrics can be read again.",
+        "action": "Refresh access"
+      },
+      "no_data": {
+        "title": "No new data",
+        "message": "The device did not send new data today. It may not have been worn or synced. We will try again automatically."
+      },
+      "service_error": {
+        "title": "Manufacturer unavailable",
+        "message": "The manufacturer is temporarily unavailable. We will retry syncing later."
+      },
+      "manual_disconnect": {
+        "title": "Device disconnected",
+        "message": "The device is no longer sending data. You can reconnect anytime.",
+        "action": "Reconnect"
+      },
+      "bluetooth_sync": {
+        "title": "Phone sync",
+        "message": "The device may not have synced with the phone yet. Open the manufacturer app — the rest usually follows automatically."
+      }
+    },
+    "status": {
+      "connected": "Connected",
+      "needs_update": "Update required",
+      "no_data": "No data",
+      "disconnected": "Disconnected"
+    },
+    "scenarios": {
+      "sleep_declined": {
+        "title": "Sleep quality decreased",
+        "message": "Recent sleep has been less deep. This may reflect nervous-system load. We can suggest gentle recovery steps."
+      },
+      "sleep_improved": {
+        "title": "Sleep improved",
+        "message": "Sleep looks more stable — a good sign that recovery is improving."
+      },
+      "hrv_improved": {
+        "title": "HRV improving",
+        "message": "Heart-rate variability improved — a sign the nervous system is recovering."
+      },
+      "hrv_declined": {
+        "title": "HRV decreasing",
+        "message": "The nervous system may be running hot. Gentle recovery mode is often the better next step."
+      },
+      "activity_high": {
+        "title": "Elevated load",
+        "message": "Load is higher than usual — keep recovery in view."
+      },
+      "glucose_unstable": {
+        "title": "Glucose fluctuations",
+        "message": "Glucose is swinging. We can help relate meals and habits to the pattern — without diagnosis language."
+      },
+      "blood_pressure_stable": {
+        "title": "Blood pressure stable",
+        "message": "Stable, normal readings support vascular comfort over time. If readings rise, we explain calmly without fear language."
+      }
+    },
+    "healthGuide": {
+      "title": "How Health Guide uses device data",
+      "templateLabel": "Example prompt",
+      "template": "Based on your latest device data, we see a trend ____________. This is not a diagnosis, but an important signal. Would you like an explanation and recommendations?",
+      "agreeLabel": "If you agree",
+      "agreeBody": "I will explain in two ways: (1) physiological analysis (Opinion A) and (2) behavioral and lifestyle explanation (Opinion B). You can compare them and choose what fits.",
+      "secondOpinionLabel": "Second Opinion",
+      "secondOpinionBody": "A second opinion helps view the same signals from physiological and adaptive angles — like two specialists with different thinking styles."
+    }
+  }
+}

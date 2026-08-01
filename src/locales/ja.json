@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "about": "概要",
+    "pricing": "料金",
+    "allServices": "すべてのサービス",
+    "memberZone": "メンバーゾーン",
+    "investors": "投資家",
+    "signInUp": "ログイン/登録",
+    "signOut": "ログアウト",
+    "admin": "管理",
+    "language": "言語"
+  },
+  "footer": {
+    "tagline": "体を理解するための生物数学に基づくウェルネスインテリジェンス。",
+    "navigation": "ナビゲーション",
+    "resources": "リソース",
+    "company": "会社",
+    "legal": "法務",
+    "newsletter": "ニュースレター",
+    "darkMode": "ダークモード",
+    "lightMode": "ライトモード",
+    "devices": "デバイス",
+    "science": "科学",
+    "howItWorks": "仕組み",
+    "faq": "FAQ",
+    "contact": "お問い合わせ",
+    "blog": "ブログ",
+    "careers": "採用",
+    "partnership": "提携",
+    "privacy": "プライバシー",
+    "terms": "利用規約",
+    "security": "セキュリティ",
+    "rights": "全著作権所有。",
+    "legalSafety": "法務と安全",
+    "memberArea": "メンバーエリア",
+    "infoHelp": "情報とヘルプ"
+  },
+  "common": {
+    "getStarted": "始める",
+    "learnMore": "詳しく見る",
+    "viewPricing": "料金を見る",
+    "viewServices": "サービスを見る",
+    "contactTeam": "チームに連絡",
+    "back": "戻る",
+    "loading": "読み込み中…",
+    "continue": "続ける",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "search": "検索",
+    "close": "閉じる"
+  },
+  "healthGuide": {
+    "name": "ヘルスガイド",
+    "tagline": "二重の視点による明確なウェルネスガイダンス",
+    "welcome": "こんにちは。ヘルスガイドです。健康に関する質問に対して二つの相補的な視点を提供できます。「セカンドオピニオン」をオンにしてください。",
+    "askAnything": "健康について何でも聞いてください…",
+    "askDual": "二重の視点を尋ねる…",
+    "secondOpinion": "セカンドオピニオン",
+    "on": "ON",
+    "listening": "聞いています…",
+    "speaking": "話しています…",
+    "disclaimer": "ウェルネスガイダンス • 医療診断ではありません",
+    "dualModeHint": "セカンドオピニオンモード：証拠に基づく視点と文脈的視点の二つを受け取ります。",
+    "analyzing": "デュアルモデルで分析中…",
+    "dualAnalysis": "デュアルオピニオン分析",
+    "open": "ヘルスガイドを開く",
+    "close": "ヘルスガイドを閉じる",
+    "tooltipAsk": "健康について何でも聞いてください",
+    "memberTitle": "ヘルスガイド",
+    "memberSubtitle": "健康の質問に対する二重の専門家視点",
+    "askQuestion": "健康の質問をする",
+    "medicalDisclaimer": "医療上の免責",
+    "medicalDisclaimerBody": "回答は情報提供のみです。診断や治療については必ず資格のある医療専門家にご相談ください。",
+    "detectedLang": "{{lang}} で回答中"
+  },
+  "home": {
+    "heroTitle": "生涯にわたる Human Data Model",
+    "heroSubtitle": "重要な健康イベントは生きたモデルの一部になり、理解はあなたと共に深まります。",
+    "ctaExplore": "サービスを探す",
+    "ctaHow": "仕組み",
+    "modelTitle": "Human Data Model",
+    "modelSubtitle": "検証された健康情報から構築されています。",
+    "section2": "セクション 2",
+    "whatTitle": "何を理解できますか？",
+    "whatSubtitle": "情報が分断されていると気づきにくいつながりを、Human Data Model が明らかにします。",
+    "section3": "セクション 3",
+    "timelineTitle": "Human Data Timeline",
+    "timelineSubtitle": "健康の履歴を、文脈の中で理解する。",
+    "openTimeline": "タイムラインを開く",
+    "section4": "セクション 4",
+    "changesTitle1": "すべてが変わります。",
+    "changesTitle2": "Human Data Model は覚えています。",
+    "changesSubtitle": "重要な健康イベントはすべて、生涯の Human Data Model の一部になります。",
+    "cta": {
+      "title": "健康をより明確に捉えませんか？",
+      "description": "あなたに合うプランから始めましょう。Health Guide が Human Data Model の理解をサポートします。",
+      "primary": "料金を見る",
+      "secondary": "アカウント作成"
+    }
+  },
+  "about": {
+    "label": "BioMath Core について",
+    "title": "ミッション、ビジョン、そして BioMath Core を支える人々",
+    "subtitle": "精度・透明性・人間中心の知性のために設計されたデジタルヘルスと生物数学分析。"
+  },
+  "pricing": {
+    "label": "料金",
+    "title": "Human Data Model の深さを選ぶ",
+    "subtitle": "各プランはモデルが見られる範囲を広げます。カテゴリが多いほど文脈が豊かになり、ガイダンスが明確になります。",
+    "monthly": "月額",
+    "yearly": "年額",
+    "mostPopular": "人気",
+    "getStarted": "始める",
+    "trialNote": "すべてのプランに5日間のトライアルが含まれます。トライアル中はいつでもキャンセルできます。"
+  },
+  "investors": {
+    "label": "投資家",
+    "title": "パーソナルヘルスインテリジェンスへの戦略的投資",
+    "subtitle": "BioMath Core は生物数学モデリングと AI により複雑な健康データを個人向けガイダンスに変えます。"
+  },
+  "summary": {
+    "label": "概要",
+    "healthIntelligence": "パーソナルヘルスインテリジェンス",
+    "healthIntelligenceSub": "より多くのグラフではなく、理解に導かれた健康ナビゲーション。",
+    "advisorTitle": "ヘルスガイド",
+    "advisorLead": "BioMath Core との主な接点 — ナビの前にガイダンス。"
+  },
+  "catalog": {
+    "label": "サービスカタログ",
+    "title": "BioMath Core の全サービスを見る",
+    "subtitle": "Human Data Model を中心に整理された専門カテゴリ。",
+    "backToCategories": "カテゴリに戻る",
+    "searchPlaceholder": "カテゴリまたはサービスを検索...",
+    "clearSearch": "検索をクリア",
+    "showingServices": "{{count}} 件のサービスを表示",
+    "showingServiceOne": "{{count}} 件のサービスを表示"
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "よくある質問",
+    "healthGuideSection": "ヘルスガイド",
+    "heroTitle": "BioMath Core のよくある質問",
+    "heroSubtitle": "サービス、サブスクリプション、Human Data Model、プライバシー、ガイダンスの仕組み。"
+  },
+  "contact": {
+    "label": "お問い合わせ",
+    "title": "ご連絡ください",
+    "healthGuideHint": "ウェルネスガイダンスにはメンバーゾーンのヘルスガイドをご利用ください。",
+    "heroTitle": "BioMath Core チームへ連絡",
+    "heroSubtitle": "サービス、パートナーシップ、企業導入についてのご質問に対応します。",
+    "noteLabel": "注記:",
+    "noteBody": "この窓口はビジネス・提携・アカウント向けです。ウェルネスの相談はメンバーゾーンの Health Guide をご利用ください。",
+    "messageLabel": "メッセージ",
+    "sendMessage": "メッセージを送る"
+  },
+  "adminGate": {
+    "title": "アクセスが拒否されました",
+    "body": "管理者権限がありません。オペレーターがデータベースで管理者を付与する必要があります。サインインだけでは権限は上がりません。",
+    "goHome": "ホームへ"
+  }
+}

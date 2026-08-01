@@ -1,257 +1,346 @@
-import { Building2, Microscope, Heart, TrendingUp, Globe, Users, Award, CheckCircle } from 'lucide-react';
+import type { ReactNode } from 'react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import BackButton from '../components/BackButton';
+import SEO from '../components/SEO';
+import { tList } from '../i18n/tList';
 
 interface PartnershipProps {
   onNavigate: (page: string) => void;
 }
 
+type PartnershipType = { title: string; body: string; points: string[] };
+type Reason = { title: string; body: string };
+type Program = { title: string; body: string; action: string };
+
+const TYPE_OPTION_VALUES = ['business', 'research', 'healthcare', 'technology', 'other'] as const;
+
+const INQUIRY_SECTION_ID = 'partnership-inquiry';
+
+/** Matches the order of `partnership.programs.items` in the locale packs. */
+const PROGRAM_TARGETS = ['inquiry', 'referral', 'ambassador'] as const;
+
+function SectionLabel({ children }: { children: ReactNode }) {
+  return (
+    <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-600 dark:text-orange-400">
+      {children}
+    </p>
+  );
+}
+
+const inputClassName =
+  'w-full border border-[var(--bm-border)] bg-page px-4 py-3 text-gray-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/40 dark:text-neutral-100';
+
 export default function Partnership({ onNavigate }: PartnershipProps) {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     partnershipType: '',
     contactName: '',
     organization: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
   });
+
+  const partnershipTypes = tList<PartnershipType>(t, 'partnership.types.items');
+  const reasons = tList<Reason>(t, 'partnership.why.items');
+  const programs = tList<Program>(t, 'partnership.programs.items');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
 
+  const openProgram = (target: (typeof PROGRAM_TARGETS)[number]) => {
+    if (target === 'inquiry') {
+      document.getElementById(INQUIRY_SECTION_ID)?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    onNavigate(target);
+  };
+
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
+    <div className="min-h-screen bg-page transition-colors">
+      <SEO
+        title={t('partnership.seo.title')}
+        description={t('partnership.seo.description')}
+        keywords={[
+          'biomath core partnerships',
+          'health technology partners',
+          'clinical integration',
+          'research collaboration',
+          'digital health distribution',
+        ]}
+        url="/partnership"
+      />
+
       <div className="pt-20 pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
           <BackButton onNavigate={onNavigate} />
 
-          <section className="py-16 text-center rounded-3xl border border-gray-100 dark:border-gray-800 bg-[radial-gradient(circle_at_top,_#fff6ed,_transparent_55%),linear-gradient(135deg,#f8fafc,white)] dark:bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.18),_transparent_55%),linear-gradient(135deg,#0f172a,#020617)]">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-orange-200/80 bg-white/70 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-700 backdrop-blur dark:bg-white/10 dark:text-orange-200 dark:border-orange-300/20 mb-6">
-              Partnerships
-            </div>
-            <h1 className="text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 dark:text-white mb-6">
-              Partner With Us
+          {/* Hero */}
+          <section className="border-b border-[var(--bm-border)] pb-14 pt-8 lg:pb-16 lg:pt-10">
+            <SectionLabel>{t('partnership.hero.label')}</SectionLabel>
+            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
+              {t('partnership.hero.title')}
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-4">
-              Join forces with BioMath Core to revolutionize healthcare through AI innovation
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-lg">
+              {t('partnership.hero.body')}
             </p>
           </section>
 
-          <section className="mb-20">
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
-              <div className="group relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 hover:border-orange-400/60 transition-all duration-300 overflow-hidden shadow-sm">
-                <div className="relative">
-                  <div className="w-16 h-16 bg-orange-50 border border-orange-200 rounded-xl flex items-center justify-center mb-6">
-                    <Building2 className="w-8 h-8 text-orange-600" />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Business Development</h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                    Strategic partnerships, distribution, and market expansion opportunities
-                  </p>
-                  <ul className="space-y-3 text-gray-600 dark:text-gray-300">
-                    <li className="flex items-start gap-3 group/item">
-                      <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                      <span>Revenue sharing models</span>
-                    </li>
-                    <li className="flex items-start gap-3 group/item">
-                      <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                      <span>Co-marketing initiatives</span>
-                    </li>
-                    <li className="flex items-start gap-3 group/item">
-                      <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                      <span>Market access</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+          {/* Partnership types */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('partnership.types.label')}</SectionLabel>
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">
+              {t('partnership.types.title')}
+            </h2>
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
+              {t('partnership.types.body')}
+            </p>
 
-              <div className="group relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 hover:border-orange-400/60 transition-all duration-300 overflow-hidden shadow-sm">
-                <div className="relative">
-                  <div className="w-16 h-16 bg-blue-50 border border-blue-200 rounded-xl flex items-center justify-center mb-6">
-                    <Microscope className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Scientists & Researchers</h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                    Collaborate on cutting-edge AI health research and clinical validation
+            <div className="mt-10 grid gap-10 md:grid-cols-3 md:gap-8">
+              {partnershipTypes.map((item, i) => (
+                <article key={item.title} className="border-t border-[var(--bm-border)] pt-5">
+                  <p className="text-[11px] font-semibold tracking-[0.28em] text-orange-600 dark:text-orange-400">
+                    {String(i + 1).padStart(2, '0')}
                   </p>
-                  <ul className="space-y-3 text-gray-600 dark:text-gray-300">
-                    <li className="flex items-start gap-3 group/item">
-                      <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                      <span>Data access</span>
-                    </li>
-                    <li className="flex items-start gap-3 group/item">
-                      <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                      <span>Publication opportunities</span>
-                    </li>
-                    <li className="flex items-start gap-3 group/item">
-                      <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                      <span>Collaborative research</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="group relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 hover:border-orange-400/60 transition-all duration-300 overflow-hidden shadow-sm">
-                <div className="relative">
-                  <div className="w-16 h-16 bg-rose-50 border border-rose-200 rounded-xl flex items-center justify-center mb-6">
-                    <Heart className="w-8 h-8 text-rose-600" />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Healthcare Professionals</h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                    Integrate our platform into your practice and improve patient outcomes
+                  <h3 className="mt-2 text-xl font-semibold text-gray-900 dark:text-neutral-100">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-[15px]">
+                    {item.body}
                   </p>
-                  <ul className="space-y-3 text-gray-600 dark:text-gray-300">
-                    <li className="flex items-start gap-3 group/item">
-                      <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                      <span>Practice integration</span>
-                    </li>
-                    <li className="flex items-start gap-3 group/item">
-                      <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                      <span>Training & support</span>
-                    </li>
-                    <li className="flex items-start gap-3 group/item">
-                      <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                      <span>Patient monitoring tools</span>
-                    </li>
+                  <ul className="mt-4 space-y-2.5">
+                    {item.points.map((point) => (
+                      <li
+                        key={point}
+                        className="flex items-start gap-2.5 text-sm leading-relaxed text-gray-700 dark:text-neutral-300"
+                      >
+                        <span
+                          aria-hidden
+                          className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-orange-500 dark:bg-orange-400"
+                        />
+                        {point}
+                      </li>
+                    ))}
                   </ul>
-                </div>
-              </div>
+                </article>
+              ))}
             </div>
           </section>
 
-          <section className="mb-20">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-semibold text-gray-900 dark:text-white mb-4">Why Partner With BioMath Core?</h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400">Join a growing ecosystem of health innovation leaders</p>
-            </div>
+          {/* Why partner */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('partnership.why.label')}</SectionLabel>
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">
+              {t('partnership.why.title')}
+            </h2>
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
+              {t('partnership.why.body')}
+            </p>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="group relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 text-center hover:border-orange-400/60 transition-all duration-300 shadow-sm">
-                <div className="w-16 h-16 bg-orange-50 border border-orange-200 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-8 h-8 text-orange-600" />
-                </div>
-                <h3 className="text-gray-900 dark:text-white font-semibold mb-2 text-lg">Growing Market</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">$350B+ digital health market opportunity</p>
-              </div>
-
-              <div className="group relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 text-center hover:border-orange-400/60 transition-all duration-300 shadow-sm">
-                <div className="w-16 h-16 bg-blue-50 border border-blue-200 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Globe className="w-8 h-8 text-blue-600" />
-                </div>
-                <h3 className="text-gray-900 dark:text-white font-semibold mb-2 text-lg">Global Reach</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Expand your impact worldwide</p>
-              </div>
-
-              <div className="group relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 text-center hover:border-orange-400/60 transition-all duration-300 shadow-sm">
-                <div className="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-emerald-600" />
-                </div>
-                <h3 className="text-gray-900 dark:text-white font-semibold mb-2 text-lg">User Base</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Access to engaged health-conscious users</p>
-              </div>
-
-              <div className="group relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 text-center hover:border-orange-400/60 transition-all duration-300 shadow-sm">
-                <div className="w-16 h-16 bg-purple-50 border border-purple-200 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Award className="w-8 h-8 text-purple-600" />
-                </div>
-                <h3 className="text-gray-900 dark:text-white font-semibold mb-2 text-lg">Innovation Leader</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Cutting-edge AI health technology</p>
-              </div>
+            <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+              {reasons.map((item, i) => (
+                <article key={item.title}>
+                  <span
+                    aria-hidden
+                    className="mb-4 block h-px w-8 bg-orange-500/70 dark:bg-orange-400/55"
+                  />
+                  <p className="mb-2 text-[11px] font-semibold tracking-[0.28em] text-orange-600 dark:text-orange-400">
+                    {String(i + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-100">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-400">
+                    {item.body}
+                  </p>
+                </article>
+              ))}
             </div>
           </section>
 
+          {/* Ways to take part */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('partnership.programs.label')}</SectionLabel>
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">
+              {t('partnership.programs.title')}
+            </h2>
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
+              {t('partnership.programs.body')}
+            </p>
 
-          <section className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-12 shadow-sm">
-            <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-8 text-center">Contact Us</h2>
+            <div className="mt-10 grid gap-10 md:grid-cols-3 md:gap-8">
+              {programs.map((item, i) => (
+                <article key={item.title} className="flex flex-col border-t border-[var(--bm-border)] pt-5">
+                  <p className="text-[11px] font-semibold tracking-[0.28em] text-orange-600 dark:text-orange-400">
+                    {String(i + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="mt-2 text-xl font-semibold text-gray-900 dark:text-neutral-100">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-[15px]">
+                    {item.body}
+                  </p>
+                  {PROGRAM_TARGETS[i] && (
+                    <button
+                      type="button"
+                      onClick={() => openProgram(PROGRAM_TARGETS[i])}
+                      className="mt-5 self-start text-sm font-medium text-orange-700 transition-colors hover:text-orange-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/40 dark:text-orange-400 dark:hover:text-orange-300"
+                    >
+                      {item.action}
+                    </button>
+                  )}
+                </article>
+              ))}
+            </div>
+          </section>
 
-            <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
-              <div className="mb-6">
-                <label className="block text-gray-900 dark:text-white mb-3 font-medium">Partnership Type</label>
-                <select
-                  value={formData.partnershipType}
-                  onChange={(e) => setFormData({...formData, partnershipType: e.target.value})}
-                  className="w-full bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 transition-colors"
-                  required
+          {/* Contact form */}
+          <section id={INQUIRY_SECTION_ID} className="scroll-mt-24 py-14 lg:py-16">
+            <SectionLabel>{t('partnership.form.label')}</SectionLabel>
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">
+              {t('partnership.form.title')}
+            </h2>
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
+              {t('partnership.form.body')}
+            </p>
+
+            <div className="mt-10 border border-[var(--bm-border)] bg-[var(--bm-surface)] p-6 sm:p-8 lg:p-10">
+              <form onSubmit={handleSubmit} className="mx-auto max-w-2xl">
+                <div className="mb-6">
+                  <label
+                    htmlFor="partnershipType"
+                    className="mb-2 block text-sm font-medium text-gray-900 dark:text-neutral-100"
+                  >
+                    {t('partnership.form.typeLabel')}
+                  </label>
+                  <select
+                    id="partnershipType"
+                    value={formData.partnershipType}
+                    onChange={(e) =>
+                      setFormData({ ...formData, partnershipType: e.target.value })
+                    }
+                    className={inputClassName}
+                    required
+                  >
+                    <option value="">{t('partnership.form.typePlaceholder')}</option>
+                    {TYPE_OPTION_VALUES.map((value) => (
+                      <option key={value} value={value}>
+                        {t(`partnership.form.typeOptions.${value}`)}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="mb-6 grid gap-6 md:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="contactName"
+                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-neutral-100"
+                    >
+                      {t('partnership.form.contactName')}
+                    </label>
+                    <input
+                      id="contactName"
+                      type="text"
+                      value={formData.contactName}
+                      onChange={(e) =>
+                        setFormData({ ...formData, contactName: e.target.value })
+                      }
+                      className={inputClassName}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="organization"
+                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-neutral-100"
+                    >
+                      {t('partnership.form.organization')}
+                    </label>
+                    <input
+                      id="organization"
+                      type="text"
+                      value={formData.organization}
+                      onChange={(e) =>
+                        setFormData({ ...formData, organization: e.target.value })
+                      }
+                      className={inputClassName}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="mb-6 grid gap-6 md:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-neutral-100"
+                    >
+                      {t('partnership.form.email')}
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className={inputClassName}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="mb-2 block text-sm font-medium text-gray-900 dark:text-neutral-100"
+                    >
+                      {t('partnership.form.phone')}
+                    </label>
+                    <input
+                      id="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className={inputClassName}
+                    />
+                  </div>
+                </div>
+
+                <div className="mb-8">
+                  <label
+                    htmlFor="message"
+                    className="mb-2 block text-sm font-medium text-gray-900 dark:text-neutral-100"
+                  >
+                    {t('partnership.form.message')}
+                  </label>
+                  <textarea
+                    id="message"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    rows={6}
+                    className={`${inputClassName} resize-none`}
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-orange-500 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/40"
                 >
-                  <option value="">Select partnership type</option>
-                  <option value="business">Business Development</option>
-                  <option value="research">Research & Science</option>
-                  <option value="healthcare">Healthcare Professional</option>
-                  <option value="technology">Technology Integration</option>
-                  <option value="other">Other</option>
-                </select>
+                  {t('partnership.form.submit')}
+                </button>
+              </form>
+
+              <div className="mx-auto mt-10 max-w-2xl border-t border-[var(--bm-border)] pt-8 text-center">
+                <p className="text-sm text-gray-600 dark:text-neutral-400">
+                  {t('partnership.form.directLabel')}
+                </p>
+                <p className="mt-1 font-medium text-gray-900 dark:text-neutral-100">
+                  partnerships@biomathcore.com
+                </p>
               </div>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label className="block text-gray-900 dark:text-white mb-3 font-medium">Contact Name</label>
-                  <input
-                    type="text"
-                    value={formData.contactName}
-                    onChange={(e) => setFormData({...formData, contactName: e.target.value})}
-                    className="w-full bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 transition-colors"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-gray-900 dark:text-white mb-3 font-medium">Company/Organization</label>
-                  <input
-                    type="text"
-                    value={formData.organization}
-                    onChange={(e) => setFormData({...formData, organization: e.target.value})}
-                    className="w-full bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 transition-colors"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label className="block text-gray-900 dark:text-white mb-3 font-medium">Email</label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 transition-colors"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-gray-900 dark:text-white mb-3 font-medium">Phone</label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    className="w-full bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 transition-colors"
-                  />
-                </div>
-              </div>
-
-              <div className="mb-8">
-                <label className="block text-gray-900 dark:text-white mb-3 font-medium">Message</label>
-                <textarea
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  rows={6}
-                  className="w-full bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"
-                  required
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-orange-500 hover:from-blue-600 hover:to-orange-600 text-white font-semibold py-4 rounded-lg transition-all transform hover:scale-[1.02]"
-              >
-                Submit Inquiry
-              </button>
-            </form>
-
-            <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center">
-              <p className="text-gray-500 dark:text-gray-400 mb-2">Or reach us directly</p>
-              <p className="text-gray-900 dark:text-white font-medium">partnerships@biomathcore.com</p>
             </div>
           </section>
         </div>

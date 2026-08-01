@@ -1,12 +1,41 @@
-import { Award, TrendingUp, Users, Gift, CheckCircle, Star } from 'lucide-react';
+import type { ReactNode } from 'react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import BackButton from '../components/BackButton';
 
 interface AmbassadorProps {
   onNavigate: (page: string) => void;
 }
 
+const PATHS = ['organic', 'direct'] as const;
+
+const REWARDS = ['higher', 'priority', 'tools'] as const;
+
+const BENEFITS = [
+  'enhanced',
+  'dashboard',
+  'materials',
+  'support',
+  'features',
+  'revenue',
+] as const;
+
+const AUDIENCE_OPTIONS = ['users', 'clients', 'followers', 'community', 'other'] as const;
+
+function stringList(value: unknown): string[] {
+  return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : [];
+}
+
+function SectionLabel({ children }: { children: ReactNode }) {
+  return (
+    <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-600 dark:text-orange-400">
+      {children}
+    </p>
+  );
+}
+
 export default function Ambassador({ onNavigate }: AmbassadorProps) {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -14,7 +43,7 @@ export default function Ambassador({ onNavigate }: AmbassadorProps) {
     audienceType: '',
     hasReferrals: '',
     motivation: '',
-    socialLink: ''
+    socialLink: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -31,344 +60,321 @@ export default function Ambassador({ onNavigate }: AmbassadorProps) {
         audienceType: '',
         hasReferrals: '',
         motivation: '',
-        socialLink: ''
+        socialLink: '',
       });
     }, 3000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
+  const inputClassName =
+    'w-full border border-[var(--bm-border)] bg-page px-4 py-3 text-gray-900 transition-colors focus:border-orange-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/30 dark:text-neutral-100';
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/40 to-white pt-20 pb-16">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <BackButton onNavigate={onNavigate} />
+    <div className="min-h-screen bg-page transition-colors">
+      <div className="pt-20 pb-16">
+        <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
+          <BackButton onNavigate={onNavigate} />
 
-        <div className="text-center mb-14">
-          <span className="inline-flex items-center rounded-full border border-orange-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-orange-700">
-            Ambassador Program
-          </span>
-          <div className="mx-auto mt-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-orange-200 bg-white/90 shadow-md">
-            <Award className="h-8 w-8 text-orange-500" />
-          </div>
-          <h1 className="mt-6 text-4xl md:text-5xl font-semibold text-gray-900 mb-4">
-            Ambassador Program
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Become a wellness multiplier. Share BioMath Core authentically and earn enhanced rewards while helping others discover calm, supportive guidance.
-          </p>
-        </div>
+          {/* Hero */}
+          <section className="border-b border-[var(--bm-border)] pb-14 pt-8 lg:pb-16 lg:pt-10">
+            <SectionLabel>{t('programs.ambassador.label')}</SectionLabel>
+            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
+              {t('programs.ambassador.heroTitle')}
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-lg">
+              {t('programs.ambassador.heroSubtitle')}
+            </p>
+          </section>
 
-        <div className="bg-white/90 border border-slate-200 rounded-3xl p-10 mb-12 text-gray-900 shadow-xl">
-          <h2 className="text-3xl font-semibold mb-8 text-center">What Makes an Ambassador?</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="relative bg-slate-50 border border-slate-200 rounded-2xl p-6 overflow-hidden">
-              <div className="flex items-center space-x-3 mb-4">
-                <TrendingUp className="h-6 w-6 text-orange-500" />
-                <h3 className="text-lg font-semibold text-gray-900">Organic Growth</h3>
-              </div>
-              <p className="text-gray-600 leading-relaxed">
-                Loyal users who refer 10+ friends become eligible for automatic Ambassador upgrade with enhanced benefits.
-              </p>
+          {/* What makes an ambassador */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('programs.ambassador.pathsLabel')}</SectionLabel>
+            <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+              {t('programs.ambassador.pathsTitle')}
+            </h2>
+            <div className="mt-10 grid gap-10 md:grid-cols-2 md:gap-12">
+              {PATHS.map((item, index) => (
+                <article key={item} className="border-t border-[var(--bm-border)] pt-5">
+                  <p className="text-[11px] font-semibold tracking-[0.28em] text-orange-600 dark:text-orange-400">
+                    {String(index + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="mt-2 text-lg font-semibold text-gray-900 dark:text-neutral-100">
+                    {t(`programs.ambassador.paths.${item}.title`)}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-[15px]">
+                    {t(`programs.ambassador.paths.${item}.body`)}
+                  </p>
+                </article>
+              ))}
             </div>
+          </section>
 
-            <div className="relative bg-slate-50 border border-slate-200 rounded-2xl p-6 overflow-hidden">
-              <div className="flex items-center space-x-3 mb-4">
-                <Users className="h-6 w-6 text-orange-500" />
-                <h3 className="text-lg font-semibold text-gray-900">Direct Application</h3>
-              </div>
-              <p className="text-gray-600 leading-relaxed">
-                Wellness coaches, health educators, content creators, and community leaders can apply directly through our form below.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <div className="group relative bg-white/90 border border-slate-200 rounded-2xl p-6 text-center hover:border-orange-300 transition-all duration-300 overflow-hidden shadow-lg">
-            <div className="relative">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-50 border border-orange-200 rounded-2xl mx-auto mb-4">
-                <Gift className="h-8 w-8 text-orange-500" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Higher Rewards</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Earn $20 per referral (2x standard rate) with tier-based scaling opportunities
-              </p>
-            </div>
-          </div>
-
-          <div className="group relative bg-white/90 border border-slate-200 rounded-2xl p-6 text-center hover:border-orange-300 transition-all duration-300 overflow-hidden shadow-lg">
-            <div className="relative">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-50 border border-orange-200 rounded-2xl mx-auto mb-4">
-                <Star className="h-8 w-8 text-orange-500" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Priority Access</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Early feature testing, priority support, and exclusive Ambassador dashboard
-              </p>
-            </div>
-          </div>
-
-          <div className="group relative bg-white/90 border border-slate-200 rounded-2xl p-6 text-center hover:border-orange-300 transition-all duration-300 overflow-hidden shadow-lg">
-            <div className="relative">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-50 border border-orange-200 rounded-2xl mx-auto mb-4">
-                <CheckCircle className="h-8 w-8 text-orange-500" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Co-Branded Tools</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Dedicated materials, social assets, optional landing page, and sharing toolkit
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white/90 border border-slate-200 rounded-3xl p-8 mb-12 shadow-lg">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">Ambassador Benefits</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="h-5 w-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Enhanced Rewards</h4>
-                  <p className="text-sm text-gray-600">Double the standard referral rate with scaling tiers</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="h-5 w-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Dedicated Dashboard</h4>
-                  <p className="text-sm text-gray-600">Track cohort, lifetime rewards, and ambassador tier level</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="h-5 w-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Co-Branded Materials</h4>
-                  <p className="text-sm text-gray-600">Professional social assets and sharing toolkit</p>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="h-5 w-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Priority Support</h4>
-                  <p className="text-sm text-gray-600">Direct access to platform team for questions</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="h-5 w-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Early Features</h4>
-                  <p className="text-sm text-gray-600">Beta testing and preview access to new platform capabilities</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="h-5 w-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Revenue-Sharing Growth</h4>
-                  <p className="text-sm text-gray-600">Eligibility for advanced partnership models</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white/90 border border-slate-200 rounded-3xl p-8 mb-12 shadow-lg">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-2">Ambassador Responsibilities</h2>
-          <p className="text-gray-600 mb-6 leading-relaxed">
-            As an ambassador, we ask that you share authentically and maintain our wellness-first values:
-          </p>
-          <div className="space-y-3 text-sm text-gray-600">
-            <div className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-              <p>Share the platform authentically based on personal experience</p>
-            </div>
-            <div className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-              <p>Use wellness-first language that is supportive, not prescriptive</p>
-            </div>
-            <div className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-              <p>Never make medical or diagnostic claims</p>
-            </div>
-            <div className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-              <p>Avoid spam, misleading advertising, or incentive manipulation</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white/90 border border-slate-200 rounded-3xl p-8 shadow-xl">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">Apply to Become an Ambassador</h2>
-
-          {submitted ? (
-            <div className="text-center py-12">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-50 border border-orange-200 rounded-2xl mb-4">
-                <CheckCircle className="h-8 w-8 text-orange-500" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Application Submitted!</h3>
-              <p className="text-gray-600 mb-4">
-                Thank you for your interest in becoming a BioMath Core Ambassador.
-              </p>
-              <p className="text-sm text-gray-500">
-                Our team will review your application and reach out within 3-5 business days.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-slate-200 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          {/* Reward highlights */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('programs.ambassador.rewardsLabel')}</SectionLabel>
+            <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+              {t('programs.ambassador.rewardsTitle')}
+            </h2>
+            <ul className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-3">
+              {REWARDS.map((item) => (
+                <li key={item} className="flex gap-4">
+                  <span
+                    aria-hidden
+                    className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-orange-500 dark:bg-orange-400"
                   />
-                </div>
+                  <div>
+                    <h3 className="text-base font-semibold text-gray-900 dark:text-neutral-100">
+                      {t(`programs.ambassador.rewards.${item}.title`)}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-gray-600 dark:text-neutral-400">
+                      {t(`programs.ambassador.rewards.${item}.body`)}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-slate-200 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          {/* Full benefits */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('programs.ambassador.benefitsLabel')}</SectionLabel>
+            <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+              {t('programs.ambassador.benefitsTitle')}
+            </h2>
+            <ul className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+              {BENEFITS.map((item) => (
+                <li key={item} className="flex gap-4">
+                  <span
+                    aria-hidden
+                    className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-orange-500 dark:bg-orange-400"
                   />
-                </div>
-              </div>
+                  <div>
+                    <h3 className="text-base font-semibold text-gray-900 dark:text-neutral-100">
+                      {t(`programs.ambassador.benefits.${item}.title`)}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-gray-600 dark:text-neutral-400">
+                      {t(`programs.ambassador.benefits.${item}.body`)}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Country/Region *
-                  </label>
-                  <input
-                    type="text"
-                    name="country"
-                    value={formData.country}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-slate-200 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          {/* Responsibilities */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('programs.ambassador.guidelinesLabel')}</SectionLabel>
+            <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+              {t('programs.ambassador.guidelinesTitle')}
+            </h2>
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
+              {t('programs.ambassador.guidelinesIntro')}
+            </p>
+            <ul className="mt-8 space-y-3">
+              {stringList(
+                t('programs.ambassador.responsibilities', { returnObjects: true })
+              ).map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-sm leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-[15px]"
+                >
+                  <span
+                    aria-hidden
+                    className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-orange-500 dark:bg-orange-400"
                   />
-                </div>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </section>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Audience Type *
-                  </label>
-                  <select
-                    name="audienceType"
-                    value={formData.audienceType}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-slate-200 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          {/* Application form */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('programs.ambassador.applyLabel')}</SectionLabel>
+            <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+              {t('programs.ambassador.applyTitle')}
+            </h2>
+
+            <div className="mt-8 border border-[var(--bm-border)] bg-[var(--bm-surface)] p-6 sm:p-8">
+              {submitted ? (
+                <div className="py-10 text-center">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-orange-600 dark:text-orange-400">
+                    {t('programs.ambassador.submitted')}
+                  </p>
+                  <h3 className="mt-3 text-xl font-semibold text-gray-900 dark:text-neutral-100">
+                    {t('programs.ambassador.receivedTitle')}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-400">
+                    {t('programs.ambassador.receivedBody')}
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <div>
+                      <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-neutral-300">
+                        {t('programs.ambassador.form.fullName')}
+                      </label>
+                      <input
+                        type="text"
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        required
+                        className={inputClassName}
+                      />
+                    </div>
+                    <div>
+                      <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-neutral-300">
+                        {t('programs.ambassador.form.email')}
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className={inputClassName}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <div>
+                      <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-neutral-300">
+                        {t('programs.ambassador.form.country')}
+                      </label>
+                      <input
+                        type="text"
+                        name="country"
+                        value={formData.country}
+                        onChange={handleChange}
+                        required
+                        className={inputClassName}
+                      />
+                    </div>
+                    <div>
+                      <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-neutral-300">
+                        {t('programs.ambassador.form.audience')}
+                      </label>
+                      <select
+                        name="audienceType"
+                        value={formData.audienceType}
+                        onChange={handleChange}
+                        required
+                        className={inputClassName}
+                      >
+                        <option value="">{t('programs.ambassador.form.selectType')}</option>
+                        {AUDIENCE_OPTIONS.map((option) => (
+                          <option key={option} value={option}>
+                            {t(`programs.ambassador.form.audienceOptions.${option}`)}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-neutral-300">
+                      {t('programs.ambassador.form.hasReferrals')}
+                    </label>
+                    <div className="flex gap-6">
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="radio"
+                          name="hasReferrals"
+                          value="yes"
+                          checked={formData.hasReferrals === 'yes'}
+                          onChange={handleChange}
+                          required
+                          className="text-orange-600 focus:ring-orange-500"
+                        />
+                        <span className="text-gray-700 dark:text-neutral-300">
+                          {t('programs.ambassador.form.yes')}
+                        </span>
+                      </label>
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="radio"
+                          name="hasReferrals"
+                          value="no"
+                          checked={formData.hasReferrals === 'no'}
+                          onChange={handleChange}
+                          required
+                          className="text-orange-600 focus:ring-orange-500"
+                        />
+                        <span className="text-gray-700 dark:text-neutral-300">
+                          {t('programs.ambassador.form.no')}
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-neutral-300">
+                      {t('programs.ambassador.form.motivation')}
+                    </label>
+                    <textarea
+                      name="motivation"
+                      value={formData.motivation}
+                      onChange={handleChange}
+                      required
+                      rows={4}
+                      className={`${inputClassName} resize-none`}
+                      placeholder={t('programs.ambassador.form.motivationPlaceholder')}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-neutral-300">
+                      {t('programs.ambassador.form.socialLink')}
+                    </label>
+                    <input
+                      type="url"
+                      name="socialLink"
+                      value={formData.socialLink}
+                      onChange={handleChange}
+                      placeholder="https://"
+                      className={inputClassName}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-orange-500 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
                   >
-                    <option value="">Select type...</option>
-                    <option value="users">General Users</option>
-                    <option value="clients">Coaching Clients</option>
-                    <option value="followers">Social Followers</option>
-                    <option value="community">Community Members</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-              </div>
+                    {t('programs.ambassador.form.submit')}
+                  </button>
+                </form>
+              )}
+            </div>
+          </section>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Do you currently use our referral program? *
-                </label>
-                <div className="flex space-x-6">
-                  <label className="flex items-center space-x-2">
-                    <input
-                      type="radio"
-                      name="hasReferrals"
-                      value="yes"
-                      checked={formData.hasReferrals === 'yes'}
-                      onChange={handleChange}
-                      required
-                      className="text-orange-600 focus:ring-orange-500"
-                    />
-                    <span className="text-gray-700">Yes</span>
-                  </label>
-                  <label className="flex items-center space-x-2">
-                    <input
-                      type="radio"
-                      name="hasReferrals"
-                      value="no"
-                      checked={formData.hasReferrals === 'no'}
-                      onChange={handleChange}
-                      required
-                      className="text-orange-600 focus:ring-orange-500"
-                    />
-                    <span className="text-gray-700">No</span>
-                  </label>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Why do you want to become an ambassador? *
-                </label>
-                <textarea
-                  name="motivation"
-                  value={formData.motivation}
-                  onChange={handleChange}
-                  required
-                  rows={4}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                  placeholder="Share your motivation and how you'd like to contribute..."
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Website or Social Link (Optional)
-                </label>
-                <input
-                  type="url"
-                  name="socialLink"
-                  value={formData.socialLink}
-                  onChange={handleChange}
-                  placeholder="https://"
-                  className="w-full px-4 py-3 border border-slate-200 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                />
-              </div>
-
+          {/* Footer note */}
+          <section className="py-10">
+            <p className="text-center text-sm text-gray-600 dark:text-neutral-400">
+              <span className="font-medium text-gray-900 dark:text-neutral-100">
+                {t('programs.ambassador.footerQuestion')}
+              </span>{' '}
+              {t('programs.ambassador.footerPrefix')}{' '}
               <button
-                type="submit"
-                className="w-full py-4 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-orange-600/20 hover:shadow-orange-600/30"
+                type="button"
+                onClick={() => onNavigate('member')}
+                className="font-medium text-orange-700 transition-colors hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300"
               >
-                Submit Application
-              </button>
-            </form>
-          )}
-        </div>
-
-        <div className="mt-8 bg-white/90 border border-slate-200 rounded-3xl p-6 text-center shadow-lg">
-          <p className="text-sm text-gray-600">
-            <span className="font-medium text-gray-900">Already have 10+ referrals?</span> Check your{' '}
-            <button
-              onClick={() => onNavigate('member')}
-              className="text-orange-600 hover:text-orange-500 hover:underline font-medium transition-colors"
-            >
-              Member Zone
-            </button>
-            {' '}for automatic upgrade eligibility
-          </p>
+                {t('programs.ambassador.footerLink')}
+              </button>{' '}
+              {t('programs.ambassador.footerSuffix')}
+            </p>
+          </section>
         </div>
       </div>
     </div>

@@ -63,7 +63,9 @@ export function validateCSRFToken(token: string): boolean {
 }
 
 /**
- * Content Security Policy violation handler
+ * Content Security Policy violation handler.
+ * Enforceable CSP is set via HTTP headers in vercel.json (and vite preview headers).
+ * This listener only surfaces violations in the console / optional GA when present.
  */
 export function setupCSPReporting(): void {
   document.addEventListener('securitypolicyviolation', (event) => {
@@ -75,7 +77,7 @@ export function setupCSPReporting(): void {
       lineNumber: event.lineNumber,
     });
 
-    // Report to analytics or error tracking service
+    // Report to analytics when GA is loaded (consent-gated)
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'csp_violation', {
         blocked_uri: event.blockedURI,

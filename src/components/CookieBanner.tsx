@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Cookie, Settings, X, Check } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface CookiePreferences {
   necessary: boolean;
@@ -8,10 +9,23 @@ interface CookiePreferences {
   preferences: boolean;
 }
 
+interface CookieBannerProps {
+  onNavigate?: (page: string) => void;
+}
+
 const COOKIE_CONSENT_KEY = 'biomath_cookie_consent';
 const COOKIE_PREFERENCES_KEY = 'biomath_cookie_preferences';
+const OPEN_PREFERENCES_EVENT = 'open-cookie-preferences';
 
-export default function CookieBanner() {
+const OPTIONAL_CATEGORIES = ['analytics', 'marketing', 'preferences'] as const;
+
+/** Lets any part of the app reopen the cookie choices after consent was stored. */
+export function openCookiePreferences() {
+  window.dispatchEvent(new CustomEvent(OPEN_PREFERENCES_EVENT));
+}
+
+export default function CookieBanner({ onNavigate }: CookieBannerProps) {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [preferences, setPreferences] = useState<CookiePreferences>({
@@ -31,6 +45,15 @@ export default function CookieBanner() {
         setPreferences(JSON.parse(savedPrefs));
       }
     }
+  }, []);
+
+  useEffect(() => {
+    const handleOpen = () => {
+      setShowSettings(true);
+      setIsVisible(true);
+    };
+    window.addEventListener(OPEN_PREFERENCES_EVENT, handleOpen);
+    return () => window.removeEventListener(OPEN_PREFERENCES_EVENT, handleOpen);
   }, []);
 
   const savePreferences = useCallback((prefs: CookiePreferences) => {
@@ -65,11 +88,20 @@ export default function CookieBanner() {
     savePreferences(preferences);
   }, [preferences, savePreferences]);
 
+  // The banner stays open while reading a policy so the choice is never skipped.
+  const goToPage = useCallback(
+    (page: string) => {
+      setShowSettings(false);
+      onNavigate?.(page);
+    },
+    [onNavigate]
+  );
+
   if (!isVisible) return null;
 
   return (
     <div className="fixed inset-0 bg-black/20 backdrop-blur-[2px] z-50 flex items-end justify-center pointer-events-none">
-      <div className="bg-white dark:bg-gray-900 rounded-t-2xl sm:rounded-2xl shadow-2xl max-w-2xl w-full border border-gray-200 dark:border-gray-700 overflow-hidden mb-0 sm:mb-4 pointer-events-auto">
+      <div className="bg-white dark:bg-[var(--bm-surface)] rounded-t-2xl sm:rounded-2xl shadow-2xl max-w-2xl w-full border border-gray-200 dark:border-gray-700 overflow-hidden mb-0 sm:mb-4 pointer-events-auto">
         {!showSettings ? (
           <>
             <div className="p-6 sm:p-8">
@@ -79,11 +111,10 @@ export default function CookieBanner() {
                 </div>
                 <div className="flex-1">
                   <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                    Cookie Preferences
+                    {t('cookies.title')}
                   </h2>
                   <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    We use cookies to enhance your experience, analyze site traffic, and personalize content.
-                    You can choose which cookies to accept below.
+                    {t('cookies.body')}
                   </p>
                 </div>
               </div>
@@ -91,76 +122,74 @@ export default function CookieBanner() {
               <div className="flex flex-col sm:flex-row gap-3 mt-6">
                 <button onClick={handleAcceptAll} className="flex-1 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-lg transition-colors inline-flex items-center justify-center gap-2">
                   <Check className="w-5 h-5" />
-                  Accept All
+                  {t('cookies.acceptAll')}
                 </button>
                 <button onClick={handleRejectAll} className="flex-1 px-6 py-3 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-medium rounded-lg transition-colors inline-flex items-center justify-center gap-2">
                   <X className="w-5 h-5" />
-                  Reject All
+                  {t('cookies.rejectAll')}
                 </button>
                 <button onClick={() => setShowSettings(true)} className="flex-1 px-6 py-3 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-750 text-gray-900 dark:text-white font-medium rounded-lg border border-gray-300 dark:border-gray-600 transition-colors inline-flex items-center justify-center gap-2">
                   <Settings className="w-5 h-5" />
-                  Customize
+                  {t('cookies.customize')}
                 </button>
               </div>
 
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
-                By clicking "Accept All", you agree to our{' '}
-                <a href="/privacy-policy" className="text-orange-600 hover:text-orange-700 underline">Privacy Policy</a>{' '}
-                and{' '}
-                <a href="/terms-of-service" className="text-orange-600 hover:text-orange-700 underline">Terms of Service</a>
+                {t('cookies.policiesNote')}
               </p>
+              <div className="mt-2 flex flex-wrap items-center justify-center gap-4">
+                <button
+                  onClick={() => goToPage('privacy-policy')}
+                  className="text-xs text-orange-600 hover:text-orange-700 underline"
+                >
+                  {t('legal.privacyPolicy.title')}
+                </button>
+                <button
+                  onClick={() => goToPage('terms-of-service')}
+                  className="text-xs text-orange-600 hover:text-orange-700 underline"
+                >
+                  {t('legal.termsOfService.title')}
+                </button>
+              </div>
             </div>
           </>
         ) : (
           <>
             <div className="p-6 sm:p-8">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Cookie Settings</h2>
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">{t('cookies.settingsTitle')}</h2>
 
               <div className="space-y-4">
                 <div className="flex items-start justify-between gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Necessary Cookies</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Required for the website to function properly. Cannot be disabled.</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{t('cookies.categories.necessary.title')}</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{t('cookies.categories.necessary.body')}</p>
                   </div>
                   <div className="flex-shrink-0">
                     <input type="checkbox" checked={true} disabled className="w-5 h-5 text-orange-600 rounded cursor-not-allowed opacity-50" />
                   </div>
                 </div>
 
-                <div className="flex items-start justify-between gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Analytics Cookies</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Help us understand how visitors interact with our website.</p>
+                {OPTIONAL_CATEGORIES.map((category) => (
+                  <div key={category} className="flex items-start justify-between gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{t(`cookies.categories.${category}.title`)}</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{t(`cookies.categories.${category}.body`)}</p>
+                    </div>
+                    <div className="flex-shrink-0">
+                      <input
+                        type="checkbox"
+                        checked={preferences[category]}
+                        onChange={(e) => setPreferences({ ...preferences, [category]: e.target.checked })}
+                        className="w-5 h-5 text-orange-600 rounded cursor-pointer"
+                      />
+                    </div>
                   </div>
-                  <div className="flex-shrink-0">
-                    <input type="checkbox" checked={preferences.analytics} onChange={(e) => setPreferences({ ...preferences, analytics: e.target.checked })} className="w-5 h-5 text-orange-600 rounded cursor-pointer" />
-                  </div>
-                </div>
-
-                <div className="flex items-start justify-between gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Marketing Cookies</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Used to deliver personalized advertisements relevant to you.</p>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <input type="checkbox" checked={preferences.marketing} onChange={(e) => setPreferences({ ...preferences, marketing: e.target.checked })} className="w-5 h-5 text-orange-600 rounded cursor-pointer" />
-                  </div>
-                </div>
-
-                <div className="flex items-start justify-between gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Preference Cookies</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Remember your settings and preferences for a better experience.</p>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <input type="checkbox" checked={preferences.preferences} onChange={(e) => setPreferences({ ...preferences, preferences: e.target.checked })} className="w-5 h-5 text-orange-600 rounded cursor-pointer" />
-                  </div>
-                </div>
+                ))}
               </div>
 
               <div className="flex gap-3 mt-6">
-                <button onClick={() => setShowSettings(false)} className="flex-1 px-6 py-3 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-medium rounded-lg transition-colors">Back</button>
-                <button onClick={handleSavePreferences} className="flex-1 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-lg transition-colors">Save Preferences</button>
+                <button onClick={() => setShowSettings(false)} className="flex-1 px-6 py-3 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-medium rounded-lg transition-colors">{t('cookies.back')}</button>
+                <button onClick={handleSavePreferences} className="flex-1 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-lg transition-colors">{t('cookies.save')}</button>
               </div>
             </div>
           </>

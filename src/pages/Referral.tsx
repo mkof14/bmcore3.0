@@ -1,12 +1,29 @@
-import { Copy, Mail, Share2, Users, DollarSign, Check } from 'lucide-react';
+import { Copy, Mail, Share2, Check } from 'lucide-react';
+import type { ReactNode } from 'react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import BackButton from '../components/BackButton';
 
 interface ReferralProps {
   onNavigate: (page: string) => void;
 }
 
+const STEPS = ['share', 'discount', 'credit'] as const;
+
+function stringList(value: unknown): string[] {
+  return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : [];
+}
+
+function SectionLabel({ children }: { children: ReactNode }) {
+  return (
+    <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-600 dark:text-orange-400">
+      {children}
+    </p>
+  );
+}
+
 export default function Referral({ onNavigate }: ReferralProps) {
+  const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
   const [email, setEmail] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);
@@ -17,7 +34,7 @@ export default function Referral({ onNavigate }: ReferralProps) {
   const stats = {
     totalReferred: 8,
     creditsEarned: 80,
-    activeReferrals: 6
+    activeReferrals: 6,
   };
 
   const handleCopy = () => {
@@ -33,241 +50,261 @@ export default function Referral({ onNavigate }: ReferralProps) {
     setTimeout(() => setShowSuccess(false), 3000);
   };
 
-  const shareToSocial = (platform: string) => {
-    const text = encodeURIComponent('Discover BioMath Core - a gentle wellness platform that helps you understand your body. Join me and get $5 off!');
+  const shareToSocial = (network: string) => {
+    const text = encodeURIComponent(t('programs.referral.shareText'));
     const url = encodeURIComponent(referralLink);
 
     const urls: { [key: string]: string } = {
       twitter: `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
       linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
-      whatsapp: `https://wa.me/?text=${text}%20${url}`
+      whatsapp: `https://wa.me/?text=${text}%20${url}`,
     };
 
-    window.open(urls[platform], '_blank', 'width=600,height=400');
+    window.open(urls[network], '_blank', 'width=600,height=400');
   };
 
+  const inputClassName =
+    'w-full border border-[var(--bm-border)] bg-page px-4 py-3 text-gray-900 transition-colors focus:border-orange-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/30 dark:text-neutral-100';
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/40 to-white pt-20 pb-16">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <BackButton onNavigate={onNavigate} />
+    <div className="min-h-screen bg-page transition-colors">
+      <div className="pt-20 pb-16">
+        <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
+          <BackButton onNavigate={onNavigate} />
 
-        <div className="text-center mb-14">
-          <span className="inline-flex items-center rounded-full border border-orange-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-orange-700">
-            Referral Program
-          </span>
-          <div className="mx-auto mt-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-orange-200 bg-white/90 shadow-md">
-            <Users className="h-8 w-8 text-orange-500" />
-          </div>
-          <h1 className="mt-6 text-4xl md:text-5xl font-semibold text-gray-900 mb-4">
-            Share Health, Earn Rewards
-          </h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            Invite friends to BioMath Core and earn credits with every successful referral
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <div className="relative bg-white/90 border border-slate-200 rounded-2xl p-6 overflow-hidden shadow-lg">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-medium text-gray-500">Total Referred</h3>
-              <Users className="h-5 w-5 text-orange-500" />
-            </div>
-            <p className="text-3xl font-semibold text-gray-900">{stats.totalReferred}</p>
-          </div>
-
-          <div className="relative bg-white/90 border border-slate-200 rounded-2xl p-6 overflow-hidden shadow-lg">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-medium text-gray-500">Credits Earned</h3>
-              <DollarSign className="h-5 w-5 text-orange-500" />
-            </div>
-            <p className="text-3xl font-semibold text-gray-900">${stats.creditsEarned}</p>
-          </div>
-
-          <div className="relative bg-white/90 border border-slate-200 rounded-2xl p-6 overflow-hidden shadow-lg">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-medium text-gray-500">Active Referrals</h3>
-              <Check className="h-5 w-5 text-orange-500" />
-            </div>
-            <p className="text-3xl font-semibold text-gray-900">{stats.activeReferrals}</p>
-          </div>
-        </div>
-
-        <div className="bg-white/90 border border-slate-200 rounded-3xl p-10 mb-12 text-gray-900 shadow-xl">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h2 className="text-2xl font-semibold mb-4">How It Works</h2>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-sm font-semibold">1</span>
-                  </div>
-                  <div>
-                    <p className="font-medium">Share your unique code</p>
-                    <p className="text-sm text-gray-500">Send it to friends via email or social media</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-sm font-semibold">2</span>
-                  </div>
-                  <div>
-                    <p className="font-medium">Friend gets $5 discount</p>
-                    <p className="text-sm text-gray-500">Applied instantly at signup</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-sm font-semibold">3</span>
-                  </div>
-                  <div>
-                    <p className="font-medium">You earn $10 credit</p>
-                    <p className="text-sm text-gray-500">Added instantly after confirmed signup</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-              <h3 className="text-lg font-semibold mb-4 text-gray-900">Reward Details</h3>
-              <div className="space-y-3 text-sm text-gray-600">
-                <div className="flex justify-between">
-                  <span>You earn per referral:</span>
-                  <span className="font-semibold text-gray-900">$10</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Friend gets discount:</span>
-                  <span className="font-semibold text-gray-900">$5</span>
-                </div>
-                <div className="border-t border-slate-200 pt-3 mt-3">
-                  <p className="text-gray-500">• No limits on referrals</p>
-                  <p className="text-gray-500">• Credits never expire</p>
-                  <p className="text-gray-500">• Use for subscriptions & upgrades</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white/90 border border-slate-200 rounded-3xl p-8 mb-8 shadow-xl">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">Your Referral Code</h2>
-
-          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 mb-6">
-            <div className="flex items-center justify-between mb-4">
-              <div>
-                <p className="text-sm text-gray-500 mb-1">Your permanent code:</p>
-                <p className="text-2xl font-mono font-semibold text-gray-900">{referralCode}</p>
-              </div>
-              <button
-                onClick={handleCopy}
-                className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all duration-300 shadow-lg shadow-orange-600/20"
-              >
-                {copied ? <Check className="h-5 w-5" /> : <Copy className="h-5 w-5" />}
-                <span>{copied ? 'Copied!' : 'Copy'}</span>
-              </button>
-            </div>
-
-            <div className="pt-4 border-t border-slate-200">
-              <p className="text-sm text-gray-500 mb-2">Share link:</p>
-              <p className="text-sm text-gray-700 font-mono break-all">{referralLink}</p>
-            </div>
-          </div>
-
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Send Invitation via Email</h3>
-            <form onSubmit={handleSendInvite} className="flex gap-3">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Friend's email address"
-                required
-                className="flex-1 px-4 py-3 border border-slate-200 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-              />
-              <button
-                type="submit"
-                className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all duration-300 shadow-lg shadow-orange-600/20"
-              >
-                <Mail className="h-5 w-5" />
-                <span>Send</span>
-              </button>
-            </form>
-            {showSuccess && (
-              <p className="mt-3 text-sm text-emerald-600 flex items-center space-x-2">
-                <Check className="h-4 w-4" />
-                <span>Invitation sent successfully!</span>
-              </p>
-            )}
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Share on Social Media</h3>
-            <div className="flex flex-wrap gap-3">
-              <button
-                onClick={() => shareToSocial('twitter')}
-                className="flex items-center space-x-2 px-4 py-2 bg-white border border-slate-200 text-gray-700 rounded-lg hover:border-orange-300 transition-all duration-300"
-              >
-                <Share2 className="h-5 w-5" />
-                <span>X</span>
-              </button>
-              <button
-                onClick={() => shareToSocial('facebook')}
-                className="flex items-center space-x-2 px-4 py-2 bg-white border border-slate-200 text-gray-700 rounded-lg hover:border-orange-300 transition-all duration-300"
-              >
-                <Share2 className="h-5 w-5" />
-                <span>Facebook</span>
-              </button>
-              <button
-                onClick={() => shareToSocial('linkedin')}
-                className="flex items-center space-x-2 px-4 py-2 bg-white border border-slate-200 text-gray-700 rounded-lg hover:border-orange-300 transition-all duration-300"
-              >
-                <Share2 className="h-5 w-5" />
-                <span>LinkedIn</span>
-              </button>
-              <button
-                onClick={() => shareToSocial('whatsapp')}
-                className="flex items-center space-x-2 px-4 py-2 bg-white border border-slate-200 text-gray-700 rounded-lg hover:border-orange-300 transition-all duration-300"
-              >
-                <Share2 className="h-5 w-5" />
-                <span>WhatsApp</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white/90 border border-slate-200 rounded-3xl p-8 shadow-lg">
-          <h2 className="text-xl font-semibold text-gray-900 mb-6">Program Details</h2>
-          <div className="grid md:grid-cols-2 gap-8 text-sm text-gray-600">
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-3">Eligibility</h3>
-              <ul className="space-y-1">
-                <li>• Friend must be a new user</li>
-                <li>• Code must be entered during signup</li>
-                <li>• Only one referral code per account</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-3">Fraud Protection</h3>
-              <ul className="space-y-1">
-                <li>• No self-referrals allowed</li>
-                <li>• No duplicate accounts</li>
-                <li>• Abusive behavior voids rewards</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-6 pt-6 border-t border-slate-200">
-            <p className="text-sm text-gray-600 text-center">
-              <span className="font-medium text-gray-900">Refer 10+ friends?</span> You may qualify for our{' '}
-              <button
-                onClick={() => onNavigate('ambassador')}
-                className="text-orange-600 hover:text-orange-500 hover:underline font-medium transition-colors"
-              >
-                Ambassador Program
-              </button>
-              {' '}with enhanced rewards
+          {/* Hero */}
+          <section className="border-b border-[var(--bm-border)] pb-14 pt-8 lg:pb-16 lg:pt-10">
+            <SectionLabel>{t('programs.referral.label')}</SectionLabel>
+            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
+              {t('programs.referral.heroTitle')}
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-lg">
+              {t('programs.referral.heroSubtitle')}
             </p>
-          </div>
+          </section>
+
+          {/* Stats */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('programs.referral.statsLabel')}</SectionLabel>
+            <dl className="grid gap-8 sm:grid-cols-3">
+              <div className="border-t border-[var(--bm-border)] pt-5">
+                <dt className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-500 dark:text-neutral-500">
+                  {t('programs.referral.totalReferred')}
+                </dt>
+                <dd className="mt-2 text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+                  {stats.totalReferred}
+                </dd>
+              </div>
+              <div className="border-t border-[var(--bm-border)] pt-5">
+                <dt className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-500 dark:text-neutral-500">
+                  {t('programs.referral.creditsEarned')}
+                </dt>
+                <dd className="mt-2 text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+                  ${stats.creditsEarned}
+                </dd>
+              </div>
+              <div className="border-t border-[var(--bm-border)] pt-5">
+                <dt className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-500 dark:text-neutral-500">
+                  {t('programs.referral.activeReferrals')}
+                </dt>
+                <dd className="mt-2 text-3xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+                  {stats.activeReferrals}
+                </dd>
+              </div>
+            </dl>
+          </section>
+
+          {/* How it works */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('programs.referral.howLabel')}</SectionLabel>
+            <div className="grid gap-12 lg:grid-cols-2 lg:gap-14">
+              <div>
+                <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+                  {t('programs.referral.howTitle')}
+                </h2>
+                <ol className="mt-8 space-y-6">
+                  {STEPS.map((step, index) => (
+                    <li key={step} className="flex gap-4">
+                      <span className="text-[11px] font-semibold tracking-[0.28em] text-orange-600 dark:text-orange-400">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <div>
+                        <p className="font-semibold text-gray-900 dark:text-neutral-100">
+                          {t(`programs.referral.steps.${step}.title`)}
+                        </p>
+                        <p className="mt-1 text-sm text-gray-600 dark:text-neutral-400">
+                          {t(`programs.referral.steps.${step}.body`)}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="border border-[var(--bm-border)] bg-[var(--bm-surface)] p-6 sm:p-8">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-100">
+                  {t('programs.referral.rewardTitle')}
+                </h3>
+                <dl className="mt-6 space-y-3 text-sm">
+                  <div className="flex justify-between gap-4 border-b border-[var(--bm-border)] pb-3">
+                    <dt className="text-gray-600 dark:text-neutral-400">
+                      {t('programs.referral.perReferral')}
+                    </dt>
+                    <dd className="font-semibold text-gray-900 dark:text-neutral-100">$10</dd>
+                  </div>
+                  <div className="flex justify-between gap-4 border-b border-[var(--bm-border)] pb-3">
+                    <dt className="text-gray-600 dark:text-neutral-400">
+                      {t('programs.referral.friendDiscount')}
+                    </dt>
+                    <dd className="font-semibold text-gray-900 dark:text-neutral-100">$5</dd>
+                  </div>
+                </dl>
+                <ul className="mt-4 space-y-1 text-sm text-gray-500 dark:text-neutral-500">
+                  {stringList(t('programs.referral.notes', { returnObjects: true })).map((note) => (
+                    <li key={note}>{note}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* Referral code + sharing */}
+          <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">
+            <SectionLabel>{t('programs.referral.shareLabel')}</SectionLabel>
+            <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+              {t('programs.referral.codeTitle')}
+            </h2>
+
+            <div className="mt-8 border border-[var(--bm-border)] bg-[var(--bm-surface)] p-6 sm:p-8">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gray-500 dark:text-neutral-500">
+                    {t('programs.referral.permanentCode')}
+                  </p>
+                  <p className="mt-2 font-mono text-2xl font-semibold text-gray-900 dark:text-neutral-100">
+                    {referralCode}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleCopy}
+                  className="inline-flex items-center gap-2 bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
+                >
+                  {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                  {copied ? t('programs.referral.copied') : t('programs.referral.copy')}
+                </button>
+              </div>
+
+              <div className="mt-6 border-t border-[var(--bm-border)] pt-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gray-500 dark:text-neutral-500">
+                  {t('programs.referral.shareLink')}
+                </p>
+                <p className="mt-2 break-all font-mono text-sm text-gray-700 dark:text-neutral-300">
+                  {referralLink}
+                </p>
+              </div>
+
+              <div className="mt-8 border-t border-[var(--bm-border)] pt-8">
+                <h3 className="text-base font-semibold text-gray-900 dark:text-neutral-100">
+                  {t('programs.referral.inviteTitle')}
+                </h3>
+                <form onSubmit={handleSendInvite} className="mt-4 flex flex-col gap-3 sm:flex-row">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={t('programs.referral.invitePlaceholder')}
+                    required
+                    className={inputClassName}
+                  />
+                  <button
+                    type="submit"
+                    className="inline-flex items-center justify-center gap-2 bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
+                  >
+                    <Mail className="h-4 w-4" />
+                    {t('programs.referral.send')}
+                  </button>
+                </form>
+                {showSuccess && (
+                  <p className="mt-3 flex items-center gap-2 text-sm text-emerald-600 dark:text-emerald-400">
+                    <Check className="h-4 w-4" />
+                    {t('programs.referral.inviteSent')}
+                  </p>
+                )}
+              </div>
+
+              <div className="mt-8 border-t border-[var(--bm-border)] pt-8">
+                <h3 className="text-base font-semibold text-gray-900 dark:text-neutral-100">
+                  {t('programs.referral.socialTitle')}
+                </h3>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {(['twitter', 'facebook', 'linkedin', 'whatsapp'] as const).map((network) => (
+                    <button
+                      key={network}
+                      type="button"
+                      onClick={() => shareToSocial(network)}
+                      className="inline-flex items-center gap-2 border border-[var(--bm-border)] bg-page px-4 py-2 text-sm text-gray-700 transition-colors hover:border-orange-500/40 dark:text-neutral-300"
+                    >
+                      <Share2 className="h-4 w-4" />
+                      {network === 'twitter'
+                        ? 'X'
+                        : network.charAt(0).toUpperCase() + network.slice(1)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Program details */}
+          <section className="py-14 lg:py-16">
+            <SectionLabel>{t('programs.referral.detailsLabel')}</SectionLabel>
+            <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100">
+              {t('programs.referral.detailsTitle')}
+            </h2>
+            <div className="mt-10 grid gap-10 sm:grid-cols-2">
+              <div>
+                <h3 className="text-base font-semibold text-gray-900 dark:text-neutral-100">
+                  {t('programs.referral.eligibility')}
+                </h3>
+                <ul className="mt-3 space-y-1 text-sm text-gray-600 dark:text-neutral-400">
+                  {stringList(t('programs.referral.eligibilityItems', { returnObjects: true })).map(
+                    (item) => (
+                      <li key={item}>{item}</li>
+                    )
+                  )}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-gray-900 dark:text-neutral-100">
+                  {t('programs.referral.fraud')}
+                </h3>
+                <ul className="mt-3 space-y-1 text-sm text-gray-600 dark:text-neutral-400">
+                  {stringList(t('programs.referral.fraudItems', { returnObjects: true })).map(
+                    (item) => (
+                      <li key={item}>{item}</li>
+                    )
+                  )}
+                </ul>
+              </div>
+            </div>
+
+            <p className="mt-10 border-t border-[var(--bm-border)] pt-8 text-center text-sm text-gray-600 dark:text-neutral-400">
+              <span className="font-medium text-gray-900 dark:text-neutral-100">
+                {t('programs.referral.upgradeQuestion')}
+              </span>{' '}
+              {t('programs.referral.upgradePrefix')}{' '}
+              <button
+                type="button"
+                onClick={() => onNavigate('ambassador')}
+                className="font-medium text-orange-700 transition-colors hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300"
+              >
+                {t('programs.referral.upgradeLink')}
+              </button>{' '}
+              {t('programs.referral.upgradeSuffix')}
+            </p>
+          </section>
         </div>
       </div>
     </div>

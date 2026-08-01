@@ -1,0 +1,129 @@
+{
+  "science": {
+    "seo": {
+      "title": "Ciencia e investigación: modelado biomatemático de la salud",
+      "description": "Conoce la base científica de BioMath Core: modelado biomatemático, integración de múltiples señales, análisis genómico y analítica predictiva para una inteligencia de salud personalizada."
+    },
+    "hero": {
+      "label": "Ciencia",
+      "title": "La ciencia detrás de BioMath Core",
+      "body": "BioMath Core se apoya en décadas de investigación en biología de sistemas, biomatemáticas y modelado fisiológico, aplicadas a través del Human Data Model."
+    },
+    "pillars": {
+      "label": "Fundamentos",
+      "title": "Pilares científicos",
+      "subtitle": "Las disciplinas que dan forma a cada modelo y a cada recomendación.",
+      "items": [
+        {
+          "title": "Modelado biomatemático",
+          "body": "Las ecuaciones diferenciales y la biología de sistemas modelan la dinámica fisiológica, no solo el reconocimiento de patrones."
+        },
+        {
+          "title": "Integración de múltiples señales",
+          "body": "Variabilidad de la frecuencia cardíaca, patrones de actividad, arquitectura del sueño y marcadores metabólicos unificados en un mismo marco."
+        },
+        {
+          "title": "Análisis genómico",
+          "body": "Las predisposiciones genéticas a la inflamación, la respuesta al estrés y la eficiencia metabólica alimentan el modelo."
+        },
+        {
+          "title": "Analítica predictiva",
+          "body": "Se proyectan trayectorias de salud a partir de los patrones actuales y del historial de datos."
+        },
+        {
+          "title": "Integración de laboratorio",
+          "body": "Biomarcadores como el cortisol, la glucosa, los marcadores de inflamación y los niveles hormonales se incorporan directamente."
+        },
+        {
+          "title": "Basado en evidencia",
+          "body": "Cada modelo se apoya en investigación revisada por pares y se valida frente a resultados clínicos."
+        }
+      ]
+    },
+    "models": {
+      "label": "Modelos",
+      "title": "Modelos matemáticos",
+      "subtitle": "A diferencia de los enfoques de caja negra, nuestros modelos son interpretables: cada predicción puede rastrearse hasta los factores que la impulsan.",
+      "simplifiedForm": "Forma simplificada",
+      "interpretationLabel": "Interpretación",
+      "items": [
+        {
+          "name": "Dinámica de estrés y recuperación",
+          "description": "Modela la relación entre la activación simpática, los patrones de VFC y la capacidad de recuperación.",
+          "interpretation": "El estrés se acumula según las entradas (I) y se disipa según la recuperación (R)."
+        },
+        {
+          "name": "Estimación del estado metabólico",
+          "description": "Estima la sensibilidad a la insulina, la regulación de la glucosa y la flexibilidad metabólica a partir de datos de actividad y nutrición.",
+          "interpretation": "El estado metabólico es función de la glucosa (G), la actividad (A), la nutrición (N) y las hormonas (H)."
+        },
+        {
+          "name": "Carga inflamatoria",
+          "description": "Cuantifica la inflamación sistémica a partir de la calidad del sueño, el estrés, la dieta y los marcadores genéticos.",
+          "interpretation": "La inflamación es una suma ponderada de factores de estilo de vida (f) más la contribución genética (g)."
+        },
+        {
+          "name": "Disponibilidad de energía",
+          "description": "Modela la energía disponible para el rendimiento físico y cognitivo según el sueño, la nutrición y la recuperación.",
+          "interpretation": "La energía varía según el sueño (S), la nutrición (N) y el trabajo realizado (W)."
+        }
+      ]
+    },
+    "pipeline": {
+      "label": "Proceso",
+      "title": "De los datos al conocimiento",
+      "subtitle": "Cómo las señales en bruto se convierten en información de salud legible.",
+      "items": [
+        {
+          "title": "Recopilación de datos",
+          "body": "Los flujos continuos de dispositivos, los cuestionarios periódicos, los resultados de laboratorio y los informes genéticos se normalizan y se alinean en el tiempo."
+        },
+        {
+          "title": "Procesamiento del modelo",
+          "body": "Los modelos biomatemáticos estiman estados fisiológicos, proyectan trayectorias e identifican patrones."
+        },
+        {
+          "title": "Orientación accionable",
+          "body": "Los resultados se traducen en recomendaciones claras: qué está ocurriendo, por qué y qué considerar a continuación."
+        }
+      ]
+    },
+    "approach": {
+      "label": "Enfoque",
+      "title": "¿Por qué biomatemáticas?",
+      "items": [
+        {
+          "title": "Explicabilidad",
+          "body": "A diferencia de las redes neuronales, los modelos matemáticos pueden examinarse y comprenderse."
+        },
+        {
+          "title": "Estabilidad",
+          "body": "Los modelos no se desvían ni requieren reentrenamiento constante con nuevos datos."
+        },
+        {
+          "title": "Eficiencia",
+          "body": "Necesitan menos datos que los enfoques de aprendizaje profundo."
+        },
+        {
+          "title": "Base biológica",
+          "body": "Los modelos reflejan mecanismos fisiológicos reales, no solo correlaciones."
+        }
+      ]
+    },
+    "research": {
+      "label": "Investigación",
+      "title": "Investigación publicada",
+      "body": "Nuestro equipo científico ha publicado ampliamente en revistas revisadas por pares sobre temas como:",
+      "topics": [
+        "Biología de sistemas del estrés y la recuperación",
+        "Modelado matemático de la dinámica metabólica",
+        "Variabilidad de la frecuencia cardíaca y función autonómica",
+        "Modelado predictivo en medicina de precisión"
+      ]
+    },
+    "closing": {
+      "title": "Bienestar respaldado por la ciencia",
+      "body": "BioMath Core lleva el modelado biomatemático riguroso a la prevención del día a día."
+    }
+  }
+}

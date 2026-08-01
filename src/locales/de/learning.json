@@ -1,0 +1,129 @@
+{
+  "learning": {
+    "title": "Lernzentrum",
+    "subtitle": "Verstehen Sie Ihren Gesundheitsweg durch ruhige Erklärungen, einfache Darstellungen und eine Begleitung, die Sicherheit gibt",
+    "searchPlaceholder": "Kategorien, Leistungen oder Gesundheitsbegriffe suchen...",
+    "gettingStarted": "Erste Schritte",
+    "sections": {
+      "pricing": {
+        "title": "Preise und Tarife",
+        "body": "Wählen Sie aus flexiblen Abostufen, die zu Ihrem Wellness-Weg passen. Alle Tarife enthalten die Kernleistungen; höhere Stufen schalten spezialisierte Auswertungen, Geräteanbindungen und erweiterte KI-Begleitung frei."
+      },
+      "member": {
+        "title": "Mitgliederbereich",
+        "body": "Ihr persönliches Gesundheits-Dashboard. Verfolgen Sie Ihren Fortschritt über alle Leistungen, prüfen Sie Berichte, verwalten Sie Geräteverbindungen, setzen Sie Ziele und sehen Sie Ihre gesamte Gesundheitschronik an einem sicheren Ort."
+      },
+      "multiModel": {
+        "title": "Multi-Modell-Berichte",
+        "body": "Lassen Sie zwei KI-Perspektiven gleichzeitig laufen und erhalten Sie eine gemeinsame Zusammenfassung. So vergleichen Sie Blickwinkel und kommen zu einer klaren Schlussfolgerung."
+      },
+      "aiGuide": {
+        "title": "Leitfaden zu den KI-Systemen",
+        "body": "Erfahren Sie, wie die KI-Verarbeitung funktioniert, wie Gedächtnistiefe entsteht und wie Wissens-Momentaufnahmen jeden Bericht prägen."
+      },
+      "services": {
+        "title": "Leitfaden zu den Leistungen",
+        "body": "Jede der {{count}} Leistungen enthält eine klare Beschreibung, einen geführten Auswertungsweg und umsetzbare Empfehlungen. Aktivieren Sie nur, was jetzt für Sie wichtig ist – der vollständige Katalog mit Beschreibungen steht unten."
+      },
+      "categories": {
+        "title": "Kategorien",
+        "body": "Entdecken Sie {{categories}} Gesundheitskategorien mit {{count}} Leistungen. Jede Kategorie widmet sich einem bestimmten Bereich des Wohlbefindens – von der Beobachtung kritischer Gesundheit bis zu Seniorenbetreuung, Langlebigkeit und seelischem Wohlbefinden."
+      },
+      "signalHub": {
+        "title": "Signal-Hub und Aktionspläne",
+        "body": "Prüfen Sie Signalstärke, Wissenstiefe und die Reife Ihrer Berichte. Verwandeln Sie Erkenntnisse anschließend in ruhige Aktionspläne, Schritt für Schritt."
+      }
+    },
+    "viewPlans": "Tarife ansehen →",
+    "goToMember": "Zum Mitgliederbereich →",
+    "browseServices": "Alle Leistungen ansehen →",
+    "ai": {
+      "title": "KI-Systeme 101",
+      "intro": "Ein klarer, ruhiger Überblick darüber, wie BioMath Core Rohsignale mit Multi-Modell-Intelligenz in einen gemeinsamen Bericht verwandelt.",
+      "step": "Schritt {{number}}",
+      "steps": {
+        "intake": {
+          "title": "Signalaufnahme",
+          "desc": "Geräte, Fragebögen, Notizen, Berichte"
+        },
+        "snapshot": {
+          "title": "Wissens-Momentaufnahme",
+          "desc": "Kontextzusammenfassung + Verlaufstiefe"
+        },
+        "analysis": {
+          "title": "Multi-Modell-Analyse",
+          "desc": "Zwei KI-Perspektiven parallel"
+        },
+        "report": {
+          "title": "Gemeinsamer Bericht",
+          "desc": "Zusammengeführte Befunde + Prioritäten"
+        },
+        "plan": {
+          "title": "Aktionsplan",
+          "desc": "Klare Schritte für 7, 14 und 30 Tage"
+        }
+      },
+      "viewExample": "Beispielbericht ansehen",
+      "exploreSecondOpinion": "Zweitmeinung entdecken",
+      "exampleLabel": "Beispielbericht",
+      "unifiedSummary": "Gemeinsame Zusammenfassung",
+      "exampleTitle": "Tägliche Gesundheitsintelligenz",
+      "exampleBody": "Ausgeglichene Energie bei leichter Erholungslast. Die Schlafqualität verbesserte sich gegenüber der Vorwoche um 12 %.",
+      "quality": "Qualität",
+      "coverage": "Abdeckung",
+      "consistency": "Beständigkeit",
+      "planLabel": "Vorschau des Aktionsplans",
+      "planTitle": "7-Tage-Neustart",
+      "planItems": [
+        "Schlafziel: 7 Std. 30 Min. mit Abendroutine",
+        "Erholung: 1 Tag mit geringer Intensität zwischen den Einheiten",
+        "Flüssigkeit: 2,2 l täglich, beginnend am Morgen"
+      ],
+      "focusTag": "Schwerpunkt: Balance des Nervensystems",
+      "secondOpinionLabel": "Vorschau der Zweitmeinung",
+      "modelA": "Modell A · Physiologie",
+      "modelATitle": "Erhöhte Erholungslast",
+      "modelABody": "Schlafdefizit und ein Abfall der HRV sprechen für ein Erholungsfenster von 48 Stunden.",
+      "modelB": "Modell B · Verhalten",
+      "modelBTitle": "Schwankende Routine",
+      "modelBBody": "Späte Mahlzeiten und Verschiebungen im Tagesablauf gehen mit Energieeinbrüchen einher.",
+      "unifiedTitle": "Erholung und Rhythmus stabilisieren",
+      "unifiedBody": "Achten Sie auf einen regelmäßigen Schlaf und legen Sie für 2 Einheiten einen leichteren Trainingstag ein.",
+      "howToRead": "So lesen Sie Multi-Modell-Berichte: Vergleichen Sie Modell A und Modell B für ergänzende Blickwinkel und nutzen Sie die gemeinsame Zusammenfassung als einzige Handlungsgrundlage."
+    },
+    "categoriesTitle": "Gesundheitskategorien",
+    "categoriesIntro": "Alle {{categories}} Kategorien und {{count}} Leistungen aus dem laufenden Katalog – öffnen Sie eine Kategorie, um die Beschreibungen zu lesen.",
+    "servicesCount": "{{count}} Leistungen",
+    "openInCatalog": "Im Leistungskatalog öffnen →",
+    "guide": {
+      "title": "Health Guide",
+      "body": "Sie wissen nicht, wo Sie anfangen sollen? Der Health Guide hilft Ihnen, passende Kategorien und Leistungen für Ihren Bedarf zu finden.",
+      "cta": "Geführte Tour starten"
+    },
+    "secondOpinion": {
+      "title": "Zweitmeinungs-Engine",
+      "body": "Erstellen Sie zwei gleichzeitige Berichte und eine gemeinsame Zusammenfassung mit Prioritäten, Klarheit und einem Aktionsplan.",
+      "cta": "Zweitmeinung entdecken →"
+    },
+    "quickHelp": {
+      "title": "Schnelle Hilfe",
+      "cta": "Zu den FAQ →"
+    },
+    "referenceTitle": "Vollständige Leistungsübersicht",
+    "referenceSubtitle": "Durchsuchbares Verzeichnis aller {{categories}} Kategorien und {{count}} Leistungsbeschreibungen.",
+    "glossaryTitle": "Gesundheitsglossar",
+    "glossaryIntro": "Wichtige wissenschaftliche und gesundheitliche Begriffe, einfach und praxisnah erklärt",
+    "whyItMatters": "Warum es wichtig ist:",
+    "howItHelps": "Wie es hilft:",
+    "philosophy": {
+      "title": "Unsere Bildungsphilosophie",
+      "body": "Das Lernzentrum vermittelt Wissen durch Zuversicht, nicht durch Überforderung. Wir schließen die Lücke zwischen Daten und Alltagsentscheidungen. Keine Vorträge – nur Klarheit. Unser Ton ist ruhig, wissenschaftlich fundiert, menschlich und nicht medizinisch.",
+      "whatTitle": "Was wir tun",
+      "whatBody": "Leistungen und ihren Zweck klar erklären",
+      "howTitle": "Wie wir helfen",
+      "howBody": "Sie zur passenden Unterstützung führen",
+      "goalTitle": "Unser Ziel",
+      "goalBody": "Ihre Sicherheit stärken, nicht Ihre Verwirrung"
+    }
+  }
+}

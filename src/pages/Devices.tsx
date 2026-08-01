@@ -1,15 +1,68 @@
 import { useState, useEffect } from 'react';
-import { Watch, Activity, Droplet, Heart, Scale, Gauge, CheckCircle, RefreshCw, Trash2, Info, Shield, TrendingUp, Zap, Clock, BookOpen } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import {
+  Watch,
+  Activity,
+  Droplet,
+  Heart,
+  Scale,
+  Gauge,
+  CheckCircle,
+  RefreshCw,
+  Trash2,
+  Info,
+  Shield,
+  TrendingUp,
+  Zap,
+  Clock,
+  BookOpen,
+  Moon,
+} from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import type { DeviceBrand, UserDevice } from '../types/database';
 import DeviceEducation from '../components/DeviceEducation';
-import { ConnectionHint, OpeningHint, SuccessConnectionHint, WhyDevicesHint, ErrorRecoveryHint } from '../components/DeviceHints';
+import {
+  ConnectionHint,
+  OpeningHint,
+  SuccessConnectionHint,
+  WhyDevicesHint,
+  ErrorRecoveryHint,
+} from '../components/DeviceHints';
+import {
+  deviceCatalog,
+  deviceSignalKeys,
+  type DeviceCatalogCategoryId,
+} from '../data/deviceCatalog';
 
 interface DevicesProps {
   onNavigate: (page: string) => void;
 }
 
-export default function Devices({ onNavigate }: DevicesProps) {
+function categoryIcon(category: string) {
+  switch (category) {
+    case 'smartwatch':
+      return <Watch className="h-6 w-6" />;
+    case 'fitness_tracker':
+      return <Activity className="h-6 w-6" />;
+    case 'smart_ring':
+      return <Heart className="h-6 w-6" />;
+    case 'recovery':
+      return <Activity className="h-6 w-6" />;
+    case 'cgm':
+      return <Droplet className="h-6 w-6" />;
+    case 'blood_pressure':
+      return <Gauge className="h-6 w-6" />;
+    case 'body_composition':
+      return <Scale className="h-6 w-6" />;
+    case 'sleep_home':
+      return <Moon className="h-6 w-6" />;
+    default:
+      return <Activity className="h-6 w-6" />;
+  }
+}
+
+export default function Devices(_props: DevicesProps) {
+  const { t } = useTranslation();
   const [brands, setBrands] = useState<DeviceBrand[]>([]);
   const [userDevices, setUserDevices] = useState<UserDevice[]>([]);
   const [selectedBrand, setSelectedBrand] = useState<DeviceBrand | null>(null);
@@ -17,6 +70,9 @@ export default function Devices({ onNavigate }: DevicesProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [showRecommendations, setShowRecommendations] = useState(false);
   const [showEducation, setShowEducation] = useState(false);
+  const [expandedCategory, setExpandedCategory] = useState<DeviceCatalogCategoryId | null>(
+    'smartwatch',
+  );
 
   useEffect(() => {
     loadBrands();
@@ -34,7 +90,9 @@ export default function Devices({ onNavigate }: DevicesProps) {
   };
 
   const loadUserDevices = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
     if (!user) return;
 
     const { data } = await supabase
@@ -43,7 +101,7 @@ export default function Devices({ onNavigate }: DevicesProps) {
       .eq('user_id', user.id)
       .order('connected_at', { ascending: false });
 
-    if (data) setUserDevices(data as any);
+    if (data) setUserDevices(data as UserDevice[]);
   };
 
   const handleSelectBrand = (brand: DeviceBrand) => {
@@ -57,8 +115,13 @@ export default function Devices({ onNavigate }: DevicesProps) {
     setIsLoading(true);
 
     setTimeout(async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user) {
+        setIsLoading(false);
+        return;
+      }
 
       const { data } = await supabase
         .from('user_devices')
@@ -69,7 +132,7 @@ export default function Devices({ onNavigate }: DevicesProps) {
           status: 'connected',
           sync_frequency: 'daily',
           last_sync_at: new Date().toISOString(),
-          last_sync_status: 'success'
+          last_sync_status: 'success',
         })
         .select()
         .single();
@@ -82,16 +145,14 @@ export default function Devices({ onNavigate }: DevicesProps) {
           setSelectedBrand(null);
           loadUserDevices();
         }, 4000);
+      } else {
+        setIsLoading(false);
       }
     }, 2000);
   };
 
   const handleDisconnect = async (deviceId: string) => {
-    await supabase
-      .from('user_devices')
-      .update({ status: 'disconnected' })
-      .eq('id', deviceId);
-
+    await supabase.from('user_devices').update({ status: 'disconnected' }).eq('id', deviceId);
     loadUserDevices();
   };
 
@@ -101,134 +162,96 @@ export default function Devices({ onNavigate }: DevicesProps) {
       .update({
         last_sync_at: new Date().toISOString(),
         last_sync_status: 'success',
-        error_count: 0
+        error_count: 0,
       })
       .eq('id', deviceId);
 
     loadUserDevices();
   };
 
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case 'smartwatch':
-        return <Watch className="h-6 w-6" />;
-      case 'fitness_tracker':
-        return <Activity className="h-6 w-6" />;
-      case 'smart_ring':
-        return <Heart className="h-6 w-6" />;
-      case 'cgm':
-        return <Droplet className="h-6 w-6" />;
-      case 'blood_pressure':
-        return <Gauge className="h-6 w-6" />;
-      case 'body_composition':
-        return <Scale className="h-6 w-6" />;
-      default:
-        return <Activity className="h-6 w-6" />;
-    }
-  };
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'connected':
-        return 'text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30';
+        return 'text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/30';
       case 'error':
       case 'token_expired':
-        return 'text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30';
+        return 'text-red-700 dark:text-red-400 bg-red-100 dark:bg-red-900/30';
       case 'disconnected':
-        return 'text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-900/30';
+        return 'text-gray-700 dark:text-neutral-300 bg-page border border-[var(--bm-border)]';
       default:
-        return 'text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-900/30';
+        return 'text-gray-700 dark:text-neutral-300 bg-page border border-[var(--bm-border)]';
     }
   };
 
-  const getDeviceRecommendation = (useCase: string) => {
-    const recommendations: Record<string, string> = {
-      sleep: 'Oura Ring or WHOOP',
-      activity: 'Apple Watch, Fitbit, or Samsung',
-      glucose: 'Dexcom or FreeStyle Libre',
-      blood_pressure: 'Omron',
-      long_term: 'Rings and Wristbands',
-      universal: 'Apple Watch'
-    };
-    return recommendations[useCase] || '';
-  };
+  const shellClass =
+    'min-h-screen bg-page pt-16 transition-colors';
 
   if (step === 'explain' && selectedBrand) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/40 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors pt-16">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-xl dark:border-gray-800 dark:bg-gray-900/60">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-4">
-                {getCategoryIcon(selectedBrand.category)}
+      <div className={shellClass}>
+        <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-[var(--bm-border)] bg-surface p-8 shadow-sm">
+            <div className="mb-8 text-center">
+              <div className="mb-4 inline-flex h-20 w-20 items-center justify-center rounded-full bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
+                {categoryIcon(selectedBrand.category)}
               </div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+              <h2 className="mb-2 text-3xl font-bold text-gray-900 dark:text-neutral-100">
                 {selectedBrand.name}
               </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                Step 2 of 3 — Explanation
-              </p>
+              <p className="text-gray-600 dark:text-neutral-300">{t('devicesPage.explain.step')}</p>
             </div>
 
-            <div className="bg-blue-50/80 dark:bg-blue-900/20 rounded-2xl p-6 mb-6 border border-blue-200 dark:border-blue-800">
-              <div className="flex items-start space-x-3 mb-4">
-                <Shield className="h-6 w-6 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1" />
+            <div className="mb-6 rounded-2xl border border-orange-200 bg-orange-50/80 p-6 dark:border-orange-800 dark:bg-orange-950/20">
+              <div className="mb-4 flex items-start space-x-3">
+                <Shield className="mt-1 h-6 w-6 flex-shrink-0 text-orange-600 dark:text-orange-400" />
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                    How It Works
+                  <h3 className="mb-2 font-semibold text-gray-900 dark:text-neutral-100">
+                    {t('devicesPage.explain.howTitle')}
                   </h3>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
-                    We only request access to health metrics. We don't see or store logins and passwords.
-                    You can disconnect the device at any time.
+                  <p className="mb-3 text-sm text-gray-700 dark:text-neutral-300">
+                    {t('devicesPage.explain.howBody')}
                   </p>
                 </div>
               </div>
 
               <div className="space-y-3">
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700 dark:text-gray-300">
-                    The app automatically collects data from your device
-                  </span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700 dark:text-gray-300">
-                    We interpret trends and suggest how to improve your health
-                  </span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700 dark:text-gray-300">
-                    Data is used in reports and AI recommendations
-                  </span>
-                </div>
+                {(['point1', 'point2', 'point3'] as const).map((key) => (
+                  <div key={key} className="flex items-start space-x-3">
+                    <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-orange-600 dark:text-orange-400" />
+                    <span className="text-sm text-gray-700 dark:text-neutral-300">
+                      {t(`devicesPage.explain.${key}`)}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="bg-slate-50/80 dark:bg-gray-900/40 rounded-2xl border border-slate-200 dark:border-gray-800 p-4 mb-6">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                <strong className="text-gray-900 dark:text-white">Privacy:</strong> You have full control over the connection.
-                We don't know your device password and cannot control it. We only receive the health data
-                you have authorized to share.
+            <div className="mb-6 rounded-2xl border border-[var(--bm-border)] bg-page p-4">
+              <p className="text-sm text-gray-600 dark:text-neutral-300">
+                <strong className="text-gray-900 dark:text-neutral-100">
+                  {t('devicesPage.explain.privacyLabel')}
+                </strong>{' '}
+                {t('devicesPage.explain.privacyBody')}
               </p>
             </div>
 
             <div className="flex space-x-4">
               <button
+                type="button"
                 onClick={() => setStep('authorize')}
-                className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors"
+                className="flex-1 rounded-lg bg-orange-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-orange-500"
               >
-                Continue
+                {t('devicesPage.explain.continue')}
               </button>
               <button
+                type="button"
                 onClick={() => {
                   setStep('select');
                   setSelectedBrand(null);
                 }}
-                className="px-6 py-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-semibold rounded-lg transition-colors"
+                className="rounded-lg border border-[var(--bm-border)] bg-page px-6 py-3 font-semibold text-gray-900 transition-colors hover:bg-surface dark:text-neutral-100"
               >
-                Back
+                {t('devicesPage.explain.back')}
               </button>
             </div>
           </div>
@@ -239,44 +262,44 @@ export default function Devices({ onNavigate }: DevicesProps) {
 
   if (step === 'authorize' && selectedBrand) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/40 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors pt-16">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-xl dark:border-gray-800 dark:bg-gray-900/60">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full mb-4">
+      <div className={shellClass}>
+        <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-[var(--bm-border)] bg-surface p-8 shadow-sm">
+            <div className="mb-8 text-center">
+              <div className="mb-4 inline-flex h-20 w-20 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
                 <CheckCircle className="h-12 w-12 text-green-600 dark:text-green-400" />
               </div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                Grant Access
+              <h2 className="mb-2 text-3xl font-bold text-gray-900 dark:text-neutral-100">
+                {t('devicesPage.authorize.title')}
               </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                Step 3 of 3 — Authorization
-              </p>
+              <p className="text-gray-600 dark:text-neutral-300">{t('devicesPage.authorize.step')}</p>
             </div>
 
-            <div className="text-center mb-8">
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-                Click "Grant Access" to allow the device to automatically transmit metrics.
+            <div className="mb-8 text-center">
+              <p className="mb-6 text-lg text-gray-700 dark:text-neutral-300">
+                {t('devicesPage.authorize.intro')}
               </p>
 
-              <div className="bg-blue-50/80 dark:bg-blue-900/20 rounded-2xl p-4 mb-6 border border-blue-200 dark:border-blue-800">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Sync Frequency Settings</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                  Default: daily in the morning. You can change in settings:
+              <div className="mb-6 rounded-2xl border border-[var(--bm-border)] bg-page p-4 text-left">
+                <h4 className="mb-2 font-semibold text-gray-900 dark:text-neutral-100">
+                  {t('devicesPage.authorize.syncTitle')}
+                </h4>
+                <p className="mb-3 text-sm text-gray-600 dark:text-neutral-300">
+                  {t('devicesPage.authorize.syncBody')}
                 </p>
-                <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1 text-left max-w-md mx-auto">
+                <ul className="mx-auto max-w-md space-y-1 text-sm text-gray-700 dark:text-neutral-300">
                   <li className="flex items-center space-x-2">
-                    <Clock className="h-4 w-4 text-blue-600" />
-                    <span>Daily (recommended)</span>
+                    <Clock className="h-4 w-4 text-orange-600 dark:text-orange-400" />
+                    <span>{t('devicesPage.authorize.daily')}</span>
                   </li>
                   <li className="flex items-center space-x-2">
-                    <RefreshCw className="h-4 w-4 text-blue-600" />
-                    <span>Multiple times per day</span>
+                    <RefreshCw className="h-4 w-4 text-orange-600 dark:text-orange-400" />
+                    <span>{t('devicesPage.authorize.multiple')}</span>
                   </li>
                   {selectedBrand.supports_realtime && (
                     <li className="flex items-center space-x-2">
-                      <Zap className="h-4 w-4 text-green-600" />
-                      <span>Real-time (available for your device)</span>
+                      <Zap className="h-4 w-4 text-green-600 dark:text-green-400" />
+                      <span>{t('devicesPage.authorize.realtime')}</span>
                     </li>
                   )}
                 </ul>
@@ -285,18 +308,20 @@ export default function Devices({ onNavigate }: DevicesProps) {
 
             <div className="flex space-x-4">
               <button
+                type="button"
                 onClick={handleConnect}
                 disabled={isLoading}
-                className="flex-1 px-6 py-3 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-green-500 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {isLoading ? 'Connecting...' : 'Grant Access'}
+                {isLoading ? t('devicesPage.authorize.connecting') : t('devicesPage.authorize.grant')}
               </button>
               <button
+                type="button"
                 onClick={() => setStep('explain')}
                 disabled={isLoading}
-                className="px-6 py-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-semibold rounded-lg transition-colors"
+                className="rounded-lg border border-[var(--bm-border)] bg-page px-6 py-3 font-semibold text-gray-900 transition-colors hover:bg-surface dark:text-neutral-100"
               >
-                Back
+                {t('devicesPage.authorize.back')}
               </button>
             </div>
           </div>
@@ -307,28 +332,27 @@ export default function Devices({ onNavigate }: DevicesProps) {
 
   if (step === 'success') {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/40 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors pt-16 flex items-center justify-center">
-        <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-xl dark:border-gray-800 dark:bg-gray-900/60">
-            <div className="text-center mb-6">
-              <div className="inline-flex items-center justify-center w-24 h-24 bg-green-100 dark:bg-green-900/30 rounded-full mb-6">
+      <div className={`${shellClass} flex items-center justify-center`}>
+        <div className="mx-auto max-w-md px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-[var(--bm-border)] bg-surface p-8 shadow-sm">
+            <div className="mb-6 text-center">
+              <div className="mb-6 inline-flex h-24 w-24 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
                 <CheckCircle className="h-16 w-16 text-green-600 dark:text-green-400" />
               </div>
-              <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-4">
-                Device Connected!
+              <h2 className="mb-4 text-3xl font-semibold text-gray-900 dark:text-neutral-100">
+                {t('devicesPage.success.title')}
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-                From now on, BioMath Core will update metrics and use them in recommendations and reports.
+              <p className="mb-6 text-lg text-gray-600 dark:text-neutral-300">
+                {t('devicesPage.success.body')}
               </p>
             </div>
 
             <div className="space-y-4">
               <SuccessConnectionHint />
-              <div className="bg-blue-50/80 dark:bg-blue-900/20 rounded-2xl p-4 border border-blue-200 dark:border-blue-800">
-                <TrendingUp className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-2" />
-                <p className="text-sm text-gray-700 dark:text-gray-300 text-center">
-                  <strong>Tip:</strong> If you use the device regularly, the platform will be able to track not just what
-                  happened today, but your direction — whether your condition is improving, declining, or stable.
+              <div className="rounded-2xl border border-[var(--bm-border)] bg-page p-4">
+                <TrendingUp className="mx-auto mb-2 h-8 w-8 text-orange-600 dark:text-orange-400" />
+                <p className="text-center text-sm text-gray-700 dark:text-neutral-300">
+                  <strong>{t('devicesPage.success.tipLabel')}</strong> {t('devicesPage.success.tipBody')}
                 </p>
               </div>
             </div>
@@ -339,17 +363,17 @@ export default function Devices({ onNavigate }: DevicesProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-orange-50/40 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="mb-8">
-          <span className="inline-flex items-center rounded-full border border-orange-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-orange-700 dark:border-white/15 dark:bg-gray-900/60 dark:text-orange-300">
-            Device Network
+    <div className={shellClass}>
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mb-10">
+          <span className="inline-flex items-center rounded-full border border-orange-200 bg-surface px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-orange-700 dark:border-orange-500/30 dark:text-orange-300">
+            {t('devicesPage.badge')}
           </span>
-          <h1 className="mt-5 text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-4">
-            My Devices
+          <h1 className="mt-5 mb-4 text-4xl font-semibold text-gray-900 dark:text-neutral-100 md:text-5xl">
+            {t('devicesPage.title')}
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-            Connect a device so BioMath Core can track your metrics and explain their meaning.
+          <p className="mb-6 max-w-3xl text-lg text-gray-600 dark:text-neutral-300">
+            {t('devicesPage.subtitle')}
           </p>
 
           <div className="space-y-4">
@@ -359,69 +383,185 @@ export default function Devices({ onNavigate }: DevicesProps) {
           </div>
         </div>
 
+        <section className="mb-12">
+          <h2 className="mb-2 text-2xl font-semibold text-gray-900 dark:text-neutral-100">
+            {t('devicesPage.signalsTitle')}
+          </h2>
+          <p className="mb-6 max-w-3xl text-gray-600 dark:text-neutral-300">
+            {t('devicesPage.signalsIntro')}
+          </p>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {deviceSignalKeys.map((key) => (
+              <div
+                key={key}
+                className="rounded-2xl border border-[var(--bm-border)] bg-surface p-5 shadow-sm"
+              >
+                <h3 className="mb-2 font-semibold text-gray-900 dark:text-neutral-100">
+                  {t(`devicesPage.signals.${key}.title`)}
+                </h3>
+                <p className="text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
+                  {t(`devicesPage.signals.${key}.body`)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="mb-2 text-2xl font-semibold text-gray-900 dark:text-neutral-100">
+            {t('devicesPage.catalogTitle')}
+          </h2>
+          <p className="mb-6 max-w-3xl text-gray-600 dark:text-neutral-300">
+            {t('devicesPage.catalogIntro')}
+          </p>
+
+          <div className="space-y-3">
+            {deviceCatalog.map((category) => {
+              const open = expandedCategory === category.id;
+              return (
+                <div
+                  key={category.id}
+                  className="overflow-hidden rounded-2xl border border-[var(--bm-border)] bg-surface shadow-sm"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setExpandedCategory(open ? null : category.id)}
+                    className="flex w-full items-start gap-4 p-5 text-left transition-colors hover:bg-page/70"
+                  >
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-page text-orange-600 dark:text-orange-400">
+                      {categoryIcon(category.id)}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-semibold text-gray-900 dark:text-neutral-100">
+                        {t(`devicesPage.categories.${category.id}.title`)}
+                      </h3>
+                      <p className="mt-1 text-sm text-gray-600 dark:text-neutral-300">
+                        {t(`devicesPage.categories.${category.id}.body`)}
+                      </p>
+                    </div>
+                  </button>
+                  {open && (
+                    <div className="border-t border-[var(--bm-border)] bg-page px-5 py-4">
+                      <div className="grid gap-4 md:grid-cols-2">
+                        {category.items.map((item) => (
+                          <div
+                            key={item.id}
+                            className="rounded-xl border border-[var(--bm-border)] bg-surface p-4"
+                          >
+                            <div className="mb-2 flex items-center justify-between gap-2">
+                              <h4 className="font-semibold text-gray-900 dark:text-neutral-100">
+                                {t(`devicesPage.items.${item.id}.name`)}
+                              </h4>
+                              {item.realtime && (
+                                <span className="inline-flex items-center gap-1 text-xs text-green-700 dark:text-green-400">
+                                  <Zap className="h-3 w-3" />
+                                  {t('devicesPage.realtime')}
+                                </span>
+                              )}
+                            </div>
+                            <p className="mb-3 text-sm text-gray-600 dark:text-neutral-300">
+                              {t(`devicesPage.items.${item.id}.blurb`)}
+                            </p>
+                            <div className="flex flex-wrap gap-1.5">
+                              {item.capabilities.map((cap) => (
+                                <span
+                                  key={cap}
+                                  className="rounded-md border border-[var(--bm-border)] bg-page px-2 py-1 text-xs text-gray-700 dark:text-neutral-300"
+                                >
+                                  {t(`devicesPage.capabilities.${cap}`)}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
         {userDevices.length > 0 && (
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Connected Devices
+            <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-neutral-100">
+              {t('devicesPage.connectedTitle')}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {userDevices.map((device: any) => (
-                <div key={device.id} className="bg-white/90 dark:bg-gray-900/60 rounded-2xl p-6 border border-slate-200 dark:border-gray-800 shadow-lg">
-                  <div className="flex items-start justify-between mb-4">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {userDevices.map((device: UserDevice & { brand?: DeviceBrand }) => (
+                <div
+                  key={device.id}
+                  className="rounded-2xl border border-[var(--bm-border)] bg-surface p-6 shadow-sm"
+                >
+                  <div className="mb-4 flex items-start justify-between">
                     <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
-                        {getCategoryIcon(device.brand?.category)}
+                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-page text-orange-600 dark:text-orange-400">
+                        {categoryIcon(device.brand?.category || '')}
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-900 dark:text-white">
-                          {device.device_name}
+                        <h3 className="font-semibold text-gray-900 dark:text-neutral-100">
+                          {device.device_name || device.brand?.name || '—'}
                         </h3>
-                        <span className={`inline-block px-2 py-1 rounded text-xs font-semibold ${getStatusColor(device.status)}`}>
-                          {device.status === 'connected' ? 'Connected' :
-                           device.status === 'error' ? 'Action Required' :
-                           device.status === 'token_expired' ? 'Access Expired' : 'Disconnected'}
+                        <span
+                          className={`inline-block rounded px-2 py-1 text-xs font-semibold ${getStatusColor(device.status)}`}
+                        >
+                          {device.status === 'connected'
+                            ? t('devicesPage.status.connected')
+                            : device.status === 'error'
+                              ? t('devicesPage.status.error')
+                              : device.status === 'token_expired'
+                                ? t('devicesPage.status.tokenExpired')
+                                : t('devicesPage.status.disconnected')}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-2 mb-4 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-400">Frequency:</span>
-                      <span className="font-medium text-gray-900 dark:text-white">
-                        {device.sync_frequency === 'daily' ? 'Daily' :
-                         device.sync_frequency === 'hourly' ? 'Hourly' :
-                         device.sync_frequency === 'realtime' ? 'Real-time' : 'Manual'}
+                  <div className="mb-4 space-y-2 text-sm">
+                    <div className="flex justify-between gap-3">
+                      <span className="text-gray-600 dark:text-neutral-400">
+                        {t('devicesPage.frequency')}
+                      </span>
+                      <span className="font-medium text-gray-900 dark:text-neutral-100">
+                        {device.sync_frequency === 'daily'
+                          ? t('devicesPage.sync.daily')
+                          : device.sync_frequency === 'hourly'
+                            ? t('devicesPage.sync.hourly')
+                            : device.sync_frequency === 'realtime'
+                              ? t('devicesPage.sync.realtime')
+                              : t('devicesPage.sync.manual')}
                       </span>
                     </div>
                     {device.last_sync_at && (
-                      <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-400">Last Sync:</span>
-                        <span className="font-medium text-gray-900 dark:text-white">
-                          {new Date(device.last_sync_at).toLocaleDateString('en-US')}
+                      <div className="flex justify-between gap-3">
+                        <span className="text-gray-600 dark:text-neutral-400">
+                          {t('devicesPage.lastSync')}
+                        </span>
+                        <span className="font-medium text-gray-900 dark:text-neutral-100">
+                          {new Date(device.last_sync_at).toLocaleDateString()}
                         </span>
                       </div>
                     )}
                   </div>
 
-                  {device.status === 'connected' && device.last_sync_status === 'success' && !device.last_sync_at && (
-                    <div className="mb-4">
-                      <ErrorRecoveryHint type="no_data" />
-                    </div>
-                  )}
-
+                  {device.status === 'connected' &&
+                    device.last_sync_status === 'success' &&
+                    !device.last_sync_at && (
+                      <div className="mb-4">
+                        <ErrorRecoveryHint type="no_data" />
+                      </div>
+                    )}
                   {device.status === 'token_expired' && (
                     <div className="mb-4">
                       <ErrorRecoveryHint type="token_expired" />
                     </div>
                   )}
-
                   {device.status === 'error' && device.error_message && (
                     <div className="mb-4">
                       <ErrorRecoveryHint type="service_error" />
                     </div>
                   )}
-
                   {device.status === 'disconnected' && (
                     <div className="mb-4">
                       <ErrorRecoveryHint type="manual_disconnect" />
@@ -431,17 +571,19 @@ export default function Devices({ onNavigate }: DevicesProps) {
                   <div className="flex space-x-2">
                     {device.status === 'connected' && (
                       <button
+                        type="button"
                         onClick={() => handleForceSync(device.id)}
-                        className="flex-1 flex items-center justify-center space-x-1 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm"
+                        className="flex flex-1 items-center justify-center space-x-1 rounded-lg bg-orange-600 px-3 py-2 text-sm text-white transition-colors hover:bg-orange-500"
                       >
                         <RefreshCw className="h-4 w-4" />
-                        <span>Sync Now</span>
+                        <span>{t('devicesPage.syncNow')}</span>
                       </button>
                     )}
                     <button
+                      type="button"
                       onClick={() => handleDisconnect(device.id)}
-                      className="px-3 py-2 bg-red-100/80 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 rounded-lg transition-colors"
-                      title="Disconnect"
+                      className="rounded-lg bg-red-100 px-3 py-2 text-red-600 transition-colors hover:bg-red-200 dark:bg-red-900/30 dark:text-red-400 dark:hover:bg-red-900/50"
+                      title={t('devicesPage.disconnect')}
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>
@@ -453,65 +595,63 @@ export default function Devices({ onNavigate }: DevicesProps) {
         )}
 
         <div className="mb-8">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
-              Connect Device
+          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-neutral-100">
+              {t('devicesPage.connectTitle')}
             </h2>
-            <div className="flex items-center space-x-3">
+            <div className="flex flex-wrap items-center gap-3">
               <button
+                type="button"
                 onClick={() => setShowEducation(!showEducation)}
-                className="flex items-center space-x-2 px-4 py-2 bg-blue-100/80 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-900/50 rounded-lg transition-colors text-sm font-medium"
+                className="flex items-center space-x-2 rounded-lg border border-[var(--bm-border)] bg-page px-4 py-2 text-sm font-medium text-orange-700 transition-colors hover:bg-surface dark:text-orange-300"
               >
                 <BookOpen className="h-4 w-4" />
-                <span>{showEducation ? 'Hide Guide' : 'Learn More'}</span>
+                <span>{showEducation ? t('devicesPage.hideGuide') : t('devicesPage.learnMore')}</span>
               </button>
               <button
+                type="button"
                 onClick={() => setShowRecommendations(!showRecommendations)}
-                className="flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:underline text-sm"
+                className="flex items-center space-x-2 text-sm text-orange-700 hover:underline dark:text-orange-300"
               >
                 <Info className="h-4 w-4" />
-                <span>Help Choosing</span>
+                <span>{t('devicesPage.helpChoosing')}</span>
               </button>
             </div>
           </div>
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
-            Choose a manufacturer: Apple, Samsung, Google Fit, Fitbit, Oura, Whoop, Dexcom, Libre, Withings, Omron, or other.
-          </p>
+          <p className="mb-6 text-gray-600 dark:text-neutral-300">{t('devicesPage.chooseBrand')}</p>
         </div>
 
         {showRecommendations && (
-          <div className="mb-8 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-3xl p-6 border border-blue-200 dark:border-blue-800 shadow-lg">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-              Device Selection Recommendations
+          <div className="mb-8 rounded-2xl border border-[var(--bm-border)] bg-surface p-6 shadow-sm">
+            <h3 className="mb-4 text-xl font-semibold text-gray-900 dark:text-neutral-100">
+              {t('devicesPage.recommendations.title')}
             </h3>
-            <p className="text-gray-700 dark:text-gray-300 mb-4">
-              If you don't have a device yet, BioMath Core can help you choose:
+            <p className="mb-4 text-gray-700 dark:text-neutral-300">
+              {t('devicesPage.recommendations.intro')}
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-white/90 dark:bg-gray-900/60 rounded-2xl p-4 border border-slate-200 dark:border-gray-800">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">For Sleep</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{getDeviceRecommendation('sleep')}</p>
-              </div>
-              <div className="bg-white/90 dark:bg-gray-900/60 rounded-2xl p-4 border border-slate-200 dark:border-gray-800">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">For Activity & Exercise</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{getDeviceRecommendation('activity')}</p>
-              </div>
-              <div className="bg-white/90 dark:bg-gray-900/60 rounded-2xl p-4 border border-slate-200 dark:border-gray-800">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">For Glucose</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{getDeviceRecommendation('glucose')}</p>
-              </div>
-              <div className="bg-white/90 dark:bg-gray-900/60 rounded-2xl p-4 border border-slate-200 dark:border-gray-800">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">For Blood Pressure</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{getDeviceRecommendation('blood_pressure')}</p>
-              </div>
-              <div className="bg-white/90 dark:bg-gray-900/60 rounded-2xl p-4 border border-slate-200 dark:border-gray-800">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">For Long-term Trends</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{getDeviceRecommendation('long_term')}</p>
-              </div>
-              <div className="bg-white/90 dark:bg-gray-900/60 rounded-2xl p-4 border border-slate-200 dark:border-gray-800">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Maximum Versatility</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{getDeviceRecommendation('universal')}</p>
-              </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {(
+                [
+                  ['sleep', 'sleep'],
+                  ['activity', 'activity'],
+                  ['glucose', 'glucose'],
+                  ['bloodPressure', 'blood_pressure'],
+                  ['longTerm', 'long_term'],
+                  ['universal', 'universal'],
+                ] as const
+              ).map(([labelKey, valueKey]) => (
+                <div
+                  key={valueKey}
+                  className="rounded-2xl border border-[var(--bm-border)] bg-page p-4"
+                >
+                  <h4 className="mb-2 font-semibold text-gray-900 dark:text-neutral-100">
+                    {t(`devicesPage.recommendations.${labelKey}`)}
+                  </h4>
+                  <p className="text-sm text-gray-600 dark:text-neutral-300">
+                    {t(`devicesPage.recommendations.values.${valueKey}`)}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         )}
@@ -522,59 +662,72 @@ export default function Devices({ onNavigate }: DevicesProps) {
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {brands.map((brand) => (
-            <button
-              key={brand.id}
-              onClick={() => handleSelectBrand(brand)}
-              className="bg-white/90 dark:bg-gray-900/60 rounded-2xl p-6 border border-slate-200 dark:border-gray-800 hover:border-blue-500 dark:hover:border-blue-500 transition-colors text-left group shadow-sm"
-            >
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors">
-                  {getCategoryIcon(brand.category)}
+        {brands.length > 0 ? (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {brands.map((brand) => (
+              <button
+                key={brand.id}
+                type="button"
+                onClick={() => handleSelectBrand(brand)}
+                className="group rounded-2xl border border-[var(--bm-border)] bg-surface p-6 text-left shadow-sm transition-colors hover:border-orange-500"
+              >
+                <div className="mb-4 flex items-center space-x-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-page text-gray-700 transition-colors group-hover:bg-orange-100 group-hover:text-orange-700 dark:text-neutral-300 dark:group-hover:bg-orange-900/30 dark:group-hover:text-orange-300">
+                    {categoryIcon(brand.category)}
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-100">
+                    {brand.name}
+                  </h3>
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white text-lg">
-                  {brand.name}
-                </h3>
-              </div>
 
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
-                {brand.description_en}
-              </p>
+                <p className="mb-4 line-clamp-2 text-sm text-gray-600 dark:text-neutral-300">
+                  {brand.description_en}
+                </p>
 
-              <div className="flex flex-wrap gap-1 mb-4">
-                {Object.entries(brand.capabilities).filter(([_, enabled]) => enabled).slice(0, 3).map(([capability]) => (
-                  <span key={capability} className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-xs text-gray-700 dark:text-gray-300 rounded">
-                    {capability.replace('_', ' ')}
-                  </span>
-                ))}
-              </div>
-
-              {brand.supports_realtime && (
-                <div className="flex items-center space-x-1 text-xs text-green-600 dark:text-green-400">
-                  <Zap className="w-3 h-3" />
-                  <span>Real-time</span>
+                <div className="mb-4 flex flex-wrap gap-1">
+                  {Object.entries(brand.capabilities || {})
+                    .filter(([, enabled]) => enabled)
+                    .slice(0, 3)
+                    .map(([capability]) => (
+                      <span
+                        key={capability}
+                        className="rounded border border-[var(--bm-border)] bg-page px-2 py-1 text-xs text-gray-700 dark:text-neutral-300"
+                      >
+                        {capability.replace(/_/g, ' ')}
+                      </span>
+                    ))}
                 </div>
-              )}
-            </button>
-          ))}
-        </div>
 
-        <div className="mt-12 bg-blue-50/80 dark:bg-blue-900/20 rounded-3xl p-6 border border-blue-200 dark:border-blue-800 shadow-lg">
+                {brand.supports_realtime && (
+                  <div className="flex items-center space-x-1 text-xs text-green-700 dark:text-green-400">
+                    <Zap className="h-3 w-3" />
+                    <span>{t('devicesPage.realtime')}</span>
+                  </div>
+                )}
+              </button>
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-dashed border-[var(--bm-border)] bg-surface px-6 py-10 text-center">
+            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
+              {t('devicesPage.emptyBrands')}
+            </p>
+          </div>
+        )}
+
+        <div className="mt-12 rounded-2xl border border-[var(--bm-border)] bg-surface p-6 shadow-sm">
           <div className="flex items-start space-x-4">
-            <Info className="h-6 w-6 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1" />
+            <Info className="mt-1 h-6 w-6 flex-shrink-0 text-orange-600 dark:text-orange-400" />
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                How It Works
+              <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-neutral-100">
+                {t('devicesPage.footer.howTitle')}
               </h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-3">
-                The app automatically collects data from your device (sleep, heart rate, stress, recovery, glucose, and other metrics)
-                and explains their meaning in plain language. We don't just show numbers — we interpret trends and suggest
-                how to improve your condition.
-              </p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                <strong>Privacy:</strong> You have full control over the connection. We don't know your device password
-                and cannot control it. You can disconnect access at any time.
+              <p className="mb-3 text-gray-700 dark:text-neutral-300">{t('devicesPage.footer.howBody')}</p>
+              <p className="text-sm text-gray-600 dark:text-neutral-300">
+                <strong className="text-gray-900 dark:text-neutral-100">
+                  {t('devicesPage.footer.privacyLabel')}
+                </strong>{' '}
+                {t('devicesPage.footer.privacyBody')}
               </p>
             </div>
           </div>

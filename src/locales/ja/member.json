@@ -1,0 +1,224 @@
+{
+  "member": {
+    "zone": {
+      "label": "メンバーゾーン",
+      "workspace": "ログイン中のワークスペース",
+      "backHome": "ホームに戻る",
+      "signOut": "ログアウト",
+      "collapse": "折りたたむ"
+    },
+    "nav": {
+      "main": "メイン",
+      "supportServices": "サポートとサービス",
+      "healthAnalysis": "健康と分析",
+      "dataDocuments": "データと書類",
+      "account": "アカウント",
+      "dashboard": "ダッシュボード",
+      "humanDataModel": "Human Data Model",
+      "healthGuide": "ヘルスガイド",
+      "devices": "デバイス",
+      "support": "サポート",
+      "system": "システム",
+      "catalog": "カタログ",
+      "serviceWorkspace": "サービスワークスペース",
+      "questionnaires": "問診票",
+      "reports": "レポート",
+      "signalHub": "シグナルハブ",
+      "reminders": "リマインダー",
+      "secondOpinion": "セカンドオピニオン",
+      "medicalFiles": "医療ファイル",
+      "blackBox": "ブラックボックス",
+      "referral": "紹介",
+      "billing": "請求",
+      "profile": "プロフィール",
+      "settings": "設定"
+    },
+    "gate": {
+      "catalogTitle": "カタログを利用するには登録が必要です",
+      "catalogBody": "プランを選択すると、20カテゴリーの健康サービスカタログをすべて利用できます。",
+      "viewPlans": "プランを見て登録する",
+      "serviceTitle": "サービスの利用には登録が必要です",
+      "serviceBody": "対話型のサービスワークスペースを開くには、有効なプランが必要です。",
+      "loadingService": "サービスを読み込んでいます…"
+    },
+    "welcome": {
+      "title": "BioMath Core へようこそ",
+      "body": "ご登録ありがとうございます。お支払いが完了しました。",
+      "nextStepTitle": "次のステップ: 健康カテゴリーを選択",
+      "nextStepBody": "カタログを開いて、プランに含まれる健康サービスのカテゴリーを選択してください。",
+      "corePlan": "Core プラン: 最大3カテゴリー",
+      "dailyPlan": "Daily プラン: 最大10カテゴリー",
+      "maxPlan": "Max プラン: 20カテゴリーすべてを含む",
+      "emailNote": "詳細を記載した確認メールを受信トレイに送信しました。",
+      "goToCatalog": "カタログへ"
+    },
+    "dashboard": {
+      "title": "ダッシュボード",
+      "subtitle": "今日の状態・目標・習慣をまとめたウェルネスの拠点"
+    },
+    "humanDataModel": {
+      "title": "Human Data Model",
+      "subtitle": "モデルを支え、説明する中核ツールです。記録を取り込み、タイムラインを読み、意味のある変化を確認できます。カテゴリー別サービスとは別のものです。",
+      "openWorkspace": "ワークスペースを開く"
+    },
+    "devices": {
+      "title": "接続済みデバイス",
+      "subtitle": "ウェアラブルや健康センサーを接続して、データを自動同期します",
+      "yourDevices": "あなたのデバイス",
+      "activeDevices": "有効なデバイス",
+      "recentlySynced": "最近同期済み",
+      "supportedDevices": "対応デバイス",
+      "clickToConnect": "クリックして接続"
+    },
+    "billing": {
+      "title": "請求とサブスクリプション",
+      "subtitle": "サブスクリプションの管理、支払い方法の更新、支払い履歴の確認ができます",
+      "noSubscription": "有効なサブスクリプションはありません",
+      "nextBillingDate": "次回の請求日",
+      "reportsThisMonth": "今月のレポート数",
+      "storageUsed": "使用ストレージ",
+      "searchInvoices": "請求書を検索…",
+      "allStatus": "すべてのステータス",
+      "noInvoices": "請求書が見つかりません",
+      "upgradePlan": "プランをアップグレード",
+      "upgradePlanBody": "より多くの機能と上限を利用できます",
+      "changeCycle": "請求サイクルを変更",
+      "paymentMethods": "支払い方法",
+      "paymentMethodsBody": "クレジットカードと請求情報を更新します"
+    },
+    "profile": {
+      "title": "個人情報",
+      "subtitle": "プロフィール写真とカスタム項目を管理します",
+      "photo": "プロフィール写真",
+      "basicInfo": "基本情報",
+      "fullName": "氏名",
+      "imageUrl": "画像URLを入力",
+      "customFields": "カスタム情報項目",
+      "fieldName": "新しい項目名",
+      "fieldValue": "値"
+    },
+    "support": {
+      "title": "サポート",
+      "subtitle": "チャットまたはメールでサポートチームに問い合わせできます",
+      "liveChat": "ライブチャット",
+      "liveChatBody": "サポート担当者とリアルタイムでチャット",
+      "emailSupport": "メールサポート",
+      "supportHours": "サポート受付時間",
+      "tickets": "サポートチケット",
+      "typeMessage": "メッセージを入力…",
+      "subjectPlaceholder": "問題の概要を簡潔に",
+      "descriptionPlaceholder": "問題を詳しく説明してください…"
+    },
+    "reports": {
+      "title": "マイレポート",
+      "subtitle": "AI が生成した健康レポートと分析をすべて確認・管理できます",
+      "totalReports": "レポート総数",
+      "latestReport": "最新のレポート",
+      "empty": "レポートが見つかりません",
+      "emptyHint": "最初の健康レポートを作成して始めましょう"
+    },
+    "signalHub": {
+      "title": "シグナルハブ",
+      "subtitle": "レポート・分析・推奨事項に取り込まれるすべてのシグナルをリアルタイムに表示します。",
+      "readiness": "データ全体の準備状況",
+      "acrossSources": "すべてのソース",
+      "lastRefresh": "最終シグナル更新"
+    },
+    "reminders": {
+      "title": "スマートリマインダー",
+      "subtitle": "健康習慣を継続するためのローカルリマインダーです。",
+      "create": "リマインダーを作成",
+      "titlePlaceholder": "リマインダーのタイトル",
+      "notePlaceholder": "メモ（任意）"
+    },
+    "secondOpinion": {
+      "title": "健康セカンドオピニオン",
+      "subtitle": "健康に関する質問について、2つの独立した専門的見解を得られます",
+      "researchBacked": "研究に基づく",
+      "analysisTime": "分析時間",
+      "submitQuestion": "質問を送信",
+      "healthQuestion": "健康に関する質問",
+      "questionPlaceholder": "どの健康の問題についてセカンドオピニオンが必要ですか？",
+      "contextPlaceholder": "関連する既往歴、検査結果、服用中の薬などをご記入ください…",
+      "disclaimer": "医療上の注意"
+    },
+    "referral": {
+      "title": "紹介プログラム",
+      "subtitle": "友人を招待して、紹介が成立するたびに特典を獲得できます",
+      "totalReferrals": "紹介総数",
+      "totalEarned": "累計獲得額",
+      "yourCode": "あなたの紹介コード",
+      "history": "紹介履歴",
+      "empty": "まだ紹介はありません"
+    },
+    "medicalFiles": {
+      "title": "医療ファイルと書類",
+      "subtitle": "診療記録、検査結果、健康関連書類を安全に保管・管理できます",
+      "legalNotice": "重要な法的注意",
+      "searchPlaceholder": "ファイル名やタグで検索…",
+      "allCategories": "すべてのカテゴリー",
+      "empty": "医療ファイルはまだアップロードされていません",
+      "fileName": "ファイル名",
+      "fileUrl": "ファイルURL",
+      "fileType": "ファイル形式"
+    },
+    "blackBox": {
+      "title": "ブラックボックス保管",
+      "subtitle": "最も機微な健康データのための強力な暗号化ストレージ",
+      "legalNotice": "重大な法的責任",
+      "securedFiles": "保護されたファイル",
+      "totalStorage": "総ストレージ",
+      "accessLogs": "アクセスログ",
+      "lastAccess": "最終アクセス",
+      "encryptedFiles": "暗号化されたファイル",
+      "empty": "ブラックボックスは空です",
+      "emptyHint": "最も機微な健康データをアップロードして、最大限の安全性を確保しましょう"
+    },
+    "system": {
+      "title": "システム",
+      "subtitle": "システムプロセスとパフォーマンス指標をリアルタイムで監視します",
+      "totalRequests": "総リクエスト数",
+      "activeConnections": "アクティブな接続",
+      "avgResponseTime": "平均応答時間",
+      "errorRate": "エラー率",
+      "apiKeys": "APIキー",
+      "apiKeysBody": "外部連携用のAPIキーを管理します",
+      "dataExport": "データのエクスポート",
+      "dataExportBody": "健康データをさまざまな形式で書き出せます"
+    },
+    "questionnaires": {
+      "title": "健康問診票",
+      "subtitle": "健康プロフィールを入力すると、個別の推奨事項と分析を受け取れます",
+      "settings": "設定"
+    },
+    "reportSettings": {
+      "title": "レポート設定",
+      "subtitle": "レポートの書き方・構成・配信方法を選べます"
+    },
+    "catalog": {
+      "title": "健康プランを作成",
+      "subtitle": "20の健康カテゴリーと200以上のサービスから選べます",
+      "hint": "まずは好きな3カテゴリーから",
+      "openService": "サービスを開く",
+      "planCalculator": "プラン計算",
+      "planCalculatorHint": "カテゴリーを選ぶとプランが更新されます",
+      "selectTitle": "健康カテゴリーを選択",
+      "selectedTitle": "選択したカテゴリー",
+      "selectedSubtitle": "アップグレードの前に選択内容をご確認ください",
+      "nextSteps": "次のステップ"
+    },
+    "healthGuide": {
+      "ask": "健康に関する質問をどうぞ",
+      "askPlaceholder": "ここに健康の質問を入力してください…",
+      "keyInsights": "主なポイント",
+      "empty": "まだ質問はありません",
+      "emptyHint": "健康について質問すると、2つの独立した専門的見解が得られます"
+    },
+    "placeholder": {
+      "comingSoon": "近日公開",
+      "comingSoonBody": "この機能の提供に向けて準備を進めています。今しばらくお待ちください。",
+      "ready": "このセクションは実装準備が整っています",
+      "plannedFeatures": "予定している機能:"
+    }
+  }
+}

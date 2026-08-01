@@ -1,0 +1,224 @@
+{
+  "member": {
+    "zone": {
+      "label": "Espace membre",
+      "workspace": "Espace de travail connecté",
+      "backHome": "Retour à l’accueil",
+      "signOut": "Déconnexion",
+      "collapse": "Réduire"
+    },
+    "nav": {
+      "main": "Principal",
+      "supportServices": "Assistance et services",
+      "healthAnalysis": "Santé et analyses",
+      "dataDocuments": "Données et documents",
+      "account": "Compte",
+      "dashboard": "Tableau de bord",
+      "humanDataModel": "Human Data Model",
+      "healthGuide": "Guide santé",
+      "devices": "Appareils",
+      "support": "Assistance",
+      "system": "Système",
+      "catalog": "Catalogue",
+      "serviceWorkspace": "Espace du service",
+      "questionnaires": "Questionnaires",
+      "reports": "Rapports",
+      "signalHub": "Hub de signaux",
+      "reminders": "Rappels",
+      "secondOpinion": "Deuxième avis",
+      "medicalFiles": "Dossiers médicaux",
+      "blackBox": "Boîte noire",
+      "referral": "Parrainage",
+      "billing": "Facturation",
+      "profile": "Profil",
+      "settings": "Paramètres"
+    },
+    "gate": {
+      "catalogTitle": "Abonnez-vous pour accéder au catalogue",
+      "catalogBody": "Choisissez une formule pour débloquer le catalogue complet des services de santé avec 20 catégories.",
+      "viewPlans": "Voir les formules et s’abonner",
+      "serviceTitle": "Abonnez-vous pour utiliser les services",
+      "serviceBody": "Une formule active est nécessaire pour ouvrir l’espace de travail interactif complet du service.",
+      "loadingService": "Chargement du service…"
+    },
+    "welcome": {
+      "title": "Bienvenue sur BioMath Core !",
+      "body": "Merci pour votre abonnement ! Votre paiement a bien été effectué.",
+      "nextStepTitle": "Étape suivante : choisissez vos catégories de santé",
+      "nextStepBody": "Ouvrez le catalogue pour sélectionner les catégories de services de santé incluses dans votre formule :",
+      "corePlan": "Formule Core : jusqu’à 3 catégories",
+      "dailyPlan": "Formule Daily : jusqu’à 10 catégories",
+      "maxPlan": "Formule Max : les 20 catégories incluses",
+      "emailNote": "Un e-mail de confirmation contenant tous les détails a été envoyé dans votre boîte de réception.",
+      "goToCatalog": "Aller au catalogue"
+    },
+    "dashboard": {
+      "title": "Tableau de bord",
+      "subtitle": "Votre centre de bien-être pour l’état, les objectifs et les habitudes du jour"
+    },
+    "humanDataModel": {
+      "title": "Human Data Model",
+      "subtitle": "Outils fondamentaux qui alimentent et expliquent votre modèle : importez des documents, lisez la chronologie et repérez les changements significatifs. Distinct des services par catégorie.",
+      "openWorkspace": "Ouvrir l’espace de travail"
+    },
+    "devices": {
+      "title": "Appareils connectés",
+      "subtitle": "Connectez vos objets connectés et capteurs de santé pour une synchronisation automatique des données",
+      "yourDevices": "Vos appareils",
+      "activeDevices": "Appareils actifs",
+      "recentlySynced": "Synchronisés récemment",
+      "supportedDevices": "Appareils compatibles",
+      "clickToConnect": "Cliquez pour connecter"
+    },
+    "billing": {
+      "title": "Facturation et abonnement",
+      "subtitle": "Gérez votre abonnement, mettez à jour vos moyens de paiement et consultez tout votre historique de paiements",
+      "noSubscription": "Aucun abonnement actif",
+      "nextBillingDate": "Prochaine date de facturation",
+      "reportsThisMonth": "Rapports ce mois-ci",
+      "storageUsed": "Stockage utilisé",
+      "searchInvoices": "Rechercher des factures…",
+      "allStatus": "Tous les statuts",
+      "noInvoices": "Aucune facture trouvée",
+      "upgradePlan": "Changer de formule",
+      "upgradePlanBody": "Accédez à plus de fonctionnalités et à des limites plus élevées",
+      "changeCycle": "Modifier le cycle de facturation",
+      "paymentMethods": "Moyens de paiement",
+      "paymentMethodsBody": "Mettez à jour votre carte bancaire et vos informations de facturation"
+    },
+    "profile": {
+      "title": "Informations personnelles",
+      "subtitle": "Gérez votre photo de profil et vos champs d’information personnalisés",
+      "photo": "Photo de profil",
+      "basicInfo": "Informations de base",
+      "fullName": "Nom complet",
+      "imageUrl": "Saisissez l’URL de l’image",
+      "customFields": "Champs d’information personnalisés",
+      "fieldName": "Nom du nouveau champ",
+      "fieldValue": "Valeur"
+    },
+    "support": {
+      "title": "Assistance",
+      "subtitle": "Obtenez de l’aide de notre équipe d’assistance par chat ou par e-mail",
+      "liveChat": "Chat en direct",
+      "liveChatBody": "Discutez avec un conseiller en temps réel",
+      "emailSupport": "Assistance par e-mail",
+      "supportHours": "Heures d’assistance",
+      "tickets": "Tickets d’assistance",
+      "typeMessage": "Écrivez votre message…",
+      "subjectPlaceholder": "Brève description de votre problème",
+      "descriptionPlaceholder": "Décrivez votre problème en détail…"
+    },
+    "reports": {
+      "title": "Mes rapports",
+      "subtitle": "Consultez et gérez tous vos rapports et analyses de santé générés par l’IA",
+      "totalReports": "Rapports au total",
+      "latestReport": "Dernier rapport",
+      "empty": "Aucun rapport trouvé",
+      "emptyHint": "Générez votre premier rapport de santé pour commencer"
+    },
+    "signalHub": {
+      "title": "Hub de signaux",
+      "subtitle": "Une carte en direct de chaque signal alimentant vos rapports, analyses et recommandations.",
+      "readiness": "Disponibilité globale des données",
+      "acrossSources": "Toutes sources confondues",
+      "lastRefresh": "Dernière actualisation des signaux"
+    },
+    "reminders": {
+      "title": "Rappels intelligents",
+      "subtitle": "Des rappels locaux pour maintenir la régularité de vos routines santé.",
+      "create": "Créer un rappel",
+      "titlePlaceholder": "Titre du rappel",
+      "notePlaceholder": "Note (facultatif)"
+    },
+    "secondOpinion": {
+      "title": "Deuxième avis santé",
+      "subtitle": "Obtenez deux perspectives expertes indépendantes sur vos questions de santé",
+      "researchBacked": "Fondé sur la recherche",
+      "analysisTime": "Durée d’analyse",
+      "submitQuestion": "Envoyez votre question",
+      "healthQuestion": "Question de santé",
+      "questionPlaceholder": "Sur quelle question de santé souhaitez-vous un deuxième avis ?",
+      "contextPlaceholder": "Indiquez vos antécédents médicaux, résultats d’examens ou traitements en cours pertinents…",
+      "disclaimer": "Avertissement médical"
+    },
+    "referral": {
+      "title": "Programme de parrainage",
+      "subtitle": "Invitez vos amis et gagnez des récompenses pour chaque parrainage réussi",
+      "totalReferrals": "Parrainages au total",
+      "totalEarned": "Total gagné",
+      "yourCode": "Votre code de parrainage",
+      "history": "Historique des parrainages",
+      "empty": "Aucun parrainage pour l’instant"
+    },
+    "medicalFiles": {
+      "title": "Fichiers et documents médicaux",
+      "subtitle": "Conservez et gérez en toute sécurité vos dossiers médicaux, résultats d’examens et documents de santé",
+      "legalNotice": "Mention légale importante",
+      "searchPlaceholder": "Rechercher des fichiers par nom ou par étiquette…",
+      "allCategories": "Toutes les catégories",
+      "empty": "Aucun fichier médical importé pour l’instant",
+      "fileName": "Nom du fichier",
+      "fileUrl": "URL du fichier",
+      "fileType": "Type de fichier"
+    },
+    "blackBox": {
+      "title": "Stockage Boîte noire",
+      "subtitle": "Stockage fortement chiffré pour vos données de santé les plus sensibles",
+      "legalNotice": "Responsabilité juridique critique",
+      "securedFiles": "Fichiers sécurisés",
+      "totalStorage": "Stockage total",
+      "accessLogs": "Journaux d’accès",
+      "lastAccess": "Dernier accès",
+      "encryptedFiles": "Fichiers chiffrés",
+      "empty": "La Boîte noire est vide",
+      "emptyHint": "Importez vos données de santé les plus sensibles pour une sécurité maximale"
+    },
+    "system": {
+      "title": "Système",
+      "subtitle": "Surveillez en direct les processus système et les indicateurs de performance",
+      "totalRequests": "Requêtes au total",
+      "activeConnections": "Connexions actives",
+      "avgResponseTime": "Temps de réponse moyen",
+      "errorRate": "Taux d’erreur",
+      "apiKeys": "Clés d’API",
+      "apiKeysBody": "Gérez les clés d’API pour les intégrations tierces",
+      "dataExport": "Export de données",
+      "dataExportBody": "Exportez vos données de santé dans différents formats"
+    },
+    "questionnaires": {
+      "title": "Questionnaires de santé",
+      "subtitle": "Complétez votre profil de santé pour recevoir des recommandations et analyses personnalisées",
+      "settings": "Paramètres"
+    },
+    "reportSettings": {
+      "title": "Paramètres des rapports",
+      "subtitle": "Choisissez la façon dont vos rapports sont rédigés, structurés et transmis"
+    },
+    "catalog": {
+      "title": "Composez votre plan santé",
+      "subtitle": "Choisissez parmi 20 catégories de santé et plus de 200 services",
+      "hint": "Commencez avec 3 catégories au choix",
+      "openService": "Ouvrir un service",
+      "planCalculator": "Votre calculateur de formule",
+      "planCalculatorHint": "Voyez votre formule évoluer à mesure que vous sélectionnez des catégories",
+      "selectTitle": "Sélectionnez vos catégories de santé",
+      "selectedTitle": "Vos catégories sélectionnées",
+      "selectedSubtitle": "Vérifiez vos choix avant de passer à la formule supérieure",
+      "nextSteps": "Prochaines étapes"
+    },
+    "healthGuide": {
+      "ask": "Posez votre question de santé",
+      "askPlaceholder": "Saisissez ici votre question de santé…",
+      "keyInsights": "Points clés",
+      "empty": "Aucune question posée pour l’instant",
+      "emptyHint": "Posez une question de santé pour obtenir deux perspectives expertes indépendantes"
+    },
+    "placeholder": {
+      "comingSoon": "Bientôt disponible",
+      "comingSoonBody": "Nous travaillons à vous proposer cette fonctionnalité. Restez à l’écoute.",
+      "ready": "Cette section est prête à être implémentée",
+      "plannedFeatures": "Fonctionnalités prévues :"
+    }
+  }
+}

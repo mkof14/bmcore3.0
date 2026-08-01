@@ -215,18 +215,19 @@ export default function RealtimeChat({ roomId, onClose }: RealtimeChatProps) {
   }
 
   return (
-    <div className="flex flex-col h-[600px] bg-white dark:bg-gray-900 rounded-lg shadow-lg">
-      <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Chat</h3>
+    <div className="flex h-[600px] flex-col rounded-xl border border-[var(--bm-border)] bg-surface shadow-lg">
+      <div className="flex items-center justify-between border-b border-[var(--bm-border)] p-4">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-100">Chat</h3>
         <button
+          type="button"
           onClick={onClose}
-          className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          className="text-gray-500 hover:text-gray-700 dark:text-neutral-400 dark:hover:text-neutral-200"
         >
           <MoreVertical className="h-5 w-5" />
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 space-y-4 overflow-y-auto bg-page p-4">
         {messages.map((message) => {
           const isOwn = message.user_id === currentUser?.id;
           return (
@@ -234,32 +235,32 @@ export default function RealtimeChat({ roomId, onClose }: RealtimeChatProps) {
               key={message.id}
               className={`flex ${isOwn ? 'justify-end' : 'justify-start'}`}
             >
-              <div className={`flex gap-2 max-w-[70%] ${isOwn ? 'flex-row-reverse' : ''}`}>
+              <div className={`flex max-w-[70%] gap-2 ${isOwn ? 'flex-row-reverse' : ''}`}>
                 {!isOwn && (
-                  <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-semibold flex-shrink-0">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-orange-600 text-sm font-semibold text-white">
                     {message.user?.full_name?.[0] || 'U'}
                   </div>
                 )}
                 <div>
                   {!isOwn && (
-                    <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">
+                    <p className="mb-1 text-xs text-gray-600 dark:text-neutral-400">
                       {message.user?.full_name || 'Unknown'}
                     </p>
                   )}
                   <div
                     className={`rounded-lg p-3 ${
                       isOwn
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white'
+                        ? 'bg-orange-600 text-white'
+                        : 'border border-[var(--bm-border)] bg-surface text-gray-900 dark:text-neutral-100'
                     }`}
                   >
                     <p className="text-sm">{message.content}</p>
                   </div>
-                  <div className={`flex items-center gap-1 mt-1 ${isOwn ? 'justify-end' : ''}`}>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                  <div className={`mt-1 flex items-center gap-1 ${isOwn ? 'justify-end' : ''}`}>
+                    <p className="text-xs text-gray-500 dark:text-neutral-400">
                       {formatTime(message.created_at)}
                     </p>
-                    {isOwn && <CheckCheck className="h-3 w-3 text-blue-600" />}
+                    {isOwn && <CheckCheck className="h-3 w-3 text-orange-600 dark:text-orange-400" />}
                   </div>
                 </div>
               </div>
@@ -269,23 +270,23 @@ export default function RealtimeChat({ roomId, onClose }: RealtimeChatProps) {
         <div ref={messagesEndRef} />
 
         {typingUsers.length > 0 && (
-          <div className="text-sm text-gray-600 dark:text-gray-400 italic">
+          <div className="text-sm italic text-gray-600 dark:text-neutral-400">
             {typingUsers.join(', ')} {typingUsers.length === 1 ? 'is' : 'are'} typing...
           </div>
         )}
       </div>
 
-      <form onSubmit={handleSendMessage} className="p-4 border-t border-gray-200 dark:border-gray-700">
+      <form onSubmit={handleSendMessage} className="border-t border-[var(--bm-border)] bg-surface p-4">
         <div className="flex items-center gap-2">
           <button
             type="button"
-            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            className="text-gray-500 hover:text-gray-700 dark:text-neutral-400 dark:hover:text-neutral-200"
           >
             <Paperclip className="h-5 w-5" />
           </button>
           <button
             type="button"
-            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            className="text-gray-500 hover:text-gray-700 dark:text-neutral-400 dark:hover:text-neutral-200"
           >
             <Smile className="h-5 w-5" />
           </button>
@@ -297,12 +298,12 @@ export default function RealtimeChat({ roomId, onClose }: RealtimeChatProps) {
               handleTyping();
             }}
             placeholder="Type a message..."
-            className="flex-1 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="flex-1 rounded-lg border border-[var(--bm-border)] bg-page px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500 dark:text-neutral-100"
           />
           <button
             type="submit"
             disabled={!newMessage.trim() || sending}
-            className="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="rounded-lg bg-orange-600 p-2 text-white transition-colors hover:bg-orange-500 disabled:cursor-not-allowed disabled:opacity-50"
           >
             <Send className="h-5 w-5" />
           </button>

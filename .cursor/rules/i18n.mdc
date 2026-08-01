@@ -1,0 +1,25 @@
+---
+description: All user-facing UI must be translated via i18next for every supported language
+alwaysApply: true
+---
+
+# Internationalization (i18n)
+
+BioMath Core supports: `en` (base), `es`, `fr`, `de`, `ja`, `he`, `zh`, `ar`, `uk`, `ru`.
+
+## Required for every UI change
+
+1. **No hardcoded user-facing strings** in React components/pages. Use `useTranslation()` / `t('key.path')`.
+2. Add the English string first in `src/locales/en.json`.
+3. **Immediately** add the same key to all other locale files under `src/locales/*.json` with accurate translations (not English placeholders).
+4. RTL: `ar` and `he` must keep natural phrasing; `document.documentElement.dir` is set automatically.
+5. Product name **Health Guide** (never “AI Health Advisor” / “AI Advisor”).
+6. Avoid banned marketing words: Platform, Ecosystem, Operating System, next-generation, cutting-edge, revolutionize.
+
+## Language switcher
+
+Header and Footer use `LanguageSwitcher`. Do not invent a second language menu.
+
+## Namespaces
+
+Current bundle uses a single `translation` namespace loaded from `src/locales/{lang}.json` via `src/i18n/index.ts`. Keep keys nested (`nav.*`, `footer.*`, `healthGuide.*`, page sections).

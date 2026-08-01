@@ -1,0 +1,74 @@
+{
+  "privacyTrust": {
+    "seo": {
+      "title": "Confidentialité et confiance — comment BioMath Core protège vos données",
+      "description": "Découvrez comment BioMath Core protège vos données de santé : chiffrement, pratiques conformes à HIPAA, conformité au RGPD et partage contrôlé par l’utilisateur. Consultez nos politiques de confidentialité et nos pratiques de sécurité."
+    },
+    "hero": {
+      "label": "Confidentialité et confiance",
+      "title": "Vos données, protégées dès la conception",
+      "body": "Les données de santé sont profondément personnelles. BioMath Core considère leur protection comme une exigence fondamentale du produit, avec des pratiques transparentes et des politiques rédigées en langage clair."
+    },
+    "commitments": {
+      "label": "Engagements",
+      "title": "Notre engagement pour votre confidentialité",
+      "body": "Six principes qui guident chaque décision produit et technique.",
+      "items": [
+        {
+          "title": "Chiffrement de bout en bout",
+          "body": "Les données de santé sont chiffrées au repos et en transit avec AES-256 et TLS aux normes du secteur."
+        },
+        {
+          "title": "Vous contrôlez vos données",
+          "body": "Vous décidez de ce que vous partagez et de qui peut y accéder ; vous pouvez exporter ou supprimer vos données à tout moment."
+        },
+        {
+          "title": "Pratiques conformes à HIPAA",
+          "body": "Nous appliquons les exigences HIPAA relatives à la protection des informations de santé sensibles."
+        },
+        {
+          "title": "Infrastructure sécurisée",
+          "body": "Données hébergées dans des centres certifiés SOC 2, avec des audits de sécurité réguliers."
+        },
+        {
+          "title": "Conformité au RGPD",
+          "body": "Conformité totale à la réglementation européenne sur la protection des données et à vos droits."
+        },
+        {
+          "title": "Aucune vente de données",
+          "body": "Nous ne vendons jamais vos données. La confidentialité est une contrainte de conception, pas une source de revenus."
+        }
+      ]
+    },
+    "policies": {
+      "label": "Politiques",
+      "title": "Transparence et conformité",
+      "body": "L’ensemble de la documentation juridique est public et rédigé en langage clair.",
+      "readMore": "En savoir plus →",
+      "items": [
+        { "title": "Politique de confidentialité", "description": "Comment nous collectons, utilisons et protégeons vos données" },
+        { "title": "Avis HIPAA", "description": "Notre engagement pour la protection des données de santé" },
+        { "title": "Conformité au RGPD", "description": "Les normes européennes de protection des données et vos droits" },
+        { "title": "Pratiques de sécurité", "description": "Les mesures techniques et organisationnelles que nous appliquons" },
+        { "title": "Protection des données", "description": "Vos droits et nos responsabilités" },
+        { "title": "Confiance et sécurité", "description": "Créer une expérience sûre et digne de confiance" }
+      ]
+    },
+    "control": {
+      "label": "Contrôle",
+      "title": "Vos données, votre contrôle",
+      "body": "Vous avez le droit d’accéder à vos données, de les exporter ou de les supprimer à tout moment. Sans justification.",
+      "stats": [
+        { "value": "100%", "label": "Propriété des données" },
+        { "value": "0", "label": "Vente de données" },
+        { "value": "24/7", "label": "Surveillance de sécurité" }
+      ]
+    },
+    "contact": {
+      "label": "Questions",
+      "title": "Des questions sur la confidentialité ?",
+      "body": "Notre équipe confidentialité est là pour vous aider. Si vous avez des questions sur la protection de vos données, écrivez-nous à tout moment.",
+      "cta": "Contacter l’équipe confidentialité"
+    }
+  }
+}

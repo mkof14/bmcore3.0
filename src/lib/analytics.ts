@@ -20,26 +20,45 @@ class Analytics {
   private enabled: boolean = false;
   private queue: AnalyticsEvent[] = [];
   private initialized: boolean = false;
+  private trackersLoaded: boolean = false;
 
   constructor() {
     this.sessionId = this.generateSessionId();
     this.checkConsent();
   }
 
+  /** Wire consent listeners + load trackers only when analytics consent is granted. */
   init() {
     if (this.initialized) return;
     this.initialized = true;
+    this.maybeLoadTrackers();
+  }
 
-    const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID;
-    const fbPixelId = import.meta.env.VITE_FACEBOOK_PIXEL_ID;
+  /** Inject GA / Meta Pixel when consented. Missing env IDs fail soft (no throw). */
+  private maybeLoadTrackers() {
+    if (!this.enabled || this.trackersLoaded) return;
 
-    if (gaId && this.enabled) {
-      this.initGA(gaId);
+    const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
+    const fbPixelId = import.meta.env.VITE_FACEBOOK_PIXEL_ID as string | undefined;
+
+    try {
+      if (gaId) {
+        this.initGA(gaId);
+      }
+    } catch (e) {
+      console.warn('Google Analytics failed to initialize:', e);
     }
 
-    if (fbPixelId && this.enabled) {
-      this.initFBPixel(fbPixelId);
+    try {
+      if (fbPixelId) {
+        this.initFBPixel(fbPixelId);
+      }
+    } catch (e) {
+      console.warn('Facebook Pixel failed to initialize:', e);
     }
+
+    // Avoid re-injecting scripts on later consent toggles in the same session.
+    this.trackersLoaded = true;
   }
 
   private initGA(measurementId: string) {
@@ -97,10 +116,13 @@ class Analytics {
     }
 
     window.addEventListener('cookieConsentUpdated', ((event: CustomEvent) => {
-      this.enabled = event.detail.analytics === true;
-      if (this.enabled && this.queue.length > 0) {
-        this.flushQueue();
-      } else if (!this.enabled) {
+      this.enabled = event.detail?.analytics === true;
+      if (this.enabled) {
+        this.maybeLoadTrackers();
+        if (this.queue.length > 0) {
+          void this.flushQueue();
+        }
+      } else {
         this.queue = [];
       }
     }) as EventListener);

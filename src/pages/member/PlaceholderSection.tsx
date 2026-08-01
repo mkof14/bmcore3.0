@@ -1,4 +1,5 @@
-import { LucideIcon, Construction, Sparkles } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { LucideIcon, Construction, ClipboardList } from 'lucide-react';
 import BackButton from '../../components/BackButton';
 import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 
@@ -19,6 +20,8 @@ export default function PlaceholderSection({
   comingSoon = false,
   onBack
 }: PlaceholderSectionProps) {
+  const { t } = useTranslation();
+
   return (
     <div>
       {onBack && <BackButton onClick={onBack} />}
@@ -28,7 +31,7 @@ export default function PlaceholderSection({
           <h1 className="text-3xl font-semibold text-gray-900">{title}</h1>
           {comingSoon && (
             <span className="px-3 py-1 bg-orange-50 border border-orange-200 text-orange-700 text-xs font-semibold rounded-full">
-              Coming Soon
+              {t('member.placeholder.comingSoon')}
             </span>
           )}
         </div>
@@ -42,20 +45,20 @@ export default function PlaceholderSection({
             <>
               <Construction className="h-16 w-16 text-gray-400 mx-auto mb-4" />
               <h2 className="text-2xl font-semibold text-gray-900 mb-2">
-                Coming Soon
+                {t('member.placeholder.comingSoon')}
               </h2>
               <p className="text-gray-600 mb-6">
-                We're working hard to bring you this feature. Stay tuned!
+                {t('member.placeholder.comingSoonBody')}
               </p>
             </>
           ) : (
             <>
-              <Sparkles className="h-16 w-16 text-orange-500 mx-auto mb-4" />
+              <ClipboardList className="h-16 w-16 text-orange-500 mx-auto mb-4" />
               <h2 className="text-2xl font-semibold text-gray-900 mb-2">
                 {title}
               </h2>
               <p className="text-gray-600 mb-6">
-                This section is ready for implementation
+                {t('member.placeholder.ready')}
               </p>
             </>
           )}
@@ -63,7 +66,7 @@ export default function PlaceholderSection({
           {features.length > 0 && (
             <div className="max-w-2xl mx-auto mt-8">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Planned Features:
+                {t('member.placeholder.plannedFeatures')}
               </h3>
               <ul className="space-y-3 text-left">
                 {features.map((feature, index) => (

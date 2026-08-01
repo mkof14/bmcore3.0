@@ -1,0 +1,191 @@
+{
+  "investors": {
+    "seo": {
+      "title": "Investors - BioMath Core Growth & Opportunity",
+      "description": "Explore BioMath Core’s traction, business model, and growth roadmap. Learn about our health intelligence work and partnership opportunities."
+    },
+    "hero": {
+      "label": "Investors",
+      "title": "Strategic investment in personal health intelligence",
+      "body": "BioMath Core turns complex health data into personalized guidance through biomathematical modeling and AI — scalable preventive infrastructure with measurable outcomes and clear unit economics.",
+      "body2": "We work with institutional investors, strategic partners, family offices, and individual investors. Structures are flexible: equity, partnerships, licensing, or hybrids built for mutual value.",
+      "ctaContact": "Contact the team",
+      "ctaSummary": "Summary",
+      "ctaAbout": "Learn about us"
+    },
+    "partners": {
+      "label": "Partners",
+      "title": "Who we work with",
+      "body": "Relationships across the investment landscape — each type brings different value, and we structure engagements accordingly.",
+      "offerLabel": "What we offer",
+      "items": [
+        {
+          "title": "Institutional & VC funds",
+          "body": "Health-tech focused venture and growth equity investors seeking defensible products with clear monetization. Our approach to product-market fit, retention, and expansion revenue fits institutional mandates.",
+          "offer": "Professional governance, transparent reporting, measurable KPIs, and institutional-grade data rooms."
+        },
+        {
+          "title": "Family offices & HNWIs",
+          "body": "Long-term partners who understand the societal impact of preventive health. Family offices often bring sector expertise, network access, and patient capital.",
+          "offer": "Flexible terms, advisory participation, and alignment on mission-driven outcomes."
+        },
+        {
+          "title": "Strategic corporate investors",
+          "body": "Providers, insurers, pharma, and wellness brands use BioMath Core for engagement, risk stratification, and care navigation — with preferred access, co-development, and privacy-compliant insights.",
+          "offer": "Integration partnerships, pilot programs, and mutual customer success initiatives."
+        },
+        {
+          "title": "Angel & operator investors",
+          "body": "Founders and operators in health-tech, AI, SaaS, and consumer products who contribute domain expertise, introductions, hiring networks, or technical guidance — not only capital.",
+          "offer": "Active involvement, product feedback loops, and early-stage upside participation."
+        }
+      ]
+    },
+    "traction": {
+      "label": "Traction",
+      "title": "Current traction & fundamentals",
+      "body": "Beyond concept validation — BioMath Core is live, monetizing, and showing retention and engagement that validate the approach.",
+      "productStatusTitle": "Product status",
+      "businessModelTitle": "Business model validation",
+      "stats": [
+        { "label": "Service categories live", "value": "20+" },
+        { "label": "Intelligent services", "value": "200+" },
+        { "label": "Architecture", "value": "Production-ready" }
+      ],
+      "points": [
+        {
+          "title": "Subscription tiers",
+          "body": "5-day trial, Core, Daily, Max plans with 30–90% gross margins"
+        },
+        {
+          "title": "Monetization",
+          "body": "Direct consumer subscriptions + B2B licensing pipeline"
+        },
+        {
+          "title": "CAC payback",
+          "body": "Targeting 6–12 months through organic and partnership channels"
+        },
+        {
+          "title": "Retention",
+          "body": "Long-term engagement through personalized value delivery"
+        }
+      ]
+    },
+    "technology": {
+      "label": "Technology",
+      "title": "Technical differentiation & IP",
+      "items": [
+        {
+          "title": "Proprietary modeling layer",
+          "body": "Biomathematical models for personalized health trajectories — evidence-based rules with AI-assisted reasoning."
+        },
+        {
+          "title": "Multi-modal data integration",
+          "body": "Questionnaires, wearables, labs, and genetic data processed through one unified framework."
+        },
+        {
+          "title": "Explainable outputs",
+          "body": "Transparent reasoning chains, not black-box predictions — essential for trust and regulatory positioning."
+        },
+        {
+          "title": "Privacy architecture",
+          "body": "Minimal collection, user-controlled sharing, encryption standards that meet and exceed HIPAA expectations."
+        },
+        {
+          "title": "Scalable infrastructure",
+          "body": "Modular services so categories expand without core refactoring."
+        },
+        {
+          "title": "Continuous learning",
+          "body": "Model updates from aggregated, anonymized outcomes — improving accuracy while preserving privacy."
+        }
+      ]
+    },
+    "model": {
+      "label": "Model",
+      "title": "Business model",
+      "items": [
+        {
+          "title": "Consumer plans",
+          "points": ["5-day trial with subscription", "Premium bundles by category", "Optional add-on analyses"]
+        },
+        {
+          "title": "B2B services",
+          "points": ["Licensing of modules", "Co-branded programs", "Privacy-first integrations"]
+        },
+        {
+          "title": "Data services (opt-in)",
+          "points": ["Aggregated, de-identified learnings", "Model improvement loops", "Strict user consent rules"]
+        }
+      ]
+    },
+    "market": {
+      "label": "Market",
+      "title": "Market opportunity",
+      "items": [
+        { "value": "$230B+", "label": "Global digital health market by 2030" },
+        { "value": "500M+", "label": "Addressable users worldwide" },
+        { "value": "20", "label": "Health service categories" },
+        { "value": "200+", "label": "Intelligent services" }
+      ]
+    },
+    "roadmap": {
+      "label": "Roadmap",
+      "title": "Growth roadmap",
+      "items": [
+        {
+          "year": "2025",
+          "title": "Product launch",
+          "body": "Consumer launch, 20 categories, 200+ services live"
+        },
+        {
+          "year": "2026",
+          "title": "B2B expansion",
+          "body": "Enterprise partnerships, co-branded wellness programs"
+        },
+        {
+          "year": "2027+",
+          "title": "Global scale",
+          "body": "International markets, advanced AI capabilities"
+        }
+      ]
+    },
+    "engine": {
+      "label": "Engine",
+      "title": "The BioMath Core Engine",
+      "body": "A modeling layer that turns raw inputs into personalized, time-aware suggestions — blending evidence-based rules, transparent heuristics, and AI assistance.",
+      "items": [
+        { "title": "Multi-input", "body": "questionnaires, wearables, labs, context" },
+        { "title": "Explainable outputs", "body": "what matters now, and why" },
+        { "title": "Privacy by design", "body": "minimal data, user control, encryption" },
+        { "title": "Continuous updates", "body": "learn from engagement, not profiles" }
+      ]
+    },
+    "timing": {
+      "label": "Timing",
+      "title": "Why now — and why us",
+      "items": [
+        { "title": "Execution first", "body": "We ship focused, useful features instead of hype." },
+        { "title": "Lower friction", "body": "Clear UX, fast answers, practical recommendations." },
+        { "title": "Unit economics", "body": "Path to healthy margins through modular plans." },
+        { "title": "Partnership-ready", "body": "Designed for clinics and wellness providers." }
+      ]
+    },
+    "trust": {
+      "label": "Trust",
+      "title": "Trust, privacy, and clarity",
+      "body": "Health guidance must respect people. We minimize data collection, keep explanations readable, and separate suggestions from diagnosis. Legal pages are public and plain-language. We grow through transparency — not promises of miracles.",
+      "links": [
+        "Privacy Policy",
+        "Terms of Use",
+        "Disclaimer",
+        "HIPAA Notice",
+        "Security"
+      ]
+    },
+    "closing": {
+      "title": "Ready to explore a partnership?",
+      "body": "We engage with investors who share a vision for evidence-based, user-controlled health intelligence — equity, strategy, or licensing."
+    }
+  }
+}

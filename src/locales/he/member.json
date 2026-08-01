@@ -1,0 +1,224 @@
+{
+  "member": {
+    "zone": {
+      "label": "אזור חברים",
+      "workspace": "סביבת עבודה מחוברת",
+      "backHome": "חזרה לדף הבית",
+      "signOut": "התנתקות",
+      "collapse": "כיווץ"
+    },
+    "nav": {
+      "main": "ראשי",
+      "supportServices": "תמיכה ושירותים",
+      "healthAnalysis": "בריאות וניתוח",
+      "dataDocuments": "נתונים ומסמכים",
+      "account": "חשבון",
+      "dashboard": "לוח בקרה",
+      "humanDataModel": "Human Data Model",
+      "healthGuide": "מדריך הבריאות",
+      "devices": "מכשירים",
+      "support": "תמיכה",
+      "system": "מערכת",
+      "catalog": "קטלוג",
+      "serviceWorkspace": "סביבת השירות",
+      "questionnaires": "שאלונים",
+      "reports": "דוחות",
+      "signalHub": "מרכז האותות",
+      "reminders": "תזכורות",
+      "secondOpinion": "חוות דעת שנייה",
+      "medicalFiles": "קבצים רפואיים",
+      "blackBox": "הקופסה השחורה",
+      "referral": "הפניות",
+      "billing": "חיוב",
+      "profile": "פרופיל",
+      "settings": "הגדרות"
+    },
+    "gate": {
+      "catalogTitle": "הצטרפו למנוי כדי לגשת לקטלוג",
+      "catalogBody": "בחרו תוכנית מנוי כדי לפתוח את קטלוג שירותי הבריאות המלא עם 20 קטגוריות.",
+      "viewPlans": "לצפייה בתוכניות והצטרפות",
+      "serviceTitle": "הצטרפו למנוי כדי להשתמש בשירותים",
+      "serviceBody": "נדרשת תוכנית פעילה כדי לפתוח את סביבת העבודה האינטראקטיבית המלאה של השירות.",
+      "loadingService": "טוען שירות…"
+    },
+    "welcome": {
+      "title": "ברוכים הבאים ל‑BioMath Core!",
+      "body": "תודה על ההצטרפות! התשלום בוצע בהצלחה.",
+      "nextStepTitle": "השלב הבא: בחרו את קטגוריות הבריאות שלכם",
+      "nextStepBody": "פתחו את הקטלוג ובחרו את קטגוריות שירותי הבריאות הכלולות בתוכנית שלכם:",
+      "corePlan": "תוכנית Core: עד 3 קטגוריות",
+      "dailyPlan": "תוכנית Daily: עד 10 קטגוריות",
+      "maxPlan": "תוכנית Max: כל 20 הקטגוריות כלולות",
+      "emailNote": "נשלח אליכם מייל אישור עם כל הפרטים.",
+      "goToCatalog": "מעבר לקטלוג"
+    },
+    "dashboard": {
+      "title": "לוח בקרה",
+      "subtitle": "מרכז הבריאות שלכם למצב, ליעדים ולהרגלים של היום"
+    },
+    "humanDataModel": {
+      "title": "Human Data Model",
+      "subtitle": "כלי הליבה שמזינים ומסבירים את המודל שלכם — ייבוא מסמכים, קריאת ציר הזמן וזיהוי שינויים משמעותיים. נפרד משירותי הקטגוריות.",
+      "openWorkspace": "פתיחת סביבת עבודה"
+    },
+    "devices": {
+      "title": "מכשירים מחוברים",
+      "subtitle": "חברו מכשירים לבישים וחיישני בריאות לסנכרון אוטומטי של נתונים",
+      "yourDevices": "המכשירים שלכם",
+      "activeDevices": "מכשירים פעילים",
+      "recentlySynced": "סונכרנו לאחרונה",
+      "supportedDevices": "מכשירים נתמכים",
+      "clickToConnect": "לחצו לחיבור"
+    },
+    "billing": {
+      "title": "חיוב ומנוי",
+      "subtitle": "נהלו את המנוי, עדכנו אמצעי תשלום וצפו בהיסטוריית התשלומים המלאה",
+      "noSubscription": "אין מנוי פעיל",
+      "nextBillingDate": "מועד החיוב הבא",
+      "reportsThisMonth": "דוחות החודש",
+      "storageUsed": "אחסון בשימוש",
+      "searchInvoices": "חיפוש חשבוניות…",
+      "allStatus": "כל הסטטוסים",
+      "noInvoices": "לא נמצאו חשבוניות",
+      "upgradePlan": "שדרוג תוכנית",
+      "upgradePlanBody": "קבלו גישה ליותר יכולות ולמגבלות גבוהות יותר",
+      "changeCycle": "שינוי מחזור החיוב",
+      "paymentMethods": "אמצעי תשלום",
+      "paymentMethodsBody": "עדכנו את פרטי כרטיס האשראי והחיוב"
+    },
+    "profile": {
+      "title": "פרטים אישיים",
+      "subtitle": "נהלו את תמונת הפרופיל ואת שדות המידע המותאמים שלכם",
+      "photo": "תמונת פרופיל",
+      "basicInfo": "פרטים בסיסיים",
+      "fullName": "שם מלא",
+      "imageUrl": "הזינו כתובת תמונה",
+      "customFields": "שדות מידע מותאמים",
+      "fieldName": "שם שדה חדש",
+      "fieldValue": "ערך"
+    },
+    "support": {
+      "title": "תמיכה",
+      "subtitle": "קבלו עזרה מצוות התמיכה שלנו בצ׳אט או במייל",
+      "liveChat": "צ׳אט חי",
+      "liveChatBody": "שוחחו עם נציג תמיכה בזמן אמת",
+      "emailSupport": "תמיכה במייל",
+      "supportHours": "שעות התמיכה",
+      "tickets": "פניות תמיכה",
+      "typeMessage": "הקלידו את ההודעה…",
+      "subjectPlaceholder": "תיאור קצר של הבעיה",
+      "descriptionPlaceholder": "תארו את הבעיה בפירוט…"
+    },
+    "reports": {
+      "title": "הדוחות שלי",
+      "subtitle": "גישה וניהול של כל דוחות הבריאות והניתוחים שנוצרו בעזרת בינה מלאכותית",
+      "totalReports": "סך הדוחות",
+      "latestReport": "הדוח האחרון",
+      "empty": "לא נמצאו דוחות",
+      "emptyHint": "צרו את דוח הבריאות הראשון שלכם כדי להתחיל"
+    },
+    "signalHub": {
+      "title": "מרכז האותות",
+      "subtitle": "מפה חיה של כל אות שמזין את הדוחות, התובנות וההמלצות שלכם.",
+      "readiness": "מוכנות כללית של הנתונים",
+      "acrossSources": "בכל המקורות",
+      "lastRefresh": "רענון האותות האחרון"
+    },
+    "reminders": {
+      "title": "תזכורות חכמות",
+      "subtitle": "תזכורות מקומיות לשמירה על עקביות בשגרת הבריאות שלכם.",
+      "create": "יצירת תזכורת",
+      "titlePlaceholder": "כותרת התזכורת",
+      "notePlaceholder": "הערה (לא חובה)"
+    },
+    "secondOpinion": {
+      "title": "חוות דעת שנייה בבריאות",
+      "subtitle": "קבלו שתי נקודות מבט מקצועיות ובלתי תלויות על שאלות הבריאות שלכם",
+      "researchBacked": "מבוסס מחקר",
+      "analysisTime": "זמן ניתוח",
+      "submitQuestion": "שליחת השאלה",
+      "healthQuestion": "שאלת בריאות",
+      "questionPlaceholder": "באיזו שאלת בריאות אתם צריכים חוות דעת שנייה?",
+      "contextPlaceholder": "ציינו היסטוריה רפואית, תוצאות בדיקות או תרופות רלוונטיות…",
+      "disclaimer": "הבהרה רפואית"
+    },
+    "referral": {
+      "title": "תוכנית ההפניות",
+      "subtitle": "הזמינו חברים וקבלו תגמול על כל הפניה מוצלחת",
+      "totalReferrals": "סך ההפניות",
+      "totalEarned": "סך הרווח",
+      "yourCode": "קוד ההפניה שלכם",
+      "history": "היסטוריית הפניות",
+      "empty": "אין עדיין הפניות"
+    },
+    "medicalFiles": {
+      "title": "קבצים ומסמכים רפואיים",
+      "subtitle": "שמרו ונהלו בבטחה את הרשומות הרפואיות, תוצאות הבדיקות והמסמכים הרפואיים שלכם",
+      "legalNotice": "הודעה משפטית חשובה",
+      "searchPlaceholder": "חיפוש קבצים לפי שם או תגיות…",
+      "allCategories": "כל הקטגוריות",
+      "empty": "עדיין לא הועלו קבצים רפואיים",
+      "fileName": "שם הקובץ",
+      "fileUrl": "כתובת הקובץ",
+      "fileType": "סוג הקובץ"
+    },
+    "blackBox": {
+      "title": "אחסון בקופסה השחורה",
+      "subtitle": "אחסון בהצפנה חזקה לנתוני הבריאות הרגישים ביותר שלכם",
+      "legalNotice": "אחריות משפטית קריטית",
+      "securedFiles": "קבצים מאובטחים",
+      "totalStorage": "סך האחסון",
+      "accessLogs": "יומני גישה",
+      "lastAccess": "גישה אחרונה",
+      "encryptedFiles": "קבצים מוצפנים",
+      "empty": "הקופסה השחורה ריקה",
+      "emptyHint": "העלו את נתוני הבריאות הרגישים ביותר לרמת האבטחה הגבוהה ביותר"
+    },
+    "system": {
+      "title": "מערכת",
+      "subtitle": "מעקב בזמן אמת אחר תהליכי המערכת ומדדי הביצועים",
+      "totalRequests": "סך הבקשות",
+      "activeConnections": "חיבורים פעילים",
+      "avgResponseTime": "זמן תגובה ממוצע",
+      "errorRate": "שיעור שגיאות",
+      "apiKeys": "מפתחות API",
+      "apiKeysBody": "ניהול מפתחות API לשילובים חיצוניים",
+      "dataExport": "ייצוא נתונים",
+      "dataExportBody": "ייצאו את נתוני הבריאות שלכם במגוון פורמטים"
+    },
+    "questionnaires": {
+      "title": "שאלוני בריאות",
+      "subtitle": "השלימו את פרופיל הבריאות שלכם כדי לקבל המלצות ותובנות מותאמות אישית",
+      "settings": "הגדרות"
+    },
+    "reportSettings": {
+      "title": "הגדרות דוחות",
+      "subtitle": "בחרו כיצד הדוחות שלכם ייכתבו, יבנו ויישלחו"
+    },
+    "catalog": {
+      "title": "בנו את תוכנית הבריאות שלכם",
+      "subtitle": "בחרו מתוך 20 קטגוריות בריאות ויותר מ‑200 שירותים",
+      "hint": "התחילו עם 3 קטגוריות לבחירתכם",
+      "openService": "פתיחת שירות",
+      "planCalculator": "מחשבון התוכנית שלכם",
+      "planCalculatorHint": "ראו כיצד התוכנית מתעדכנת בעת בחירת קטגוריות",
+      "selectTitle": "בחרו את קטגוריות הבריאות שלכם",
+      "selectedTitle": "הקטגוריות שבחרתם",
+      "selectedSubtitle": "בדקו את הבחירות שלכם לפני השדרוג",
+      "nextSteps": "השלבים הבאים"
+    },
+    "healthGuide": {
+      "ask": "שאלו את שאלת הבריאות שלכם",
+      "askPlaceholder": "הקלידו כאן את שאלת הבריאות…",
+      "keyInsights": "תובנות מרכזיות",
+      "empty": "עדיין לא נשאלו שאלות",
+      "emptyHint": "שאלו שאלת בריאות כדי לקבל שתי נקודות מבט מקצועיות ובלתי תלויות"
+    },
+    "placeholder": {
+      "comingSoon": "בקרוב",
+      "comingSoonBody": "אנחנו עובדים על הבאת היכולת הזו. הישארו מעודכנים.",
+      "ready": "החלק הזה מוכן למימוש",
+      "plannedFeatures": "יכולות מתוכננות:"
+    }
+  }
+}

@@ -21,7 +21,7 @@ Deno.serve(async (req: Request) => {
     status: "healthy",
     timestamp: new Date().toISOString(),
     version,
-    service: "biomathcore-platform",
+    service: "bmcore3.0",
   };
 
   return new Response(JSON.stringify(response), {

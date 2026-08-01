@@ -1,0 +1,305 @@
+{
+  "howItWorks": {
+    "seo": {
+      "title": "How It Works",
+      "description": "Learn how BioMath Core uses biomathematical modeling and intelligent analysis to turn your health data into clear, actionable guidance."
+    },
+    "hero": {
+      "label": "How It Works",
+      "title": "How BioMath Core works",
+      "body": "Turn your health data into personalized guidance through the Human Data Model — simple, secure, and grounded in science."
+    },
+    "nav": {
+      "ariaLabel": "Page sections",
+      "items": [
+        "Overview",
+        "Sign up",
+        "Connect devices",
+        "Analysis",
+        "Reports",
+        "Take action",
+        "Health Black Box",
+        "Dual models",
+        "Categories",
+        "Learning Center",
+        "FAQ",
+        "Security"
+      ]
+    },
+    "highlights": {
+      "label": "At a glance",
+      "title": "Three things to know",
+      "subtitle": "The core ideas behind every step of the process.",
+      "items": [
+        {
+          "title": "Dual-model analysis",
+          "body": "Two independent models review your signals for broader, cross-checked understanding."
+        },
+        {
+          "title": "HIPAA-aligned security",
+          "body": "Encryption at rest and in transit protects sensitive health data by default."
+        },
+        {
+          "title": "Timely updates",
+          "body": "New device readings and uploads feed the Human Data Model as they arrive."
+        }
+      ]
+    },
+    "steps": {
+      "checklistLabel": "What you do",
+      "signup": {
+        "title": "Sign up and create your profile",
+        "summary": "Create your account in under two minutes. We ask about health history, current conditions, and wellness goals to personalize your Human Data Model.",
+        "pointsHeading": "Getting started is easy",
+        "points": [
+          { "title": "Secure registration", "body": "Your data is encrypted from the moment you sign up." },
+          { "title": "Health profile", "body": "Share medical history and goals that shape your model." },
+          { "title": "Preference settings", "body": "Choose notifications and report frequency." }
+        ],
+        "checklist": [
+          "Enter your email and create a secure password",
+          "Complete your health profile questionnaire",
+          "Set your health goals and preferences"
+        ]
+      },
+      "connect": {
+        "title": "Connect your health devices",
+        "summary": "BioMath Core links with 100+ health devices and apps — wearables, smart scales, blood pressure monitors, and more.",
+        "pointsHeading": "Seamless integration",
+        "points": [
+          { "title": "Fitness trackers", "body": "Apple Watch, Fitbit, Garmin" },
+          { "title": "Health monitors", "body": "Blood pressure, glucose, weight scales" },
+          { "title": "Health apps", "body": "Apple Health, Google Fit" },
+          { "title": "Lab results", "body": "Upload PDF reports manually" }
+        ],
+        "checklist": [
+          "One-click OAuth connection for major services",
+          "Automatic data synchronization every 15 minutes",
+          "Manual upload for lab reports and medical documents"
+        ]
+      },
+      "analyze": {
+        "title": "Intelligent analysis of your data",
+        "summary": "Your Human Data Model processes signals through biomathematical structures and intelligent reasoning — not a single black box.",
+        "primary": {
+          "title": "Primary model",
+          "body": "Processes health data using machine learning trained on large health datasets.",
+          "items": [
+            "Pattern recognition across all health metrics",
+            "Correlation analysis between biomarkers",
+            "Trend prediction from your historical data"
+          ]
+        },
+        "secondary": {
+          "title": "Secondary model",
+          "body": "An independent model provides a second opinion, ensuring broader analysis.",
+          "items": [
+            "Validates findings from the primary model",
+            "Identifies insights the first model might miss",
+            "Provides alternative perspectives on your health"
+          ]
+        },
+        "note": "Analysis runs automatically as new data arrives. You receive notifications for significant findings or anomalies."
+      },
+      "reports": {
+        "title": "Receive comprehensive reports",
+        "summary": "Reports arrive at the cadence that matches your plan — from daily summaries to monthly deep dives.",
+        "items": [
+          {
+            "title": "Daily insights",
+            "body": "Quick overview of key metrics, trends, and daily recommendations.",
+            "items": ["Key metrics summary", "Daily goals tracking", "Quick action items"]
+          },
+          {
+            "title": "Weekly analysis",
+            "body": "Detailed analysis of trends, patterns, and progress toward health goals.",
+            "items": ["Trend visualization", "Pattern recognition", "Goal progress review"]
+          },
+          {
+            "title": "Monthly deep dive",
+            "body": "Comprehensive health assessment with guidance and second-opinion analysis.",
+            "items": ["Full health assessment", "Personalized recommendations", "Second opinion analysis"]
+          }
+        ]
+      },
+      "action": {
+        "title": "Take action on insights",
+        "summary": "Guidance is meant to be used — set goals, follow recommendations, share with clinicians, and track progress.",
+        "items": [
+          { "title": "Set goals", "body": "Based on your insights, set personalized health goals and track progress." },
+          { "title": "Follow recommendations", "body": "Actionable, personalized suggestions you can implement immediately." },
+          { "title": "Share with your care team", "body": "Export reports for doctors, nutritionists, or trainers." },
+          { "title": "Track progress", "body": "Monitor improvements over time with detailed progress tracking." }
+        ]
+      }
+    },
+    "blackBox": {
+      "label": "Vault",
+      "title": "Health Black Box: your personal health vault",
+      "summary": "Like an aircraft black box, your Health Black Box securely records every piece of health data — device readings, lab results, medications, and symptoms.",
+      "featuresHeading": "What is the Health Black Box?",
+      "features": [
+        { "title": "Comprehensive storage", "body": "All your health data in one encrypted vault." },
+        { "title": "Automatic sync", "body": "Timely updates from all connected devices." },
+        { "title": "Historical records", "body": "Complete timeline of your health journey." },
+        { "title": "Emergency access", "body": "Share with healthcare providers when needed." }
+      ],
+      "categoriesHeading": "Data categories in your Black Box",
+      "categories": [
+        { "title": "Vital signs and metrics", "body": "Heart rate, blood pressure, oxygen levels, temperature" },
+        { "title": "Medical records", "body": "Lab results, prescriptions, diagnoses" },
+        { "title": "Lifestyle data", "body": "Exercise, sleep, nutrition, stress levels" },
+        { "title": "Model insights", "body": "Analysis results, predictions, recommendations" }
+      ],
+      "note": "You own your Health Black Box. Export all data anytime, delete permanently, or share specific parts with providers. No lock-in."
+    },
+    "dual": {
+      "label": "Models",
+      "title": "Why two models?",
+      "subtitle": "Two independent models provide more accurate, comprehensive, and reliable health insights.",
+      "items": [
+        { "title": "Higher accuracy", "body": "Cross-validation between models reduces errors and false positives." },
+        { "title": "Comprehensive view", "body": "Different approaches catch insights that others might miss." },
+        { "title": "Confidence scoring", "body": "Agreement between models indicates higher confidence in findings." }
+      ],
+      "more": "Learn more on our <link>Why Two Models</link> page for an in-depth explanation."
+    },
+    "categories": {
+      "label": "Categories",
+      "title": "Health categories we track",
+      "subtitle": "Comprehensive tracking across major health domains for complete wellness monitoring.",
+      "items": [
+        {
+          "title": "Cardiovascular health",
+          "body": "Heart rate, blood pressure, ECG, arterial health, circulation metrics.",
+          "items": ["Resting heart rate", "Blood pressure trends", "Heart rate variability", "Cardiac risk factors"]
+        },
+        {
+          "title": "Physical activity",
+          "body": "Steps, exercise, calories, movement patterns, fitness levels.",
+          "items": ["Daily activity levels", "Exercise duration and intensity", "Calorie expenditure", "Fitness progress"]
+        },
+        {
+          "title": "Sleep and recovery",
+          "body": "Sleep quality, duration, stages, recovery metrics, circadian rhythm.",
+          "items": ["Sleep duration and quality", "REM and deep sleep", "Sleep consistency", "Recovery scores"]
+        },
+        {
+          "title": "Metabolic health",
+          "body": "Blood glucose, weight, body composition, metabolic markers.",
+          "items": ["Glucose levels", "Weight trends", "Body fat percentage", "Metabolic rate"]
+        },
+        {
+          "title": "Mental wellness",
+          "body": "Stress levels, mood tracking, mental health indicators, mindfulness.",
+          "items": ["Stress markers", "Mood patterns", "Mental resilience", "Emotional balance"]
+        },
+        {
+          "title": "Clinical markers",
+          "body": "Lab results, biomarkers, medical tests, health screenings.",
+          "items": ["Blood test results", "Cholesterol levels", "Hormone markers", "Vitamin levels"]
+        }
+      ],
+      "moreTitle": "And many more categories",
+      "more": [
+        "Nutrition and diet",
+        "Hydration levels",
+        "Respiratory health",
+        "Women's health",
+        "Pain and symptoms",
+        "Medications",
+        "Allergies",
+        "Environmental factors"
+      ]
+    },
+    "learning": {
+      "label": "Education",
+      "title": "Learning Center",
+      "subtitle": "Expand your health knowledge with educational resources matched to your data.",
+      "items": [
+        {
+          "title": "Health education hub",
+          "body": "Articles, guides, and tutorials about health topics relevant to your data.",
+          "items": [
+            "Understanding your biomarkers and what they mean",
+            "Evidence-based health improvement strategies",
+            "Disease prevention and early detection",
+            "Lifestyle optimization techniques"
+          ]
+        },
+        {
+          "title": "Personalized recommendations",
+          "body": "Relevant learning materials suggested based on your health data and goals.",
+          "items": [
+            "Articles tailored to your health conditions",
+            "Videos and tutorials for your fitness level",
+            "Recipes and meal plans for your goals",
+            "Expert interviews and research summaries"
+          ]
+        }
+      ],
+      "ctaTitle": "Visit our Learning Center",
+      "ctaBody": "Explore our full library of health education resources.",
+      "ctaButton": "Go to Learning Center"
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Frequently asked questions",
+      "subtitle": "Quick answers to common questions about how BioMath Core works.",
+      "items": [
+        {
+          "question": "How long does it take to see my first insights?",
+          "answer": "You receive initial insights within 24 hours of connecting your first device. More comprehensive analysis becomes available as we collect more data points over the first week."
+        },
+        {
+          "question": "Do I need special devices or can I use what I already have?",
+          "answer": "BioMath Core works with most popular health devices and apps. If you have an Apple Watch, Fitbit, Garmin, or similar devices, you can connect them immediately. You can also manually enter data or upload lab results."
+        },
+        {
+          "question": "Is my health data really secure?",
+          "answer": "Yes. We use AES-256 encryption, are HIPAA compliant, and undergo regular security audits. Your data is encrypted both in transit and at rest. We never sell or share your personal health information with third parties."
+        },
+        {
+          "question": "Can I share my reports with my doctor?",
+          "answer": "Yes. You can export any report as a PDF or share a secure link with your healthcare providers. They see professional, easy-to-understand visualizations of your health data and insights."
+        },
+        {
+          "question": "What makes the dual-model system better than a single model?",
+          "answer": "Two independent models working together provide cross-validation, reducing errors and false positives. Each model may catch insights the other misses. When both agree, you can be more confident in the findings."
+        },
+        {
+          "question": "Can I cancel my subscription anytime?",
+          "answer": "Yes, you can cancel anytime with no penalties. You retain access to your account and data until the end of your billing period. You can also export all your data before canceling."
+        }
+      ],
+      "moreText": "Still have questions?",
+      "moreCta": "View full FAQ →"
+    },
+    "security": {
+      "label": "Security",
+      "title": "Security and privacy first",
+      "subtitle": "Your health data is protected with enterprise-grade security and HIPAA compliance.",
+      "protectionHeading": "Data protection",
+      "protection": [
+        "AES-256 encryption for all data at rest and in transit",
+        "HIPAA-compliant infrastructure and processes",
+        "Regular security audits and penetration testing",
+        "Multi-factor authentication for account access"
+      ],
+      "controlHeading": "Your control",
+      "control": [
+        "Complete control over who can access your data",
+        "Export all your data anytime in standard formats",
+        "Delete your account and all data permanently",
+        "Transparent privacy policy with no hidden clauses"
+      ],
+      "moreCta": "Learn more about privacy and security →"
+    },
+    "closing": {
+      "title": "Ready to build your Human Data Model?",
+      "body": "Start with a free trial and see how BioMath Core turns health signals into clear guidance.",
+      "ctaTrial": "Start your free trial",
+      "ctaPricing": "View pricing"
+    }
+  }
+}

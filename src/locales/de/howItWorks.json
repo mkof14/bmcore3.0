@@ -1,0 +1,305 @@
+{
+  "howItWorks": {
+    "seo": {
+      "title": "So funktioniert es",
+      "description": "Erfahren Sie, wie BioMath Core mit biomathematischer Modellierung und intelligenter Auswertung aus Ihren Gesundheitsdaten klare, umsetzbare Hinweise macht."
+    },
+    "hero": {
+      "label": "So funktioniert es",
+      "title": "So arbeitet BioMath Core",
+      "body": "Verwandeln Sie Ihre Gesundheitsdaten über das Human Data Model in persönliche Empfehlungen – einfach, sicher und wissenschaftlich fundiert."
+    },
+    "nav": {
+      "ariaLabel": "Abschnitte dieser Seite",
+      "items": [
+        "Überblick",
+        "Registrierung",
+        "Geräte verbinden",
+        "Auswertung",
+        "Berichte",
+        "Handeln",
+        "Health Black Box",
+        "Zwei Modelle",
+        "Kategorien",
+        "Lernbereich",
+        "FAQ",
+        "Sicherheit"
+      ]
+    },
+    "highlights": {
+      "label": "Auf einen Blick",
+      "title": "Drei Dinge, die Sie wissen sollten",
+      "subtitle": "Die Grundgedanken hinter jedem Schritt des Ablaufs.",
+      "items": [
+        {
+          "title": "Auswertung mit zwei Modellen",
+          "body": "Zwei unabhängige Modelle prüfen Ihre Signale und ermöglichen ein breiteres, gegengeprüftes Verständnis."
+        },
+        {
+          "title": "Sicherheit nach HIPAA-Maßstab",
+          "body": "Verschlüsselung bei Speicherung und Übertragung schützt sensible Gesundheitsdaten standardmäßig."
+        },
+        {
+          "title": "Aktualisierung ohne Verzug",
+          "body": "Neue Gerätewerte und Uploads fließen unmittelbar in das Human Data Model ein."
+        }
+      ]
+    },
+    "steps": {
+      "checklistLabel": "Das tun Sie",
+      "signup": {
+        "title": "Registrieren und Profil anlegen",
+        "summary": "Legen Sie Ihr Konto in weniger als zwei Minuten an. Wir fragen nach Vorgeschichte, aktuellen Beschwerden und Zielen, um Ihr Human Data Model persönlich zuzuschneiden.",
+        "pointsHeading": "Der Einstieg ist leicht",
+        "points": [
+          { "title": "Sichere Registrierung", "body": "Ihre Daten werden ab der Anmeldung verschlüsselt." },
+          { "title": "Gesundheitsprofil", "body": "Teilen Sie Vorgeschichte und Ziele, die Ihr Modell prägen." },
+          { "title": "Einstellungen", "body": "Wählen Sie Benachrichtigungen und die Häufigkeit der Berichte." }
+        ],
+        "checklist": [
+          "E-Mail-Adresse eingeben und ein sicheres Passwort anlegen",
+          "Fragebogen zum Gesundheitsprofil ausfüllen",
+          "Gesundheitsziele und Einstellungen festlegen"
+        ]
+      },
+      "connect": {
+        "title": "Verbinden Sie Ihre Gesundheitsgeräte",
+        "summary": "BioMath Core verbindet sich mit über 100 Geräten und Apps – Wearables, smarte Waagen, Blutdruckmessgeräte und mehr.",
+        "pointsHeading": "Reibungslose Anbindung",
+        "points": [
+          { "title": "Fitness-Tracker", "body": "Apple Watch, Fitbit, Garmin" },
+          { "title": "Messgeräte", "body": "Blutdruck, Blutzucker, Waagen" },
+          { "title": "Gesundheits-Apps", "body": "Apple Health, Google Fit" },
+          { "title": "Laborergebnisse", "body": "Befunde als PDF selbst hochladen" }
+        ],
+        "checklist": [
+          "OAuth-Verbindung mit einem Klick für gängige Dienste",
+          "Automatischer Datenabgleich alle 15 Minuten",
+          "Manueller Upload von Laborbefunden und medizinischen Unterlagen"
+        ]
+      },
+      "analyze": {
+        "title": "Intelligente Auswertung Ihrer Daten",
+        "summary": "Ihr Human Data Model verarbeitet Signale über biomathematische Strukturen und nachvollziehbares Schließen – nicht über eine einzelne Blackbox.",
+        "primary": {
+          "title": "Primäres Modell",
+          "body": "Verarbeitet Gesundheitsdaten mit maschinellem Lernen, trainiert auf großen medizinischen Datensätzen.",
+          "items": [
+            "Mustererkennung über alle Gesundheitswerte hinweg",
+            "Korrelationsanalyse zwischen Biomarkern",
+            "Trendvorhersage aus Ihren bisherigen Daten"
+          ]
+        },
+        "secondary": {
+          "title": "Sekundäres Modell",
+          "body": "Ein unabhängiges Modell liefert eine Zweitmeinung und sorgt für eine breitere Auswertung.",
+          "items": [
+            "Bestätigt die Befunde des primären Modells",
+            "Erkennt Hinweise, die das erste Modell übersehen könnte",
+            "Bietet andere Blickwinkel auf Ihre Gesundheit"
+          ]
+        },
+        "note": "Die Auswertung läuft automatisch, sobald neue Daten eintreffen. Bei auffälligen Befunden erhalten Sie eine Benachrichtigung."
+      },
+      "reports": {
+        "title": "Umfassende Berichte erhalten",
+        "summary": "Berichte erscheinen im Rhythmus Ihres Tarifs – von der Tageszusammenfassung bis zur monatlichen Tiefenanalyse.",
+        "items": [
+          {
+            "title": "Tägliche Hinweise",
+            "body": "Kurzer Überblick über wichtige Werte, Verläufe und Empfehlungen des Tages.",
+            "items": ["Zusammenfassung der Kennwerte", "Verfolgung der Tagesziele", "Schnelle Handlungsschritte"]
+          },
+          {
+            "title": "Wochenauswertung",
+            "body": "Ausführliche Analyse von Verläufen, Mustern und Fortschritt bei Ihren Zielen.",
+            "items": ["Darstellung der Verläufe", "Mustererkennung", "Überblick zum Zielfortschritt"]
+          },
+          {
+            "title": "Monatliche Tiefenanalyse",
+            "body": "Umfassende Einschätzung mit Empfehlungen und Zweitmeinungs-Analyse.",
+            "items": ["Vollständige Einschätzung", "Persönliche Empfehlungen", "Zweitmeinungs-Analyse"]
+          }
+        ]
+      },
+      "action": {
+        "title": "Aus Erkenntnissen Schritte machen",
+        "summary": "Empfehlungen sind zum Anwenden da: Ziele setzen, Hinweise umsetzen, mit Behandelnden teilen und Fortschritt verfolgen.",
+        "items": [
+          { "title": "Ziele setzen", "body": "Legen Sie auf Basis Ihrer Erkenntnisse persönliche Ziele fest und verfolgen Sie sie." },
+          { "title": "Empfehlungen umsetzen", "body": "Konkrete, persönliche Vorschläge, die Sie sofort anwenden können." },
+          { "title": "Mit Ihrem Behandlungsteam teilen", "body": "Berichte für Ärztinnen, Ernährungsfachkräfte oder Trainer exportieren." },
+          { "title": "Fortschritt verfolgen", "body": "Verbesserungen über die Zeit mit ausführlicher Verlaufsdarstellung beobachten." }
+        ]
+      }
+    },
+    "blackBox": {
+      "label": "Tresor",
+      "title": "Health Black Box: Ihr persönlicher Gesundheitstresor",
+      "summary": "Wie der Flugschreiber eines Flugzeugs zeichnet Ihre Health Black Box jede Gesundheitsangabe sicher auf – Gerätewerte, Laborergebnisse, Medikamente und Beschwerden.",
+      "featuresHeading": "Was ist die Health Black Box?",
+      "features": [
+        { "title": "Vollständige Ablage", "body": "Alle Ihre Gesundheitsdaten in einem verschlüsselten Tresor." },
+        { "title": "Automatischer Abgleich", "body": "Zeitnahe Aktualisierung von allen verbundenen Geräten." },
+        { "title": "Verlaufsdaten", "body": "Eine vollständige Chronik Ihres Gesundheitswegs." },
+        { "title": "Zugriff im Notfall", "body": "Teilen Sie sie bei Bedarf mit Behandelnden." }
+      ],
+      "categoriesHeading": "Datenkategorien in Ihrer Black Box",
+      "categories": [
+        { "title": "Vitalwerte und Kennzahlen", "body": "Herzfrequenz, Blutdruck, Sauerstoffsättigung, Temperatur" },
+        { "title": "Medizinische Unterlagen", "body": "Laborergebnisse, Verordnungen, Diagnosen" },
+        { "title": "Daten zur Lebensweise", "body": "Bewegung, Schlaf, Ernährung, Stressniveau" },
+        { "title": "Ergebnisse des Modells", "body": "Auswertungen, Vorhersagen, Empfehlungen" }
+      ],
+      "note": "Ihre Health Black Box gehört Ihnen. Exportieren Sie alle Daten jederzeit, löschen Sie sie endgültig oder teilen Sie einzelne Teile mit Behandelnden. Keine Bindung."
+    },
+    "dual": {
+      "label": "Modelle",
+      "title": "Warum zwei Modelle?",
+      "subtitle": "Zwei unabhängige Modelle liefern genauere, umfassendere und verlässlichere Erkenntnisse.",
+      "items": [
+        { "title": "Höhere Genauigkeit", "body": "Die gegenseitige Prüfung der Modelle senkt Fehler und Fehlalarme." },
+        { "title": "Umfassender Blick", "body": "Unterschiedliche Ansätze erkennen, was andere übersehen würden." },
+        { "title": "Verlässlichkeitsgrad", "body": "Stimmen beide Modelle überein, ist das Vertrauen in den Befund höher." }
+      ],
+      "more": "Eine ausführliche Erklärung finden Sie auf unserer Seite <link>Warum zwei Modelle</link>."
+    },
+    "categories": {
+      "label": "Kategorien",
+      "title": "Gesundheitsbereiche, die wir begleiten",
+      "subtitle": "Umfassende Beobachtung der wichtigsten Gesundheitsbereiche für ein vollständiges Bild.",
+      "items": [
+        {
+          "title": "Herz-Kreislauf-Gesundheit",
+          "body": "Herzfrequenz, Blutdruck, EKG, Gefäßgesundheit, Kennwerte der Durchblutung.",
+          "items": ["Ruhepuls", "Blutdruckverlauf", "Herzfrequenzvariabilität", "Kardiale Risikofaktoren"]
+        },
+        {
+          "title": "Körperliche Aktivität",
+          "body": "Schritte, Bewegung, Kalorien, Bewegungsmuster, Fitnessniveau.",
+          "items": ["Tägliches Aktivitätsniveau", "Dauer und Intensität der Bewegung", "Kalorienverbrauch", "Fortschritt der Fitness"]
+        },
+        {
+          "title": "Schlaf und Erholung",
+          "body": "Schlafqualität, Dauer, Phasen, Erholungswerte, Tagesrhythmus.",
+          "items": ["Schlafdauer und -qualität", "REM- und Tiefschlaf", "Regelmäßigkeit des Schlafs", "Erholungswerte"]
+        },
+        {
+          "title": "Stoffwechselgesundheit",
+          "body": "Blutzucker, Gewicht, Körperzusammensetzung, Stoffwechselmarker.",
+          "items": ["Blutzuckerwerte", "Gewichtsverlauf", "Körperfettanteil", "Grundumsatz"]
+        },
+        {
+          "title": "Seelisches Wohlbefinden",
+          "body": "Stressniveau, Stimmungsverlauf, Anzeichen der seelischen Gesundheit, Achtsamkeit.",
+          "items": ["Stressmarker", "Stimmungsmuster", "Seelische Widerstandskraft", "Emotionale Balance"]
+        },
+        {
+          "title": "Klinische Marker",
+          "body": "Laborergebnisse, Biomarker, medizinische Tests, Vorsorgeuntersuchungen.",
+          "items": ["Blutwerte", "Cholesterinwerte", "Hormonmarker", "Vitaminwerte"]
+        }
+      ],
+      "moreTitle": "Und viele weitere Kategorien",
+      "more": [
+        "Ernährung",
+        "Flüssigkeitshaushalt",
+        "Atemwege",
+        "Frauengesundheit",
+        "Schmerzen und Beschwerden",
+        "Medikamente",
+        "Allergien",
+        "Umweltfaktoren"
+      ]
+    },
+    "learning": {
+      "label": "Wissen",
+      "title": "Lernbereich",
+      "subtitle": "Erweitern Sie Ihr Gesundheitswissen mit Materialien, die zu Ihren Daten passen.",
+      "items": [
+        {
+          "title": "Wissensbereich Gesundheit",
+          "body": "Artikel, Leitfäden und Anleitungen zu Themen, die zu Ihren Daten passen.",
+          "items": [
+            "Ihre Biomarker verstehen und einordnen",
+            "Evidenzbasierte Wege zu besserer Gesundheit",
+            "Vorbeugung und frühes Erkennen von Krankheiten",
+            "Wege, Gewohnheiten wirksam zu verändern"
+          ]
+        },
+        {
+          "title": "Persönliche Empfehlungen",
+          "body": "Passende Lernmaterialien, ausgewählt nach Ihren Daten und Zielen.",
+          "items": [
+            "Artikel, die zu Ihrer gesundheitlichen Situation passen",
+            "Videos und Anleitungen für Ihr Fitnessniveau",
+            "Rezepte und Speisepläne für Ihre Ziele",
+            "Fachgespräche und Zusammenfassungen von Studien"
+          ]
+        }
+      ],
+      "ctaTitle": "Besuchen Sie unseren Lernbereich",
+      "ctaBody": "Entdecken Sie unsere gesamte Sammlung an Gesundheitswissen.",
+      "ctaButton": "Zum Lernbereich"
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Häufig gestellte Fragen",
+      "subtitle": "Kurze Antworten auf gängige Fragen zur Arbeitsweise von BioMath Core.",
+      "items": [
+        {
+          "question": "Wie lange dauert es bis zu den ersten Erkenntnissen?",
+          "answer": "Erste Hinweise erhalten Sie innerhalb von 24 Stunden, nachdem Sie Ihr erstes Gerät verbunden haben. Eine umfassendere Auswertung folgt, sobald in der ersten Woche mehr Datenpunkte zusammenkommen."
+        },
+        {
+          "question": "Brauche ich besondere Geräte oder genügt, was ich habe?",
+          "answer": "BioMath Core arbeitet mit den meisten verbreiteten Geräten und Apps. Apple Watch, Fitbit, Garmin und ähnliche Geräte lassen sich sofort verbinden. Sie können Daten auch von Hand eintragen oder Laborergebnisse hochladen."
+        },
+        {
+          "question": "Sind meine Gesundheitsdaten wirklich sicher?",
+          "answer": "Ja. Wir nutzen AES-256-Verschlüsselung, halten die HIPAA-Vorgaben ein und lassen regelmäßig Sicherheitsprüfungen durchführen. Ihre Daten sind bei der Übertragung und bei der Speicherung verschlüsselt. Wir verkaufen oder teilen Ihre Gesundheitsdaten niemals mit Dritten."
+        },
+        {
+          "question": "Kann ich meine Berichte mit meiner Ärztin teilen?",
+          "answer": "Ja. Sie können jeden Bericht als PDF exportieren oder einen sicheren Link mit Behandelnden teilen. Diese sehen klare, fachlich verständliche Darstellungen Ihrer Daten."
+        },
+        {
+          "question": "Warum sind zwei Modelle besser als eines?",
+          "answer": "Zwei unabhängige Modelle prüfen sich gegenseitig, wodurch Fehler und Fehlalarme seltener werden. Jedes Modell kann bemerken, was das andere übersieht. Stimmen beide überein, ist der Befund verlässlicher."
+        },
+        {
+          "question": "Kann ich mein Abonnement jederzeit kündigen?",
+          "answer": "Ja, Sie können jederzeit ohne Nachteile kündigen. Ihr Konto und Ihre Daten bleiben bis zum Ende des bezahlten Zeitraums zugänglich. Vor der Kündigung können Sie alle Daten exportieren."
+        }
+      ],
+      "moreText": "Noch Fragen offen?",
+      "moreCta": "Zur vollständigen FAQ →"
+    },
+    "security": {
+      "label": "Sicherheit",
+      "title": "Sicherheit und Privatsphäre zuerst",
+      "subtitle": "Ihre Gesundheitsdaten sind durch Sicherheit auf Unternehmensniveau und HIPAA-Konformität geschützt.",
+      "protectionHeading": "Datenschutz",
+      "protection": [
+        "AES-256-Verschlüsselung für alle Daten bei Speicherung und Übertragung",
+        "HIPAA-konforme Infrastruktur und Abläufe",
+        "Regelmäßige Sicherheitsprüfungen und Penetrationstests",
+        "Mehrstufige Anmeldung für den Kontozugang"
+      ],
+      "controlHeading": "Sie behalten die Kontrolle",
+      "control": [
+        "Vollständige Kontrolle darüber, wer auf Ihre Daten zugreifen darf",
+        "Alle Daten jederzeit in gängigen Formaten exportieren",
+        "Konto und sämtliche Daten endgültig löschen",
+        "Klare Datenschutzerklärung ohne versteckte Klauseln"
+      ],
+      "moreCta": "Mehr zu Datenschutz und Sicherheit →"
+    },
+    "closing": {
+      "title": "Bereit, Ihr Human Data Model aufzubauen?",
+      "body": "Beginnen Sie mit der kostenlosen Testphase und sehen Sie, wie BioMath Core Gesundheitssignale in klare Empfehlungen verwandelt.",
+      "ctaTrial": "Kostenlose Testphase starten",
+      "ctaPricing": "Preise ansehen"
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "whyTwoModels": {
+    "seo": {
+      "title": "Por qué dos modelos: inteligencia dual en BioMath Core",
+      "description": "BioMath Core utiliza dos modelos independientes —biomatemático y clínico— para analizar tus datos de salud. Descubre por qué el análisis dual mejora la precisión y la confianza."
+    },
+    "hero": {
+      "label": "Inteligencia dual",
+      "title": "¿Por qué dos modelos?",
+      "body": "BioMath Core ejecuta dos análisis independientes sobre tus datos de salud —uno biomatemático y otro clínico— y compara los resultados. Cuando ambos coinciden, la confianza es alta. Cuando difieren, se señalan las áreas que merecen mayor atención."
+    },
+    "models": {
+      "label": "Modelos",
+      "title": "Dos miradas sobre los mismos datos",
+      "body": "Precisión matemática y experiencia clínica: cada modelo aporta una fortaleza distinta.",
+      "items": [
+        {
+          "title": "Modelo matemático",
+          "body": "Análisis puramente basado en datos mediante algoritmos biomatemáticos y métodos estadísticos.",
+          "points": [
+            "Reconocimiento de patrones sin sesgos",
+            "Análisis de correlaciones complejas",
+            "Modelado predictivo",
+            "Detección de anomalías"
+          ]
+        },
+        {
+          "title": "Modelo clínico",
+          "body": "Análisis basado en evidencia que aplica conocimiento médico y guías clínicas.",
+          "points": [
+            "Interpretación del contexto médico",
+            "Recomendaciones basadas en evidencia",
+            "Cumplimiento de guías clínicas",
+            "Evaluación de factores de riesgo"
+          ]
+        }
+      ]
+    },
+    "advantages": {
+      "label": "Ventajas",
+      "title": "La fuerza del análisis dual",
+      "items": [
+        {
+          "title": "Mayor precisión",
+          "body": "La validación cruzada entre modelos reduce los falsos positivos y garantiza conclusiones fiables."
+        },
+        {
+          "title": "Visión completa",
+          "body": "Consulta en paralelo los patrones derivados de los datos y las interpretaciones clínicas."
+        },
+        {
+          "title": "Mejores decisiones",
+          "body": "Toma decisiones informadas con conclusiones respaldadas por las matemáticas y la medicina."
+        }
+      ]
+    },
+    "secondOpinion": {
+      "label": "Segunda opinión",
+      "title": "La ventaja de una segunda opinión",
+      "body": "Igual que al pedir una segunda opinión médica, nuestro enfoque dual ofrece dos análisis independientes de tus datos de salud. La coincidencia entre modelos genera confianza. La discrepancia señala áreas que pueden requerir atención adicional o consulta profesional.",
+      "mathTitle": "Fortalezas del modelo matemático",
+      "mathStrengths": [
+        "Descubre patrones ocultos",
+        "Procesa grandes volúmenes de datos",
+        "Identifica correlaciones sutiles",
+        "Anticipa tendencias futuras"
+      ],
+      "clinicalTitle": "Fortalezas del modelo clínico",
+      "clinicalStrengths": [
+        "Aplica experiencia médica",
+        "Considera el contexto clínico",
+        "Sigue guías basadas en evidencia",
+        "Prioriza la seguridad y la eficacia"
+      ]
+    }
+  }
+}

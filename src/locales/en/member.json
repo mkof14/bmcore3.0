@@ -1,0 +1,224 @@
+{
+  "member": {
+    "zone": {
+      "label": "Member Zone",
+      "workspace": "Signed-in workspace",
+      "backHome": "Back to Home",
+      "signOut": "Sign Out",
+      "collapse": "Collapse"
+    },
+    "nav": {
+      "main": "Main",
+      "supportServices": "Support & Services",
+      "healthAnalysis": "Health & Analysis",
+      "dataDocuments": "Data & Documents",
+      "account": "Account",
+      "dashboard": "Dashboard",
+      "humanDataModel": "Human Data Model",
+      "healthGuide": "Health Guide",
+      "devices": "Devices",
+      "support": "Support",
+      "system": "System",
+      "catalog": "Catalog",
+      "serviceWorkspace": "Service workspace",
+      "questionnaires": "Questionnaires",
+      "reports": "Reports",
+      "signalHub": "Signal Hub",
+      "reminders": "Reminders",
+      "secondOpinion": "Second Opinion",
+      "medicalFiles": "Medical Files",
+      "blackBox": "Black Box",
+      "referral": "Referral",
+      "billing": "Billing",
+      "profile": "Profile",
+      "settings": "Settings"
+    },
+    "gate": {
+      "catalogTitle": "Subscribe to access the catalog",
+      "catalogBody": "Choose a subscription plan to unlock the full health services catalog with 20 categories.",
+      "viewPlans": "View plans & subscribe",
+      "serviceTitle": "Subscribe to use services",
+      "serviceBody": "An active plan is required to open the full interactive service workspace.",
+      "loadingService": "Loading service…"
+    },
+    "welcome": {
+      "title": "Welcome to BioMath Core!",
+      "body": "Thank you for your subscription! Your payment was successful.",
+      "nextStepTitle": "Next step: choose your health categories",
+      "nextStepBody": "Open the Catalog to select health service categories included in your plan:",
+      "corePlan": "Core plan: choose up to 3 categories",
+      "dailyPlan": "Daily plan: choose up to 10 categories",
+      "maxPlan": "Max plan: all 20 categories included",
+      "emailNote": "A confirmation email with all the details has been sent to your inbox.",
+      "goToCatalog": "Go to catalog"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "Your wellness command center for today's state, goals, and habits"
+    },
+    "humanDataModel": {
+      "title": "Human Data Model",
+      "subtitle": "Core tools that feed and explain your model — import records, read the timeline, and see meaningful changes. Separate from category services.",
+      "openWorkspace": "Open workspace"
+    },
+    "devices": {
+      "title": "Connected Devices",
+      "subtitle": "Connect your wearables and health sensors for automatic data synchronization",
+      "yourDevices": "Your devices",
+      "activeDevices": "Active devices",
+      "recentlySynced": "Recently synced",
+      "supportedDevices": "Supported devices",
+      "clickToConnect": "Click to connect"
+    },
+    "billing": {
+      "title": "Billing & Subscription",
+      "subtitle": "Manage your subscription, update payment methods, and view your complete payment history",
+      "noSubscription": "No active subscription",
+      "nextBillingDate": "Next billing date",
+      "reportsThisMonth": "Reports this month",
+      "storageUsed": "Storage used",
+      "searchInvoices": "Search invoices…",
+      "allStatus": "All statuses",
+      "noInvoices": "No invoices found",
+      "upgradePlan": "Upgrade plan",
+      "upgradePlanBody": "Get access to more features and higher limits",
+      "changeCycle": "Change billing cycle",
+      "paymentMethods": "Payment methods",
+      "paymentMethodsBody": "Update your credit card and billing information"
+    },
+    "profile": {
+      "title": "Personal Information",
+      "subtitle": "Manage your profile photo and custom information fields",
+      "photo": "Profile photo",
+      "basicInfo": "Basic information",
+      "fullName": "Full name",
+      "imageUrl": "Enter image URL",
+      "customFields": "Custom information fields",
+      "fieldName": "New field name",
+      "fieldValue": "Value"
+    },
+    "support": {
+      "title": "Support",
+      "subtitle": "Get help from our support team via chat or email",
+      "liveChat": "Live chat",
+      "liveChatBody": "Chat with a support agent in real time",
+      "emailSupport": "Email support",
+      "supportHours": "Support hours",
+      "tickets": "Support tickets",
+      "typeMessage": "Type your message…",
+      "subjectPlaceholder": "Brief description of your issue",
+      "descriptionPlaceholder": "Describe your issue in detail…"
+    },
+    "reports": {
+      "title": "My Reports",
+      "subtitle": "Access and manage all your AI-generated health reports and analyses",
+      "totalReports": "Total reports",
+      "latestReport": "Latest report",
+      "empty": "No reports found",
+      "emptyHint": "Generate your first health report to get started"
+    },
+    "signalHub": {
+      "title": "Signal Hub",
+      "subtitle": "A live map of every signal feeding your reports, insights, and recommendations.",
+      "readiness": "Overall data readiness",
+      "acrossSources": "Across all sources",
+      "lastRefresh": "Last signal refresh"
+    },
+    "reminders": {
+      "title": "Smart Reminders",
+      "subtitle": "Local reminders to keep your health routines consistent.",
+      "create": "Create reminder",
+      "titlePlaceholder": "Reminder title",
+      "notePlaceholder": "Note (optional)"
+    },
+    "secondOpinion": {
+      "title": "Health Second Opinion",
+      "subtitle": "Get two independent expert perspectives on your health questions",
+      "researchBacked": "Research backed",
+      "analysisTime": "Analysis time",
+      "submitQuestion": "Submit your question",
+      "healthQuestion": "Health question",
+      "questionPlaceholder": "What health question do you need a second opinion on?",
+      "contextPlaceholder": "Provide any relevant medical history, test results, or current medications…",
+      "disclaimer": "Medical disclaimer"
+    },
+    "referral": {
+      "title": "Referral Program",
+      "subtitle": "Invite friends and earn rewards for each successful referral",
+      "totalReferrals": "Total referrals",
+      "totalEarned": "Total earned",
+      "yourCode": "Your referral code",
+      "history": "Referral history",
+      "empty": "No referrals yet"
+    },
+    "medicalFiles": {
+      "title": "Medical Files & Documents",
+      "subtitle": "Store and manage your medical records, test results, and health documents securely",
+      "legalNotice": "Important legal notice",
+      "searchPlaceholder": "Search files by name or tags…",
+      "allCategories": "All categories",
+      "empty": "No medical files uploaded yet",
+      "fileName": "File name",
+      "fileUrl": "File URL",
+      "fileType": "File type"
+    },
+    "blackBox": {
+      "title": "Black Box Storage",
+      "subtitle": "Strongly encrypted storage for your most sensitive health data",
+      "legalNotice": "Critical legal responsibility",
+      "securedFiles": "Secured files",
+      "totalStorage": "Total storage",
+      "accessLogs": "Access logs",
+      "lastAccess": "Last access",
+      "encryptedFiles": "Encrypted files",
+      "empty": "Black Box is empty",
+      "emptyHint": "Upload your most sensitive health data for maximum security"
+    },
+    "system": {
+      "title": "System",
+      "subtitle": "Monitor live system processes and performance metrics",
+      "totalRequests": "Total requests",
+      "activeConnections": "Active connections",
+      "avgResponseTime": "Average response time",
+      "errorRate": "Error rate",
+      "apiKeys": "API keys",
+      "apiKeysBody": "Manage API keys for third-party integrations",
+      "dataExport": "Data export",
+      "dataExportBody": "Export your health data in various formats"
+    },
+    "questionnaires": {
+      "title": "Health Questionnaires",
+      "subtitle": "Complete your health profile to receive personalized recommendations and insights",
+      "settings": "Settings"
+    },
+    "reportSettings": {
+      "title": "Report Settings",
+      "subtitle": "Choose how your reports are written, structured, and delivered"
+    },
+    "catalog": {
+      "title": "Build your health plan",
+      "subtitle": "Choose from 20 health categories and 200+ services",
+      "hint": "Start with any 3 categories",
+      "openService": "Open a service",
+      "planCalculator": "Your plan calculator",
+      "planCalculatorHint": "Watch your plan update as you select categories",
+      "selectTitle": "Select your health categories",
+      "selectedTitle": "Your selected categories",
+      "selectedSubtitle": "Review your selections before upgrading",
+      "nextSteps": "Next steps"
+    },
+    "healthGuide": {
+      "ask": "Ask your health question",
+      "askPlaceholder": "Type your health question here…",
+      "keyInsights": "Key insights",
+      "empty": "No questions asked yet",
+      "emptyHint": "Ask a health question to get two independent expert perspectives"
+    },
+    "placeholder": {
+      "comingSoon": "Coming soon",
+      "comingSoonBody": "We are working to bring you this feature. Stay tuned.",
+      "ready": "This section is ready for implementation",
+      "plannedFeatures": "Planned features:"
+    }
+  }
+}
