@@ -6,7 +6,9 @@ Use this before every Production deploy. Details below if you need them.
 
 ### 1) Vercel environment variables
 
-**Required (Production + live Preview):**
+**Current default (UI / mock deploy):** `vercel-build` runs `build:mock` (`VITE_MOCK_MODE=1`). Supabase keys are **not** required. Auth and admin use client mock fallbacks until you add real Supabase env and switch `vercel-build` back to `npm run build`.
+
+**Required for a live Supabase Production / Preview (when you leave mock mode):**
 
 ```bash
 VITE_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
@@ -35,13 +37,10 @@ VITE_STRIPE_PUBLISHABLE_KEY=pk_live_...   # or pk_test_... for a staging first p
 # plus VITE_STRIPE_PRICE_* monthly/yearly IDs and VITE_STRIPE_CURRENCY
 ```
 
-**Critical — remove mock mode from Production:**
+**Mock vs live on Vercel:**
 
-- In Vercel → Project → Settings → Environment Variables, delete or set `VITE_MOCK_MODE=0`.
-- Do **not** leave `VITE_MOCK_MODE=1` on Production (unsafe mock auth / admin shortcuts).
-- `vercel.json` / `vercel-build` do **not** force mock; only dashboard env can re-enable it by mistake.
-
-Local note: this repo’s `.env` may keep `VITE_MOCK_MODE=1` for UI work. That does **not** apply on Vercel unless you copy it there.
+- **Now:** `package.json` `"vercel-build": "npm run build:mock"` and `vercel.json` `env.VITE_MOCK_MODE=1` — deploy works without `VITE_SUPABASE_*`.
+- **When going live:** set real `VITE_SUPABASE_URL` + `VITE_SUPABASE_ANON_KEY` in Vercel, change `"vercel-build"` to `"npm run build"`, remove `VITE_MOCK_MODE` from `vercel.json` / dashboard (mock auth/admin shortcuts are unsafe for a real site).
 
 ### 2) Supabase migrations + edge function
 
@@ -66,8 +65,8 @@ Also ensure Stripe-related functions (`create-checkout-session`, `create-portal-
 
 ### 4) Deploy on Vercel
 
-- Framework: Vite · Build: `npm run vercel-build` · Output: `dist` · Node `20.x`
-- Confirm Production env has real Supabase keys and **no** `VITE_MOCK_MODE=1`
+- Framework: Vite · Build: `npm run vercel-build` (currently `build:mock`) · Output: `dist` · Node `24.x`
+- Mock deploy: no Supabase env needed. Live deploy: real `VITE_SUPABASE_*` and switch `vercel-build` to `npm run build`
 - Deploy (git push to the production branch, or Vercel Deploy button)
 
 ### 5) Post-deploy smoke
@@ -142,18 +141,16 @@ git push -u origin main
 
 ### 4.0 Production vs mock mode
 
-**Vercel Production and Preview use real Supabase by default.** Mock mode is not enabled by `vercel.json` or `vercel-build`.
+**Current Vercel deploy is UI/mock** until real Supabase env is added: `vercel-build` → `build:mock`, and `vercel.json` sets `VITE_MOCK_MODE=1`. Auth/admin are mock — not a live backend.
 
 | Environment | `VITE_MOCK_MODE` | Supabase env vars |
 |---|---|---|
 | Local `npm run dev` | `1` in `.env` / `.env.local` (team default) | Optional while mocking |
-| Local production build | unset / `0` | Required: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` |
-| Local mock build | via `npm run build:mock` | Not required |
-| Vercel Production | **Do not set** (or `0`) | **Required** in Vercel env |
-| Vercel Preview (live backend) | unset / `0` | **Required** in Vercel env |
-| Vercel Preview (UI-only, optional) | `1` only on Preview | Not required |
+| Local live build (`npm run build`) | unset / `0` | Required: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` |
+| Local / Vercel mock build | `1` via `build:mock` / `vercel-build` | Not required |
+| Vercel live (after cutover) | unset / `0`; `vercel-build` → `npm run build` | **Required** in Vercel env |
 
-Mock mode uses client fallbacks for auth/queries and treats listed emails as superadmin for **local UI testing only** — unsafe for a real site. Production admin is DB-only (see **Granting admin access** below). Builds without mock and without Supabase credentials **fail** at `prebuild` (`scripts/validate-build-env.mjs`).
+Mock mode uses client fallbacks for auth/queries and treats listed emails as superadmin for UI testing — unsafe once you run a real site. Live Production admin is DB-only (see **Granting admin access** below). Live builds without mock and without Supabase credentials **fail** at `prebuild` (`scripts/validate-build-env.mjs`).
 
 ### 4.0 Vercel Environment Checklist (Quick)
 
@@ -188,7 +185,7 @@ VITE_FACEBOOK_PIXEL_ID=XXXXXXXXXXXXXXXX
 VITE_SENTRY_DSN=https://xxxxx@o0.ingest.sentry.io/0
 ```
 
-Do **not** set `VITE_MOCK_MODE=1` on Production.
+**Cutover to live Supabase:** set real `VITE_SUPABASE_*` in Vercel, change `"vercel-build"` to `"npm run build"`, remove `env.VITE_MOCK_MODE` from `vercel.json`.
 
 ### 4.1 Import Project
 1. Go to https://vercel.com/new
@@ -198,21 +195,27 @@ Do **not** set `VITE_MOCK_MODE=1` on Production.
 
 ### 4.2 Configure Project
 - **Framework Preset:** Vite
-- **Build Command:** `npm run vercel-build` (same as `npm run build`; does **not** force mock)
+- **Build Command:** `npm run vercel-build` (currently `build:mock`; no Supabase keys required)
 - **Output Directory:** `dist`
 - **Install Command:** `npm ci`
-- **Node.js Version:** `20.x`
+- **Node.js Version:** `24.x`
 
 ### 4.2.1 Preflight Check (recommended)
-Before first production deploy, run locally with real (or staging) Supabase values in `.env`:
+UI/mock deploy (current default — no Supabase keys):
+
+```bash
+npm ci
+npm run vercel-build
+# or: npm run build:mock
+```
+
+Live Supabase build (after cutover):
 
 ```bash
 npm ci
 # Ensure VITE_MOCK_MODE is unset/0 and VITE_SUPABASE_* are set
 npm run build
 ```
-
-For a UI-only compile smoke test without Supabase: `npm run build:mock`.
 
 ### 4.2.2 Post-Deploy Smoke Check
 
@@ -397,7 +400,7 @@ UPDATE public.profiles SET role = 'superadmin' WHERE id = auth.uid();
 - [ ] Using Stripe TEST mode for testing
 - [ ] All secrets are in Vercel Dashboard, not in code
 - [ ] `VITE_APP_URL` is set correctly
-- [ ] `VITE_MOCK_MODE=1` is **not** set on Production
+- [ ] Mock deploy OK as current default; for live cutover: `VITE_MOCK_MODE` unset and real `VITE_SUPABASE_*` set
 - [ ] Migrations applied (`media_items` + admin privilege harden) and `admin-db` redeployed
 - [ ] Edge Functions are deployed in Supabase
 - [ ] RLS policies are enabled in database

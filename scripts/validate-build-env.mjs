@@ -64,9 +64,10 @@ if (missing.length > 0 || urlInvalid) {
   console.error('    VITE_SUPABASE_URL');
   console.error('    VITE_SUPABASE_ANON_KEY');
   console.error('');
-  console.error('  For local UI-only work without Supabase, use:');
-  console.error('    VITE_MOCK_MODE=1   (in .env)  or  npm run build:mock / npm run dev');
-  console.error('  Do NOT set VITE_MOCK_MODE on Vercel Production.');
+  console.error('  For UI-only / mock builds without Supabase, use:');
+  console.error('    VITE_MOCK_MODE=1   (in .env)  or  npm run build:mock / npm run vercel-build');
+  console.error('  For a live Supabase production deploy, set real VITE_SUPABASE_* and switch');
+  console.error('  package.json \"vercel-build\" back to \"npm run build\" (unset VITE_MOCK_MODE).');
   if (missing.length > 0) {
     console.error('');
     console.error('  Missing or placeholder:');

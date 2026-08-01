@@ -3,6 +3,9 @@
   "installCommand": "npm ci --no-audit --no-fund --loglevel=error",
   "outputDirectory": "dist",
   "framework": "vite",
+  "env": {
+    "VITE_MOCK_MODE": "1"
+  },
   "routes": [
     { "handle": "filesystem" },
     { "src": "/.*", "dest": "/index.html" }
