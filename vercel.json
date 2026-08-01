@@ -1,5 +1,5 @@
 {
-  "buildCommand": "bash -lc 'set -o pipefail; npm run vercel-build 2>&1 | grep -v \"\\[baseline-browser-mapping\\]\"'",
+  "buildCommand": "npm run vercel-build"\\[baseline-browser-mapping\\]\"'",
   "installCommand": "npm ci --no-audit --no-fund --loglevel=error",
   "outputDirectory": "dist",
   "framework": "vite",
