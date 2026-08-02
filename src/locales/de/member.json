@@ -201,6 +201,7 @@
       "notSavedYet": "Noch nicht gespeichert",
       "autoSaveFailed": "Automatisches Speichern fehlgeschlagen. Bitte erneut versuchen.",
       "saveErrorShort": "Fehler",
+      "saving": "Speichern…",
       "completed": "Abgeschlossen",
       "inProgress": "In Bearbeitung",
       "overallProgress": "Gesamtfortschritt",
@@ -212,6 +213,28 @@
       "statusComplete": "Abgeschlossen",
       "statusDraft": "Entwurf",
       "statusLocked": "Gesperrt",
+      "nav": {
+        "previous": "Zurück",
+        "next": "Weiter",
+        "viewSummary": "Zusammenfassung anzeigen"
+      },
+      "finishProfile": {
+        "title": "Vervollständigen Sie Ihr Gesundheitsprofil",
+        "body": "In {{remaining}} Abschnitt(en) fehlen noch Antworten für ein vollständiges Profil.",
+        "cta": "Dort weitermachen, wo ich aufgehört habe"
+      },
+      "summary": {
+        "nav": "Profilzusammenfassung",
+        "title": "Ihre Fragebogen-Zusammenfassung",
+        "subtitle": "Eine lesbare Übersicht Ihrer Angaben — keine medizinische Diagnose.",
+        "disclaimer": "Diese Zusammenfassung dient nur dem Wellness-Kontext. Sie ist keine Diagnose und ersetzt keine professionelle medizinische Versorgung.",
+        "progressLine": "{{percent}}% abgeschlossen · {{completed}}/{{total}} Abschnitte",
+        "completeBadge": "Profil vollständig",
+        "incompleteBadge": "In Bearbeitung",
+        "emptySection": "Noch keine Antworten",
+        "moreFields": "+{{count}} weitere",
+        "openHealthGuide": "Health Guide öffnen"
+      },
       "groups": {
         "basics": "Grundlagen",
         "clinical": "Klinischer Hintergrund",
@@ -236,15 +259,15 @@
         "medical_history": "Ihr medizinischer Hintergrund verbessert unsere Einschätzungen.",
         "medications": "Aktuelle Medikamente und Nahrungsergänzungsmittel.",
         "allergies": "Bekannte Allergien und Reaktionen.",
-        "vital_signs": "Aktuelle Messwerte — alles optional.",
+        "vital_signs": "Aktuelle Messwerte, die Ihren Wellness-Kontext verankern.",
         "lifestyle": "Tägliche Gewohnheiten, die Ihr Wohlbefinden prägen.",
-        "psychological_health": "Mentales und emotionales Wohlbefinden.",
+        "psychological_health": "Mentales und emotionales Wohlbefinden — Wellness-Check-in, keine Diagnose.",
         "mens_sexual_health": "Unterstützende Orientierung zu hormonellem und sexuellem Wohlbefinden.",
         "womens_sexual_health": "Unterstützende Orientierung zu hormonellem und sexuellem Wohlbefinden."
       },
       "locked": {
         "title": "{{section}} ist gesperrt",
-        "body": "Dieser Fragebogen wird verfügbar, nachdem Sie die passende Gesundheitskategorie aktiviert haben.",
+        "body": "Dieser Abschnitt wird freigeschaltet, wenn Ihr biologisches Geschlecht passt, Sie den passenden Gesundheitsfokus wählen oder die zugehörige Katalogkategorie aktivieren.",
         "cta": "Katalog öffnen"
       },
       "areas": {
@@ -256,7 +279,9 @@
         "prevention": "Prävention",
         "performance": "Leistung",
         "mental": "Mentales Wohlbefinden",
-        "longevity": "Langlebigkeit"
+        "longevity": "Langlebigkeit",
+        "mensSexual": "Männliche Sexualgesundheit",
+        "womensSexual": "Weibliche Sexualgesundheit"
       },
       "priorities": {
         "prevention": "Prävention",
@@ -278,25 +303,88 @@
         "height": "Größe ({{unit}})",
         "weight": "Gewicht ({{unit}})",
         "primaryLanguage": "Hauptsprache",
-        "primaryLanguagePlaceholder": "z. B. Deutsch"
+        "primaryLanguagePlaceholder": "z. B. Deutsch",
+        "sexUnlockHint": "Die Auswahl des biologischen Geschlechts schaltet den passenden Sexualgesundheits-Abschnitt frei, wenn relevant."
+      },
+      "countries": {
+        "US": "Vereinigte Staaten",
+        "CA": "Kanada",
+        "GB": "Vereinigtes Königreich",
+        "IE": "Irland",
+        "AU": "Australien",
+        "NZ": "Neuseeland",
+        "DE": "Deutschland",
+        "FR": "Frankreich",
+        "ES": "Spanien",
+        "IT": "Italien",
+        "PT": "Portugal",
+        "NL": "Niederlande",
+        "BE": "Belgien",
+        "CH": "Schweiz",
+        "AT": "Österreich",
+        "SE": "Schweden",
+        "NO": "Norwegen",
+        "DK": "Dänemark",
+        "FI": "Finnland",
+        "PL": "Polen",
+        "CZ": "Tschechien",
+        "UA": "Ukraine",
+        "RU": "Russland",
+        "IL": "Israel",
+        "TR": "Türkei",
+        "AE": "Vereinigte Arabische Emirate",
+        "SA": "Saudi-Arabien",
+        "EG": "Ägypten",
+        "ZA": "Südafrika",
+        "IN": "Indien",
+        "JP": "Japan",
+        "KR": "Südkorea",
+        "CN": "China",
+        "HK": "Hongkong",
+        "TW": "Taiwan",
+        "SG": "Singapur",
+        "MY": "Malaysia",
+        "TH": "Thailand",
+        "VN": "Vietnam",
+        "PH": "Philippinen",
+        "ID": "Indonesien",
+        "BR": "Brasilien",
+        "MX": "Mexiko",
+        "AR": "Argentinien",
+        "CL": "Chile",
+        "CO": "Kolumbien",
+        "PE": "Peru",
+        "OTHER": "Andere / Nicht aufgeführt"
       },
       "medicalHistory": {
         "hasConditions": "Haben Sie derzeit diagnostizierte Erkrankungen?",
         "conditionsList": "Welche Erkrankungen?",
-        "conditionsPlaceholder": "Listen Sie Ihre Erkrankungen auf…"
+        "conditionsPlaceholder": "Listen Sie Ihre Erkrankungen auf…",
+        "familyHistory": "Relevante familiäre Krankengeschichte",
+        "familyHistoryPlaceholder": "z. B. Herzerkrankungen, Diabetes — oder schreiben Sie Keine",
+        "surgeries": "Frühere Operationen oder Eingriffe",
+        "surgeriesPlaceholder": "Operationen/Eingriffe auflisten — oder schreiben Sie Keine"
       },
       "medications": {
         "taking": "Nehmen Sie derzeit verschreibungspflichtige Medikamente ein?",
         "list": "Medikamente auflisten",
-        "placeholder": "Name, Dosierung, Häufigkeit…"
+        "placeholder": "Name, Dosierung, Häufigkeit…",
+        "takingSupplements": "Nehmen Sie derzeit Nahrungsergänzungsmittel ein?",
+        "supplementsList": "Nahrungsergänzungsmittel auflisten",
+        "supplementsPlaceholder": "Name und übliche Dosis…"
       },
       "allergies": {
         "has": "Haben Sie bekannte Allergien?",
         "list": "Beschreiben Sie Ihre Allergien",
-        "placeholder": "Art, Schweregrad, Reaktionen…"
+        "placeholder": "Art, Schweregrad, Reaktionen…",
+        "severity": "Allgemeiner Schweregrad der Allergien",
+        "severityMild": "Leicht",
+        "severityModerate": "Mäßig",
+        "severitySevere": "Schwer"
       },
       "vitalSigns": {
         "optionalNote": "Alle Felder sind optional.",
+        "requiredNote": "Bitte teilen Sie Ihre zuletzt bekannten Werte mit, wenn verfügbar.",
         "restingHeartRate": "Ruhepuls (bpm)",
         "bloodPressure": "Blutdruck (mmHg)",
         "bloodPressurePlaceholder": "120/80"
@@ -312,30 +400,87 @@
         "alcoholModerate": "Mäßig",
         "alcoholFrequent": "Häufig",
         "exercise": "Trainingsfrequenz (pro Woche)",
-        "sleep": "Schlafdauer (Stunden pro Nacht)"
+        "sleep": "Schlafdauer (Stunden pro Nacht)",
+        "dietQuality": "Allgemeine Ernährungsqualität",
+        "sleepQuality": "Schlafqualität",
+        "caffeine": "Koffeinkonsum",
+        "caffeineNone": "Keiner",
+        "caffeineLow": "Gering",
+        "caffeineModerate": "Mäßig",
+        "caffeineHigh": "Hoch",
+        "activityType": "Hauptaktivitätstyp",
+        "activityNone": "Überwiegend inaktiv",
+        "activityCardio": "Ausdauer",
+        "activityStrength": "Krafttraining",
+        "activityMixed": "Gemischt",
+        "activityMobility": "Mobilität / Flexibilität",
+        "stressLevel": "Aktuelles Stressniveau",
+        "stress1": "1 — Sehr niedrig",
+        "stress2": "2 — Niedrig",
+        "stress3": "3 — Mäßig",
+        "stress4": "4 — Hoch",
+        "stress5": "5 — Sehr hoch",
+        "qualityPoor": "Schlecht",
+        "qualityFair": "Mäßig",
+        "qualityGood": "Gut",
+        "qualityExcellent": "Ausgezeichnet"
       },
       "psychological": {
+        "disclaimer": "Diese Fragen dienen nur dem Wellness-Kontext. Sie sind keine klinische Bewertung oder Diagnose der psychischen Gesundheit.",
         "mood": "Wie würden Sie Ihre aktuelle Stimmungsstabilität beschreiben?",
         "moodVeryStable": "Sehr stabil",
         "moodMostlyStable": "Überwiegend stabil",
         "moodSomewhatVariable": "Etwas schwankend",
         "moodQuiteVariable": "Deutlich schwankend",
+        "moodScale": "Wie hat sich Ihre Stimmung in den letzten zwei Wochen insgesamt angefühlt?",
+        "moodScale1": "1 — Sehr niedrig",
+        "moodScale2": "2 — Niedrig",
+        "moodScale3": "3 — Gemischt",
+        "moodScale4": "4 — Überwiegend gut",
+        "moodScale5": "5 — Sehr gut",
+        "anxiety": "Wie oft bemerken Sie Angst oder Anspannung?",
+        "freqRarely": "Selten",
+        "freqSometimes": "Manchmal",
+        "freqOften": "Oft",
+        "freqMostDays": "An den meisten Tagen",
+        "energy": "Typische Tagesenergie",
+        "energyVeryLow": "Sehr niedrig",
+        "energyLow": "Niedrig",
+        "energyModerate": "Mäßig",
+        "energyHigh": "Hoch",
         "stress": "Erleben Sie anhaltenden Stress?"
       },
       "confidentiality": {
         "title": "Vertraulichkeitshinweis:",
         "body": "Alle Antworten sind verschlüsselt und privat. Diese Informationen dienen nur der personalisierten Wellness-Orientierung über Health Guide."
       },
+      "sexualShared": {
+        "satisfactionLow": "Niedrig",
+        "satisfactionModerate": "Mäßig",
+        "satisfactionHigh": "Hoch"
+      },
       "mensHealth": {
         "interest": "Ist Ihr sexuelles Interesse stabil, steigend oder abnehmend?",
         "increasing": "Steigend",
         "stable": "Stabil",
         "decreasing": "Abnehmend",
-        "confidence": "Fühlen Sie sich in Ihrer sexuellen Funktion sicher?"
+        "confidence": "Fühlen Sie sich in Ihrer sexuellen Funktion sicher?",
+        "erectile": "Haben Sie Bedenken zur erektilen Funktion?",
+        "satisfaction": "Allgemeine Zufriedenheit mit dem sexuellen Wohlbefinden",
+        "wantsGuidance": "Möchten Sie Health-Guide-Unterstützung zum sexuellen Wohlbefinden?"
       },
       "womensHealth": {
         "desireChanges": "Haben Sie Veränderungen des sexuellen Verlangens oder Interesses bemerkt?",
-        "wantsGuidance": "Möchten Sie Health-Guide-Unterstützung zu hormonellem oder sexuellem Wohlbefinden?"
+        "wantsGuidance": "Möchten Sie Health-Guide-Unterstützung zu hormonellem oder sexuellem Wohlbefinden?",
+        "cycle": "Wie würden Sie die Zyklusregelmäßigkeit beschreiben (falls zutreffend)?",
+        "cycleRegular": "Regelmäßig",
+        "cycleIrregular": "Unregelmäßig",
+        "cycleNa": "Nicht zutreffend",
+        "comfort": "Wohlbefinden bei Intimität",
+        "comfortOk": "Angenehm",
+        "comfortOccasional": "Gelegentliche Beschwerden",
+        "comfortFrequent": "Häufige Beschwerden",
+        "satisfaction": "Allgemeine Zufriedenheit mit dem sexuellen Wohlbefinden"
       }
     },
     "reportSettings": {
@@ -360,7 +505,10 @@
       "askPlaceholder": "Geben Sie hier Ihre Gesundheitsfrage ein…",
       "keyInsights": "Wichtigste Erkenntnisse",
       "empty": "Noch keine Fragen gestellt",
-      "emptyHint": "Stellen Sie eine Gesundheitsfrage, um zwei unabhängige Fachperspektiven zu erhalten"
+      "emptyHint": "Stellen Sie eine Gesundheitsfrage, um zwei unabhängige Fachperspektiven zu erhalten",
+      "questionnaireContextTitle": "Fragebogen-Kontext",
+      "questionnaireContextBody": "Basierend auf Ihrem Gesundheitsprofil ({{percent}}% · {{completed}}/{{total}} Abschnitte).",
+      "questionnaireContextEmpty": "Vervollständigen Sie die Fragebögen, um den Health-Guide-Kontext zu personalisieren."
     },
     "placeholder": {
       "comingSoon": "Demnächst",

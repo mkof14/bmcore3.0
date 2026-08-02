@@ -1,17 +1,38 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Send, AlertCircle, Scale, Brain } from 'lucide-react';
 
 import ReportBrandHeader from '../../components/report/ReportBrandHeader';
+import { supabase } from '../../lib/supabase';
+import {
+  getQuestionnaireSummary,
+  type QuestionnaireSummary,
+} from '../../lib/questionnaire';
 
 export default function AIHealthAdvisorSection() {
   const { t } = useTranslation();
   const [question, setQuestion] = useState('');
   const [loading, setLoading] = useState(false);
+  const [profileSummary, setProfileSummary] = useState<QuestionnaireSummary | null>(null);
   const [responses, setResponses] = useState<{
     opinion1: string | null;
     opinion2: string | null;
   }>({ opinion1: null, opinion2: null });
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user || cancelled) return;
+      const summary = await getQuestionnaireSummary(user.id);
+      if (!cancelled) setProfileSummary(summary);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const handleSubmit = async () => {
     if (!question.trim()) return;
@@ -19,10 +40,15 @@ export default function AIHealthAdvisorSection() {
     setLoading(true);
     setResponses({ opinion1: null, opinion2: null });
 
+    const context = profileSummary?.contextBlurb;
+    const contextLine = context
+      ? ` Questionnaire context: ${context}.`
+      : ' No completed questionnaire summary is available yet.';
+
     setTimeout(() => {
       setResponses({
-        opinion1: `AI Opinion #1 (Evidence-Based): Based on current medical research and clinical guidelines regarding "${question}", I would recommend consulting with a healthcare professional for personalized advice. This is a simulated response demonstrating the dual opinion system.`,
-        opinion2: `AI Opinion #2 (Contextual): Taking into account your specific health profile and the question "${question}", here's a contextual perspective. This second AI model provides complementary insights. This is a simulated response for demonstration purposes.`
+        opinion1: `Health Guide Opinion #1 (Evidence-Based): Based on current medical research and clinical guidelines regarding "${question}", I would recommend consulting with a healthcare professional for personalized advice. This is a simulated response demonstrating the dual opinion system.`,
+        opinion2: `Health Guide Opinion #2 (Contextual): Taking into account your health questionnaire profile and the question "${question}", here's a contextual perspective.${contextLine} This second model provides complementary wellness insights. This is a simulated response for demonstration purposes.`,
       });
       setLoading(false);
     }, 2000);
@@ -56,6 +82,26 @@ export default function AIHealthAdvisorSection() {
             </p>
           </div>
         </div>
+      </div>
+
+      <div className="mb-6 member-card p-4">
+        <p className="text-sm font-semibold member-heading mb-1">
+          {t('member.healthGuide.questionnaireContextTitle')}
+        </p>
+        {profileSummary ? (
+          <p className="text-xs member-body">
+            {t('member.healthGuide.questionnaireContextBody', {
+              percent: profileSummary.overallProgress,
+              completed: profileSummary.completedCount,
+              total: profileSummary.unlockedCount,
+            })}
+            {profileSummary.contextBlurb ? (
+              <span className="block mt-1 member-muted">{profileSummary.contextBlurb}</span>
+            ) : null}
+          </p>
+        ) : (
+          <p className="text-xs member-muted">{t('member.healthGuide.questionnaireContextEmpty')}</p>
+        )}
       </div>
 
       <div className="member-card p-6 shadow-lg mb-6">

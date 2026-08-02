@@ -201,6 +201,7 @@
       "notSavedYet": "尚未保存",
       "autoSaveFailed": "自动保存失败。请重试。",
       "saveErrorShort": "错误",
+      "saving": "保存中…",
       "completed": "已完成",
       "inProgress": "进行中",
       "overallProgress": "总体进度",
@@ -212,6 +213,28 @@
       "statusComplete": "已完成",
       "statusDraft": "草稿",
       "statusLocked": "已锁定",
+      "nav": {
+        "previous": "上一页",
+        "next": "下一页",
+        "viewSummary": "查看摘要"
+      },
+      "finishProfile": {
+        "title": "完善您的健康档案",
+        "body": "还有 {{remaining}} 个章节需要填写，才能完成完整档案。",
+        "cta": "从上次中断处继续"
+      },
+      "summary": {
+        "nav": "档案摘要",
+        "title": "您的问卷摘要",
+        "subtitle": "您已填写内容的可读概览 — 并非医学诊断。",
+        "disclaimer": "此摘要仅用于健康参考。它不是诊断，也不能替代专业医疗。",
+        "progressLine": "已完成 {{percent}}% · {{completed}}/{{total}} 个章节",
+        "completeBadge": "档案已完成",
+        "incompleteBadge": "进行中",
+        "emptySection": "尚无回答",
+        "moreFields": "还有 {{count}} 项",
+        "openHealthGuide": "打开 Health Guide"
+      },
       "groups": {
         "basics": "基础",
         "clinical": "临床背景",
@@ -236,15 +259,15 @@
         "medical_history": "您的医疗背景有助于提供更好的洞察。",
         "medications": "当前药物与补充剂。",
         "allergies": "已知过敏与反应。",
-        "vital_signs": "近期测量值——均为可选。",
+        "vital_signs": "近期测量值有助于了解您的健康背景。",
         "lifestyle": "塑造健康状态的日常习惯。",
-        "psychological_health": "心理与情绪健康。",
+        "psychological_health": "心理与情绪健康 — 健康自查，并非诊断。",
         "mens_sexual_health": "关于激素与性健康的支持性引导。",
         "womens_sexual_health": "关于激素与性健康的支持性引导。"
       },
       "locked": {
         "title": "{{section}}已锁定",
-        "body": "激活对应健康类别后即可使用此问卷。",
+        "body": "当您的生理性别匹配、选择对应健康重点或激活相关目录类别时，此章节将解锁。",
         "cta": "打开目录"
       },
       "areas": {
@@ -256,7 +279,9 @@
         "prevention": "预防",
         "performance": "表现",
         "mental": "心理健康",
-        "longevity": "长寿"
+        "longevity": "长寿",
+        "mensSexual": "男性性健康",
+        "womensSexual": "女性性健康"
       },
       "priorities": {
         "prevention": "预防",
@@ -278,25 +303,88 @@
         "height": "身高（{{unit}}）",
         "weight": "体重（{{unit}}）",
         "primaryLanguage": "主要语言",
-        "primaryLanguagePlaceholder": "例如：中文"
+        "primaryLanguagePlaceholder": "例如：中文",
+        "sexUnlockHint": "选择生理性别后，将在适用时解锁对应的性健康章节。"
+      },
+      "countries": {
+        "US": "美国",
+        "CA": "加拿大",
+        "GB": "英国",
+        "IE": "爱尔兰",
+        "AU": "澳大利亚",
+        "NZ": "新西兰",
+        "DE": "德国",
+        "FR": "法国",
+        "ES": "西班牙",
+        "IT": "意大利",
+        "PT": "葡萄牙",
+        "NL": "荷兰",
+        "BE": "比利时",
+        "CH": "瑞士",
+        "AT": "奥地利",
+        "SE": "瑞典",
+        "NO": "挪威",
+        "DK": "丹麦",
+        "FI": "芬兰",
+        "PL": "波兰",
+        "CZ": "捷克",
+        "UA": "乌克兰",
+        "RU": "俄罗斯",
+        "IL": "以色列",
+        "TR": "土耳其",
+        "AE": "阿联酋",
+        "SA": "沙特阿拉伯",
+        "EG": "埃及",
+        "ZA": "南非",
+        "IN": "印度",
+        "JP": "日本",
+        "KR": "韩国",
+        "CN": "中国",
+        "HK": "香港",
+        "TW": "台湾",
+        "SG": "新加坡",
+        "MY": "马来西亚",
+        "TH": "泰国",
+        "VN": "越南",
+        "PH": "菲律宾",
+        "ID": "印度尼西亚",
+        "BR": "巴西",
+        "MX": "墨西哥",
+        "AR": "阿根廷",
+        "CL": "智利",
+        "CO": "哥伦比亚",
+        "PE": "秘鲁",
+        "OTHER": "其他 / 未列出"
       },
       "medicalHistory": {
         "hasConditions": "您目前是否有已诊断的疾病？",
         "conditionsList": "有哪些疾病？",
-        "conditionsPlaceholder": "列出您的疾病…"
+        "conditionsPlaceholder": "列出您的疾病…",
+        "familyHistory": "相关家族病史",
+        "familyHistoryPlaceholder": "例如：心脏病、糖尿病 — 或填写“无”",
+        "surgeries": "既往手术或医疗操作",
+        "surgeriesPlaceholder": "列出手术/操作 — 或填写“无”"
       },
       "medications": {
         "taking": "您目前是否在服用处方药？",
         "list": "列出药物",
-        "placeholder": "药名、剂量、频率…"
+        "placeholder": "药名、剂量、频率…",
+        "takingSupplements": "您目前是否在服用营养补充剂？",
+        "supplementsList": "列出补充剂",
+        "supplementsPlaceholder": "补充剂名称及常用剂量…"
       },
       "allergies": {
         "has": "您是否有已知过敏？",
         "list": "描述您的过敏情况",
-        "placeholder": "类型、严重程度、反应…"
+        "placeholder": "类型、严重程度、反应…",
+        "severity": "过敏总体严重程度",
+        "severityMild": "轻度",
+        "severityModerate": "中度",
+        "severitySevere": "重度"
       },
       "vitalSigns": {
         "optionalNote": "所有字段均为可选。",
+        "requiredNote": "请在知晓时分享您最新的已知数值。",
         "restingHeartRate": "静息心率（次/分）",
         "bloodPressure": "血压（mmHg）",
         "bloodPressurePlaceholder": "120/80"
@@ -312,30 +400,87 @@
         "alcoholModerate": "适度",
         "alcoholFrequent": "频繁",
         "exercise": "运动频率（每周）",
-        "sleep": "睡眠时长（每晚小时数）"
+        "sleep": "睡眠时长（每晚小时数）",
+        "dietQuality": "整体饮食质量",
+        "sleepQuality": "睡眠质量",
+        "caffeine": "咖啡因摄入",
+        "caffeineNone": "无",
+        "caffeineLow": "低",
+        "caffeineModerate": "中等",
+        "caffeineHigh": "高",
+        "activityType": "主要活动类型",
+        "activityNone": "大多不活动",
+        "activityCardio": "有氧",
+        "activityStrength": "力量",
+        "activityMixed": "混合",
+        "activityMobility": "灵活性 / 柔韧",
+        "stressLevel": "当前压力水平",
+        "stress1": "1 — 很低",
+        "stress2": "2 — 低",
+        "stress3": "3 — 中等",
+        "stress4": "4 — 高",
+        "stress5": "5 — 很高",
+        "qualityPoor": "差",
+        "qualityFair": "一般",
+        "qualityGood": "好",
+        "qualityExcellent": "很好"
       },
       "psychological": {
+        "disclaimer": "这些问题仅用于健康背景参考，并非临床心理健康评估或诊断。",
         "mood": "您如何描述当前的情绪稳定性？",
         "moodVeryStable": "非常稳定",
         "moodMostlyStable": "大多稳定",
         "moodSomewhatVariable": "有些波动",
         "moodQuiteVariable": "波动较大",
+        "moodScale": "过去两周，您的整体情绪感受如何？",
+        "moodScale1": "1 — 很低",
+        "moodScale2": "2 — 低",
+        "moodScale3": "3 — 混合",
+        "moodScale4": "4 — 大多良好",
+        "moodScale5": "5 — 很好",
+        "anxiety": "您多久会感到焦虑或紧张？",
+        "freqRarely": "很少",
+        "freqSometimes": "有时",
+        "freqOften": "经常",
+        "freqMostDays": "几乎每天",
+        "energy": "典型日间精力",
+        "energyVeryLow": "很低",
+        "energyLow": "低",
+        "energyModerate": "中等",
+        "energyHigh": "高",
         "stress": "您是否经历长期压力？"
       },
       "confidentiality": {
         "title": "保密提示：",
         "body": "所有回答均加密且私密。这些信息仅用于通过 Health Guide 提供个性化健康指导。"
       },
+      "sexualShared": {
+        "satisfactionLow": "低",
+        "satisfactionModerate": "中等",
+        "satisfactionHigh": "高"
+      },
       "mensHealth": {
         "interest": "您的性兴趣是稳定、上升还是下降？",
         "increasing": "上升",
         "stable": "稳定",
         "decreasing": "下降",
-        "confidence": "您对自己的性功能有信心吗？"
+        "confidence": "您对自己的性功能有信心吗？",
+        "erectile": "您是否对勃起功能有顾虑？",
+        "satisfaction": "对性健康整体满意度",
+        "wantsGuidance": "您是否希望获得 Health Guide 的性健康支持？"
       },
       "womensHealth": {
         "desireChanges": "您是否注意到性欲或兴趣的变化？",
-        "wantsGuidance": "您是否希望获得 Health Guide 关于激素或性健康的支持？"
+        "wantsGuidance": "您是否希望获得 Health Guide 关于激素或性健康的支持？",
+        "cycle": "您如何描述周期规律性（如适用）？",
+        "cycleRegular": "规律",
+        "cycleIrregular": "不规律",
+        "cycleNa": "不适用",
+        "comfort": "亲密时的舒适度",
+        "comfortOk": "舒适",
+        "comfortOccasional": "偶尔不适",
+        "comfortFrequent": "经常不适",
+        "satisfaction": "对性健康整体满意度"
       }
     },
     "reportSettings": {
@@ -360,7 +505,10 @@
       "askPlaceholder": "在此输入您的健康问题…",
       "keyInsights": "关键洞察",
       "empty": "尚未提出问题",
-      "emptyHint": "提出健康问题即可获得两份独立的专业意见"
+      "emptyHint": "提出健康问题即可获得两份独立的专业意见",
+      "questionnaireContextTitle": "问卷背景",
+      "questionnaireContextBody": "使用您的健康档案（{{percent}}% · {{completed}}/{{total}} 个章节）。",
+      "questionnaireContextEmpty": "完成问卷以个性化 Health Guide 背景信息。"
     },
     "placeholder": {
       "comingSoon": "即将推出",

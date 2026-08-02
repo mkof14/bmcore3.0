@@ -201,6 +201,7 @@
       "notSavedYet": "لم يُحفظ بعد",
       "autoSaveFailed": "فشل الحفظ التلقائي. يُرجى المحاولة مرة أخرى.",
       "saveErrorShort": "خطأ",
+      "saving": "جارٍ الحفظ…",
       "completed": "مكتمل",
       "inProgress": "قيد التنفيذ",
       "overallProgress": "التقدم الإجمالي",
@@ -212,6 +213,28 @@
       "statusComplete": "مكتمل",
       "statusDraft": "مسودة",
       "statusLocked": "مقفل",
+      "nav": {
+        "previous": "السابق",
+        "next": "التالي",
+        "viewSummary": "عرض الملخص"
+      },
+      "finishProfile": {
+        "title": "أكمل ملفك الصحي",
+        "body": "لا تزال هناك إجابات مطلوبة في {{remaining}} قسم/أقسام لإكمال الملف.",
+        "cta": "متابعة من حيث توقفت"
+      },
+      "summary": {
+        "nav": "ملخص الملف",
+        "title": "ملخص استبياناتك",
+        "subtitle": "نظرة مقروءة لما شاركته — وليست تشخيصًا طبيًا.",
+        "disclaimer": "هذا الملخص للسياق الصحي فقط. ليس تشخيصًا ولا يغني عن الرعاية الطبية المختصة.",
+        "progressLine": "{{percent}}% مكتمل · {{completed}}/{{total}} أقسام",
+        "completeBadge": "الملف مكتمل",
+        "incompleteBadge": "قيد التنفيذ",
+        "emptySection": "لا توجد إجابات بعد",
+        "moreFields": "+{{count}} أخرى",
+        "openHealthGuide": "فتح Health Guide"
+      },
       "groups": {
         "basics": "الأساسيات",
         "clinical": "الخلفية السريرية",
@@ -236,15 +259,15 @@
         "medical_history": "خلفيتك الطبية تساعدنا على تقديم رؤى أفضل.",
         "medications": "الأدوية والمكملات الحالية.",
         "allergies": "الحساسية والتفاعلات المعروفة.",
-        "vital_signs": "قياسات حديثة — كلها اختيارية.",
+        "vital_signs": "قياسات حديثة تساعد على توضيح سياق عافيتك.",
         "lifestyle": "عادات يومية تشكّل عافيتك.",
-        "psychological_health": "الرفاه العقلي والعاطفي.",
+        "psychological_health": "الرفاه العقلي والعاطفي — فحص للعافية، وليس تشخيصًا.",
         "mens_sexual_health": "إرشاد داعم للعافية الهرمونية والجنسية.",
         "womens_sexual_health": "إرشاد داعم للعافية الهرمونية والجنسية."
       },
       "locked": {
         "title": "{{section}} مقفل",
-        "body": "يتاح هذا الاستبيان بعد تفعيل فئة الصحة المطابقة.",
+        "body": "يُفتح هذا القسم عندما يتطابق جنسك البيولوجي، أو تختار محور الصحة المطابق، أو تفعّل فئة الكتالوج المرتبطة.",
         "cta": "فتح الكتالوج"
       },
       "areas": {
@@ -256,7 +279,9 @@
         "prevention": "الوقاية",
         "performance": "الأداء",
         "mental": "العافية النفسية",
-        "longevity": "طول العمر الصحي"
+        "longevity": "طول العمر الصحي",
+        "mensSexual": "الصحة الجنسية للرجال",
+        "womensSexual": "الصحة الجنسية للنساء"
       },
       "priorities": {
         "prevention": "الوقاية",
@@ -278,28 +303,91 @@
         "height": "الطول ({{unit}})",
         "weight": "الوزن ({{unit}})",
         "primaryLanguage": "اللغة الأساسية",
-        "primaryLanguagePlaceholder": "مثل: العربية"
+        "primaryLanguagePlaceholder": "مثل: العربية",
+        "sexUnlockHint": "يؤدي اختيار الجنس البيولوجي إلى فتح قسم الصحة الجنسية المناسب عند الحاجة."
+      },
+      "countries": {
+        "US": "الولايات المتحدة",
+        "CA": "كندا",
+        "GB": "المملكة المتحدة",
+        "IE": "أيرلندا",
+        "AU": "أستراليا",
+        "NZ": "نيوزيلندا",
+        "DE": "ألمانيا",
+        "FR": "فرنسا",
+        "ES": "إسبانيا",
+        "IT": "إيطاليا",
+        "PT": "البرتغال",
+        "NL": "هولندا",
+        "BE": "بلجيكا",
+        "CH": "سويسرا",
+        "AT": "النمسا",
+        "SE": "السويد",
+        "NO": "النرويج",
+        "DK": "الدنمارك",
+        "FI": "فنلندا",
+        "PL": "بولندا",
+        "CZ": "التشيك",
+        "UA": "أوكرانيا",
+        "RU": "روسيا",
+        "IL": "إسرائيل",
+        "TR": "تركيا",
+        "AE": "الإمارات العربية المتحدة",
+        "SA": "المملكة العربية السعودية",
+        "EG": "مصر",
+        "ZA": "جنوب أفريقيا",
+        "IN": "الهند",
+        "JP": "اليابان",
+        "KR": "كوريا الجنوبية",
+        "CN": "الصين",
+        "HK": "هونغ كونغ",
+        "TW": "تايوان",
+        "SG": "سنغافورة",
+        "MY": "ماليزيا",
+        "TH": "تايلند",
+        "VN": "فيتنام",
+        "PH": "الفلبين",
+        "ID": "إندونيسيا",
+        "BR": "البرازيل",
+        "MX": "المكسيك",
+        "AR": "الأرجنتين",
+        "CL": "تشيلي",
+        "CO": "كولومبيا",
+        "PE": "بيرو",
+        "OTHER": "أخرى / غير مدرجة"
       },
       "medicalHistory": {
         "hasConditions": "هل لديك حالياً أي حالات طبية مُشخصة؟",
         "conditionsList": "ما هي الحالات؟",
-        "conditionsPlaceholder": "اذكر حالاتك…"
+        "conditionsPlaceholder": "اذكر حالاتك…",
+        "familyHistory": "التاريخ الطبي العائلي ذو الصلة",
+        "familyHistoryPlaceholder": "مثل: أمراض القلب، السكري — أو اكتب لا يوجد",
+        "surgeries": "عمليات أو إجراءات سابقة",
+        "surgeriesPlaceholder": "اذكر العمليات/الإجراءات — أو اكتب لا يوجد"
       },
       "medications": {
         "taking": "هل تتناول حالياً أي أدوية بوصفة طبية؟",
         "list": "قائمة الأدوية",
-        "placeholder": "اسم الدواء، الجرعة، التكرار…"
+        "placeholder": "اسم الدواء، الجرعة، التكرار…",
+        "takingSupplements": "هل تتناول حالياً أي مكملات غذائية؟",
+        "supplementsList": "قائمة المكملات",
+        "supplementsPlaceholder": "اسم المكمل والجرعة المعتادة…"
       },
       "allergies": {
         "has": "هل لديك أي حساسية معروفة؟",
         "list": "صف حالات الحساسية",
-        "placeholder": "النوع، الشدة، التفاعلات…"
+        "placeholder": "النوع، الشدة، التفاعلات…",
+        "severity": "الشدة العامة للحساسية",
+        "severityMild": "خفيفة",
+        "severityModerate": "متوسطة",
+        "severitySevere": "شديدة"
       },
       "vitalSigns": {
         "optionalNote": "جميع الحقول اختيارية.",
         "restingHeartRate": "معدل نبض القلب أثناء الراحة (نبضة/دقيقة)",
         "bloodPressure": "ضغط الدم (mmHg)",
-        "bloodPressurePlaceholder": "120/80"
+        "bloodPressurePlaceholder": "120/80",
+        "requiredNote": "يرجى مشاركة أحدث القيم المعروفة لديك عند توفرها."
       },
       "lifestyle": {
         "smoking": "حالة التدخين",
@@ -312,7 +400,30 @@
         "alcoholModerate": "معتدل",
         "alcoholFrequent": "متكرر",
         "exercise": "تكرار التمرين (أسبوعيًا)",
-        "sleep": "مدة النوم (ساعات في الليلة)"
+        "sleep": "مدة النوم (ساعات في الليلة)",
+        "dietQuality": "جودة النظام الغذائي بشكل عام",
+        "sleepQuality": "جودة النوم",
+        "caffeine": "استهلاك الكافيين",
+        "caffeineNone": "لا شيء",
+        "caffeineLow": "منخفض",
+        "caffeineModerate": "متوسط",
+        "caffeineHigh": "مرتفع",
+        "activityType": "نوع النشاط الرئيسي",
+        "activityNone": "غير نشط في الغالب",
+        "activityCardio": "تمارين هوائي",
+        "activityStrength": "قوة",
+        "activityMixed": "مختلط",
+        "activityMobility": "حركة / مرونة",
+        "stressLevel": "مستوى الإجهاد الحالي",
+        "stress1": "1 — منخفض جداً",
+        "stress2": "2 — منخفض",
+        "stress3": "3 — متوسط",
+        "stress4": "4 — مرتفع",
+        "stress5": "5 — مرتفع جداً",
+        "qualityPoor": "سيئة",
+        "qualityFair": "مقبولة",
+        "qualityGood": "جيدة",
+        "qualityExcellent": "ممتازة"
       },
       "psychological": {
         "mood": "كيف تصف استقرار مزاجك الحالي؟",
@@ -320,7 +431,24 @@
         "moodMostlyStable": "مستقر في الغالب",
         "moodSomewhatVariable": "متغير قليلاً",
         "moodQuiteVariable": "متغير كثيراً",
-        "stress": "هل تعاني من إجهاد طويل الأمد؟"
+        "stress": "هل تعاني من إجهاد طويل الأمد؟",
+        "disclaimer": "هذه الأسئلة تدعم سياق العافية فقط. ليست تقييماً طبياً أو تشخيصاً للصحة النفسية.",
+        "moodScale": "خلال الأسبوعين الماضيين، كيف كان شعورك العام بمزاجك؟",
+        "moodScale1": "1 — منخفض جداً",
+        "moodScale2": "2 — منخفض",
+        "moodScale3": "3 — مختلط",
+        "moodScale4": "4 — جيد في الغالب",
+        "moodScale5": "5 — جيد جداً",
+        "anxiety": "كم مرة تلاحظ القلق أو التوتر؟",
+        "freqRarely": "نادراً",
+        "freqSometimes": "أحياناً",
+        "freqOften": "غالباً",
+        "freqMostDays": "معظم الأيام",
+        "energy": "الطاقة النهارية المعتادة",
+        "energyVeryLow": "منخفضة جداً",
+        "energyLow": "منخفضة",
+        "energyModerate": "متوسطة",
+        "energyHigh": "مرتفعة"
       },
       "confidentiality": {
         "title": "إشعار السرية:",
@@ -331,11 +459,28 @@
         "increasing": "متزايد",
         "stable": "مستقر",
         "decreasing": "متناقص",
-        "confidence": "هل تشعر بالثقة في وظيفتك الجنسية؟"
+        "confidence": "هل تشعر بالثقة في وظيفتك الجنسية؟",
+        "erectile": "هل لديك مخاوف بشأن الوظيفة الانتصابية؟",
+        "satisfaction": "الرضا العام عن العافية الجنسية",
+        "wantsGuidance": "هل ترغب في دعم Health Guide للعافية الجنسية؟"
       },
       "womensHealth": {
         "desireChanges": "هل لاحظت تغيرات في الرغبة أو الاهتمام الجنسي؟",
-        "wantsGuidance": "هل ترغبين بدعم Health Guide المتعلق بالعافية الهرمونية أو الجنسية؟"
+        "wantsGuidance": "هل ترغبين بدعم Health Guide المتعلق بالعافية الهرمونية أو الجنسية؟",
+        "cycle": "كيف تصفين انتظام الدورة (إن انطبق)؟",
+        "cycleRegular": "منتظمة",
+        "cycleIrregular": "غير منتظمة",
+        "cycleNa": "غير منطبق",
+        "comfort": "الراحة أثناء العلاقة الحميمة",
+        "comfortOk": "مريحة",
+        "comfortOccasional": "انزعاج أحياناً",
+        "comfortFrequent": "انزعاج متكرر",
+        "satisfaction": "الرضا العام عن العافية الجنسية"
+      },
+      "sexualShared": {
+        "satisfactionLow": "منخفضة",
+        "satisfactionModerate": "متوسطة",
+        "satisfactionHigh": "مرتفعة"
       }
     },
     "reportSettings": {
@@ -360,7 +505,10 @@
       "askPlaceholder": "اكتب سؤالك الصحي هنا…",
       "keyInsights": "أبرز الرؤى",
       "empty": "لم تُطرح أي أسئلة بعد",
-      "emptyHint": "اطرح سؤالًا صحيًا للحصول على وجهتَي نظر خبيرتَين مستقلتَين"
+      "emptyHint": "اطرح سؤالًا صحيًا للحصول على وجهتَي نظر خبيرتَين مستقلتَين",
+      "questionnaireContextTitle": "سياق الاستبيان",
+      "questionnaireContextBody": "باستخدام ملفك الصحي ({{percent}}% · {{completed}}/{{total}} أقسام).",
+      "questionnaireContextEmpty": "أكمل الاستبيانات لتخصيص سياق Health Guide."
     },
     "placeholder": {
       "comingSoon": "قريبًا",

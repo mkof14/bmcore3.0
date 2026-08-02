@@ -6,6 +6,7 @@ import { supabase } from '../../lib/supabase';
 import { serviceCategories, serviceDetailPath } from '../../data/services';
 import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 import { localizeCategory, localizeService } from '../../lib/localizeServices';
+import { unlocksFromCatalogSelection } from '../../lib/questionnaire';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Heart, Brain, Users, Activity, Sun, Moon, Shield, Apple, Leaf,
@@ -157,6 +158,40 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
     }
   };
 
+  const syncSexualHealthUnlocks = async (selected: Set<string>) => {
+    if (!selected.has('mens-sexual-health') && !selected.has('womens-sexual-health')) {
+      return;
+    }
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user) return;
+
+      const { data } = await supabase
+        .from('questionnaire_responses')
+        .select('mens_sexual_health_unlocked, womens_sexual_health_unlocked')
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+      const next = unlocksFromCatalogSelection(selected, {
+        mens_sexual_health_unlocked: Boolean(data?.mens_sexual_health_unlocked),
+        womens_sexual_health_unlocked: Boolean(data?.womens_sexual_health_unlocked),
+      });
+
+      await supabase.from('questionnaire_responses').upsert(
+        {
+          user_id: user.id,
+          mens_sexual_health_unlocked: next.mens_sexual_health_unlocked,
+          womens_sexual_health_unlocked: next.womens_sexual_health_unlocked,
+        },
+        { onConflict: 'user_id' }
+      );
+    } catch {
+      // Non-blocking: catalog selection still works without questionnaire sync.
+    }
+  };
+
   const toggleCategory = (categoryId: string) => {
     const newSelected = new Set(selectedCategories);
     if (newSelected.has(categoryId)) {
@@ -165,6 +200,7 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
       newSelected.add(categoryId);
     }
     setSelectedCategories(newSelected);
+    void syncSexualHealthUnlocks(newSelected);
   };
 
   const selectedCount = selectedCategories.size;

@@ -201,6 +201,7 @@
       "notSavedYet": "עדיין לא נשמר",
       "autoSaveFailed": "שמירה אוטומטית נכשלה. נסו שוב.",
       "saveErrorShort": "שגיאה",
+      "saving": "שומר…",
       "completed": "הושלמו",
       "inProgress": "בתהליך",
       "overallProgress": "התקדמות כללית",
@@ -212,6 +213,28 @@
       "statusComplete": "הושלם",
       "statusDraft": "טיוטה",
       "statusLocked": "נעול",
+      "nav": {
+        "previous": "הקודם",
+        "next": "הבא",
+        "viewSummary": "צפייה בסיכום"
+      },
+      "finishProfile": {
+        "title": "השלימו את פרופיל הבריאות שלכם",
+        "body": "עדיין חסרות תשובות ב-{{remaining}} מדור/ים לפרופיל מלא.",
+        "cta": "המשיכו מהמקום שבו עצרתם"
+      },
+      "summary": {
+        "nav": "סיכום פרופיל",
+        "title": "סיכום השאלונים שלכם",
+        "subtitle": "סקירה קריאה של מה ששיתפתם — לא אבחנה רפואית.",
+        "disclaimer": "סיכום זה מיועד להקשר רווחה בלבד. הוא אינו אבחנה ואינו מחליף טיפול רפואי מקצועי.",
+        "progressLine": "{{percent}}% הושלם · {{completed}}/{{total}} מדורים",
+        "completeBadge": "פרופיל מלא",
+        "incompleteBadge": "בתהליך",
+        "emptySection": "אין תשובות עדיין",
+        "moreFields": "+{{count}} נוספים",
+        "openHealthGuide": "פתיחת Health Guide"
+      },
       "groups": {
         "basics": "יסודות",
         "clinical": "רקע קליני",
@@ -236,15 +259,15 @@
         "medical_history": "הרקע הרפואי שלכם מסייע לתובנות טובות יותר.",
         "medications": "תרופות ותוספים נוכחיים.",
         "allergies": "אלרגיות ותגובות ידועות.",
-        "vital_signs": "מדידות אחרונות — הכל אופציונלי.",
+        "vital_signs": "מדידות אחרונות שעוזרות להעמיק את הקשר הרווחה שלכם.",
         "lifestyle": "הרגלים יומיומיים שמעצבים את הרווחה שלכם.",
-        "psychological_health": "רווחה נפשית ורגשית.",
+        "psychological_health": "רווחה נפשית ורגשית — בדיקת רווחה, לא אבחנה.",
         "mens_sexual_health": "הכוונה תומכת לרווחה הורמונלית ומינית.",
         "womens_sexual_health": "הכוונה תומכת לרווחה הורמונלית ומינית."
       },
       "locked": {
         "title": "{{section}} נעול",
-        "body": "שאלון זה יהיה זמין לאחר הפעלת קטגוריית הבריאות המתאימה.",
+        "body": "מדור זה נפתח כאשר המין הביולוגי שלכם תואם, בוחרים במיקוד הבריאות המתאים או מפעילים את קטגוריית הקטלוג הרלוונטית.",
         "cta": "פתח קטלוג"
       },
       "areas": {
@@ -256,7 +279,9 @@
         "prevention": "מניעה",
         "performance": "ביצועים",
         "mental": "רווחה נפשית",
-        "longevity": "אריכות ימים"
+        "longevity": "אריכות ימים",
+        "mensSexual": "בריאות מינית לגברים",
+        "womensSexual": "בריאות מינית לנשים"
       },
       "priorities": {
         "prevention": "מניעה",
@@ -278,25 +303,88 @@
         "height": "גובה ({{unit}})",
         "weight": "משקל ({{unit}})",
         "primaryLanguage": "שפה עיקרית",
-        "primaryLanguagePlaceholder": "לדוגמה עברית"
+        "primaryLanguagePlaceholder": "לדוגמה עברית",
+        "sexUnlockHint": "בחירת המין הביולוגי פותחת את מדור בריאות המין המתאים, כשזה רלוונטי."
+      },
+      "countries": {
+        "US": "ארצות הברית",
+        "CA": "קנדה",
+        "GB": "בריטניה",
+        "IE": "אירלנד",
+        "AU": "אוסטרליה",
+        "NZ": "ניו זילנד",
+        "DE": "גרמניה",
+        "FR": "צרפת",
+        "ES": "ספרד",
+        "IT": "איטליה",
+        "PT": "פורטוגל",
+        "NL": "הולנד",
+        "BE": "בלגיה",
+        "CH": "שווייץ",
+        "AT": "אוסטריה",
+        "SE": "שוודיה",
+        "NO": "נורווגיה",
+        "DK": "דנמרק",
+        "FI": "פינלנד",
+        "PL": "פולין",
+        "CZ": "צ'כיה",
+        "UA": "אוקראינה",
+        "RU": "רוסיה",
+        "IL": "ישראל",
+        "TR": "טורקיה",
+        "AE": "איחוד האמירויות",
+        "SA": "ערב הסעודית",
+        "EG": "מצרים",
+        "ZA": "דרום אפריקה",
+        "IN": "הודו",
+        "JP": "יפן",
+        "KR": "דרום קוריאה",
+        "CN": "סין",
+        "HK": "הונג קונג",
+        "TW": "טאיוואן",
+        "SG": "סינגפור",
+        "MY": "מלזיה",
+        "TH": "תאילנד",
+        "VN": "וייטנאם",
+        "PH": "הפיליפינים",
+        "ID": "אינדונזיה",
+        "BR": "ברזיל",
+        "MX": "מקסיקו",
+        "AR": "ארגנטינה",
+        "CL": "צ'ילה",
+        "CO": "קולומביה",
+        "PE": "פרו",
+        "OTHER": "אחר / לא ברשימה"
       },
       "medicalHistory": {
         "hasConditions": "האם יש לכם כיום מצבים רפואיים מאובחנים?",
         "conditionsList": "אילו מצבים?",
-        "conditionsPlaceholder": "רשמו את המצבים…"
+        "conditionsPlaceholder": "רשמו את המצבים…",
+        "familyHistory": "היסטוריה רפואית משפחתית רלוונטית",
+        "familyHistoryPlaceholder": "לדוגמה: מחלות לב, סוכרת — או כתבו אין",
+        "surgeries": "ניתוחים או פרוצדורות בעבר",
+        "surgeriesPlaceholder": "רשמו ניתוחים/פרוצדורות — או כתבו אין"
       },
       "medications": {
         "taking": "האם אתם נוטלים כיום תרופות מרשם?",
         "list": "רשימת תרופות",
-        "placeholder": "שם תרופה, מינון, תדירות…"
+        "placeholder": "שם תרופה, מינון, תדירות…",
+        "takingSupplements": "האם אתם נוטלים כיום תוספי תזונה?",
+        "supplementsList": "רשימת תוספים",
+        "supplementsPlaceholder": "שם התוסף והמינון הרגיל…"
       },
       "allergies": {
         "has": "האם יש לכם אלרגיות ידועות?",
         "list": "תארו את האלרגיות",
-        "placeholder": "סוג, חומרה, תגובות…"
+        "placeholder": "סוג, חומרה, תגובות…",
+        "severity": "חומרת האלרגיות הכוללת",
+        "severityMild": "קלה",
+        "severityModerate": "בינונית",
+        "severitySevere": "חמורה"
       },
       "vitalSigns": {
         "optionalNote": "כל השדות אופציונליים.",
+        "requiredNote": "שתפו את הערכים האחרונים הידועים לכם, כשיש.",
         "restingHeartRate": "דופק במנוחה (bpm)",
         "bloodPressure": "לחץ דם (mmHg)",
         "bloodPressurePlaceholder": "120/80"
@@ -312,30 +400,87 @@
         "alcoholModerate": "בינוני",
         "alcoholFrequent": "תכוף",
         "exercise": "תדירות פעילות גופנית (בשבוע)",
-        "sleep": "משך שינה (שעות בלילה)"
+        "sleep": "משך שינה (שעות בלילה)",
+        "dietQuality": "איכות התזונה הכוללת",
+        "sleepQuality": "איכות השינה",
+        "caffeine": "צריכת קפאין",
+        "caffeineNone": "ללא",
+        "caffeineLow": "נמוכה",
+        "caffeineModerate": "בינונית",
+        "caffeineHigh": "גבוהה",
+        "activityType": "סוג הפעילות העיקרית",
+        "activityNone": "בעיקר לא פעיל",
+        "activityCardio": "אירובי",
+        "activityStrength": "כוח",
+        "activityMixed": "משולב",
+        "activityMobility": "ניידות / גמישות",
+        "stressLevel": "רמת הלחץ הנוכחית",
+        "stress1": "1 — נמוך מאוד",
+        "stress2": "2 — נמוך",
+        "stress3": "3 — בינוני",
+        "stress4": "4 — גבוה",
+        "stress5": "5 — גבוה מאוד",
+        "qualityPoor": "גרועה",
+        "qualityFair": "סבירה",
+        "qualityGood": "טובה",
+        "qualityExcellent": "מצוינת"
       },
       "psychological": {
+        "disclaimer": "שאלות אלה מספקות הקשר רווחה בלבד. הן אינן הערכה קלינית או אבחון של בריאות נפשית.",
         "mood": "כיצד תתארו את יציבות מצב הרוח הנוכחי?",
         "moodVeryStable": "יציב מאוד",
         "moodMostlyStable": "יציב ברובו",
         "moodSomewhatVariable": "משתנה במקצת",
         "moodQuiteVariable": "משתנה מאוד",
+        "moodScale": "בשבועיים האחרונים, איך הרגשתם מצב רוח באופן כללי?",
+        "moodScale1": "1 — נמוך מאוד",
+        "moodScale2": "2 — נמוך",
+        "moodScale3": "3 — מעורב",
+        "moodScale4": "4 — בעיקר טוב",
+        "moodScale5": "5 — טוב מאוד",
+        "anxiety": "באיזו תדירות אתם מרגישים חרדה או מתח?",
+        "freqRarely": "לעיתים רחוקות",
+        "freqSometimes": "לפעמים",
+        "freqOften": "לעיתים קרובות",
+        "freqMostDays": "ברוב הימים",
+        "energy": "אנרגיה יומית טיפוסית",
+        "energyVeryLow": "נמוכה מאוד",
+        "energyLow": "נמוכה",
+        "energyModerate": "בינונית",
+        "energyHigh": "גבוהה",
         "stress": "האם אתם חווים לחץ ממושך?"
       },
       "confidentiality": {
         "title": "הודעת סודיות:",
         "body": "כל התשובות מוצפנות ופרטיות. המידע משמש רק להכוונת רווחה מותאמת אישית דרך Health Guide."
       },
+      "sexualShared": {
+        "satisfactionLow": "נמוכה",
+        "satisfactionModerate": "בינונית",
+        "satisfactionHigh": "גבוהה"
+      },
       "mensHealth": {
         "interest": "האם העניין המיני שלכם יציב, עולה או יורד?",
         "increasing": "עולה",
         "stable": "יציב",
         "decreasing": "יורד",
-        "confidence": "האם אתם מרגישים ביטחון בתפקוד המיני?"
+        "confidence": "האם אתם מרגישים ביטחון בתפקוד המיני?",
+        "erectile": "האם יש לכם חששות לגבי תפקוד מיני?",
+        "satisfaction": "שביעות רצון כללית מהרווחה המינית",
+        "wantsGuidance": "האם תרצו תמיכה מ-Health Guide בנושא רווחה מינית?"
       },
       "womensHealth": {
         "desireChanges": "האם שמתם לב לשינויים ברצון או בעניין המיני?",
-        "wantsGuidance": "האם תרצו תמיכה מ-Health Guide בנושא רווחה הורמונלית או מינית?"
+        "wantsGuidance": "האם תרצו תמיכה מ-Health Guide בנושא רווחה הורמונלית או מינית?",
+        "cycle": "כיצד הייתם מתארים את סדירות המחזור (אם רלוונטי)?",
+        "cycleRegular": "סדיר",
+        "cycleIrregular": "לא סדיר",
+        "cycleNa": "לא רלוונטי",
+        "comfort": "נוחות במהלך אינטימיות",
+        "comfortOk": "נוח",
+        "comfortOccasional": "אי-נוחות מדי פעם",
+        "comfortFrequent": "אי-נוחות תכופה",
+        "satisfaction": "שביעות רצון כללית מהרווחה המינית"
       }
     },
     "reportSettings": {
@@ -360,7 +505,10 @@
       "askPlaceholder": "הקלידו כאן את שאלת הבריאות…",
       "keyInsights": "תובנות מרכזיות",
       "empty": "עדיין לא נשאלו שאלות",
-      "emptyHint": "שאלו שאלת בריאות כדי לקבל שתי נקודות מבט מקצועיות ובלתי תלויות"
+      "emptyHint": "שאלו שאלת בריאות כדי לקבל שתי נקודות מבט מקצועיות ובלתי תלויות",
+      "questionnaireContextTitle": "הקשר השאלון",
+      "questionnaireContextBody": "משתמש בפרופיל הבריאות שלכם ({{percent}}% · {{completed}}/{{total}} מדורים).",
+      "questionnaireContextEmpty": "השלימו שאלונים כדי להתאים אישית את הקשר Health Guide."
     },
     "placeholder": {
       "comingSoon": "בקרוב",

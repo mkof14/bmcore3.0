@@ -201,6 +201,7 @@
       "notSavedYet": "まだ保存されていません",
       "autoSaveFailed": "自動保存に失敗しました。もう一度お試しください。",
       "saveErrorShort": "エラー",
+      "saving": "保存中…",
       "completed": "完了",
       "inProgress": "進行中",
       "overallProgress": "全体の進捗",
@@ -212,6 +213,28 @@
       "statusComplete": "完了",
       "statusDraft": "下書き",
       "statusLocked": "ロック中",
+      "nav": {
+        "previous": "前へ",
+        "next": "次へ",
+        "viewSummary": "概要を見る"
+      },
+      "finishProfile": {
+        "title": "健康プロフィールを完成させましょう",
+        "body": "プロフィールを完成させるには、あと {{remaining}} セクションの回答が必要です。",
+        "cta": "中断したところから続ける"
+      },
+      "summary": {
+        "nav": "プロフィール概要",
+        "title": "問診票の概要",
+        "subtitle": "共有した内容の読みやすい概要です — 医学的診断ではありません。",
+        "disclaimer": "この概要はウェルネスの参考情報のみです。診断ではなく、専門的な医療を代替するものではありません。",
+        "progressLine": "{{percent}}% 完了 · {{completed}}/{{total}} セクション",
+        "completeBadge": "プロフィール完成",
+        "incompleteBadge": "進行中",
+        "emptySection": "まだ回答がありません",
+        "moreFields": "あと {{count}} 件",
+        "openHealthGuide": "Health Guide を開く"
+      },
       "groups": {
         "basics": "基本",
         "clinical": "臨床背景",
@@ -236,15 +259,15 @@
         "medical_history": "病歴はより良い洞察につながります。",
         "medications": "現在の薬とサプリメント。",
         "allergies": "既知のアレルギーと反応。",
-        "vital_signs": "直近の測定値 — すべて任意です。",
+        "vital_signs": "ウェルネスの文脈づけに役立つ最近の測定値。",
         "lifestyle": "ウェルネスを形づくる日々の習慣。",
-        "psychological_health": "心と感情のウェルビーイング。",
+        "psychological_health": "心と感情のウェルビーイング — ウェルネス確認であり、診断ではありません。",
         "mens_sexual_health": "ホルモンと性のウェルビーイングを支えるガイダンス。",
         "womens_sexual_health": "ホルモンと性のウェルビーイングを支えるガイダンス。"
       },
       "locked": {
         "title": "{{section}} はロックされています",
-        "body": "対応する健康カテゴリを有効にすると、この問診票が利用できます。",
+        "body": "生物学的性別が一致する場合、該当する健康の焦点を選択した場合、または関連カタログカテゴリを有効にした場合に、このセクションが解除されます。",
         "cta": "カタログを開く"
       },
       "areas": {
@@ -256,7 +279,9 @@
         "prevention": "予防",
         "performance": "パフォーマンス",
         "mental": "メンタルウェルネス",
-        "longevity": "長寿"
+        "longevity": "長寿",
+        "mensSexual": "男性の性の健康",
+        "womensSexual": "女性の性の健康"
       },
       "priorities": {
         "prevention": "予防",
@@ -278,25 +303,88 @@
         "height": "身長（{{unit}}）",
         "weight": "体重（{{unit}}）",
         "primaryLanguage": "主な言語",
-        "primaryLanguagePlaceholder": "例：日本語"
+        "primaryLanguagePlaceholder": "例：日本語",
+        "sexUnlockHint": "生物学的性別を選択すると、該当する場合に性の健康セクションが解除されます。"
+      },
+      "countries": {
+        "US": "アメリカ合衆国",
+        "CA": "カナダ",
+        "GB": "イギリス",
+        "IE": "アイルランド",
+        "AU": "オーストラリア",
+        "NZ": "ニュージーランド",
+        "DE": "ドイツ",
+        "FR": "フランス",
+        "ES": "スペイン",
+        "IT": "イタリア",
+        "PT": "ポルトガル",
+        "NL": "オランダ",
+        "BE": "ベルギー",
+        "CH": "スイス",
+        "AT": "オーストリア",
+        "SE": "スウェーデン",
+        "NO": "ノルウェー",
+        "DK": "デンマーク",
+        "FI": "フィンランド",
+        "PL": "ポーランド",
+        "CZ": "チェコ",
+        "UA": "ウクライナ",
+        "RU": "ロシア",
+        "IL": "イスラエル",
+        "TR": "トルコ",
+        "AE": "アラブ首長国連邦",
+        "SA": "サウジアラビア",
+        "EG": "エジプト",
+        "ZA": "南アフリカ",
+        "IN": "インド",
+        "JP": "日本",
+        "KR": "韓国",
+        "CN": "中国",
+        "HK": "香港",
+        "TW": "台湾",
+        "SG": "シンガポール",
+        "MY": "マレーシア",
+        "TH": "タイ",
+        "VN": "ベトナム",
+        "PH": "フィリピン",
+        "ID": "インドネシア",
+        "BR": "ブラジル",
+        "MX": "メキシコ",
+        "AR": "アルゼンチン",
+        "CL": "チリ",
+        "CO": "コロンビア",
+        "PE": "ペルー",
+        "OTHER": "その他 / リストにない"
       },
       "medicalHistory": {
         "hasConditions": "現在、診断済みの疾患はありますか？",
         "conditionsList": "どの疾患ですか？",
-        "conditionsPlaceholder": "疾患を記入…"
+        "conditionsPlaceholder": "疾患を記入…",
+        "familyHistory": "関連する家族の病歴",
+        "familyHistoryPlaceholder": "例：心疾患、糖尿病 — または「なし」と記入",
+        "surgeries": "過去の手術や処置",
+        "surgeriesPlaceholder": "手術/処置を記入 — または「なし」と記入"
       },
       "medications": {
         "taking": "現在、処方薬を服用していますか？",
         "list": "薬を記入",
-        "placeholder": "薬名、用量、頻度…"
+        "placeholder": "薬名、用量、頻度…",
+        "takingSupplements": "現在、サプリメントを服用していますか？",
+        "supplementsList": "サプリメントを記入",
+        "supplementsPlaceholder": "サプリメント名と通常の用量…"
       },
       "allergies": {
         "has": "既知のアレルギーはありますか？",
         "list": "アレルギーを説明",
-        "placeholder": "種類、重症度、反応…"
+        "placeholder": "種類、重症度、反応…",
+        "severity": "アレルギーの全体的な重症度",
+        "severityMild": "軽度",
+        "severityModerate": "中等度",
+        "severitySevere": "重度"
       },
       "vitalSigns": {
         "optionalNote": "すべての項目は任意です。",
+        "requiredNote": "分かる範囲で最新の値をお知らせください。",
         "restingHeartRate": "安静時心拍数（bpm）",
         "bloodPressure": "血圧（mmHg）",
         "bloodPressurePlaceholder": "120/80"
@@ -312,30 +400,87 @@
         "alcoholModerate": "適度",
         "alcoholFrequent": "頻繁",
         "exercise": "運動頻度（週あたり）",
-        "sleep": "睡眠時間（1晚あたりの時間）"
+        "sleep": "睡眠時間（1晚あたりの時間）",
+        "dietQuality": "食事の全体的な質",
+        "sleepQuality": "睡眠の質",
+        "caffeine": "カフェイン摂取",
+        "caffeineNone": "なし",
+        "caffeineLow": "少ない",
+        "caffeineModerate": "普通",
+        "caffeineHigh": "多い",
+        "activityType": "主な活動の種類",
+        "activityNone": "ほとんど活動しない",
+        "activityCardio": "有酸素",
+        "activityStrength": "筋力",
+        "activityMixed": "混合",
+        "activityMobility": "可動性 / 柔軟性",
+        "stressLevel": "現在のストレスレベル",
+        "stress1": "1 — とても低い",
+        "stress2": "2 — 低い",
+        "stress3": "3 — 普通",
+        "stress4": "4 — 高い",
+        "stress5": "5 — とても高い",
+        "qualityPoor": "悪い",
+        "qualityFair": "普通",
+        "qualityGood": "良い",
+        "qualityExcellent": "とても良い"
       },
       "psychological": {
+        "disclaimer": "これらの質問はウェルネスの文脈を支援するものです。臨床的なメンタルヘルス評価や診断ではありません。",
         "mood": "現在の気分の安定性をどう表現しますか？",
         "moodVeryStable": "非常に安定",
         "moodMostlyStable": "おおむね安定",
         "moodSomewhatVariable": "やや変動",
         "moodQuiteVariable": "かなり変動",
+        "moodScale": "過去2週間、全体的な気分はいかがでしたか？",
+        "moodScale1": "1 — とても低い",
+        "moodScale2": "2 — 低い",
+        "moodScale3": "3 — まちまち",
+        "moodScale4": "4 — おおむね良い",
+        "moodScale5": "5 — とても良い",
+        "anxiety": "不安や緊張をどのくらいの頻度で感じますか？",
+        "freqRarely": "めったにない",
+        "freqSometimes": "ときどき",
+        "freqOften": "よくある",
+        "freqMostDays": "ほとんど毎日",
+        "energy": "日中の典型的なエネルギー",
+        "energyVeryLow": "とても低い",
+        "energyLow": "低い",
+        "energyModerate": "普通",
+        "energyHigh": "高い",
         "stress": "長引くストレスを感じていますか？"
       },
       "confidentiality": {
         "title": "機密に関するお知らせ：",
         "body": "回答はすべて暗号化され非公開です。この情報は Health Guide による個別のウェルネスガイダンスにのみ使用されます。"
       },
+      "sexualShared": {
+        "satisfactionLow": "低い",
+        "satisfactionModerate": "普通",
+        "satisfactionHigh": "高い"
+      },
       "mensHealth": {
         "interest": "性的関心は安定・増加・減少のどれですか？",
         "increasing": "増加",
         "stable": "安定",
         "decreasing": "減少",
-        "confidence": "性機能に自信がありますか？"
+        "confidence": "性機能に自信がありますか？",
+        "erectile": "勃起機能について心配はありますか？",
+        "satisfaction": "性のウェルビーイングへの全体的な満足度",
+        "wantsGuidance": "性のウェルビーイングについて Health Guide のサポートを希望しますか？"
       },
       "womensHealth": {
         "desireChanges": "性欲や関心の変化に気づきましたか？",
-        "wantsGuidance": "ホルモンや性のウェルビーイングについて Health Guide のサポートを希望しますか？"
+        "wantsGuidance": "ホルモンや性のウェルビーイングについて Health Guide のサポートを希望しますか？",
+        "cycle": "周期の規則性をどう表現しますか（該当する場合）？",
+        "cycleRegular": "規則的",
+        "cycleIrregular": "不規則",
+        "cycleNa": "該当しない",
+        "comfort": "親密さの中での快適さ",
+        "comfortOk": "快適",
+        "comfortOccasional": "ときどき不快感",
+        "comfortFrequent": "頻繁に不快感",
+        "satisfaction": "性のウェルビーイングへの全体的な満足度"
       }
     },
     "reportSettings": {
@@ -360,7 +505,10 @@
       "askPlaceholder": "ここに健康の質問を入力してください…",
       "keyInsights": "主なポイント",
       "empty": "まだ質問はありません",
-      "emptyHint": "健康について質問すると、2つの独立した専門的見解が得られます"
+      "emptyHint": "健康について質問すると、2つの独立した専門的見解が得られます",
+      "questionnaireContextTitle": "問診票のコンテキスト",
+      "questionnaireContextBody": "健康プロフィールを使用しています（{{percent}}% · {{completed}}/{{total}} セクション）。",
+      "questionnaireContextEmpty": "問診票を完了すると、Health Guide のコンテキストがパーソナライズされます。"
     },
     "placeholder": {
       "comingSoon": "近日公開",

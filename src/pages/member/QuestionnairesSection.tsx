@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactNode } from 'react';
+import { useState, useEffect, useRef, useCallback, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Check,
@@ -9,116 +9,116 @@ import {
   ClipboardList,
   CircleDot,
   Loader2,
+  ChevronLeft,
+  ChevronRight,
+  ListChecks,
+  Flag,
 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError } from '../../lib/adminNotify';
 import MemberMetricCard from '../../components/ui/MemberMetricCard';
 import StateCard from '../../components/ui/StateCard';
 import ErrorBanner from '../../components/ui/ErrorBanner';
-
-type QuestionnaireSection =
-  | 'categories'
-  | 'personal_info'
-  | 'medical_history'
-  | 'medications'
-  | 'allergies'
-  | 'vital_signs'
-  | 'lifestyle'
-  | 'psychological_health'
-  | 'mens_sexual_health'
-  | 'womens_sexual_health';
-
-interface QuestionnaireData {
-  [key: string]: unknown;
-}
+import {
+  SECTION_IDS,
+  SECTION_GROUPS,
+  HEALTH_AREAS,
+  QUESTIONNAIRE_COUNTRIES,
+  emptyResponses,
+  emptyStatuses,
+  checkSectionComplete,
+  getSectionProgress,
+  convertPersonalMeasures,
+  unlocksFromPersonalAndCategories,
+  type QuestionnaireSection,
+  type QuestionnaireData,
+  type UnitSystem,
+  type SexualHealthUnlocks,
+} from '../../lib/questionnaire';
 
 type FormChangeHandler = (field: string, value: unknown) => void;
 
 type FormProps = {
   data: QuestionnaireData;
   onChange: FormChangeHandler;
-  unitSystem?: 'metric' | 'imperial';
+  unitSystem?: UnitSystem;
 };
 
-const SECTION_IDS: QuestionnaireSection[] = [
-  'categories',
-  'personal_info',
-  'medical_history',
-  'medications',
-  'allergies',
-  'vital_signs',
-  'lifestyle',
-  'psychological_health',
-  'mens_sexual_health',
-  'womens_sexual_health',
-];
-
-const SECTION_GROUPS: Array<{ id: string; sections: QuestionnaireSection[] }> = [
-  { id: 'basics', sections: ['categories', 'personal_info'] },
-  { id: 'clinical', sections: ['medical_history', 'medications', 'allergies', 'vital_signs'] },
-  { id: 'lifestyle', sections: ['lifestyle', 'psychological_health'] },
-  { id: 'specialized', sections: ['mens_sexual_health', 'womens_sexual_health'] },
-];
-
-/** Stored values kept English for backward-compatible saved answers. */
-const HEALTH_AREAS = [
-  { value: 'Sleep & Recovery', key: 'sleep' },
-  { value: 'Energy & Fatigue', key: 'energy' },
-  { value: 'Nutrition', key: 'nutrition' },
-  { value: 'Stress Management', key: 'stress' },
-  { value: 'Hormones', key: 'hormones' },
-  { value: 'Prevention', key: 'prevention' },
-  { value: 'Performance', key: 'performance' },
-  { value: 'Mental Wellness', key: 'mental' },
-  { value: 'Longevity', key: 'longevity' },
-] as const;
-
-const emptyResponses = (): Record<QuestionnaireSection, QuestionnaireData> => ({
-  categories: {},
-  personal_info: {},
-  medical_history: {},
-  medications: {},
-  allergies: {},
-  vital_signs: {},
-  lifestyle: {},
-  psychological_health: {},
-  mens_sexual_health: {},
-  womens_sexual_health: {},
-});
-
-const emptyStatuses = (): Record<QuestionnaireSection, 'draft' | 'complete'> => ({
-  categories: 'draft',
-  personal_info: 'draft',
-  medical_history: 'draft',
-  medications: 'draft',
-  allergies: 'draft',
-  vital_signs: 'draft',
-  lifestyle: 'draft',
-  psychological_health: 'draft',
-  mens_sexual_health: 'draft',
-  womens_sexual_health: 'draft',
-});
+type ViewMode = QuestionnaireSection | 'summary';
 
 type Props = {
   onNavigateSection?: (section: string) => void;
 };
 
+const AUTOSAVE_MS = 500;
+
 export default function QuestionnairesSection({ onNavigateSection }: Props) {
   const { t, i18n } = useTranslation();
-  const [currentSection, setCurrentSection] = useState<QuestionnaireSection>('categories');
+  const [currentView, setCurrentView] = useState<ViewMode>('categories');
   const [responses, setResponses] = useState(emptyResponses);
   const [statuses, setStatuses] = useState(emptyStatuses);
-  const [unitSystem, setUnitSystem] = useState<'metric' | 'imperial'>('metric');
-  const [mensSexualHealthUnlocked, setMensSexualHealthUnlocked] = useState(false);
-  const [womensSexualHealthUnlocked, setWomensSexualHealthUnlocked] = useState(false);
+  const [unitSystem, setUnitSystem] = useState<UnitSystem>('metric');
+  const [unlocks, setUnlocks] = useState<SexualHealthUnlocks>({
+    mens_sexual_health_unlocked: false,
+    womens_sexual_health_unlocked: false,
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
   const [autoSaveError, setAutoSaveError] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+
+  const saveTimers = useRef<Partial<Record<QuestionnaireSection, ReturnType<typeof setTimeout>>>>(
+    {}
+  );
+  const pendingPayloads = useRef<Partial<Record<QuestionnaireSection, QuestionnaireData>>>({});
+  const unlocksRef = useRef(unlocks);
+  unlocksRef.current = unlocks;
 
   useEffect(() => {
     loadQuestionnaire();
+    return () => {
+      Object.values(saveTimers.current).forEach((timer) => {
+        if (timer) clearTimeout(timer);
+      });
+    };
   }, []);
+
+  const persistUnlocks = useCallback(async (next: SexualHealthUnlocks) => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) return;
+    await supabase.from('questionnaire_responses').upsert(
+      {
+        user_id: user.id,
+        mens_sexual_health_unlocked: next.mens_sexual_health_unlocked,
+        womens_sexual_health_unlocked: next.womens_sexual_health_unlocked,
+      },
+      { onConflict: 'user_id' }
+    );
+  }, []);
+
+  const applyDerivedUnlocks = useCallback(
+    async (
+      personalInfo: QuestionnaireData,
+      categories: QuestionnaireData,
+      current?: SexualHealthUnlocks
+    ) => {
+      const next = unlocksFromPersonalAndCategories(
+        personalInfo,
+        categories,
+        current || unlocksRef.current
+      );
+      const changed =
+        next.mens_sexual_health_unlocked !== unlocksRef.current.mens_sexual_health_unlocked ||
+        next.womens_sexual_health_unlocked !== unlocksRef.current.womens_sexual_health_unlocked;
+      setUnlocks(next);
+      if (changed) await persistUnlocks(next);
+      return next;
+    },
+    [persistUnlocks]
+  );
 
   const loadQuestionnaire = async () => {
     setIsLoading(true);
@@ -145,7 +145,7 @@ export default function QuestionnairesSection({ onNavigateSection }: Props) {
       }
 
       if (data) {
-        setResponses({
+        const nextResponses = {
           categories: data.categories || {},
           personal_info: data.personal_info || {},
           medical_history: data.medical_history || {},
@@ -156,25 +156,24 @@ export default function QuestionnairesSection({ onNavigateSection }: Props) {
           psychological_health: data.psychological_health || {},
           mens_sexual_health: data.mens_sexual_health || {},
           womens_sexual_health: data.womens_sexual_health || {},
-        });
+        };
+        setResponses(nextResponses);
 
-        setStatuses({
-          categories: data.categories_status || 'draft',
-          personal_info: data.personal_info_status || 'draft',
-          medical_history: data.medical_history_status || 'draft',
-          medications: data.medications_status || 'draft',
-          allergies: data.allergies_status || 'draft',
-          vital_signs: data.vital_signs_status || 'draft',
-          lifestyle: data.lifestyle_status || 'draft',
-          psychological_health: data.psychological_health_status || 'draft',
-          mens_sexual_health: data.mens_sexual_health_status || 'draft',
-          womens_sexual_health: data.womens_sexual_health_status || 'draft',
-        });
-
+        const nextStatuses = emptyStatuses();
+        for (const id of SECTION_IDS) {
+          const saved = data[`${id}_status`] as 'draft' | 'complete' | undefined;
+          nextStatuses[id] = checkSectionComplete(id, nextResponses[id])
+            ? 'complete'
+            : saved || 'draft';
+        }
+        setStatuses(nextStatuses);
         setUnitSystem(data.unit_system || 'metric');
-        setMensSexualHealthUnlocked(data.mens_sexual_health_unlocked || false);
-        setWomensSexualHealthUnlocked(data.womens_sexual_health_unlocked || false);
         setLastSaved(data.last_autosave_at ? new Date(data.last_autosave_at) : null);
+
+        await applyDerivedUnlocks(nextResponses.personal_info, nextResponses.categories, {
+          mens_sexual_health_unlocked: Boolean(data.mens_sexual_health_unlocked),
+          womens_sexual_health_unlocked: Boolean(data.womens_sexual_health_unlocked),
+        });
       }
     } catch {
       setLoadError(true);
@@ -184,43 +183,14 @@ export default function QuestionnairesSection({ onNavigateSection }: Props) {
     }
   };
 
-  const checkSectionComplete = (section: QuestionnaireSection, data: QuestionnaireData): boolean => {
-    const requiredFields: Record<QuestionnaireSection, string[]> = {
-      categories: ['primary_health_areas', 'primary_priority'],
-      personal_info: [
-        'full_name',
-        'biological_sex',
-        'date_of_birth',
-        'country',
-        'height',
-        'weight',
-        'primary_language',
-      ],
-      medical_history: ['has_diagnosed_conditions'],
-      medications: ['taking_medications'],
-      allergies: ['has_allergies'],
-      vital_signs: [],
-      lifestyle: [],
-      psychological_health: [],
-      mens_sexual_health: [],
-      womens_sexual_health: [],
-    };
-
-    const required = requiredFields[section];
-    return required.every((field) => {
-      const value = data[field];
-      if (Array.isArray(value)) return value.length > 0;
-      return value !== undefined && value !== '' && value !== null;
-    });
-  };
-
-  const autoSave = async (section: QuestionnaireSection, newData: QuestionnaireData) => {
+  const flushSave = useCallback(async (section: QuestionnaireSection, newData: QuestionnaireData) => {
     try {
       const {
         data: { user },
       } = await supabase.auth.getUser();
       if (!user) return;
 
+      setIsSaving(true);
       const updateData: Record<string, unknown> = {
         [section]: newData,
         [`${section}_status`]: checkSectionComplete(section, newData) ? 'complete' : 'draft',
@@ -231,9 +201,7 @@ export default function QuestionnairesSection({ onNavigateSection }: Props) {
           user_id: user.id,
           ...updateData,
         },
-        {
-          onConflict: 'user_id',
-        }
+        { onConflict: 'user_id' }
       );
 
       if (error) {
@@ -244,28 +212,72 @@ export default function QuestionnairesSection({ onNavigateSection }: Props) {
       }
     } catch {
       setAutoSaveError(true);
+    } finally {
+      setIsSaving(false);
     }
-  };
+  }, []);
 
-  const handleInputChange = (section: QuestionnaireSection, field: string, value: unknown) => {
+  const scheduleSave = useCallback(
+    (section: QuestionnaireSection, newData: QuestionnaireData) => {
+      pendingPayloads.current[section] = newData;
+      const existing = saveTimers.current[section];
+      if (existing) clearTimeout(existing);
+      saveTimers.current[section] = setTimeout(() => {
+        const payload = pendingPayloads.current[section];
+        if (payload) void flushSave(section, payload);
+      }, AUTOSAVE_MS);
+    },
+    [flushSave]
+  );
+
+  const handleInputChange = async (
+    section: QuestionnaireSection,
+    field: string,
+    value: unknown
+  ) => {
     const newData = { ...responses[section], [field]: value };
     setResponses((prev) => ({ ...prev, [section]: newData }));
 
     const newStatus = checkSectionComplete(section, newData) ? 'complete' : 'draft';
     setStatuses((prev) => ({ ...prev, [section]: newStatus }));
+    scheduleSave(section, newData);
 
-    autoSave(section, newData);
+    if (
+      (section === 'personal_info' && field === 'biological_sex') ||
+      (section === 'categories' && field === 'primary_health_areas')
+    ) {
+      const personal = section === 'personal_info' ? newData : responses.personal_info;
+      const categories = section === 'categories' ? newData : responses.categories;
+      await applyDerivedUnlocks(personal, categories);
+    }
   };
 
   const createSectionChangeHandler = (section: QuestionnaireSection): FormChangeHandler => {
     return (field, value) => {
-      handleInputChange(section, field, value);
+      void handleInputChange(section, field, value);
     };
   };
 
   const toggleUnitSystem = async () => {
-    const newSystem = unitSystem === 'metric' ? 'imperial' : 'metric';
+    const newSystem: UnitSystem = unitSystem === 'metric' ? 'imperial' : 'metric';
+    const converted = convertPersonalMeasures(
+      responses.personal_info.height,
+      responses.personal_info.weight,
+      unitSystem,
+      newSystem
+    );
+    const nextPersonal = {
+      ...responses.personal_info,
+      height: converted.height,
+      weight: converted.weight,
+    };
+
     setUnitSystem(newSystem);
+    setResponses((prev) => ({ ...prev, personal_info: nextPersonal }));
+    setStatuses((prev) => ({
+      ...prev,
+      personal_info: checkSectionComplete('personal_info', nextPersonal) ? 'complete' : 'draft',
+    }));
 
     const {
       data: { user },
@@ -276,44 +288,60 @@ export default function QuestionnairesSection({ onNavigateSection }: Props) {
       {
         user_id: user.id,
         unit_system: newSystem,
+        personal_info: nextPersonal,
+        personal_info_status: checkSectionComplete('personal_info', nextPersonal)
+          ? 'complete'
+          : 'draft',
       },
-      {
-        onConflict: 'user_id',
-      }
+      { onConflict: 'user_id' }
     );
+    setLastSaved(new Date());
   };
 
   const isSectionLocked = (id: QuestionnaireSection): boolean => {
-    if (id === 'mens_sexual_health') return !mensSexualHealthUnlocked;
-    if (id === 'womens_sexual_health') return !womensSexualHealthUnlocked;
+    if (id === 'mens_sexual_health') return !unlocks.mens_sexual_health_unlocked;
+    if (id === 'womens_sexual_health') return !unlocks.womens_sexual_health_unlocked;
     return false;
-  };
-
-  const getSectionProgress = (section: QuestionnaireSection): number => {
-    const data = responses[section];
-    const keys = Object.keys(data);
-    if (keys.length === 0) return 0;
-
-    const filled = keys.filter((key) => {
-      const value = data[key];
-      if (Array.isArray(value)) return value.length > 0;
-      return value !== '' && value !== null && value !== undefined;
-    }).length;
-    return Math.round((filled / keys.length) * 100);
   };
 
   const unlockedSections = SECTION_IDS.filter((id) => !isSectionLocked(id));
   const completedCount = unlockedSections.filter((id) => statuses[id] === 'complete').length;
   const inProgressCount = unlockedSections.filter(
-    (id) => statuses[id] !== 'complete' && getSectionProgress(id) > 0
+    (id) => statuses[id] !== 'complete' && getSectionProgress(id, responses[id]) > 0
   ).length;
   const overallProgress =
     unlockedSections.length === 0
       ? 0
       : Math.round(
-          unlockedSections.reduce((sum, id) => sum + getSectionProgress(id), 0) /
-            unlockedSections.length
+          unlockedSections.reduce(
+            (sum, id) => sum + getSectionProgress(id, responses[id]),
+            0
+          ) / unlockedSections.length
         );
+  const isProfileComplete =
+    unlockedSections.length > 0 && completedCount === unlockedSections.length;
+
+  const navSections = unlockedSections;
+  const currentSectionIndex =
+    currentView === 'summary' ? -1 : navSections.indexOf(currentView as QuestionnaireSection);
+
+  const goPrev = () => {
+    if (currentView === 'summary') {
+      const last = navSections[navSections.length - 1];
+      if (last) setCurrentView(last);
+      return;
+    }
+    if (currentSectionIndex > 0) setCurrentView(navSections[currentSectionIndex - 1]);
+  };
+
+  const goNext = () => {
+    if (currentView === 'summary') return;
+    if (currentSectionIndex >= 0 && currentSectionIndex < navSections.length - 1) {
+      setCurrentView(navSections[currentSectionIndex + 1]);
+      return;
+    }
+    setCurrentView('summary');
+  };
 
   if (isLoading) {
     return (
@@ -339,9 +367,14 @@ export default function QuestionnairesSection({ onNavigateSection }: Props) {
     );
   }
 
-  const currentLocked = isSectionLocked(currentSection);
-  const currentStatus = statuses[currentSection];
-  const currentProgress = getSectionProgress(currentSection);
+  const currentLocked =
+    currentView !== 'summary' && isSectionLocked(currentView as QuestionnaireSection);
+  const currentStatus =
+    currentView === 'summary' ? 'complete' : statuses[currentView as QuestionnaireSection];
+  const currentProgress =
+    currentView === 'summary'
+      ? overallProgress
+      : getSectionProgress(currentView as QuestionnaireSection, responses[currentView as QuestionnaireSection]);
 
   return (
     <div className="space-y-6">
@@ -370,9 +403,11 @@ export default function QuestionnairesSection({ onNavigateSection }: Props) {
           value={
             autoSaveError
               ? t('member.questionnaires.saveErrorShort')
-              : lastSaved
-                ? lastSaved.toLocaleTimeString(i18n.language)
-                : '—'
+              : isSaving
+                ? t('member.questionnaires.saving')
+                : lastSaved
+                  ? lastSaved.toLocaleTimeString(i18n.language)
+                  : '—'
           }
           label={
             autoSaveError
@@ -385,6 +420,32 @@ export default function QuestionnairesSection({ onNavigateSection }: Props) {
           }
         />
       </div>
+
+      {!isProfileComplete && (
+        <div className="member-card rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-orange-200/80 dark:border-orange-500/25 bg-orange-50/50 dark:bg-orange-500/5">
+          <div>
+            <p className="text-sm font-semibold member-heading">
+              {t('member.questionnaires.finishProfile.title')}
+            </p>
+            <p className="text-sm member-body mt-0.5">
+              {t('member.questionnaires.finishProfile.body', {
+                remaining: unlockedSections.length - completedCount,
+              })}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              const nextIncomplete = unlockedSections.find((id) => statuses[id] !== 'complete');
+              setCurrentView(nextIncomplete || 'summary');
+            }}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white text-sm font-semibold transition-colors"
+          >
+            <Flag className="h-4 w-4" />
+            {t('member.questionnaires.finishProfile.cta')}
+          </button>
+        </div>
+      )}
 
       <div className="member-card rounded-xl p-4">
         <div className="flex items-center justify-between gap-3 mb-2">
@@ -452,14 +513,14 @@ export default function QuestionnairesSection({ onNavigateSection }: Props) {
                     {group.sections.map((id) => {
                       const locked = isSectionLocked(id);
                       const status = statuses[id];
-                      const progress = getSectionProgress(id);
-                      const active = currentSection === id;
+                      const progress = getSectionProgress(id, responses[id]);
+                      const active = currentView === id;
 
                       return (
                         <button
                           key={id}
                           type="button"
-                          onClick={() => !locked && setCurrentSection(id)}
+                          onClick={() => !locked && setCurrentView(id)}
                           disabled={locked}
                           className={`w-full flex items-center justify-between gap-2 p-2.5 rounded-lg transition-colors text-left border ${
                             active
@@ -490,6 +551,21 @@ export default function QuestionnairesSection({ onNavigateSection }: Props) {
                   </div>
                 </div>
               ))}
+
+              <button
+                type="button"
+                onClick={() => setCurrentView('summary')}
+                className={`w-full flex items-center gap-2 p-2.5 rounded-lg transition-colors text-left border ${
+                  currentView === 'summary'
+                    ? 'bg-orange-50 dark:bg-orange-500/10 border-orange-200 dark:border-orange-500/30 text-orange-700 dark:text-orange-300'
+                    : 'border-transparent hover:bg-[var(--bm-surface)] member-body'
+                }`}
+              >
+                <ListChecks className="h-4 w-4 flex-shrink-0" />
+                <span className="text-sm font-medium">
+                  {t('member.questionnaires.summary.nav')}
+                </span>
+              </button>
             </div>
           </div>
         </aside>
@@ -499,27 +575,37 @@ export default function QuestionnairesSection({ onNavigateSection }: Props) {
             <div className="flex flex-wrap items-start justify-between gap-3 mb-6 pb-5 border-b border-[var(--bm-border)]">
               <div>
                 <h2 className="text-xl sm:text-2xl font-semibold member-heading">
-                  {t(`member.questionnaires.section.${currentSection}`)}
+                  {currentView === 'summary'
+                    ? t('member.questionnaires.summary.title')
+                    : t(`member.questionnaires.section.${currentView}`)}
                 </h2>
                 <p className="mt-1 text-sm member-body max-w-2xl">
-                  {t(`member.questionnaires.sectionDesc.${currentSection}`)}
+                  {currentView === 'summary'
+                    ? t('member.questionnaires.summary.subtitle')
+                    : t(`member.questionnaires.sectionDesc.${currentView}`)}
                 </p>
               </div>
               <div className="flex items-center gap-2">
-                {currentLocked ? (
+                {currentView === 'summary' ? (
+                  <StatusPill tone={isProfileComplete ? 'complete' : 'draft'}>
+                    {isProfileComplete
+                      ? t('member.questionnaires.statusComplete')
+                      : t('member.questionnaires.statusDraft')}
+                  </StatusPill>
+                ) : currentLocked ? (
                   <StatusPill tone="locked">{t('member.questionnaires.statusLocked')}</StatusPill>
                 ) : currentStatus === 'complete' ? (
                   <StatusPill tone="complete">{t('member.questionnaires.statusComplete')}</StatusPill>
                 ) : (
                   <StatusPill tone="draft">{t('member.questionnaires.statusDraft')}</StatusPill>
                 )}
-                {!currentLocked && (
+                {currentView !== 'summary' && !currentLocked && (
                   <span className="text-xs tabular-nums member-muted">{currentProgress}%</span>
                 )}
               </div>
             </div>
 
-            {!currentLocked && currentProgress > 0 && (
+            {currentView !== 'summary' && !currentLocked && currentProgress > 0 && (
               <div className="mb-6 h-1.5 rounded-full bg-[var(--bm-surface)] dark:bg-[var(--bm-inset)] overflow-hidden">
                 <div
                   className={`h-full rounded-full transition-all duration-500 ${
@@ -530,80 +616,117 @@ export default function QuestionnairesSection({ onNavigateSection }: Props) {
               </div>
             )}
 
-            {currentSection === 'categories' && (
-              <CategoriesForm
-                data={responses.categories}
-                onChange={createSectionChangeHandler('categories')}
+            {currentView === 'summary' ? (
+              <SummaryView
+                responses={responses}
+                statuses={statuses}
+                unlockedSections={unlockedSections}
+                overallProgress={overallProgress}
+                isProfileComplete={isProfileComplete}
+                onOpenSection={(id) => setCurrentView(id)}
+                onNavigateHealthGuide={() => onNavigateSection?.('ai-assistant')}
               />
+            ) : (
+              <>
+                {currentView === 'categories' && (
+                  <CategoriesForm
+                    data={responses.categories}
+                    onChange={createSectionChangeHandler('categories')}
+                  />
+                )}
+                {currentView === 'personal_info' && (
+                  <PersonalInfoForm
+                    data={responses.personal_info}
+                    onChange={createSectionChangeHandler('personal_info')}
+                    unitSystem={unitSystem}
+                  />
+                )}
+                {currentView === 'medical_history' && (
+                  <MedicalHistoryForm
+                    data={responses.medical_history}
+                    onChange={createSectionChangeHandler('medical_history')}
+                  />
+                )}
+                {currentView === 'medications' && (
+                  <MedicationsForm
+                    data={responses.medications}
+                    onChange={createSectionChangeHandler('medications')}
+                  />
+                )}
+                {currentView === 'allergies' && (
+                  <AllergiesForm
+                    data={responses.allergies}
+                    onChange={createSectionChangeHandler('allergies')}
+                  />
+                )}
+                {currentView === 'vital_signs' && (
+                  <VitalSignsForm
+                    data={responses.vital_signs}
+                    onChange={createSectionChangeHandler('vital_signs')}
+                    unitSystem={unitSystem}
+                  />
+                )}
+                {currentView === 'lifestyle' && (
+                  <LifestyleForm
+                    data={responses.lifestyle}
+                    onChange={createSectionChangeHandler('lifestyle')}
+                  />
+                )}
+                {currentView === 'psychological_health' && (
+                  <PsychologicalHealthForm
+                    data={responses.psychological_health}
+                    onChange={createSectionChangeHandler('psychological_health')}
+                  />
+                )}
+                {currentView === 'mens_sexual_health' &&
+                  (unlocks.mens_sexual_health_unlocked ? (
+                    <MensSexualHealthForm
+                      data={responses.mens_sexual_health}
+                      onChange={createSectionChangeHandler('mens_sexual_health')}
+                    />
+                  ) : (
+                    <LockedSectionMessage
+                      sectionKey="mens_sexual_health"
+                      onActivate={() => onNavigateSection?.('catalog')}
+                    />
+                  ))}
+                {currentView === 'womens_sexual_health' &&
+                  (unlocks.womens_sexual_health_unlocked ? (
+                    <WomensSexualHealthForm
+                      data={responses.womens_sexual_health}
+                      onChange={createSectionChangeHandler('womens_sexual_health')}
+                    />
+                  ) : (
+                    <LockedSectionMessage
+                      sectionKey="womens_sexual_health"
+                      onActivate={() => onNavigateSection?.('catalog')}
+                    />
+                  ))}
+              </>
             )}
-            {currentSection === 'personal_info' && (
-              <PersonalInfoForm
-                data={responses.personal_info}
-                onChange={createSectionChangeHandler('personal_info')}
-                unitSystem={unitSystem}
-              />
-            )}
-            {currentSection === 'medical_history' && (
-              <MedicalHistoryForm
-                data={responses.medical_history}
-                onChange={createSectionChangeHandler('medical_history')}
-              />
-            )}
-            {currentSection === 'medications' && (
-              <MedicationsForm
-                data={responses.medications}
-                onChange={createSectionChangeHandler('medications')}
-              />
-            )}
-            {currentSection === 'allergies' && (
-              <AllergiesForm
-                data={responses.allergies}
-                onChange={createSectionChangeHandler('allergies')}
-              />
-            )}
-            {currentSection === 'vital_signs' && (
-              <VitalSignsForm
-                data={responses.vital_signs}
-                onChange={createSectionChangeHandler('vital_signs')}
-                unitSystem={unitSystem}
-              />
-            )}
-            {currentSection === 'lifestyle' && (
-              <LifestyleForm
-                data={responses.lifestyle}
-                onChange={createSectionChangeHandler('lifestyle')}
-              />
-            )}
-            {currentSection === 'psychological_health' && (
-              <PsychologicalHealthForm
-                data={responses.psychological_health}
-                onChange={createSectionChangeHandler('psychological_health')}
-              />
-            )}
-            {currentSection === 'mens_sexual_health' &&
-              (mensSexualHealthUnlocked ? (
-                <MensSexualHealthForm
-                  data={responses.mens_sexual_health}
-                  onChange={createSectionChangeHandler('mens_sexual_health')}
-                />
-              ) : (
-                <LockedSectionMessage
-                  sectionKey="mens_sexual_health"
-                  onActivate={() => onNavigateSection?.('catalog')}
-                />
-              ))}
-            {currentSection === 'womens_sexual_health' &&
-              (womensSexualHealthUnlocked ? (
-                <WomensSexualHealthForm
-                  data={responses.womens_sexual_health}
-                  onChange={createSectionChangeHandler('womens_sexual_health')}
-                />
-              ) : (
-                <LockedSectionMessage
-                  sectionKey="womens_sexual_health"
-                  onActivate={() => onNavigateSection?.('catalog')}
-                />
-              ))}
+
+            <div className="mt-8 pt-5 border-t border-[var(--bm-border)] flex flex-wrap items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={goPrev}
+                disabled={currentView !== 'summary' && currentSectionIndex <= 0}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg member-inset text-sm font-medium member-heading disabled:opacity-40 disabled:cursor-not-allowed hover:border-orange-300 transition-colors"
+              >
+                <ChevronLeft className="h-4 w-4" />
+                {t('member.questionnaires.nav.previous')}
+              </button>
+              <button
+                type="button"
+                onClick={goNext}
+                disabled={currentView === 'summary'}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white text-sm font-semibold disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              >
+                {currentView !== 'summary' && currentSectionIndex === navSections.length - 1
+                  ? t('member.questionnaires.nav.viewSummary')
+                  : t('member.questionnaires.nav.next')}
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -623,11 +746,12 @@ function StatusPill({
       'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-300 dark:border-emerald-500/30',
     draft:
       'bg-amber-50 text-amber-800 border-amber-200 dark:bg-amber-500/10 dark:text-amber-300 dark:border-amber-500/30',
-    locked:
-      'bg-[var(--bm-surface)] member-muted border-[var(--bm-border)]',
+    locked: 'bg-[var(--bm-surface)] member-muted border-[var(--bm-border)]',
   };
   return (
-    <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium border ${tones[tone]}`}>
+    <span
+      className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium border ${tones[tone]}`}
+    >
       {children}
     </span>
   );
@@ -681,6 +805,32 @@ function YesNo({
         );
       })}
     </div>
+  );
+}
+
+function ScaleSelect({
+  value,
+  onChange,
+  options,
+}: {
+  value: unknown;
+  onChange: (v: string) => void;
+  options: Array<{ value: string; label: string }>;
+}) {
+  const { t } = useTranslation();
+  return (
+    <select
+      value={String(value || '')}
+      onChange={(e) => onChange(e.target.value)}
+      className="member-input"
+    >
+      <option value="">{t('member.questionnaires.select')}</option>
+      {options.map((opt) => (
+        <option key={opt.value} value={opt.value}>
+          {opt.label}
+        </option>
+      ))}
+    </select>
   );
 }
 
@@ -772,6 +922,9 @@ function PersonalInfoForm({ data, onChange, unitSystem }: FormProps) {
             <option value="male">{t('member.questionnaires.personalInfo.male')}</option>
             <option value="female">{t('member.questionnaires.personalInfo.female')}</option>
           </select>
+          <p className="mt-1.5 text-xs member-muted">
+            {t('member.questionnaires.personalInfo.sexUnlockHint')}
+          </p>
         </div>
 
         <div>
@@ -786,12 +939,22 @@ function PersonalInfoForm({ data, onChange, unitSystem }: FormProps) {
 
         <div>
           <FieldLabel required>{t('member.questionnaires.personalInfo.country')}</FieldLabel>
-          <input
-            type="text"
+          <select
             value={String(data.country || '')}
             onChange={(e) => onChange('country', e.target.value)}
             className="member-input"
-          />
+          >
+            <option value="">{t('member.questionnaires.select')}</option>
+            {data.country &&
+            !QUESTIONNAIRE_COUNTRIES.some((c) => c.code === data.country) ? (
+              <option value={String(data.country)}>{String(data.country)}</option>
+            ) : null}
+            {QUESTIONNAIRE_COUNTRIES.map((c) => (
+              <option key={c.code} value={c.code}>
+                {t(`member.questionnaires.countries.${c.code}`, { defaultValue: c.name })}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div>
@@ -851,7 +1014,7 @@ function MedicalHistoryForm({ data, onChange }: FormProps) {
 
       {data.has_diagnosed_conditions === true && (
         <div>
-          <FieldLabel>{t('member.questionnaires.medicalHistory.conditionsList')}</FieldLabel>
+          <FieldLabel required>{t('member.questionnaires.medicalHistory.conditionsList')}</FieldLabel>
           <textarea
             value={String(data.conditions_list || '')}
             onChange={(e) => onChange('conditions_list', e.target.value)}
@@ -861,6 +1024,28 @@ function MedicalHistoryForm({ data, onChange }: FormProps) {
           />
         </div>
       )}
+
+      <div>
+        <FieldLabel required>{t('member.questionnaires.medicalHistory.familyHistory')}</FieldLabel>
+        <textarea
+          value={String(data.family_history || '')}
+          onChange={(e) => onChange('family_history', e.target.value)}
+          rows={3}
+          className="member-input"
+          placeholder={t('member.questionnaires.medicalHistory.familyHistoryPlaceholder')}
+        />
+      </div>
+
+      <div>
+        <FieldLabel required>{t('member.questionnaires.medicalHistory.surgeries')}</FieldLabel>
+        <textarea
+          value={String(data.surgeries || '')}
+          onChange={(e) => onChange('surgeries', e.target.value)}
+          rows={3}
+          className="member-input"
+          placeholder={t('member.questionnaires.medicalHistory.surgeriesPlaceholder')}
+        />
+      </div>
     </div>
   );
 }
@@ -879,13 +1064,34 @@ function MedicationsForm({ data, onChange }: FormProps) {
 
       {data.taking_medications === true && (
         <div>
-          <FieldLabel>{t('member.questionnaires.medications.list')}</FieldLabel>
+          <FieldLabel required>{t('member.questionnaires.medications.list')}</FieldLabel>
           <textarea
             value={String(data.medications_list || '')}
             onChange={(e) => onChange('medications_list', e.target.value)}
             rows={4}
             className="member-input"
             placeholder={t('member.questionnaires.medications.placeholder')}
+          />
+        </div>
+      )}
+
+      <div>
+        <FieldLabel required>{t('member.questionnaires.medications.takingSupplements')}</FieldLabel>
+        <YesNo
+          value={data.taking_supplements}
+          onChange={(next) => onChange('taking_supplements', next)}
+        />
+      </div>
+
+      {data.taking_supplements === true && (
+        <div>
+          <FieldLabel required>{t('member.questionnaires.medications.supplementsList')}</FieldLabel>
+          <textarea
+            value={String(data.supplements_list || '')}
+            onChange={(e) => onChange('supplements_list', e.target.value)}
+            rows={3}
+            className="member-input"
+            placeholder={t('member.questionnaires.medications.supplementsPlaceholder')}
           />
         </div>
       )}
@@ -903,16 +1109,30 @@ function AllergiesForm({ data, onChange }: FormProps) {
       </div>
 
       {data.has_allergies === true && (
-        <div>
-          <FieldLabel>{t('member.questionnaires.allergies.list')}</FieldLabel>
-          <textarea
-            value={String(data.allergies_list || '')}
-            onChange={(e) => onChange('allergies_list', e.target.value)}
-            rows={4}
-            className="member-input"
-            placeholder={t('member.questionnaires.allergies.placeholder')}
-          />
-        </div>
+        <>
+          <div>
+            <FieldLabel required>{t('member.questionnaires.allergies.list')}</FieldLabel>
+            <textarea
+              value={String(data.allergies_list || '')}
+              onChange={(e) => onChange('allergies_list', e.target.value)}
+              rows={4}
+              className="member-input"
+              placeholder={t('member.questionnaires.allergies.placeholder')}
+            />
+          </div>
+          <div>
+            <FieldLabel required>{t('member.questionnaires.allergies.severity')}</FieldLabel>
+            <ScaleSelect
+              value={data.allergy_severity}
+              onChange={(v) => onChange('allergy_severity', v)}
+              options={[
+                { value: 'mild', label: t('member.questionnaires.allergies.severityMild') },
+                { value: 'moderate', label: t('member.questionnaires.allergies.severityModerate') },
+                { value: 'severe', label: t('member.questionnaires.allergies.severitySevere') },
+              ]}
+            />
+          </div>
+        </>
       )}
     </div>
   );
@@ -922,10 +1142,10 @@ function VitalSignsForm({ data, onChange }: FormProps) {
   const { t } = useTranslation();
   return (
     <div className="space-y-6">
-      <p className="text-sm member-muted">{t('member.questionnaires.vitalSigns.optionalNote')}</p>
+      <p className="text-sm member-muted">{t('member.questionnaires.vitalSigns.requiredNote')}</p>
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <FieldLabel>{t('member.questionnaires.vitalSigns.restingHeartRate')}</FieldLabel>
+          <FieldLabel required>{t('member.questionnaires.vitalSigns.restingHeartRate')}</FieldLabel>
           <input
             type="number"
             value={String(data.resting_heart_rate || '')}
@@ -934,7 +1154,7 @@ function VitalSignsForm({ data, onChange }: FormProps) {
           />
         </div>
         <div>
-          <FieldLabel>{t('member.questionnaires.vitalSigns.bloodPressure')}</FieldLabel>
+          <FieldLabel required>{t('member.questionnaires.vitalSigns.bloodPressure')}</FieldLabel>
           <input
             type="text"
             value={String(data.blood_pressure || '')}
@@ -954,7 +1174,7 @@ function LifestyleForm({ data, onChange }: FormProps) {
     <div className="space-y-6">
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <FieldLabel>{t('member.questionnaires.lifestyle.smoking')}</FieldLabel>
+          <FieldLabel required>{t('member.questionnaires.lifestyle.smoking')}</FieldLabel>
           <select
             value={String(data.smoking_status || '')}
             onChange={(e) => onChange('smoking_status', e.target.value)}
@@ -968,7 +1188,7 @@ function LifestyleForm({ data, onChange }: FormProps) {
         </div>
 
         <div>
-          <FieldLabel>{t('member.questionnaires.lifestyle.alcohol')}</FieldLabel>
+          <FieldLabel required>{t('member.questionnaires.lifestyle.alcohol')}</FieldLabel>
           <select
             value={String(data.alcohol_consumption || '')}
             onChange={(e) => onChange('alcohol_consumption', e.target.value)}
@@ -985,7 +1205,7 @@ function LifestyleForm({ data, onChange }: FormProps) {
         </div>
 
         <div>
-          <FieldLabel>{t('member.questionnaires.lifestyle.exercise')}</FieldLabel>
+          <FieldLabel required>{t('member.questionnaires.lifestyle.exercise')}</FieldLabel>
           <input
             type="number"
             value={String(data.exercise_frequency || '')}
@@ -995,13 +1215,85 @@ function LifestyleForm({ data, onChange }: FormProps) {
         </div>
 
         <div>
-          <FieldLabel>{t('member.questionnaires.lifestyle.sleep')}</FieldLabel>
+          <FieldLabel required>{t('member.questionnaires.lifestyle.sleep')}</FieldLabel>
           <input
             type="number"
             step="0.5"
             value={String(data.sleep_duration || '')}
             onChange={(e) => onChange('sleep_duration', e.target.value)}
             className="member-input"
+          />
+        </div>
+
+        <div>
+          <FieldLabel required>{t('member.questionnaires.lifestyle.dietQuality')}</FieldLabel>
+          <ScaleSelect
+            value={data.diet_quality}
+            onChange={(v) => onChange('diet_quality', v)}
+            options={[
+              { value: 'poor', label: t('member.questionnaires.lifestyle.qualityPoor') },
+              { value: 'fair', label: t('member.questionnaires.lifestyle.qualityFair') },
+              { value: 'good', label: t('member.questionnaires.lifestyle.qualityGood') },
+              { value: 'excellent', label: t('member.questionnaires.lifestyle.qualityExcellent') },
+            ]}
+          />
+        </div>
+
+        <div>
+          <FieldLabel required>{t('member.questionnaires.lifestyle.sleepQuality')}</FieldLabel>
+          <ScaleSelect
+            value={data.sleep_quality}
+            onChange={(v) => onChange('sleep_quality', v)}
+            options={[
+              { value: 'poor', label: t('member.questionnaires.lifestyle.qualityPoor') },
+              { value: 'fair', label: t('member.questionnaires.lifestyle.qualityFair') },
+              { value: 'good', label: t('member.questionnaires.lifestyle.qualityGood') },
+              { value: 'excellent', label: t('member.questionnaires.lifestyle.qualityExcellent') },
+            ]}
+          />
+        </div>
+
+        <div>
+          <FieldLabel required>{t('member.questionnaires.lifestyle.caffeine')}</FieldLabel>
+          <ScaleSelect
+            value={data.caffeine_intake}
+            onChange={(v) => onChange('caffeine_intake', v)}
+            options={[
+              { value: 'none', label: t('member.questionnaires.lifestyle.caffeineNone') },
+              { value: 'low', label: t('member.questionnaires.lifestyle.caffeineLow') },
+              { value: 'moderate', label: t('member.questionnaires.lifestyle.caffeineModerate') },
+              { value: 'high', label: t('member.questionnaires.lifestyle.caffeineHigh') },
+            ]}
+          />
+        </div>
+
+        <div>
+          <FieldLabel required>{t('member.questionnaires.lifestyle.activityType')}</FieldLabel>
+          <ScaleSelect
+            value={data.activity_type}
+            onChange={(v) => onChange('activity_type', v)}
+            options={[
+              { value: 'none', label: t('member.questionnaires.lifestyle.activityNone') },
+              { value: 'cardio', label: t('member.questionnaires.lifestyle.activityCardio') },
+              { value: 'strength', label: t('member.questionnaires.lifestyle.activityStrength') },
+              { value: 'mixed', label: t('member.questionnaires.lifestyle.activityMixed') },
+              { value: 'mobility', label: t('member.questionnaires.lifestyle.activityMobility') },
+            ]}
+          />
+        </div>
+
+        <div className="md:col-span-2">
+          <FieldLabel required>{t('member.questionnaires.lifestyle.stressLevel')}</FieldLabel>
+          <ScaleSelect
+            value={data.stress_level}
+            onChange={(v) => onChange('stress_level', v)}
+            options={[
+              { value: '1', label: t('member.questionnaires.lifestyle.stress1') },
+              { value: '2', label: t('member.questionnaires.lifestyle.stress2') },
+              { value: '3', label: t('member.questionnaires.lifestyle.stress3') },
+              { value: '4', label: t('member.questionnaires.lifestyle.stress4') },
+              { value: '5', label: t('member.questionnaires.lifestyle.stress5') },
+            ]}
           />
         </div>
       </div>
@@ -1013,8 +1305,12 @@ function PsychologicalHealthForm({ data, onChange }: FormProps) {
   const { t } = useTranslation();
   return (
     <div className="space-y-6">
+      <div className="member-inset rounded-xl p-4 border border-[var(--bm-border)]">
+        <p className="text-sm member-body">{t('member.questionnaires.psychological.disclaimer')}</p>
+      </div>
+
       <div>
-        <FieldLabel>{t('member.questionnaires.psychological.mood')}</FieldLabel>
+        <FieldLabel required>{t('member.questionnaires.psychological.mood')}</FieldLabel>
         <select
           value={String(data.mood_stability || '')}
           onChange={(e) => onChange('mood_stability', e.target.value)}
@@ -1035,7 +1331,50 @@ function PsychologicalHealthForm({ data, onChange }: FormProps) {
       </div>
 
       <div>
-        <FieldLabel>{t('member.questionnaires.psychological.stress')}</FieldLabel>
+        <FieldLabel required>{t('member.questionnaires.psychological.moodScale')}</FieldLabel>
+        <ScaleSelect
+          value={data.mood_scale}
+          onChange={(v) => onChange('mood_scale', v)}
+          options={[
+            { value: '1', label: t('member.questionnaires.psychological.moodScale1') },
+            { value: '2', label: t('member.questionnaires.psychological.moodScale2') },
+            { value: '3', label: t('member.questionnaires.psychological.moodScale3') },
+            { value: '4', label: t('member.questionnaires.psychological.moodScale4') },
+            { value: '5', label: t('member.questionnaires.psychological.moodScale5') },
+          ]}
+        />
+      </div>
+
+      <div>
+        <FieldLabel required>{t('member.questionnaires.psychological.anxiety')}</FieldLabel>
+        <ScaleSelect
+          value={data.anxiety_frequency}
+          onChange={(v) => onChange('anxiety_frequency', v)}
+          options={[
+            { value: 'rarely', label: t('member.questionnaires.psychological.freqRarely') },
+            { value: 'sometimes', label: t('member.questionnaires.psychological.freqSometimes') },
+            { value: 'often', label: t('member.questionnaires.psychological.freqOften') },
+            { value: 'most_days', label: t('member.questionnaires.psychological.freqMostDays') },
+          ]}
+        />
+      </div>
+
+      <div>
+        <FieldLabel required>{t('member.questionnaires.psychological.energy')}</FieldLabel>
+        <ScaleSelect
+          value={data.energy_level}
+          onChange={(v) => onChange('energy_level', v)}
+          options={[
+            { value: 'very_low', label: t('member.questionnaires.psychological.energyVeryLow') },
+            { value: 'low', label: t('member.questionnaires.psychological.energyLow') },
+            { value: 'moderate', label: t('member.questionnaires.psychological.energyModerate') },
+            { value: 'high', label: t('member.questionnaires.psychological.energyHigh') },
+          ]}
+        />
+      </div>
+
+      <div>
+        <FieldLabel required>{t('member.questionnaires.psychological.stress')}</FieldLabel>
         <YesNo
           value={data.prolonged_stress}
           onChange={(next) => onChange('prolonged_stress', next)}
@@ -1059,7 +1398,7 @@ function MensSexualHealthForm({ data, onChange }: FormProps) {
       </div>
 
       <div>
-        <FieldLabel>{t('member.questionnaires.mensHealth.interest')}</FieldLabel>
+        <FieldLabel required>{t('member.questionnaires.mensHealth.interest')}</FieldLabel>
         <select
           value={String(data.sexual_interest_trend || '')}
           onChange={(e) => onChange('sexual_interest_trend', e.target.value)}
@@ -1073,11 +1412,40 @@ function MensSexualHealthForm({ data, onChange }: FormProps) {
       </div>
 
       <div>
-        <FieldLabel>{t('member.questionnaires.mensHealth.confidence')}</FieldLabel>
+        <FieldLabel required>{t('member.questionnaires.mensHealth.confidence')}</FieldLabel>
         <YesNo
           value={data.sexual_function_confidence}
           onChange={(next) => onChange('sexual_function_confidence', next)}
         />
+      </div>
+
+      <div>
+        <FieldLabel required>{t('member.questionnaires.mensHealth.erectile')}</FieldLabel>
+        <YesNo
+          value={data.erectile_concern}
+          onChange={(next) => onChange('erectile_concern', next)}
+        />
+      </div>
+
+      <div>
+        <FieldLabel required>{t('member.questionnaires.mensHealth.satisfaction')}</FieldLabel>
+        <ScaleSelect
+          value={data.satisfaction_level}
+          onChange={(v) => onChange('satisfaction_level', v)}
+          options={[
+            { value: 'low', label: t('member.questionnaires.sexualShared.satisfactionLow') },
+            {
+              value: 'moderate',
+              label: t('member.questionnaires.sexualShared.satisfactionModerate'),
+            },
+            { value: 'high', label: t('member.questionnaires.sexualShared.satisfactionHigh') },
+          ]}
+        />
+      </div>
+
+      <div>
+        <FieldLabel required>{t('member.questionnaires.mensHealth.wantsGuidance')}</FieldLabel>
+        <YesNo value={data.wants_guidance} onChange={(next) => onChange('wants_guidance', next)} />
       </div>
     </div>
   );
@@ -1097,7 +1465,7 @@ function WomensSexualHealthForm({ data, onChange }: FormProps) {
       </div>
 
       <div>
-        <FieldLabel>{t('member.questionnaires.womensHealth.desireChanges')}</FieldLabel>
+        <FieldLabel required>{t('member.questionnaires.womensHealth.desireChanges')}</FieldLabel>
         <YesNo
           value={data.sexual_desire_changes}
           onChange={(next) => onChange('sexual_desire_changes', next)}
@@ -1105,12 +1473,170 @@ function WomensSexualHealthForm({ data, onChange }: FormProps) {
       </div>
 
       <div>
-        <FieldLabel>{t('member.questionnaires.womensHealth.wantsGuidance')}</FieldLabel>
+        <FieldLabel required>{t('member.questionnaires.womensHealth.cycle')}</FieldLabel>
+        <ScaleSelect
+          value={data.cycle_regularity}
+          onChange={(v) => onChange('cycle_regularity', v)}
+          options={[
+            { value: 'regular', label: t('member.questionnaires.womensHealth.cycleRegular') },
+            { value: 'irregular', label: t('member.questionnaires.womensHealth.cycleIrregular') },
+            {
+              value: 'not_applicable',
+              label: t('member.questionnaires.womensHealth.cycleNa'),
+            },
+          ]}
+        />
+      </div>
+
+      <div>
+        <FieldLabel required>{t('member.questionnaires.womensHealth.comfort')}</FieldLabel>
+        <ScaleSelect
+          value={data.comfort_during_intimacy}
+          onChange={(v) => onChange('comfort_during_intimacy', v)}
+          options={[
+            { value: 'comfortable', label: t('member.questionnaires.womensHealth.comfortOk') },
+            {
+              value: 'occasional_discomfort',
+              label: t('member.questionnaires.womensHealth.comfortOccasional'),
+            },
+            {
+              value: 'frequent_discomfort',
+              label: t('member.questionnaires.womensHealth.comfortFrequent'),
+            },
+          ]}
+        />
+      </div>
+
+      <div>
+        <FieldLabel required>{t('member.questionnaires.womensHealth.satisfaction')}</FieldLabel>
+        <ScaleSelect
+          value={data.satisfaction_level}
+          onChange={(v) => onChange('satisfaction_level', v)}
+          options={[
+            { value: 'low', label: t('member.questionnaires.sexualShared.satisfactionLow') },
+            {
+              value: 'moderate',
+              label: t('member.questionnaires.sexualShared.satisfactionModerate'),
+            },
+            { value: 'high', label: t('member.questionnaires.sexualShared.satisfactionHigh') },
+          ]}
+        />
+      </div>
+
+      <div>
+        <FieldLabel required>{t('member.questionnaires.womensHealth.wantsGuidance')}</FieldLabel>
         <YesNo
           value={data.wants_hormonal_guidance}
           onChange={(next) => onChange('wants_hormonal_guidance', next)}
         />
       </div>
+    </div>
+  );
+}
+
+function SummaryView({
+  responses,
+  statuses,
+  unlockedSections,
+  overallProgress,
+  isProfileComplete,
+  onOpenSection,
+  onNavigateHealthGuide,
+}: {
+  responses: Record<QuestionnaireSection, QuestionnaireData>;
+  statuses: Record<QuestionnaireSection, 'draft' | 'complete'>;
+  unlockedSections: QuestionnaireSection[];
+  overallProgress: number;
+  isProfileComplete: boolean;
+  onOpenSection: (id: QuestionnaireSection) => void;
+  onNavigateHealthGuide?: () => void;
+}) {
+  const { t } = useTranslation();
+
+  return (
+    <div className="space-y-6">
+      <div className="member-inset rounded-xl p-4 border border-[var(--bm-border)]">
+        <p className="text-sm member-body">{t('member.questionnaires.summary.disclaimer')}</p>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-3">
+        <p className="text-sm member-heading font-semibold">
+          {t('member.questionnaires.summary.progressLine', {
+            percent: overallProgress,
+            completed: unlockedSections.filter((id) => statuses[id] === 'complete').length,
+            total: unlockedSections.length,
+          })}
+        </p>
+        {isProfileComplete ? (
+          <StatusPill tone="complete">{t('member.questionnaires.summary.completeBadge')}</StatusPill>
+        ) : (
+          <StatusPill tone="draft">{t('member.questionnaires.summary.incompleteBadge')}</StatusPill>
+        )}
+      </div>
+
+      <div className="space-y-3">
+        {unlockedSections.map((id) => {
+          const progress = getSectionProgress(id, responses[id]);
+          const complete = statuses[id] === 'complete';
+          const highlights = Object.entries(responses[id]).filter(([, v]) => {
+            if (Array.isArray(v)) return v.length > 0;
+            if (typeof v === 'boolean') return true;
+            return v !== undefined && v !== null && String(v).trim() !== '';
+          });
+
+          return (
+            <button
+              key={id}
+              type="button"
+              onClick={() => onOpenSection(id)}
+              className="w-full text-left member-inset rounded-xl p-4 border border-[var(--bm-border)] hover:border-orange-300 transition-colors"
+            >
+              <div className="flex items-center justify-between gap-3 mb-2">
+                <div className="flex items-center gap-2">
+                  {complete ? (
+                    <Check className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                  ) : (
+                    <CircleDot className="h-4 w-4 text-orange-500" />
+                  )}
+                  <span className="text-sm font-semibold member-heading">
+                    {t(`member.questionnaires.section.${id}`)}
+                  </span>
+                </div>
+                <span className="text-xs tabular-nums member-muted">{progress}%</span>
+              </div>
+              {highlights.length === 0 ? (
+                <p className="text-xs member-muted">{t('member.questionnaires.summary.emptySection')}</p>
+              ) : (
+                <ul className="text-xs member-body space-y-1">
+                  {highlights.slice(0, 4).map(([key, value]) => (
+                    <li key={key}>
+                      <span className="member-muted">{key}: </span>
+                      {Array.isArray(value) ? value.join(', ') : String(value)}
+                    </li>
+                  ))}
+                  {highlights.length > 4 ? (
+                    <li className="member-muted">
+                      {t('member.questionnaires.summary.moreFields', {
+                        count: highlights.length - 4,
+                      })}
+                    </li>
+                  ) : null}
+                </ul>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {onNavigateHealthGuide ? (
+        <button
+          type="button"
+          onClick={onNavigateHealthGuide}
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white text-sm font-semibold transition-colors"
+        >
+          {t('member.questionnaires.summary.openHealthGuide')}
+        </button>
+      ) : null}
     </div>
   );
 }
