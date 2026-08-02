@@ -1,4 +1,5 @@
-import { BookOpen, Sparkles, FileText, HelpCircle, Search, ChevronRight, ChevronDown, GraduationCap, DollarSign, Users, Grid, Activity, Database, Layers, FileCheck, Compass } from 'lucide-react';
+import { BookOpen, FileText, HelpCircle, Search, ChevronRight, ChevronDown, GraduationCap, DollarSign, Users, Grid, Activity, Database, Layers, FileCheck, Compass, GitCompareArrows } from 'lucide-react';
+import HealthGuideIcon from '../components/brand/HealthGuideIcon';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import BackButton from '../components/BackButton';
@@ -160,7 +161,7 @@ export default function LearningCenter({ onNavigate }: LearningCenterProps) {
   const gettingStartedSections = [
     { key: 'pricing', icon: DollarSign },
     { key: 'member', icon: Users },
-    { key: 'multiModel', icon: Sparkles },
+    { key: 'multiModel', icon: GitCompareArrows },
     { key: 'aiGuide', icon: BookOpen },
     { key: 'services', icon: FileText },
     { key: 'categories', icon: Grid },
@@ -269,7 +270,10 @@ export default function LearningCenter({ onNavigate }: LearningCenterProps) {
 
             <div className="bg-gradient-to-br from-[#1a1e25] via-[#1e232b] to-[#252b34] rounded-2xl p-8 text-white border border-white/15 shadow-lg">
               <div className="flex items-center space-x-3 mb-6">
-                <Sparkles className="h-6 w-6 text-orange-400" />
+                <HealthGuideIcon
+                  className="h-10 w-10 rounded-xl shadow-md shadow-orange-600/40"
+                  size={40}
+                />
                 <h2 className="text-2xl font-bold">{t('learning.ai.title')}</h2>
               </div>
               <p className="text-sm text-slate-200 max-w-2xl">
@@ -482,7 +486,9 @@ export default function LearningCenter({ onNavigate }: LearningCenterProps) {
           <div className="space-y-6">
             <div className="bg-gradient-to-br from-orange-600 to-orange-700 rounded-xl p-6 text-white shadow-lg">
               <div className="flex items-center space-x-3 mb-4">
-                <Sparkles className="h-6 w-6" />
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-sm">
+                  <HealthGuideIcon className="h-7 w-7" size={28} />
+                </div>
                 <h3 className="text-xl font-bold">{t('learning.guide.title')}</h3>
               </div>
               <p className="text-orange-100 mb-4 text-sm">

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Brain, Sparkles, ArrowRight, CheckCircle } from 'lucide-react';
+import { Brain, ArrowRight, CheckCircle, Scale } from 'lucide-react';
 import SecondOpinionComparison from '../components/SecondOpinionComparison';
 import { analyzeOpinions, generateComparisonSummary } from '../lib/opinionAnalyzer';
 import { notifyUserSuccess } from '../lib/adminNotify';
@@ -223,7 +223,7 @@ export default function SecondOpinionDemo({ onNavigate }: SecondOpinionDemoProps
             Get dual AI perspectives on your health data. Two models, two approaches, deeper understanding.
           </p>
           <div className="inline-flex items-center space-x-2 px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-lg">
-            <Sparkles className="h-5 w-5" />
+            <Scale className="h-5 w-5" />
             <span className="font-semibold">Now available in all reports</span>
           </div>
         </div>

@@ -1,4 +1,5 @@
-import { TrendingUp, TrendingDown, Minus, Droplet, Moon, Heart, Activity, Sparkles, AlertCircle } from 'lucide-react';
+import { TrendingUp, TrendingDown, Minus, Droplet, Moon, Heart, Activity, AlertCircle } from 'lucide-react';
+import HealthGuideIcon from './brand/HealthGuideIcon';
 
 interface ScenarioCardProps {
   title: string;
@@ -88,7 +89,7 @@ function ScenarioCard({ title, description, aiResponse, secondOpinion, type, ico
 
         <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
           <div className="flex items-start space-x-2 mb-2">
-            <Sparkles className="h-4 w-4 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" />
+            <HealthGuideIcon className="h-5 w-5 rounded-md flex-shrink-0 mt-0.5" size={20} />
             <p className="text-xs font-semibold text-gray-900 dark:text-white">
               AI Реакция:
             </p>

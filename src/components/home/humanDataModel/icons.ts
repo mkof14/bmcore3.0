@@ -34,7 +34,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 
-/** Domain icons — avoid generic AI sparkles / stars used across every AI product. */
+/** Domain icons — prefer domain-specific glyphs over generic AI chrome. */
 const BY_ID: Record<string, LucideIcon> = {
   'risk-insight': ShieldPlus,
   'lab-results': FlaskConical,

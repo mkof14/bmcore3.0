@@ -12,6 +12,7 @@ import {
   Clock,
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import HealthGuideIcon from './brand/HealthGuideIcon';
 
 interface Command {
   id: string;
@@ -70,13 +71,13 @@ export default function CommandPalette({ isOpen, onClose, onNavigate }: CommandP
     },
     {
       id: 'ai-assistant',
-      label: 'Open AI Assistant',
-      icon: Activity,
+      label: 'Open Health Guide',
+      icon: HealthGuideIcon,
       action: () => {
         const event = new CustomEvent('open-ai-assistant');
         window.dispatchEvent(event);
       },
-      keywords: ['chat', 'help', 'ai', 'assistant'],
+      keywords: ['chat', 'help', 'ai', 'assistant', 'health guide'],
       category: 'Tools',
     },
     {

@@ -26,21 +26,7 @@ import SignalHubSection from './member/SignalHubSection';
 import RemindersSection from './member/RemindersSection';
 import ServiceDetail from './ServiceDetail';
 import WorkspaceStatusBanner from '../components/WorkspaceStatusBanner';
-import {
-  Sparkles,
-  Watch,
-  HeadphonesIcon,
-  Settings2,
-  BookOpen,
-  ClipboardList,
-  FileText,
-  Scale,
-  FolderLock,
-  Users,
-  CreditCard,
-  User,
-  Settings
-} from 'lucide-react';
+import { CreditCard } from 'lucide-react';
 
 interface MemberZoneProps {
   onNavigate: (page: string, data?: string) => void;
@@ -137,7 +123,7 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
             <p>Get started by exploring:</p>
             <ul>
               <li>📊 Your health dashboard</li>
-              <li>🤖 AI Health Assistant</li>
+              <li>Health Guide</li>
               <li>📱 Device connectivity</li>
               <li>📈 Comprehensive reports</li>
             </ul>

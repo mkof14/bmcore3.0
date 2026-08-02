@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { CheckCircle, ChevronRight, ChevronLeft, Sparkles } from 'lucide-react';
+import { CheckCircle, ChevronRight, ChevronLeft } from 'lucide-react';
+import HealthGuideIcon from './brand/HealthGuideIcon';
 import ModalShell from './ui/ModalShell';
 
 interface OnboardingStep {
@@ -72,11 +73,11 @@ export default function OnboardingFlow({ isOpen, onClose, onComplete }: Onboardi
       id: 'welcome',
       title: 'Welcome to BioMath Core',
       description: "Let's personalize your health journey",
-      icon: <Sparkles className="w-8 h-8 text-orange-500" />,
+      icon: <HealthGuideIcon className="w-8 h-8 rounded-lg" size={32} />,
       content: (
         <div className="text-center py-8">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-orange-100 dark:bg-orange-900/30 rounded-full mb-6">
-            <Sparkles className="w-10 h-10 text-orange-600 dark:text-orange-400" />
+          <div className="inline-flex items-center justify-center w-20 h-20 mb-6">
+            <HealthGuideIcon className="w-20 h-20 rounded-2xl shadow-md" size={80} />
           </div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
             Welcome to BioMath Core!
@@ -282,7 +283,7 @@ export default function OnboardingFlow({ isOpen, onClose, onComplete }: Onboardi
       id: 'complete',
       title: "You're all set!",
       description: 'Ready to start your health journey',
-      icon: <Sparkles className="w-8 h-8 text-orange-500" />,
+      icon: <HealthGuideIcon className="w-8 h-8 rounded-lg" size={32} />,
       content: (
         <div className="text-center py-8">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full mb-6">

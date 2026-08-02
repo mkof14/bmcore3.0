@@ -1,5 +1,6 @@
 
-import { Clock, Zap, FileText, Sparkles, Bell, Settings, TrendingUp, AlertCircle, BookOpen } from 'lucide-react';
+import { Clock, Zap, FileText, Bell, Settings, TrendingUp, AlertCircle, BookOpen } from 'lucide-react';
+import HealthGuideIcon from './brand/HealthGuideIcon';
 import DeviceScenarios from './DeviceScenarios';
 import { useTranslation } from 'react-i18next';
 
@@ -62,8 +63,8 @@ export function DataInfluenceAISection() {
   return (
     <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
       <div className="flex items-start space-x-4">
-        <div className="flex-shrink-0 w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
-          <Sparkles className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+        <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden shadow-sm">
+          <HealthGuideIcon className="h-12 w-12" size={48} />
         </div>
         <div>
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
