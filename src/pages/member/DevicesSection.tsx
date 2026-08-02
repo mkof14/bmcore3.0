@@ -8,6 +8,7 @@ import StateCard from '../../components/ui/StateCard';
 import ModalShell from '../../components/ui/ModalShell';
 import Button from '../../components/ui/Button';
 import ReportBrandHeader from '../../components/report/ReportBrandHeader';
+import MemberMetricCard from '../../components/ui/MemberMetricCard';
 
 interface Device {
   id: string;
@@ -132,16 +133,6 @@ export default function DevicesSection() {
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">
-          <Watch className="h-8 w-8 text-orange-500" />
-          {t('member.devices.title')}
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          {t('member.devices.subtitle')}
-        </p>
-      </div>
-
       <ReportBrandHeader
         title="BioMath Core"
         subtitle="Device Connections"
@@ -150,28 +141,28 @@ export default function DevicesSection() {
       />
 
       <div className="mb-6 grid md:grid-cols-3 gap-4">
-        <div className="bg-blue-50 dark:bg-gradient-to-br dark:from-blue-900/30 dark:via-blue-800/20 dark:to-[var(--bm-surface)] border border-blue-200 dark:border-blue-600/30 rounded-xl p-4">
-          <ReportBrandHeader variant="strip" subtitle="Active Devices" className="mb-3" />
-          <Activity className="h-6 w-6 text-blue-600 dark:text-blue-400 mb-2" />
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">{devices.filter(d => d.status === 'connected').length}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.devices.activeDevices')}</p>
-        </div>
-        <div className="bg-green-50 dark:bg-gradient-to-br dark:from-green-900/30 dark:via-green-800/20 dark:to-[var(--bm-surface)] border border-green-200 dark:border-green-600/30 rounded-xl p-4">
-          <ReportBrandHeader variant="strip" subtitle="Recently Synced" className="mb-3" />
-          <RefreshCw className="h-6 w-6 text-green-600 dark:text-green-400 mb-2" />
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">{devices.filter(d => d.last_sync).length}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.devices.recentlySynced')}</p>
-        </div>
-        <div className="bg-orange-50 dark:bg-gradient-to-br dark:from-orange-900/30 dark:via-orange-800/20 dark:to-[var(--bm-surface)] border border-orange-200 dark:border-orange-600/30 rounded-xl p-4">
-          <ReportBrandHeader variant="strip" subtitle="Supported Devices" className="mb-3" />
-          <Watch className="h-6 w-6 text-orange-600 dark:text-orange-400 mb-2" />
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">{DEVICE_TYPES.length}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.devices.supportedDevices')}</p>
-        </div>
+        <MemberMetricCard
+          accent="blue"
+          icon={<Activity className="h-6 w-6" />}
+          value={devices.filter(d => d.status === 'connected').length}
+          label={t('member.devices.activeDevices')}
+        />
+        <MemberMetricCard
+          accent="green"
+          icon={<RefreshCw className="h-6 w-6" />}
+          value={devices.filter(d => d.last_sync).length}
+          label={t('member.devices.recentlySynced')}
+        />
+        <MemberMetricCard
+          accent="orange"
+          icon={<Watch className="h-6 w-6" />}
+          value={DEVICE_TYPES.length}
+          label={t('member.devices.supportedDevices')}
+        />
       </div>
 
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('member.devices.yourDevices')}</h3>
+        <h3 className="text-xl font-semibold member-heading">{t('member.devices.yourDevices')}</h3>
         <div className="flex items-center gap-2">
           <Button size="sm" onClick={() => loadDevices()}>
             Refresh
@@ -200,7 +191,7 @@ export default function DevicesSection() {
           {devices.map((device) => (
             <div
               key={device.id}
-              className="bg-white/90 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-slate-200 dark:border-gray-700/50 rounded-xl p-6 hover:border-orange-500/30 transition-all shadow-sm"
+              className="member-card rounded-xl p-6 hover:border-orange-500/30 transition-all shadow-sm"
             >
               <ReportBrandHeader
                 variant="strip"
@@ -213,7 +204,7 @@ export default function DevicesSection() {
                     {DEVICE_TYPES.find(d => d.id === device.device_type)?.icon || '📱'}
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{device.device_name}</h3>
+                    <h3 className="text-lg font-semibold member-heading">{device.device_name}</h3>
                     <div className="flex items-center gap-2 mt-1">
                       {device.status === 'connected' ? (
                         <span className="px-2 py-0.5 bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-600/30 text-green-700 dark:text-green-400 text-xs rounded-full flex items-center gap-1">
@@ -233,18 +224,18 @@ export default function DevicesSection() {
 
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500 dark:text-gray-500">Last Sync:</span>
-                  <span className="text-gray-700 dark:text-gray-300">
+                  <span className="member-muted">Last Sync:</span>
+                  <span className="member-body font-medium">
                     {device.last_sync ? new Date(device.last_sync).toLocaleString() : 'Never'}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500 dark:text-gray-500">Frequency:</span>
-                  <span className="text-gray-700 dark:text-gray-300">{device.sync_frequency}</span>
+                  <span className="member-muted">Frequency:</span>
+                  <span className="member-body font-medium">{device.sync_frequency}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500 dark:text-gray-500">Connected:</span>
-                  <span className="text-gray-700 dark:text-gray-300">{new Date(device.connected_at).toLocaleDateString()}</span>
+                  <span className="member-muted">Connected:</span>
+                  <span className="member-body font-medium">{new Date(device.connected_at).toLocaleDateString()}</span>
                 </div>
               </div>
 
@@ -281,18 +272,18 @@ export default function DevicesSection() {
               <button
                 key={device.id}
                 onClick={() => handleConnect(device.id)}
-                className="p-6 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 hover:border-orange-300 transition-all text-left"
+                className="p-6 member-card rounded-xl hover:bg-slate-50 hover:border-orange-300 transition-all text-left"
               >
                 <div className="text-4xl mb-3">{device.icon}</div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{device.name}</h3>
-                <p className="text-sm text-gray-600">{t('member.devices.clickToConnect')}</p>
+                <h3 className="text-lg font-semibold member-heading mb-2">{device.name}</h3>
+                <p className="text-sm member-body">{t('member.devices.clickToConnect')}</p>
               </button>
             ))}
           </div>
 
           <button
             onClick={() => setShowConnectModal(false)}
-            className="w-full mt-6 px-6 py-2 bg-slate-200 text-gray-700 rounded-lg hover:bg-slate-300 transition-colors"
+            className="w-full mt-6 px-6 py-2 bg-slate-200 member-body rounded-lg hover:bg-slate-300 transition-colors"
           >
             Cancel
           </button>

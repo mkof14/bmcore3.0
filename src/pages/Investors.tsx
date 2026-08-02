@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import BackButton from '../components/BackButton';
+import PageHero from '../components/PageHero';
+import { pageHeroUrl } from '../data/pageHeroes';
 import SEO from '../components/SEO';
 import { tList } from '../i18n/tList';
 
@@ -59,47 +61,47 @@ export default function Investors({ onNavigate }: InvestorsProps) {
         url="/investors"
       />
 
-      <div className="pt-20 pb-16">
+      <div className="pt-16">
+        <PageHero
+          imageSrc={pageHeroUrl('investors')}
+          label={t('investors.hero.label')}
+          title={t('investors.hero.title')}
+          subtitle={t('investors.hero.body')}
+        >
+          <p className="mb-6 max-w-2xl text-[15px] leading-relaxed text-neutral-200">
+            {t('investors.hero.body2')}
+          </p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <button
+              type="button"
+              onClick={() => onNavigate('contact')}
+              className="bg-orange-500 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
+            >
+              {t('investors.hero.ctaContact')}
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigate('biomath-core-summary')}
+              className="border border-white/30 bg-white/10 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+            >
+              {t('investors.hero.ctaSummary')}
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigate('about')}
+              className="border border-white/30 bg-transparent px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+            >
+              {t('investors.hero.ctaAbout')}
+            </button>
+          </div>
+        </PageHero>
+      </div>
+
+      <div className="pb-16">
         <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
-          <BackButton onNavigate={onNavigate} />
-
-          {/* Hero */}
-          <section className="border-b border-[var(--bm-border)] pb-12 pt-8 lg:pb-14 lg:pt-10">
-            <SectionLabel>{t('investors.hero.label')}</SectionLabel>
-            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
-              {t('investors.hero.title')}
-            </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-lg">
-              {t('investors.hero.body')}
-            </p>
-            <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-gray-700 dark:text-neutral-300">
-              {t('investors.hero.body2')}
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <button
-                type="button"
-                onClick={() => onNavigate('contact')}
-                className="bg-orange-500 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
-              >
-                {t('investors.hero.ctaContact')}
-              </button>
-              <button
-                type="button"
-                onClick={() => onNavigate('biomath-core-summary')}
-                className="border border-[var(--bm-border)] bg-[var(--bm-surface)] px-7 py-3 text-sm font-semibold text-gray-900 transition-colors hover:border-orange-500/40 dark:text-neutral-100"
-              >
-                {t('investors.hero.ctaSummary')}
-              </button>
-              <button
-                type="button"
-                onClick={() => onNavigate('about')}
-                className="border border-[var(--bm-border)] bg-page px-7 py-3 text-sm font-semibold text-gray-900 transition-colors hover:border-orange-500/40 dark:text-neutral-100"
-              >
-                {t('investors.hero.ctaAbout')}
-              </button>
-            </div>
-          </section>
+          <div className="pt-6">
+            <BackButton onNavigate={onNavigate} />
+          </div>
 
           {/* Partners */}
           <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">

@@ -193,7 +193,8 @@
     },
     "reportSettings": {
       "title": "Ajustes de informes",
-      "subtitle": "Elige cómo se redactan, estructuran y entregan tus informes"
+      "subtitle": "Elige cómo se redactan, estructuran y entregan tus informes",
+      "savedAt": "Guardado {{time}}"
     },
     "catalog": {
       "title": "Crea tu plan de salud",

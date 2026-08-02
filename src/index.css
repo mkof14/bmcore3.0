@@ -22,6 +22,14 @@
     background-color: var(--bm-surface);
   }
 
+  .bg-elevated {
+    background-color: var(--bm-elevated);
+  }
+
+  .bg-inset {
+    background-color: var(--bm-inset);
+  }
+
   .bg-header {
     background-color: var(--bm-header);
   }
@@ -33,12 +41,195 @@
   .border-theme {
     border-color: var(--bm-border);
   }
+
+  /* Member Zone — one elevation + type system */
+  .member-card {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+  }
+
+  .member-inset {
+    @apply rounded-xl border border-slate-200 bg-slate-50;
+  }
+
+  .member-input {
+    @apply w-full rounded-lg border border-slate-200 bg-white px-4 py-2 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500;
+  }
+
+  .member-btn {
+    @apply flex items-center space-x-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-gray-700 shadow-sm transition-all duration-300 hover:border-orange-300;
+  }
+
+  .member-heading {
+    color: var(--bm-text);
+  }
+
+  .member-body {
+    color: var(--bm-text-secondary);
+  }
+
+  .member-muted {
+    color: var(--bm-text-muted);
+  }
+}
+
+html.dark .member-card {
+  background-color: var(--bm-elevated);
+  box-shadow: none;
+}
+
+/* Default card border — skip when a semantic accent border (incl. border-l-*) is present */
+html.dark .member-card:not([class*='border-orange']):not([class*='border-emerald']):not([class*='border-blue']):not([class*='border-purple']):not([class*='border-green']):not([class*='border-red']):not([class*='border-yellow']):not([class*='border-amber']):not([class*='border-teal']):not([class*='border-indigo']):not([class*='border-pink']) {
+  border-color: var(--bm-border);
+}
+
+html.dark .member-inset {
+  background-color: var(--bm-surface);
+  border-color: var(--bm-border);
+}
+
+html.dark .member-input {
+  background-color: var(--bm-inset);
+  border-color: var(--bm-border);
+  color: var(--bm-text);
+}
+
+html.dark .member-btn {
+  background-color: var(--bm-elevated);
+  border-color: var(--bm-border);
+  color: var(--bm-text-secondary);
+}
+
+html.dark .member-input::placeholder {
+  color: var(--bm-text-muted);
+  opacity: 1;
 }
 
 /* Keep legacy gray-950 page shells on the shared soft gray-blue canvas in dark mode */
 html.dark .bg-gray-950,
 html.dark .dark\:bg-gray-950 {
   background-color: var(--bm-page) !important;
+}
+
+/*
+ * Member Zone dark harmony — remap leftover Tailwind gray/slate surfaces
+ * into the same hue ladder as --bm-page / --bm-surface / --bm-elevated.
+ * Semantic colors (orange, green, red, blue accents) are left alone.
+ */
+/* Primary elevated shells (cards / panels) */
+html.dark .member-zone .bg-white,
+html.dark .member-zone .dark\:bg-white,
+html.dark .member-zone .dark\:bg-gray-900,
+html.dark .member-zone .dark\:bg-\[var\(--bm-elevated\)\] {
+  background-color: var(--bm-elevated) !important;
+}
+
+/* Nested wells / tracks — one step below cards, still above page */
+html.dark .member-zone .bg-slate-50,
+html.dark .member-zone .bg-gray-50,
+html.dark .member-zone .bg-slate-50\/80,
+html.dark .member-zone .bg-slate-100,
+html.dark .member-zone .bg-gray-100,
+html.dark .member-zone .dark\:bg-gray-800,
+html.dark .member-zone .dark\:bg-gray-800\/50,
+html.dark .member-zone .dark\:bg-gray-700\/30,
+html.dark .member-zone .dark\:bg-\[var\(--bm-surface\)\] {
+  background-color: var(--bm-surface) !important;
+}
+
+html.dark .member-zone .bg-slate-200,
+html.dark .member-zone .bg-gray-200,
+html.dark .member-zone .dark\:bg-gray-700,
+html.dark .member-zone .dark\:bg-gray-700\/50 {
+  background-color: color-mix(in srgb, var(--bm-border) 55%, var(--bm-page)) !important;
+}
+
+html.dark .member-zone .hover\:bg-slate-50:hover,
+html.dark .member-zone .hover\:bg-gray-50:hover,
+html.dark .member-zone .hover\:bg-white:hover,
+html.dark .member-zone .dark\:hover\:bg-gray-800:hover,
+html.dark .member-zone .dark\:hover\:bg-gray-750:hover,
+html.dark .member-zone .dark\:hover\:bg-\[var\(--bm-elevated\)\]:hover {
+  background-color: var(--bm-elevated) !important;
+}
+
+html.dark .member-zone .hover\:bg-slate-100:hover,
+html.dark .member-zone .hover\:bg-gray-100:hover,
+html.dark .member-zone .hover\:bg-slate-200:hover,
+html.dark .member-zone .hover\:bg-gray-200:hover,
+html.dark .member-zone .hover\:bg-slate-300:hover,
+html.dark .member-zone .dark\:hover\:bg-gray-700:hover {
+  background-color: color-mix(in srgb, var(--bm-elevated) 80%, var(--bm-border)) !important;
+}
+
+/* Neutral borders only — never !important over semantic accent borders */
+html.dark .member-zone .dark\:border-gray-700,
+html.dark .member-zone .dark\:border-gray-700\/30,
+html.dark .member-zone .dark\:border-gray-600\/30,
+html.dark .member-zone .dark\:border-gray-800,
+html.dark .member-zone .dark\:border-gray-800\/50,
+html.dark .member-zone .dark\:border-\[var\(--bm-border\)\] {
+  border-color: var(--bm-border) !important;
+}
+
+html.dark .member-zone .border-slate-200:not([class*='border-orange']):not([class*='border-emerald']):not([class*='border-blue']):not([class*='border-purple']):not([class*='border-green']):not([class*='border-red']),
+html.dark .member-zone .border-gray-200:not([class*='border-orange']):not([class*='border-emerald']):not([class*='border-blue']):not([class*='border-purple']):not([class*='border-green']):not([class*='border-red']),
+html.dark .member-zone .border-gray-300:not([class*='border-orange']):not([class*='border-emerald']):not([class*='border-blue']):not([class*='border-purple']):not([class*='border-green']):not([class*='border-red']) {
+  border-color: var(--bm-border);
+}
+
+/*
+ * Member Zone dark text contrast — remap leftover gray/neutral text onto
+ * theme tokens so card body/labels stay readable on --bm-elevated.
+ * Order: muted → body → heading so brighter intent wins when both classes exist.
+ * Semantic accent text (orange/green/red/blue/…) is left alone.
+ */
+html.dark .member-zone .text-gray-500,
+html.dark .member-zone .text-slate-500,
+html.dark .member-zone .text-gray-400,
+html.dark .member-zone .text-slate-400,
+html.dark .member-zone .dark\:text-neutral-400,
+html.dark .member-zone .dark\:text-gray-400,
+html.dark .member-zone .dark\:text-gray-500,
+html.dark .member-zone .dark\:text-neutral-500 {
+  color: var(--bm-text-muted) !important;
+}
+
+html.dark .member-zone .text-gray-700,
+html.dark .member-zone .text-slate-700,
+html.dark .member-zone .text-gray-600,
+html.dark .member-zone .text-slate-600,
+html.dark .member-zone .dark\:text-neutral-200,
+html.dark .member-zone .dark\:text-neutral-300,
+html.dark .member-zone .dark\:text-gray-200,
+html.dark .member-zone .dark\:text-gray-300 {
+  color: var(--bm-text-secondary) !important;
+}
+
+html.dark .member-zone .text-gray-900,
+html.dark .member-zone .text-slate-900,
+html.dark .member-zone .dark\:text-white,
+html.dark .member-zone .dark\:text-neutral-50,
+html.dark .member-zone .dark\:text-gray-50 {
+  color: var(--bm-text) !important;
+}
+
+html.dark .member-zone .placeholder-gray-400::placeholder,
+html.dark .member-zone .placeholder-slate-400::placeholder,
+html.dark .member-zone .dark\:placeholder-gray-500::placeholder,
+html.dark .member-zone .dark\:placeholder-gray-400::placeholder {
+  color: var(--bm-text-muted) !important;
+  opacity: 1;
+}
+
+/*
+ * Safety net for the old metric-card pattern:
+ *   bg-*-50 + dark:bg-gradient-to-br + semi-transparent dark:from-*
+ * The light *-50 fill showed through transparent gradient stops. Force an
+ * elevated solid surface whenever that gradient utility is present.
+ */
+html.dark .member-zone .dark\:bg-gradient-to-br {
+  background-color: var(--bm-elevated) !important;
+  background-image: none !important;
 }
 
 @keyframes spin {

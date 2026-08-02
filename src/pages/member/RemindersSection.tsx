@@ -60,35 +60,27 @@ export default function RemindersSection() {
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-3xl font-semibold text-gray-900 mb-2 flex items-center gap-3">
-          <Bell className="h-8 w-8 text-orange-500" />
-          {t('member.reminders.title')}
-        </h1>
-        <p className="text-gray-600">{t('member.reminders.subtitle')}</p>
-      </div>
+<ReportBrandHeader title="BioMath Core" subtitle="Reminders" variant="strip" className="mb-6" />
 
-      <ReportBrandHeader title="BioMath Core" subtitle="Reminders" variant="strip" className="mb-6" />
-
-      <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 mb-6 shadow-lg">
+      <div className="member-card p-6 mb-6 shadow-lg">
         <ReportBrandHeader variant="strip" subtitle={t('member.reminders.create')} className="mb-4" />
         <div className="grid md:grid-cols-3 gap-3">
           <input
             value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
-            className="px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900"
+            className="px-4 py-3 bg-white dark:bg-[var(--bm-elevated)] border border-slate-200 dark:border-[var(--bm-border)] rounded-lg text-gray-900 dark:text-neutral-50"
             placeholder={t('member.reminders.titlePlaceholder')}
           />
           <input
             value={form.note}
             onChange={(e) => setForm({ ...form, note: e.target.value })}
-            className="px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900"
+            className="px-4 py-3 bg-white dark:bg-[var(--bm-elevated)] border border-slate-200 dark:border-[var(--bm-border)] rounded-lg text-gray-900 dark:text-neutral-50"
             placeholder={t('member.reminders.notePlaceholder')}
           />
           <select
             value={form.schedule}
             onChange={(e) => setForm({ ...form, schedule: e.target.value })}
-            className="px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900"
+            className="px-4 py-3 bg-white dark:bg-[var(--bm-elevated)] border border-slate-200 dark:border-[var(--bm-border)] rounded-lg text-gray-900 dark:text-neutral-50"
           >
             <option>Daily</option>
             <option>Weekly</option>
@@ -107,12 +99,12 @@ export default function RemindersSection() {
 
       <div className="grid md:grid-cols-2 gap-4">
         {reminders.length === 0 && (
-          <div className="text-sm text-gray-500">No reminders yet.</div>
+          <div className="text-sm text-gray-500 dark:text-neutral-400">No reminders yet.</div>
         )}
         {reminders.map((reminder) => (
           <div
             key={reminder.id}
-          className="bg-white/90 dark:bg-[var(--bm-surface)] border border-slate-200 dark:border-gray-800 rounded-xl p-5 shadow-sm"
+          className="member-card rounded-xl p-5 shadow-sm"
           >
             <ReportBrandHeader variant="strip" subtitle={reminder.schedule} className="mb-3" />
             <div className="flex items-start justify-between">
@@ -121,9 +113,9 @@ export default function RemindersSection() {
                   {reminder.title}
                 </h3>
                 {reminder.note && (
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{reminder.note}</p>
+                  <p className="text-sm text-gray-500 dark:text-neutral-300 mt-1">{reminder.note}</p>
                 )}
-                <div className="flex items-center gap-2 mt-2 text-xs text-gray-500">
+                <div className="flex items-center gap-2 mt-2 text-xs text-gray-500 dark:text-neutral-400">
                   <Clock className="h-3 w-3" />
                   {new Date(reminder.createdAt).toLocaleDateString('en-US')}
                 </div>

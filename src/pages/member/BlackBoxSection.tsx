@@ -7,6 +7,7 @@ import ModalShell from '../../components/ui/ModalShell';
 import ErrorBanner from '../../components/ui/ErrorBanner';
 import Button from '../../components/ui/Button';
 import ReportBrandHeader from '../../components/report/ReportBrandHeader';
+import MemberMetricCard from '../../components/ui/MemberMetricCard';
 
 interface BlackBoxFile {
   id: string;
@@ -165,17 +166,7 @@ export default function BlackBoxSection() {
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">
-          <Lock className="h-8 w-8 text-orange-500" />
-          {t('member.blackBox.title')}
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          {t('member.blackBox.subtitle')}
-        </p>
-      </div>
-
-      <ReportBrandHeader
+<ReportBrandHeader
         title="BioMath Core"
         subtitle="Black Box Storage"
         variant="strip"
@@ -203,50 +194,37 @@ export default function BlackBoxSection() {
       </div>
 
       <div className="grid md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-blue-50 dark:bg-gradient-to-br dark:from-blue-900/30 dark:via-blue-800/20 dark:to-[var(--bm-surface)] border border-blue-200 dark:border-blue-600/30 rounded-xl p-4">
-          <ReportBrandHeader variant="strip" subtitle="Secured Files" className="mb-3" />
-          <div className="flex items-center justify-between mb-2">
-            <Shield className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-            <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">ENCRYPTED</span>
-          </div>
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.totalFiles}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.blackBox.securedFiles')}</p>
-        </div>
-
-        <div className="bg-green-50 dark:bg-gradient-to-br dark:from-green-900/30 dark:via-green-800/20 dark:to-[var(--bm-surface)] border border-green-200 dark:border-green-600/30 rounded-xl p-4">
-          <ReportBrandHeader variant="strip" subtitle="Total Storage" className="mb-3" />
-          <div className="flex items-center justify-between mb-2">
-            <Key className="h-5 w-5 text-green-600 dark:text-green-400" />
-            <span className="text-xs text-green-600 dark:text-green-400 font-medium">AES-256</span>
-          </div>
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">{formatFileSize(stats.totalSize)}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.blackBox.totalStorage')}</p>
-        </div>
-
-        <div className="bg-orange-50 dark:bg-gradient-to-br dark:from-orange-900/30 dark:via-orange-800/20 dark:to-[var(--bm-surface)] border border-orange-200 dark:border-orange-600/30 rounded-xl p-4">
-          <ReportBrandHeader variant="strip" subtitle="Access Logs" className="mb-3" />
-          <div className="flex items-center justify-between mb-2">
-            <Activity className="h-5 w-5 text-orange-600 dark:text-orange-400" />
-            <span className="text-xs text-orange-600 dark:text-orange-400 font-medium">MONITORED</span>
-          </div>
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.accessCount}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.blackBox.accessLogs')}</p>
-        </div>
-
-        <div className="bg-purple-50 dark:bg-gradient-to-br dark:from-purple-900/30 dark:via-purple-800/20 dark:to-[var(--bm-surface)] border border-purple-200 dark:border-purple-600/30 rounded-xl p-4">
-          <ReportBrandHeader variant="strip" subtitle="Last Access" className="mb-3" />
-          <div className="flex items-center justify-between mb-2">
-            <Lock className="h-5 w-5 text-purple-600 dark:text-purple-400" />
-            <span className="text-xs text-purple-600 dark:text-purple-400 font-medium">SECURE</span>
-          </div>
-          <p className="text-sm font-bold text-gray-900 dark:text-white truncate">
-            {stats.lastAccess ? new Date(stats.lastAccess).toLocaleDateString() : 'Never'}
-          </p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.blackBox.lastAccess')}</p>
-        </div>
+        <MemberMetricCard
+          accent="blue"
+          icon={<Shield className="h-5 w-5" />}
+          badge={<span className="text-xs text-blue-600 dark:text-blue-400 font-medium">ENCRYPTED</span>}
+          value={stats.totalFiles}
+          label={t('member.blackBox.securedFiles')}
+        />
+        <MemberMetricCard
+          accent="green"
+          icon={<Key className="h-5 w-5" />}
+          badge={<span className="text-xs text-green-600 dark:text-green-400 font-medium">AES-256</span>}
+          value={formatFileSize(stats.totalSize)}
+          label={t('member.blackBox.totalStorage')}
+        />
+        <MemberMetricCard
+          accent="orange"
+          icon={<Activity className="h-5 w-5" />}
+          badge={<span className="text-xs text-orange-600 dark:text-orange-400 font-medium">MONITORED</span>}
+          value={stats.accessCount}
+          label={t('member.blackBox.accessLogs')}
+        />
+        <MemberMetricCard
+          accent="purple"
+          icon={<Lock className="h-5 w-5" />}
+          badge={<span className="text-xs text-purple-600 dark:text-purple-400 font-medium">SECURE</span>}
+          value={stats.lastAccess ? new Date(stats.lastAccess).toLocaleDateString() : 'Never'}
+          label={t('member.blackBox.lastAccess')}
+        />
       </div>
 
-      <div className="mb-6 bg-white/90 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-slate-200 dark:border-gray-700/50 rounded-xl p-6 shadow-sm">
+      <div className="mb-6 member-card rounded-xl p-6 shadow-sm">
         <ReportBrandHeader variant="strip" subtitle="Security Features" className="mb-4" />
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
           <Shield className="h-5 w-5 text-orange-500" />
@@ -259,7 +237,7 @@ export default function BlackBoxSection() {
             </div>
             <div>
               <p className="text-sm font-medium text-gray-900 dark:text-white">AES-256-GCM Encryption</p>
-              <p className="text-xs text-gray-600 dark:text-gray-400">Military-grade encryption for all files</p>
+              <p className="text-xs text-gray-600 dark:text-neutral-300">Military-grade encryption for all files</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -268,7 +246,7 @@ export default function BlackBoxSection() {
             </div>
             <div>
               <p className="text-sm font-medium text-gray-900 dark:text-white">Tamper-Proof Audit Logs</p>
-              <p className="text-xs text-gray-600 dark:text-gray-400">All access is recorded and immutable</p>
+              <p className="text-xs text-gray-600 dark:text-neutral-300">All access is recorded and immutable</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -277,7 +255,7 @@ export default function BlackBoxSection() {
             </div>
             <div>
               <p className="text-sm font-medium text-gray-900 dark:text-white">Zero-Knowledge Architecture</p>
-              <p className="text-xs text-gray-600 dark:text-gray-400">Only you can decrypt your files</p>
+              <p className="text-xs text-gray-600 dark:text-neutral-300">Only you can decrypt your files</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -286,7 +264,7 @@ export default function BlackBoxSection() {
             </div>
             <div>
               <p className="text-sm font-medium text-gray-900 dark:text-white">Biometric Access Control</p>
-              <p className="text-xs text-gray-600 dark:text-gray-400">Multi-factor authentication required</p>
+              <p className="text-xs text-gray-600 dark:text-neutral-300">Multi-factor authentication required</p>
             </div>
           </div>
         </div>
@@ -309,19 +287,19 @@ export default function BlackBoxSection() {
       </div>
 
       {loading ? (
-        <div className="text-center py-12 text-gray-600 dark:text-gray-400">Loading secure storage...</div>
+        <div className="text-center py-12 text-gray-600 dark:text-neutral-300">Loading secure storage...</div>
       ) : files.length === 0 ? (
-        <div className="text-center py-12 bg-white/70 dark:bg-[var(--bm-surface)]/40 border border-slate-200 dark:border-gray-700/50 rounded-2xl shadow-sm">
-          <Lock className="h-16 w-16 text-gray-500 dark:text-gray-600 mx-auto mb-4" />
-          <p className="text-gray-700 dark:text-gray-400 mb-2">{t('member.blackBox.empty')}</p>
-          <p className="text-sm text-gray-600 dark:text-gray-500">{t('member.blackBox.emptyHint')}</p>
+        <div className="text-center py-12 bg-white/70 dark:bg-[var(--bm-surface)]/40 border border-slate-200 dark:border-[var(--bm-border)] rounded-2xl shadow-sm">
+          <Lock className="h-16 w-16 member-muted mx-auto mb-4" />
+          <p className="member-body mb-2">{t('member.blackBox.empty')}</p>
+          <p className="text-sm member-muted">{t('member.blackBox.emptyHint')}</p>
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {files.map((file) => (
             <div
               key={file.id}
-              className="bg-white/90 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-orange-200 dark:border-orange-600/30 rounded-xl p-4 hover:border-orange-500/50 transition-all shadow-sm"
+              className="member-card rounded-xl border-orange-200 dark:border-orange-600/30 p-4 hover:border-orange-500/50 transition-all shadow-sm"
             >
               <ReportBrandHeader variant="strip" subtitle="Encrypted File" className="mb-3" />
               <div className="flex items-start justify-between mb-3">
@@ -338,25 +316,25 @@ export default function BlackBoxSection() {
 
               <div className="space-y-2 mb-3">
                 <div className="flex justify-between text-xs">
-                  <span className="text-gray-500">Encryption:</span>
+                  <span className="text-gray-500 dark:text-neutral-400">Encryption:</span>
                   <span className="text-green-600 font-mono">{file.encryption_method}</span>
                 </div>
                 <div className="flex justify-between text-xs">
-                  <span className="text-gray-500 dark:text-gray-500">Size:</span>
-                  <span className="text-gray-700 dark:text-gray-400">{formatFileSize(file.file_size)}</span>
+                  <span className="text-gray-500 dark:text-neutral-400 dark:text-neutral-400">Size:</span>
+                  <span className="text-gray-700 dark:text-neutral-300">{formatFileSize(file.file_size)}</span>
                 </div>
                 <div className="flex justify-between text-xs">
-                  <span className="text-gray-500 dark:text-gray-500">Uploaded:</span>
-                  <span className="text-gray-700 dark:text-gray-400">{new Date(file.upload_date).toLocaleDateString()}</span>
+                  <span className="text-gray-500 dark:text-neutral-400 dark:text-neutral-400">Uploaded:</span>
+                  <span className="text-gray-700 dark:text-neutral-300">{new Date(file.upload_date).toLocaleDateString()}</span>
                 </div>
                 {file.last_accessed && (
                   <div className="flex justify-between text-xs">
-                  <span className="text-gray-500">Last Access:</span>
+                  <span className="text-gray-500 dark:text-neutral-400">Last Access:</span>
                   <span className="text-orange-600">{new Date(file.last_accessed).toLocaleDateString()}</span>
                 </div>
                 )}
                 <div className="flex justify-between text-xs">
-                  <span className="text-gray-500 dark:text-gray-500">Access Logs:</span>
+                  <span className="text-gray-500 dark:text-neutral-400 dark:text-neutral-400">Access Logs:</span>
                   <span className="text-blue-600 dark:text-blue-400">{file.access_log?.length || 0} entries</span>
                 </div>
               </div>
@@ -389,7 +367,7 @@ export default function BlackBoxSection() {
           onClose={() => setShowUploadModal(false)}
           panelClassName="max-w-md"
         >
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          <p className="text-sm text-gray-600 dark:text-neutral-300 mb-4">
             Files will be encrypted with AES-256-GCM before storage
           </p>
           <p className="text-xs text-orange-700 dark:text-orange-300 mb-4 p-3 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-600/30 rounded-lg">

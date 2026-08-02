@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
+import PageHero from '../components/PageHero';
+import { pageHeroUrl } from '../data/pageHeroes';
 import { tList } from '../i18n/tList';
 
 type ModelItem = { title: string; body: string; points: string[] };
@@ -41,18 +43,17 @@ export default function WhyTwoModels() {
         page="why-two-models"
       />
 
-      <div className="pt-20 pb-16">
+      <div className="pt-16">
+        <PageHero
+          imageSrc={pageHeroUrl('why-two-models')}
+          label={t('whyTwoModels.hero.label')}
+          title={t('whyTwoModels.hero.title')}
+          subtitle={t('whyTwoModels.hero.body')}
+        />
+      </div>
+
+      <div className="pb-16">
         <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
-          {/* Hero */}
-          <section className="border-b border-[var(--bm-border)] pb-14 pt-8 lg:pb-16 lg:pt-10">
-            <SectionLabel>{t('whyTwoModels.hero.label')}</SectionLabel>
-            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
-              {t('whyTwoModels.hero.title')}
-            </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-lg">
-              {t('whyTwoModels.hero.body')}
-            </p>
-          </section>
 
           {/* The two models */}
           <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">

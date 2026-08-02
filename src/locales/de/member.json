@@ -193,7 +193,8 @@
     },
     "reportSettings": {
       "title": "Berichtseinstellungen",
-      "subtitle": "Legen Sie fest, wie Ihre Berichte formuliert, gegliedert und zugestellt werden"
+      "subtitle": "Legen Sie fest, wie Ihre Berichte formuliert, gegliedert und zugestellt werden",
+      "savedAt": "Gespeichert {{time}}"
     },
     "catalog": {
       "title": "Stellen Sie Ihren Gesundheitsplan zusammen",

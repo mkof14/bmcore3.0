@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 import { useMemo } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import BackButton from '../components/BackButton';
+import PageHero from '../components/PageHero';
+import { pageHeroUrl } from '../data/pageHeroes';
 import SEO from '../components/SEO';
 import CTASection from '../components/CTASection';
 
@@ -94,20 +96,20 @@ export default function About({ onNavigate }: AboutProps) {
         url="/about"
       />
 
-      <div className="pt-20 pb-16">
-        <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
-          <BackButton onNavigate={onNavigate} />
+      <div className="pt-16">
+        <PageHero
+          imageSrc={pageHeroUrl('about')}
+          label={t('about.label')}
+          title={t('about.title')}
+          subtitle={t('about.subtitle')}
+        />
+      </div>
 
-          {/* Hero */}
-          <section className="border-b border-[var(--bm-border)] pb-14 pt-8 lg:pb-16 lg:pt-10">
-            <SectionLabel>{t('about.label')}</SectionLabel>
-            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
-              {t('about.title')}
-            </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-lg">
-              {t('about.subtitle')}
-            </p>
-          </section>
+      <div className="pb-16">
+        <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
+          <div className="pt-6">
+            <BackButton onNavigate={onNavigate} />
+          </div>
 
           {/* Mission + Founder */}
           <section className="grid gap-12 border-b border-[var(--bm-border)] py-14 md:grid-cols-2 md:gap-14 lg:py-16">

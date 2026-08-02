@@ -185,8 +185,8 @@ export default function SupportSection() {
     switch (status) {
       case 'open': return 'bg-green-100 dark:bg-green-900/30 border-green-200 dark:border-green-600/30 text-green-700 dark:text-green-400';
       case 'in_progress': return 'bg-blue-100 dark:bg-blue-900/30 border-blue-200 dark:border-blue-600/30 text-blue-700 dark:text-blue-400';
-      case 'resolved': return 'bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/30 text-gray-700 dark:text-gray-400';
-      default: return 'bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/30 text-gray-700 dark:text-gray-400';
+      case 'resolved': return 'bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/30 text-gray-700 dark:text-neutral-300';
+      default: return 'bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/30 text-gray-700 dark:text-neutral-300';
     }
   };
 
@@ -195,22 +195,14 @@ export default function SupportSection() {
       case 'urgent': return 'bg-red-100 dark:bg-red-900/30 border-red-200 dark:border-red-600/30 text-red-700 dark:text-red-400';
       case 'high': return 'bg-orange-100 dark:bg-orange-900/30 border-orange-200 dark:border-orange-600/30 text-orange-700 dark:text-orange-400';
       case 'normal': return 'bg-blue-100 dark:bg-blue-900/30 border-blue-200 dark:border-blue-600/30 text-blue-700 dark:text-blue-400';
-      case 'low': return 'bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/30 text-gray-700 dark:text-gray-400';
-      default: return 'bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/30 text-gray-700 dark:text-gray-400';
+      case 'low': return 'bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/30 text-gray-700 dark:text-neutral-300';
+      default: return 'bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/30 text-gray-700 dark:text-neutral-300';
     }
   };
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">
-          <HeadphonesIcon className="h-8 w-8 text-orange-500" />
-          {t('member.support.title')}
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400">{t('member.support.subtitle')}</p>
-      </div>
-
-      <ReportBrandHeader
+<ReportBrandHeader
         title="BioMath Core"
         subtitle="Support Center"
         variant="strip"
@@ -218,28 +210,28 @@ export default function SupportSection() {
       />
 
       <div className="mb-6 grid md:grid-cols-3 gap-4">
-        <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg">
+        <div className="member-card p-4 shadow-lg">
           <ReportBrandHeader variant="strip" subtitle="Live Chat" className="mb-3" />
           <MessageCircle className="h-6 w-6 text-blue-600 mb-2" />
-          <h3 className="font-semibold text-gray-900 mb-1">{t('member.support.liveChat')}</h3>
-          <p className="text-xs text-gray-500 mb-3">{t('member.support.liveChatBody')}</p>
+          <h3 className="font-semibold text-gray-900 dark:text-neutral-50 mb-1">{t('member.support.liveChat')}</h3>
+          <p className="text-xs text-gray-500 dark:text-neutral-400 mb-3">{t('member.support.liveChatBody')}</p>
           <button className="text-xs text-blue-600 hover:text-blue-700">Start Chat →</button>
         </div>
 
-        <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg">
+        <div className="member-card p-4 shadow-lg">
           <ReportBrandHeader variant="strip" subtitle="Email Support" className="mb-3" />
           <Mail className="h-6 w-6 text-emerald-600 mb-2" />
-          <h3 className="font-semibold text-gray-900 mb-1">{t('member.support.emailSupport')}</h3>
-          <p className="text-xs text-gray-500 mb-3">support@biomathcore.com</p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">Response within 24 hours</p>
+          <h3 className="font-semibold text-gray-900 dark:text-neutral-50 mb-1">{t('member.support.emailSupport')}</h3>
+          <p className="text-xs text-gray-500 dark:text-neutral-400 mb-3">support@biomathcore.com</p>
+          <p className="text-xs text-gray-500 dark:text-neutral-300">Response within 24 hours</p>
         </div>
 
-        <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg">
+        <div className="member-card p-4 shadow-lg">
           <ReportBrandHeader variant="strip" subtitle="Support Hours" className="mb-3" />
           <Clock className="h-6 w-6 text-orange-500 mb-2" />
-          <h3 className="font-semibold text-gray-900 mb-1">{t('member.support.supportHours')}</h3>
-          <p className="text-xs text-gray-500 mb-1">24/7 for Pro users</p>
-          <p className="text-xs text-gray-500">9AM-6PM EST for Basic</p>
+          <h3 className="font-semibold text-gray-900 dark:text-neutral-50 mb-1">{t('member.support.supportHours')}</h3>
+          <p className="text-xs text-gray-500 dark:text-neutral-400 mb-1">24/7 for Pro users</p>
+          <p className="text-xs text-gray-500 dark:text-neutral-400">9AM-6PM EST for Basic</p>
         </div>
       </div>
 
@@ -289,13 +281,13 @@ export default function SupportSection() {
                     {ticket.priority}
                   </span>
                 </div>
-                <p className="text-xs text-gray-500">{new Date(ticket.created_at).toLocaleDateString()}</p>
+                <p className="text-xs text-gray-500 dark:text-neutral-400">{new Date(ticket.created_at).toLocaleDateString()}</p>
               </div>
             ))
           )}
         </div>
 
-        <div className="md:col-span-2 bg-white/90 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-slate-200 dark:border-gray-700/50 rounded-2xl flex flex-col h-[600px] shadow-lg">
+        <div className="md:col-span-2 member-card flex flex-col h-[600px] shadow-lg">
           <ReportBrandHeader
             variant="strip"
             subtitle="Ticket Details"
@@ -303,7 +295,7 @@ export default function SupportSection() {
           />
           {currentTicket ? (
             <>
-              <div className="p-4 border-b border-slate-200 dark:border-gray-700/50">
+              <div className="p-4 border-b border-slate-200 dark:border-[var(--bm-border)]">
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{currentTicket.subject}</h3>
                 <div className="flex gap-2">
                   <span className={`px-2 py-0.5 text-xs rounded-full border ${getStatusColor(currentTicket.status)}`}>
@@ -312,7 +304,7 @@ export default function SupportSection() {
                   <span className={`px-2 py-0.5 text-xs rounded-full border ${getPriorityColor(currentTicket.priority)}`}>
                     {currentTicket.priority}
                   </span>
-                  <span className="px-2 py-0.5 text-xs rounded-full border bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/30 text-gray-700 dark:text-gray-400">
+                  <span className="px-2 py-0.5 text-xs rounded-full border bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/30 text-gray-700 dark:text-neutral-300">
                     {currentTicket.category}
                   </span>
                 </div>
@@ -323,9 +315,9 @@ export default function SupportSection() {
                   <ErrorBanner message={messageError} className="mb-4" />
                 )}
                 {loadingMessages ? (
-                  <div className="text-center text-sm text-gray-600 dark:text-gray-400">Loading messages...</div>
+                  <div className="text-center text-sm text-gray-600 dark:text-neutral-300">Loading messages...</div>
                 ) : messages.length === 0 ? (
-                  <div className="text-center text-sm text-gray-600 dark:text-gray-400">No messages yet.</div>
+                  <div className="text-center text-sm text-gray-600 dark:text-neutral-300">No messages yet.</div>
                 ) : (
                   messages.map((msg) => (
                     <div
@@ -340,7 +332,7 @@ export default function SupportSection() {
                         }`}
                       >
                         <p className="text-sm text-gray-900 dark:text-white whitespace-pre-wrap">{msg.message}</p>
-                        <p className="text-xs text-gray-500 mt-2">
+                        <p className="text-xs text-gray-500 dark:text-neutral-400 mt-2">
                           {new Date(msg.created_at).toLocaleTimeString()}
                         </p>
                       </div>
@@ -349,7 +341,7 @@ export default function SupportSection() {
                 )}
               </div>
 
-              <div className="p-4 border-t border-slate-200 dark:border-gray-700/50">
+              <div className="p-4 border-t border-slate-200 dark:border-[var(--bm-border)]">
                 <div className="flex gap-2">
                   <input
                     type="text"
@@ -357,7 +349,7 @@ export default function SupportSection() {
                     onChange={(e) => setNewMessage(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                     placeholder={t('member.support.typeMessage')}
-                    className="flex-1 px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="flex-1 px-4 py-2 member-input"
                   />
                   <button
                     onClick={sendMessage}
@@ -373,7 +365,7 @@ export default function SupportSection() {
             <div className="flex-1 flex items-center justify-center">
               <div className="text-center">
                 <MessageCircle className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-500">Select a ticket to view conversation or create a new one.</p>
+                <p className="text-gray-500 dark:text-neutral-400">Select a ticket to view conversation or create a new one.</p>
               </div>
             </div>
           )}
@@ -389,23 +381,23 @@ export default function SupportSection() {
         >
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">Subject</label>
               <input
                 type="text"
                 value={newTicketForm.subject}
                 onChange={(e) => setNewTicketForm({ ...newTicketForm, subject: e.target.value })}
-                className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 member-input"
                 placeholder={t('member.support.subjectPlaceholder')}
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">Category</label>
                 <select
                   value={newTicketForm.category}
                   onChange={(e) => setNewTicketForm({ ...newTicketForm, category: e.target.value })}
-                  className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-4 py-2 member-input"
                 >
                   <option value="technical">Technical</option>
                   <option value="billing">Billing</option>
@@ -416,11 +408,11 @@ export default function SupportSection() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Priority</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">Priority</label>
                 <select
                   value={newTicketForm.priority}
                   onChange={(e) => setNewTicketForm({ ...newTicketForm, priority: e.target.value })}
-                  className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-4 py-2 member-input"
                 >
                   <option value="low">Low</option>
                   <option value="normal">Normal</option>
@@ -431,12 +423,12 @@ export default function SupportSection() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Message</label>
+              <label className="block text-sm font-medium text-gray-600 dark:text-neutral-200 mb-2">Message</label>
               <textarea
                 value={newTicketForm.message}
                 onChange={(e) => setNewTicketForm({ ...newTicketForm, message: e.target.value })}
                 rows={4}
-                className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 member-input"
                 placeholder={t('member.support.descriptionPlaceholder')}
               />
             </div>

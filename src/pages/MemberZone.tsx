@@ -26,6 +26,8 @@ import SignalHubSection from './member/SignalHubSection';
 import RemindersSection from './member/RemindersSection';
 import ServiceDetail from './ServiceDetail';
 import WorkspaceStatusBanner from '../components/WorkspaceStatusBanner';
+import MemberSectionHero from '../components/MemberSectionHero';
+import { scrollAppToTopAfterNavigate } from '../lib/scrollAppToTop';
 import { CreditCard } from 'lucide-react';
 
 interface MemberZoneProps {
@@ -60,6 +62,11 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
       /* ignore */
     }
   }, [initialServiceRef]);
+
+  // Section switches feel like page changes — jump window + member scroller to top.
+  useEffect(() => {
+    scrollAppToTopAfterNavigate();
+  }, [currentSection]);
 
   useEffect(() => {
     // Check subscription status
@@ -175,12 +182,12 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
         if (!hasActiveSubscription) {
           return (
             <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-              <div className="bg-white/90 border border-orange-200 rounded-3xl p-12 max-w-2xl shadow-xl">
+              <div className="member-card border-orange-200 rounded-3xl p-12 max-w-2xl shadow-xl">
                 <CreditCard className="w-16 h-16 text-orange-500 mx-auto mb-6" />
-                <h2 className="text-3xl font-semibold text-gray-900 mb-4">
+                <h2 className="text-3xl font-semibold text-gray-900 dark:text-neutral-50 mb-4">
                   {t('member.gate.catalogTitle')}
                 </h2>
-                <p className="text-lg text-gray-600 mb-8">
+                <p className="text-lg text-gray-600 dark:text-neutral-300 mb-8">
                   {t('member.gate.catalogBody')}
                 </p>
                 <button
@@ -206,7 +213,7 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
       case 'service-workspace':
         if (!subChecked) {
           return (
-            <div className="flex min-h-[40vh] items-center justify-center text-sm text-gray-500">
+            <div className="flex min-h-[40vh] items-center justify-center text-sm text-gray-500 dark:text-neutral-400">
               {t('member.gate.loadingService')}
             </div>
           );
@@ -214,10 +221,10 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
         if (!hasActiveSubscription) {
           return (
             <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
-              <div className="max-w-2xl rounded-3xl border border-orange-200 bg-white/90 p-12 shadow-xl">
+              <div className="member-card max-w-2xl rounded-3xl border-orange-200 p-12 shadow-xl">
                 <CreditCard className="mx-auto mb-6 h-16 w-16 text-orange-500" />
-                <h2 className="mb-4 text-3xl font-semibold text-gray-900">{t('member.gate.serviceTitle')}</h2>
-                <p className="mb-8 text-lg text-gray-600">
+                <h2 className="mb-4 text-3xl font-semibold text-gray-900 dark:text-neutral-50">{t('member.gate.serviceTitle')}</h2>
+                <p className="mb-8 text-lg text-gray-600 dark:text-neutral-300">
                   {t('member.gate.serviceBody')}
                 </p>
                 <button
@@ -308,14 +315,14 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[var(--bm-page)] via-orange-50/25 to-[var(--bm-page)] dark:from-[var(--bm-page)] dark:via-[var(--bm-surface)] dark:to-[var(--bm-page)] transition-colors pt-16">
+    <div className="member-zone min-h-screen bg-page transition-colors pt-16">
       <MemberSidebar
         currentSection={currentSection === 'service-workspace' ? 'catalog' : currentSection}
         onSectionChange={setCurrentSection}
         hasActiveSubscription={hasActiveSubscription}
       />
 
-      <div className="ml-64 transition-all duration-300">
+      <div className="ml-64 transition-all duration-300" data-scroll-root data-scroll-blur>
         <div
           className={`mx-auto px-6 py-8 ${
             currentSection === 'service-workspace' ? 'max-w-6xl' : 'max-w-7xl'
@@ -330,19 +337,23 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
           <div className="mb-6 flex items-center justify-between">
             <button
               onClick={() => onNavigate('home')}
-              className="flex items-center space-x-2 px-4 py-2 bg-white/90 dark:from-gray-800 dark:to-[var(--bm-surface)] border border-slate-200 dark:border-gray-700/50 hover:border-orange-300 text-gray-700 dark:text-gray-300 rounded-lg transition-all duration-300 shadow-sm"
+              className="member-btn"
             >
               <ArrowLeft className="h-5 w-5" />
               <span>{t('member.zone.backHome')}</span>
             </button>
             <button
               onClick={handleSignOut}
-              className="flex items-center space-x-2 px-4 py-2 bg-white/90 dark:from-gray-800 dark:to-[var(--bm-surface)] border border-slate-200 dark:border-gray-700/50 hover:border-orange-300 text-gray-700 dark:text-gray-300 rounded-lg transition-all duration-300 shadow-sm"
+              className="member-btn"
             >
               <LogOut className="h-5 w-5" />
               <span>{t('member.zone.signOut')}</span>
             </button>
           </div>
+
+          {currentSection !== 'service-workspace' && (
+            <MemberSectionHero section={currentSection} />
+          )}
 
           {renderSection()}
         </div>
@@ -350,10 +361,10 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
 
       {showSuccessModal && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-slideUp">
+          <div className="member-card shadow-2xl max-w-md w-full p-8 relative animate-slideUp">
             <button
               onClick={() => setShowSuccessModal(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+              className="absolute top-4 right-4 member-muted hover:text-[var(--bm-text)] transition-colors"
             >
               <X className="h-6 w-6" />
             </button>
@@ -363,11 +374,11 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
                 <CheckCircle className="h-12 w-12 text-green-600 dark:text-green-400" />
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              <h2 className="text-3xl font-bold member-heading mb-4">
                 {t('member.welcome.title')}
               </h2>
 
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+              <p className="text-lg member-body mb-6">
                 {t('member.welcome.body')}
               </p>
 
@@ -375,10 +386,10 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-3">
                   {t('member.welcome.nextStepTitle')}
                 </h3>
-                <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
+                <p className="text-sm text-gray-700 dark:text-neutral-200 mb-4">
                   {t('member.welcome.nextStepBody')}
                 </p>
-                <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                <ul className="space-y-2 text-sm text-gray-700 dark:text-neutral-200">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
                     <span>{t('member.welcome.corePlan')}</span>
@@ -394,7 +405,7 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
                 </ul>
               </div>
 
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+              <p className="text-sm text-gray-500 dark:text-neutral-300 mb-6">
                 {t('member.welcome.emailNote')}
               </p>
 

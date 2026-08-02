@@ -185,22 +185,13 @@ export default function DashboardSection({ onBack }: DashboardSectionProps = {})
   return (
     <div className="space-y-6">
       {onBack && <BackButton onClick={onBack} label="Back to Home" />}
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-          {t('member.dashboard.title')}
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          {t('member.dashboard.subtitle')}
-        </p>
-      </div>
-
       {!todaySnapshot ? (
-        <div className="bg-white/90 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] rounded-xl p-8 border-2 border-dashed border-slate-200 dark:border-gray-700/50 text-center shadow-sm">
+        <div className="member-card rounded-xl p-8 border-2 border-dashed text-center">
           <Sun className="h-12 w-12 text-orange-500 mx-auto mb-4" />
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
             Ready for today's snapshot?
           </h3>
-          <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">
+          <p className="text-gray-600 dark:text-neutral-300 mb-6 max-w-md mx-auto">
             Your snapshot appears after new data arrives from devices or reports.
           </p>
         </div>
@@ -232,7 +223,7 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
       case 'good': return 'text-blue-600 dark:text-blue-400';
       case 'moderate': return 'text-yellow-600 dark:text-yellow-400';
       case 'low': return 'text-orange-600 dark:text-orange-400';
-      default: return 'text-gray-600 dark:text-gray-400';
+      default: return 'text-gray-600 dark:text-neutral-300';
     }
   };
 
@@ -242,12 +233,12 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
       case 'stable': return 'text-blue-600 dark:text-blue-400';
       case 'recovering': return 'text-yellow-600 dark:text-yellow-400';
       case 'stressed': return 'text-red-600 dark:text-red-400';
-      default: return 'text-gray-600 dark:text-gray-400';
+      default: return 'text-gray-600 dark:text-neutral-300';
     }
   };
 
   return (
-    <div className="bg-white/90 rounded-2xl p-6 border border-slate-200 shadow-lg">
+    <div className="member-card p-6 shadow-lg">
       <ReportBrandHeader
         title="BioMath Core"
         subtitle="Daily Snapshot"
@@ -258,10 +249,10 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
         <div className="flex items-center space-x-3">
           <Sun className="h-8 w-8 text-orange-500" />
           <div>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-neutral-50">
               Today
             </h2>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm member-muted">
               {new Date(snapshot.snapshot_date).toLocaleDateString('en-US', {
                 month: 'long',
                 day: 'numeric'
@@ -272,7 +263,7 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
         <div className="flex space-x-4 text-sm">
           {snapshot.energy_level && (
             <div className="text-center">
-              <p className="text-gray-600 dark:text-gray-400 mb-1">Energy</p>
+              <p className="text-gray-600 dark:text-neutral-300 mb-1">Energy</p>
               <p className={`font-semibold capitalize ${getEnergyColor(snapshot.energy_level)}`}>
                 {snapshot.energy_level}
               </p>
@@ -280,7 +271,7 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
           )}
           {snapshot.recovery_status && (
             <div className="text-center">
-              <p className="text-gray-600 dark:text-gray-400 mb-1">Recovery</p>
+              <p className="text-gray-600 dark:text-neutral-300 mb-1">Recovery</p>
               <p className={`font-semibold capitalize ${getRecoveryColor(snapshot.recovery_status)}`}>
                 {snapshot.recovery_status}
               </p>
@@ -289,12 +280,12 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
         </div>
       </div>
 
-      <div className="bg-white/90 border border-slate-200 rounded-2xl p-4 mb-4 shadow-sm">
-        <p className="text-lg font-semibold text-gray-900 mb-2">
+      <div className="member-card p-4 mb-4 shadow-sm">
+        <p className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-2">
           {snapshot.state_summary}
         </p>
         {snapshot.state_reason && (
-          <p className="text-gray-600 dark:text-gray-300 text-sm">
+          <p className="text-gray-600 dark:text-neutral-200 text-sm">
             {snapshot.state_reason}
           </p>
         )}
@@ -308,8 +299,8 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
         </button>
 
         {showExplanation && (
-          <div className="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-lg">
-            <p className="text-sm text-gray-600 dark:text-gray-300">
+          <div className="member-inset mt-3 p-3">
+            <p className="text-sm text-gray-600 dark:text-neutral-200">
               When your nervous system stays active during rest, your body doesn't fully switch to recovery mode.
               This is common after sustained effort and means gentle support is more helpful than pushing harder.
             </p>
@@ -328,7 +319,7 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
               <p className="text-sm text-gray-900 dark:text-white font-medium mb-1">
                 {snapshot.suggestion_of_day.title}
               </p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
+              <p className="text-sm text-gray-700 dark:text-neutral-200">
                 {snapshot.suggestion_of_day.description}
               </p>
             </div>
@@ -346,19 +337,19 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
           </button>
           {showSecondOpinion && (
             <div className="mt-3 space-y-3">
-              <div className="bg-white/90 rounded-lg p-3 border border-slate-200">
+              <div className="member-card rounded-lg p-3">
                 <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1">
                   Opinion A (Physiological)
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-600 dark:text-neutral-200">
                   {snapshot.second_opinion_a}
                 </p>
               </div>
-              <div className="bg-white/90 rounded-lg p-3 border border-slate-200">
+              <div className="member-card rounded-lg p-3">
                 <p className="text-xs font-semibold text-pink-700 dark:text-pink-300 mb-1">
                   Opinion B (Lifestyle)
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-600 dark:text-neutral-200">
                   {snapshot.second_opinion_b}
                 </p>
               </div>
@@ -372,7 +363,7 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
 
 function GoalsCard({ goals, onCreateGoal }: { goals: UserGoal[]; onCreateGoal: () => void }) {
   return (
-    <div className="bg-white/90 dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm">
+    <div className="member-card rounded-xl p-6">
       <ReportBrandHeader
         title="BioMath Core"
         subtitle="Goals Overview"
@@ -393,8 +384,8 @@ function GoalsCard({ goals, onCreateGoal }: { goals: UserGoal[]; onCreateGoal: (
 
       {goals.length === 0 ? (
         <div className="text-center py-8">
-          <Target className="h-12 w-12 text-gray-400 mx-auto mb-3" />
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          <Target className="h-12 w-12 member-muted mx-auto mb-3" />
+          <p className="text-sm member-body mb-4">
             No active goals yet
           </p>
           <button
@@ -410,7 +401,7 @@ function GoalsCard({ goals, onCreateGoal }: { goals: UserGoal[]; onCreateGoal: (
           {goals.map((goal) => (
             <div
               key={goal.id}
-              className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 hover:bg-gray-100 dark:hover:bg-gray-750 transition-colors cursor-pointer"
+              className="member-inset rounded-lg p-4 hover:border-orange-300/40 transition-colors cursor-pointer"
             >
               <div className="flex items-start justify-between">
                 <div className="flex-1">
@@ -418,22 +409,22 @@ function GoalsCard({ goals, onCreateGoal }: { goals: UserGoal[]; onCreateGoal: (
                     {goal.title}
                   </h4>
                   {goal.description && (
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                    <p className="text-sm text-gray-600 dark:text-neutral-300 mb-2">
                       {goal.description}
                     </p>
                   )}
-                  <div className="flex items-center space-x-3 text-xs text-gray-600 dark:text-gray-400">
+                  <div className="flex items-center space-x-3 text-xs text-gray-600 dark:text-neutral-300">
                     <span className={`px-2 py-1 rounded capitalize ${
                       goal.priority === 'high' ? 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400' :
                       goal.priority === 'medium' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400' :
-                      'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                      'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-neutral-200'
                     }`}>
                       {goal.priority}
                     </span>
                     <span>Since {new Date(goal.start_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
                   </div>
                 </div>
-                <ChevronRight className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                <ChevronRight className="h-5 w-5 member-muted flex-shrink-0" />
               </div>
             </div>
           ))}
@@ -465,7 +456,7 @@ function HabitsCard({
   };
 
   return (
-    <div className="bg-white/90 dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm">
+    <div className="member-card rounded-xl p-6">
       <ReportBrandHeader
         title="BioMath Core"
         subtitle="Habit Tracker"
@@ -480,7 +471,7 @@ function HabitsCard({
           </h3>
         </div>
         {habits.length > 0 && (
-          <span className="text-sm text-gray-600 dark:text-gray-400">
+          <span className="text-sm text-gray-600 dark:text-neutral-300">
             {completedCount} / {habits.length}
           </span>
         )}
@@ -488,8 +479,8 @@ function HabitsCard({
 
       {habits.length === 0 ? (
         <div className="text-center py-8">
-          <Activity className="h-12 w-12 text-gray-400 mx-auto mb-3" />
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <Activity className="h-12 w-12 member-muted mx-auto mb-3" />
+          <p className="text-sm member-body">
             Habits will appear after creating goals
           </p>
         </div>
@@ -498,7 +489,7 @@ function HabitsCard({
           {habits.map(({ habit, completion }) => (
             <label
               key={habit.id}
-              className="flex items-start space-x-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-750 transition-colors cursor-pointer"
+              className="member-inset flex items-start space-x-3 p-3 hover:border-orange-300/40 transition-colors cursor-pointer"
             >
               <input
                 type="checkbox"
@@ -509,12 +500,12 @@ function HabitsCard({
               <div className="flex-1">
                 <p className={`font-medium ${
                   completion?.completed
-                    ? 'text-gray-500 dark:text-gray-400 line-through'
+                    ? 'text-gray-500 dark:text-neutral-300 line-through'
                     : 'text-gray-900 dark:text-white'
                 }`}>
                   {habit.title}
                 </p>
-                <div className="flex items-center space-x-3 mt-1 text-xs text-gray-600 dark:text-gray-400">
+                <div className="flex items-center space-x-3 mt-1 text-xs text-gray-600 dark:text-neutral-300">
                   <span>{formatTimeAnchor(habit.time_anchor)}</span>
                   <span>•</span>
                   <span>{habit.duration_minutes} min</span>
@@ -541,7 +532,7 @@ function HabitsCard({
 
 function LatestReportCard({ report }: { report: HealthReport }) {
   return (
-    <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
+    <div className="member-card rounded-xl border-l-4 border-l-purple-500 p-6 shadow-sm">
       <ReportBrandHeader
         title="BioMath Core"
         subtitle="Latest Report"
@@ -555,7 +546,7 @@ function LatestReportCard({ report }: { report: HealthReport }) {
             <h3 className="text-lg font-bold text-gray-900 dark:text-white">
               Latest Report
             </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-600 dark:text-neutral-300">
               {new Date(report.created_at).toLocaleDateString('en-US', {
                 month: 'long',
                 day: 'numeric'
@@ -569,11 +560,11 @@ function LatestReportCard({ report }: { report: HealthReport }) {
         </button>
       </div>
 
-      <p className="text-gray-700 dark:text-gray-300 line-clamp-2 mb-4">
+      <p className="text-gray-700 dark:text-neutral-200 line-clamp-2 mb-4">
         {report.summary}
       </p>
 
-      <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
+      <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-neutral-300">
         {report.insights && Array.isArray(report.insights) && (
           <span>{report.insights.length} insights</span>
         )}
@@ -590,7 +581,7 @@ function LatestReportCard({ report }: { report: HealthReport }) {
 
 function QuickActionsCard() {
   return (
-    <div className="bg-white/90 dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-slate-200 dark:border-gray-800 shadow-sm">
+    <div className="member-card rounded-xl p-6">
       <ReportBrandHeader
         title="BioMath Core"
         subtitle="Quick Actions"
@@ -652,40 +643,40 @@ function CreateGoalModal({ onClose, onCreate }: { onClose: () => void; onCreate:
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">
             Goal Title
           </label>
           <input
             type="text"
             value={formData.title}
             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="member-input focus:ring-blue-500"
             placeholder="e.g., Improve sleep quality"
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">
             Description (optional)
           </label>
           <textarea
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
             rows={3}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="member-input focus:ring-blue-500"
             placeholder="Describe your goal..."
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">
             Priority
           </label>
           <select
             value={formData.priority}
             onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="member-input focus:ring-blue-500"
           >
             <option value="low">Low</option>
             <option value="medium">Medium</option>

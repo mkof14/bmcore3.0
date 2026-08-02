@@ -165,17 +165,7 @@ export default function MedicalFilesSection() {
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-3xl font-semibold text-gray-900 mb-2 flex items-center gap-3">
-          <FileText className="h-8 w-8 text-orange-500" />
-          {t('member.medicalFiles.title')}
-        </h1>
-        <p className="text-gray-600">
-          {t('member.medicalFiles.subtitle')}
-        </p>
-      </div>
-
-      <ReportBrandHeader
+<ReportBrandHeader
         title="BioMath Core"
         subtitle="Medical Records Vault"
         variant="strip"
@@ -198,20 +188,20 @@ export default function MedicalFilesSection() {
 
       <div className="mb-6 flex flex-col md:flex-row gap-4">
         <div className="flex-1 relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500 dark:text-neutral-400" />
           <input
             type="text"
             placeholder={t('member.medicalFiles.searchPlaceholder')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="w-full pl-10 pr-4 py-3 member-input"
           />
         </div>
         <div className="flex gap-2">
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="px-4 py-3 member-input"
           >
             <option value="all">{t('member.medicalFiles.allCategories')}</option>
             {CATEGORIES.map(cat => (
@@ -229,19 +219,19 @@ export default function MedicalFilesSection() {
       </div>
 
       {loading ? (
-        <div className="text-center py-12 text-gray-600 dark:text-gray-400">Loading files...</div>
+        <div className="text-center py-12 text-gray-600 dark:text-neutral-300">Loading files...</div>
       ) : filteredFiles.length === 0 ? (
         <div className="text-center py-12">
-          <FileText className="h-16 w-16 text-gray-600 mx-auto mb-4" />
-          <p className="text-gray-600 dark:text-gray-400 mb-2">{t('member.medicalFiles.empty')}</p>
-          <p className="text-sm text-gray-500">Upload your lab results, scans, and medical documents to get started</p>
+          <FileText className="h-16 w-16 text-gray-600 dark:text-neutral-300 mx-auto mb-4" />
+          <p className="text-gray-600 dark:text-neutral-300 mb-2">{t('member.medicalFiles.empty')}</p>
+          <p className="text-sm text-gray-500 dark:text-neutral-400">Upload your lab results, scans, and medical documents to get started</p>
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredFiles.map((file) => (
             <div
               key={file.id}
-              className="bg-white/90 border border-slate-200 rounded-2xl p-4 shadow-lg hover:border-orange-500/30 transition-all"
+              className="member-card p-4 shadow-lg hover:border-orange-500/30 transition-all"
             >
               <ReportBrandHeader
                 variant="strip"
@@ -257,9 +247,9 @@ export default function MedicalFilesSection() {
                 </span>
               </div>
 
-              <h3 className="text-sm font-semibold text-gray-900 mb-2 line-clamp-2">{file.file_name}</h3>
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-neutral-50 mb-2 line-clamp-2">{file.file_name}</h3>
 
-              <div className="flex items-center gap-2 text-xs text-gray-500 mb-3">
+              <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-neutral-400 mb-3">
                 <span>{formatFileSize(file.file_size)}</span>
                 <span>•</span>
                 <span>{new Date(file.upload_date).toLocaleDateString()}</span>
@@ -268,7 +258,7 @@ export default function MedicalFilesSection() {
               {file.tags.length > 0 && (
                 <div className="flex flex-wrap gap-1 mb-3">
                   {file.tags.map((tag, idx) => (
-                    <span key={idx} className="px-2 py-0.5 bg-slate-100 text-gray-600 text-xs rounded">
+                    <span key={idx} className="px-2 py-0.5 bg-slate-100 text-gray-600 dark:text-neutral-300 text-xs rounded">
                       {tag}
                     </span>
                   ))}
@@ -332,33 +322,33 @@ export default function MedicalFilesSection() {
         >
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">{t('member.medicalFiles.fileName')}</label>
+              <label className="block text-sm font-medium text-gray-600 dark:text-neutral-200 mb-2">{t('member.medicalFiles.fileName')}</label>
               <input
                 type="text"
                 value={uploadForm.file_name}
                 onChange={(e) => setUploadForm({ ...uploadForm, file_name: e.target.value })}
-                className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 member-input"
                 placeholder="Blood Test Results - Jan 2024"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">{t('member.medicalFiles.fileUrl')}</label>
+              <label className="block text-sm font-medium text-gray-600 dark:text-neutral-200 mb-2">{t('member.medicalFiles.fileUrl')}</label>
               <input
                 type="text"
                 value={uploadForm.file_url}
                 onChange={(e) => setUploadForm({ ...uploadForm, file_url: e.target.value })}
-                className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 member-input"
                 placeholder="https://example.com/file.pdf"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Category</label>
+              <label className="block text-sm font-medium text-gray-600 dark:text-neutral-200 mb-2">Category</label>
               <select
                 value={uploadForm.category}
                 onChange={(e) => setUploadForm({ ...uploadForm, category: e.target.value })}
-                className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 member-input"
               >
                 {CATEGORIES.map(cat => (
                   <option key={cat} value={cat}>{cat}</option>
@@ -367,11 +357,11 @@ export default function MedicalFilesSection() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">{t('member.medicalFiles.fileType')}</label>
+              <label className="block text-sm font-medium text-gray-600 dark:text-neutral-200 mb-2">{t('member.medicalFiles.fileType')}</label>
               <select
                 value={uploadForm.file_type}
                 onChange={(e) => setUploadForm({ ...uploadForm, file_type: e.target.value })}
-                className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 member-input"
               >
                 {FILE_TYPES.map(type => (
                   <option key={type} value={type}>{type.toUpperCase()}</option>
@@ -380,12 +370,12 @@ export default function MedicalFilesSection() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-2">Tags (comma-separated)</label>
+              <label className="block text-sm font-medium text-gray-600 dark:text-neutral-200 mb-2">Tags (comma-separated)</label>
               <input
                 type="text"
                 value={uploadForm.tags}
                 onChange={(e) => setUploadForm({ ...uploadForm, tags: e.target.value })}
-                className="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-4 py-2 member-input"
                 placeholder="blood, cholesterol, 2024"
               />
             </div>
@@ -400,7 +390,7 @@ export default function MedicalFilesSection() {
             </button>
             <button
               onClick={() => setShowUploadModal(false)}
-              className="px-6 py-2 bg-slate-200 text-gray-700 rounded-lg hover:bg-slate-300 transition-colors"
+              className="px-6 py-2 bg-slate-200 text-gray-700 dark:text-neutral-200 rounded-lg hover:bg-slate-300 transition-colors"
             >
               Cancel
             </button>

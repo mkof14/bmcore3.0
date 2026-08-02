@@ -1,20 +1,34 @@
 /**
  * BioMath Core theme canvases
- * Light: deep off-white
- * Dark: soft gray-blue (~20% deeper than #2a3038)
+ * Light: warm off-white
+ * Dark: cool slate-blue family — page → surface → elevated in one hue ladder
  */
 :root {
   --bm-page: #ebe8e2;
   --bm-surface: #f4f2ec;
+  --bm-elevated: #f7f5f0;
+  --bm-inset: #e4e0d8;
   --bm-header: #e6e3dc;
   --bm-footer: #e2dfd8;
   --bm-border: #d4d0c8;
+  --bm-text: #111827;
+  --bm-text-secondary: #4b5563;
+  --bm-text-muted: #6b7280;
 }
 
 html.dark {
-  --bm-page: #22262d;
-  --bm-surface: #2a2f37;
-  --bm-header: #272d35;
-  --bm-footer: #1c2026;
-  --bm-border: #373d47;
+  /* Deeper page; surfaces lift clearly in the same cool slate family */
+  --bm-page: #12151a;
+  --bm-surface: #1a1f27;
+  --bm-elevated: #2c3340;
+  --bm-inset: #0e1115;
+  --bm-header: #161a21;
+  --bm-footer: #0e1115;
+  /* Stronger edge so elevated cards separate from page */
+  --bm-border: #4a5568;
+  --bm-text: #f8fafc;
+  /* Body on elevated cards ≈ gray-300; muted stays WCAG AA on #2c3340 */
+  --bm-text-secondary: #d1d5db;
+  --bm-text-muted: #b8c0cc;
+  /* cache-bust: member-zone-dark-contrast-2026-08-02 */
 }

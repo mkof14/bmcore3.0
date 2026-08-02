@@ -2,6 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { ChevronDown } from 'lucide-react';
 import BackButton from '../components/BackButton';
+import PageHero from '../components/PageHero';
+import { pageHeroUrl } from '../data/pageHeroes';
 import PaymentConfirmationModal from '../components/PaymentConfirmationModal';
 import { supabase } from '../lib/supabase';
 import SEO from '../components/SEO';
@@ -212,9 +214,20 @@ export default function Pricing({ onNavigate }: PricingProps) {
         url="/pricing"
       />
 
-      <div className="pt-20 pb-16">
+      <div className="pt-16">
+        <PageHero
+          imageSrc={pageHeroUrl('pricing')}
+          label={t('pricing.label')}
+          title={t('pricing.title')}
+          subtitle={t('pricing.subtitle')}
+        />
+      </div>
+
+      <div className="pb-16">
         <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
-          <BackButton onNavigate={onNavigate} />
+          <div className="pt-6">
+            <BackButton onNavigate={onNavigate} />
+          </div>
 
           {paymentStatus === 'cancelled' && (
             <div className="mb-8 border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-center">
@@ -224,19 +237,8 @@ export default function Pricing({ onNavigate }: PricingProps) {
             </div>
           )}
 
-          {/* Hero */}
-          <section className="border-b border-[var(--bm-border)] pb-12 pt-8 text-center lg:pb-14 lg:pt-10">
-            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-orange-600 dark:text-orange-400">
-              {t('pricing.label')}
-            </p>
-            <h1 className="mx-auto max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
-              {t('pricing.title')}
-            </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-lg">
-              {t('pricing.subtitle')}
-            </p>
-
-            <div className="mt-9 inline-flex items-center border border-[var(--bm-border)] bg-[var(--bm-surface)] p-1">
+          <section className="border-b border-[var(--bm-border)] pb-10 pt-4 text-center">
+            <div className="inline-flex items-center border border-[var(--bm-border)] bg-[var(--bm-surface)] p-1">
               <button
                 type="button"
                 onClick={() => setBillingPeriod('monthly')}

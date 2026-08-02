@@ -1,8 +1,10 @@
-import { BookOpen, FileText, HelpCircle, Search, ChevronRight, ChevronDown, GraduationCap, DollarSign, Users, Grid, Activity, Database, Layers, FileCheck, Compass, GitCompareArrows } from 'lucide-react';
+import { BookOpen, FileText, HelpCircle, Search, ChevronRight, ChevronDown, DollarSign, Users, Grid, Activity, Database, Layers, FileCheck, Compass, GitCompareArrows } from 'lucide-react';
 import HealthGuideIcon from '../components/brand/HealthGuideIcon';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import BackButton from '../components/BackButton';
+import PageHero from '../components/PageHero';
+import { pageHeroUrl } from '../data/pageHeroes';
 import ServiceCatalogReference from '../components/ServiceCatalogReference';
 import { serviceCategories, totalServiceCount } from '../data/services';
 import { categoryAccent } from '../data/categoryTheme';
@@ -169,20 +171,17 @@ export default function LearningCenter({ onNavigate }: LearningCenterProps) {
   ] as const;
 
   return (
-    <div className="min-h-screen bg-page pt-20 pb-16">
+    <div className="min-h-screen bg-page pb-16">
+      <div className="pt-16">
+        <PageHero
+          imageSrc={pageHeroUrl('learning')}
+          title={t('learning.title')}
+          subtitle={t('learning.subtitle')}
+        />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <BackButton onNavigate={onNavigate} />
-
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-600 rounded-2xl mb-4 shadow-lg shadow-orange-600/20">
-            <GraduationCap className="h-8 w-8 text-white" />
-          </div>
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-neutral-100 mb-4">
-            {t('learning.title')}
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-neutral-300 max-w-3xl mx-auto">
-            {t('learning.subtitle')}
-          </p>
+        <div className="pt-6">
+          <BackButton onNavigate={onNavigate} />
         </div>
 
         <div className="mb-12">

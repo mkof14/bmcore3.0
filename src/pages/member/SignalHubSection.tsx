@@ -62,62 +62,52 @@ export default function SignalHubSection() {
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-3xl font-semibold text-gray-900 mb-2 flex items-center gap-3">
-          <Database className="h-8 w-8 text-orange-500" />
-          {t('member.signalHub.title')}
-        </h1>
-        <p className="text-gray-600">
-          {t('member.signalHub.subtitle')}
-        </p>
-      </div>
-
-      <ReportBrandHeader title="BioMath Core" subtitle="Signal Hub" variant="strip" className="mb-6" />
+<ReportBrandHeader title="BioMath Core" subtitle="Signal Hub" variant="strip" className="mb-6" />
 
       <div className="grid md:grid-cols-3 gap-4 mb-6">
-        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-4 border border-gray-200 dark:border-[var(--bm-border)]">
           <ReportBrandHeader variant="strip" subtitle="Signal Score" className="mb-3" />
           <p className="text-2xl font-bold text-gray-900 dark:text-white">{signalScore}</p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">{t('member.signalHub.readiness')}</p>
+          <p className="text-xs text-gray-500 dark:text-neutral-300">{t('member.signalHub.readiness')}</p>
         </div>
-        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-4 border border-gray-200 dark:border-[var(--bm-border)]">
           <ReportBrandHeader variant="strip" subtitle="Total Signals" className="mb-3" />
           <p className="text-2xl font-bold text-gray-900 dark:text-white">{snapshot?.totalSignals || 0}</p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">{t('member.signalHub.acrossSources')}</p>
+          <p className="text-xs text-gray-500 dark:text-neutral-300">{t('member.signalHub.acrossSources')}</p>
         </div>
-        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-4 border border-gray-200 dark:border-[var(--bm-border)]">
           <ReportBrandHeader variant="strip" subtitle="Latest Update" className="mb-3" />
           <p className="text-sm font-semibold text-gray-900 dark:text-white">
             {snapshot?.updatedAt ? new Date(snapshot.updatedAt).toLocaleString('en-US') : 'No updates yet'}
           </p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">{t('member.signalHub.lastRefresh')}</p>
+          <p className="text-xs text-gray-500 dark:text-neutral-300">{t('member.signalHub.lastRefresh')}</p>
         </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-4 mb-6">
-        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-gray-200 dark:border-gray-800">
+        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-gray-200 dark:border-[var(--bm-border)]">
           <ReportBrandHeader variant="strip" subtitle="Sources" className="mb-4" />
-          <div className="grid grid-cols-2 gap-3 text-sm text-gray-700 dark:text-gray-300">
+          <div className="grid grid-cols-2 gap-3 text-sm text-gray-700 dark:text-neutral-200">
             {sourceCards.map((source) => (
-              <div key={source.key} className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-[var(--bm-surface)]/40 p-3">
+              <div key={source.key} className="rounded-lg border border-gray-200 dark:border-[var(--bm-border)] bg-gray-50 dark:bg-[var(--bm-surface)]/40 p-3">
                 <div className="flex items-center justify-between">
                   <span className="font-semibold capitalize">{source.key.replace('-', ' ')}</span>
-                  <span className="text-xs text-gray-500">{source.count}</span>
+                  <span className="text-xs text-gray-500 dark:text-neutral-400">{source.count}</span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-500 dark:text-neutral-400 mt-1">
                   {source.lastUpdated ? new Date(source.lastUpdated).toLocaleDateString('en-US') : 'No data yet'}
                 </p>
               </div>
             ))}
             {sourceCards.length === 0 && (
-              <p className="text-sm text-gray-500">No sources yet. Generate a report to populate signals.</p>
+              <p className="text-sm text-gray-500 dark:text-neutral-400">No sources yet. Generate a report to populate signals.</p>
             )}
           </div>
         </div>
 
-        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-gray-200 dark:border-gray-800">
+        <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-gray-200 dark:border-[var(--bm-border)]">
           <ReportBrandHeader variant="strip" subtitle="Impact Radar" className="mb-4" />
-          <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+          <div className="space-y-3 text-sm text-gray-700 dark:text-neutral-200">
             <div className="flex items-center gap-2">
               <Radar className="h-4 w-4 text-orange-500" />
               Reports draw from every source to increase clarity.
@@ -138,10 +128,10 @@ export default function SignalHubSection() {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-gray-200 dark:border-gray-800 mb-6">
+      <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-gray-200 dark:border-[var(--bm-border)] mb-6">
         <ReportBrandHeader variant="strip" subtitle="Signal Trendline" className="mb-4" />
         {trendPoints.length === 0 ? (
-          <p className="text-sm text-gray-500">No signal history yet.</p>
+          <p className="text-sm text-gray-500 dark:text-neutral-400">No signal history yet.</p>
         ) : (
           <div className="h-24 flex items-end gap-1">
             {trendPoints.map((pt) => (
@@ -153,10 +143,10 @@ export default function SignalHubSection() {
             ))}
           </div>
         )}
-        <p className="mt-2 text-xs text-gray-500">Recent signal activity (last 12 updates).</p>
+        <p className="mt-2 text-xs text-gray-500 dark:text-neutral-400">Recent signal activity (last 12 updates).</p>
       </div>
 
-      <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-gray-200 dark:border-gray-800">
+      <div className="bg-white dark:bg-[var(--bm-surface)] rounded-xl p-6 border border-gray-200 dark:border-[var(--bm-border)]">
         <div className="flex items-center justify-between mb-4">
           <ReportBrandHeader variant="strip" subtitle="Signal Timeline" />
           <button
@@ -164,21 +154,21 @@ export default function SignalHubSection() {
               setSnapshot(loadKnowledgeSnapshot(userId));
               setTimeline(loadKnowledgeTimeline(userId) as TimelineEntry[]);
             }}
-            className="px-3 py-2 text-xs bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-600 dark:text-gray-300 flex items-center gap-2"
+            className="px-3 py-2 text-xs bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-600 dark:text-neutral-200 flex items-center gap-2"
           >
             <RefreshCw className="h-4 w-4" />
             Refresh
           </button>
         </div>
-        <div className="space-y-2 text-xs text-gray-600 dark:text-gray-300">
+        <div className="space-y-2 text-xs text-gray-600 dark:text-neutral-200">
           {timeline.length === 0 && <p>No signal updates yet.</p>}
           {timeline.slice(-10).reverse().map((entry) => (
             <div key={entry.timestamp} className="flex items-center justify-between gap-3">
-              <span className="text-gray-500 dark:text-gray-400">
+              <span className="text-gray-500 dark:text-neutral-300">
                 {new Date(entry.timestamp).toLocaleString('en-US')}
               </span>
               <span className="flex-1 truncate">Signals: {Object.keys(entry.signals).join(', ') || 'update'}</span>
-              <span className="text-gray-500 dark:text-gray-400">Total {entry.totalSignals}</span>
+              <span className="text-gray-500 dark:text-neutral-300">Total {entry.totalSignals}</span>
             </div>
           ))}
         </div>

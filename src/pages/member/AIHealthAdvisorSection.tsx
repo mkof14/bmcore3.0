@@ -37,15 +37,6 @@ export default function AIHealthAdvisorSection() {
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-3xl font-semibold text-gray-900 dark:text-neutral-100 mb-2">
-          {t('healthGuide.memberTitle')}
-        </h1>
-        <p className="text-gray-600 dark:text-neutral-400">
-          {t('healthGuide.memberSubtitle')}
-        </p>
-      </div>
-
       <ReportBrandHeader
         title="BioMath Core"
         subtitle={t('healthGuide.name')}
@@ -67,9 +58,9 @@ export default function AIHealthAdvisorSection() {
         </div>
       </div>
 
-      <div className="bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-lg mb-6">
+      <div className="member-card p-6 shadow-lg mb-6">
         <ReportBrandHeader variant="strip" subtitle="Ask Your Question" className="mb-4" />
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('member.healthGuide.ask')}</h3>
+        <h3 className="text-lg font-semibold member-heading mb-4">{t('member.healthGuide.ask')}</h3>
         <div className="space-y-4">
           <textarea
             value={question}
@@ -77,7 +68,7 @@ export default function AIHealthAdvisorSection() {
             onKeyPress={handleKeyPress}
             rows={4}
             placeholder={t('member.healthGuide.askPlaceholder')}
-            className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
+            className="w-full px-4 py-3 member-input resize-none"
           />
           <button
             onClick={handleSubmit}
@@ -100,19 +91,19 @@ export default function AIHealthAdvisorSection() {
       </div>
 
       {loading && (
-        <div className="bg-white/90 border border-orange-200 rounded-2xl p-6 mb-6 shadow-lg">
+        <div className="member-card border-orange-200 p-6 mb-6 shadow-lg">
           <ReportBrandHeader variant="strip" subtitle="Dual AI Processing" className="mb-4" />
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-orange-500"></div>
-              <p className="text-gray-900 font-semibold">Analyzing your question with dual AI models...</p>
+              <p className="member-heading font-semibold">Analyzing your question with dual AI models...</p>
             </div>
             <div className="space-y-2 pl-8">
-              <div className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="flex items-center gap-2 text-sm member-body">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <span>AI Model #1: Evidence-based analysis</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="flex items-center gap-2 text-sm member-body">
                 <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
                 <span>AI Model #2: Contextual analysis</span>
               </div>
@@ -123,69 +114,69 @@ export default function AIHealthAdvisorSection() {
 
       {!loading && responses.opinion1 && responses.opinion2 && (
         <div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <h3 className="text-xl font-semibold member-heading mb-4 flex items-center gap-2">
             <Brain className="h-6 w-6 text-orange-500" />
             Dual AI Opinions
           </h3>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+            <div className="member-card rounded-xl border-l-4 border-l-blue-500 p-6 shadow-sm">
               <ReportBrandHeader variant="strip" subtitle="Opinion #1" className="mb-4" />
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-blue-100 border border-blue-200 rounded-lg">
-                  <Brain className="h-5 w-5 text-blue-600" />
+                <div className="p-2 rounded-lg bg-[var(--bm-surface)] border border-[var(--bm-border)]">
+                  <Brain className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900">AI Opinion #1</h4>
-                  <p className="text-xs text-blue-600">Evidence-Based Perspective</p>
+                  <h4 className="text-lg font-semibold member-heading">AI Opinion #1</h4>
+                  <p className="text-xs text-blue-600 dark:text-blue-400">Evidence-Based Perspective</p>
                 </div>
               </div>
               <div className="prose prose-sm max-w-none">
-                <p className="text-gray-700 whitespace-pre-wrap">{responses.opinion1}</p>
+                <p className="member-body whitespace-pre-wrap">{responses.opinion1}</p>
               </div>
-              <div className="mt-4 pt-4 border-t border-blue-200">
+              <div className="mt-4 pt-4 border-t border-[var(--bm-border)]">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-gray-500">Confidence:</span>
-                  <span className="text-blue-700 font-semibold">85%</span>
+                  <span className="member-muted">Confidence:</span>
+                  <span className="text-blue-700 dark:text-blue-400 font-semibold">85%</span>
                 </div>
                 <div className="flex items-center justify-between text-xs mt-2">
-                  <span className="text-gray-500">Sources:</span>
-                  <span className="text-blue-700 font-semibold">Medical research</span>
+                  <span className="member-muted">Sources:</span>
+                  <span className="text-blue-700 dark:text-blue-400 font-semibold">Medical research</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6">
+            <div className="member-card rounded-xl border-l-4 border-l-emerald-500 p-6 shadow-sm">
               <ReportBrandHeader variant="strip" subtitle="Opinion #2" className="mb-4" />
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-emerald-100 border border-emerald-200 rounded-lg">
-                  <Scale className="h-5 w-5 text-emerald-600" />
+                <div className="p-2 rounded-lg bg-[var(--bm-surface)] border border-[var(--bm-border)]">
+                  <Scale className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900">AI Opinion #2</h4>
-                  <p className="text-xs text-emerald-600">Contextual Perspective</p>
+                  <h4 className="text-lg font-semibold member-heading">AI Opinion #2</h4>
+                  <p className="text-xs text-emerald-600 dark:text-emerald-400">Contextual Perspective</p>
                 </div>
               </div>
               <div className="prose prose-sm max-w-none">
-                <p className="text-gray-700 whitespace-pre-wrap">{responses.opinion2}</p>
+                <p className="member-body whitespace-pre-wrap">{responses.opinion2}</p>
               </div>
-              <div className="mt-4 pt-4 border-t border-emerald-200">
+              <div className="mt-4 pt-4 border-t border-[var(--bm-border)]">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-gray-500">Confidence:</span>
-                  <span className="text-emerald-700 font-semibold">78%</span>
+                  <span className="member-muted">Confidence:</span>
+                  <span className="text-emerald-700 dark:text-emerald-400 font-semibold">78%</span>
                 </div>
                 <div className="flex items-center justify-between text-xs mt-2">
-                  <span className="text-gray-500">Personalization:</span>
-                  <span className="text-emerald-700 font-semibold">High</span>
+                  <span className="member-muted">Personalization:</span>
+                  <span className="text-emerald-700 dark:text-emerald-400 font-semibold">High</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-6 bg-white/90 border border-slate-200 rounded-2xl p-6 shadow-lg">
+          <div className="mt-6 member-card p-6 shadow-lg">
             <ReportBrandHeader variant="strip" subtitle="Key Insights" className="mb-4" />
-            <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('member.healthGuide.keyInsights')}</h4>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <h4 className="text-lg font-semibold member-heading mb-3">{t('member.healthGuide.keyInsights')}</h4>
+            <ul className="space-y-2 text-sm member-body">
               <li className="flex items-start gap-2">
                 <span className="text-orange-500 mt-1">•</span>
                 <span>Both AI models agree on the importance of consulting healthcare professionals</span>
@@ -204,7 +195,7 @@ export default function AIHealthAdvisorSection() {
                 setQuestion('');
                 setResponses({ opinion1: null, opinion2: null });
               }}
-              className="mt-4 px-6 py-2 bg-blue-50 border border-blue-200 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors"
+              className="mt-4 px-6 py-2 member-btn text-blue-700 dark:text-blue-400 hover:border-blue-400 transition-colors"
             >
               Ask Another Question
             </button>
@@ -215,8 +206,8 @@ export default function AIHealthAdvisorSection() {
       {!loading && !responses.opinion1 && (
         <div className="text-center py-12">
           <Brain className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-          <p className="text-gray-600 mb-2">{t('member.healthGuide.empty')}</p>
-          <p className="text-sm text-gray-500">{t('member.healthGuide.emptyHint')}</p>
+          <p className="text-gray-600 dark:text-neutral-300 mb-2">{t('member.healthGuide.empty')}</p>
+          <p className="text-sm text-gray-500 dark:text-neutral-400">{t('member.healthGuide.emptyHint')}</p>
         </div>
       )}
     </div>

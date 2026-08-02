@@ -193,7 +193,8 @@
     },
     "reportSettings": {
       "title": "レポート設定",
-      "subtitle": "レポートの書き方・構成・配信方法を選べます"
+      "subtitle": "レポートの書き方・構成・配信方法を選べます",
+      "savedAt": "保存済み {{time}}"
     },
     "catalog": {
       "title": "健康プランを作成",

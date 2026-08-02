@@ -6,6 +6,7 @@ import { notifyUserError, notifyUserInfo } from '../../lib/adminNotify';
 import ErrorBanner from '../../components/ui/ErrorBanner';
 import Button from '../../components/ui/Button';
 import ReportBrandHeader from '../../components/report/ReportBrandHeader';
+import MemberMetricCard from '../../components/ui/MemberMetricCard';
 import { loadKnowledgeSnapshot } from '../../lib/secondOpinionEngine';
 
 interface Report {
@@ -118,37 +119,27 @@ export default function MyReportsSection() {
       case 'completed': return 'bg-green-100 dark:bg-green-900/30 border-green-200 dark:border-green-600/30 text-green-700 dark:text-green-400';
       case 'processing': return 'bg-blue-100 dark:bg-blue-900/30 border-blue-200 dark:border-blue-600/30 text-blue-700 dark:text-blue-400';
       case 'pending': return 'bg-yellow-100 dark:bg-yellow-900/30 border-yellow-200 dark:border-yellow-600/30 text-yellow-700 dark:text-yellow-400';
-      default: return 'bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/30 text-gray-700 dark:text-gray-400';
+      default: return 'bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/30 text-gray-700 dark:text-neutral-300';
     }
   };
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">
-          <FileText className="h-8 w-8 text-orange-500" />
-          {t('member.reports.title')}
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          {t('member.reports.subtitle')}
-        </p>
-      </div>
-
-      <ReportBrandHeader
+<ReportBrandHeader
         title="BioMath Core"
         subtitle="Report Library"
         compact
         className="mb-6"
       />
 
-      <div className="mb-6 bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+      <div className="mb-6 member-card rounded-xl p-4">
         <ReportBrandHeader variant="strip" subtitle="Data Coverage" className="mb-3" />
-        <div className="grid md:grid-cols-3 gap-3 text-xs text-gray-700 dark:text-gray-300">
+        <div className="grid md:grid-cols-3 gap-3 text-xs text-gray-700 dark:text-neutral-200">
           {['profile', 'devices', 'reports', 'inputs', 'documents', 'services'].map((key) => (
-            <div key={key} className="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-[var(--bm-surface)]/40 p-3">
+            <div key={key} className="rounded-lg border border-gray-200 dark:border-[var(--bm-border)] bg-gray-50 dark:bg-[var(--bm-surface)]/40 p-3">
               <div className="flex items-center justify-between">
                 <span className="capitalize">{key.replace('-', ' ')}</span>
-                <span className="text-gray-500">{coverage[key] || 0}</span>
+                <span className="text-gray-500 dark:text-neutral-400">{coverage[key] || 0}</span>
               </div>
               <div className="mt-2 h-1.5 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
                 <div className="h-full bg-orange-500" style={{ width: `${Math.min(100, (coverage[key] || 0) * 10)}%` }} />
@@ -156,39 +147,34 @@ export default function MyReportsSection() {
             </div>
           ))}
         </div>
-        <p className="mt-3 text-xs text-gray-500">Tip: add device data or files to increase coverage.</p>
+        <p className="mt-3 text-xs text-gray-500 dark:text-neutral-400">Tip: add device data or files to increase coverage.</p>
       </div>
 
       <div className="mb-6 grid md:grid-cols-4 gap-4">
-        <div className="bg-blue-50 dark:bg-gradient-to-br dark:from-blue-900/30 dark:via-blue-800/20 dark:to-[var(--bm-surface)] border border-blue-200 dark:border-blue-600/30 rounded-xl p-4">
-          <FileText className="h-6 w-6 text-blue-600 dark:text-blue-400 mb-2" />
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">{reports.length}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.reports.totalReports')}</p>
-        </div>
-
-        <div className="bg-green-50 dark:bg-gradient-to-br dark:from-green-900/30 dark:via-green-800/20 dark:to-[var(--bm-surface)] border border-green-200 dark:border-green-600/30 rounded-xl p-4">
-          <Clock className="h-6 w-6 text-green-600 dark:text-green-400 mb-2" />
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">
-            {reports.filter(r => r.status === 'completed').length}
-          </p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">Completed</p>
-        </div>
-
-        <div className="bg-orange-50 dark:bg-gradient-to-br dark:from-orange-900/30 dark:via-orange-800/20 dark:to-[var(--bm-surface)] border border-orange-200 dark:border-orange-600/30 rounded-xl p-4">
-          <Clock className="h-6 w-6 text-orange-600 dark:text-orange-400 mb-2" />
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">
-            {reports.filter(r => r.status === 'processing').length}
-          </p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">Processing</p>
-        </div>
-
-        <div className="bg-purple-50 dark:bg-gradient-to-br dark:from-purple-900/30 dark:via-purple-800/20 dark:to-[var(--bm-surface)] border border-purple-200 dark:border-purple-600/30 rounded-xl p-4">
-          <FileText className="h-6 w-6 text-purple-600 dark:text-purple-400 mb-2" />
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">
-            {reports[0] ? new Date(reports[0].created_at).toLocaleDateString() : 'N/A'}
-          </p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">{t('member.reports.latestReport')}</p>
-        </div>
+        <MemberMetricCard
+          accent="blue"
+          icon={<FileText className="h-6 w-6" />}
+          value={reports.length}
+          label={t('member.reports.totalReports')}
+        />
+        <MemberMetricCard
+          accent="green"
+          icon={<Clock className="h-6 w-6" />}
+          value={reports.filter(r => r.status === 'completed').length}
+          label="Completed"
+        />
+        <MemberMetricCard
+          accent="orange"
+          icon={<Clock className="h-6 w-6" />}
+          value={reports.filter(r => r.status === 'processing').length}
+          label="Processing"
+        />
+        <MemberMetricCard
+          accent="purple"
+          icon={<FileText className="h-6 w-6" />}
+          value={reports[0] ? new Date(reports[0].created_at).toLocaleDateString() : 'N/A'}
+          label={t('member.reports.latestReport')}
+        />
       </div>
 
       <div className="mb-6 flex flex-col md:flex-row gap-4 justify-between">
@@ -198,7 +184,7 @@ export default function MyReportsSection() {
             className={`px-4 py-2 rounded-lg transition-colors ${
               filterType === 'all'
                 ? 'bg-orange-600 text-white'
-                : 'bg-white dark:bg-gray-800/50 text-gray-700 dark:text-gray-400 border border-gray-200 dark:border-transparent hover:bg-gray-50 dark:hover:bg-gray-800'
+                : 'bg-white dark:bg-gray-800/50 text-gray-700 dark:text-neutral-300 border border-gray-200 dark:border-transparent hover:bg-gray-50 dark:hover:bg-gray-800'
             }`}
           >
             All Reports
@@ -208,7 +194,7 @@ export default function MyReportsSection() {
             className={`px-4 py-2 rounded-lg transition-colors ${
               filterType === 'comprehensive'
                 ? 'bg-orange-600 text-white'
-                : 'bg-white dark:bg-gray-800/50 text-gray-700 dark:text-gray-400 border border-gray-200 dark:border-transparent hover:bg-gray-50 dark:hover:bg-gray-800'
+                : 'bg-white dark:bg-gray-800/50 text-gray-700 dark:text-neutral-300 border border-gray-200 dark:border-transparent hover:bg-gray-50 dark:hover:bg-gray-800'
             }`}
           >
             Comprehensive
@@ -218,7 +204,7 @@ export default function MyReportsSection() {
             className={`px-4 py-2 rounded-lg transition-colors ${
               filterType === 'focused'
                 ? 'bg-orange-600 text-white'
-                : 'bg-white dark:bg-gray-800/50 text-gray-700 dark:text-gray-400 border border-gray-200 dark:border-transparent hover:bg-gray-50 dark:hover:bg-gray-800'
+                : 'bg-white dark:bg-gray-800/50 text-gray-700 dark:text-neutral-300 border border-gray-200 dark:border-transparent hover:bg-gray-50 dark:hover:bg-gray-800'
             }`}
           >
             Focused
@@ -240,19 +226,19 @@ export default function MyReportsSection() {
       {error && <ErrorBanner message={error} className="mb-4" />}
 
       {loading ? (
-        <div className="text-center py-12 text-gray-600 dark:text-gray-400">Loading reports...</div>
+        <div className="text-center py-12 text-gray-600 dark:text-neutral-300">Loading reports...</div>
       ) : filteredReports.length === 0 ? (
         <div className="text-center py-12">
-          <FileText className="h-16 w-16 text-gray-500 dark:text-gray-600 mx-auto mb-4" />
-          <p className="text-gray-700 dark:text-gray-400 mb-2">{t('member.reports.empty')}</p>
-          <p className="text-sm text-gray-600 dark:text-gray-500">{t('member.reports.emptyHint')}</p>
+          <FileText className="h-16 w-16 text-gray-500 dark:text-gray-600 dark:text-neutral-300 mx-auto mb-4" />
+          <p className="text-gray-700 dark:text-neutral-300 mb-2">{t('member.reports.empty')}</p>
+          <p className="text-sm text-gray-600 dark:text-neutral-400 dark:text-neutral-400">{t('member.reports.emptyHint')}</p>
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredReports.map((report) => (
             <div
               key={report.id}
-              className="bg-white dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-gray-200 dark:border-gray-700/50 rounded-xl p-6 hover:border-orange-500/30 transition-all cursor-pointer"
+              className="member-card rounded-xl p-6 hover:border-orange-500/30 transition-all cursor-pointer"
             >
               <ReportBrandHeader
                 variant="strip"
@@ -274,16 +260,16 @@ export default function MyReportsSection() {
 
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500 dark:text-gray-500">Type:</span>
-                  <span className="text-gray-700 dark:text-gray-300 capitalize">{report.report_type}</span>
+                  <span className="text-gray-500 dark:text-neutral-400 dark:text-neutral-400">Type:</span>
+                  <span className="text-gray-700 dark:text-neutral-200 capitalize">{report.report_type}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500 dark:text-gray-500">Generated:</span>
-                  <span className="text-gray-700 dark:text-gray-300">{new Date(report.created_at).toLocaleDateString()}</span>
+                  <span className="text-gray-500 dark:text-neutral-400 dark:text-neutral-400">Generated:</span>
+                  <span className="text-gray-700 dark:text-neutral-200">{new Date(report.created_at).toLocaleDateString()}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500 dark:text-gray-500">Notes:</span>
-                  <span className="text-gray-700 dark:text-gray-300">{hasNotes(report.id) ? 'Yes' : 'No'}</span>
+                  <span className="text-gray-500 dark:text-neutral-400 dark:text-neutral-400">Notes:</span>
+                  <span className="text-gray-700 dark:text-neutral-200">{hasNotes(report.id) ? 'Yes' : 'No'}</span>
                 </div>
               </div>
 
@@ -300,7 +286,7 @@ export default function MyReportsSection() {
                   className={`px-3 py-2 rounded-lg border text-xs ${
                     favorites.includes(report.id)
                       ? 'border-yellow-300 bg-yellow-50 text-yellow-700 dark:border-yellow-500/40 dark:bg-yellow-500/10 dark:text-yellow-300'
-                      : 'border-slate-200 text-slate-500 hover:bg-slate-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800'
+                      : 'border-slate-200 text-slate-500 hover:bg-slate-50 dark:border-gray-700 dark:text-neutral-300 dark:hover:bg-gray-800'
                   }`}
                 >
                   {favorites.includes(report.id) ? '★' : '☆'}

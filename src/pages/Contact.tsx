@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Mail, MessageCircle, Building2, Clock3, Send } from 'lucide-react';
 import BackButton from '../components/BackButton';
+import PageHero from '../components/PageHero';
+import { pageHeroUrl } from '../data/pageHeroes';
 import SEO from '../components/SEO';
 import LiveSupportChat from '../components/LiveSupportChat';
 
@@ -101,22 +103,23 @@ export default function Contact({ onNavigate }: ContactProps) {
         url="/contact"
       />
 
-      <div className="pb-16 pt-20">
-        <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
-          <BackButton onNavigate={onNavigate} />
+      <div className="pt-16">
+        <PageHero
+          imageSrc={pageHeroUrl('contact')}
+          label={t('contact.label')}
+          title={t('contact.heroTitle')}
+          subtitle={t('contact.heroSubtitle')}
+        />
+      </div>
 
-          <section className="border-b border-[var(--bm-border)] pb-12 pt-8 lg:pb-14 lg:pt-10">
-            <SectionLabel>{t('contact.label')}</SectionLabel>
-            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
-              {t('contact.heroTitle')}
-            </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-300 sm:text-lg">
-              {t('contact.heroSubtitle')}
-            </p>
-            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
-              {t('contactExtra.howToReach')}
-            </p>
-          </section>
+      <div className="pb-16">
+        <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
+          <div className="pt-6">
+            <BackButton onNavigate={onNavigate} />
+          </div>
+          <p className="mb-8 max-w-2xl text-sm leading-relaxed text-gray-600 dark:text-neutral-300">
+            {t('contactExtra.howToReach')}
+          </p>
 
           <section className="border-b border-[var(--bm-border)] py-10 lg:py-12">
             <SectionLabel>{t('contactExtra.choosePathLabel')}</SectionLabel>

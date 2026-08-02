@@ -20,6 +20,7 @@ import {
   parseLocation,
   syncUrl,
 } from './lib/routing';
+import { scrollAppToTopAfterNavigate } from './lib/scrollAppToTop';
 
 function PageFallback() {
   const { t } = useTranslation();
@@ -114,8 +115,23 @@ function App() {
   const goToPage = (page: Page, data?: string, options?: { replace?: boolean }) => {
     setCurrentPage(page);
     syncUrl(page, data, { replace: options?.replace });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Sync + post-paint: pushState keeps scroll; focused footer links can re-scroll after paint.
+    scrollAppToTopAfterNavigate();
   };
+
+  // Jump to top on every SPA page/detail change (nav links, back/forward, initial sync).
+  // Skip real in-page anchors (#section); legacy hash routes use #/… and are normalized separately.
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash && !hash.startsWith('#/')) return;
+    scrollAppToTopAfterNavigate();
+  }, [currentPage, serviceDetailId, categoryFilter, memberServiceRef]);
+
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
 
   useEffect(() => {
     // Consent-gated: loads GA/Pixel only when biomath_cookie_preferences.analytics is true
@@ -168,7 +184,6 @@ function App() {
   useEffect(() => {
     const syncFromLocation = () => {
       applyRoute(parseLocation());
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const onPopState = () => syncFromLocation();
@@ -183,7 +198,6 @@ function App() {
             route.normalizeUrl,
           );
         }
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     };
 
@@ -426,7 +440,7 @@ function App() {
           onSignOut={handleSignOut}
         />
       )}
-      <main>
+      <main data-scroll-root>
         <Suspense fallback={<PageFallback />}>
           {renderPage()}
         </Suspense>

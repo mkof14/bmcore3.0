@@ -2,6 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown } from 'lucide-react';
 import BackButton from '../components/BackButton';
+import PageHero from '../components/PageHero';
+import { pageHeroUrl } from '../data/pageHeroes';
 import SEO from '../components/SEO';
 import ServiceCatalogReference from '../components/ServiceCatalogReference';
 import { generateFAQSchema, injectStructuredData } from '../lib/structuredData';
@@ -167,20 +169,20 @@ export default function FAQ({ onNavigate }: FAQProps) {
         url="/faq"
       />
 
-      <div className="pt-20 pb-16">
-        <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
-          <BackButton onNavigate={onNavigate} />
+      <div className="pt-16">
+        <PageHero
+          imageSrc={pageHeroUrl('faq')}
+          label={t('faq.label')}
+          title={t('faq.heroTitle')}
+          subtitle={t('faq.heroSubtitle')}
+        />
+      </div>
 
-          {/* Hero */}
-          <section className="border-b border-[var(--bm-border)] pb-12 pt-8 lg:pb-14 lg:pt-10">
-            <SectionLabel>{t('faq.label')}</SectionLabel>
-            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
-              {t('faq.heroTitle')}
-            </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-300 sm:text-lg">
-              {t('faq.heroSubtitle')}
-            </p>
-          </section>
+      <div className="pb-16">
+        <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
+          <div className="pt-6">
+            <BackButton onNavigate={onNavigate} />
+          </div>
 
           {/* FAQ Sections */}
           <div className="divide-y divide-[var(--bm-border)]">

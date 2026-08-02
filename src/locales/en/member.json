@@ -193,7 +193,8 @@
     },
     "reportSettings": {
       "title": "Report Settings",
-      "subtitle": "Choose how your reports are written, structured, and delivered"
+      "subtitle": "Choose how your reports are written, structured, and delivered",
+      "savedAt": "Saved {{time}}"
     },
     "catalog": {
       "title": "Build your health plan",

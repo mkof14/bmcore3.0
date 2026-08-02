@@ -245,24 +245,11 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
           {error}
         </div>
       )}
-
-      <section className="text-center mb-8">
-        <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
-          {t('member.catalog.title')}
-        </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-2">
-          {t('member.catalog.subtitle')}
-        </p>
-        <p className="text-gray-600 dark:text-gray-400">
-          {t('member.catalog.hint')}
-        </p>
-      </section>
-
-      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:to-gray-800 sm:p-8">
+<section className="member-card p-6 sm:p-8">
           <ReportBrandHeader variant="strip" subtitle="Full Services" className="mb-4" />
           <div className="mb-6">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{t('member.catalog.openService')}</h3>
-            <p className="mt-1 text-gray-600 dark:text-gray-400">
+            <p className="mt-1 text-gray-600 dark:text-neutral-300">
               Full commercial workspace: questions, dual AI second opinion, FAQ, learning, reports, and exports.
             </p>
           </div>
@@ -279,10 +266,10 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
                         key={service.id}
                         type="button"
                         onClick={() => onOpenService?.(serviceDetailPath(category.id, service.id))}
-                        className="rounded-xl border border-slate-200 bg-slate-50/80 p-3 text-left transition hover:border-orange-300 hover:bg-white dark:border-gray-700 dark:bg-[var(--bm-surface)]/50 dark:hover:border-orange-500/40"
+                        className="member-inset rounded-xl p-3 text-left transition hover:border-orange-300 dark:hover:border-orange-500/40"
                       >
                         <div className="text-sm font-semibold text-gray-900 dark:text-white">{service.name}</div>
-                        <div className="mt-1 line-clamp-2 text-xs text-gray-600 dark:text-gray-400">
+                        <div className="mt-1 line-clamp-2 text-xs text-gray-600 dark:text-neutral-300">
                           {service.description}
                         </div>
                       </button>
@@ -295,7 +282,7 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
         </section>
 
 
-      <div className="group relative bg-white/90 dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-slate-200 dark:border-gray-700/50 rounded-2xl p-6 hover:border-orange-600/50 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-md">
+      <div className="group relative member-card p-6 hover:border-orange-600/50 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-md">
         <ReportBrandHeader variant="strip" subtitle="Plan Calculator" className="mb-4" />
         <div className="absolute inset-0 bg-gradient-to-br from-orange-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -303,20 +290,20 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
           <div className="flex items-start justify-between mb-6">
             <div>
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{t('member.catalog.planCalculator')}</h2>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">{t('member.catalog.planCalculatorHint')}</p>
+              <p className="text-gray-600 dark:text-neutral-300 text-sm">{t('member.catalog.planCalculatorHint')}</p>
             </div>
             <div className="text-right">
               <div className="text-4xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
                 ${(currentPrice / 100).toFixed(0)}
               </div>
-              <div className="text-xs text-gray-600 dark:text-gray-500">per month</div>
+              <div className="text-xs text-gray-600 dark:text-neutral-400 dark:text-neutral-400">per month</div>
             </div>
           </div>
 
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-3">
-                <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
+                <span className="text-xs font-medium text-gray-600 dark:text-neutral-300">
                   {selectedCount} of 20 categories selected
                 </span>
                 {selectedCount > 0 && (
@@ -328,25 +315,25 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
                   </button>
                 )}
               </div>
-              <span className={`text-xs font-bold ${currentPlan === 'Free' ? 'text-gray-500' : 'bg-gradient-to-r ' + getPlanColor(currentPlan) + ' bg-clip-text text-transparent'}`}>
+              <span className={`text-xs font-bold ${currentPlan === 'Free' ? 'text-gray-500 dark:text-neutral-400' : 'bg-gradient-to-r ' + getPlanColor(currentPlan) + ' bg-clip-text text-transparent'}`}>
                 {currentPlan} Plan
               </span>
             </div>
-            <div className="relative h-4 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden shadow-inner">
+            <div className="relative h-4 rounded-full bg-[var(--bm-inset)] overflow-hidden shadow-inner">
               <div
                 className={`absolute inset-y-0 left-0 bg-gradient-to-r ${getPlanColor(currentPlan)} transition-all duration-500 ease-out shadow-lg`}
                 style={{ width: `${progress}%` }}
               />
               <div className="absolute inset-0 flex items-center justify-between px-3 text-[10px] font-bold">
-                <span className={selectedCount > 0 ? 'text-white drop-shadow-lg' : 'text-gray-500 dark:text-gray-600'}>Core</span>
-                <span className={selectedCount > 3 ? 'text-white drop-shadow-lg' : 'text-gray-500 dark:text-gray-600'}>Daily</span>
-                <span className={selectedCount > 10 ? 'text-white drop-shadow-lg' : 'text-gray-500 dark:text-gray-600'}>Max</span>
+                <span className={selectedCount > 0 ? 'text-white drop-shadow-lg' : 'text-gray-500 dark:text-gray-600 dark:text-neutral-300'}>Core</span>
+                <span className={selectedCount > 3 ? 'text-white drop-shadow-lg' : 'text-gray-500 dark:text-gray-600 dark:text-neutral-300'}>Daily</span>
+                <span className={selectedCount > 10 ? 'text-white drop-shadow-lg' : 'text-gray-500 dark:text-gray-600 dark:text-neutral-300'}>Max</span>
               </div>
             </div>
           </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-5">
-            <div className={`group/card relative bg-white/90 dark:bg-gradient-to-b dark:from-gray-800/50 dark:to-[var(--bm-surface)]/50 border-2 rounded-lg p-3 transition-all duration-300 overflow-hidden shadow-sm ${selectedCount <= 3 && selectedCount > 0 ? 'border-orange-500 shadow-lg shadow-orange-500/20' : 'border-slate-200 dark:border-gray-700/40 hover:border-orange-600/40'}`}>
+            <div className={`group/card relative member-card border-2 rounded-lg p-3 transition-all duration-300 overflow-hidden shadow-sm ${selectedCount <= 3 && selectedCount > 0 ? 'border-orange-500 shadow-lg shadow-orange-500/20' : 'border-slate-200 dark:border-[var(--bm-border)] hover:border-orange-600/40'}`}>
               <div className="absolute inset-0 bg-gradient-to-br from-orange-900/0 to-orange-900/5 opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
               <div className="relative">
                 <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover/card:shadow-lg group-hover/card:shadow-orange-600/30 transition-all">
@@ -354,14 +341,14 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
                 </div>
                 <h3 className={`text-center font-bold text-base mb-0.5 ${selectedCount <= 3 && selectedCount > 0 ? 'text-orange-500' : 'text-gray-900 dark:text-white'}`}>Core</h3>
                 <div className="text-center">
-                  <div className={`text-xl font-bold mb-0.5 ${selectedCount <= 3 && selectedCount > 0 ? 'text-gray-900 dark:text-white' : 'text-gray-700 dark:text-gray-400'}`}>$19</div>
-                  <p className="text-[10px] text-gray-600 dark:text-gray-500 mb-2">per month</p>
+                  <div className={`text-xl font-bold mb-0.5 ${selectedCount <= 3 && selectedCount > 0 ? 'text-gray-900 dark:text-white' : 'text-gray-700 dark:text-neutral-300'}`}>$19</div>
+                  <p className="text-[10px] text-gray-600 dark:text-neutral-400 dark:text-neutral-400 mb-2">per month</p>
                   <div className="space-y-0.5">
-                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-gray-400">
+                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-neutral-300">
                       <CheckCircle className="w-2.5 h-2.5 text-orange-600 flex-shrink-0" />
                       <span>Any 3 categories</span>
                     </div>
-                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-gray-400">
+                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-neutral-300">
                       <CheckCircle className="w-2.5 h-2.5 text-orange-600 flex-shrink-0" />
                       <span>Basic AI insights</span>
                     </div>
@@ -370,7 +357,7 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
               </div>
             </div>
 
-            <div className={`group/card relative bg-white/90 dark:bg-gradient-to-b dark:from-gray-800/50 dark:to-[var(--bm-surface)]/50 border-2 rounded-lg p-3 transition-all duration-300 overflow-hidden shadow-sm ${selectedCount > 3 && selectedCount <= 10 ? 'border-blue-500 shadow-lg shadow-blue-500/20' : 'border-slate-200 dark:border-gray-700/40 hover:border-blue-600/40'}`}>
+            <div className={`group/card relative member-card border-2 rounded-lg p-3 transition-all duration-300 overflow-hidden shadow-sm ${selectedCount > 3 && selectedCount <= 10 ? 'border-blue-500 shadow-lg shadow-blue-500/20' : 'border-slate-200 dark:border-[var(--bm-border)] hover:border-blue-600/40'}`}>
               <div className="absolute inset-0 bg-gradient-to-br from-blue-900/0 to-blue-900/5 opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
               <div className="relative">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover/card:shadow-lg group-hover/card:shadow-blue-600/30 transition-all">
@@ -378,14 +365,14 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
                 </div>
                 <h3 className={`text-center font-bold text-base mb-0.5 ${selectedCount > 3 && selectedCount <= 10 ? 'text-blue-600' : 'text-gray-900 dark:text-white'}`}>Daily</h3>
                 <div className="text-center">
-                  <div className={`text-xl font-bold mb-0.5 ${selectedCount > 3 && selectedCount <= 10 ? 'text-gray-900 dark:text-white' : 'text-gray-700 dark:text-gray-400'}`}>$39</div>
-                  <p className="text-[10px] text-gray-600 dark:text-gray-500 mb-2">per month</p>
+                  <div className={`text-xl font-bold mb-0.5 ${selectedCount > 3 && selectedCount <= 10 ? 'text-gray-900 dark:text-white' : 'text-gray-700 dark:text-neutral-300'}`}>$39</div>
+                  <p className="text-[10px] text-gray-600 dark:text-neutral-400 dark:text-neutral-400 mb-2">per month</p>
                   <div className="space-y-0.5">
-                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-gray-400">
+                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-neutral-300">
                       <CheckCircle className="w-2.5 h-2.5 text-blue-600 flex-shrink-0" />
                       <span>4-10 categories</span>
                     </div>
-                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-gray-400">
+                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-neutral-300">
                       <CheckCircle className="w-2.5 h-2.5 text-blue-600 flex-shrink-0" />
                       <span>Advanced analytics</span>
                     </div>
@@ -394,7 +381,7 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
               </div>
             </div>
 
-            <div className={`group/card relative bg-white/90 dark:bg-gradient-to-b dark:from-gray-800/50 dark:to-[var(--bm-surface)]/50 border-2 rounded-lg p-3 transition-all duration-300 overflow-hidden shadow-sm ${selectedCount > 10 ? 'border-slate-600 shadow-lg shadow-slate-500/20' : 'border-slate-200 dark:border-gray-700/40 hover:border-slate-600/40'}`}>
+            <div className={`group/card relative member-card border-2 rounded-lg p-3 transition-all duration-300 overflow-hidden shadow-sm ${selectedCount > 10 ? 'border-slate-600 shadow-lg shadow-slate-500/20' : 'border-slate-200 dark:border-[var(--bm-border)] hover:border-slate-600/40'}`}>
               <div className="absolute inset-0 bg-gradient-to-br from-slate-900/0 to-slate-900/10 opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
               <div className="relative">
                 <div className="w-10 h-10 bg-gradient-to-br from-slate-600 to-slate-700 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover/card:shadow-lg group-hover/card:shadow-slate-600/30 transition-all">
@@ -402,14 +389,14 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
                 </div>
                 <h3 className={`text-center font-bold text-base mb-0.5 ${selectedCount > 10 ? 'text-slate-700 dark:text-slate-300' : 'text-gray-900 dark:text-white'}`}>Max</h3>
                 <div className="text-center">
-                  <div className={`text-xl font-bold mb-0.5 ${selectedCount > 10 ? 'text-gray-900 dark:text-white' : 'text-gray-700 dark:text-gray-400'}`}>$79</div>
-                  <p className="text-[10px] text-gray-600 dark:text-gray-500 mb-2">per month</p>
+                  <div className={`text-xl font-bold mb-0.5 ${selectedCount > 10 ? 'text-gray-900 dark:text-white' : 'text-gray-700 dark:text-neutral-300'}`}>$79</div>
+                  <p className="text-[10px] text-gray-600 dark:text-neutral-400 dark:text-neutral-400 mb-2">per month</p>
                   <div className="space-y-0.5">
-                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-gray-400">
+                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-neutral-300">
                       <CheckCircle className="w-2.5 h-2.5 text-slate-600 flex-shrink-0" />
                       <span>All 20 categories</span>
                     </div>
-                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-gray-400">
+                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-neutral-300">
                       <CheckCircle className="w-2.5 h-2.5 text-slate-600 flex-shrink-0" />
                       <span>Premium features</span>
                     </div>
@@ -430,7 +417,7 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
                   {getPlanIcon(currentPlan)}
                   <div>
                     <div className="font-bold text-base text-gray-900 dark:text-white">{currentPlan} Plan Selected</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-300">{selectedCount} categories • ${(currentPrice / 100).toFixed(0)}/month</div>
+                    <div className="text-xs text-gray-600 dark:text-neutral-200">{selectedCount} categories • ${(currentPrice / 100).toFixed(0)}/month</div>
                   </div>
                 </div>
                 <button
@@ -450,7 +437,7 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
       <section>
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">{t('member.catalog.selectTitle')}</h2>
-        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        <p className="text-gray-600 dark:text-neutral-300 max-w-2xl mx-auto">
           Click categories to add them to your plan. Each includes multiple AI services.
         </p>
         </div>
@@ -465,10 +452,10 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
               <button
                 key={category.id}
                 onClick={() => toggleCategory(category.id)}
-                className={`group/item relative bg-white/90 dark:bg-gradient-to-b dark:from-gray-800/50 dark:to-[var(--bm-surface)]/50 border-2 rounded-xl p-5 transition-all duration-300 hover:scale-105 overflow-hidden shadow-sm ${
+                className={`group/item relative member-card border-2 rounded-xl p-5 transition-all duration-300 hover:scale-105 overflow-hidden shadow-sm ${
                   isSelected
                     ? `${colors.border} shadow-lg`
-                    : 'border-slate-200 dark:border-gray-700/40 hover:border-gray-300 dark:hover:border-gray-600/60'
+                    : 'border-slate-200 dark:border-[var(--bm-border)] hover:border-gray-300 dark:hover:border-gray-600/60'
                 }`}
               >
                 <ReportBrandHeader variant="strip" subtitle={category.name} className="mb-3" />
@@ -485,10 +472,10 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
                     <Icon className={`h-7 w-7 ${colors.icon}`} />
                   </div>
                   <div>
-                    <h4 className={`font-bold text-sm mb-1 ${isSelected ? colors.text : 'text-gray-900 dark:text-gray-300'}`}>
+                    <h4 className={`font-bold text-sm mb-1 ${isSelected ? colors.text : 'text-gray-900 dark:text-neutral-200'}`}>
                       {category.name}
                     </h4>
-                    <p className="text-xs text-gray-600 dark:text-gray-500">
+                    <p className="text-xs text-gray-600 dark:text-neutral-400 dark:text-neutral-400">
                       {category.services.length} services
                     </p>
                   </div>
@@ -500,12 +487,12 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
       </section>
 
       {selectedCount > 0 && (
-        <section className="bg-white dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:to-gray-800 border border-gray-200 dark:border-gray-800 rounded-2xl p-8">
+        <section className="member-card p-8">
           <ReportBrandHeader variant="strip" subtitle="Selected Categories" className="mb-4" />
           <div className="flex items-start justify-between mb-4">
             <div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('member.catalog.selectedTitle')}</h3>
-              <p className="text-gray-600 dark:text-gray-400">{t('member.catalog.selectedSubtitle')}</p>
+              <p className="text-gray-600 dark:text-neutral-300">{t('member.catalog.selectedSubtitle')}</p>
             </div>
             <div className="px-4 py-2 bg-green-100 dark:bg-green-500/20 border border-green-200 dark:border-green-500/30 rounded-lg">
               <span className="text-green-700 dark:text-green-400 font-bold">{selectedCount} selected</span>
@@ -531,7 +518,7 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
                     onClick={() => toggleCategory(categoryId)}
                     className="ml-2 p-1.5 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-colors"
                   >
-                    <X className="h-4 w-4 text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-300" />
+                    <X className="h-4 w-4 text-gray-600 dark:text-neutral-300 group-hover:text-gray-800 dark:group-hover:text-gray-300" />
                   </button>
                 </div>
               );
@@ -540,14 +527,14 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
         </section>
       )}
 
-      <section className="bg-white dark:bg-gradient-to-br dark:from-[var(--bm-surface)] dark:via-gray-800 dark:to-[var(--bm-surface)] border border-gray-200 dark:border-gray-700/50 rounded-2xl p-8">
+      <section className="member-card p-8">
         <div className="flex items-start gap-4">
           <div className="w-12 h-12 bg-blue-100 dark:bg-blue-500/20 border border-blue-200 dark:border-blue-500/30 rounded-lg flex items-center justify-center flex-shrink-0">
             <Info className="h-6 w-6 text-blue-600 dark:text-blue-400" />
           </div>
           <div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t('member.catalog.nextSteps')}</h3>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-gray-600 dark:text-neutral-300 leading-relaxed">
               After you upgrade, we'll guide you through health questionnaires that help personalize your insights.
             </p>
           </div>

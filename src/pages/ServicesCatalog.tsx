@@ -8,8 +8,10 @@ import {
   totalServiceCount,
 } from '../data/services';
 import BackButton from '../components/BackButton';
+import PageHero from '../components/PageHero';
 import SEO from '../components/SEO';
 import { categoryHeroUrl } from '../data/serviceHeroes';
+import { pageHeroUrl } from '../data/pageHeroes';
 import { localizeCategory, localizeService } from '../lib/localizeServices';
 
 interface ServicesCatalogProps {
@@ -108,11 +110,11 @@ export default function ServicesCatalog({ onNavigate, initialCategory }: Service
         url="/services-catalog"
       />
 
-      <div className="pt-20 pb-16">
+      <div className="pb-16">
         {selectedCategoryData ? (
           <>
             {/* Category detail hero */}
-            <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto w-full max-w-[1200px] px-4 pt-20 sm:px-6 lg:px-8">
               <button
                 type="button"
                 onClick={() => setSelectedCategory(null)}
@@ -185,47 +187,51 @@ export default function ServicesCatalog({ onNavigate, initialCategory }: Service
             </div>
           </>
         ) : (
-          <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
-            <BackButton onNavigate={onNavigate} />
-
-            <section className="border-b border-[var(--bm-border)] pb-10 pt-8 lg:pb-12 lg:pt-10">
-              <SectionLabel>{t('catalog.label')}</SectionLabel>
-              <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
-                {t('catalog.title')}
-              </h1>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-lg">
-                {t('catalog.subtitle')} ({totalServiceCount()}+ / {serviceCategories.length})
-              </p>
-
-              <div className="mt-9 max-w-2xl">
-                <div className="relative">
-                  <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder={t('catalog.searchPlaceholder')}
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className={searchInputClassName}
-                  />
-                  {searchQuery && (
-                    <button
-                      onClick={() => setSearchQuery('')}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition-colors hover:text-gray-700 dark:hover:text-neutral-100"
-                      aria-label={t('catalog.clearSearch')}
-                      type="button"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                  )}
-                </div>
-                <p className="mt-2 text-sm text-gray-500 dark:text-neutral-500">
-                  {filteredCategories.length === 1
-                    ? t('catalog.showingCategoryOne', { count: filteredCategories.length })
-                    : t('catalog.showingCategories', { count: filteredCategories.length })}
-                </p>
+          <>
+            <div className="pt-16">
+              <PageHero
+                imageSrc={pageHeroUrl('services-catalog')}
+                label={t('catalog.label')}
+                title={t('catalog.title')}
+                subtitle={`${t('catalog.subtitle')} (${totalServiceCount()}+ / ${serviceCategories.length})`}
+              />
+            </div>
+            <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
+              <div className="pt-6">
+                <BackButton onNavigate={onNavigate} />
               </div>
-            </section>
-          </div>
+
+              <section className="border-b border-[var(--bm-border)] pb-10 pt-4 lg:pb-12">
+                <div className="max-w-2xl">
+                  <div className="relative">
+                    <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                    <input
+                      type="text"
+                      placeholder={t('catalog.searchPlaceholder')}
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className={searchInputClassName}
+                    />
+                    {searchQuery && (
+                      <button
+                        onClick={() => setSearchQuery('')}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition-colors hover:text-gray-700 dark:hover:text-neutral-100"
+                        aria-label={t('catalog.clearSearch')}
+                        type="button"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    )}
+                  </div>
+                  <p className="mt-2 text-sm text-gray-500 dark:text-neutral-500">
+                    {filteredCategories.length === 1
+                      ? t('catalog.showingCategoryOne', { count: filteredCategories.length })
+                      : t('catalog.showingCategories', { count: filteredCategories.length })}
+                  </p>
+                </div>
+              </section>
+            </div>
+          </>
         )}
 
         {/* Grid */}

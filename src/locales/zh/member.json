@@ -193,7 +193,8 @@
     },
     "reportSettings": {
       "title": "报告设置",
-      "subtitle": "选择报告的写作方式、结构与发送方式"
+      "subtitle": "选择报告的写作方式、结构与发送方式",
+      "savedAt": "已保存 {{time}}"
     },
     "catalog": {
       "title": "定制您的健康方案",

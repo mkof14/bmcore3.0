@@ -193,7 +193,8 @@
     },
     "reportSettings": {
       "title": "Paramètres des rapports",
-      "subtitle": "Choisissez la façon dont vos rapports sont rédigés, structurés et transmis"
+      "subtitle": "Choisissez la façon dont vos rapports sont rédigés, structurés et transmis",
+      "savedAt": "Enregistré {{time}}"
     },
     "catalog": {
       "title": "Composez votre plan santé",

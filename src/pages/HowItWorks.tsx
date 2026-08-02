@@ -4,6 +4,8 @@ import { ChevronDown } from 'lucide-react';
 import { Trans, useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 import BackButton from '../components/BackButton';
+import PageHero from '../components/PageHero';
+import { pageHeroUrl } from '../data/pageHeroes';
 import { tList } from '../i18n/tList';
 
 interface HowItWorksProps {
@@ -160,40 +162,40 @@ export default function HowItWorks({ onNavigate }: HowItWorksProps) {
         page="how-it-works"
       />
 
-      <div className="pt-20 pb-16">
+      <div className="pt-16" id="overview">
+        <PageHero
+          imageSrc={pageHeroUrl('how-it-works')}
+          label={t('howItWorks.hero.label')}
+          title={t('howItWorks.hero.title')}
+          subtitle={t('howItWorks.hero.body')}
+        >
+          <nav
+            aria-label={t('howItWorks.nav.ariaLabel')}
+            className="flex flex-wrap gap-x-4 gap-y-2 border-t border-white/20 pt-6"
+          >
+            {NAV_SECTION_IDS.map((sectionId, i) => (
+              <span key={sectionId} className="inline-flex items-center gap-4">
+                {i > 0 && <span className="hidden text-white/40 sm:inline">·</span>}
+                <button
+                  type="button"
+                  onClick={() => scrollToSection(sectionId)}
+                  className="text-sm font-medium text-neutral-200 transition-colors hover:text-orange-300"
+                >
+                  {navLabels[i]}
+                </button>
+              </span>
+            ))}
+          </nav>
+        </PageHero>
+      </div>
+
+      <div className="pb-16">
         <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
-          {onNavigate && <BackButton onNavigate={onNavigate} />}
-
-          {/* Hero */}
-          <section id="overview" className="scroll-mt-24 border-b border-[var(--bm-border)] pb-14 pt-8 lg:pb-16 lg:pt-10">
-            <SectionLabel>{t('howItWorks.hero.label')}</SectionLabel>
-            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-5xl md:text-[3.25rem] md:leading-[1.12]">
-              {t('howItWorks.hero.title')}
-            </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-lg">
-              {t('howItWorks.hero.body')}
-            </p>
-
-            <nav
-              aria-label={t('howItWorks.nav.ariaLabel')}
-              className="mt-10 flex flex-wrap gap-x-4 gap-y-2 border-t border-[var(--bm-border)] pt-6"
-            >
-              {NAV_SECTION_IDS.map((sectionId, i) => (
-                <span key={sectionId} className="inline-flex items-center gap-4">
-                  {i > 0 && (
-                    <span className="hidden text-gray-300 dark:text-neutral-600 sm:inline">·</span>
-                  )}
-                  <button
-                    type="button"
-                    onClick={() => scrollToSection(sectionId)}
-                    className="text-sm font-medium text-gray-600 transition-colors hover:text-orange-600 dark:text-neutral-400 dark:hover:text-orange-400"
-                  >
-                    {navLabels[i]}
-                  </button>
-                </span>
-              ))}
-            </nav>
-          </section>
+          {onNavigate && (
+            <div className="pt-6">
+              <BackButton onNavigate={onNavigate} />
+            </div>
+          )}
 
           {/* Highlights */}
           <section className="border-b border-[var(--bm-border)] py-14 lg:py-16">

@@ -142,31 +142,26 @@ export default function ReportSettingsSection() {
         subtitle="Report Settings"
         compact
       />
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-3xl font-semibold text-gray-900 mb-2">{t('member.reportSettings.title')}</h2>
-          <p className="text-gray-600">
-            Personalize how AI-generated reports are created and displayed
-          </p>
+      {lastSaved && (
+        <div className="flex items-center justify-end space-x-2 text-sm text-gray-500 dark:text-neutral-400">
+          <Save className="h-4 w-4" />
+          <span>
+            {t('member.reportSettings.savedAt', {
+              time: lastSaved.toLocaleTimeString(),
+            })}
+          </span>
         </div>
-        {lastSaved && (
-          <div className="flex items-center space-x-2 text-sm text-gray-500">
-            <Save className="h-4 w-4" />
-            <span>Saved {lastSaved.toLocaleTimeString()}</span>
-          </div>
-        )}
-      </div>
+      )}
 
       {/* Detail Level */}
-      <div className="bg-white/90 rounded-2xl border border-slate-200 p-6 shadow-lg">
+      <div className="member-card p-6 shadow-lg">
         <div className="flex items-start space-x-3 mb-4">
           <Settings className="h-5 w-5 text-orange-500 mt-0.5" />
           <div className="flex-1">
-            <h3 className="text-lg font-semibold text-gray-900 mb-1">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-1">
               Level of Detail
             </h3>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-gray-600 dark:text-neutral-300 mb-4">
               Choose how detailed your reports should be
             </p>
           </div>
@@ -184,19 +179,19 @@ export default function ReportSettingsSection() {
               className={`p-4 rounded-lg border transition-all text-left ${
                 settings.detail_level === option.value
                   ? 'border-orange-300 bg-orange-50'
-                  : 'border-slate-200 hover:border-orange-300'
+                  : 'border-slate-200 dark:border-[var(--bm-border)] hover:border-orange-300'
               }`}
             >
-              <div className="font-medium text-gray-900 mb-1">{option.label}</div>
-              <div className="text-xs text-gray-500">{option.desc}</div>
+              <div className="font-medium text-gray-900 dark:text-neutral-50 mb-1">{option.label}</div>
+              <div className="text-xs text-gray-500 dark:text-neutral-400">{option.desc}</div>
             </button>
           ))}
         </div>
       </div>
 
       {/* Tone Style */}
-      <div className="bg-white/90 rounded-2xl border border-slate-200 p-6 shadow-lg">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+      <div className="member-card p-6 shadow-lg">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4">
           Report Tone Style
         </h3>
 
@@ -212,19 +207,19 @@ export default function ReportSettingsSection() {
               className={`p-4 rounded-lg border transition-all text-left ${
                 settings.tone_style === option.value
                   ? 'border-orange-300 bg-orange-50'
-                  : 'border-slate-200 hover:border-orange-300'
+                  : 'border-slate-200 dark:border-[var(--bm-border)] hover:border-orange-300'
               }`}
             >
-              <div className="font-medium text-gray-900 mb-1">{option.label}</div>
-              <div className="text-xs text-gray-500">{option.desc}</div>
+              <div className="font-medium text-gray-900 dark:text-neutral-50 mb-1">{option.label}</div>
+              <div className="text-xs text-gray-500 dark:text-neutral-400">{option.desc}</div>
             </button>
           ))}
         </div>
       </div>
 
       {/* Visualization Mode */}
-      <div className="bg-white/90 rounded-2xl border border-slate-200 p-6 shadow-lg">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+      <div className="member-card p-6 shadow-lg">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4">
           Visualization Preference
         </h3>
 
@@ -240,19 +235,19 @@ export default function ReportSettingsSection() {
               className={`p-4 rounded-lg border transition-all text-left ${
                 settings.visualization_mode === option.value
                   ? 'border-orange-300 bg-orange-50'
-                  : 'border-slate-200 hover:border-orange-300'
+                  : 'border-slate-200 dark:border-[var(--bm-border)] hover:border-orange-300'
               }`}
             >
-              <div className="font-medium text-gray-900 mb-1">{option.label}</div>
-              <div className="text-xs text-gray-500">{option.desc}</div>
+              <div className="font-medium text-gray-900 dark:text-neutral-50 mb-1">{option.label}</div>
+              <div className="text-xs text-gray-500 dark:text-neutral-400">{option.desc}</div>
             </button>
           ))}
         </div>
       </div>
 
       {/* Insight Focus */}
-      <div className="bg-white/90 rounded-2xl border border-slate-200 p-6 shadow-lg">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+      <div className="member-card p-6 shadow-lg">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4">
           Recommendation Focus
         </h3>
 
@@ -268,21 +263,21 @@ export default function ReportSettingsSection() {
               className={`p-4 rounded-lg border transition-all text-left ${
                 settings.insight_focus === option.value
                   ? 'border-orange-300 bg-orange-50'
-                  : 'border-slate-200 hover:border-orange-300'
+                  : 'border-slate-200 dark:border-[var(--bm-border)] hover:border-orange-300'
               }`}
             >
-              <div className="font-medium text-gray-900 mb-1">{option.label}</div>
-              <div className="text-xs text-gray-500">{option.desc}</div>
+              <div className="font-medium text-gray-900 dark:text-neutral-50 mb-1">{option.label}</div>
+              <div className="text-xs text-gray-500 dark:text-neutral-400">{option.desc}</div>
             </button>
           ))}
         </div>
       </div>
 
       {/* Advanced Mode */}
-      <div className={`bg-white/90 rounded-2xl border p-6 shadow-lg ${
+      <div className={`bg-white dark:bg-[var(--bm-elevated)] rounded-2xl border p-6 shadow-lg ${
         settings.advanced_mode_unlocked
           ? 'border-orange-200'
-          : 'border-slate-200'
+          : 'border-slate-200 dark:border-[var(--bm-border)]'
       }`}>
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-start space-x-3">
@@ -292,10 +287,10 @@ export default function ReportSettingsSection() {
               <Lock className="h-5 w-5 text-gray-400 mt-0.5" />
             )}
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-1">
                 Advanced Mode
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-neutral-300">
                 Deeper analytical interpretation with multi-factor correlation
               </p>
             </div>
@@ -307,7 +302,7 @@ export default function ReportSettingsSection() {
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 settings.advanced_mode_enabled
                   ? 'bg-gradient-to-r from-orange-600 to-orange-500 text-white hover:from-orange-500 hover:to-orange-600 shadow-lg shadow-orange-600/20'
-                  : 'bg-slate-100 border border-slate-200 text-gray-700 hover:border-orange-300'
+                  : 'bg-slate-100 border border-slate-200 dark:border-[var(--bm-border)] text-gray-700 dark:text-neutral-200 hover:border-orange-300'
               }`}
             >
               {settings.advanced_mode_enabled ? 'Enabled' : 'Disabled'}
@@ -319,7 +314,7 @@ export default function ReportSettingsSection() {
           <div className="bg-gray-50 dark:bg-[var(--bm-surface)] rounded-lg p-4 border border-gray-200 dark:border-gray-700">
             <div className="flex items-start space-x-3">
               <Info className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
-              <div className="text-sm text-gray-700 dark:text-gray-300">
+              <div className="text-sm text-gray-700 dark:text-neutral-200">
                 <p className="font-medium mb-1">Advanced Mode is locked</p>
                 <p>
                   Complete enough baseline questionnaires to unlock deeper interpretations.
@@ -331,8 +326,8 @@ export default function ReportSettingsSection() {
         )}
 
         {settings.advanced_mode_enabled && (
-          <div className="mt-4 pt-4 border-t border-slate-200">
-            <h4 className="text-sm font-semibold text-gray-900 mb-3">
+          <div className="mt-4 pt-4 border-t border-slate-200 dark:border-[var(--bm-border)]">
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-neutral-50 mb-3">
               Interpretation Priority
             </h4>
             <div className="grid grid-cols-3 gap-3">
@@ -347,7 +342,7 @@ export default function ReportSettingsSection() {
                   className={`p-3 rounded-lg border transition-all text-center text-sm ${
                     settings.interpretation_priority === option.value
                       ? 'border-indigo-300 bg-indigo-50'
-                      : 'border-slate-200 hover:border-orange-300'
+                      : 'border-slate-200 dark:border-[var(--bm-border)] hover:border-orange-300'
                   }`}
                 >
                   {option.label}
@@ -359,18 +354,18 @@ export default function ReportSettingsSection() {
       </div>
 
       {/* Additional Options */}
-      <div className="bg-white/90 rounded-2xl border border-slate-200 p-6 shadow-lg">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+      <div className="member-card p-6 shadow-lg">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4">
           Additional Options
         </h3>
 
         <div className="space-y-4">
           <label className="flex items-center justify-between p-4 bg-slate-50 rounded-lg cursor-pointer">
             <div>
-              <div className="font-medium text-gray-900 mb-1">
+              <div className="font-medium text-gray-900 dark:text-neutral-50 mb-1">
                 Second Opinion Default
               </div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-gray-600 dark:text-neutral-300">
                 Automatically show second interpretation for all reports
               </div>
             </div>
@@ -384,10 +379,10 @@ export default function ReportSettingsSection() {
 
           <label className="flex items-center justify-between p-4 bg-slate-50 rounded-lg cursor-pointer">
             <div>
-              <div className="font-medium text-gray-900 mb-1">
+              <div className="font-medium text-gray-900 dark:text-neutral-50 mb-1">
                 Save to History
               </div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-gray-600 dark:text-neutral-300">
                 Automatically save all generated reports for later review
               </div>
             </div>
@@ -401,10 +396,10 @@ export default function ReportSettingsSection() {
 
           <label className="flex items-center justify-between p-4 bg-slate-50 rounded-lg cursor-pointer">
             <div>
-              <div className="font-medium text-gray-900 mb-1">
+              <div className="font-medium text-gray-900 dark:text-neutral-50 mb-1">
                 Allow Caregiver View
               </div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-gray-600 dark:text-neutral-300">
                 Enable linked caregivers or healthcare professionals to view reports
               </div>
             </div>
@@ -419,11 +414,11 @@ export default function ReportSettingsSection() {
       </div>
 
       {/* Auto-refresh Frequency */}
-      <div className="bg-white/90 rounded-2xl border border-slate-200 p-6 shadow-lg">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+      <div className="member-card p-6 shadow-lg">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4">
           Report Refresh Frequency
         </h3>
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-sm text-gray-600 dark:text-neutral-300 mb-4">
           How often should reports be regenerated based on new data?
         </p>
 
@@ -441,7 +436,7 @@ export default function ReportSettingsSection() {
               className={`p-3 rounded-lg border transition-all text-center text-sm ${
                 settings.auto_refresh_frequency === option.value
                   ? 'border-orange-300 bg-orange-50 font-medium'
-                  : 'border-slate-200 hover:border-orange-300'
+                  : 'border-slate-200 dark:border-[var(--bm-border)] hover:border-orange-300'
               }`}
             >
               {option.label}
@@ -454,7 +449,7 @@ export default function ReportSettingsSection() {
       <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-4">
         <div className="flex items-start space-x-3">
           <Info className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
-          <div className="text-sm text-gray-700 dark:text-gray-300">
+          <div className="text-sm text-gray-700 dark:text-neutral-200">
             <p className="font-medium mb-1">All settings are automatically saved</p>
             <p>
               Your preferences will apply to all future reports. You can change these settings
