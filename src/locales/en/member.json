@@ -189,7 +189,154 @@
     "questionnaires": {
       "title": "Health Questionnaires",
       "subtitle": "Complete your health profile to receive personalized recommendations and insights",
-      "settings": "Settings"
+      "settings": "Settings",
+      "loading": "Loading questionnaires…",
+      "loadError": "Unable to load questionnaires. Please try again.",
+      "retry": "Retry",
+      "units": "Units",
+      "metric": "Metric",
+      "imperial": "Imperial",
+      "language": "Language",
+      "savedAt": "Saved {{time}}",
+      "notSavedYet": "Not saved yet",
+      "autoSaveFailed": "Auto-save failed. Please try again.",
+      "saveErrorShort": "Error",
+      "completed": "Completed",
+      "inProgress": "In progress",
+      "overallProgress": "Overall progress",
+      "sections": "Sections",
+      "required": "Required",
+      "yes": "Yes",
+      "no": "No",
+      "select": "Select…",
+      "statusComplete": "Complete",
+      "statusDraft": "Draft",
+      "statusLocked": "Locked",
+      "groups": {
+        "basics": "Basics",
+        "clinical": "Clinical background",
+        "lifestyle": "Lifestyle & mind",
+        "specialized": "Specialized"
+      },
+      "section": {
+        "categories": "Health focus",
+        "personal_info": "Personal info",
+        "medical_history": "Medical history",
+        "medications": "Medications",
+        "allergies": "Allergies",
+        "vital_signs": "Vital signs",
+        "lifestyle": "Lifestyle",
+        "psychological_health": "Psychological health",
+        "mens_sexual_health": "Men's sexual health",
+        "womens_sexual_health": "Women's sexual health"
+      },
+      "sectionDesc": {
+        "categories": "Tell us which health areas matter most right now.",
+        "personal_info": "Help us personalize your Health Guide experience.",
+        "medical_history": "Your medical background helps us provide better insights.",
+        "medications": "Current medications and supplements.",
+        "allergies": "Known allergies and reactions.",
+        "vital_signs": "Recent measurements — all optional.",
+        "lifestyle": "Daily habits and routines that shape your wellness.",
+        "psychological_health": "Mental and emotional wellbeing.",
+        "mens_sexual_health": "Supportive guidance for hormonal and sexual wellbeing.",
+        "womens_sexual_health": "Supportive guidance for hormonal and sexual wellbeing."
+      },
+      "locked": {
+        "title": "{{section}} is locked",
+        "body": "This questionnaire becomes available after you activate the matching health category.",
+        "cta": "Open catalog"
+      },
+      "areas": {
+        "sleep": "Sleep & recovery",
+        "energy": "Energy & fatigue",
+        "nutrition": "Nutrition",
+        "stress": "Stress management",
+        "hormones": "Hormones",
+        "prevention": "Prevention",
+        "performance": "Performance",
+        "mental": "Mental wellness",
+        "longevity": "Longevity"
+      },
+      "priorities": {
+        "prevention": "Prevention",
+        "improvement": "Improvement",
+        "maintenance": "Maintenance",
+        "recovery": "Recovery"
+      },
+      "categories": {
+        "areasLabel": "Which areas of health are most important for you right now?",
+        "priorityLabel": "What is your primary health priority?"
+      },
+      "personalInfo": {
+        "fullName": "Full name",
+        "biologicalSex": "Biological sex",
+        "male": "Male",
+        "female": "Female",
+        "dateOfBirth": "Date of birth",
+        "country": "Country",
+        "height": "Height ({{unit}})",
+        "weight": "Weight ({{unit}})",
+        "primaryLanguage": "Primary language",
+        "primaryLanguagePlaceholder": "e.g. English"
+      },
+      "medicalHistory": {
+        "hasConditions": "Do you currently have any diagnosed medical conditions?",
+        "conditionsList": "Which conditions?",
+        "conditionsPlaceholder": "List your conditions…"
+      },
+      "medications": {
+        "taking": "Are you currently taking any prescription medications?",
+        "list": "List medications",
+        "placeholder": "Medication name, dosage, frequency…"
+      },
+      "allergies": {
+        "has": "Do you have any known allergies?",
+        "list": "Describe your allergies",
+        "placeholder": "Type of allergy, severity, reactions…"
+      },
+      "vitalSigns": {
+        "optionalNote": "All fields are optional.",
+        "restingHeartRate": "Resting heart rate (bpm)",
+        "bloodPressure": "Blood pressure (mmHg)",
+        "bloodPressurePlaceholder": "120/80"
+      },
+      "lifestyle": {
+        "smoking": "Smoking status",
+        "smokingNever": "Never",
+        "smokingFormer": "Former",
+        "smokingCurrent": "Current",
+        "alcohol": "Alcohol consumption",
+        "alcoholNone": "None",
+        "alcoholOccasional": "Occasional",
+        "alcoholModerate": "Moderate",
+        "alcoholFrequent": "Frequent",
+        "exercise": "Exercise frequency (per week)",
+        "sleep": "Sleep duration (hours per night)"
+      },
+      "psychological": {
+        "mood": "How would you describe your current mood stability?",
+        "moodVeryStable": "Very stable",
+        "moodMostlyStable": "Mostly stable",
+        "moodSomewhatVariable": "Somewhat variable",
+        "moodQuiteVariable": "Quite variable",
+        "stress": "Do you experience prolonged stress?"
+      },
+      "confidentiality": {
+        "title": "Confidentiality notice:",
+        "body": "All responses are encrypted and private. This information is used only to provide personalized wellness guidance through Health Guide."
+      },
+      "mensHealth": {
+        "interest": "Is your sexual interest stable, increasing, or decreasing?",
+        "increasing": "Increasing",
+        "stable": "Stable",
+        "decreasing": "Decreasing",
+        "confidence": "Do you feel confident in your sexual function?"
+      },
+      "womensHealth": {
+        "desireChanges": "Have you noticed changes in sexual desire or interest?",
+        "wantsGuidance": "Would you like Health Guide support related to hormonal or sexual wellbeing?"
+      }
     },
     "reportSettings": {
       "title": "Report Settings",

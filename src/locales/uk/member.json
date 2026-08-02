@@ -189,7 +189,154 @@
     "questionnaires": {
       "title": "Опитувальники здоров’я",
       "subtitle": "Заповніть профіль здоров’я, щоб отримувати персональні рекомендації та висновки",
-      "settings": "Налаштування"
+      "settings": "Налаштування",
+      "loading": "Завантаження опитувальників…",
+      "loadError": "Не вдалося завантажити опитувальники. Спробуйте ще раз.",
+      "retry": "Повторити",
+      "units": "Одиниці",
+      "metric": "Метрична",
+      "imperial": "Імперська",
+      "language": "Мова",
+      "savedAt": "Збережено {{time}}",
+      "notSavedYet": "Ще не збережено",
+      "autoSaveFailed": "Автозбереження не вдалося. Спробуйте ще раз.",
+      "saveErrorShort": "Помилка",
+      "completed": "Завершено",
+      "inProgress": "У процесі",
+      "overallProgress": "Загальний прогрес",
+      "sections": "Розділи",
+      "required": "Обов’язково",
+      "yes": "Так",
+      "no": "Ні",
+      "select": "Оберіть…",
+      "statusComplete": "Завершено",
+      "statusDraft": "Чернетка",
+      "statusLocked": "Заблоковано",
+      "groups": {
+        "basics": "Основи",
+        "clinical": "Клінічний фон",
+        "lifestyle": "Спосіб життя та психіка",
+        "specialized": "Спеціалізовані"
+      },
+      "section": {
+        "categories": "Фокус здоров’я",
+        "personal_info": "Особиста інформація",
+        "medical_history": "Медична історія",
+        "medications": "Ліки",
+        "allergies": "Алергії",
+        "vital_signs": "Життєві показники",
+        "lifestyle": "Спосіб життя",
+        "psychological_health": "Психологічне здоров’я",
+        "mens_sexual_health": "Чоловіче сексуальне здоров’я",
+        "womens_sexual_health": "Жіноче сексуальне здоров’я"
+      },
+      "sectionDesc": {
+        "categories": "Розкажіть, які сфери здоров’я найважливіші саме зараз.",
+        "personal_info": "Допоможіть персоналізувати ваш досвід Health Guide.",
+        "medical_history": "Медичний фон допомагає давати точніші висновки.",
+        "medications": "Поточні ліки та добавки.",
+        "allergies": "Відомі алергії та реакції.",
+        "vital_signs": "Нещодавні вимірювання — усе за бажанням.",
+        "lifestyle": "Щоденні звички, що формують ваше самопочуття.",
+        "psychological_health": "Ментальне та емоційне благополуччя.",
+        "mens_sexual_health": "Підтримуючі поради щодо гормонального та сексуального здоров’я.",
+        "womens_sexual_health": "Підтримуючі поради щодо гормонального та сексуального здоров’я."
+      },
+      "locked": {
+        "title": "{{section}} заблоковано",
+        "body": "Цей опитувальник стане доступним після активації відповідної категорії здоров’я.",
+        "cta": "Відкрити каталог"
+      },
+      "areas": {
+        "sleep": "Сон і відновлення",
+        "energy": "Енергія та втома",
+        "nutrition": "Харчування",
+        "stress": "Керування стресом",
+        "hormones": "Гормони",
+        "prevention": "Профілактика",
+        "performance": "Продуктивність",
+        "mental": "Ментальне благополуччя",
+        "longevity": "Довголіття"
+      },
+      "priorities": {
+        "prevention": "Профілактика",
+        "improvement": "Покращення",
+        "maintenance": "Підтримання",
+        "recovery": "Відновлення"
+      },
+      "categories": {
+        "areasLabel": "Які сфери здоров’я для вас зараз найважливіші?",
+        "priorityLabel": "Який ваш головний пріоритет здоров’я?"
+      },
+      "personalInfo": {
+        "fullName": "Повне ім’я",
+        "biologicalSex": "Біологічна стать",
+        "male": "Чоловіча",
+        "female": "Жіноча",
+        "dateOfBirth": "Дата народження",
+        "country": "Країна",
+        "height": "Зріст ({{unit}})",
+        "weight": "Вага ({{unit}})",
+        "primaryLanguage": "Основна мова",
+        "primaryLanguagePlaceholder": "напр. українська"
+      },
+      "medicalHistory": {
+        "hasConditions": "Чи є у вас зараз діагностовані медичні стани?",
+        "conditionsList": "Які саме?",
+        "conditionsPlaceholder": "Перелічіть стани…"
+      },
+      "medications": {
+        "taking": "Чи приймаєте ви зараз рецептурні ліки?",
+        "list": "Список ліків",
+        "placeholder": "Назва, доза, частота…"
+      },
+      "allergies": {
+        "has": "Чи є у вас відомі алергії?",
+        "list": "Опишіть алергії",
+        "placeholder": "Тип, тяжкість, реакції…"
+      },
+      "vitalSigns": {
+        "optionalNote": "Усі поля необов’язкові.",
+        "restingHeartRate": "Пульс у спокої (уд/хв)",
+        "bloodPressure": "Артеріальний тиск (mmHg)",
+        "bloodPressurePlaceholder": "120/80"
+      },
+      "lifestyle": {
+        "smoking": "Статус куріння",
+        "smokingNever": "Ніколи",
+        "smokingFormer": "Раніше",
+        "smokingCurrent": "Зараз",
+        "alcohol": "Споживання алкоголю",
+        "alcoholNone": "Немає",
+        "alcoholOccasional": "Іноді",
+        "alcoholModerate": "Помірно",
+        "alcoholFrequent": "Часто",
+        "exercise": "Частота тренувань (на тиждень)",
+        "sleep": "Тривалість сну (годин на ніч)"
+      },
+      "psychological": {
+        "mood": "Як би ви описали стабільність свого поточного настрою?",
+        "moodVeryStable": "Дуже стабільний",
+        "moodMostlyStable": "Здебільшого стабільний",
+        "moodSomewhatVariable": "Трохи мінливий",
+        "moodQuiteVariable": "Досить мінливий",
+        "stress": "Чи відчуваєте ви тривалий стрес?"
+      },
+      "confidentiality": {
+        "title": "Повідомлення про конфіденційність:",
+        "body": "Усі відповіді зашифровані та приватні. Ця інформація використовується лише для персоналізованих рекомендацій через Health Guide."
+      },
+      "mensHealth": {
+        "interest": "Ваш сексуальний інтерес стабільний, зростає чи зменшується?",
+        "increasing": "Зростає",
+        "stable": "Стабільний",
+        "decreasing": "Зменшується",
+        "confidence": "Чи відчуваєте ви впевненість у своїй сексуальній функції?"
+      },
+      "womensHealth": {
+        "desireChanges": "Чи помічали ви зміни сексуального бажання або інтересу?",
+        "wantsGuidance": "Чи хотіли б ви підтримку Health Guide щодо гормонального або сексуального здоров’я?"
+      }
     },
     "reportSettings": {
       "title": "Налаштування звітів",

@@ -189,7 +189,154 @@
     "questionnaires": {
       "title": "Анкеты о здоровье",
       "subtitle": "Заполните профиль здоровья, чтобы получать персональные рекомендации и выводы",
-      "settings": "Настройки"
+      "settings": "Настройки",
+      "loading": "Загрузка анкет…",
+      "loadError": "Не удалось загрузить анкеты. Попробуйте снова.",
+      "retry": "Повторить",
+      "units": "Единицы",
+      "metric": "Метрическая",
+      "imperial": "Имперская",
+      "language": "Язык",
+      "savedAt": "Сохранено {{time}}",
+      "notSavedYet": "Ещё не сохранено",
+      "autoSaveFailed": "Автосохранение не удалось. Попробуйте снова.",
+      "saveErrorShort": "Ошибка",
+      "completed": "Завершено",
+      "inProgress": "В процессе",
+      "overallProgress": "Общий прогресс",
+      "sections": "Разделы",
+      "required": "Обязательно",
+      "yes": "Да",
+      "no": "Нет",
+      "select": "Выберите…",
+      "statusComplete": "Готово",
+      "statusDraft": "Черновик",
+      "statusLocked": "Заблокировано",
+      "groups": {
+        "basics": "Основы",
+        "clinical": "Клинический фон",
+        "lifestyle": "Образ жизни и психика",
+        "specialized": "Специализированные"
+      },
+      "section": {
+        "categories": "Фокус здоровья",
+        "personal_info": "Личные данные",
+        "medical_history": "Мед. история",
+        "medications": "Лекарства",
+        "allergies": "Аллергии",
+        "vital_signs": "Жизненные показатели",
+        "lifestyle": "Образ жизни",
+        "psychological_health": "Психологическое здоровье",
+        "mens_sexual_health": "Мужское сексуальное здоровье",
+        "womens_sexual_health": "Женское сексуальное здоровье"
+      },
+      "sectionDesc": {
+        "categories": "Расскажите, какие сферы здоровья важнее всего сейчас.",
+        "personal_info": "Помогите персонализировать ваш опыт Health Guide.",
+        "medical_history": "Медицинский фон помогает давать более точные выводы.",
+        "medications": "Текущие лекарства и добавки.",
+        "allergies": "Известные аллергии и реакции.",
+        "vital_signs": "Недавние измерения — всё по желанию.",
+        "lifestyle": "Ежедневные привычки, влияющие на самочувствие.",
+        "psychological_health": "Ментальное и эмоциональное благополучие.",
+        "mens_sexual_health": "Поддерживающие рекомендации по гормональному и сексуальному здоровью.",
+        "womens_sexual_health": "Поддерживающие рекомендации по гормональному и сексуальному здоровью."
+      },
+      "locked": {
+        "title": "{{section}} заблокировано",
+        "body": "Эта анкета станет доступна после активации соответствующей категории здоровья.",
+        "cta": "Открыть каталог"
+      },
+      "areas": {
+        "sleep": "Сон и восстановление",
+        "energy": "Энергия и усталость",
+        "nutrition": "Питание",
+        "stress": "Управление стрессом",
+        "hormones": "Гормоны",
+        "prevention": "Профилактика",
+        "performance": "Производительность",
+        "mental": "Ментальное благополучие",
+        "longevity": "Долголетие"
+      },
+      "priorities": {
+        "prevention": "Профилактика",
+        "improvement": "Улучшение",
+        "maintenance": "Поддержание",
+        "recovery": "Восстановление"
+      },
+      "categories": {
+        "areasLabel": "Какие сферы здоровья сейчас для вас важнее всего?",
+        "priorityLabel": "Какой ваш главный приоритет здоровья?"
+      },
+      "personalInfo": {
+        "fullName": "Полное имя",
+        "biologicalSex": "Биологический пол",
+        "male": "Мужской",
+        "female": "Женский",
+        "dateOfBirth": "Дата рождения",
+        "country": "Страна",
+        "height": "Рост ({{unit}})",
+        "weight": "Вес ({{unit}})",
+        "primaryLanguage": "Основной язык",
+        "primaryLanguagePlaceholder": "напр. русский"
+      },
+      "medicalHistory": {
+        "hasConditions": "Есть ли у вас сейчас диагностированные заболевания?",
+        "conditionsList": "Какие именно?",
+        "conditionsPlaceholder": "Перечислите состояния…"
+      },
+      "medications": {
+        "taking": "Принимаете ли вы сейчас рецептурные лекарства?",
+        "list": "Список лекарств",
+        "placeholder": "Название, дозировка, частота…"
+      },
+      "allergies": {
+        "has": "Есть ли у вас известные аллергии?",
+        "list": "Опишите аллергии",
+        "placeholder": "Тип, тяжесть, реакции…"
+      },
+      "vitalSigns": {
+        "optionalNote": "Все поля необязательны.",
+        "restingHeartRate": "Пульс в покое (уд/мин)",
+        "bloodPressure": "Артериальное давление (mmHg)",
+        "bloodPressurePlaceholder": "120/80"
+      },
+      "lifestyle": {
+        "smoking": "Курение",
+        "smokingNever": "Никогда",
+        "smokingFormer": "Раньше",
+        "smokingCurrent": "Сейчас",
+        "alcohol": "Употребление алкоголя",
+        "alcoholNone": "Нет",
+        "alcoholOccasional": "Иногда",
+        "alcoholModerate": "Умеренно",
+        "alcoholFrequent": "Часто",
+        "exercise": "Частота тренировок (в неделю)",
+        "sleep": "Длительность сна (часов за ночь)"
+      },
+      "psychological": {
+        "mood": "Как бы вы описали стабильность своего текущего настроения?",
+        "moodVeryStable": "Очень стабильное",
+        "moodMostlyStable": "В основном стабильное",
+        "moodSomewhatVariable": "Немного переменчивое",
+        "moodQuiteVariable": "Довольно переменчивое",
+        "stress": "Испытываете ли вы длительный стресс?"
+      },
+      "confidentiality": {
+        "title": "Уведомление о конфиденциальности:",
+        "body": "Все ответы зашифрованы и конфиденциальны. Эта информация используется только для персонализированных рекомендаций через Health Guide."
+      },
+      "mensHealth": {
+        "interest": "Ваш сексуальный интерес стабилен, растёт или снижается?",
+        "increasing": "Растёт",
+        "stable": "Стабилен",
+        "decreasing": "Снижается",
+        "confidence": "Чувствуете ли вы уверенность в своей сексуальной функции?"
+      },
+      "womensHealth": {
+        "desireChanges": "Замечали ли вы изменения сексуального желания или интереса?",
+        "wantsGuidance": "Хотели бы вы поддержку Health Guide по гормональному или сексуальному здоровью?"
+      }
     },
     "reportSettings": {
       "title": "Настройки отчётов",

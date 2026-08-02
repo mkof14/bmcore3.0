@@ -189,7 +189,154 @@
     "questionnaires": {
       "title": "健康问卷",
       "subtitle": "完善健康档案，获取个性化的建议与洞察",
-      "settings": "设置"
+      "settings": "设置",
+      "loading": "正在加载问卷…",
+      "loadError": "无法加载问卷。请重试。",
+      "retry": "重试",
+      "units": "单位",
+      "metric": "公制",
+      "imperial": "英制",
+      "language": "语言",
+      "savedAt": "已保存 {{time}}",
+      "notSavedYet": "尚未保存",
+      "autoSaveFailed": "自动保存失败。请重试。",
+      "saveErrorShort": "错误",
+      "completed": "已完成",
+      "inProgress": "进行中",
+      "overallProgress": "总体进度",
+      "sections": "章节",
+      "required": "必填",
+      "yes": "是",
+      "no": "否",
+      "select": "请选择…",
+      "statusComplete": "已完成",
+      "statusDraft": "草稿",
+      "statusLocked": "已锁定",
+      "groups": {
+        "basics": "基础",
+        "clinical": "临床背景",
+        "lifestyle": "生活方式与心理",
+        "specialized": "专项"
+      },
+      "section": {
+        "categories": "健康重点",
+        "personal_info": "个人信息",
+        "medical_history": "病史",
+        "medications": "用药",
+        "allergies": "过敏",
+        "vital_signs": "生命体征",
+        "lifestyle": "生活方式",
+        "psychological_health": "心理健康",
+        "mens_sexual_health": "男性性健康",
+        "womens_sexual_health": "女性性健康"
+      },
+      "sectionDesc": {
+        "categories": "告诉我们当前最重要的健康领域。",
+        "personal_info": "帮助我们个性化您的 Health Guide 体验。",
+        "medical_history": "您的医疗背景有助于提供更好的洞察。",
+        "medications": "当前药物与补充剂。",
+        "allergies": "已知过敏与反应。",
+        "vital_signs": "近期测量值——均为可选。",
+        "lifestyle": "塑造健康状态的日常习惯。",
+        "psychological_health": "心理与情绪健康。",
+        "mens_sexual_health": "关于激素与性健康的支持性引导。",
+        "womens_sexual_health": "关于激素与性健康的支持性引导。"
+      },
+      "locked": {
+        "title": "{{section}}已锁定",
+        "body": "激活对应健康类别后即可使用此问卷。",
+        "cta": "打开目录"
+      },
+      "areas": {
+        "sleep": "睡眠与恢复",
+        "energy": "精力与疲劳",
+        "nutrition": "营养",
+        "stress": "压力管理",
+        "hormones": "激素",
+        "prevention": "预防",
+        "performance": "表现",
+        "mental": "心理健康",
+        "longevity": "长寿"
+      },
+      "priorities": {
+        "prevention": "预防",
+        "improvement": "改善",
+        "maintenance": "维持",
+        "recovery": "恢复"
+      },
+      "categories": {
+        "areasLabel": "当前对您最重要的健康领域是哪些？",
+        "priorityLabel": "您的主要健康优先级是什么？"
+      },
+      "personalInfo": {
+        "fullName": "全名",
+        "biologicalSex": "生理性别",
+        "male": "男",
+        "female": "女",
+        "dateOfBirth": "出生日期",
+        "country": "国家",
+        "height": "身高（{{unit}}）",
+        "weight": "体重（{{unit}}）",
+        "primaryLanguage": "主要语言",
+        "primaryLanguagePlaceholder": "例如：中文"
+      },
+      "medicalHistory": {
+        "hasConditions": "您目前是否有已诊断的疾病？",
+        "conditionsList": "有哪些疾病？",
+        "conditionsPlaceholder": "列出您的疾病…"
+      },
+      "medications": {
+        "taking": "您目前是否在服用处方药？",
+        "list": "列出药物",
+        "placeholder": "药名、剂量、频率…"
+      },
+      "allergies": {
+        "has": "您是否有已知过敏？",
+        "list": "描述您的过敏情况",
+        "placeholder": "类型、严重程度、反应…"
+      },
+      "vitalSigns": {
+        "optionalNote": "所有字段均为可选。",
+        "restingHeartRate": "静息心率（次/分）",
+        "bloodPressure": "血压（mmHg）",
+        "bloodPressurePlaceholder": "120/80"
+      },
+      "lifestyle": {
+        "smoking": "吸烟状况",
+        "smokingNever": "从不",
+        "smokingFormer": "曾经",
+        "smokingCurrent": "目前",
+        "alcohol": "饮酒情况",
+        "alcoholNone": "无",
+        "alcoholOccasional": "偶尔",
+        "alcoholModerate": "适度",
+        "alcoholFrequent": "频繁",
+        "exercise": "运动频率（每周）",
+        "sleep": "睡眠时长（每晚小时数）"
+      },
+      "psychological": {
+        "mood": "您如何描述当前的情绪稳定性？",
+        "moodVeryStable": "非常稳定",
+        "moodMostlyStable": "大多稳定",
+        "moodSomewhatVariable": "有些波动",
+        "moodQuiteVariable": "波动较大",
+        "stress": "您是否经历长期压力？"
+      },
+      "confidentiality": {
+        "title": "保密提示：",
+        "body": "所有回答均加密且私密。这些信息仅用于通过 Health Guide 提供个性化健康指导。"
+      },
+      "mensHealth": {
+        "interest": "您的性兴趣是稳定、上升还是下降？",
+        "increasing": "上升",
+        "stable": "稳定",
+        "decreasing": "下降",
+        "confidence": "您对自己的性功能有信心吗？"
+      },
+      "womensHealth": {
+        "desireChanges": "您是否注意到性欲或兴趣的变化？",
+        "wantsGuidance": "您是否希望获得 Health Guide 关于激素或性健康的支持？"
+      }
     },
     "reportSettings": {
       "title": "报告设置",

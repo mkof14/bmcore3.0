@@ -189,7 +189,154 @@
     "questionnaires": {
       "title": "健康問診票",
       "subtitle": "健康プロフィールを入力すると、個別の推奨事項と分析を受け取れます",
-      "settings": "設定"
+      "settings": "設定",
+      "loading": "問診票を読み込み中…",
+      "loadError": "問診票を読み込めませんでした。もう一度お試しください。",
+      "retry": "再試行",
+      "units": "単位",
+      "metric": "メートル法",
+      "imperial": "ヤード・ポンド法",
+      "language": "言語",
+      "savedAt": "{{time}} に保存済み",
+      "notSavedYet": "まだ保存されていません",
+      "autoSaveFailed": "自動保存に失敗しました。もう一度お試しください。",
+      "saveErrorShort": "エラー",
+      "completed": "完了",
+      "inProgress": "進行中",
+      "overallProgress": "全体の進捗",
+      "sections": "セクション",
+      "required": "必須",
+      "yes": "はい",
+      "no": "いいえ",
+      "select": "選択…",
+      "statusComplete": "完了",
+      "statusDraft": "下書き",
+      "statusLocked": "ロック中",
+      "groups": {
+        "basics": "基本",
+        "clinical": "臨床背景",
+        "lifestyle": "生活と心",
+        "specialized": "専門"
+      },
+      "section": {
+        "categories": "健康の焦点",
+        "personal_info": "個人情報",
+        "medical_history": "病歴",
+        "medications": "服薬",
+        "allergies": "アレルギー",
+        "vital_signs": "バイタル",
+        "lifestyle": "ライフスタイル",
+        "psychological_health": "心理的健康",
+        "mens_sexual_health": "男性の性の健康",
+        "womens_sexual_health": "女性の性の健康"
+      },
+      "sectionDesc": {
+        "categories": "今いちばん大切な健康領域を教えてください。",
+        "personal_info": "Health Guide の体験を個別化するのに役立ちます。",
+        "medical_history": "病歴はより良い洞察につながります。",
+        "medications": "現在の薬とサプリメント。",
+        "allergies": "既知のアレルギーと反応。",
+        "vital_signs": "直近の測定値 — すべて任意です。",
+        "lifestyle": "ウェルネスを形づくる日々の習慣。",
+        "psychological_health": "心と感情のウェルビーイング。",
+        "mens_sexual_health": "ホルモンと性のウェルビーイングを支えるガイダンス。",
+        "womens_sexual_health": "ホルモンと性のウェルビーイングを支えるガイダンス。"
+      },
+      "locked": {
+        "title": "{{section}} はロックされています",
+        "body": "対応する健康カテゴリを有効にすると、この問診票が利用できます。",
+        "cta": "カタログを開く"
+      },
+      "areas": {
+        "sleep": "睡眠と回復",
+        "energy": "エネルギーと疲労",
+        "nutrition": "栄養",
+        "stress": "ストレス管理",
+        "hormones": "ホルモン",
+        "prevention": "予防",
+        "performance": "パフォーマンス",
+        "mental": "メンタルウェルネス",
+        "longevity": "長寿"
+      },
+      "priorities": {
+        "prevention": "予防",
+        "improvement": "改善",
+        "maintenance": "維持",
+        "recovery": "回復"
+      },
+      "categories": {
+        "areasLabel": "今、どの健康領域が最も重要ですか？",
+        "priorityLabel": "主な健康優先事項は何ですか？"
+      },
+      "personalInfo": {
+        "fullName": "氏名",
+        "biologicalSex": "生物学的性別",
+        "male": "男性",
+        "female": "女性",
+        "dateOfBirth": "生年月日",
+        "country": "国",
+        "height": "身長（{{unit}}）",
+        "weight": "体重（{{unit}}）",
+        "primaryLanguage": "主な言語",
+        "primaryLanguagePlaceholder": "例：日本語"
+      },
+      "medicalHistory": {
+        "hasConditions": "現在、診断済みの疾患はありますか？",
+        "conditionsList": "どの疾患ですか？",
+        "conditionsPlaceholder": "疾患を記入…"
+      },
+      "medications": {
+        "taking": "現在、処方薬を服用していますか？",
+        "list": "薬を記入",
+        "placeholder": "薬名、用量、頻度…"
+      },
+      "allergies": {
+        "has": "既知のアレルギーはありますか？",
+        "list": "アレルギーを説明",
+        "placeholder": "種類、重症度、反応…"
+      },
+      "vitalSigns": {
+        "optionalNote": "すべての項目は任意です。",
+        "restingHeartRate": "安静時心拍数（bpm）",
+        "bloodPressure": "血圧（mmHg）",
+        "bloodPressurePlaceholder": "120/80"
+      },
+      "lifestyle": {
+        "smoking": "喫煙状況",
+        "smokingNever": "吸わない",
+        "smokingFormer": "以前吸っていた",
+        "smokingCurrent": "現在吸っている",
+        "alcohol": "飲酒",
+        "alcoholNone": "なし",
+        "alcoholOccasional": "たまに",
+        "alcoholModerate": "適度",
+        "alcoholFrequent": "頻繁",
+        "exercise": "運動頻度（週あたり）",
+        "sleep": "睡眠時間（1晚あたりの時間）"
+      },
+      "psychological": {
+        "mood": "現在の気分の安定性をどう表現しますか？",
+        "moodVeryStable": "非常に安定",
+        "moodMostlyStable": "おおむね安定",
+        "moodSomewhatVariable": "やや変動",
+        "moodQuiteVariable": "かなり変動",
+        "stress": "長引くストレスを感じていますか？"
+      },
+      "confidentiality": {
+        "title": "機密に関するお知らせ：",
+        "body": "回答はすべて暗号化され非公開です。この情報は Health Guide による個別のウェルネスガイダンスにのみ使用されます。"
+      },
+      "mensHealth": {
+        "interest": "性的関心は安定・増加・減少のどれですか？",
+        "increasing": "増加",
+        "stable": "安定",
+        "decreasing": "減少",
+        "confidence": "性機能に自信がありますか？"
+      },
+      "womensHealth": {
+        "desireChanges": "性欲や関心の変化に気づきましたか？",
+        "wantsGuidance": "ホルモンや性のウェルビーイングについて Health Guide のサポートを希望しますか？"
+      }
     },
     "reportSettings": {
       "title": "レポート設定",

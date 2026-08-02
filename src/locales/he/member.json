@@ -189,7 +189,154 @@
     "questionnaires": {
       "title": "שאלוני בריאות",
       "subtitle": "השלימו את פרופיל הבריאות שלכם כדי לקבל המלצות ותובנות מותאמות אישית",
-      "settings": "הגדרות"
+      "settings": "הגדרות",
+      "loading": "טוען שאלונים…",
+      "loadError": "לא ניתן לטעון את השאלונים. נסו שוב.",
+      "retry": "נסה שוב",
+      "units": "יחידות",
+      "metric": "מטרי",
+      "imperial": "אימפריאלי",
+      "language": "שפה",
+      "savedAt": "נשמר {{time}}",
+      "notSavedYet": "עדיין לא נשמר",
+      "autoSaveFailed": "שמירה אוטומטית נכשלה. נסו שוב.",
+      "saveErrorShort": "שגיאה",
+      "completed": "הושלמו",
+      "inProgress": "בתהליך",
+      "overallProgress": "התקדמות כללית",
+      "sections": "מדורים",
+      "required": "חובה",
+      "yes": "כן",
+      "no": "לא",
+      "select": "בחרו…",
+      "statusComplete": "הושלם",
+      "statusDraft": "טיוטה",
+      "statusLocked": "נעול",
+      "groups": {
+        "basics": "יסודות",
+        "clinical": "רקע קליני",
+        "lifestyle": "אורח חיים ונפש",
+        "specialized": "מתמחים"
+      },
+      "section": {
+        "categories": "מיקוד בריאות",
+        "personal_info": "מידע אישי",
+        "medical_history": "היסטוריה רפואית",
+        "medications": "תרופות",
+        "allergies": "אלרגיות",
+        "vital_signs": "סימנים חיוניים",
+        "lifestyle": "אורח חיים",
+        "psychological_health": "בריאות נפשית",
+        "mens_sexual_health": "בריאות מינית לגברים",
+        "womens_sexual_health": "בריאות מינית לנשים"
+      },
+      "sectionDesc": {
+        "categories": "ספרו לנו אילו תחומי בריאות חשובים לכם עכשיו.",
+        "personal_info": "עזרו לנו להתאים אישית את חוויית Health Guide.",
+        "medical_history": "הרקע הרפואי שלכם מסייע לתובנות טובות יותר.",
+        "medications": "תרופות ותוספים נוכחיים.",
+        "allergies": "אלרגיות ותגובות ידועות.",
+        "vital_signs": "מדידות אחרונות — הכל אופציונלי.",
+        "lifestyle": "הרגלים יומיומיים שמעצבים את הרווחה שלכם.",
+        "psychological_health": "רווחה נפשית ורגשית.",
+        "mens_sexual_health": "הכוונה תומכת לרווחה הורמונלית ומינית.",
+        "womens_sexual_health": "הכוונה תומכת לרווחה הורמונלית ומינית."
+      },
+      "locked": {
+        "title": "{{section}} נעול",
+        "body": "שאלון זה יהיה זמין לאחר הפעלת קטגוריית הבריאות המתאימה.",
+        "cta": "פתח קטלוג"
+      },
+      "areas": {
+        "sleep": "שינה והתאוששות",
+        "energy": "אנרגיה ועייפות",
+        "nutrition": "תזונה",
+        "stress": "ניהול לחץ",
+        "hormones": "הורמונים",
+        "prevention": "מניעה",
+        "performance": "ביצועים",
+        "mental": "רווחה נפשית",
+        "longevity": "אריכות ימים"
+      },
+      "priorities": {
+        "prevention": "מניעה",
+        "improvement": "שיפור",
+        "maintenance": "תחזוקה",
+        "recovery": "התאוששות"
+      },
+      "categories": {
+        "areasLabel": "אילו תחומי בריאות הכי חשובים לכם כרגע?",
+        "priorityLabel": "מהי עדיפות הבריאות העיקרית שלכם?"
+      },
+      "personalInfo": {
+        "fullName": "שם מלא",
+        "biologicalSex": "מין ביולוגי",
+        "male": "זכר",
+        "female": "נקבה",
+        "dateOfBirth": "תאריך לידה",
+        "country": "מדינה",
+        "height": "גובה ({{unit}})",
+        "weight": "משקל ({{unit}})",
+        "primaryLanguage": "שפה עיקרית",
+        "primaryLanguagePlaceholder": "לדוגמה עברית"
+      },
+      "medicalHistory": {
+        "hasConditions": "האם יש לכם כיום מצבים רפואיים מאובחנים?",
+        "conditionsList": "אילו מצבים?",
+        "conditionsPlaceholder": "רשמו את המצבים…"
+      },
+      "medications": {
+        "taking": "האם אתם נוטלים כיום תרופות מרשם?",
+        "list": "רשימת תרופות",
+        "placeholder": "שם תרופה, מינון, תדירות…"
+      },
+      "allergies": {
+        "has": "האם יש לכם אלרגיות ידועות?",
+        "list": "תארו את האלרגיות",
+        "placeholder": "סוג, חומרה, תגובות…"
+      },
+      "vitalSigns": {
+        "optionalNote": "כל השדות אופציונליים.",
+        "restingHeartRate": "דופק במנוחה (bpm)",
+        "bloodPressure": "לחץ דם (mmHg)",
+        "bloodPressurePlaceholder": "120/80"
+      },
+      "lifestyle": {
+        "smoking": "עישון",
+        "smokingNever": "אף פעם",
+        "smokingFormer": "בעבר",
+        "smokingCurrent": "נוכחי",
+        "alcohol": "צריכת אלכוהול",
+        "alcoholNone": "ללא",
+        "alcoholOccasional": "מדי פעם",
+        "alcoholModerate": "בינוני",
+        "alcoholFrequent": "תכוף",
+        "exercise": "תדירות פעילות גופנית (בשבוע)",
+        "sleep": "משך שינה (שעות בלילה)"
+      },
+      "psychological": {
+        "mood": "כיצד תתארו את יציבות מצב הרוח הנוכחי?",
+        "moodVeryStable": "יציב מאוד",
+        "moodMostlyStable": "יציב ברובו",
+        "moodSomewhatVariable": "משתנה במקצת",
+        "moodQuiteVariable": "משתנה מאוד",
+        "stress": "האם אתם חווים לחץ ממושך?"
+      },
+      "confidentiality": {
+        "title": "הודעת סודיות:",
+        "body": "כל התשובות מוצפנות ופרטיות. המידע משמש רק להכוונת רווחה מותאמת אישית דרך Health Guide."
+      },
+      "mensHealth": {
+        "interest": "האם העניין המיני שלכם יציב, עולה או יורד?",
+        "increasing": "עולה",
+        "stable": "יציב",
+        "decreasing": "יורד",
+        "confidence": "האם אתם מרגישים ביטחון בתפקוד המיני?"
+      },
+      "womensHealth": {
+        "desireChanges": "האם שמתם לב לשינויים ברצון או בעניין המיני?",
+        "wantsGuidance": "האם תרצו תמיכה מ-Health Guide בנושא רווחה הורמונלית או מינית?"
+      }
     },
     "reportSettings": {
       "title": "הגדרות דוחות",

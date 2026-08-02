@@ -255,7 +255,7 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
         );
 
       case 'questionnaires':
-        return <QuestionnairesSection />;
+        return <QuestionnairesSection onNavigateSection={setCurrentSection} />;
 
       case 'reports':
         return <MyReportsSection />;

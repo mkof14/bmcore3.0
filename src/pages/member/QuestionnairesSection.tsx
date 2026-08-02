@@ -1,9 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Check, Lock, Save, Globe, Ruler } from 'lucide-react';
+import {
+  Check,
+  Lock,
+  Save,
+  Globe,
+  Ruler,
+  ClipboardList,
+  CircleDot,
+  Loader2,
+} from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError } from '../../lib/adminNotify';
-import ReportBrandHeader from '../../components/report/ReportBrandHeader';
+import MemberMetricCard from '../../components/ui/MemberMetricCard';
+import StateCard from '../../components/ui/StateCard';
+import ErrorBanner from '../../components/ui/ErrorBanner';
 
 type QuestionnaireSection =
   | 'categories'
@@ -18,41 +29,90 @@ type QuestionnaireSection =
   | 'womens_sexual_health';
 
 interface QuestionnaireData {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
-export default function QuestionnairesSection() {
-  const { t } = useTranslation();
+type FormChangeHandler = (field: string, value: unknown) => void;
+
+type FormProps = {
+  data: QuestionnaireData;
+  onChange: FormChangeHandler;
+  unitSystem?: 'metric' | 'imperial';
+};
+
+const SECTION_IDS: QuestionnaireSection[] = [
+  'categories',
+  'personal_info',
+  'medical_history',
+  'medications',
+  'allergies',
+  'vital_signs',
+  'lifestyle',
+  'psychological_health',
+  'mens_sexual_health',
+  'womens_sexual_health',
+];
+
+const SECTION_GROUPS: Array<{ id: string; sections: QuestionnaireSection[] }> = [
+  { id: 'basics', sections: ['categories', 'personal_info'] },
+  { id: 'clinical', sections: ['medical_history', 'medications', 'allergies', 'vital_signs'] },
+  { id: 'lifestyle', sections: ['lifestyle', 'psychological_health'] },
+  { id: 'specialized', sections: ['mens_sexual_health', 'womens_sexual_health'] },
+];
+
+/** Stored values kept English for backward-compatible saved answers. */
+const HEALTH_AREAS = [
+  { value: 'Sleep & Recovery', key: 'sleep' },
+  { value: 'Energy & Fatigue', key: 'energy' },
+  { value: 'Nutrition', key: 'nutrition' },
+  { value: 'Stress Management', key: 'stress' },
+  { value: 'Hormones', key: 'hormones' },
+  { value: 'Prevention', key: 'prevention' },
+  { value: 'Performance', key: 'performance' },
+  { value: 'Mental Wellness', key: 'mental' },
+  { value: 'Longevity', key: 'longevity' },
+] as const;
+
+const emptyResponses = (): Record<QuestionnaireSection, QuestionnaireData> => ({
+  categories: {},
+  personal_info: {},
+  medical_history: {},
+  medications: {},
+  allergies: {},
+  vital_signs: {},
+  lifestyle: {},
+  psychological_health: {},
+  mens_sexual_health: {},
+  womens_sexual_health: {},
+});
+
+const emptyStatuses = (): Record<QuestionnaireSection, 'draft' | 'complete'> => ({
+  categories: 'draft',
+  personal_info: 'draft',
+  medical_history: 'draft',
+  medications: 'draft',
+  allergies: 'draft',
+  vital_signs: 'draft',
+  lifestyle: 'draft',
+  psychological_health: 'draft',
+  mens_sexual_health: 'draft',
+  womens_sexual_health: 'draft',
+});
+
+type Props = {
+  onNavigateSection?: (section: string) => void;
+};
+
+export default function QuestionnairesSection({ onNavigateSection }: Props) {
+  const { t, i18n } = useTranslation();
   const [currentSection, setCurrentSection] = useState<QuestionnaireSection>('categories');
-  const [responses, setResponses] = useState<Record<QuestionnaireSection, QuestionnaireData>>({
-    categories: {},
-    personal_info: {},
-    medical_history: {},
-    medications: {},
-    allergies: {},
-    vital_signs: {},
-    lifestyle: {},
-    psychological_health: {},
-    mens_sexual_health: {},
-    womens_sexual_health: {}
-  });
-  const [statuses, setStatuses] = useState<Record<QuestionnaireSection, 'draft' | 'complete'>>({
-    categories: 'draft',
-    personal_info: 'draft',
-    medical_history: 'draft',
-    medications: 'draft',
-    allergies: 'draft',
-    vital_signs: 'draft',
-    lifestyle: 'draft',
-    psychological_health: 'draft',
-    mens_sexual_health: 'draft',
-    womens_sexual_health: 'draft'
-  });
+  const [responses, setResponses] = useState(emptyResponses);
+  const [statuses, setStatuses] = useState(emptyStatuses);
   const [unitSystem, setUnitSystem] = useState<'metric' | 'imperial'>('metric');
-  const [language, setLanguage] = useState('en');
   const [mensSexualHealthUnlocked, setMensSexualHealthUnlocked] = useState(false);
   const [womensSexualHealthUnlocked, setWomensSexualHealthUnlocked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
   const [autoSaveError, setAutoSaveError] = useState(false);
 
@@ -61,9 +121,16 @@ export default function QuestionnairesSection() {
   }, []);
 
   const loadQuestionnaire = async () => {
+    setIsLoading(true);
+    setLoadError(false);
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user) {
+        setLoadError(true);
+        return;
+      }
 
       const { data, error } = await supabase
         .from('questionnaire_responses')
@@ -72,6 +139,8 @@ export default function QuestionnairesSection() {
         .maybeSingle();
 
       if (error && error.code !== 'PGRST116') {
+        setLoadError(true);
+        notifyUserError('Questionnaire load failed');
         return;
       }
 
@@ -86,7 +155,7 @@ export default function QuestionnairesSection() {
           lifestyle: data.lifestyle || {},
           psychological_health: data.psychological_health || {},
           mens_sexual_health: data.mens_sexual_health || {},
-          womens_sexual_health: data.womens_sexual_health || {}
+          womens_sexual_health: data.womens_sexual_health || {},
         });
 
         setStatuses({
@@ -99,72 +168,34 @@ export default function QuestionnairesSection() {
           lifestyle: data.lifestyle_status || 'draft',
           psychological_health: data.psychological_health_status || 'draft',
           mens_sexual_health: data.mens_sexual_health_status || 'draft',
-          womens_sexual_health: data.womens_sexual_health_status || 'draft'
+          womens_sexual_health: data.womens_sexual_health_status || 'draft',
         });
 
         setUnitSystem(data.unit_system || 'metric');
-        setLanguage(data.language || 'en');
         setMensSexualHealthUnlocked(data.mens_sexual_health_unlocked || false);
         setWomensSexualHealthUnlocked(data.womens_sexual_health_unlocked || false);
         setLastSaved(data.last_autosave_at ? new Date(data.last_autosave_at) : null);
       }
-    } catch (error) {
+    } catch {
+      setLoadError(true);
       notifyUserError('Questionnaire load failed');
     } finally {
       setIsLoading(false);
     }
   };
 
-  const autoSave = async (section: QuestionnaireSection, newData: QuestionnaireData) => {
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
-
-      const updateData: any = {
-        [section]: newData,
-        [`${section}_status`]: checkSectionComplete(section, newData) ? 'complete' : 'draft'
-      };
-
-      const { error } = await supabase
-        .from('questionnaire_responses')
-        .upsert({
-          user_id: user.id,
-          ...updateData
-        }, {
-          onConflict: 'user_id'
-        });
-
-      if (error) {
-        setAutoSaveError(true);
-      } else {
-        setLastSaved(new Date());
-        setAutoSaveError(false);
-      }
-    } catch (error) {
-      setAutoSaveError(true);
-    }
-  };
-
-  const handleInputChange = (section: QuestionnaireSection, field: string, value: any) => {
-    const newData = { ...responses[section], [field]: value };
-    setResponses(prev => ({ ...prev, [section]: newData }));
-
-    const newStatus = checkSectionComplete(section, newData) ? 'complete' : 'draft';
-    setStatuses(prev => ({ ...prev, [section]: newStatus }));
-
-    autoSave(section, newData);
-  };
-
-  const createSectionChangeHandler = (section: QuestionnaireSection) => {
-    return (field: string, value: unknown) => {
-      handleInputChange(section, field, value);
-    };
-  };
-
   const checkSectionComplete = (section: QuestionnaireSection, data: QuestionnaireData): boolean => {
     const requiredFields: Record<QuestionnaireSection, string[]> = {
       categories: ['primary_health_areas', 'primary_priority'],
-      personal_info: ['full_name', 'biological_sex', 'date_of_birth', 'country', 'height', 'weight', 'primary_language'],
+      personal_info: [
+        'full_name',
+        'biological_sex',
+        'date_of_birth',
+        'country',
+        'height',
+        'weight',
+        'primary_language',
+      ],
       medical_history: ['has_diagnosed_conditions'],
       medications: ['taking_medications'],
       allergies: ['has_allergies'],
@@ -172,427 +203,661 @@ export default function QuestionnairesSection() {
       lifestyle: [],
       psychological_health: [],
       mens_sexual_health: [],
-      womens_sexual_health: []
+      womens_sexual_health: [],
     };
 
     const required = requiredFields[section];
-    return required.every(field => data[field] !== undefined && data[field] !== '' && data[field] !== null);
+    return required.every((field) => {
+      const value = data[field];
+      if (Array.isArray(value)) return value.length > 0;
+      return value !== undefined && value !== '' && value !== null;
+    });
+  };
+
+  const autoSave = async (section: QuestionnaireSection, newData: QuestionnaireData) => {
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user) return;
+
+      const updateData: Record<string, unknown> = {
+        [section]: newData,
+        [`${section}_status`]: checkSectionComplete(section, newData) ? 'complete' : 'draft',
+      };
+
+      const { error } = await supabase.from('questionnaire_responses').upsert(
+        {
+          user_id: user.id,
+          ...updateData,
+        },
+        {
+          onConflict: 'user_id',
+        }
+      );
+
+      if (error) {
+        setAutoSaveError(true);
+      } else {
+        setLastSaved(new Date());
+        setAutoSaveError(false);
+      }
+    } catch {
+      setAutoSaveError(true);
+    }
+  };
+
+  const handleInputChange = (section: QuestionnaireSection, field: string, value: unknown) => {
+    const newData = { ...responses[section], [field]: value };
+    setResponses((prev) => ({ ...prev, [section]: newData }));
+
+    const newStatus = checkSectionComplete(section, newData) ? 'complete' : 'draft';
+    setStatuses((prev) => ({ ...prev, [section]: newStatus }));
+
+    autoSave(section, newData);
+  };
+
+  const createSectionChangeHandler = (section: QuestionnaireSection): FormChangeHandler => {
+    return (field, value) => {
+      handleInputChange(section, field, value);
+    };
   };
 
   const toggleUnitSystem = async () => {
     const newSystem = unitSystem === 'metric' ? 'imperial' : 'metric';
     setUnitSystem(newSystem);
 
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
     if (!user) return;
 
-    await supabase
-      .from('questionnaire_responses')
-      .upsert({
+    await supabase.from('questionnaire_responses').upsert(
+      {
         user_id: user.id,
-        unit_system: newSystem
-      }, {
-        onConflict: 'user_id'
-      });
+        unit_system: newSystem,
+      },
+      {
+        onConflict: 'user_id',
+      }
+    );
   };
 
-  const sections: Array<{ id: QuestionnaireSection; name: string; locked?: boolean }> = [
-    { id: 'categories', name: 'Categories' },
-    { id: 'personal_info', name: 'Personal Info' },
-    { id: 'medical_history', name: 'Medical History' },
-    { id: 'medications', name: 'Medications' },
-    { id: 'allergies', name: 'Allergies' },
-    { id: 'vital_signs', name: 'Vital Signs' },
-    { id: 'lifestyle', name: 'Lifestyle' },
-    { id: 'psychological_health', name: 'Psychological Health' },
-    { id: 'mens_sexual_health', name: "Men's Sexual Health", locked: !mensSexualHealthUnlocked },
-    { id: 'womens_sexual_health', name: "Women's Sexual Health", locked: !womensSexualHealthUnlocked }
-  ];
+  const isSectionLocked = (id: QuestionnaireSection): boolean => {
+    if (id === 'mens_sexual_health') return !mensSexualHealthUnlocked;
+    if (id === 'womens_sexual_health') return !womensSexualHealthUnlocked;
+    return false;
+  };
 
   const getSectionProgress = (section: QuestionnaireSection): number => {
     const data = responses[section];
     const keys = Object.keys(data);
     if (keys.length === 0) return 0;
 
-    const filled = keys.filter(key => data[key] !== '' && data[key] !== null && data[key] !== undefined).length;
+    const filled = keys.filter((key) => {
+      const value = data[key];
+      if (Array.isArray(value)) return value.length > 0;
+      return value !== '' && value !== null && value !== undefined;
+    }).length;
     return Math.round((filled / keys.length) * 100);
   };
 
+  const unlockedSections = SECTION_IDS.filter((id) => !isSectionLocked(id));
+  const completedCount = unlockedSections.filter((id) => statuses[id] === 'complete').length;
+  const inProgressCount = unlockedSections.filter(
+    (id) => statuses[id] !== 'complete' && getSectionProgress(id) > 0
+  ).length;
+  const overallProgress =
+    unlockedSections.length === 0
+      ? 0
+      : Math.round(
+          unlockedSections.reduce((sum, id) => sum + getSectionProgress(id), 0) /
+            unlockedSections.length
+        );
+
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-gray-400">Loading questionnaires...</div>
+      <StateCard
+        title={t('member.questionnaires.loading')}
+        icon={<Loader2 className="h-8 w-8 animate-spin" />}
+      />
+    );
+  }
+
+  if (loadError) {
+    return (
+      <div className="space-y-4">
+        <ErrorBanner message={t('member.questionnaires.loadError')} />
+        <button
+          type="button"
+          onClick={loadQuestionnaire}
+          className="px-5 py-2.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white text-sm font-medium transition-colors"
+        >
+          {t('member.questionnaires.retry')}
+        </button>
       </div>
     );
   }
 
-  return (
-    <div>
-      <ReportBrandHeader
-        title="BioMath Core"
-        subtitle="Health Questionnaires"
-        variant="strip"
-        className="mb-6"
-      />
+  const currentLocked = isSectionLocked(currentSection);
+  const currentStatus = statuses[currentSection];
+  const currentProgress = getSectionProgress(currentSection);
 
-      <div className="flex flex-col lg:flex-row gap-6 h-full">
-        {/* Sidebar */}
-        <div className="lg:w-64 flex-shrink-0">
-        <div className="member-card p-4 sticky top-4 shadow-lg">
-          <ReportBrandHeader variant="strip" subtitle="Settings & Sections" className="mb-4" />
-          <div className="mb-4 pb-4 border-b border-slate-200 dark:border-[var(--bm-border)]">
-            <h3 className="font-semibold text-gray-900 dark:text-neutral-50 mb-3">{t('member.questionnaires.settings')}</h3>
+  return (
+    <div className="space-y-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <MemberMetricCard
+          accent="emerald"
+          icon={<Check className="h-5 w-5" />}
+          value={`${completedCount}/${unlockedSections.length}`}
+          label={t('member.questionnaires.completed')}
+        />
+        <MemberMetricCard
+          accent="orange"
+          icon={<CircleDot className="h-5 w-5" />}
+          value={String(inProgressCount)}
+          label={t('member.questionnaires.inProgress')}
+        />
+        <MemberMetricCard
+          accent="blue"
+          icon={<ClipboardList className="h-5 w-5" />}
+          value={`${overallProgress}%`}
+          label={t('member.questionnaires.overallProgress')}
+        />
+        <MemberMetricCard
+          accent="amber"
+          icon={<Save className="h-5 w-5" />}
+          value={
+            autoSaveError
+              ? t('member.questionnaires.saveErrorShort')
+              : lastSaved
+                ? lastSaved.toLocaleTimeString(i18n.language)
+                : '—'
+          }
+          label={
+            autoSaveError
+              ? t('member.questionnaires.autoSaveFailed')
+              : lastSaved
+                ? t('member.questionnaires.savedAt', {
+                    time: lastSaved.toLocaleTimeString(i18n.language),
+                  })
+                : t('member.questionnaires.notSavedYet')
+          }
+        />
+      </div>
+
+      <div className="member-card rounded-xl p-4">
+        <div className="flex items-center justify-between gap-3 mb-2">
+          <p className="text-sm font-medium member-heading">
+            {t('member.questionnaires.overallProgress')}
+          </p>
+          <span className="text-sm tabular-nums member-muted">{overallProgress}%</span>
+        </div>
+        <div className="h-2 rounded-full bg-[var(--bm-surface)] dark:bg-[var(--bm-inset)] overflow-hidden">
+          <div
+            className="h-full rounded-full bg-orange-500 transition-all duration-500"
+            style={{ width: `${overallProgress}%` }}
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col lg:flex-row gap-6">
+        <aside className="lg:w-72 flex-shrink-0">
+          <div className="member-card rounded-xl p-4 sticky top-4">
+            <h3 className="text-sm font-semibold member-heading mb-3">
+              {t('member.questionnaires.settings')}
+            </h3>
 
             <button
+              type="button"
               onClick={toggleUnitSystem}
-              className="w-full flex items-center justify-between p-2 bg-slate-50 border border-slate-200 dark:border-[var(--bm-border)] rounded-lg hover:border-orange-300 transition-colors mb-2"
+              className="w-full flex items-center justify-between p-2.5 member-inset rounded-lg hover:border-orange-300 transition-colors mb-2"
             >
-              <div className="flex items-center space-x-2">
-                <Ruler className="h-4 w-4 text-gray-500 dark:text-neutral-400" />
-                <span className="text-sm text-gray-600 dark:text-neutral-300">Units</span>
+              <div className="flex items-center gap-2">
+                <Ruler className="h-4 w-4 member-muted" />
+                <span className="text-sm member-body">{t('member.questionnaires.units')}</span>
               </div>
-              <span className="text-sm font-medium text-orange-500">
-                {unitSystem === 'metric' ? 'Metric' : 'Imperial'}
+              <span className="text-sm font-medium text-orange-600 dark:text-orange-400">
+                {unitSystem === 'metric'
+                  ? t('member.questionnaires.metric')
+                  : t('member.questionnaires.imperial')}
               </span>
             </button>
 
-            <div className="flex items-center justify-between p-2 bg-slate-50 border border-slate-200 dark:border-[var(--bm-border)] rounded-lg">
-              <div className="flex items-center space-x-2">
-                <Globe className="h-4 w-4 text-gray-500 dark:text-neutral-400" />
-                <span className="text-sm text-gray-600 dark:text-neutral-300">Language</span>
+            <div className="flex items-center justify-between p-2.5 member-inset rounded-lg mb-4">
+              <div className="flex items-center gap-2">
+                <Globe className="h-4 w-4 member-muted" />
+                <span className="text-sm member-body">{t('member.questionnaires.language')}</span>
               </div>
-              <span className="text-sm font-medium text-orange-500">
-                {language.toUpperCase()}
+              <span className="text-sm font-medium text-orange-600 dark:text-orange-400">
+                {(i18n.language || 'en').slice(0, 2).toUpperCase()}
               </span>
             </div>
 
-            {lastSaved && (
-              <div className="mt-3 flex items-center space-x-2 text-xs text-gray-500 dark:text-neutral-300">
-                <Save className="h-3 w-3" />
-                <span>Saved {lastSaved.toLocaleTimeString()}</span>
-              </div>
-            )}
             {autoSaveError && (
-              <div className="mt-3 flex items-center space-x-2 text-xs text-red-500">
-                <Save className="h-3 w-3" />
-                <span>Auto-save failed. Please try again.</span>
+              <ErrorBanner message={t('member.questionnaires.autoSaveFailed')} className="mb-4" />
+            )}
+
+            <h3 className="text-sm font-semibold member-heading mb-2">
+              {t('member.questionnaires.sections')}
+            </h3>
+
+            <div className="space-y-4">
+              {SECTION_GROUPS.map((group) => (
+                <div key={group.id}>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] member-muted mb-1.5 px-1">
+                    {t(`member.questionnaires.groups.${group.id}`)}
+                  </p>
+                  <div className="space-y-1">
+                    {group.sections.map((id) => {
+                      const locked = isSectionLocked(id);
+                      const status = statuses[id];
+                      const progress = getSectionProgress(id);
+                      const active = currentSection === id;
+
+                      return (
+                        <button
+                          key={id}
+                          type="button"
+                          onClick={() => !locked && setCurrentSection(id)}
+                          disabled={locked}
+                          className={`w-full flex items-center justify-between gap-2 p-2.5 rounded-lg transition-colors text-left border ${
+                            active
+                              ? 'bg-orange-50 dark:bg-orange-500/10 border-orange-200 dark:border-orange-500/30 text-orange-700 dark:text-orange-300'
+                              : locked
+                                ? 'member-inset member-muted cursor-not-allowed opacity-70'
+                                : 'border-transparent hover:bg-[var(--bm-surface)] member-body'
+                          }`}
+                        >
+                          <div className="flex items-center gap-2 min-w-0">
+                            {locked ? (
+                              <Lock className="h-4 w-4 flex-shrink-0" />
+                            ) : status === 'complete' ? (
+                              <Check className="h-4 w-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+                            ) : (
+                              <span className="w-4 h-4 rounded-full border-2 border-current flex-shrink-0 opacity-60" />
+                            )}
+                            <span className="text-sm font-medium truncate">
+                              {t(`member.questionnaires.section.${id}`)}
+                            </span>
+                          </div>
+                          {!locked && progress > 0 && (
+                            <span className="text-xs tabular-nums flex-shrink-0">{progress}%</span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </aside>
+
+        <div className="flex-1 min-w-0">
+          <div className="member-card rounded-xl p-5 sm:p-6 shadow-sm">
+            <div className="flex flex-wrap items-start justify-between gap-3 mb-6 pb-5 border-b border-[var(--bm-border)]">
+              <div>
+                <h2 className="text-xl sm:text-2xl font-semibold member-heading">
+                  {t(`member.questionnaires.section.${currentSection}`)}
+                </h2>
+                <p className="mt-1 text-sm member-body max-w-2xl">
+                  {t(`member.questionnaires.sectionDesc.${currentSection}`)}
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                {currentLocked ? (
+                  <StatusPill tone="locked">{t('member.questionnaires.statusLocked')}</StatusPill>
+                ) : currentStatus === 'complete' ? (
+                  <StatusPill tone="complete">{t('member.questionnaires.statusComplete')}</StatusPill>
+                ) : (
+                  <StatusPill tone="draft">{t('member.questionnaires.statusDraft')}</StatusPill>
+                )}
+                {!currentLocked && (
+                  <span className="text-xs tabular-nums member-muted">{currentProgress}%</span>
+                )}
+              </div>
+            </div>
+
+            {!currentLocked && currentProgress > 0 && (
+              <div className="mb-6 h-1.5 rounded-full bg-[var(--bm-surface)] dark:bg-[var(--bm-inset)] overflow-hidden">
+                <div
+                  className={`h-full rounded-full transition-all duration-500 ${
+                    currentStatus === 'complete' ? 'bg-emerald-500' : 'bg-orange-500'
+                  }`}
+                  style={{ width: `${currentProgress}%` }}
+                />
               </div>
             )}
-          </div>
 
-          <div className="space-y-1">
-            {sections.map((section) => {
-              const status = statuses[section.id];
-              const progress = getSectionProgress(section.id);
-
-              return (
-                <button
-                  key={section.id}
-                  onClick={() => !section.locked && setCurrentSection(section.id)}
-                  disabled={section.locked}
-                  className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors text-left ${
-                    currentSection === section.id
-                      ? 'bg-orange-50 border border-orange-200 text-orange-700'
-                      : section.locked
-                      ? 'bg-slate-50 border border-slate-200 dark:border-[var(--bm-border)] text-gray-400 cursor-not-allowed'
-                      : 'hover:bg-slate-50 text-gray-700 dark:text-neutral-200'
-                  }`}
-                >
-                  <div className="flex items-center space-x-2 flex-1">
-                    {section.locked ? (
-                      <Lock className="h-4 w-4 flex-shrink-0" />
-                    ) : status === 'complete' ? (
-                      <Check className="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0" />
-                    ) : (
-                      <div className="w-4 h-4 rounded-full border-2 border-current flex-shrink-0" />
-                    )}
-                    <span className="text-sm font-medium truncate">{section.name}</span>
-                  </div>
-                  {!section.locked && progress > 0 && (
-                    <span className="text-xs ml-2">{progress}%</span>
-                  )}
-                </button>
-              );
-            })}
+            {currentSection === 'categories' && (
+              <CategoriesForm
+                data={responses.categories}
+                onChange={createSectionChangeHandler('categories')}
+              />
+            )}
+            {currentSection === 'personal_info' && (
+              <PersonalInfoForm
+                data={responses.personal_info}
+                onChange={createSectionChangeHandler('personal_info')}
+                unitSystem={unitSystem}
+              />
+            )}
+            {currentSection === 'medical_history' && (
+              <MedicalHistoryForm
+                data={responses.medical_history}
+                onChange={createSectionChangeHandler('medical_history')}
+              />
+            )}
+            {currentSection === 'medications' && (
+              <MedicationsForm
+                data={responses.medications}
+                onChange={createSectionChangeHandler('medications')}
+              />
+            )}
+            {currentSection === 'allergies' && (
+              <AllergiesForm
+                data={responses.allergies}
+                onChange={createSectionChangeHandler('allergies')}
+              />
+            )}
+            {currentSection === 'vital_signs' && (
+              <VitalSignsForm
+                data={responses.vital_signs}
+                onChange={createSectionChangeHandler('vital_signs')}
+                unitSystem={unitSystem}
+              />
+            )}
+            {currentSection === 'lifestyle' && (
+              <LifestyleForm
+                data={responses.lifestyle}
+                onChange={createSectionChangeHandler('lifestyle')}
+              />
+            )}
+            {currentSection === 'psychological_health' && (
+              <PsychologicalHealthForm
+                data={responses.psychological_health}
+                onChange={createSectionChangeHandler('psychological_health')}
+              />
+            )}
+            {currentSection === 'mens_sexual_health' &&
+              (mensSexualHealthUnlocked ? (
+                <MensSexualHealthForm
+                  data={responses.mens_sexual_health}
+                  onChange={createSectionChangeHandler('mens_sexual_health')}
+                />
+              ) : (
+                <LockedSectionMessage
+                  sectionKey="mens_sexual_health"
+                  onActivate={() => onNavigateSection?.('catalog')}
+                />
+              ))}
+            {currentSection === 'womens_sexual_health' &&
+              (womensSexualHealthUnlocked ? (
+                <WomensSexualHealthForm
+                  data={responses.womens_sexual_health}
+                  onChange={createSectionChangeHandler('womens_sexual_health')}
+                />
+              ) : (
+                <LockedSectionMessage
+                  sectionKey="womens_sexual_health"
+                  onActivate={() => onNavigateSection?.('catalog')}
+                />
+              ))}
           </div>
         </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1">
-        <div className="member-card p-6 shadow-lg">
-          <ReportBrandHeader variant="strip" subtitle="Questionnaire Form" className="mb-4" />
-          {currentSection === 'categories' && (
-            <CategoriesForm
-              data={responses.categories}
-              onChange={createSectionChangeHandler('categories')}
-              unitSystem={unitSystem}
-            />
-          )}
-          {currentSection === 'personal_info' && (
-            <PersonalInfoForm
-              data={responses.personal_info}
-              onChange={createSectionChangeHandler('personal_info')}
-              unitSystem={unitSystem}
-            />
-          )}
-          {currentSection === 'medical_history' && (
-            <MedicalHistoryForm
-              data={responses.medical_history}
-              onChange={createSectionChangeHandler('medical_history')}
-            />
-          )}
-          {currentSection === 'medications' && (
-            <MedicationsForm
-              data={responses.medications}
-              onChange={createSectionChangeHandler('medications')}
-            />
-          )}
-          {currentSection === 'allergies' && (
-            <AllergiesForm
-              data={responses.allergies}
-              onChange={createSectionChangeHandler('allergies')}
-            />
-          )}
-          {currentSection === 'vital_signs' && (
-            <VitalSignsForm
-              data={responses.vital_signs}
-              onChange={createSectionChangeHandler('vital_signs')}
-              unitSystem={unitSystem}
-            />
-          )}
-          {currentSection === 'lifestyle' && (
-            <LifestyleForm
-              data={responses.lifestyle}
-              onChange={createSectionChangeHandler('lifestyle')}
-            />
-          )}
-          {currentSection === 'psychological_health' && (
-            <PsychologicalHealthForm
-              data={responses.psychological_health}
-              onChange={createSectionChangeHandler('psychological_health')}
-            />
-          )}
-          {currentSection === 'mens_sexual_health' && (
-            mensSexualHealthUnlocked ? (
-              <MensSexualHealthForm
-                data={responses.mens_sexual_health}
-                onChange={createSectionChangeHandler('mens_sexual_health')}
-              />
-            ) : (
-              <LockedSectionMessage section="Men's Sexual Health" />
-            )
-          )}
-          {currentSection === 'womens_sexual_health' && (
-            womensSexualHealthUnlocked ? (
-              <WomensSexualHealthForm
-                data={responses.womens_sexual_health}
-                onChange={createSectionChangeHandler('womens_sexual_health')}
-              />
-            ) : (
-              <LockedSectionMessage section="Women's Sexual Health" />
-            )
-          )}
-        </div>
-      </div>
       </div>
     </div>
   );
 }
 
-// Form Components
-function CategoriesForm({ data, onChange }: any) {
-  const healthAreas = [
-    'Sleep & Recovery', 'Energy & Fatigue', 'Nutrition', 'Stress Management',
-    'Hormones', 'Prevention', 'Performance', 'Mental Wellness', 'Longevity'
-  ];
+function StatusPill({
+  tone,
+  children,
+}: {
+  tone: 'complete' | 'draft' | 'locked';
+  children: ReactNode;
+}) {
+  const tones = {
+    complete:
+      'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-300 dark:border-emerald-500/30',
+    draft:
+      'bg-amber-50 text-amber-800 border-amber-200 dark:bg-amber-500/10 dark:text-amber-300 dark:border-amber-500/30',
+    locked:
+      'bg-[var(--bm-surface)] member-muted border-[var(--bm-border)]',
+  };
+  return (
+    <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium border ${tones[tone]}`}>
+      {children}
+    </span>
+  );
+}
+
+function FieldLabel({ children, required }: { children: ReactNode; required?: boolean }) {
+  const { t } = useTranslation();
+  return (
+    <label className="block text-sm font-medium member-heading mb-2">
+      {children}
+      {required ? (
+        <span className="text-red-500 ms-1" title={t('member.questionnaires.required')}>
+          *
+        </span>
+      ) : null}
+    </label>
+  );
+}
+
+function YesNo({
+  value,
+  onChange,
+}: {
+  value: unknown;
+  onChange: (next: boolean) => void;
+}) {
+  const { t } = useTranslation();
+  return (
+    <div className="flex flex-wrap gap-3">
+      {[true, false].map((option) => {
+        const selected = value === option;
+        return (
+          <label
+            key={String(option)}
+            className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border cursor-pointer transition-colors ${
+              selected
+                ? 'border-orange-300 bg-orange-50 dark:bg-orange-500/10 dark:border-orange-500/40'
+                : 'member-inset hover:border-orange-300'
+            }`}
+          >
+            <input
+              type="radio"
+              checked={selected}
+              onChange={() => onChange(option)}
+              className="accent-orange-600"
+            />
+            <span className="text-sm member-heading">
+              {option ? t('member.questionnaires.yes') : t('member.questionnaires.no')}
+            </span>
+          </label>
+        );
+      })}
+    </div>
+  );
+}
+
+function CategoriesForm({ data, onChange }: FormProps) {
+  const { t } = useTranslation();
+  const selected = Array.isArray(data.primary_health_areas)
+    ? (data.primary_health_areas as string[])
+    : [];
 
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-neutral-50 mb-2">Categories</h2>
-        <p className="text-gray-600 dark:text-neutral-300">Tell us which health areas are most important to you</p>
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">
-          Which areas of health are most important for you right now? <span className="text-red-500">*</span>
-        </label>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {healthAreas.map(area => (
-            <label key={area} className="flex items-center space-x-2 p-3 bg-slate-50 border border-slate-200 dark:border-[var(--bm-border)] rounded-lg cursor-pointer hover:border-orange-300">
-              <input
-                type="checkbox"
-                checked={(data.primary_health_areas || []).includes(area)}
-                onChange={(e) => {
-                  const current = data.primary_health_areas || [];
-                  onChange('primary_health_areas',
-                    e.target.checked
-                      ? [...current, area]
-                      : current.filter((a: string) => a !== area)
-                  );
-                }}
-                className="rounded border-gray-300"
-              />
-              <span className="text-sm text-gray-900 dark:text-neutral-50">{area}</span>
-            </label>
-          ))}
+        <FieldLabel required>{t('member.questionnaires.categories.areasLabel')}</FieldLabel>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
+          {HEALTH_AREAS.map((area) => {
+            const checked = selected.includes(area.value);
+            return (
+              <label
+                key={area.value}
+                className={`flex items-center gap-2.5 p-3 rounded-lg border cursor-pointer transition-colors ${
+                  checked
+                    ? 'border-orange-300 bg-orange-50 dark:bg-orange-500/10 dark:border-orange-500/40'
+                    : 'member-inset hover:border-orange-300'
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  checked={checked}
+                  onChange={(e) => {
+                    onChange(
+                      'primary_health_areas',
+                      e.target.checked
+                        ? [...selected, area.value]
+                        : selected.filter((a) => a !== area.value)
+                    );
+                  }}
+                  className="rounded border-slate-300 accent-orange-600"
+                />
+                <span className="text-sm member-heading">
+                  {t(`member.questionnaires.areas.${area.key}`)}
+                </span>
+              </label>
+            );
+          })}
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">
-          What is your primary health priority? <span className="text-red-500">*</span>
-        </label>
+        <FieldLabel required>{t('member.questionnaires.categories.priorityLabel')}</FieldLabel>
         <select
-          value={data.primary_priority || ''}
+          value={String(data.primary_priority || '')}
           onChange={(e) => onChange('primary_priority', e.target.value)}
           className="member-input"
         >
-          <option value="">Select priority...</option>
-          <option value="prevention">Prevention</option>
-          <option value="improvement">Improvement</option>
-          <option value="maintenance">Maintenance</option>
-          <option value="recovery">Recovery</option>
+          <option value="">{t('member.questionnaires.select')}</option>
+          <option value="prevention">{t('member.questionnaires.priorities.prevention')}</option>
+          <option value="improvement">{t('member.questionnaires.priorities.improvement')}</option>
+          <option value="maintenance">{t('member.questionnaires.priorities.maintenance')}</option>
+          <option value="recovery">{t('member.questionnaires.priorities.recovery')}</option>
         </select>
       </div>
     </div>
   );
 }
 
-function PersonalInfoForm({ data, onChange, unitSystem }: any) {
+function PersonalInfoForm({ data, onChange, unitSystem }: FormProps) {
+  const { t } = useTranslation();
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-neutral-50 mb-2">Personal Information</h2>
-        <p className="text-gray-400">Help us personalize your experience</p>
-      </div>
-
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Full Name <span className="text-red-500">*</span>
-          </label>
+          <FieldLabel required>{t('member.questionnaires.personalInfo.fullName')}</FieldLabel>
           <input
             type="text"
-            value={data.full_name || ''}
+            value={String(data.full_name || '')}
             onChange={(e) => onChange('full_name', e.target.value)}
             className="member-input"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Biological Sex <span className="text-red-500">*</span>
-          </label>
+          <FieldLabel required>{t('member.questionnaires.personalInfo.biologicalSex')}</FieldLabel>
           <select
-            value={data.biological_sex || ''}
+            value={String(data.biological_sex || '')}
             onChange={(e) => onChange('biological_sex', e.target.value)}
             className="member-input"
           >
-            <option value="">Select...</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+            <option value="">{t('member.questionnaires.select')}</option>
+            <option value="male">{t('member.questionnaires.personalInfo.male')}</option>
+            <option value="female">{t('member.questionnaires.personalInfo.female')}</option>
           </select>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Date of Birth <span className="text-red-500">*</span>
-          </label>
+          <FieldLabel required>{t('member.questionnaires.personalInfo.dateOfBirth')}</FieldLabel>
           <input
             type="date"
-            value={data.date_of_birth || ''}
+            value={String(data.date_of_birth || '')}
             onChange={(e) => onChange('date_of_birth', e.target.value)}
             className="member-input"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Country <span className="text-red-500">*</span>
-          </label>
+          <FieldLabel required>{t('member.questionnaires.personalInfo.country')}</FieldLabel>
           <input
             type="text"
-            value={data.country || ''}
+            value={String(data.country || '')}
             onChange={(e) => onChange('country', e.target.value)}
             className="member-input"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Height ({unitSystem === 'metric' ? 'cm' : 'inches'}) <span className="text-red-500">*</span>
-          </label>
+          <FieldLabel required>
+            {t('member.questionnaires.personalInfo.height', {
+              unit: unitSystem === 'metric' ? 'cm' : 'in',
+            })}
+          </FieldLabel>
           <input
             type="number"
-            value={data.height || ''}
+            value={String(data.height || '')}
             onChange={(e) => onChange('height', e.target.value)}
             className="member-input"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Weight ({unitSystem === 'metric' ? 'kg' : 'lbs'}) <span className="text-red-500">*</span>
-          </label>
+          <FieldLabel required>
+            {t('member.questionnaires.personalInfo.weight', {
+              unit: unitSystem === 'metric' ? 'kg' : 'lbs',
+            })}
+          </FieldLabel>
           <input
             type="number"
-            value={data.weight || ''}
+            value={String(data.weight || '')}
             onChange={(e) => onChange('weight', e.target.value)}
             className="member-input"
           />
         </div>
+
+        <div className="md:col-span-2">
+          <FieldLabel required>{t('member.questionnaires.personalInfo.primaryLanguage')}</FieldLabel>
+          <input
+            type="text"
+            value={String(data.primary_language || '')}
+            onChange={(e) => onChange('primary_language', e.target.value)}
+            className="member-input"
+            placeholder={t('member.questionnaires.personalInfo.primaryLanguagePlaceholder')}
+          />
+        </div>
       </div>
     </div>
   );
 }
 
-function MedicalHistoryForm({ data, onChange }: any) {
+function MedicalHistoryForm({ data, onChange }: FormProps) {
+  const { t } = useTranslation();
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-neutral-50 mb-2">Medical History</h2>
-        <p className="text-gray-400">Your medical background helps us provide better insights</p>
+        <FieldLabel required>{t('member.questionnaires.medicalHistory.hasConditions')}</FieldLabel>
+        <YesNo
+          value={data.has_diagnosed_conditions}
+          onChange={(next) => onChange('has_diagnosed_conditions', next)}
+        />
       </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">
-          Do you currently have any diagnosed medical conditions? <span className="text-red-500">*</span>
-        </label>
-        <div className="flex space-x-4">
-          <label className="flex items-center space-x-2">
-            <input
-              type="radio"
-              checked={data.has_diagnosed_conditions === true}
-              onChange={() => onChange('has_diagnosed_conditions', true)}
-              className="text-blue-600"
-            />
-            <span>Yes</span>
-          </label>
-          <label className="flex items-center space-x-2">
-            <input
-              type="radio"
-              checked={data.has_diagnosed_conditions === false}
-              onChange={() => onChange('has_diagnosed_conditions', false)}
-              className="text-blue-600"
-            />
-            <span>No</span>
-          </label>
-        </div>
-      </div>
-
-      {data.has_diagnosed_conditions && (
+      {data.has_diagnosed_conditions === true && (
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Which conditions?
-          </label>
+          <FieldLabel>{t('member.questionnaires.medicalHistory.conditionsList')}</FieldLabel>
           <textarea
-            value={data.conditions_list || ''}
+            value={String(data.conditions_list || '')}
             onChange={(e) => onChange('conditions_list', e.target.value)}
             rows={4}
             className="member-input"
-            placeholder="List your conditions..."
+            placeholder={t('member.questionnaires.medicalHistory.conditionsPlaceholder')}
           />
         </div>
       )}
@@ -600,51 +865,27 @@ function MedicalHistoryForm({ data, onChange }: any) {
   );
 }
 
-function MedicationsForm({ data, onChange }: any) {
+function MedicationsForm({ data, onChange }: FormProps) {
+  const { t } = useTranslation();
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-neutral-50 mb-2">Medications</h2>
-        <p className="text-gray-400">Current medications and supplements</p>
+        <FieldLabel required>{t('member.questionnaires.medications.taking')}</FieldLabel>
+        <YesNo
+          value={data.taking_medications}
+          onChange={(next) => onChange('taking_medications', next)}
+        />
       </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">
-          Are you currently taking any prescription medications? <span className="text-red-500">*</span>
-        </label>
-        <div className="flex space-x-4">
-          <label className="flex items-center space-x-2">
-            <input
-              type="radio"
-              checked={data.taking_medications === true}
-              onChange={() => onChange('taking_medications', true)}
-              className="text-blue-600"
-            />
-            <span>Yes</span>
-          </label>
-          <label className="flex items-center space-x-2">
-            <input
-              type="radio"
-              checked={data.taking_medications === false}
-              onChange={() => onChange('taking_medications', false)}
-              className="text-blue-600"
-            />
-            <span>No</span>
-          </label>
-        </div>
-      </div>
-
-      {data.taking_medications && (
+      {data.taking_medications === true && (
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            List medications
-          </label>
+          <FieldLabel>{t('member.questionnaires.medications.list')}</FieldLabel>
           <textarea
-            value={data.medications_list || ''}
+            value={String(data.medications_list || '')}
             onChange={(e) => onChange('medications_list', e.target.value)}
             rows={4}
             className="member-input"
-            placeholder="Medication name, dosage, frequency..."
+            placeholder={t('member.questionnaires.medications.placeholder')}
           />
         </div>
       )}
@@ -652,51 +893,24 @@ function MedicationsForm({ data, onChange }: any) {
   );
 }
 
-function AllergiesForm({ data, onChange }: any) {
+function AllergiesForm({ data, onChange }: FormProps) {
+  const { t } = useTranslation();
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-neutral-50 mb-2">Allergies</h2>
-        <p className="text-gray-400">Known allergies and reactions</p>
+        <FieldLabel required>{t('member.questionnaires.allergies.has')}</FieldLabel>
+        <YesNo value={data.has_allergies} onChange={(next) => onChange('has_allergies', next)} />
       </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">
-          Do you have any known allergies? <span className="text-red-500">*</span>
-        </label>
-        <div className="flex space-x-4">
-          <label className="flex items-center space-x-2">
-            <input
-              type="radio"
-              checked={data.has_allergies === true}
-              onChange={() => onChange('has_allergies', true)}
-              className="text-blue-600"
-            />
-            <span>Yes</span>
-          </label>
-          <label className="flex items-center space-x-2">
-            <input
-              type="radio"
-              checked={data.has_allergies === false}
-              onChange={() => onChange('has_allergies', false)}
-              className="text-blue-600"
-            />
-            <span>No</span>
-          </label>
-        </div>
-      </div>
-
-      {data.has_allergies && (
+      {data.has_allergies === true && (
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Describe your allergies
-          </label>
+          <FieldLabel>{t('member.questionnaires.allergies.list')}</FieldLabel>
           <textarea
-            value={data.allergies_list || ''}
+            value={String(data.allergies_list || '')}
             onChange={(e) => onChange('allergies_list', e.target.value)}
             rows={4}
             className="member-input"
-            placeholder="Type of allergy, severity, reactions..."
+            placeholder={t('member.questionnaires.allergies.placeholder')}
           />
         </div>
       )}
@@ -704,36 +918,28 @@ function AllergiesForm({ data, onChange }: any) {
   );
 }
 
-function VitalSignsForm({ data, onChange, unitSystem }: any) {
+function VitalSignsForm({ data, onChange }: FormProps) {
+  const { t } = useTranslation();
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-neutral-50 mb-2">Vital Signs</h2>
-        <p className="text-gray-400">Recent measurements (all optional)</p>
-      </div>
-
+      <p className="text-sm member-muted">{t('member.questionnaires.vitalSigns.optionalNote')}</p>
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Resting Heart Rate (bpm)
-          </label>
+          <FieldLabel>{t('member.questionnaires.vitalSigns.restingHeartRate')}</FieldLabel>
           <input
             type="number"
-            value={data.resting_heart_rate || ''}
+            value={String(data.resting_heart_rate || '')}
             onChange={(e) => onChange('resting_heart_rate', e.target.value)}
             className="member-input"
           />
         </div>
-
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Blood Pressure ({unitSystem === 'metric' ? 'mmHg' : 'mmHg'})
-          </label>
+          <FieldLabel>{t('member.questionnaires.vitalSigns.bloodPressure')}</FieldLabel>
           <input
             type="text"
-            value={data.blood_pressure || ''}
+            value={String(data.blood_pressure || '')}
             onChange={(e) => onChange('blood_pressure', e.target.value)}
-            placeholder="120/80"
+            placeholder={t('member.questionnaires.vitalSigns.bloodPressurePlaceholder')}
             className="member-input"
           />
         </div>
@@ -742,68 +948,58 @@ function VitalSignsForm({ data, onChange, unitSystem }: any) {
   );
 }
 
-function LifestyleForm({ data, onChange }: any) {
+function LifestyleForm({ data, onChange }: FormProps) {
+  const { t } = useTranslation();
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-neutral-50 mb-2">Lifestyle</h2>
-        <p className="text-gray-400">Daily habits and routines</p>
-      </div>
-
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Smoking Status
-          </label>
+          <FieldLabel>{t('member.questionnaires.lifestyle.smoking')}</FieldLabel>
           <select
-            value={data.smoking_status || ''}
+            value={String(data.smoking_status || '')}
             onChange={(e) => onChange('smoking_status', e.target.value)}
             className="member-input"
           >
-            <option value="">Select...</option>
-            <option value="never">Never</option>
-            <option value="former">Former</option>
-            <option value="current">Current</option>
+            <option value="">{t('member.questionnaires.select')}</option>
+            <option value="never">{t('member.questionnaires.lifestyle.smokingNever')}</option>
+            <option value="former">{t('member.questionnaires.lifestyle.smokingFormer')}</option>
+            <option value="current">{t('member.questionnaires.lifestyle.smokingCurrent')}</option>
           </select>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Alcohol Consumption
-          </label>
+          <FieldLabel>{t('member.questionnaires.lifestyle.alcohol')}</FieldLabel>
           <select
-            value={data.alcohol_consumption || ''}
+            value={String(data.alcohol_consumption || '')}
             onChange={(e) => onChange('alcohol_consumption', e.target.value)}
             className="member-input"
           >
-            <option value="">Select...</option>
-            <option value="none">None</option>
-            <option value="occasional">Occasional</option>
-            <option value="moderate">Moderate</option>
-            <option value="frequent">Frequent</option>
+            <option value="">{t('member.questionnaires.select')}</option>
+            <option value="none">{t('member.questionnaires.lifestyle.alcoholNone')}</option>
+            <option value="occasional">
+              {t('member.questionnaires.lifestyle.alcoholOccasional')}
+            </option>
+            <option value="moderate">{t('member.questionnaires.lifestyle.alcoholModerate')}</option>
+            <option value="frequent">{t('member.questionnaires.lifestyle.alcoholFrequent')}</option>
           </select>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Exercise Frequency (per week)
-          </label>
+          <FieldLabel>{t('member.questionnaires.lifestyle.exercise')}</FieldLabel>
           <input
             type="number"
-            value={data.exercise_frequency || ''}
+            value={String(data.exercise_frequency || '')}
             onChange={(e) => onChange('exercise_frequency', e.target.value)}
             className="member-input"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Sleep Duration (hours per night)
-          </label>
+          <FieldLabel>{t('member.questionnaires.lifestyle.sleep')}</FieldLabel>
           <input
             type="number"
             step="0.5"
-            value={data.sleep_duration || ''}
+            value={String(data.sleep_duration || '')}
             onChange={(e) => onChange('sleep_duration', e.target.value)}
             className="member-input"
           />
@@ -813,203 +1009,140 @@ function LifestyleForm({ data, onChange }: any) {
   );
 }
 
-function PsychologicalHealthForm({ data, onChange }: any) {
+function PsychologicalHealthForm({ data, onChange }: FormProps) {
+  const { t } = useTranslation();
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-neutral-50 mb-2">Psychological Health</h2>
-        <p className="text-gray-400">Mental and emotional wellbeing</p>
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">
-          How would you describe your current mood stability?
-        </label>
+        <FieldLabel>{t('member.questionnaires.psychological.mood')}</FieldLabel>
         <select
-          value={data.mood_stability || ''}
+          value={String(data.mood_stability || '')}
           onChange={(e) => onChange('mood_stability', e.target.value)}
-          className="w-full px-4 py-2 border border-slate-200 dark:border-[var(--bm-border)] rounded-lg bg-white dark:bg-[var(--bm-surface)]"
+          className="member-input"
         >
-          <option value="">Select...</option>
-          <option value="very_stable">Very Stable</option>
-          <option value="mostly_stable">Mostly Stable</option>
-          <option value="somewhat_variable">Somewhat Variable</option>
-          <option value="quite_variable">Quite Variable</option>
+          <option value="">{t('member.questionnaires.select')}</option>
+          <option value="very_stable">{t('member.questionnaires.psychological.moodVeryStable')}</option>
+          <option value="mostly_stable">
+            {t('member.questionnaires.psychological.moodMostlyStable')}
+          </option>
+          <option value="somewhat_variable">
+            {t('member.questionnaires.psychological.moodSomewhatVariable')}
+          </option>
+          <option value="quite_variable">
+            {t('member.questionnaires.psychological.moodQuiteVariable')}
+          </option>
         </select>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">
-          Do you experience prolonged stress?
-        </label>
-        <div className="flex space-x-4">
-          <label className="flex items-center space-x-2">
-            <input
-              type="radio"
-              checked={data.prolonged_stress === true}
-              onChange={() => onChange('prolonged_stress', true)}
-              className="text-blue-600"
-            />
-            <span>Yes</span>
-          </label>
-          <label className="flex items-center space-x-2">
-            <input
-              type="radio"
-              checked={data.prolonged_stress === false}
-              onChange={() => onChange('prolonged_stress', false)}
-              className="text-blue-600"
-            />
-            <span>No</span>
-          </label>
-        </div>
+        <FieldLabel>{t('member.questionnaires.psychological.stress')}</FieldLabel>
+        <YesNo
+          value={data.prolonged_stress}
+          onChange={(next) => onChange('prolonged_stress', next)}
+        />
       </div>
     </div>
   );
 }
 
-function MensSexualHealthForm({ data, onChange }: any) {
+function MensSexualHealthForm({ data, onChange }: FormProps) {
+  const { t } = useTranslation();
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6">
-        <p className="text-sm text-gray-300">
-          <strong>Confidentiality Notice:</strong> All responses are encrypted and private.
-          This information is used only to provide personalized wellness guidance.
+      <div className="member-inset rounded-xl p-4 border border-[var(--bm-border)]">
+        <p className="text-sm member-body">
+          <span className="font-semibold member-heading">
+            {t('member.questionnaires.confidentiality.title')}
+          </span>{' '}
+          {t('member.questionnaires.confidentiality.body')}
         </p>
       </div>
 
       <div>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-neutral-50 mb-2">Men's Sexual Health</h2>
-        <p className="text-gray-400">Supportive guidance for hormonal and sexual wellbeing</p>
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">
-          Is your sexual interest stable, increasing, or decreasing?
-        </label>
+        <FieldLabel>{t('member.questionnaires.mensHealth.interest')}</FieldLabel>
         <select
-          value={data.sexual_interest_trend || ''}
+          value={String(data.sexual_interest_trend || '')}
           onChange={(e) => onChange('sexual_interest_trend', e.target.value)}
-          className="w-full px-4 py-2 border border-slate-200 dark:border-[var(--bm-border)] rounded-lg bg-white dark:bg-[var(--bm-surface)]"
+          className="member-input"
         >
-          <option value="">Select...</option>
-          <option value="increasing">Increasing</option>
-          <option value="stable">Stable</option>
-          <option value="decreasing">Decreasing</option>
+          <option value="">{t('member.questionnaires.select')}</option>
+          <option value="increasing">{t('member.questionnaires.mensHealth.increasing')}</option>
+          <option value="stable">{t('member.questionnaires.mensHealth.stable')}</option>
+          <option value="decreasing">{t('member.questionnaires.mensHealth.decreasing')}</option>
         </select>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">
-          Do you feel confident in your sexual function?
-        </label>
-        <div className="flex space-x-4">
-          <label className="flex items-center space-x-2">
-            <input
-              type="radio"
-              checked={data.sexual_function_confidence === true}
-              onChange={() => onChange('sexual_function_confidence', true)}
-              className="text-blue-600"
-            />
-            <span>Yes</span>
-          </label>
-          <label className="flex items-center space-x-2">
-            <input
-              type="radio"
-              checked={data.sexual_function_confidence === false}
-              onChange={() => onChange('sexual_function_confidence', false)}
-              className="text-blue-600"
-            />
-            <span>No</span>
-          </label>
-        </div>
+        <FieldLabel>{t('member.questionnaires.mensHealth.confidence')}</FieldLabel>
+        <YesNo
+          value={data.sexual_function_confidence}
+          onChange={(next) => onChange('sexual_function_confidence', next)}
+        />
       </div>
     </div>
   );
 }
 
-function WomensSexualHealthForm({ data, onChange }: any) {
+function WomensSexualHealthForm({ data, onChange }: FormProps) {
+  const { t } = useTranslation();
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6">
-        <p className="text-sm text-gray-300">
-          <strong>Confidentiality Notice:</strong> All responses are encrypted and private.
-          This information is used only to provide personalized wellness guidance.
+      <div className="member-inset rounded-xl p-4 border border-[var(--bm-border)]">
+        <p className="text-sm member-body">
+          <span className="font-semibold member-heading">
+            {t('member.questionnaires.confidentiality.title')}
+          </span>{' '}
+          {t('member.questionnaires.confidentiality.body')}
         </p>
       </div>
 
       <div>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-neutral-50 mb-2">Women's Sexual Health</h2>
-        <p className="text-gray-400">Supportive guidance for hormonal and sexual wellbeing</p>
+        <FieldLabel>{t('member.questionnaires.womensHealth.desireChanges')}</FieldLabel>
+        <YesNo
+          value={data.sexual_desire_changes}
+          onChange={(next) => onChange('sexual_desire_changes', next)}
+        />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">
-          Have you noticed changes in sexual desire or interest?
-        </label>
-        <div className="flex space-x-4">
-          <label className="flex items-center space-x-2">
-            <input
-              type="radio"
-              checked={data.sexual_desire_changes === true}
-              onChange={() => onChange('sexual_desire_changes', true)}
-              className="text-blue-600"
-            />
-            <span>Yes</span>
-          </label>
-          <label className="flex items-center space-x-2">
-            <input
-              type="radio"
-              checked={data.sexual_desire_changes === false}
-              onChange={() => onChange('sexual_desire_changes', false)}
-              className="text-blue-600"
-            />
-            <span>No</span>
-          </label>
-        </div>
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">
-          Would you like AI guidance related to hormonal support or sexual wellbeing?
-        </label>
-        <div className="flex space-x-4">
-          <label className="flex items-center space-x-2">
-            <input
-              type="radio"
-              checked={data.wants_hormonal_guidance === true}
-              onChange={() => onChange('wants_hormonal_guidance', true)}
-              className="text-blue-600"
-            />
-            <span>Yes</span>
-          </label>
-          <label className="flex items-center space-x-2">
-            <input
-              type="radio"
-              checked={data.wants_hormonal_guidance === false}
-              onChange={() => onChange('wants_hormonal_guidance', false)}
-              className="text-blue-600"
-            />
-            <span>No</span>
-          </label>
-        </div>
+        <FieldLabel>{t('member.questionnaires.womensHealth.wantsGuidance')}</FieldLabel>
+        <YesNo
+          value={data.wants_hormonal_guidance}
+          onChange={(next) => onChange('wants_hormonal_guidance', next)}
+        />
       </div>
     </div>
   );
 }
 
-function LockedSectionMessage({ section }: { section: string }) {
+function LockedSectionMessage({
+  sectionKey,
+  onActivate,
+}: {
+  sectionKey: QuestionnaireSection;
+  onActivate?: () => void;
+}) {
+  const { t } = useTranslation();
+  const sectionName = t(`member.questionnaires.section.${sectionKey}`);
+
   return (
-    <div className="flex flex-col items-center justify-center py-12 px-4">
-      <Lock className="h-16 w-16 text-gray-400 mb-4" />
-      <h3 className="text-xl font-semibold text-gray-900 dark:text-neutral-50 mb-2">
-        {section} Locked
-      </h3>
-      <p className="text-center text-gray-400 max-w-md mb-6">
-        This questionnaire becomes available only after you activate and pay for the corresponding category.
-      </p>
-      <button className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors">
-        Activate Category
-      </button>
+    <div className="py-6">
+      <StateCard
+        title={t('member.questionnaires.locked.title', { section: sectionName })}
+        description={t('member.questionnaires.locked.body')}
+        icon={<Lock className="h-10 w-10" />}
+      />
+      {onActivate ? (
+        <div className="mt-4 flex justify-center">
+          <button
+            type="button"
+            onClick={onActivate}
+            className="px-6 py-2.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white text-sm font-semibold transition-colors"
+          >
+            {t('member.questionnaires.locked.cta')}
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 }

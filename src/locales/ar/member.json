@@ -189,7 +189,154 @@
     "questionnaires": {
       "title": "الاستبيانات الصحية",
       "subtitle": "أكمل ملفك الصحي للحصول على توصيات ورؤى مخصصة",
-      "settings": "الإعدادات"
+      "settings": "الإعدادات",
+      "loading": "جارٍ تحميل الاستبيانات…",
+      "loadError": "تعذر تحميل الاستبيانات. يُرجى المحاولة مرة أخرى.",
+      "retry": "إعادة المحاولة",
+      "units": "الوحدات",
+      "metric": "متري",
+      "imperial": "إمبراطوري",
+      "language": "اللغة",
+      "savedAt": "تم الحفظ {{time}}",
+      "notSavedYet": "لم يُحفظ بعد",
+      "autoSaveFailed": "فشل الحفظ التلقائي. يُرجى المحاولة مرة أخرى.",
+      "saveErrorShort": "خطأ",
+      "completed": "مكتمل",
+      "inProgress": "قيد التنفيذ",
+      "overallProgress": "التقدم الإجمالي",
+      "sections": "الأقسام",
+      "required": "مطلوب",
+      "yes": "نعم",
+      "no": "لا",
+      "select": "اختر…",
+      "statusComplete": "مكتمل",
+      "statusDraft": "مسودة",
+      "statusLocked": "مقفل",
+      "groups": {
+        "basics": "الأساسيات",
+        "clinical": "الخلفية السريرية",
+        "lifestyle": "نمط الحياة والعقل",
+        "specialized": "متخصص"
+      },
+      "section": {
+        "categories": "محور الصحة",
+        "personal_info": "المعلومات الشخصية",
+        "medical_history": "التاريخ الطبي",
+        "medications": "الأدوية",
+        "allergies": "الحساسية",
+        "vital_signs": "العلامات الحيوية",
+        "lifestyle": "نمط الحياة",
+        "psychological_health": "الصحة النفسية",
+        "mens_sexual_health": "الصحة الجنسية للرجال",
+        "womens_sexual_health": "الصحة الجنسية للنساء"
+      },
+      "sectionDesc": {
+        "categories": "أخبرنا بمجالات الصحة الأكثر أهمية لك الآن.",
+        "personal_info": "ساعدنا على تخصيص تجربتك مع Health Guide.",
+        "medical_history": "خلفيتك الطبية تساعدنا على تقديم رؤى أفضل.",
+        "medications": "الأدوية والمكملات الحالية.",
+        "allergies": "الحساسية والتفاعلات المعروفة.",
+        "vital_signs": "قياسات حديثة — كلها اختيارية.",
+        "lifestyle": "عادات يومية تشكّل عافيتك.",
+        "psychological_health": "الرفاه العقلي والعاطفي.",
+        "mens_sexual_health": "إرشاد داعم للعافية الهرمونية والجنسية.",
+        "womens_sexual_health": "إرشاد داعم للعافية الهرمونية والجنسية."
+      },
+      "locked": {
+        "title": "{{section}} مقفل",
+        "body": "يتاح هذا الاستبيان بعد تفعيل فئة الصحة المطابقة.",
+        "cta": "فتح الكتالوج"
+      },
+      "areas": {
+        "sleep": "النوم والتعافي",
+        "energy": "الطاقة والتعب",
+        "nutrition": "التغذية",
+        "stress": "إدارة الإجهاد",
+        "hormones": "الهرمونات",
+        "prevention": "الوقاية",
+        "performance": "الأداء",
+        "mental": "العافية النفسية",
+        "longevity": "طول العمر الصحي"
+      },
+      "priorities": {
+        "prevention": "الوقاية",
+        "improvement": "التحسين",
+        "maintenance": "المحافظة",
+        "recovery": "التعافي"
+      },
+      "categories": {
+        "areasLabel": "ما مجالات الصحة الأكثر أهمية لك الآن؟",
+        "priorityLabel": "ما أولويتك الصحية الأساسية؟"
+      },
+      "personalInfo": {
+        "fullName": "الاسم الكامل",
+        "biologicalSex": "الجنس البيولوجي",
+        "male": "ذكر",
+        "female": "أنثى",
+        "dateOfBirth": "تاريخ الميلاد",
+        "country": "البلد",
+        "height": "الطول ({{unit}})",
+        "weight": "الوزن ({{unit}})",
+        "primaryLanguage": "اللغة الأساسية",
+        "primaryLanguagePlaceholder": "مثل: العربية"
+      },
+      "medicalHistory": {
+        "hasConditions": "هل لديك حالياً أي حالات طبية مُشخصة؟",
+        "conditionsList": "ما هي الحالات؟",
+        "conditionsPlaceholder": "اذكر حالاتك…"
+      },
+      "medications": {
+        "taking": "هل تتناول حالياً أي أدوية بوصفة طبية؟",
+        "list": "قائمة الأدوية",
+        "placeholder": "اسم الدواء، الجرعة، التكرار…"
+      },
+      "allergies": {
+        "has": "هل لديك أي حساسية معروفة؟",
+        "list": "صف حالات الحساسية",
+        "placeholder": "النوع، الشدة، التفاعلات…"
+      },
+      "vitalSigns": {
+        "optionalNote": "جميع الحقول اختيارية.",
+        "restingHeartRate": "معدل نبض القلب أثناء الراحة (نبضة/دقيقة)",
+        "bloodPressure": "ضغط الدم (mmHg)",
+        "bloodPressurePlaceholder": "120/80"
+      },
+      "lifestyle": {
+        "smoking": "حالة التدخين",
+        "smokingNever": "أبداً",
+        "smokingFormer": "سابق",
+        "smokingCurrent": "حالي",
+        "alcohol": "استهلاك الكحول",
+        "alcoholNone": "لا شيء",
+        "alcoholOccasional": "أحياناً",
+        "alcoholModerate": "معتدل",
+        "alcoholFrequent": "متكرر",
+        "exercise": "تكرار التمرين (أسبوعيًا)",
+        "sleep": "مدة النوم (ساعات في الليلة)"
+      },
+      "psychological": {
+        "mood": "كيف تصف استقرار مزاجك الحالي؟",
+        "moodVeryStable": "مستقر جداً",
+        "moodMostlyStable": "مستقر في الغالب",
+        "moodSomewhatVariable": "متغير قليلاً",
+        "moodQuiteVariable": "متغير كثيراً",
+        "stress": "هل تعاني من إجهاد طويل الأمد؟"
+      },
+      "confidentiality": {
+        "title": "إشعار السرية:",
+        "body": "جميع الإجابات مشفّرة وخاصة. تُستخدم هذه المعلومات فقط لتقديم إرشاد عافية مخصص عبر Health Guide."
+      },
+      "mensHealth": {
+        "interest": "هل اهتمامك الجنسي مستقر أم متزايد أم متناقص؟",
+        "increasing": "متزايد",
+        "stable": "مستقر",
+        "decreasing": "متناقص",
+        "confidence": "هل تشعر بالثقة في وظيفتك الجنسية؟"
+      },
+      "womensHealth": {
+        "desireChanges": "هل لاحظت تغيرات في الرغبة أو الاهتمام الجنسي؟",
+        "wantsGuidance": "هل ترغبين بدعم Health Guide المتعلق بالعافية الهرمونية أو الجنسية؟"
+      }
     },
     "reportSettings": {
       "title": "إعدادات التقارير",

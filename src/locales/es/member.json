@@ -189,7 +189,154 @@
     "questionnaires": {
       "title": "Cuestionarios de salud",
       "subtitle": "Completa tu perfil de salud para recibir recomendaciones y hallazgos personalizados",
-      "settings": "Ajustes"
+      "settings": "Ajustes",
+      "loading": "Cargando cuestionarios…",
+      "loadError": "No se pudieron cargar los cuestionarios. Inténtalo de nuevo.",
+      "retry": "Reintentar",
+      "units": "Unidades",
+      "metric": "Métrico",
+      "imperial": "Imperial",
+      "language": "Idioma",
+      "savedAt": "Guardado {{time}}",
+      "notSavedYet": "Aún no guardado",
+      "autoSaveFailed": "Error al guardar automáticamente. Inténtalo de nuevo.",
+      "saveErrorShort": "Error",
+      "completed": "Completados",
+      "inProgress": "En curso",
+      "overallProgress": "Progreso general",
+      "sections": "Secciones",
+      "required": "Obligatorio",
+      "yes": "Sí",
+      "no": "No",
+      "select": "Seleccionar…",
+      "statusComplete": "Completo",
+      "statusDraft": "Borrador",
+      "statusLocked": "Bloqueado",
+      "groups": {
+        "basics": "Lo básico",
+        "clinical": "Antecedentes clínicos",
+        "lifestyle": "Estilo de vida y mente",
+        "specialized": "Especializados"
+      },
+      "section": {
+        "categories": "Enfoque de salud",
+        "personal_info": "Datos personales",
+        "medical_history": "Historial médico",
+        "medications": "Medicamentos",
+        "allergies": "Alergias",
+        "vital_signs": "Signos vitales",
+        "lifestyle": "Estilo de vida",
+        "psychological_health": "Salud psicológica",
+        "mens_sexual_health": "Salud sexual masculina",
+        "womens_sexual_health": "Salud sexual femenina"
+      },
+      "sectionDesc": {
+        "categories": "Indica qué áreas de salud son más importantes ahora.",
+        "personal_info": "Ayúdanos a personalizar tu experiencia con Health Guide.",
+        "medical_history": "Tu historial médico nos ayuda a ofrecer mejores insights.",
+        "medications": "Medicamentos y suplementos actuales.",
+        "allergies": "Alergias y reacciones conocidas.",
+        "vital_signs": "Mediciones recientes: todo es opcional.",
+        "lifestyle": "Hábitos diarios que influyen en tu bienestar.",
+        "psychological_health": "Bienestar mental y emocional.",
+        "mens_sexual_health": "Orientación de apoyo para el bienestar hormonal y sexual.",
+        "womens_sexual_health": "Orientación de apoyo para el bienestar hormonal y sexual."
+      },
+      "locked": {
+        "title": "{{section}} está bloqueado",
+        "body": "Este cuestionario estará disponible cuando actives la categoría de salud correspondiente.",
+        "cta": "Abrir catálogo"
+      },
+      "areas": {
+        "sleep": "Sueño y recuperación",
+        "energy": "Energía y fatiga",
+        "nutrition": "Nutrición",
+        "stress": "Manejo del estrés",
+        "hormones": "Hormonas",
+        "prevention": "Prevención",
+        "performance": "Rendimiento",
+        "mental": "Bienestar mental",
+        "longevity": "Longevidad"
+      },
+      "priorities": {
+        "prevention": "Prevención",
+        "improvement": "Mejora",
+        "maintenance": "Mantenimiento",
+        "recovery": "Recuperación"
+      },
+      "categories": {
+        "areasLabel": "¿Qué áreas de salud son más importantes para ti ahora?",
+        "priorityLabel": "¿Cuál es tu prioridad de salud principal?"
+      },
+      "personalInfo": {
+        "fullName": "Nombre completo",
+        "biologicalSex": "Sexo biológico",
+        "male": "Masculino",
+        "female": "Femenino",
+        "dateOfBirth": "Fecha de nacimiento",
+        "country": "País",
+        "height": "Altura ({{unit}})",
+        "weight": "Peso ({{unit}})",
+        "primaryLanguage": "Idioma principal",
+        "primaryLanguagePlaceholder": "p. ej. español"
+      },
+      "medicalHistory": {
+        "hasConditions": "¿Tienes actualmente alguna condición médica diagnosticada?",
+        "conditionsList": "¿Cuáles?",
+        "conditionsPlaceholder": "Enumera tus condiciones…"
+      },
+      "medications": {
+        "taking": "¿Estás tomando algún medicamento con receta?",
+        "list": "Lista de medicamentos",
+        "placeholder": "Nombre, dosis, frecuencia…"
+      },
+      "allergies": {
+        "has": "¿Tienes alguna alergia conocida?",
+        "list": "Describe tus alergias",
+        "placeholder": "Tipo, gravedad, reacciones…"
+      },
+      "vitalSigns": {
+        "optionalNote": "Todos los campos son opcionales.",
+        "restingHeartRate": "Frecuencia cardíaca en reposo (lpm)",
+        "bloodPressure": "Presión arterial (mmHg)",
+        "bloodPressurePlaceholder": "120/80"
+      },
+      "lifestyle": {
+        "smoking": "Tabaquismo",
+        "smokingNever": "Nunca",
+        "smokingFormer": "Exfumador",
+        "smokingCurrent": "Actual",
+        "alcohol": "Consumo de alcohol",
+        "alcoholNone": "Ninguno",
+        "alcoholOccasional": "Ocasional",
+        "alcoholModerate": "Moderado",
+        "alcoholFrequent": "Frecuente",
+        "exercise": "Frecuencia de ejercicio (por semana)",
+        "sleep": "Duración del sueño (horas por noche)"
+      },
+      "psychological": {
+        "mood": "¿Cómo describirías la estabilidad de tu estado de ánimo actual?",
+        "moodVeryStable": "Muy estable",
+        "moodMostlyStable": "Mayormente estable",
+        "moodSomewhatVariable": "Algo variable",
+        "moodQuiteVariable": "Bastante variable",
+        "stress": "¿Experimentas estrés prolongado?"
+      },
+      "confidentiality": {
+        "title": "Aviso de confidencialidad:",
+        "body": "Todas las respuestas están cifradas y son privadas. Esta información solo se usa para orientación personalizada de bienestar a través de Health Guide."
+      },
+      "mensHealth": {
+        "interest": "¿Tu interés sexual es estable, creciente o decreciente?",
+        "increasing": "Creciente",
+        "stable": "Estable",
+        "decreasing": "Decreciente",
+        "confidence": "¿Te sientes confiado en tu función sexual?"
+      },
+      "womensHealth": {
+        "desireChanges": "¿Has notado cambios en el deseo o interés sexual?",
+        "wantsGuidance": "¿Te gustaría apoyo de Health Guide sobre bienestar hormonal o sexual?"
+      }
     },
     "reportSettings": {
       "title": "Ajustes de informes",
