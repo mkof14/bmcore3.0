@@ -144,23 +144,35 @@
     "different": {
       "label": "Por qué es distinto",
       "title": "Biomatemática, no otro feed de biomarcadores",
-      "body": "La mayoría de productos de bienestar visualizan métricas. BioMath Core modela a la persona detrás de ellas.",
-      "them": {
-        "label": "Paneles típicos de biomarcadores",
-        "points": [
-          "Marcadores del último laboratorio o lectura de wearables",
-          "Ideas que se reinician al cambiar de app o proveedor",
-          "Poca memoria de por qué un número se movió tras un cambio de medicación",
-          "Consejos genéricos que ignoran tu historial clínico completo"
-        ]
+      "body": "Los paneles muestran el último número. El Modelo de Datos Humanos guarda laboratorios, diagnóstico, tratamiento y síntomas en un gemelo vivo — para actuar con contexto.",
+      "viz": {
+        "title": "Métricas dispersas se convierten en un gemelo digital del Modelo de Datos Humanos",
+        "themLabel": "Métricas dispersas",
+        "usLabel": "Modelo de Datos Humanos",
+        "metrics": ["LDL", "HRV", "A1C", "Sueño"],
+        "links": ["Labs", "Notas", "Meds", "Estilo de vida"],
+        "core": "HDM",
+        "coreSub": "gemelo digital",
+        "outAsk": "Preguntar",
+        "outMap": "Explorar",
+        "outTime": "Comparar",
+        "caption": "Lecturas desconectadas se vuelven un gemelo que puedes preguntar, explorar y comparar en el tiempo."
       },
-      "us": {
-        "label": "Modelo de Datos Humanos",
-        "points": [
-          "Un gemelo digital biomatemático que se acumula con los años",
-          "Los eventos quedan vinculados: laboratorios, diagnóstico, tratamiento, síntomas",
-          "Mapa de categorías que exploras en la figura — no un feed plano",
-          "Health Guide responde con análisis dual anclado en tu modelo"
+      "outcomes": {
+        "label": "Qué puedes hacer a continuación",
+        "items": [
+          {
+            "title": "Preguntar a Health Guide",
+            "body": "Respuestas con doble modelo ancladas en tu gemelo — no consejos genéricos de un solo laboratorio."
+          },
+          {
+            "title": "Abrir una categoría",
+            "body": "Explora el mapa de la figura: órganos, labs, medicamentos y estilo de vida en una sola estructura."
+          },
+          {
+            "title": "Ver qué cambió",
+            "body": "Compara periodos y detecta qué se movió tras un medicamento, diagnóstico o cambio de hábito."
+          }
         ]
       }
     },

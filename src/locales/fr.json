@@ -144,23 +144,35 @@
     "different": {
       "label": "Pourquoi c’est différent",
       "title": "De la biomatématique, pas un autre flux de biomarqueurs",
-      "body": "La plupart des produits bien-être visualisent des métriques. BioMath Core modélise la personne derrière elles.",
-      "them": {
-        "label": "Tableaux de biomarqueurs typiques",
-        "points": [
-          "Des scores pour la dernière analyse ou lecture de wearable",
-          "Des insights qui se réinitialisent quand vous changez d’app ou de prestataire",
-          "Peu de mémoire sur pourquoi un chiffre a bougé après un changement de médicament",
-          "Des conseils génériques qui ignorent votre parcours clinique complet"
-        ]
+      "body": "Les tableaux montrent le dernier chiffre. Le Modèle de données humaines garde analyses, diagnostic, traitement et symptômes dans un jumeau vivant — pour agir avec du contexte.",
+      "viz": {
+        "title": "Des métriques dispersées deviennent un jumeau numérique du Modèle de données humaines",
+        "themLabel": "Métriques dispersées",
+        "usLabel": "Modèle de données humaines",
+        "metrics": ["LDL", "HRV", "A1C", "Sommeil"],
+        "links": ["Analyses", "Notes", "Médicaments", "Mode de vie"],
+        "core": "HDM",
+        "coreSub": "jumeau numérique",
+        "outAsk": "Demander",
+        "outMap": "Explorer",
+        "outTime": "Comparer",
+        "caption": "Des lectures déconnectées deviennent un jumeau que vous pouvez interroger, explorer et comparer dans le temps."
       },
-      "us": {
-        "label": "Modèle de données humaines",
-        "points": [
-          "Un jumeau numérique biomatématique qui s’enrichit sur des années",
-          "Les événements restent liés : analyses, diagnostic, traitement, symptômes",
-          "Une carte de catégories à explorer sur la figure — pas un fil plat",
-          "Health Guide répond avec une analyse duale ancrée dans votre modèle"
+      "outcomes": {
+        "label": "Ce que vous pouvez faire ensuite",
+        "items": [
+          {
+            "title": "Demander à Health Guide",
+            "body": "Des réponses à double modèle ancrées dans votre jumeau — pas des conseils génériques issus d’un seul résultat."
+          },
+          {
+            "title": "Ouvrir une catégorie",
+            "body": "Explorez la carte de la figure : organes, analyses, médicaments et mode de vie liés dans une structure."
+          },
+          {
+            "title": "Voir ce qui a changé",
+            "body": "Comparez des périodes et repérez ce qui a bougé après un médicament, un diagnostic ou un changement d’habitude."
+          }
         ]
       }
     },

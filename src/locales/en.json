@@ -144,23 +144,35 @@
     "different": {
       "label": "Why different",
       "title": "Biomathematics, not another biomarker feed",
-      "body": "Most wellness products visualize metrics. BioMath Core models the person behind them.",
-      "them": {
-        "label": "Typical biomarker dashboards",
-        "points": [
-          "Scoreboards for the latest lab or wearable reading",
-          "Insights that reset when you switch apps or providers",
-          "Little memory of why a number moved after a medication change",
-          "Generic tips that ignore your full clinical trail"
-        ]
+      "body": "Dashboards show the latest number. The Human Data Model keeps labs, diagnosis, treatment, and symptoms in one living twin — so you can act with context.",
+      "viz": {
+        "title": "Scattered metrics become one Human Data Model digital twin",
+        "themLabel": "Scattered metrics",
+        "usLabel": "Human Data Model",
+        "metrics": ["LDL", "HRV", "A1C", "Sleep"],
+        "links": ["Labs", "Notes", "Meds", "Lifestyle"],
+        "core": "HDM",
+        "coreSub": "digital twin",
+        "outAsk": "Ask",
+        "outMap": "Explore",
+        "outTime": "Compare",
+        "caption": "Disconnected readings become one twin you can ask, explore, and compare over time."
       },
-      "us": {
-        "label": "Human Data Model",
-        "points": [
-          "A biomathematical digital twin that compounds over years",
-          "Events stay linked: labs, diagnosis, treatment, symptoms",
-          "Category map you can explore on the figure — not a flat feed",
-          "Health Guide answers with dual analysis grounded in your model"
+      "outcomes": {
+        "label": "What you can do next",
+        "items": [
+          {
+            "title": "Ask Health Guide",
+            "body": "Dual-model answers grounded in your twin — not generic tips from a single lab result."
+          },
+          {
+            "title": "Open a category",
+            "body": "Explore the figure map: organs, labs, medications, and lifestyle linked in one structure."
+          },
+          {
+            "title": "See what changed",
+            "body": "Compare periods and spot what moved after a medication, diagnosis, or habit shift."
+          }
         ]
       }
     },

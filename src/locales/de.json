@@ -144,23 +144,35 @@
     "different": {
       "label": "Warum anders",
       "title": "Biomathematik, kein weiterer Biomarker-Feed",
-      "body": "Die meisten Wellness-Produkte visualisieren Kennzahlen. BioMath Core modelliert die Person dahinter.",
-      "them": {
-        "label": "Typische Biomarker-Dashboards",
-        "points": [
-          "Anzeigetafeln für den letzten Labor- oder Wearable-Wert",
-          "Hinweise, die zurückgesetzt werden, wenn Sie App oder Anbieter wechseln",
-          "Wenig Erinnerung, warum eine Zahl nach einer Medikamentenänderung sprang",
-          "Generische Tipps, die Ihre volle klinische Spur ignorieren"
-        ]
+      "body": "Dashboards zeigen die letzte Zahl. Das Human Data Model hält Labore, Diagnose, Behandlung und Symptome in einem lebendigen Zwilling — damit Sie mit Kontext handeln können.",
+      "viz": {
+        "title": "Verstreute Kennzahlen werden ein digitaler Zwilling des Human Data Model",
+        "themLabel": "Verstreute Kennzahlen",
+        "usLabel": "Human Data Model",
+        "metrics": ["LDL", "HRV", "A1C", "Schlaf"],
+        "links": ["Labore", "Notizen", "Medikamente", "Lebensstil"],
+        "core": "HDM",
+        "coreSub": "digitaler Zwilling",
+        "outAsk": "Fragen",
+        "outMap": "Erkunden",
+        "outTime": "Vergleichen",
+        "caption": "Getrennte Messwerte werden ein Zwilling, den Sie fragen, erkunden und über die Zeit vergleichen können."
       },
-      "us": {
-        "label": "Human Data Model",
-        "points": [
-          "Ein biomathematischer digitaler Zwilling, der über Jahre wächst",
-          "Ereignisse bleiben verknüpft: Labore, Diagnose, Behandlung, Symptome",
-          "Kategoriekarte auf der Figur — kein flacher Feed",
-          "Health Guide antwortet mit Dual-Analyse, verankert in Ihrem Modell"
+      "outcomes": {
+        "label": "Was Sie als Nächstes tun können",
+        "items": [
+          {
+            "title": "Health Guide fragen",
+            "body": "Dual-Modell-Antworten verankert in Ihrem Zwilling — keine generischen Tipps aus einem einzelnen Laborwert."
+          },
+          {
+            "title": "Eine Kategorie öffnen",
+            "body": "Erkunden Sie die Figurenkarte: Organe, Labore, Medikamente und Lebensstil in einer Struktur."
+          },
+          {
+            "title": "Sehen, was sich geändert hat",
+            "body": "Vergleichen Sie Zeiträume und erkennen Sie, was nach Medikament, Diagnose oder Gewohnheitswechsel sprang."
+          }
         ]
       }
     },
