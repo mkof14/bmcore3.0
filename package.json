@@ -29,7 +29,8 @@
     "check": "npm run lint && npm run typecheck",
     "validate": "npm run check && npm run test",
     "db:types": "npx supabase gen types typescript --project-id <YOUR_PROJECT_ID> > src/types/database.ts",
-    "prebuild": "node scripts/validate-build-env.mjs && node scripts/gen-version.mjs"
+    "prebuild": "node scripts/validate-build-env.mjs && node scripts/gen-version.mjs",
+    "sample:report": "node scripts/generate-sample-report.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

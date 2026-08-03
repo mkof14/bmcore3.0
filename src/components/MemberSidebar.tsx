@@ -142,7 +142,9 @@ export default function MemberSidebar({
                 }
 
                 const Icon = item.icon;
-                const isActive = currentSection === item.id;
+                const isActive =
+                  currentSection === item.id ||
+                  (item.id === 'reports' && currentSection === 'my-reports');
                 const isCatalog = item.id === 'catalog';
 
                 return (

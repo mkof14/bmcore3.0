@@ -8,3 +8,9 @@ export {
 export type { BuildReportTemplateParams } from './buildReportTemplate';
 export { generatePersonalizedReport, previewReportTemplate } from './generateReport';
 export { formatReportAsText, downloadReportTxt, printReport } from './formatReportText';
+export {
+  createOfflineSamplePersonalContext,
+  buildOfflineSampleReport,
+  formatOfflineSampleReportText,
+  SAMPLE_REPORT_ID,
+} from './sampleReportOffline';

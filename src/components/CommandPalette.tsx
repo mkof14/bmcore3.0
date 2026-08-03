@@ -57,8 +57,15 @@ export default function CommandPalette({ isOpen, onClose, onNavigate }: CommandP
       id: 'reports',
       label: 'My Reports',
       icon: FileText,
-      action: () => onNavigate('reports'),
-      keywords: ['documents', 'analysis'],
+      action: () => {
+        try {
+          sessionStorage.setItem('bmcore.pendingSection', 'reports');
+        } catch {
+          /* ignore */
+        }
+        onNavigate('member-zone');
+      },
+      keywords: ['documents', 'analysis', 'my reports'],
       category: 'Health',
     },
     {

@@ -9,6 +9,8 @@ import { buildAggregatedSecondOpinion, getKnowledgeSignalScore, loadKnowledgeSna
 import ReportBrandHeader from '../components/report/ReportBrandHeader';
 import ModelRadarComparison, { buildModelScores } from '../components/report/ModelRadarComparison';
 import { generatePersonalizedReport, printReport } from '../lib/reports';
+import { ensureMockSampleReport } from '../lib/mock/mockMemberSeed';
+import { isSupabaseMock } from '../lib/supabase';
 import '../styles/report-print.css';
 
 interface ReportsProps {
@@ -70,13 +72,25 @@ export default function Reports({ onNavigate }: ReportsProps) {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
 
-      const { data, error } = await supabase
+      let { data, error } = await supabase
         .from('health_reports')
         .select('*')
         .eq('user_id', user.id)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
+
+      if (isSupabaseMock && (!data || data.length === 0)) {
+        await ensureMockSampleReport(user.id, t);
+        const reload = await supabase
+          .from('health_reports')
+          .select('*')
+          .eq('user_id', user.id)
+          .order('created_at', { ascending: false });
+        if (reload.error) throw reload.error;
+        data = reload.data;
+      }
+
       const loaded = data || [];
       setReports(loaded);
       try {

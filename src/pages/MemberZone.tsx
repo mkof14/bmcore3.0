@@ -34,9 +34,32 @@ interface MemberZoneProps {
   initialServiceRef?: string;
 }
 
+function normalizeMemberSection(section: string | null | undefined): string | null {
+  if (!section) return null;
+  if (section === 'my-reports') return 'reports';
+  return section;
+}
+
+function readInitialMemberSection(initialServiceRef: string): string {
+  if (initialServiceRef) return 'service-workspace';
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl = normalizeMemberSection(params.get('section'));
+    if (fromUrl) return fromUrl;
+    const pending = sessionStorage.getItem('bmcore.pendingSection');
+    if (pending) {
+      sessionStorage.removeItem('bmcore.pendingSection');
+      return normalizeMemberSection(pending) || 'dashboard';
+    }
+  } catch {
+    /* ignore */
+  }
+  return 'dashboard';
+}
+
 export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = '' }: MemberZoneProps) {
   const { t } = useTranslation();
-  const [currentSection, setCurrentSection] = useState(initialServiceRef ? 'service-workspace' : 'dashboard');
+  const [currentSection, setCurrentSection] = useState(() => readInitialMemberSection(initialServiceRef));
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -51,11 +74,23 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
       return;
     }
     try {
-      const pending = sessionStorage.getItem('bmcore.pendingService');
-      if (pending) {
+      const pendingService = sessionStorage.getItem('bmcore.pendingService');
+      if (pendingService) {
         sessionStorage.removeItem('bmcore.pendingService');
-        setActiveServiceRef(pending);
+        setActiveServiceRef(pendingService);
         setCurrentSection('service-workspace');
+        return;
+      }
+      const params = new URLSearchParams(window.location.search);
+      const fromUrl = normalizeMemberSection(params.get('section'));
+      if (fromUrl) {
+        setCurrentSection(fromUrl);
+        return;
+      }
+      const pendingSection = sessionStorage.getItem('bmcore.pendingSection');
+      if (pendingSection) {
+        sessionStorage.removeItem('bmcore.pendingSection');
+        setCurrentSection(normalizeMemberSection(pendingSection) || 'dashboard');
       }
     } catch {
       /* ignore */
@@ -260,6 +295,7 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
         return <QuestionnairesSection onNavigateSection={setCurrentSection} />;
 
       case 'reports':
+      case 'my-reports':
         return <MyReportsSection onNavigateSection={setCurrentSection} />;
 
       case 'signal-hub':

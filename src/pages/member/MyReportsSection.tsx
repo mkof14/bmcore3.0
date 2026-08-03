@@ -20,6 +20,8 @@ import {
   type PersonalContext,
 } from '../../lib/personalContext';
 import { createShareableReport, getShareableUrl } from '../../lib/shareableReports';
+import { ensureMockSampleReport } from '../../lib/mock/mockMemberSeed';
+import { isSupabaseMock } from '../../lib/supabase';
 import type { HealthReport } from '../../types/database';
 
 type ReportRow = HealthReport & {
@@ -107,13 +109,26 @@ export default function MyReportsSection({ onNavigateSection }: Props) {
         setContextLoading(false);
       }
 
-      const { data, error: loadError } = await supabase
+      let { data, error: loadError } = await supabase
         .from('health_reports')
         .select('*')
         .eq('user_id', user.user.id)
         .order('created_at', { ascending: false });
 
       if (loadError) throw loadError;
+
+      // Mock/superadmin first visit: auto-create one personalized report so the list is not empty.
+      if (isSupabaseMock && (!data || data.length === 0)) {
+        await ensureMockSampleReport(user.user.id, t);
+        const reload = await supabase
+          .from('health_reports')
+          .select('*')
+          .eq('user_id', user.user.id)
+          .order('created_at', { ascending: false });
+        if (reload.error) throw reload.error;
+        data = reload.data;
+      }
+
       setReports(
         ((data || []) as ReportRow[]).map((row) => ({
           ...row,

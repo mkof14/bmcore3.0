@@ -1,5 +1,6 @@
 import { createClient, type User, type Session } from '@supabase/supabase-js';
 import { isSuperadminEmail, SUPERADMIN_EMAILS } from './adminAccess';
+import { buildMockQuestionnaireRow } from './mock/mockQuestionnaireSeed';
 
 type MockQueryResult = {
   data: any;
@@ -88,7 +89,7 @@ function makeSuperadminUser(email: string): User {
   return {
     id: SUPERADMIN_ID,
     app_metadata: { provider: 'email', providers: ['email'] },
-    user_metadata: { role: 'superadmin', full_name: 'Super Admin' },
+    user_metadata: { role: 'superadmin', full_name: 'Alex Rivera' },
     aud: 'authenticated',
     created_at: now,
     email: email.toLowerCase(),
@@ -202,9 +203,9 @@ function createMockQuery(table: string) {
           email: auth.user.email,
           is_admin: true,
           role: 'superadmin',
-          first_name: 'Super',
-          last_name: 'Admin',
-          name: 'Super Admin',
+          first_name: 'Alex',
+          last_name: 'Rivera',
+          name: 'Alex Rivera',
           country: 'US',
           timezone: 'America/New_York',
           locale: 'en',
@@ -361,6 +362,18 @@ function createMockQuery(table: string) {
     if (table === 'user_devices') {
       const userId = filters.user_id || auth?.user.id;
       const all = readMockJson<Array<Record<string, unknown>>>(MOCK_USER_DEVICES_KEY, []);
+      if (op === 'insert' || op === 'upsert') {
+        const payload = Array.isArray(updatePayload) ? updatePayload[0] : updatePayload;
+        const row = {
+          id: payload?.id || `mock-device-${Date.now()}`,
+          created_at: new Date().toISOString(),
+          status: 'active',
+          ...payload,
+          user_id: payload?.user_id || userId,
+        };
+        writeMockJson(MOCK_USER_DEVICES_KEY, [row, ...all]);
+        return emptyResult(row);
+      }
       const filtered = userId ? all.filter((r) => r.user_id === userId) : all;
       return emptyResult(filtered[0] || null);
     }
@@ -509,6 +522,26 @@ function createMockSupabaseClient() {
         const user = makeSuperadminUser(trimmed);
         const access_token = `mock-token-${user.id}`;
         writeMockAuth({ user, access_token });
+        // Seed questionnaire once so personalized report generation is not gated empty.
+        const existingQ = readMockQuestionnaire(user.id);
+        const life = (existingQ?.lifestyle || {}) as Record<string, unknown>;
+        if (!existingQ || !life.sleep_duration) {
+          writeMockQuestionnaire(user.id, buildMockQuestionnaireRow(user.id));
+        }
+        const devices = readMockJson<Array<Record<string, unknown>>>(MOCK_USER_DEVICES_KEY, []);
+        if (!devices.some((d) => d.user_id === user.id)) {
+          writeMockJson(MOCK_USER_DEVICES_KEY, [
+            {
+              id: 'mock-device-watch-1',
+              user_id: user.id,
+              brand: 'Apple',
+              device_name: 'Apple Watch',
+              status: 'active',
+              created_at: new Date().toISOString(),
+            },
+            ...devices,
+          ]);
+        }
         const session = makeSession(user, access_token);
         notifyAuth('SIGNED_IN', session);
         return { data: { user, session }, error: null };

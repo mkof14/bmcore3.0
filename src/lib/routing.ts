@@ -261,6 +261,7 @@ export function pathToRoute(pathname: string, search = ''): RouteState {
     }
     if (route.page === 'member-zone') {
       route.memberServiceRef = params.get('service') || '';
+      // section=my-reports|reports|… is read by MemberZone from the URL search.
     }
     return route;
   }

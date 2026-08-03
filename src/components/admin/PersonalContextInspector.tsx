@@ -66,7 +66,7 @@ export default function PersonalContextInspector() {
           data: { user },
         } = await supabase.auth.getUser();
         if (user) {
-          rows.push({ id: user.id, email: user.email, name: 'Super Admin' });
+          rows.push({ id: user.id, email: user.email ?? null, name: 'Alex Rivera' });
         }
       }
 
