@@ -1,4 +1,5 @@
 import { Shield, UserRound } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useAdmin, useSession } from '../hooks/useSession';
 
 export type WorkspaceZone = 'member' | 'admin';
@@ -20,18 +21,19 @@ export default function WorkspaceStatusBanner({
   className = '',
   sticky = true,
 }: WorkspaceStatusBannerProps) {
+  const { t } = useTranslation();
   const user = useSession();
   const { isAdmin: isAdminUser } = useAdmin();
-  const email = user?.email || 'Signed in';
+  const email = user?.email || t('member.workspaceBanner.signedIn');
 
   const isMember = zone === 'member';
   const Icon = isMember ? UserRound : Shield;
-  const title = isMember ? 'Member Zone' : 'Admin';
+  const title = isMember ? t('member.workspaceBanner.memberZone') : t('member.workspaceBanner.admin');
   const accessLabel = isMember
-    ? 'Full service access'
+    ? t('member.workspaceBanner.memberAccess')
     : isAdminUser
-      ? 'Superadmin access'
-      : 'Admin access';
+      ? t('member.workspaceBanner.superadminAccess')
+      : t('member.workspaceBanner.adminAccess');
 
   return (
     <div
@@ -40,18 +42,18 @@ export default function WorkspaceStatusBanner({
       aria-live="polite"
     >
       <div
-        className={`flex flex-wrap items-center justify-between gap-2 rounded-xl border px-3 py-2.5 shadow-sm sm:px-4 ${
+        className={`flex flex-wrap items-center justify-between gap-2 rounded-lg border px-3 py-2 sm:px-3.5 ${
           isMember
-            ? 'border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50 text-orange-950 dark:border-orange-500/30 dark:from-orange-950/50 dark:to-amber-950/30 dark:text-orange-100'
-            : 'border-slate-300 bg-gradient-to-r from-slate-100 to-blue-50 text-slate-900 dark:border-slate-600 dark:from-slate-900 dark:to-blue-950/40 dark:text-slate-100'
+            ? 'border-orange-200/80 bg-orange-50/70 text-orange-950 dark:border-orange-500/20 dark:bg-orange-950/30 dark:text-orange-100'
+            : 'border-slate-300/80 bg-slate-100/70 text-slate-900 dark:border-slate-600/40 dark:bg-slate-900/40 dark:text-slate-100'
         }`}
       >
         <div className="flex min-w-0 flex-wrap items-center gap-2">
           <span
-            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide ${
+            className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${
               isMember
-                ? 'bg-orange-500 text-white'
-                : 'bg-slate-900 text-white dark:bg-blue-600'
+                ? 'bg-orange-500/90 text-white'
+                : 'bg-slate-800 text-white dark:bg-blue-700'
             }`}
           >
             <Icon className="h-3.5 w-3.5" aria-hidden />
@@ -62,20 +64,12 @@ export default function WorkspaceStatusBanner({
               {sectionLabel}
             </span>
           ) : null}
-          <span className="hidden text-xs text-gray-500 dark:text-gray-400 sm:inline">·</span>
+          <span className="hidden text-xs text-gray-400 dark:text-gray-500 sm:inline">·</span>
           <span className="truncate text-xs text-gray-600 dark:text-gray-300" title={email}>
             {email}
           </span>
         </div>
-        <span
-          className={`inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-semibold ${
-            isMember
-              ? 'bg-white/80 text-orange-700 ring-1 ring-orange-200 dark:bg-black/20 dark:text-orange-200 dark:ring-orange-500/30'
-              : 'bg-white/80 text-slate-700 ring-1 ring-slate-200 dark:bg-black/20 dark:text-blue-200 dark:ring-blue-500/30'
-          }`}
-        >
-          {accessLabel}
-        </span>
+        <span className="text-[11px] font-medium text-gray-600 dark:text-gray-300">{accessLabel}</span>
       </div>
     </div>
   );

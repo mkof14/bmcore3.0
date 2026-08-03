@@ -85,8 +85,8 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
         .order('tier_level');
 
       if (plansError) {
-        setError('Unable to load subscription plans.');
-        showNotification('error', 'Catalog data load failed');
+        setError(t('member.catalog.plansLoadFailed'));
+        showNotification('error', t('member.catalog.loadFailed'));
         hadError = true;
       }
 
@@ -102,8 +102,8 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
           .maybeSingle();
 
         if (subError) {
-          setError('Unable to load your subscription.');
-          showNotification('error', 'Catalog data load failed');
+          setError(t('member.catalog.subscriptionLoadFailed'));
+          showNotification('error', t('member.catalog.loadFailed'));
           hadError = true;
         }
 
@@ -112,9 +112,9 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
       if (!hadError) {
         setError(null);
       }
-    } catch (error) {
-      showNotification('error', 'Catalog data load failed');
-      setError('Catalog data load failed. Please try again.');
+    } catch {
+      showNotification('error', t('member.catalog.loadFailed'));
+      setError(t('member.catalog.loadFailedRetry'));
     } finally {
       setLoading(false);
     }
@@ -127,7 +127,7 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
 
   const handleUpgrade = async () => {
     if (selectedCount === 0) {
-      showNotification('error', 'Please select at least one category to upgrade');
+      showNotification('error', t('member.catalog.selectCategoryFirst'));
       return;
     }
 
@@ -137,21 +137,19 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
       const { data: { user } } = await supabase.auth.getUser();
 
       if (!user) {
-        showNotification('error', 'Please sign in to upgrade');
+        showNotification('error', t('member.catalog.signInToUpgrade'));
         setUpgrading(false);
         return;
       }
 
-      showNotification('success', `Redirecting to pricing page for ${currentPlan} plan...`);
+      showNotification('success', t('member.catalog.redirectingPricing', { plan: currentPlan }));
 
-      // Redirect to pricing page (public page, not member section)
       setTimeout(() => {
         window.history.pushState({ page: 'pricing' }, '', '/pricing');
         window.dispatchEvent(new PopStateEvent('popstate'));
       }, 1500);
-
-    } catch (error) {
-      showNotification('error', 'Failed to process upgrade. Please try again.');
+    } catch {
+      showNotification('error', t('member.catalog.upgradeFailed'));
     } finally {
       setUpgrading(false);
     }

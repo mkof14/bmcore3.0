@@ -1,11 +1,11 @@
 {
   "about": {
     "seoTitle": "About Us - Mission, Vision & Team",
-    "seoDescription": "Learn about BioMath Core's mission to build trustworthy wellness intelligence through biomathematics, computational biology, and AI. Discover our founder's journey and our commitment to preventive health.",
+    "seoDescription": "BioMath Core builds a biomathematical Human Data Model — a living digital twin of your health — through computational biology and dual-model Health Guide guidance. Developed under Digital Invest Inc. and shaped by the BioMath Life vision.",
     "mission": {
       "label": "Mission",
-      "title": "Trustworthy wellness intelligence",
-      "body": "We build practical wellness intelligence at the intersection of <b>biomathematics</b>, <b>computational biology</b>, and <b>AI</b>. BioMath Core helps people and professionals navigate complex health questions with precise, explainable guidance — focused on prevention, wellness, and long-term resilience."
+      "title": "Trustworthy biomathematical wellness intelligence",
+      "body": "We build practical wellness intelligence at the intersection of <b>biomathematics</b>, <b>computational biology</b>, and <b>AI</b>. BioMath Core helps people and professionals navigate complex health questions with a living <b>Human Data Model</b> and explainable dual-model guidance — focused on prevention, wellness, and long-term resilience."
     },
     "origins": {
       "label": "Origins",
@@ -122,9 +122,37 @@
         }
       ]
     },
+    "partners": {
+      "label": "Trust & partnerships",
+      "title": "Companies and recognition",
+      "subtitle": "Verifiable affiliations from our public materials — no fabricated team bios.",
+      "items": [
+        {
+          "name": "Digital Invest Inc.",
+          "body": "BioMath Core is developed under Digital Invest Inc.",
+          "href": "https://digitalinvest.com/#home"
+        },
+        {
+          "name": "BioMath Life",
+          "body": "Shaped by the broader BioMath Life vision: science that scales into everyday preventive care.",
+          "href": "https://biomathlife.com/#"
+        },
+        {
+          "name": "Healthcare Tech Outlook",
+          "body": "Coverage of Digital Invest Inc. and related health-technology work.",
+          "href": "https://www.healthcaretechoutlook.com/digital-invest-inc"
+        }
+      ]
+    },
+    "advisors": {
+      "label": "Scientific advisors",
+      "title": "Advisor roster",
+      "subtitle": "Named scientific advisors will be listed here when publicly announced.",
+      "tba": "To be announced"
+    },
     "cta": {
       "title": "Ready to explore BioMath Core?",
-      "description": "See how our multi-model intelligence turns health signals into clear, human guidance.",
+      "description": "See how biomathematical modeling and dual intelligence turn health signals into clear, human guidance.",
       "primary": "View Services",
       "secondary": "See Pricing"
     }

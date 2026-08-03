@@ -168,8 +168,8 @@ export default function BillingSection() {
         storageLimit
       });
 
-    } catch (error) {
-      notifyUserError('Billing data load failed');
+    } catch {
+      notifyUserError(t('member.billing.loadFailed'));
     } finally {
       setLoading(false);
     }
@@ -245,7 +245,12 @@ export default function BillingSection() {
   };
 
   const handleManageBilling = async () => {
-    notifyUserInfo('Billing portal is currently unavailable. Please contact support.');
+    // Stripe Customer Portal edge function is not deployed yet — honest coming-soon, no fake success.
+    notifyUserInfo(t('member.billing.portalComingSoon'));
+  };
+
+  const handleInvoicePdf = () => {
+    notifyUserInfo(t('member.billing.pdfComingSoon'));
   };
 
   const handleUpgradePlan = () => {
@@ -501,7 +506,11 @@ export default function BillingSection() {
                         {formatDate(invoice.created_at)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm">
-                        <button className="text-orange-600 hover:text-orange-500 flex items-center gap-1 transition-colors">
+                        <button
+                          type="button"
+                          onClick={handleInvoicePdf}
+                          className="text-orange-600 hover:text-orange-500 flex items-center gap-1 transition-colors"
+                        >
                           <Download className="h-4 w-4" />
                           {t('member.billing.pdf')}
                         </button>

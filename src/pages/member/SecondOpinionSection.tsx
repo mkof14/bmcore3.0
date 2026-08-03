@@ -108,6 +108,7 @@ export default function SecondOpinionSection() {
               <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
                 {t('member.secondOpinion.demoBadge')}
               </span>
+              {/* Shared MemberDemoBadge pattern also used by Health Guide / System / service workspace */}
             </div>
             <p className="member-body mb-4 text-sm">{t('member.secondOpinion.opinion1Body')}</p>
             <div className="space-y-2">

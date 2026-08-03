@@ -2,12 +2,12 @@
   "science": {
     "seo": {
       "title": "Science et recherche — modélisation biomathématique de la santé",
-      "description": "Découvrez les fondements scientifiques de BioMath Core : modélisation biomathématique, intégration multi-signaux, analyse génomique et analyse prédictive au service d’une intelligence de santé personnalisée."
+      "description": "Fondement scientifique de BioMath Core : modélisation biomathématique et Modèle de données humaines vivant — pas des insights personnalisés génériques ni des tableaux de biomarqueurs seuls."
     },
     "hero": {
       "label": "Science",
       "title": "La science derrière BioMath Core",
-      "body": "BioMath Core s’appuie sur des décennies de recherche en biologie des systèmes, en biomathématiques et en modélisation physiologique, mises en œuvre à travers le Human Data Model."
+      "body": "BioMath Core s’appuie sur des décennies de recherche en biologie des systèmes, biomathématique et modélisation physiologique — appliquées comme un Modèle de données humaines vivant, un jumeau numérique biomathématique de votre santé."
     },
     "pillars": {
       "label": "Fondements",

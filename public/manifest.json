@@ -42,7 +42,7 @@
       "name": "Health Guide",
       "short_name": "Health Guide",
       "description": "Chat with Health Guide",
-      "url": "/member-zone?section=ai-advisor",
+      "url": "/member-zone?section=ai-assistant",
       "icons": [
         {
           "src": "/android-chrome-192x192.png",

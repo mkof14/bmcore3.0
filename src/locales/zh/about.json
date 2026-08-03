@@ -1,11 +1,11 @@
 {
   "about": {
     "seoTitle": "关于我们——使命、愿景与团队",
-    "seoDescription": "了解 BioMath Core 的使命：以生物数学、计算生物学和人工智能构建值得信赖的健康智能服务。了解我们的发展历程与对预防性健康的承诺。",
+    "seoDescription": "BioMath Core 构建生物数学人体数据模型——健康的活体数字孪生——依托计算生物学与 Health Guide 双模型指引。由 Digital Invest Inc. 开发，并受 BioMath Life 愿景塑造。",
     "mission": {
       "label": "使命",
-      "title": "值得信赖的健康智能",
-      "body": "我们在<b>生物数学</b>、<b>计算生物学</b>与<b>人工智能</b>的交汇处，构建切实可用的健康智能服务。BioMath Core 帮助个人与专业人士，以精准且可解释的方式厘清复杂的健康问题，重点关注预防、健康与长期的身心韧性。"
+      "title": "可信的生物数学健康智能",
+      "body": "我们在 <b>生物数学</b>、<b>计算生物学</b> 与 <b>AI</b> 的交汇处构建实用健康智能。BioMath Core 帮助个人与专业人士以活体 <b>人体数据模型</b> 与可解释的双模型指引应对复杂健康问题——聚焦预防、健康与长期韧性。"
     },
     "origins": {
       "label": "缘起",
@@ -16,9 +16,18 @@
     },
     "signalNote": "只有当信号足够明确时我们才会拓展——依据真实的用户需求、可靠的证据以及长期的健康影响。",
     "stats": [
-      { "label": "健康类别", "value": "20" },
-      { "label": "在线服务", "value": "200+" },
-      { "label": "研究历程", "value": "自 2008 年" }
+      {
+        "label": "健康类别",
+        "value": "20"
+      },
+      {
+        "label": "在线服务",
+        "value": "200+"
+      },
+      {
+        "label": "研究历程",
+        "value": "自 2008 年"
+      }
     ],
     "team": {
       "label": "团队",
@@ -124,9 +133,37 @@
     },
     "cta": {
       "title": "准备好了解 BioMath Core 了吗？",
-      "description": "看看我们的多模型分析如何把健康信号转化为清晰、贴近人的建议。",
+      "description": "了解生物数学建模与双智能如何将健康信号转化为清晰、人本的指引。",
       "primary": "查看服务",
       "secondary": "查看价格"
+    },
+    "partners": {
+      "label": "信任与合作",
+      "title": "公司与认可",
+      "subtitle": "仅列出公开材料中可核实的关联——不编造团队履历。",
+      "items": [
+        {
+          "name": "Digital Invest Inc.",
+          "body": "BioMath Core 由 Digital Invest Inc. 开发。",
+          "href": "https://digitalinvest.com/#home"
+        },
+        {
+          "name": "BioMath Life",
+          "body": "受更广泛的 BioMath Life 愿景塑造：让科学扩展到日常预防护理。",
+          "href": "https://biomathlife.com/#"
+        },
+        {
+          "name": "Healthcare Tech Outlook",
+          "body": "对 Digital Invest Inc. 及相关健康科技工作的报道。",
+          "href": "https://www.healthcaretechoutlook.com/digital-invest-inc"
+        }
+      ]
+    },
+    "advisors": {
+      "label": "科学顾问",
+      "title": "顾问名单",
+      "subtitle": "具名科学顾问将在公开发布后列于此处。",
+      "tba": "即将公布"
     }
   }
 }

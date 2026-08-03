@@ -80,6 +80,13 @@ export default function About({ onNavigate }: AboutProps) {
     return Array.isArray(raw) ? (raw as TitledEntry[]) : [];
   }, [t]);
 
+  const partners = useMemo(() => {
+    const raw = t('about.partners.items', { returnObjects: true }) as unknown;
+    return Array.isArray(raw)
+      ? (raw as { name: string; body: string; href: string }[])
+      : [];
+  }, [t]);
+
   return (
     <div className="min-h-screen bg-page transition-colors">
       <SEO
@@ -195,6 +202,52 @@ export default function About({ onNavigate }: AboutProps) {
                 </div>
               ))}
             </dl>
+          </section>
+
+          {/* Partnerships / trust assets (verifiable only) */}
+          <section
+            className="border-b border-[var(--bm-border)] py-14 lg:py-16"
+            aria-labelledby="about-partners"
+          >
+            <SectionLabel>{t('about.partners.label')}</SectionLabel>
+            <SectionHeading
+              id="about-partners"
+              title={t('about.partners.title')}
+              subtitle={t('about.partners.subtitle')}
+            />
+            <ul className="m-0 grid list-none gap-8 p-0 md:grid-cols-3 md:gap-10">
+              {partners.map((partner) => (
+                <li key={partner.name} className="border-t border-[var(--bm-border)] pt-5">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-100">
+                    <a
+                      href={partner.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={EXTERNAL_LINK_CLASS}
+                    >
+                      {partner.name}
+                    </a>
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-400 sm:text-[15px]">
+                    {partner.body}
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-10 max-w-2xl border-l-2 border-orange-500/70 pl-5 dark:border-orange-400/55">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-500 dark:text-neutral-500">
+                {t('about.advisors.label')}
+              </p>
+              <p className="mt-2 text-lg font-semibold text-gray-900 dark:text-neutral-100">
+                {t('about.advisors.title')}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-neutral-400">
+                {t('about.advisors.subtitle')}
+              </p>
+              <p className="mt-3 text-sm font-medium text-gray-800 dark:text-neutral-300">
+                {t('about.advisors.tba')}
+              </p>
+            </div>
           </section>
 
           {/* Team */}

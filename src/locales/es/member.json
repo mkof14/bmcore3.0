@@ -5,7 +5,12 @@
       "workspace": "Espacio de trabajo autenticado",
       "backHome": "Volver al inicio",
       "signOut": "Cerrar sesión",
-      "collapse": "Contraer"
+      "collapse": "Contraer",
+      "menu": "Menú",
+      "openMenu": "Abrir menú de miembro",
+      "closeMenu": "Cerrar menú de miembro",
+      "expand": "Expandir barra lateral",
+      "subscriptionLoadFailed": "Error al cargar el estado de la suscripción"
     },
     "nav": {
       "main": "Principal",
@@ -50,7 +55,19 @@
       "dailyPlan": "Plan Daily: elige hasta 10 categorías",
       "maxPlan": "Plan Max: las 20 categorías incluidas",
       "emailNote": "Se ha enviado a tu bandeja de entrada un correo de confirmación con todos los detalles.",
-      "goToCatalog": "Ir al catálogo"
+      "goToCatalog": "Ir al catálogo",
+      "emailSubject": "¡Bienvenido a BioMath Core!",
+      "emailHeading": "¡Bienvenido a BioMath Core!",
+      "emailThanks": "¡Gracias por suscribirte a nuestro plan {{plan}}!",
+      "emailAccess": "Ahora tienes acceso completo a las funciones de miembro de BioMath Core.",
+      "emailGetStarted": "Empieza explorando:",
+      "emailItemDashboard": "Tu panel de salud",
+      "emailItemHealthGuide": "Health Guide",
+      "emailItemDevices": "Conexión de dispositivos",
+      "emailItemReports": "Informes completos",
+      "emailSupport": "Si tienes preguntas, nuestro equipo de soporte está aquí para ayudar.",
+      "emailSignOff": "Saludos,<br/>El equipo de BioMath Core",
+      "emailFailed": "No se pudo enviar el correo de bienvenida"
     },
     "dashboard": {
       "title": "Mi salud",
@@ -148,7 +165,17 @@
         "whoop": "WHOOP",
         "garmin": "Garmin",
         "cgm": "CGM (Dexcom/Libre)"
-      }
+      },
+      "demoBadge": "Demo",
+      "linkAccount": "Vincular cuenta",
+      "linkModalTitle": "Vincular cuenta de dispositivo",
+      "linkModalBody": "La sincronización OAuth en vivo aún no está disponible. Vincular guarda un registro para futuras integraciones.",
+      "clickToLink": "Haz clic para vincular",
+      "linked": "Vinculado",
+      "linkedSuccess": "{{name}} vinculado",
+      "linkAccountNote": "La vinculación es provisional: la sincronización OAuth en vivo llegará pronto.",
+      "syncDemoNote": "Marca de tiempo de sync actualizada localmente. La sync con el proveedor aún no está conectada.",
+      "markSynced": "Marcar sincronizado"
     },
     "billing": {
       "title": "Facturación y suscripción",
@@ -201,7 +228,10 @@
       "statusFailed": "Fallido",
       "quickActions": "Acciones rápidas",
       "quickActionsBody": "Gestiona tu suscripción y facturación con estos accesos directos",
-      "changeCycleBody": "Cambia entre facturación mensual y anual (ahorra 17 %)"
+      "changeCycleBody": "Cambia entre facturación mensual y anual (ahorra 17 %)",
+      "loadFailed": "Error al cargar datos de facturación",
+      "portalComingSoon": "El portal de cliente de Stripe estará disponible pronto. Contacta con soporte para actualizar la facturación.",
+      "pdfComingSoon": "La descarga de PDF de facturas estará disponible pronto."
     },
     "profile": {
       "title": "Información personal",
@@ -227,7 +257,15 @@
       "fieldNamePlaceholder": "Nombre del campo (p. ej., Grupo sanguíneo)",
       "fieldValuePlaceholder": "Valor (p. ej., O+)",
       "fullNamePlaceholder": "Juan Pérez",
-      "countryPlaceholder": "España"
+      "countryPlaceholder": "España",
+      "updated": "Perfil actualizado",
+      "saveFailed": "Error al guardar el perfil",
+      "fileTooLarge": "El archivo debe ser menor de 5 MB",
+      "imageOnly": "Sube un archivo de imagen",
+      "signInToUpload": "Inicia sesión para subir fotos",
+      "storageUnavailable": "La subida a almacenamiento no está disponible. Usa una URL de imagen.",
+      "photoUploaded": "Foto subida",
+      "uploadFailed": "Error al subir. Usa una URL de imagen."
     },
     "support": {
       "title": "Soporte",
@@ -335,7 +373,7 @@
     },
     "reminders": {
       "title": "Recordatorios inteligentes",
-      "subtitle": "Recordatorios locales para mantener constantes tus rutinas de salud.",
+      "subtitle": "Recordatorios locales en el dispositivo para mantener tus rutinas de salud.",
       "create": "Crear recordatorio",
       "titlePlaceholder": "Título del recordatorio",
       "notePlaceholder": "Nota (opcional)",
@@ -349,7 +387,9 @@
         "weekly": "Semanal",
         "monthly": "Mensual",
         "custom": "Personalizado"
-      }
+      },
+      "deviceLocalBadge": "Solo en este dispositivo",
+      "deviceLocalNote": "Los recordatorios se guardan solo en este dispositivo (almacenamiento del navegador) y aún no se sincronizan con tu cuenta."
     },
     "secondOpinion": {
       "title": "Segunda opinión de salud",
@@ -436,7 +476,35 @@
       "download": "Descargar",
       "share": "Compartir",
       "print": "Imprimir",
-      "copyUrl": "Copiar URL"
+      "copyUrl": "Copiar URL",
+      "loadFailed": "No se pudieron cargar los archivos médicos",
+      "signInRequired": "Inicia sesión para gestionar archivos médicos",
+      "fileNameRequired": "Introduce un nombre de archivo",
+      "fileOrUrlRequired": "Elige un archivo o pega una URL privada",
+      "storageUnavailable": "La subida a almacenamiento privado aún no está disponible. Se guardaron los metadatos; no se subieron los bytes.",
+      "uploadSuccess": "Archivo médico guardado",
+      "uploadFailed": "Error al subir el archivo médico",
+      "deleteSuccess": "Archivo eliminado",
+      "deleteFailed": "Error al eliminar el archivo",
+      "pendingFile": "Este archivo está pendiente de almacenamiento privado. Abrir/descargar estará disponible cuando se configure.",
+      "urlUnavailable": "No se puede abrir este archivo de forma segura ahora",
+      "shareNotice": "El uso compartido seguro de “{{name}}” aún no está habilitado. No se copian URLs sensibles al portapapeles.",
+      "sizeUnknown": "Tamaño desconocido",
+      "privacyNote": "Las listas de archivos ya no se guardan en localStorage del navegador. Prefiere la subida a almacenamiento privado cuando esté disponible.",
+      "chooseFile": "Elegir archivo",
+      "chooseFileHint": "Preferido: subir a almacenamiento privado cuando el bucket esté configurado.",
+      "fileUrlOptional": "URL externa (opcional)",
+      "fileUrlHint": "Usa solo una URL privada que controles. No copiamos URLs sensibles al portapapeles.",
+      "uploading": "Subiendo…",
+      "categories": {
+        "labResults": "Resultados de laboratorio",
+        "xray": "Radiografía",
+        "mri": "IRM",
+        "ctScan": "Tomografía",
+        "prescription": "Receta",
+        "report": "Informe",
+        "other": "Otro"
+      }
     },
     "blackBox": {
       "title": "Almacenamiento Caja Negra",
@@ -507,7 +575,9 @@
       "processDeviceIntegration": "Integración de dispositivos",
       "processAnalytics": "Canal de analítica",
       "manageApiKeys": "Gestionar claves de API",
-      "exportData": "Exportar datos"
+      "exportData": "Exportar datos",
+      "demoBadge": "Simulado",
+      "simulatedNote": "Estas métricas son simuladas para demostración y no reflejan infraestructura real."
     },
     "questionnaires": {
       "title": "Cuestionarios de salud",
@@ -889,7 +959,15 @@
       "maxPremium": "Conjunto completo de funciones",
       "servicesCount": "{{count}} servicios",
       "selectedCount": "{{count}} seleccionadas",
-      "nextStepsBody": "Tras mejorar el plan, te guiaremos por cuestionarios de salud que ayudan a personalizar tus ideas."
+      "nextStepsBody": "Tras mejorar el plan, te guiaremos por cuestionarios de salud que ayudan a personalizar tus ideas.",
+      "loadFailed": "Error al cargar el catálogo",
+      "loadFailedRetry": "Error al cargar el catálogo. Inténtalo de nuevo.",
+      "plansLoadFailed": "No se pudieron cargar los planes de suscripción.",
+      "subscriptionLoadFailed": "No se pudo cargar tu suscripción.",
+      "selectCategoryFirst": "Selecciona al menos una categoría para mejorar el plan",
+      "signInToUpgrade": "Inicia sesión para mejorar el plan",
+      "redirectingPricing": "Redirigiendo a precios para el plan {{plan}}…",
+      "upgradeFailed": "No se pudo procesar la mejora. Inténtalo de nuevo."
     },
     "healthGuide": {
       "ask": "Haz tu pregunta de salud",
@@ -919,7 +997,9 @@
       "insight1": "Ambos modelos coinciden en la importancia de consultar profesionales de salud",
       "insight2": "La opinión basada en evidencia se centra en directrices médicas generales",
       "insight3": "La opinión contextual considera tu perfil de salud individual",
-      "askAnother": "Hacer otra pregunta"
+      "askAnother": "Hacer otra pregunta",
+      "demoBadge": "Demo",
+      "simulatedNote": "Las respuestas son simuladas para demostración hasta conectar modelos en vivo."
     },
     "placeholder": {
       "comingSoon": "Próximamente",
@@ -949,6 +1029,28 @@
       "delete": "Eliminar",
       "access": "Acceder",
       "since": "Desde"
+    },
+    "workspaceBanner": {
+      "memberZone": "Zona de miembros",
+      "admin": "Admin",
+      "signedIn": "Sesión iniciada",
+      "memberAccess": "Acceso completo a servicios",
+      "adminAccess": "Acceso de administrador",
+      "superadminAccess": "Acceso de superadministrador"
+    },
+    "serviceWorkspace": {
+      "demoBadge": "Demo",
+      "simulatedNote": "Las opiniones generadas son plantillas simuladas hasta conectar el análisis multi-modelo.",
+      "backToCatalog": "Volver al catálogo de miembros",
+      "interactiveBadge": "Servicio interactivo completo",
+      "unlockedTitle": "Espacio interactivo desbloqueado",
+      "unlockedBody": "Haz preguntas, genera informes multi-modelo, edita localmente y continúa el diálogo — todos los campos están activos.",
+      "tabAsk": "Hacer pregunta",
+      "tabFaq": "FAQ",
+      "tabLearn": "Aprendizaje",
+      "tabReport": "Informe y segunda opinión",
+      "enterQuestion": "Introduce tu pregunta o preocupación de salud",
+      "reportCopied": "Informe copiado al portapapeles"
     }
   }
 }

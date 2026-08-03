@@ -50,7 +50,7 @@ export default function MyReportsSection() {
 
     const onStorage = (event: StorageEvent) => {
       if (!event.key) return;
-      if (event.key.includes(`bmcore.knowledge.${userId}`) || event.key.startsWith('bmcore.medical.files')) {
+      if (event.key.includes(`bmcore.knowledge.${userId}`)) {
         const nextSnapshot = loadKnowledgeSnapshot(userId);
         const nextSources = nextSnapshot?.sources || [];
         const nextMap: Record<string, number> = {};

@@ -60,6 +60,26 @@ export interface RouteState {
   normalizeUrl?: string;
 }
 
+/**
+ * Public marketing routes intended for static SEO prerender (see scripts/prerender.mjs).
+ * Product app surfaces (member-zone, admin, auth gates) stay SPA-only behind login.
+ */
+export const MARKETING_PRERENDER_PATHS = [
+  '/',
+  '/about',
+  '/pricing',
+  '/science',
+  '/how-it-works',
+  '/why-two-models',
+  '/blog',
+  '/investors',
+  '/contact',
+  '/faq',
+  '/learning-center',
+  '/privacy-trust',
+  '/services-catalog',
+] as const;
+
 /** Canonical page key → URL path (no query). `service-detail` uses `/services/:cat/:id`. */
 export const PAGE_PATHS: Partial<Record<AppPage, string>> & Record<string, string> = {
   home: '/',

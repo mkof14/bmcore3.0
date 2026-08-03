@@ -27,12 +27,10 @@
     <meta name="apple-mobile-web-app-title" content="BioMath Core" />
     <link rel="manifest" href="/manifest.json" />
 
-    <!-- Preconnect to external domains for faster loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://js.stripe.com" />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <!--
+      Avoid unused third-party preconnects on first paint (no Google Fonts / Stripe.js on marketing shell).
+      Stripe Checkout uses hosted redirect + edge functions; load Stripe.js only if a page needs it.
+    -->
     <link rel="dns-prefetch" href="https://js.stripe.com" />
 
     <!--
@@ -51,15 +49,15 @@
       Health Guide speech needs microphone=(self); camera/geolocation stay denied.
     -->
 
-    <title>BioMath Core — Personalized Health Intelligence</title>
-    <meta name="description" content="BioMath Core turns your health data into clear insights, personalized guidance, and practical next steps with Health Guide." />
-    <meta name="keywords" content="health analytics, personalized health, Health Guide, biomarkers, preventive healthcare, medical data analysis" />
+    <title>BioMath Core — Biomathematical Human Data Model</title>
+    <meta name="description" content="BioMath Core builds a living Human Data Model — a biomathematical digital twin of your health — and guides you with Health Guide dual analysis." />
+    <meta name="keywords" content="biomathematical modeling, Human Data Model, digital twin, Health Guide, BioMath Core, dual intelligence, preventive wellness" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
     <!-- Open Graph (1200×630 landscape; see public/og-default.jpg) -->
     <meta property="og:site_name" content="BioMath Core" />
-    <meta property="og:title" content="BioMath Core — Personalized Health Intelligence" />
-    <meta property="og:description" content="BioMath Core turns your health data into clear insights, personalized guidance, and practical next steps with Health Guide." />
+    <meta property="og:title" content="BioMath Core — Biomathematical Human Data Model" />
+    <meta property="og:description" content="BioMath Core builds a living Human Data Model — a biomathematical digital twin of your health — and guides you with Health Guide dual analysis." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://biomathcore.com/" />
     <meta property="og:image" content="https://biomathcore.com/og-default.jpg" />
@@ -73,24 +71,27 @@
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@biomathcore" />
-    <meta name="twitter:title" content="BioMath Core — Personalized Health Intelligence" />
-    <meta name="twitter:description" content="BioMath Core turns your health data into clear insights, personalized guidance, and practical next steps with Health Guide." />
+    <meta name="twitter:title" content="BioMath Core — Biomathematical Human Data Model" />
+    <meta name="twitter:description" content="BioMath Core builds a living Human Data Model — a biomathematical digital twin of your health — and guides you with Health Guide dual analysis." />
     <meta name="twitter:image" content="https://biomathcore.com/og-default.jpg" />
     <meta name="twitter:image:alt" content="BioMath Core" />
 
-    <!-- Stripe.js -->
-    <script src="https://js.stripe.com/v3/" async></script>
-  <meta name="x-bust" content="1761542013094"><meta name="x-bust" content="1761543608033"></head>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"MedicalOrganization","name":"BioMath Core","description":"BioMath Core builds a biomathematical Human Data Model — a living digital twin of your health — and delivers dual-model guidance through Health Guide.","url":"https://biomathcore.com/","logo":"https://biomathcore.com/biomathcore_emblem_1024.png"}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Health Guide","applicationCategory":"HealthApplication","operatingSystem":"Web","description":"Health Guide is the BioMath Core guidance experience: dual biomathematical and clinical perspectives on your Human Data Model.","url":"https://biomathcore.com/","provider":{"@type":"Organization","name":"BioMath Core","url":"https://biomathcore.com/"}}
+    </script>
+  </head>
   <body>
     <div id="root"></div>
     <noscript>
-      <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0b0f19;color:#e5e7eb;padding:24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">
-        <div style="max-width:560px;border:1px solid rgba(239,68,68,.35);background:rgba(239,68,68,.12);padding:24px;border-radius:16px;">
-          <h1 style="margin:0 0 12px 0;font-size:20px;color:#fecaca;">JavaScript Disabled</h1>
-          <p style="margin:0;font-size:14px;line-height:1.5;color:#fee2e2;">
-            Please enable JavaScript to use the app.
-          </p>
-        </div>
+      <div style="max-width:720px;margin:48px auto;padding:0 24px;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#111;">
+        <p style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#c2410c;">BioMath Core</p>
+        <h1 style="font-size:2rem;line-height:1.2;margin:12px 0 16px;">Human Data Model</h1>
+        <p style="font-size:1.05rem;line-height:1.6;color:#374151;">
+          BioMath Core builds a living Human Data Model — a biomathematical digital twin of your health — and guides you with Health Guide dual analysis. Enable JavaScript for the full experience.
+        </p>
       </div>
     </noscript>
     <script type="module" src="/src/main.tsx"></script>

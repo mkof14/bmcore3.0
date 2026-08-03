@@ -10,6 +10,7 @@ import EmptyState from '../components/EmptyState';
 import { generateArticleSchema, injectStructuredData } from '../lib/structuredData';
 import { notifyUserInfo } from '../lib/adminNotify';
 import { getContentSearchParams } from '../lib/routing';
+import { SEED_BLOG_POSTS } from '../data/seedBlogPosts';
 
 interface BlogProps {
   onNavigate: (page: string) => void;
@@ -65,23 +66,49 @@ export default function Blog({ onNavigate }: BlogProps) {
         .limit(12);
 
       if (fetchError) {
-        setError(t('content.blog.loadError'));
+        // Fall back to seeded method articles so marketing content stays available offline / in mock.
+        setPosts(SEED_BLOG_POSTS);
+        openPostFromQuery(SEED_BLOG_POSTS);
         return;
       }
 
-      const loadedPosts = data || [];
-      setPosts(loadedPosts);
-
-      const params = getContentSearchParams();
-      const slug = params.get('post');
-      if (slug) {
-        const match = loadedPosts.find((post) => post.slug === slug);
-        if (match) setSelectedPost(match);
+      const remote = data || [];
+      const bySlug = new Map(remote.map((post) => [post.slug, post]));
+      // Keep remote posts first; fill gaps with seed method articles (no fabricated DB rows).
+      for (const seed of SEED_BLOG_POSTS) {
+        if (!bySlug.has(seed.slug)) bySlug.set(seed.slug, seed);
       }
+      const loadedPosts = Array.from(bySlug.values()).sort(
+        (a, b) =>
+          new Date(b.published_at).getTime() - new Date(a.published_at).getTime(),
+      );
+      setPosts(loadedPosts);
+      openPostFromQuery(loadedPosts);
     } catch {
-      setError(t('content.blog.loadError'));
+      setPosts(SEED_BLOG_POSTS);
+      openPostFromQuery(SEED_BLOG_POSTS);
     } finally {
       setLoading(false);
+    }
+  }
+
+  function openPostFromQuery(loadedPosts: BlogPost[]) {
+    const params = getContentSearchParams();
+    const slug = params.get('post');
+    if (!slug) return;
+    const match = loadedPosts.find((post) => post.slug === slug);
+    if (match) {
+      setSelectedPost(match);
+      injectStructuredData(
+        generateArticleSchema({
+          title: match.title,
+          description: match.excerpt || match.title,
+          image: match.featured_image || undefined,
+          author: 'BioMath Core',
+          datePublished: match.published_at,
+          url: `${window.location.origin}/blog?post=${match.slug}`,
+        }),
+      );
     }
   }
 

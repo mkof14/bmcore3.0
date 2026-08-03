@@ -13,7 +13,7 @@
     "languageSwitching": "正在切换语言…"
   },
   "footer": {
-    "tagline": "基于生物数学的健康智能，帮助你理解身体。",
+    "tagline": "生物数学人体数据模型——您健康的活体数字孪生。",
     "navigation": "导航",
     "resources": "资源",
     "company": "公司",
@@ -35,7 +35,8 @@
     "rights": "保留所有权利。",
     "legalSafety": "法律与安全",
     "memberArea": "会员区",
-    "infoHelp": "信息与帮助"
+    "infoHelp": "信息与帮助",
+    "appsStatus": "尚未上架 App Store 或 Google Play 原生应用。请在浏览器使用 BioMath Core，或安装网页应用（PWA）。"
   },
   "common": {
     "getStarted": "开始使用",
@@ -53,7 +54,7 @@
   },
   "healthGuide": {
     "name": "健康向导",
-    "tagline": "清晰的健康指引，双重视角",
+    "tagline": "基于人体数据模型的双模型指引",
     "welcome": "你好！我是你的健康向导。我可以对健康问题提供两种互补视角。打开“第二意见”以获得更完整的看法。",
     "askAnything": "问我任何健康相关的问题…",
     "askDual": "请求双重视角…",
@@ -77,33 +78,35 @@
   },
   "home": {
     "heroTitle": "伴随一生的 Human Data Model",
-    "heroSubtitle": "每一个重要的健康事件都会成为活模型的一部分——理解随你一同成长。",
+    "heroSubtitle": "随每条已验证健康事件成长的生物数学数字孪生——而非泛化的洞察信息流。",
     "ctaExplore": "探索服务",
     "ctaHow": "如何运作",
     "modelTitle": "Human Data Model",
-    "modelSubtitle": "基于经过核实的健康信息构建。",
+    "modelSubtitle": "基于已验证健康信息构建的生物数学数字孪生。",
     "section2": "第 2 部分",
     "whatTitle": "你能理解什么？",
-    "whatSubtitle": "当信息彼此分隔时，Human Data Model 帮助揭示难以察觉的关联。",
+    "whatSubtitle": "当化验、可穿戴与病史彼此割裂时，人体数据模型揭示难以察觉的关联。",
     "section3": "第 3 部分",
     "timelineTitle": "人体数据时间线",
-    "timelineSubtitle": "在情境中理解你的健康历程。",
+    "timelineSubtitle": "在生物数学语境中理解您的健康史。",
     "openTimeline": "打开你的时间线",
     "section4": "第 4 部分",
     "changesTitle1": "一切都会改变。",
     "changesTitle2": "Human Data Model 会记得。",
-    "changesSubtitle": "每一件重要的健康事件都会成为你终身 Human Data Model 的一部分。",
+    "changesSubtitle": "每一个重要健康事件都会更新您终身的生物数学人体数据模型。",
     "cta": {
-      "title": "准备更清晰地了解您的健康了吗？",
-      "description": "从适合您的方案开始。Health Guide 帮助您理解自己的 Human Data Model。",
+      "title": "准备好构建您的人体数据模型了吗？",
+      "description": "从加深生物数学语境的方案开始。Health Guide 提供双模型指引——而非泛化的个性化。",
       "primary": "查看价格",
       "secondary": "创建账户"
-    }
+    },
+    "seoTitle": "生物数学人体数据模型",
+    "seoDescription": "BioMath Core 构建活体人体数据模型——健康的生物数学数字孪生——并通过 Health Guide 双分析为您指引。"
   },
   "about": {
     "label": "关于 BioMath Core",
     "title": "使命、愿景与 BioMath Core 背后的人",
-    "subtitle": "为精准、透明与以人为本的智能而设计的数字健康与生物数学分析。"
+    "subtitle": "为活体人体数据模型而生的生物数学建模与计算生物学——透明、预防、以人为本。"
   },
   "pricing": {
     "label": "价格",
@@ -118,14 +121,14 @@
   "investors": {
     "label": "投资者",
     "title": "个人健康智能的战略投资",
-    "subtitle": "BioMath Core 通过生物数学建模与人工智能，将复杂健康数据转化为个性化指引。"
+    "subtitle": "BioMath Core 构建生物数学人体数据模型，并通过 Health Guide 提供双智能指引。"
   },
   "summary": {
     "label": "概览",
-    "healthIntelligence": "个人健康智能",
-    "healthIntelligenceSub": "更清晰地导航健康——由理解引领，而非更多图表。",
+    "healthIntelligence": "生物数学健康智能",
+    "healthIntelligenceSub": "用活体人体数据模型导航——先理解，再看图表。",
     "advisorTitle": "健康向导",
-    "advisorLead": "认识 BioMath Core 的主要方式——先指引，再导航。"
+    "advisorLead": "认识 BioMath Core 的主要方式——先双模型指引，再导航。"
   },
   "catalog": {
     "label": "服务目录",

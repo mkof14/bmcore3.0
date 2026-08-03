@@ -5,7 +5,12 @@
       "workspace": "Angemeldeter Arbeitsbereich",
       "backHome": "Zurück zur Startseite",
       "signOut": "Abmelden",
-      "collapse": "Einklappen"
+      "collapse": "Einklappen",
+      "menu": "Menü",
+      "openMenu": "Mitglieder-Menü öffnen",
+      "closeMenu": "Mitglieder-Menü schließen",
+      "expand": "Seitenleiste erweitern",
+      "subscriptionLoadFailed": "Abo-Status konnte nicht geladen werden"
     },
     "nav": {
       "main": "Allgemein",
@@ -50,7 +55,19 @@
       "dailyPlan": "Daily-Tarif: bis zu 10 Kategorien",
       "maxPlan": "Max-Tarif: alle 20 Kategorien enthalten",
       "emailNote": "Eine Bestätigungs-E-Mail mit allen Details wurde an Ihren Posteingang gesendet.",
-      "goToCatalog": "Zum Katalog"
+      "goToCatalog": "Zum Katalog",
+      "emailSubject": "Willkommen bei BioMath Core!",
+      "emailHeading": "Willkommen bei BioMath Core!",
+      "emailThanks": "Danke für Ihr Abonnement unseres {{plan}}-Tarifs!",
+      "emailAccess": "Sie haben jetzt vollen Zugriff auf die BioMath-Core-Mitgliederfunktionen.",
+      "emailGetStarted": "Starten Sie mit:",
+      "emailItemDashboard": "Ihr Gesundheits-Dashboard",
+      "emailItemHealthGuide": "Health Guide",
+      "emailItemDevices": "Geräteverbindung",
+      "emailItemReports": "Umfassende Berichte",
+      "emailSupport": "Bei Fragen hilft Ihnen unser Support-Team gerne weiter!",
+      "emailSignOff": "Mit freundlichen Grüßen,<br/>Das BioMath-Core-Team",
+      "emailFailed": "Willkommens-E-Mail konnte nicht gesendet werden"
     },
     "dashboard": {
       "title": "Meine Gesundheit",
@@ -148,7 +165,17 @@
         "whoop": "WHOOP",
         "garmin": "Garmin",
         "cgm": "CGM (Dexcom/Libre)"
-      }
+      },
+      "demoBadge": "Demo",
+      "linkAccount": "Konto verknüpfen",
+      "linkModalTitle": "Gerätekonto verknüpfen",
+      "linkModalBody": "Live-OAuth-Sync ist noch nicht verfügbar. Verknüpfen speichert einen Geräteeintrag für künftige Integrationen.",
+      "clickToLink": "Zum Verknüpfen klicken",
+      "linked": "Verknüpft",
+      "linkedSuccess": "{{name}} verknüpft",
+      "linkAccountNote": "Die Verknüpfung ist vorläufig — Live-Wearable-OAuth-Sync kommt bald.",
+      "syncDemoNote": "Sync-Zeitstempel lokal aktualisiert. Anbieter-Sync ist noch nicht verbunden.",
+      "markSynced": "Als synchronisiert markieren"
     },
     "billing": {
       "title": "Abrechnung & Abo",
@@ -201,7 +228,10 @@
       "statusFailed": "Fehlgeschlagen",
       "quickActions": "Schnellaktionen",
       "quickActionsBody": "Verwalten Sie Abonnement und Abrechnung mit diesen Shortcuts",
-      "changeCycleBody": "Zwischen monatlicher und jährlicher Abrechnung wechseln (17 % sparen)"
+      "changeCycleBody": "Zwischen monatlicher und jährlicher Abrechnung wechseln (17 % sparen)",
+      "loadFailed": "Rechnungsdaten konnten nicht geladen werden",
+      "portalComingSoon": "Das Stripe-Kundenportal kommt bald. Kontaktieren Sie den Support für Abrechnungsänderungen.",
+      "pdfComingSoon": "PDF-Download von Rechnungen kommt bald."
     },
     "profile": {
       "title": "Persönliche Angaben",
@@ -227,7 +257,15 @@
       "fieldNamePlaceholder": "Feldname (z. B. Blutgruppe)",
       "fieldValuePlaceholder": "Wert (z. B. O+)",
       "fullNamePlaceholder": "Max Mustermann",
-      "countryPlaceholder": "Deutschland"
+      "countryPlaceholder": "Deutschland",
+      "updated": "Profil aktualisiert",
+      "saveFailed": "Profil speichern fehlgeschlagen",
+      "fileTooLarge": "Dateigröße muss unter 5 MB liegen",
+      "imageOnly": "Bitte eine Bilddatei hochladen",
+      "signInToUpload": "Bitte anmelden, um Fotos hochzuladen",
+      "storageUnavailable": "Speicher-Upload nicht verfügbar. Verwenden Sie eine Bild-URL.",
+      "photoUploaded": "Foto hochgeladen",
+      "uploadFailed": "Upload fehlgeschlagen. Verwenden Sie eine Bild-URL."
     },
     "support": {
       "title": "Hilfe",
@@ -335,7 +373,7 @@
     },
     "reminders": {
       "title": "Intelligente Erinnerungen",
-      "subtitle": "Lokale Erinnerungen, damit Ihre Gesundheitsroutinen beständig bleiben.",
+      "subtitle": "Geräte-lokale Erinnerungen für Ihre Gesundheitsroutinen.",
       "create": "Erinnerung erstellen",
       "titlePlaceholder": "Titel der Erinnerung",
       "notePlaceholder": "Notiz (optional)",
@@ -349,7 +387,9 @@
         "weekly": "Wöchentlich",
         "monthly": "Monatlich",
         "custom": "Benutzerdefiniert"
-      }
+      },
+      "deviceLocalBadge": "Nur auf diesem Gerät",
+      "deviceLocalNote": "Erinnerungen werden nur auf diesem Gerät (Browserspeicher) gespeichert und noch nicht mit Ihrem Konto synchronisiert."
     },
     "secondOpinion": {
       "title": "Gesundheitliche Zweitmeinung",
@@ -436,7 +476,35 @@
       "download": "Herunterladen",
       "share": "Teilen",
       "print": "Drucken",
-      "copyUrl": "URL kopieren"
+      "copyUrl": "URL kopieren",
+      "loadFailed": "Medizinische Dateien konnten nicht geladen werden",
+      "signInRequired": "Bitte anmelden, um medizinische Dateien zu verwalten",
+      "fileNameRequired": "Bitte einen Dateinamen eingeben",
+      "fileOrUrlRequired": "Datei wählen oder private URL einfügen",
+      "storageUnavailable": "Privater Speicher-Upload ist noch nicht verfügbar. Metadaten wurden gespeichert; Dateibytes nicht hochgeladen.",
+      "uploadSuccess": "Medizinische Datei gespeichert",
+      "uploadFailed": "Upload der medizinischen Datei fehlgeschlagen",
+      "deleteSuccess": "Datei gelöscht",
+      "deleteFailed": "Löschen der Datei fehlgeschlagen",
+      "pendingFile": "Diese Datei wartet auf privaten Speicher. Öffnen/Download nach Konfiguration verfügbar.",
+      "urlUnavailable": "Datei kann derzeit nicht sicher geöffnet werden",
+      "shareNotice": "Sicheres Teilen von „{{name}}“ ist noch nicht aktiv. Sensible URLs werden nicht in die Zwischenablage kopiert.",
+      "sizeUnknown": "Größe unbekannt",
+      "privacyNote": "Dateilisten werden nicht mehr im Browser-localStorage gespeichert. Bevorzugen Sie privaten Speicher-Upload.",
+      "chooseFile": "Datei wählen",
+      "chooseFileHint": "Bevorzugt: Upload in privaten Speicher, wenn der Bucket konfiguriert ist.",
+      "fileUrlOptional": "Externe URL (optional)",
+      "fileUrlHint": "Nur eine private URL verwenden, die Sie kontrollieren. Sensible URLs werden nicht kopiert.",
+      "uploading": "Wird hochgeladen…",
+      "categories": {
+        "labResults": "Laborergebnisse",
+        "xray": "Röntgen",
+        "mri": "MRT",
+        "ctScan": "CT",
+        "prescription": "Rezept",
+        "report": "Bericht",
+        "other": "Sonstiges"
+      }
     },
     "blackBox": {
       "title": "Black-Box-Speicher",
@@ -507,7 +575,9 @@
       "processDeviceIntegration": "Geräteintegration",
       "processAnalytics": "Analyse-Pipeline",
       "manageApiKeys": "API-Schlüssel verwalten",
-      "exportData": "Daten exportieren"
+      "exportData": "Daten exportieren",
+      "demoBadge": "Simuliert",
+      "simulatedNote": "Diese Kennzahlen sind simuliert und spiegeln keine Live-Infrastruktur wider."
     },
     "questionnaires": {
       "title": "Gesundheitsfragebögen",
@@ -889,7 +959,15 @@
       "maxPremium": "Vollständiger Funktionsumfang",
       "servicesCount": "{{count}} Dienste",
       "selectedCount": "{{count}} ausgewählt",
-      "nextStepsBody": "Nach dem Upgrade führen wir Sie durch Gesundheitsfragebögen, die Ihre Einblicke personalisieren."
+      "nextStepsBody": "Nach dem Upgrade führen wir Sie durch Gesundheitsfragebögen, die Ihre Einblicke personalisieren.",
+      "loadFailed": "Katalogdaten konnten nicht geladen werden",
+      "loadFailedRetry": "Katalogdaten konnten nicht geladen werden. Bitte erneut versuchen.",
+      "plansLoadFailed": "Abonnementpläne konnten nicht geladen werden.",
+      "subscriptionLoadFailed": "Ihr Abonnement konnte nicht geladen werden.",
+      "selectCategoryFirst": "Bitte wählen Sie mindestens eine Kategorie zum Upgrade",
+      "signInToUpgrade": "Bitte anmelden, um zu upgraden",
+      "redirectingPricing": "Weiterleitung zur Preisseite für den {{plan}}-Tarif…",
+      "upgradeFailed": "Upgrade fehlgeschlagen. Bitte erneut versuchen."
     },
     "healthGuide": {
       "ask": "Stellen Sie Ihre Gesundheitsfrage",
@@ -919,7 +997,9 @@
       "insight1": "Beide Modelle betonen die Bedeutung professioneller Beratung",
       "insight2": "Die evidenzbasierte Meinung folgt allgemeinen medizinischen Leitlinien",
       "insight3": "Die kontextuelle Meinung berücksichtigt Ihr individuelles Gesundheitsprofil",
-      "askAnother": "Weitere Frage stellen"
+      "askAnother": "Weitere Frage stellen",
+      "demoBadge": "Demo",
+      "simulatedNote": "Antworten sind zu Demonstrationszwecken simuliert, bis Live-Modelle verbunden sind."
     },
     "placeholder": {
       "comingSoon": "Demnächst",
@@ -949,6 +1029,28 @@
       "delete": "Löschen",
       "access": "Zugriff",
       "since": "Seit"
+    },
+    "workspaceBanner": {
+      "memberZone": "Mitgliederbereich",
+      "admin": "Admin",
+      "signedIn": "Angemeldet",
+      "memberAccess": "Voller Servicezugriff",
+      "adminAccess": "Admin-Zugriff",
+      "superadminAccess": "Superadmin-Zugriff"
+    },
+    "serviceWorkspace": {
+      "demoBadge": "Demo",
+      "simulatedNote": "Erzeugte Meinungen sind simulierte Vorlagen, bis die Multi-Modell-Analyse verbunden ist.",
+      "backToCatalog": "Zurück zum Mitgliederkatalog",
+      "interactiveBadge": "Voll interaktiver Service",
+      "unlockedTitle": "Interaktiver Arbeitsbereich freigeschaltet",
+      "unlockedBody": "Fragen stellen, Multi-Modell-Berichte starten, lokal bearbeiten und Dialog fortsetzen — alle Felder sind aktiv.",
+      "tabAsk": "Frage stellen",
+      "tabFaq": "FAQ",
+      "tabLearn": "Lernen",
+      "tabReport": "Bericht & Zweitmeinung",
+      "enterQuestion": "Bitte geben Sie Ihre Gesundheitsfrage oder Ihr Anliegen ein",
+      "reportCopied": "Bericht in die Zwischenablage kopiert"
     }
   }
 }

@@ -1,5 +1,26 @@
 # Vercel Deployment Guide
 
+## Marketing site vs product app (architecture)
+
+BioMath Core is still **one Vite SPA repo**, with a pragmatic SEO split:
+
+| Surface | Routes | Delivery |
+|---------|--------|----------|
+| **Marketing / public** | `/`, `/about`, `/pricing`, `/science`, `/how-it-works`, `/why-two-models`, `/blog`, `/investors`, `/contact`, `/faq`, `/learning-center`, `/privacy-trust`, `/services-catalog`, … | Static HTML shells written by `scripts/prerender.mjs` after `vite build` (real `<title>`, description, H1 in `<noscript>`, Organization + SoftwareApplication JSON-LD on home). Vercel `filesystem` handle serves `dist/{path}/index.html` before the SPA fallback. |
+| **Product app** | `/member-zone`, `/admin-panel`, `/command-center`, `/signin`, `/signup`, devices/reports, … | Client SPA behind auth / admin gates (not prerendered; `robots.txt` disallows private paths). |
+
+**Done (mitigation):** SPA prerender for key marketing routes (`npm run build` → `vite build && node scripts/prerender.mjs`).
+
+**Not done (full split):** Separate Next.js/Remix marketing site + isolated product app (two deploys / two repos). That remains a future project if organic search or editorial CMS needs demand it.
+
+See also: `docs/ops/health-guide-naming.md`, `src/lib/routing.ts` (`MARKETING_PRERENDER_PATHS`).
+
+### Performance / Core Web Vitals notes
+
+- `web-vitals` remains wired in `src/lib/webVitals.ts` (consent-gated analytics).
+- Marketing shell no longer loads unused Stripe.js or Google Fonts preconnects on first paint (checkout uses hosted Stripe + edge functions).
+- Residual Lighthouse work (images, long tasks, third-party consent scripts) should be re-measured after each production deploy; prerender helps bot FCP/content, not every client metric.
+
 ## Operator deploy checklist (production)
 
 Use this before every Production deploy. Details below if you need them.
@@ -48,6 +69,7 @@ Apply pending migrations on the production project (SQL editor, CLI, or CI), esp
 
 - `supabase/migrations/20260801170000_create_media_library.sql` — `media_items` + `media` storage bucket
 - `supabase/migrations/20260801180000_harden_profile_admin_privileges.sql` — blocks client self-elevate of `is_admin` / elevated `role`
+- `supabase/migrations/20260802193000_fix_advanced_mode_questionnaire_prereq.sql` — **required** for Advanced Mode questionnaire unlock (counts completed section status flags, not raw row counts). Apply before relying on advanced-mode gates in Member Zone.
 
 Then redeploy the `admin-db` edge function (allowlist includes `media_items`):
 

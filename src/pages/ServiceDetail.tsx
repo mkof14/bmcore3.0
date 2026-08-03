@@ -10,6 +10,7 @@ import type { UserKnowledgeSnapshot } from '../lib/secondOpinionEngine';
 import ReportBrandHeader from '../components/report/ReportBrandHeader';
 import ModelRadarComparison, { buildModelScores } from '../components/report/ModelRadarComparison';
 import { localizeCategory, localizeService } from '../lib/localizeServices';
+import MemberDemoBadge from '../components/MemberDemoBadge';
 
 const categoryColors: Record<string, string> = {
   'human-data-model': 'text-slate-500 dark:text-slate-300',
@@ -261,7 +262,7 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
     }
 
     if (!userQuestion.trim()) {
-      notifyUserInfo('Please enter your health question or concern');
+      notifyUserInfo(t('member.serviceWorkspace.enterQuestion'));
       return;
     }
 
@@ -325,7 +326,7 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
 
   const handleCopy = () => {
     navigator.clipboard.writeText(reportExportText());
-    notifyUserInfo('Report copied to clipboard');
+    notifyUserInfo(t('member.serviceWorkspace.reportCopied'));
   };
 
   const handlePrint = () => {
@@ -433,7 +434,7 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
               className="mb-6 flex items-center space-x-2 text-orange-600 transition-colors hover:text-orange-500 dark:text-orange-400 dark:hover:text-orange-300"
             >
               <ChevronLeft className="h-5 w-5" />
-              <span>Back to Member Catalog</span>
+              <span>{t('member.serviceWorkspace.backToCatalog')}</span>
             </button>
           )}
 
@@ -441,11 +442,12 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
             {embedded && (
               <div className="mb-3 flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center rounded-full bg-orange-500 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
-                  Member Zone
+                  {t('member.workspaceBanner.memberZone')}
                 </span>
                 <span className="inline-flex items-center rounded-full bg-orange-50 px-2.5 py-1 text-[11px] font-semibold text-orange-700 ring-1 ring-orange-200 dark:bg-orange-950/40 dark:text-orange-200 dark:ring-orange-500/30">
-                  Full interactive service
+                  {t('member.serviceWorkspace.interactiveBadge')}
                 </span>
+                <MemberDemoBadge labelKey="member.serviceWorkspace.demoBadge" />
                 <span className="text-xs text-gray-500 dark:text-gray-400">{category.name}</span>
               </div>
             )}
@@ -455,6 +457,7 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
                   {service.name}
                 </h1>
                 <p className="text-lg text-gray-600 dark:text-gray-400">{service.description}</p>
+                <p className="mt-2 text-xs member-muted">{t('member.serviceWorkspace.simulatedNote')}</p>
               </>
             )}
           </div>
@@ -482,20 +485,20 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
           {embedded && (
             <div className="mb-6 rounded-xl border border-green-200 bg-green-50 p-4 shadow-sm dark:border-green-800/40 dark:bg-green-950/30">
               <p className="text-sm font-semibold text-green-800 dark:text-green-200">
-                Interactive workspace unlocked
+                {t('member.serviceWorkspace.unlockedTitle')}
               </p>
               <p className="mt-1 text-xs text-green-700/90 dark:text-green-300/90">
-                Ask questions, run multi-model reports, edit locally, and continue the dialog — all fields below are active.
+                {t('member.serviceWorkspace.unlockedBody')}
               </p>
             </div>
           )}
 
           <div className="mb-4 flex flex-wrap gap-2">
             {[
-              { id: 'service-ask', label: 'Ask question' },
-              { id: 'service-faq', label: 'FAQ' },
-              { id: 'service-learn', label: 'Learning' },
-              { id: 'service-report', label: 'Report & second opinion' },
+              { id: 'service-ask', label: t('member.serviceWorkspace.tabAsk') },
+              { id: 'service-faq', label: t('member.serviceWorkspace.tabFaq') },
+              { id: 'service-learn', label: t('member.serviceWorkspace.tabLearn') },
+              { id: 'service-report', label: t('member.serviceWorkspace.tabReport') },
             ].map((item) => (
               <button
                 key={item.id}

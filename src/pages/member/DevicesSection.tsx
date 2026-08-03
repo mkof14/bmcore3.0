@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Watch, Plus, Trash2, RefreshCw, Check, X, Activity } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
-import { notifyUserError, notifyUserSuccess } from '../../lib/adminNotify';
+import { notifyUserError, notifyUserInfo, notifyUserSuccess } from '../../lib/adminNotify';
 import ErrorBanner from '../../components/ui/ErrorBanner';
 import StateCard from '../../components/ui/StateCard';
 import ModalShell from '../../components/ui/ModalShell';
 import Button from '../../components/ui/Button';
 import MemberMetricCard from '../../components/ui/MemberMetricCard';
+import MemberDemoBadge from '../../components/MemberDemoBadge';
 
 interface Device {
   id: string;
@@ -89,6 +90,7 @@ export default function DevicesSection() {
 
       const name = deviceName(deviceType);
 
+      // Link-account stub only — no live OAuth / vendor sync yet.
       const { error: insertError } = await supabase.from('device_connections').insert({
         user_id: resolvedUserId,
         device_type: deviceType,
@@ -99,7 +101,8 @@ export default function DevicesSection() {
 
       if (insertError) throw insertError;
       setShowConnectModal(false);
-      notifyUserSuccess(t('member.devices.connectedSuccess', { name }));
+      notifyUserSuccess(t('member.devices.linkedSuccess', { name }));
+      notifyUserInfo(t('member.devices.linkAccountNote'));
       loadDevices();
     } catch {
       notifyUserError(t('member.devices.connectionFailed'));
@@ -114,7 +117,7 @@ export default function DevicesSection() {
         .eq('id', id);
 
       if (syncError) throw syncError;
-      notifyUserSuccess(t('member.devices.syncSuccess'));
+      notifyUserInfo(t('member.devices.syncDemoNote'));
       loadDevices();
     } catch {
       notifyUserError(t('member.devices.syncFailed'));
@@ -140,6 +143,11 @@ export default function DevicesSection() {
 
   return (
     <div>
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <MemberDemoBadge labelKey="member.devices.demoBadge" />
+        <p className="text-xs member-muted">{t('member.devices.linkAccountNote')}</p>
+      </div>
+
       <div className="mb-6 grid gap-4 md:grid-cols-3">
         <MemberMetricCard
           accent="blue"
@@ -173,7 +181,7 @@ export default function DevicesSection() {
             className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-orange-600 to-orange-500 px-6 py-2 text-white shadow-sm transition-all hover:from-orange-500 hover:to-orange-600"
           >
             <Plus className="h-4 w-4" />
-            {t('member.devices.connectDevice')}
+            {t('member.devices.linkAccount')}
           </button>
         </div>
       </div>
@@ -208,7 +216,7 @@ export default function DevicesSection() {
                       {device.status === 'connected' ? (
                         <span className="flex items-center gap-1 rounded-full border border-green-200 bg-green-100 px-2 py-0.5 text-xs text-green-700 dark:border-green-600/30 dark:bg-green-900/30 dark:text-green-400">
                           <Check className="h-3 w-3" />
-                          {t('member.devices.connected')}
+                          {t('member.devices.linked')}
                         </span>
                       ) : (
                         <span className="flex items-center gap-1 rounded-full border border-red-200 bg-red-100 px-2 py-0.5 text-xs text-red-700 dark:border-red-600/30 dark:bg-red-900/30 dark:text-red-400">
@@ -249,7 +257,7 @@ export default function DevicesSection() {
                   className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-blue-200 bg-blue-100 px-4 py-2 text-blue-700 transition-colors hover:bg-blue-200 dark:border-blue-600/30 dark:bg-blue-900/30 dark:text-blue-400 dark:hover:bg-blue-900/50"
                 >
                   <RefreshCw className="h-4 w-4" />
-                  {t('member.devices.syncNow')}
+                  {t('member.devices.markSynced')}
                 </button>
                 <button
                   type="button"
@@ -267,11 +275,12 @@ export default function DevicesSection() {
 
       {showConnectModal && (
         <ModalShell
-          title={t('member.devices.connectModalTitle')}
+          title={t('member.devices.linkModalTitle')}
           icon={<Watch className="h-6 w-6 text-orange-500" />}
           onClose={() => setShowConnectModal(false)}
           panelClassName="max-w-2xl"
         >
+          <p className="member-muted mb-4 text-sm">{t('member.devices.linkModalBody')}</p>
           <div className="grid gap-4 md:grid-cols-2">
             {DEVICE_TYPE_IDS.map((deviceId) => (
               <button
@@ -282,7 +291,7 @@ export default function DevicesSection() {
               >
                 <div className="mb-3 text-4xl">{DEVICE_ICONS[deviceId]}</div>
                 <h3 className="member-heading mb-2 text-lg font-semibold">{deviceName(deviceId)}</h3>
-                <p className="member-body text-sm">{t('member.devices.clickToConnect')}</p>
+                <p className="member-body text-sm">{t('member.devices.clickToLink')}</p>
               </button>
             ))}
           </div>

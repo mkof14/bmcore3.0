@@ -80,25 +80,49 @@ export default function RemindersSection() {
 
   return (
     <div>
+      <div className="mb-4 rounded-xl border border-blue-200/80 bg-blue-50/80 px-4 py-3 dark:border-blue-600/30 dark:bg-blue-950/30">
+        <p className="text-sm font-medium text-blue-800 dark:text-blue-200">
+          {t('member.reminders.deviceLocalBadge')}
+        </p>
+        <p className="mt-1 text-xs text-blue-700/90 dark:text-blue-300/90">
+          {t('member.reminders.deviceLocalNote')}
+        </p>
+      </div>
+
       <div className="member-card mb-6 p-6">
         <h3 className="member-heading mb-4 text-base font-semibold">{t('member.reminders.create')}</h3>
         <div className="grid gap-3 md:grid-cols-3">
+          <label className="sr-only" htmlFor="reminder-title">
+            {t('member.reminders.titlePlaceholder')}
+          </label>
           <input
+            id="reminder-title"
             value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
             className="member-input px-4 py-3"
             placeholder={t('member.reminders.titlePlaceholder')}
+            aria-label={t('member.reminders.titlePlaceholder')}
           />
+          <label className="sr-only" htmlFor="reminder-note">
+            {t('member.reminders.notePlaceholder')}
+          </label>
           <input
+            id="reminder-note"
             value={form.note}
             onChange={(e) => setForm({ ...form, note: e.target.value })}
             className="member-input px-4 py-3"
             placeholder={t('member.reminders.notePlaceholder')}
+            aria-label={t('member.reminders.notePlaceholder')}
           />
+          <label className="sr-only" htmlFor="reminder-schedule">
+            {t('member.reminders.schedule.daily')}
+          </label>
           <select
+            id="reminder-schedule"
             value={form.schedule}
             onChange={(e) => setForm({ ...form, schedule: e.target.value as ScheduleKey })}
             className="member-input px-4 py-3"
+            aria-label={t('member.reminders.schedule.daily')}
           >
             {SCHEDULE_OPTIONS.map((key) => (
               <option key={key} value={key}>

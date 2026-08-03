@@ -1,11 +1,11 @@
 {
   "about": {
     "seoTitle": "Sobre nosotros: misión, visión y equipo",
-    "seoDescription": "Conoce la misión de BioMath Core: construir inteligencia de bienestar fiable mediante biomatemáticas, biología computacional e IA. Descubre nuestro recorrido y nuestro compromiso con la salud preventiva.",
+    "seoDescription": "BioMath Core construye un Modelo de Datos Humanos biomatemático — un gemelo digital vivo de tu salud — con biología computacional y orientación dual de Health Guide. Desarrollado bajo Digital Invest Inc. y moldeado por la visión BioMath Life.",
     "mission": {
       "label": "Misión",
-      "title": "Inteligencia de bienestar en la que confiar",
-      "body": "Construimos inteligencia de bienestar práctica en la intersección de las <b>biomatemáticas</b>, la <b>biología computacional</b> y la <b>IA</b>. BioMath Core ayuda a personas y profesionales a resolver preguntas complejas de salud con orientación precisa y explicable, centrada en la prevención, el bienestar y la resiliencia a largo plazo."
+      "title": "Inteligencia de bienestar biomatemática de confianza",
+      "body": "Construimos inteligencia de bienestar práctica en la intersección de la <b>biomatemática</b>, la <b>biología computacional</b> y la <b>IA</b>. BioMath Core ayuda a personas y profesionales a navegar preguntas complejas de salud con un <b>Modelo de Datos Humanos</b> vivo y orientación dual explicable — centrada en prevención, bienestar y resiliencia a largo plazo."
     },
     "origins": {
       "label": "Orígenes",
@@ -16,9 +16,18 @@
     },
     "signalNote": "Solo crecemos cuando la señal es fuerte: en función de necesidades reales de los usuarios, de la evidencia y del impacto en la salud a largo plazo.",
     "stats": [
-      { "label": "Categorías de salud", "value": "20" },
-      { "label": "Servicios activos", "value": "200+" },
-      { "label": "Trayectoria de investigación", "value": "Desde 2008" }
+      {
+        "label": "Categorías de salud",
+        "value": "20"
+      },
+      {
+        "label": "Servicios activos",
+        "value": "200+"
+      },
+      {
+        "label": "Trayectoria de investigación",
+        "value": "Desde 2008"
+      }
     ],
     "team": {
       "label": "Personas",
@@ -124,9 +133,37 @@
     },
     "cta": {
       "title": "¿Listo para descubrir BioMath Core?",
-      "description": "Comprueba cómo nuestra inteligencia multimodelo convierte las señales de salud en orientación clara y humana.",
+      "description": "Vea cómo el modelado biomatemático y la doble inteligencia convierten señales de salud en orientación humana clara.",
       "primary": "Ver servicios",
       "secondary": "Ver precios"
+    },
+    "partners": {
+      "label": "Confianza y alianzas",
+      "title": "Empresas y reconocimiento",
+      "subtitle": "Afiliaciones verificables de nuestros materiales públicos — sin biografías inventadas del equipo.",
+      "items": [
+        {
+          "name": "Digital Invest Inc.",
+          "body": "BioMath Core se desarrolla bajo Digital Invest Inc.",
+          "href": "https://digitalinvest.com/#home"
+        },
+        {
+          "name": "BioMath Life",
+          "body": "Moldeado por la visión más amplia de BioMath Life: ciencia que escala hacia el cuidado preventivo cotidiano.",
+          "href": "https://biomathlife.com/#"
+        },
+        {
+          "name": "Healthcare Tech Outlook",
+          "body": "Cobertura de Digital Invest Inc. y trabajo relacionado en tecnología de la salud.",
+          "href": "https://www.healthcaretechoutlook.com/digital-invest-inc"
+        }
+      ]
+    },
+    "advisors": {
+      "label": "Asesores científicos",
+      "title": "Lista de asesores",
+      "subtitle": "Los asesores científicos nombrados se listarán aquí cuando se anuncien públicamente.",
+      "tba": "Por anunciar"
     }
   }
 }

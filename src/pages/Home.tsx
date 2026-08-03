@@ -3,7 +3,12 @@ import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 import CTASection from '../components/CTASection';
 import { useTheme } from '../contexts/ThemeContext';
-import { generateOrganizationSchema, generateWebSiteSchema, injectStructuredData } from '../lib/structuredData';
+import {
+  generateOrganizationSchema,
+  generateSoftwareApplicationSchema,
+  generateWebSiteSchema,
+  injectStructuredData,
+} from '../lib/structuredData';
 import { trackClick, trackEvent } from '../lib/analytics';
 import HumanDataModel from '../components/home/humanDataModel/HumanDataModel';
 import WhatCanYouUnderstand from '../components/home/WhatCanYouUnderstand';
@@ -21,15 +26,22 @@ export default function Home({ onNavigate }: HomeProps) {
 
   useEffect(() => {
     injectStructuredData(generateOrganizationSchema());
+    injectStructuredData(generateSoftwareApplicationSchema());
     injectStructuredData(generateWebSiteSchema());
   }, []);
 
   return (
     <div className="min-h-screen bg-page transition-colors">
       <SEO
-        title="Human Data Model"
-        description="BioMath Core Human Data Model — pieces come together to reveal the picture."
-        keywords={['BioMath Core', 'Human Data Model']}
+        title={t('home.seoTitle')}
+        description={t('home.seoDescription')}
+        keywords={[
+          'BioMath Core',
+          'Human Data Model',
+          'biomathematical modeling',
+          'digital twin',
+          'Health Guide',
+        ]}
         page="home"
       />
 

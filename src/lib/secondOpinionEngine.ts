@@ -286,13 +286,8 @@ export function estimateLocalSignalCounts(): Partial<Record<KnowledgeSourceKey, 
     counts.inputs = counts.inputs ?? 0;
   }
 
-  try {
-    const filesRaw = localStorage.getItem('bmcore.medical.files');
-    const files = filesRaw ? (JSON.parse(filesRaw) as unknown[]) : [];
-    counts.documents = Array.isArray(files) ? files.length : 0;
-  } catch {
-    counts.documents = counts.documents ?? 0;
-  }
+  // Medical file PHI is no longer mirrored in localStorage; keep documents count unset here.
+  counts.documents = counts.documents ?? 0;
 
   return counts;
 }

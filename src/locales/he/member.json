@@ -5,7 +5,12 @@
       "workspace": "סביבת עבודה מחוברת",
       "backHome": "חזרה לדף הבית",
       "signOut": "התנתקות",
-      "collapse": "כיווץ"
+      "collapse": "כיווץ",
+      "menu": "תפריט",
+      "openMenu": "פתיחת תפריט חבר",
+      "closeMenu": "סגירת תפריט חבר",
+      "expand": "הרחבת סרגל הצד",
+      "subscriptionLoadFailed": "טעינת סטטוס המנוי נכשלה"
     },
     "nav": {
       "main": "ראשי",
@@ -50,7 +55,19 @@
       "dailyPlan": "תוכנית Daily: עד 10 קטגוריות",
       "maxPlan": "תוכנית Max: כל 20 הקטגוריות כלולות",
       "emailNote": "נשלח אליכם מייל אישור עם כל הפרטים.",
-      "goToCatalog": "מעבר לקטלוג"
+      "goToCatalog": "מעבר לקטלוג",
+      "emailSubject": "ברוכים הבאים ל-BioMath Core!",
+      "emailHeading": "ברוכים הבאים ל-BioMath Core!",
+      "emailThanks": "תודה שנרשמתם לתוכנית {{plan}}!",
+      "emailAccess": "יש לכם כעת גישה מלאה לתכונות החברים של BioMath Core.",
+      "emailGetStarted": "התחילו בחקירה של:",
+      "emailItemDashboard": "לוח הבריאות שלכם",
+      "emailItemHealthGuide": "Health Guide",
+      "emailItemDevices": "חיבור מכשירים",
+      "emailItemReports": "דוחות מקיפים",
+      "emailSupport": "אם יש שאלות, צוות התמיכה כאן לעזור!",
+      "emailSignOff": "בברכה,<br/>צוות BioMath Core",
+      "emailFailed": "שליחת אימייל קבלת הפנים נכשלה"
     },
     "dashboard": {
       "title": "הבריאות שלי",
@@ -148,7 +165,17 @@
         "whoop": "WHOOP",
         "garmin": "Garmin",
         "cgm": "CGM (Dexcom/Libre)"
-      }
+      },
+      "demoBadge": "הדגמה",
+      "linkAccount": "קישור חשבון",
+      "linkModalTitle": "קישור חשבון מכשיר",
+      "linkModalBody": "סנכרון OAuth חי עדיין אינו זמין. הקישור שומר רשומת מכשיר לאינטגרציות עתידיות.",
+      "clickToLink": "לחצו לקישור",
+      "linked": "מקושר",
+      "linkedSuccess": "{{name}} קושר",
+      "linkAccountNote": "קישור החשבון הוא זמני — סנכרון OAuth חי של מכשירים לבישים יגיע בקרוב.",
+      "syncDemoNote": "חותמת הזמן של הסנכרון עודכנה מקומית. סנכרון ספק עדיין לא מחובר.",
+      "markSynced": "סמן כמסונכרן"
     },
     "billing": {
       "title": "חיוב ומנוי",
@@ -201,7 +228,10 @@
       "statusFailed": "נכשל",
       "quickActions": "פעולות מהירות",
       "quickActionsBody": "נהל את המנוי והחיוב עם קיצורי דרך אלה",
-      "changeCycleBody": "עבור בין חיוב חודשי לשנתי (חיסכון של 17%)"
+      "changeCycleBody": "עבור בין חיוב חודשי לשנתי (חיסכון של 17%)",
+      "loadFailed": "טעינת נתוני החיוב נכשלה",
+      "portalComingSoon": "פורטל הלקוחות של Stripe יגיע בקרוב. בינתיים פנו לתמיכה לעדכון חיוב.",
+      "pdfComingSoon": "הורדת PDF של חשבוניות תגיע בקרוב."
     },
     "profile": {
       "title": "מידע אישי",
@@ -227,7 +257,15 @@
       "fieldNamePlaceholder": "שם שדה (למשל, סוג דם)",
       "fieldValuePlaceholder": "ערך (למשל, O+)",
       "fullNamePlaceholder": "ישראל ישראלי",
-      "countryPlaceholder": "ישראל"
+      "countryPlaceholder": "ישראל",
+      "updated": "הפרופיל עודכן",
+      "saveFailed": "שמירת הפרופיל נכשלה",
+      "fileTooLarge": "גודל הקובץ חייב להיות קטן מ־5MB",
+      "imageOnly": "נא להעלות קובץ תמונה",
+      "signInToUpload": "היכנסו כדי להעלות תמונות",
+      "storageUnavailable": "העלאה לאחסון אינה זמינה. השתמשו בכתובת תמונה.",
+      "photoUploaded": "התמונה הועלתה",
+      "uploadFailed": "ההעלאה נכשלה. השתמשו בכתובת תמונה."
     },
     "support": {
       "title": "תמיכה",
@@ -335,7 +373,7 @@
     },
     "reminders": {
       "title": "תזכורות חכמות",
-      "subtitle": "תזכורות מקומיות לשמירה על עקביות בשגרת הבריאות שלכם.",
+      "subtitle": "תזכורות מקומיות במכשיר לשמירה על שגרות הבריאות.",
       "create": "יצירת תזכורת",
       "titlePlaceholder": "כותרת התזכורת",
       "notePlaceholder": "הערה (לא חובה)",
@@ -349,7 +387,9 @@
         "weekly": "שבועי",
         "monthly": "חודשי",
         "custom": "מותאם אישית"
-      }
+      },
+      "deviceLocalBadge": "מקומי במכשיר",
+      "deviceLocalNote": "התזכורות נשמרות במכשיר זה בלבד (אחסון דפדפן) ועדיין אינן מסונכרנות לחשבון."
     },
     "secondOpinion": {
       "title": "חוות דעת שנייה בבריאות",
@@ -436,7 +476,35 @@
       "download": "הורדה",
       "share": "שיתוף",
       "print": "הדפסה",
-      "copyUrl": "העתק URL"
+      "copyUrl": "העתק URL",
+      "loadFailed": "לא ניתן לטעון קבצים רפואיים",
+      "signInRequired": "נא להיכנס כדי לנהל קבצים רפואיים",
+      "fileNameRequired": "נא להזין שם קובץ",
+      "fileOrUrlRequired": "בחרו קובץ או הדביקו כתובת פרטית",
+      "storageUnavailable": "העלאה לאחסון פרטי עדיין אינה זמינה. המטא־נתונים נשמרו; הבייטים לא הועלו.",
+      "uploadSuccess": "הקובץ הרפואי נשמר",
+      "uploadFailed": "העלאת הקובץ הרפואי נכשלה",
+      "deleteSuccess": "הקובץ נמחק",
+      "deleteFailed": "מחיקת הקובץ נכשלה",
+      "pendingFile": "קובץ זה ממתין לאחסון פרטי. פתיחה/הורדה יהיו זמינים לאחר ההגדרה.",
+      "urlUnavailable": "לא ניתן לפתוח קובץ זה באופן מאובטח כעת",
+      "shareNotice": "שיתוף מאובטח של „{{name}}“ עדיין אינו מופעל. כתובות רגישות אינן מועתקות ללוח.",
+      "sizeUnknown": "גודל לא ידוע",
+      "privacyNote": "רשימות קבצים אינן נשמרות עוד ב־localStorage. העדיפו העלאה לאחסון פרטי כשזמין.",
+      "chooseFile": "בחירת קובץ",
+      "chooseFileHint": "מומלץ: העלאה לאחסון פרטי כשה־bucket מוגדר.",
+      "fileUrlOptional": "כתובת חיצונית (אופציונלי)",
+      "fileUrlHint": "השתמשו רק בכתובת פרטית שבשליטתכם. איננו מעתיקים כתובות רגישות.",
+      "uploading": "מעלה…",
+      "categories": {
+        "labResults": "תוצאות מעבדה",
+        "xray": "רנטגן",
+        "mri": "MRI",
+        "ctScan": "CT",
+        "prescription": "מרשם",
+        "report": "דוח",
+        "other": "אחר"
+      }
     },
     "blackBox": {
       "title": "אחסון Black Box",
@@ -507,7 +575,9 @@
       "processDeviceIntegration": "אינטגרציית מכשירים",
       "processAnalytics": "צינור אנליטיקה",
       "manageApiKeys": "נהל מפתחות API",
-      "exportData": "ייצא נתונים"
+      "exportData": "ייצא נתונים",
+      "demoBadge": "מדומה",
+      "simulatedNote": "המדדים מדומים להדגמה ואינם משקפים תשתית חיה."
     },
     "questionnaires": {
       "title": "שאלוני בריאות",
@@ -889,7 +959,15 @@
       "maxPremium": "סט תכונות מלא",
       "servicesCount": "{{count}} שירותים",
       "selectedCount": "{{count}} נבחרו",
-      "nextStepsBody": "לאחר השדרוג נלווה אתכם בשאלוני בריאות שעוזרים להתאים אישית את התובנות."
+      "nextStepsBody": "לאחר השדרוג נלווה אתכם בשאלוני בריאות שעוזרים להתאים אישית את התובנות.",
+      "loadFailed": "טעינת נתוני הקטלוג נכשלה",
+      "loadFailedRetry": "טעינת נתוני הקטלוג נכשלה. נסו שוב.",
+      "plansLoadFailed": "לא ניתן לטעון תוכניות מנוי.",
+      "subscriptionLoadFailed": "לא ניתן לטעון את המנוי שלכם.",
+      "selectCategoryFirst": "בחרו לפחות קטגוריה אחת לשדרוג",
+      "signInToUpgrade": "היכנסו כדי לשדרג",
+      "redirectingPricing": "מעבירים לדף המחירים עבור תוכנית {{plan}}…",
+      "upgradeFailed": "עיבוד השדרוג נכשל. נסו שוב."
     },
     "healthGuide": {
       "ask": "שאל את שאלת הבריאות שלך",
@@ -919,7 +997,9 @@
       "insight1": "שני המודלים מסכימים על חשיבות התייעצות עם אנשי מקצוע רפואיים",
       "insight2": "דעה מבוססת ראיות מתמקדת בהנחיות רפואיות כלליות",
       "insight3": "דעה הקשרית לוקחת בחשבון את פרופיל הבריאות האישי שלך",
-      "askAnother": "שאל שאלה נוספת"
+      "askAnother": "שאל שאלה נוספת",
+      "demoBadge": "הדגמה",
+      "simulatedNote": "התשובות מדומות להדגמה עד לחיבור מודלים חיים."
     },
     "placeholder": {
       "comingSoon": "בקרוב",
@@ -949,6 +1029,28 @@
       "delete": "מחיקה",
       "access": "גישה",
       "since": "מאז"
+    },
+    "workspaceBanner": {
+      "memberZone": "אזור חברים",
+      "admin": "ניהול",
+      "signedIn": "מחובר",
+      "memberAccess": "גישה מלאה לשירותים",
+      "adminAccess": "גישת מנהל",
+      "superadminAccess": "גישת סופר־אדמין"
+    },
+    "serviceWorkspace": {
+      "demoBadge": "הדגמה",
+      "simulatedNote": "הדעות שנוצרו הן תבניות מדומות עד לחיבור ניתוח רב־מודלי.",
+      "backToCatalog": "חזרה לקטלוג החברים",
+      "interactiveBadge": "שירות אינטראקטיבי מלא",
+      "unlockedTitle": "סביבת העבודה האינטראקטיבית פתוחה",
+      "unlockedBody": "שאלו שאלות, הריצו דוחות רב־מודליים, ערכו מקומית והמשיכו בדיאלוג — כל השדות פעילים.",
+      "tabAsk": "שאל שאלה",
+      "tabFaq": "שאלות נפוצות",
+      "tabLearn": "למידה",
+      "tabReport": "דוח וחוות דעת שנייה",
+      "enterQuestion": "נא להזין את שאלת הבריאות או החשש שלכם",
+      "reportCopied": "הדוח הועתק ללוח"
     }
   }
 }

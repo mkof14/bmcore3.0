@@ -7,6 +7,7 @@ import {
   getQuestionnaireSummary,
   type QuestionnaireSummary,
 } from '../../lib/questionnaire';
+import MemberDemoBadge from '../../components/MemberDemoBadge';
 
 export default function AIHealthAdvisorSection() {
   const { t } = useTranslation();
@@ -62,6 +63,11 @@ export default function AIHealthAdvisorSection() {
 
   return (
     <div className="space-y-6">
+      <div className="flex flex-wrap items-center gap-2">
+        <MemberDemoBadge labelKey="member.healthGuide.demoBadge" />
+        <p className="text-xs member-muted">{t('member.healthGuide.simulatedNote')}</p>
+      </div>
+
       <div className="border border-amber-500/25 bg-amber-500/10 dark:bg-amber-900/20 rounded-xl p-4">
         <div className="flex items-start gap-3">
           <AlertCircle className="h-5 w-5 text-amber-700 dark:text-amber-300 flex-shrink-0 mt-0.5" />
@@ -99,13 +105,18 @@ export default function AIHealthAdvisorSection() {
       <div className="member-card p-6 shadow-lg">
         <h3 className="member-heading text-lg mb-4">{t('member.healthGuide.ask')}</h3>
         <div className="space-y-4">
+          <label className="sr-only" htmlFor="health-guide-question">
+            {t('member.healthGuide.ask')}
+          </label>
           <textarea
+            id="health-guide-question"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             onKeyPress={handleKeyPress}
             rows={4}
             placeholder={t('member.healthGuide.askPlaceholder')}
             className="w-full px-4 py-3 member-input resize-none"
+            aria-label={t('member.healthGuide.ask')}
           />
           <button
             onClick={handleSubmit}
@@ -162,8 +173,11 @@ export default function AIHealthAdvisorSection() {
                 <div className="p-2 rounded-lg bg-[var(--bm-surface)] border border-[var(--bm-border)]">
                   <Brain className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                 </div>
-                <div>
-                  <h4 className="member-heading text-lg">{t('member.healthGuide.opinion1Title')}</h4>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <h4 className="member-heading text-lg">{t('member.healthGuide.opinion1Title')}</h4>
+                    <MemberDemoBadge labelKey="member.healthGuide.demoBadge" />
+                  </div>
                   <p className="text-xs text-blue-600 dark:text-blue-400">{t('member.healthGuide.opinion1Subtitle')}</p>
                 </div>
               </div>
@@ -185,8 +199,11 @@ export default function AIHealthAdvisorSection() {
                 <div className="p-2 rounded-lg bg-[var(--bm-surface)] border border-[var(--bm-border)]">
                   <Scale className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                 </div>
-                <div>
-                  <h4 className="member-heading text-lg">{t('member.healthGuide.opinion2Title')}</h4>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <h4 className="member-heading text-lg">{t('member.healthGuide.opinion2Title')}</h4>
+                    <MemberDemoBadge labelKey="member.healthGuide.demoBadge" />
+                  </div>
                   <p className="text-xs text-emerald-600 dark:text-emerald-400">{t('member.healthGuide.opinion2Subtitle')}</p>
                 </div>
               </div>

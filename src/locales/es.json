@@ -13,7 +13,7 @@
     "languageSwitching": "Cambiando idioma…"
   },
   "footer": {
-    "tagline": "Inteligencia de bienestar basada en biomatemáticas para entender tu cuerpo.",
+    "tagline": "Modelo de Datos Humanos biomatemático — un gemelo digital vivo de tu salud.",
     "navigation": "Navegación",
     "resources": "Recursos",
     "company": "Empresa",
@@ -35,7 +35,8 @@
     "rights": "Todos los derechos reservados.",
     "legalSafety": "Legal y seguridad",
     "memberArea": "Área de miembro",
-    "infoHelp": "Info y ayuda"
+    "infoHelp": "Info y ayuda",
+    "appsStatus": "Aún no hay apps nativas en App Store ni Google Play. Usa BioMath Core en el navegador o instala la app web (PWA)."
   },
   "common": {
     "getStarted": "Empezar",
@@ -53,7 +54,7 @@
   },
   "healthGuide": {
     "name": "Guía de salud",
-    "tagline": "Orientación clara de bienestar con doble perspectiva",
+    "tagline": "Orientación de doble modelo sobre tu Modelo de Datos Humanos",
     "welcome": "¡Hola! Soy tu Guía de salud. Puedo ofrecer dos perspectivas complementarias sobre tus preguntas. Activa «Segunda opinión» para una visión más completa.",
     "askAnything": "Pregúntame cualquier cosa sobre tu salud…",
     "askDual": "Pide perspectivas duales…",
@@ -77,33 +78,35 @@
   },
   "home": {
     "heroTitle": "Tu Human Data Model de por vida",
-    "heroSubtitle": "Cada evento de salud importante forma parte de un modelo vivo — para que la comprensión crezca contigo.",
+    "heroSubtitle": "Un gemelo digital biomatemático que crece con cada evento de salud verificado — no un feed genérico de insights.",
     "ctaExplore": "Explorar servicios",
     "ctaHow": "Cómo funciona",
     "modelTitle": "Human Data Model",
-    "modelSubtitle": "Construido a partir de información de salud verificada.",
+    "modelSubtitle": "Un gemelo digital biomatemático construido a partir de información de salud verificada.",
     "section2": "Sección 2",
     "whatTitle": "¿Qué puedes entender?",
-    "whatSubtitle": "Tu Human Data Model ayuda a revelar conexiones difíciles de notar cuando la información está separada.",
+    "whatSubtitle": "Tu Modelo de Datos Humanos revela conexiones que permanecen ocultas cuando laboratorios, wearables e historial siguen separados.",
     "section3": "Sección 3",
     "timelineTitle": "Línea de tiempo de datos humanos",
-    "timelineSubtitle": "Tu historial de salud, entendido en contexto.",
+    "timelineSubtitle": "Tu historial de salud, entendido en contexto biomatemático.",
     "openTimeline": "Abrir tu línea de tiempo",
     "section4": "Sección 4",
     "changesTitle1": "Todo cambia.",
     "changesTitle2": "Human Data Model lo recuerda.",
-    "changesSubtitle": "Cada evento importante de salud pasa a formar parte de tu Human Data Model de por vida.",
+    "changesSubtitle": "Cada evento de salud importante actualiza tu Modelo de Datos Humanos biomatemático de por vida.",
     "cta": {
-      "title": "¿Listo para ver tu salud con más claridad?",
-      "description": "Empieza con un plan a tu medida. Health Guide te ayuda a entender tu Human Data Model.",
+      "title": "¿Listo para construir tu Modelo de Datos Humanos?",
+      "description": "Empieza con un plan que profundice tu contexto biomatemático. Health Guide ofrece orientación de doble modelo — no personalización genérica.",
       "primary": "Ver precios",
       "secondary": "Crear cuenta"
-    }
+    },
+    "seoTitle": "Modelo de Datos Humanos biomatemático",
+    "seoDescription": "BioMath Core construye un Modelo de Datos Humanos vivo — un gemelo digital biomatemático de tu salud — y te orienta con el análisis dual de Health Guide."
   },
   "about": {
     "label": "Acerca de BioMath Core",
     "title": "Misión, visión y las personas detrás de BioMath Core",
-    "subtitle": "Salud digital y analítica biomatemática diseñadas para precisión, transparencia e inteligencia centrada en las personas."
+    "subtitle": "Modelado biomatemático y biología computacional para un Modelo de Datos Humanos vivo — transparente, preventivo y centrado en las personas."
   },
   "pricing": {
     "label": "Precios",
@@ -118,14 +121,14 @@
   "investors": {
     "label": "Inversores",
     "title": "Inversión estratégica en inteligencia de salud personal",
-    "subtitle": "BioMath Core convierte datos de salud complejos en orientación personalizada mediante modelado biomatemático e IA."
+    "subtitle": "BioMath Core construye Modelos de Datos Humanos biomatemáticos y orientación de doble inteligencia con Health Guide."
   },
   "summary": {
     "label": "Resumen",
-    "healthIntelligence": "Inteligencia de salud personal",
-    "healthIntelligenceSub": "Una forma más clara de navegar tu salud — guiada por la comprensión, no por más gráficos.",
+    "healthIntelligence": "Inteligencia de salud biomatemática",
+    "healthIntelligenceSub": "Navega con un Modelo de Datos Humanos vivo — primero la comprensión, después los gráficos.",
     "advisorTitle": "La Guía de salud",
-    "advisorLead": "La forma principal de conocer BioMath Core — orientación antes de la navegación."
+    "advisorLead": "La forma principal de conocer BioMath Core — orientación de doble modelo antes de navegar."
   },
   "catalog": {
     "label": "Catálogo de servicios",

@@ -188,7 +188,7 @@ export function generateOrganizationSchema(): Organization {
     '@type': 'MedicalOrganization',
     name: 'BioMath Core',
     description:
-      'BioMath Core turns your health data into clear insights, personalized guidance, and practical next steps with Health Guide.',
+      'BioMath Core builds a biomathematical Human Data Model — a living digital twin of your health — and delivers dual-model guidance through Health Guide.',
     url: 'https://biomathcore.com',
     logo: 'https://biomathcore.com/biomathcore_emblem_1024.png',
     sameAs: getSocialSameAs(),
@@ -218,6 +218,33 @@ export function generateOrganizationSchema(): Organization {
         availableLanguage: ['English', 'Spanish', 'Russian']
       }
     ]
+  };
+}
+
+/** Health Guide / BioMath Core web application schema for Home and key marketing pages. */
+export function generateSoftwareApplicationSchema(): Product {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Health Guide',
+    description:
+      'Health Guide is the BioMath Core guidance experience: dual biomathematical and clinical perspectives on your Human Data Model.',
+    image: 'https://biomathcore.com/og-default.jpg',
+    brand: {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'BioMath Core',
+      url: 'https://biomathcore.com',
+    },
+    offers: [
+      {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+        url: 'https://biomathcore.com/pricing',
+      },
+    ],
   };
 }
 

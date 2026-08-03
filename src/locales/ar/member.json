@@ -5,7 +5,12 @@
       "workspace": "مساحة عمل بعد تسجيل الدخول",
       "backHome": "العودة إلى الرئيسية",
       "signOut": "تسجيل الخروج",
-      "collapse": "طي القائمة"
+      "collapse": "طي القائمة",
+      "menu": "القائمة",
+      "openMenu": "فتح قائمة العضو",
+      "closeMenu": "إغلاق قائمة العضو",
+      "expand": "توسيع الشريط الجانبي",
+      "subscriptionLoadFailed": "فشل تحميل حالة الاشتراك"
     },
     "nav": {
       "main": "الرئيسية",
@@ -50,7 +55,19 @@
       "dailyPlan": "خطة Daily: حتى 10 فئات",
       "maxPlan": "خطة Max: جميع الفئات العشرين مشمولة",
       "emailNote": "تم إرسال رسالة تأكيد تتضمن كل التفاصيل إلى بريدك الإلكتروني.",
-      "goToCatalog": "الانتقال إلى دليل الخدمات"
+      "goToCatalog": "الانتقال إلى دليل الخدمات",
+      "emailSubject": "مرحبًا بك في BioMath Core!",
+      "emailHeading": "مرحبًا بك في BioMath Core!",
+      "emailThanks": "شكرًا لاشتراكك في خطة {{plan}}!",
+      "emailAccess": "لديك الآن وصول كامل إلى ميزات أعضاء BioMath Core.",
+      "emailGetStarted": "ابدأ باستكشاف:",
+      "emailItemDashboard": "لوحة صحتك",
+      "emailItemHealthGuide": "Health Guide",
+      "emailItemDevices": "اتصال الأجهزة",
+      "emailItemReports": "تقارير شاملة",
+      "emailSupport": "إذا كانت لديك أسئلة، فريق الدعم هنا للمساعدة!",
+      "emailSignOff": "مع أطيب التحيات،<br/>فريق BioMath Core",
+      "emailFailed": "فشل إرسال رسالة الترحيب"
     },
     "dashboard": {
       "title": "صحتي",
@@ -148,7 +165,17 @@
         "whoop": "WHOOP",
         "garmin": "Garmin",
         "cgm": "CGM (Dexcom/Libre)"
-      }
+      },
+      "demoBadge": "تجريبي",
+      "linkAccount": "ربط الحساب",
+      "linkModalTitle": "ربط حساب جهاز",
+      "linkModalBody": "مزامنة OAuth الحية غير متاحة بعد. الربط يحفظ سجل جهاز للتكاملات القادمة.",
+      "clickToLink": "انقر للربط",
+      "linked": "مربوط",
+      "linkedSuccess": "تم ربط {{name}}",
+      "linkAccountNote": "ربط الحساب مؤقت — مزامنة OAuth الحية للأجهزة القابلة للارتداء قادمة قريبًا.",
+      "syncDemoNote": "تم تحديث وقت المزامنة محليًا. مزامنة المورّد غير متصلة بعد.",
+      "markSynced": "تعليم كمزامن"
     },
     "billing": {
       "title": "الفوترة والاشتراك",
@@ -201,7 +228,10 @@
       "statusFailed": "فشل",
       "quickActions": "إجراءات سريعة",
       "quickActionsBody": "إدارة اشتراكك وفوترتك بهذه الاختصارات",
-      "changeCycleBody": "التبديل بين الفوترة الشهرية والسنوية (وفر 17%)"
+      "changeCycleBody": "التبديل بين الفوترة الشهرية والسنوية (وفر 17%)",
+      "loadFailed": "فشل تحميل بيانات الفوترة",
+      "portalComingSoon": "بوابة عملاء Stripe قادمة قريبًا. تواصل مع الدعم لتحديث الفوترة حاليًا.",
+      "pdfComingSoon": "تنزيل PDF للفواتير قادم قريبًا."
     },
     "profile": {
       "title": "المعلومات الشخصية",
@@ -227,7 +257,15 @@
       "fieldNamePlaceholder": "اسم الحقل (مثال: فصيلة الدم)",
       "fieldValuePlaceholder": "القيمة (مثال: O+)",
       "fullNamePlaceholder": "محمد أحمد",
-      "countryPlaceholder": "المملكة العربية السعودية"
+      "countryPlaceholder": "المملكة العربية السعودية",
+      "updated": "تم تحديث الملف الشخصي",
+      "saveFailed": "فشل حفظ الملف الشخصي",
+      "fileTooLarge": "يجب أن يكون حجم الملف أقل من 5 ميجابايت",
+      "imageOnly": "يرجى رفع ملف صورة",
+      "signInToUpload": "يرجى تسجيل الدخول لرفع الصور",
+      "storageUnavailable": "رفع التخزين غير متاح. استخدم رابط صورة بدلًا من ذلك.",
+      "photoUploaded": "تم رفع الصورة",
+      "uploadFailed": "فشل الرفع. استخدم رابط صورة بدلًا من ذلك."
     },
     "support": {
       "title": "الدعم",
@@ -335,7 +373,7 @@
     },
     "reminders": {
       "title": "تذكيرات ذكية",
-      "subtitle": "تذكيرات محلية للحفاظ على انتظام روتينك الصحي.",
+      "subtitle": "تذكيرات محلية على الجهاز للحفاظ على روتينك الصحي.",
       "create": "إنشاء تذكير",
       "titlePlaceholder": "عنوان التذكير",
       "notePlaceholder": "ملاحظة (اختياري)",
@@ -349,7 +387,9 @@
         "weekly": "أسبوعي",
         "monthly": "شهري",
         "custom": "مخصص"
-      }
+      },
+      "deviceLocalBadge": "محلي على الجهاز",
+      "deviceLocalNote": "التذكيرات تُحفظ على هذا الجهاز فقط (تخزين المتصفح) ولم تُزامن مع حسابك بعد."
     },
     "secondOpinion": {
       "title": "رأي صحي ثانٍ",
@@ -436,7 +476,35 @@
       "download": "تنزيل",
       "share": "مشاركة",
       "print": "طباعة",
-      "copyUrl": "نسخ الرابط"
+      "copyUrl": "نسخ الرابط",
+      "loadFailed": "تعذّر تحميل الملفات الطبية",
+      "signInRequired": "يرجى تسجيل الدخول لإدارة الملفات الطبية",
+      "fileNameRequired": "يرجى إدخال اسم الملف",
+      "fileOrUrlRequired": "اختر ملفًا أو الصق رابطًا خاصًا",
+      "storageUnavailable": "رفع التخزين الخاص غير متاح بعد. تم حفظ البيانات الوصفية؛ لم تُرفع البايتات.",
+      "uploadSuccess": "تم حفظ الملف الطبي",
+      "uploadFailed": "فشل رفع الملف الطبي",
+      "deleteSuccess": "تم حذف الملف",
+      "deleteFailed": "فشل حذف الملف",
+      "pendingFile": "هذا الملف بانتظار التخزين الخاص. سيتوفر الفتح/التنزيل بعد الإعداد.",
+      "urlUnavailable": "تعذّر فتح هذا الملف بأمان الآن",
+      "shareNotice": "المشاركة الآمنة لـ «{{name}}» غير مفعّلة بعد. لا ننسخ الروابط الحساسة إلى الحافظة.",
+      "sizeUnknown": "الحجم غير معروف",
+      "privacyNote": "لم تعد قوائم الملفات تُحفظ في localStorage بالمتصفح. فضّل الرفع إلى التخزين الخاص عند التوفر.",
+      "chooseFile": "اختر ملفًا",
+      "chooseFileHint": "المفضّل: الرفع إلى التخزين الخاص عند إعداد الحاوية.",
+      "fileUrlOptional": "رابط خارجي (اختياري)",
+      "fileUrlHint": "استخدم فقط رابطًا خاصًا تتحكم به. لا ننسخ الروابط الحساسة.",
+      "uploading": "جارٍ الرفع…",
+      "categories": {
+        "labResults": "نتائج المختبر",
+        "xray": "أشعة سينية",
+        "mri": "تصوير بالرنين",
+        "ctScan": "تصوير مقطعي",
+        "prescription": "وصفة طبية",
+        "report": "تقرير",
+        "other": "أخرى"
+      }
     },
     "blackBox": {
       "title": "تخزين Black Box",
@@ -507,7 +575,9 @@
       "processDeviceIntegration": "تكامل الأجهزة",
       "processAnalytics": "خط أنابيب التحليلات",
       "manageApiKeys": "إدارة مفاتيح API",
-      "exportData": "تصدير البيانات"
+      "exportData": "تصدير البيانات",
+      "demoBadge": "محاكى",
+      "simulatedNote": "هذه المقاييس محاكاة للعرض ولا تعكس البنية التحتية الحية."
     },
     "questionnaires": {
       "title": "الاستبيانات الصحية",
@@ -889,7 +959,15 @@
       "maxPremium": "مجموعة الميزات الكاملة",
       "servicesCount": "{{count}} خدمات",
       "selectedCount": "تم اختيار {{count}}",
-      "nextStepsBody": "بعد الترقية سنرشدك عبر استبيانات صحية تساعد على تخصيص رؤاك."
+      "nextStepsBody": "بعد الترقية سنرشدك عبر استبيانات صحية تساعد على تخصيص رؤاك.",
+      "loadFailed": "فشل تحميل بيانات الكتالوج",
+      "loadFailedRetry": "فشل تحميل بيانات الكتالوج. حاول مرة أخرى.",
+      "plansLoadFailed": "تعذّر تحميل خطط الاشتراك.",
+      "subscriptionLoadFailed": "تعذّر تحميل اشتراكك.",
+      "selectCategoryFirst": "يرجى اختيار فئة واحدة على الأقل للترقية",
+      "signInToUpgrade": "يرجى تسجيل الدخول للترقية",
+      "redirectingPricing": "جارٍ التوجيه إلى صفحة الأسعار لخطة {{plan}}…",
+      "upgradeFailed": "فشلت معالجة الترقية. حاول مرة أخرى."
     },
     "healthGuide": {
       "ask": "اطرح سؤالك الصحي",
@@ -919,7 +997,9 @@
       "insight1": "يتفق النموذجان على أهمية استشارة المتخصصين في الرعاية الصحية",
       "insight2": "الرأي المبني على الأدلة يركز على الإرشادات الطبية العامة",
       "insight3": "الرأي السياقي يأخذ في الاعتبار ملفك الصحي الفردي",
-      "askAnother": "اطرح سؤالاً آخر"
+      "askAnother": "اطرح سؤالاً آخر",
+      "demoBadge": "تجريبي",
+      "simulatedNote": "الردود محاكاة للعرض حتى يتم ربط النماذج الحية."
     },
     "placeholder": {
       "comingSoon": "قريبًا",
@@ -949,6 +1029,28 @@
       "delete": "حذف",
       "access": "وصول",
       "since": "منذ"
+    },
+    "workspaceBanner": {
+      "memberZone": "منطقة الأعضاء",
+      "admin": "الإدارة",
+      "signedIn": "تم تسجيل الدخول",
+      "memberAccess": "وصول كامل للخدمات",
+      "adminAccess": "وصول المسؤول",
+      "superadminAccess": "وصول المسؤول الأعلى"
+    },
+    "serviceWorkspace": {
+      "demoBadge": "تجريبي",
+      "simulatedNote": "الآراء المُنشأة قوالب محاكاة حتى يتم ربط التحليل متعدد النماذج.",
+      "backToCatalog": "العودة إلى كتالوج الأعضاء",
+      "interactiveBadge": "خدمة تفاعلية كاملة",
+      "unlockedTitle": "تم فتح مساحة العمل التفاعلية",
+      "unlockedBody": "اطرح أسئلة وشغّل تقارير متعددة النماذج وعدّل محليًا وواصل الحوار — جميع الحقول نشطة.",
+      "tabAsk": "اطرح سؤالًا",
+      "tabFaq": "الأسئلة الشائعة",
+      "tabLearn": "التعلّم",
+      "tabReport": "التقرير والرأي الثاني",
+      "enterQuestion": "يرجى إدخال سؤالك أو قلقك الصحي",
+      "reportCopied": "تم نسخ التقرير إلى الحافظة"
     }
   }
 }

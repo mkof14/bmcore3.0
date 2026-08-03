@@ -13,7 +13,7 @@
     "languageSwitching": "Sprache wird gewechselt…"
   },
   "footer": {
-    "tagline": "Biomathematik-basierte Wellness-Intelligenz zum Verstehen Ihres Körpers.",
+    "tagline": "Biomathematisches Human Data Model — ein lebendiger digitaler Zwilling Ihrer Gesundheit.",
     "navigation": "Navigation",
     "resources": "Ressourcen",
     "company": "Unternehmen",
@@ -35,7 +35,8 @@
     "rights": "Alle Rechte vorbehalten.",
     "legalSafety": "Recht & Sicherheit",
     "memberArea": "Mitgliederbereich",
-    "infoHelp": "Info & Hilfe"
+    "infoHelp": "Info & Hilfe",
+    "appsStatus": "Noch keine nativen Apps im App Store oder bei Google Play. Nutzen Sie BioMath Core im Browser oder installieren Sie die Web-App (PWA)."
   },
   "common": {
     "getStarted": "Loslegen",
@@ -53,7 +54,7 @@
   },
   "healthGuide": {
     "name": "Gesundheitsführer",
-    "tagline": "Klare Wellness-Orientierung mit doppelter Perspektive",
+    "tagline": "Doppelmodell-Guidance zu Ihrem Human Data Model",
     "welcome": "Hallo! Ich bin Ihr Gesundheitsführer. Ich kann zwei ergänzende Perspektiven anbieten. Aktivieren Sie „Zweitmeinung“ für einen volleren Überblick.",
     "askAnything": "Fragen Sie mich alles zu Ihrer Gesundheit…",
     "askDual": "Doppelte Perspektiven anfragen…",
@@ -77,33 +78,35 @@
   },
   "home": {
     "heroTitle": "Ihr lebenslanges Human Data Model",
-    "heroSubtitle": "Jedes wichtige Gesundheitsereignis wird Teil eines lebendigen Modells — damit Verständnis mit Ihnen wächst.",
+    "heroSubtitle": "Ein biomathematischer digitaler Zwilling, der mit jedem verifizierten Gesundheitsereignis wächst — kein generischer Insight-Feed.",
     "ctaExplore": "Dienste entdecken",
     "ctaHow": "So funktioniert’s",
     "modelTitle": "Human Data Model",
-    "modelSubtitle": "Aufgebaut aus verifizierten Gesundheitsinformationen.",
+    "modelSubtitle": "Ein biomathematischer digitaler Zwilling aus verifizierten Gesundheitsinformationen.",
     "section2": "Abschnitt 2",
     "whatTitle": "Was können Sie verstehen?",
-    "whatSubtitle": "Ihr Human Data Model hilft, Verbindungen zu erkennen, die schwer sichtbar sind, wenn Informationen getrennt bleiben.",
+    "whatSubtitle": "Ihr Human Data Model zeigt Zusammenhänge, die verborgen bleiben, wenn Labore, Wearables und Historie getrennt sind.",
     "section3": "Abschnitt 3",
     "timelineTitle": "Human Data Timeline",
-    "timelineSubtitle": "Ihre Gesundheitsgeschichte, im Kontext verstanden.",
+    "timelineSubtitle": "Ihre Gesundheitsgeschichte im biomathematischen Kontext.",
     "openTimeline": "Ihre Timeline öffnen",
     "section4": "Abschnitt 4",
     "changesTitle1": "Alles verändert sich.",
     "changesTitle2": "Human Data Model erinnert sich.",
-    "changesSubtitle": "Jedes wichtige Gesundheitsereignis wird Teil Ihres lebenslangen Human Data Model.",
+    "changesSubtitle": "Jedes wichtige Gesundheitsereignis aktualisiert Ihr lebenslanges biomathematisches Human Data Model.",
     "cta": {
-      "title": "Bereit, Ihre Gesundheit klarer zu sehen?",
-      "description": "Starten Sie mit dem passenden Plan. Health Guide hilft Ihnen, Ihr Human Data Model zu verstehen.",
+      "title": "Bereit, Ihr Human Data Model aufzubauen?",
+      "description": "Starten Sie mit einem Plan, der Ihren biomathematischen Kontext vertieft. Health Guide liefert Doppelmodell-Guidance — keine generische Personalisierung.",
       "primary": "Preise ansehen",
       "secondary": "Konto erstellen"
-    }
+    },
+    "seoTitle": "Biomathematisches Human Data Model",
+    "seoDescription": "BioMath Core baut ein lebendiges Human Data Model — einen biomathematischen digitalen Zwilling Ihrer Gesundheit — und führt Sie mit der Dualanalyse von Health Guide."
   },
   "about": {
     "label": "Über BioMath Core",
     "title": "Mission, Vision und die Menschen hinter BioMath Core",
-    "subtitle": "Digitale Gesundheit und Biomathematik-Analytik für Präzision, Transparenz und menschenzentrierte Intelligenz."
+    "subtitle": "Biomathematische Modellierung und Computational Biology für ein lebendiges Human Data Model — transparent, präventiv, menschenzentriert."
   },
   "pricing": {
     "label": "Preise",
@@ -118,14 +121,14 @@
   "investors": {
     "label": "Investoren",
     "title": "Strategische Investition in persönliche Gesundheitsintelligenz",
-    "subtitle": "BioMath Core wandelt komplexe Gesundheitsdaten durch biomathematische Modellierung und KI in personalisierte Orientierung um."
+    "subtitle": "BioMath Core baut biomathematische Human Data Models und Dual-Intelligence-Guidance mit Health Guide."
   },
   "summary": {
     "label": "Überblick",
-    "healthIntelligence": "Persönliche Gesundheitsintelligenz",
-    "healthIntelligenceSub": "Ein klarerer Weg, Ihre Gesundheit zu navigieren — geleitet von Verständnis, nicht von mehr Diagrammen.",
+    "healthIntelligence": "Biomathematische Gesundheitsintelligenz",
+    "healthIntelligenceSub": "Navigieren Sie mit einem lebendigen Human Data Model — erst Verständnis, dann Diagramme.",
     "advisorTitle": "Der Gesundheitsführer",
-    "advisorLead": "Der wichtigste Einstieg in BioMath Core — Orientierung vor Navigation."
+    "advisorLead": "Der primäre Weg zu BioMath Core — Doppelmodell-Guidance vor der Navigation."
   },
   "catalog": {
     "label": "Dienstkatalog",

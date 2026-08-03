@@ -103,9 +103,9 @@ export default function PersonalInfoSection() {
         });
 
       if (error) throw error;
-      notifyUserSuccess('Profile updated');
-    } catch (error) {
-      notifyUserError('Profile save failed');
+      notifyUserSuccess(t('member.profile.updated'));
+    } catch {
+      notifyUserError(t('member.profile.saveFailed'));
     } finally {
       setSaving(false);
     }
@@ -127,50 +127,45 @@ export default function PersonalInfoSection() {
     if (!file) return;
 
     if (file.size > 5 * 1024 * 1024) {
-      notifyUserInfo('File size must be less than 5MB');
+      notifyUserInfo(t('member.profile.fileTooLarge'));
       return;
     }
 
     if (!file.type.startsWith('image/')) {
-      notifyUserInfo('Please upload an image file');
+      notifyUserInfo(t('member.profile.imageOnly'));
       return;
     }
 
     try {
       const { data: user } = await supabase.auth.getUser();
       if (!user.user) {
-        notifyUserInfo('Please sign in to upload photos');
+        notifyUserInfo(t('member.profile.signInToUpload'));
         return;
       }
-
 
       const fileExt = file.name.split('.').pop();
       const fileName = `${user.user.id}-${Date.now()}.${fileExt}`;
       const filePath = `avatars/${fileName}`;
 
-
-      const { data, error: uploadError } = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from('profiles')
         .upload(filePath, file, {
           cacheControl: '3600',
-          upsert: true
+          upsert: true,
         });
 
       if (uploadError) {
-
-      notifyUserInfo('Storage upload not available. Use an image URL instead.');
+        notifyUserInfo(t('member.profile.storageUnavailable'));
         return;
       }
-
 
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
       const publicUrl = `${supabaseUrl}/storage/v1/object/public/profiles/${filePath}`;
 
-
       setProfile((prev) => (prev ? { ...prev, avatar_url: publicUrl } : prev));
-      notifyUserSuccess('Photo uploaded');
-    } catch (error) {
-      notifyUserError('Upload failed. Use an image URL instead.');
+      notifyUserSuccess(t('member.profile.photoUploaded'));
+    } catch {
+      notifyUserError(t('member.profile.uploadFailed'));
     }
   };
 

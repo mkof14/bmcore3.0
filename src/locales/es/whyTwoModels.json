@@ -2,12 +2,12 @@
   "whyTwoModels": {
     "seo": {
       "title": "Por qué dos modelos: inteligencia dual en BioMath Core",
-      "description": "BioMath Core utiliza dos modelos independientes —biomatemático y clínico— para analizar tus datos de salud. Descubre por qué el análisis dual mejora la precisión y la confianza."
+      "description": "BioMath Core usa dos modelos independientes — biomatemático y clínico — sobre tu Modelo de Datos Humanos. El análisis dual es lo opuesto a una puntuación genérica de personalización."
     },
     "hero": {
       "label": "Inteligencia dual",
       "title": "¿Por qué dos modelos?",
-      "body": "BioMath Core ejecuta dos análisis independientes sobre tus datos de salud —uno biomatemático y otro clínico— y compara los resultados. Cuando ambos coinciden, la confianza es alta. Cuando difieren, se señalan las áreas que merecen mayor atención."
+      "body": "BioMath Core ejecuta dos análisis independientes sobre tu Modelo de Datos Humanos — uno biomatemático y otro clínico — y compara los resultados. Cuando coinciden, la confianza es alta. Cuando difieren, destaca áreas que merecen más atención."
     },
     "models": {
       "label": "Modelos",

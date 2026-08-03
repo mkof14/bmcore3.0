@@ -5,7 +5,12 @@
       "workspace": "Espace de travail connecté",
       "backHome": "Retour à l’accueil",
       "signOut": "Déconnexion",
-      "collapse": "Réduire"
+      "collapse": "Réduire",
+      "menu": "Menu",
+      "openMenu": "Ouvrir le menu membre",
+      "closeMenu": "Fermer le menu membre",
+      "expand": "Développer la barre latérale",
+      "subscriptionLoadFailed": "Échec du chargement du statut d’abonnement"
     },
     "nav": {
       "main": "Principal",
@@ -50,7 +55,19 @@
       "dailyPlan": "Formule Daily : jusqu’à 10 catégories",
       "maxPlan": "Formule Max : les 20 catégories incluses",
       "emailNote": "Un e-mail de confirmation contenant tous les détails a été envoyé dans votre boîte de réception.",
-      "goToCatalog": "Aller au catalogue"
+      "goToCatalog": "Aller au catalogue",
+      "emailSubject": "Bienvenue chez BioMath Core !",
+      "emailHeading": "Bienvenue chez BioMath Core !",
+      "emailThanks": "Merci de vous être abonné à notre plan {{plan}} !",
+      "emailAccess": "Vous avez désormais un accès complet aux fonctionnalités membres de BioMath Core.",
+      "emailGetStarted": "Commencez par explorer :",
+      "emailItemDashboard": "Votre tableau de bord santé",
+      "emailItemHealthGuide": "Health Guide",
+      "emailItemDevices": "Connexion des appareils",
+      "emailItemReports": "Rapports complets",
+      "emailSupport": "Pour toute question, notre équipe d’assistance est là pour vous aider !",
+      "emailSignOff": "Cordialement,<br/>L’équipe BioMath Core",
+      "emailFailed": "Échec de l’envoi de l’e-mail de bienvenue"
     },
     "dashboard": {
       "title": "Ma santé",
@@ -148,7 +165,17 @@
         "whoop": "WHOOP",
         "garmin": "Garmin",
         "cgm": "CGM (Dexcom/Libre)"
-      }
+      },
+      "demoBadge": "Démo",
+      "linkAccount": "Lier un compte",
+      "linkModalTitle": "Lier un compte d’appareil",
+      "linkModalBody": "La synchronisation OAuth en direct n’est pas encore disponible. La liaison enregistre un appareil pour les intégrations à venir.",
+      "clickToLink": "Cliquer pour lier",
+      "linked": "Lié",
+      "linkedSuccess": "{{name}} lié",
+      "linkAccountNote": "La liaison est provisoire — la sync OAuth des wearables arrive bientôt.",
+      "syncDemoNote": "Horodatage de sync mis à jour localement. La sync fournisseur n’est pas encore connectée.",
+      "markSynced": "Marquer synchronisé"
     },
     "billing": {
       "title": "Facturation et abonnement",
@@ -201,7 +228,10 @@
       "statusFailed": "Échoué",
       "quickActions": "Actions rapides",
       "quickActionsBody": "Gérez votre abonnement et votre facturation avec ces raccourcis",
-      "changeCycleBody": "Passez de la facturation mensuelle à annuelle (économisez 17 %)"
+      "changeCycleBody": "Passez de la facturation mensuelle à annuelle (économisez 17 %)",
+      "loadFailed": "Échec du chargement des données de facturation",
+      "portalComingSoon": "Le portail client Stripe arrive bientôt. Contactez le support pour mettre à jour la facturation.",
+      "pdfComingSoon": "Le téléchargement PDF des factures arrive bientôt."
     },
     "profile": {
       "title": "Informations personnelles",
@@ -227,7 +257,15 @@
       "fieldNamePlaceholder": "Nom du champ (p. ex., Groupe sanguin)",
       "fieldValuePlaceholder": "Valeur (p. ex., O+)",
       "fullNamePlaceholder": "Jean Dupont",
-      "countryPlaceholder": "France"
+      "countryPlaceholder": "France",
+      "updated": "Profil mis à jour",
+      "saveFailed": "Échec de l’enregistrement du profil",
+      "fileTooLarge": "Le fichier doit faire moins de 5 Mo",
+      "imageOnly": "Veuillez téléverser une image",
+      "signInToUpload": "Connectez-vous pour téléverser des photos",
+      "storageUnavailable": "Téléversement stockage indisponible. Utilisez une URL d’image.",
+      "photoUploaded": "Photo téléversée",
+      "uploadFailed": "Échec du téléversement. Utilisez une URL d’image."
     },
     "support": {
       "title": "Assistance",
@@ -335,7 +373,7 @@
     },
     "reminders": {
       "title": "Rappels intelligents",
-      "subtitle": "Des rappels locaux pour maintenir la régularité de vos routines santé.",
+      "subtitle": "Rappels locaux à l’appareil pour vos routines de santé.",
       "create": "Créer un rappel",
       "titlePlaceholder": "Titre du rappel",
       "notePlaceholder": "Note (facultatif)",
@@ -349,7 +387,9 @@
         "weekly": "Hebdomadaire",
         "monthly": "Mensuel",
         "custom": "Personnalisé"
-      }
+      },
+      "deviceLocalBadge": "Local à l’appareil",
+      "deviceLocalNote": "Les rappels sont stockés uniquement sur cet appareil (navigateur) et ne sont pas encore synchronisés avec votre compte."
     },
     "secondOpinion": {
       "title": "Deuxième avis santé",
@@ -436,7 +476,35 @@
       "download": "Télécharger",
       "share": "Partager",
       "print": "Imprimer",
-      "copyUrl": "Copier l’URL"
+      "copyUrl": "Copier l’URL",
+      "loadFailed": "Impossible de charger les dossiers médicaux",
+      "signInRequired": "Connectez-vous pour gérer les dossiers médicaux",
+      "fileNameRequired": "Veuillez saisir un nom de fichier",
+      "fileOrUrlRequired": "Choisissez un fichier ou collez une URL privée",
+      "storageUnavailable": "Le téléversement vers le stockage privé n’est pas encore disponible. Les métadonnées ont été enregistrées ; les octets n’ont pas été envoyés.",
+      "uploadSuccess": "Dossier médical enregistré",
+      "uploadFailed": "Échec du téléversement du dossier médical",
+      "deleteSuccess": "Fichier supprimé",
+      "deleteFailed": "Échec de la suppression du fichier",
+      "pendingFile": "Ce fichier est en attente de stockage privé. Ouverture/téléchargement après configuration.",
+      "urlUnavailable": "Impossible d’ouvrir ce fichier en toute sécurité pour le moment",
+      "shareNotice": "Le partage sécurisé de « {{name}} » n’est pas encore activé. Les URL sensibles ne sont pas copiées.",
+      "sizeUnknown": "Taille inconnue",
+      "privacyNote": "Les listes de fichiers ne sont plus stockées dans le localStorage. Préférez le téléversement privé lorsque disponible.",
+      "chooseFile": "Choisir un fichier",
+      "chooseFileHint": "Préféré : téléverser vers le stockage privé lorsque le bucket est configuré.",
+      "fileUrlOptional": "URL externe (optionnel)",
+      "fileUrlHint": "Utilisez uniquement une URL privée que vous contrôlez. Nous ne copions pas les URL sensibles.",
+      "uploading": "Téléversement…",
+      "categories": {
+        "labResults": "Résultats de laboratoire",
+        "xray": "Radiographie",
+        "mri": "IRM",
+        "ctScan": "Scanner",
+        "prescription": "Ordonnance",
+        "report": "Rapport",
+        "other": "Autre"
+      }
     },
     "blackBox": {
       "title": "Stockage Boîte noire",
@@ -507,7 +575,9 @@
       "processDeviceIntegration": "Intégration d'appareils",
       "processAnalytics": "Pipeline analytique",
       "manageApiKeys": "Gérer les clés API",
-      "exportData": "Exporter les données"
+      "exportData": "Exporter les données",
+      "demoBadge": "Simulé",
+      "simulatedNote": "Ces indicateurs sont simulés pour la démonstration et ne reflètent pas l’infrastructure réelle."
     },
     "questionnaires": {
       "title": "Questionnaires de santé",
@@ -889,7 +959,15 @@
       "maxPremium": "Ensemble complet de fonctions",
       "servicesCount": "{{count}} services",
       "selectedCount": "{{count}} sélectionnées",
-      "nextStepsBody": "Après la mise à niveau, nous vous guiderons dans des questionnaires de santé pour personnaliser vos insights."
+      "nextStepsBody": "Après la mise à niveau, nous vous guiderons dans des questionnaires de santé pour personnaliser vos insights.",
+      "loadFailed": "Échec du chargement du catalogue",
+      "loadFailedRetry": "Échec du chargement du catalogue. Réessayez.",
+      "plansLoadFailed": "Impossible de charger les plans d’abonnement.",
+      "subscriptionLoadFailed": "Impossible de charger votre abonnement.",
+      "selectCategoryFirst": "Sélectionnez au moins une catégorie pour mettre à niveau",
+      "signInToUpgrade": "Connectez-vous pour mettre à niveau",
+      "redirectingPricing": "Redirection vers la page des tarifs pour le plan {{plan}}…",
+      "upgradeFailed": "Échec de la mise à niveau. Réessayez."
     },
     "healthGuide": {
       "ask": "Posez votre question de santé",
@@ -919,7 +997,9 @@
       "insight1": "Les deux modèles s’accordent sur l’importance de consulter des professionnels de santé",
       "insight2": "L’avis fondé sur les preuves se concentre sur les directives médicales générales",
       "insight3": "L’avis contextuel tient compte de votre profil de santé individuel",
-      "askAnother": "Poser une autre question"
+      "askAnother": "Poser une autre question",
+      "demoBadge": "Démo",
+      "simulatedNote": "Les réponses sont simulées pour la démonstration jusqu’à la connexion des modèles en direct."
     },
     "placeholder": {
       "comingSoon": "Bientôt disponible",
@@ -949,6 +1029,28 @@
       "delete": "Supprimer",
       "access": "Accéder",
       "since": "Depuis"
+    },
+    "workspaceBanner": {
+      "memberZone": "Espace membre",
+      "admin": "Admin",
+      "signedIn": "Connecté",
+      "memberAccess": "Accès complet aux services",
+      "adminAccess": "Accès administrateur",
+      "superadminAccess": "Accès superadmin"
+    },
+    "serviceWorkspace": {
+      "demoBadge": "Démo",
+      "simulatedNote": "Les avis générés sont des modèles simulés jusqu’à la connexion de l’analyse multi-modèles.",
+      "backToCatalog": "Retour au catalogue membre",
+      "interactiveBadge": "Service interactif complet",
+      "unlockedTitle": "Espace interactif déverrouillé",
+      "unlockedBody": "Posez des questions, lancez des rapports multi-modèles, modifiez localement et poursuivez le dialogue — tous les champs sont actifs.",
+      "tabAsk": "Poser une question",
+      "tabFaq": "FAQ",
+      "tabLearn": "Apprentissage",
+      "tabReport": "Rapport et second avis",
+      "enterQuestion": "Veuillez saisir votre question ou préoccupation de santé",
+      "reportCopied": "Rapport copié dans le presse-papiers"
     }
   }
 }

@@ -32,22 +32,21 @@ interface SEOProps {
  */
 const DEFAULT_SEO = {
   siteName: 'BioMath Core',
-  defaultTitle: 'BioMath Core — Personalized Health Intelligence',
+  defaultTitle: 'BioMath Core — Biomathematical Human Data Model',
   defaultDescription:
-    'BioMath Core turns your health data into clear insights, personalized guidance, and practical next steps with Health Guide.',
+    'BioMath Core builds a living Human Data Model — a biomathematical digital twin of your health — and guides you with Health Guide dual analysis.',
   /** 1200×630 landscape share card (JPEG). WebP twin: /og-default.webp */
   defaultImage: '/og-default.jpg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
   defaultKeywords: [
-    'health analytics',
+    'biomathematical modeling',
+    'Human Data Model',
+    'digital twin',
     'Health Guide',
-    'personalized health',
-    'health tracking',
-    'medical data analysis',
-    'wellness optimization',
-    'biomarkers',
-    'preventive healthcare',
+    'BioMath Core',
+    'dual intelligence',
+    'preventive wellness',
     'health intelligence',
   ],
   twitterHandle: '@biomathcore',

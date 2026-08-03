@@ -9,6 +9,7 @@ const SECTION_COPY: Record<string, { titleKey: string; subtitleKey?: string }> =
     titleKey: 'member.humanDataModel.title',
     subtitleKey: 'member.humanDataModel.subtitle',
   },
+  // Route id remains `ai-assistant` for stability; product name is Health Guide.
   'ai-assistant': {
     titleKey: 'healthGuide.memberTitle',
     subtitleKey: 'healthGuide.memberSubtitle',

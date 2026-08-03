@@ -1,11 +1,11 @@
 {
   "about": {
     "seoTitle": "私たちについて — ミッション、ビジョン、チーム",
-    "seoDescription": "生物数学、計算生物学、AI によって信頼できるウェルネスインテリジェンスを築く BioMath Core のミッションをご紹介します。私たちの歩みと、予防的な健康への取り組みをご覧ください。",
+    "seoDescription": "BioMath Core は生物数学的ヒューマンデータモデル — 健康の生きたデジタルツイン — を、計算生物学と Health Guide のデュアルガイダンスで構築します。Digital Invest Inc. の下で開発され、BioMath Life のビジョンに沿っています。",
     "mission": {
       "label": "ミッション",
-      "title": "信頼できるウェルネスインテリジェンス",
-      "body": "私たちは<b>生物数学</b>、<b>計算生物学</b>、<b>AI</b> が交わる場所で、実用的なウェルネスインテリジェンスを築いています。BioMath Core は、複雑な健康の問いに対して、正確で説明可能なガイダンスを届け、予防・ウェルネス・長期的な回復力を支えます。"
+      "title": "信頼できる生物数学的ウェルネスインテリジェンス",
+      "body": "私たちは <b>生物数学</b>、<b>計算生物学</b>、<b>AI</b> の交差点で実践的なウェルネスインテリジェンスを構築します。BioMath Core は、生きた <b>ヒューマンデータモデル</b> と説明可能なデュアルモデル・ガイダンスで、複雑な健康の問いに向き合う人々と専門家を支えます — 予防、ウェルネス、長期的な回復力に焦点を当てます。"
     },
     "origins": {
       "label": "成り立ち",
@@ -16,9 +16,18 @@
     },
     "signalNote": "私たちは信号が十分に強いときにだけ広げます。実際の利用者のニーズ、根拠、そして長期的な健康への影響にもとづいて判断します。",
     "stats": [
-      { "label": "健康カテゴリー", "value": "20" },
-      { "label": "稼働中のサービス", "value": "200+" },
-      { "label": "研究の歩み", "value": "2008年から" }
+      {
+        "label": "健康カテゴリー",
+        "value": "20"
+      },
+      {
+        "label": "稼働中のサービス",
+        "value": "200+"
+      },
+      {
+        "label": "研究の歩み",
+        "value": "2008年から"
+      }
     ],
     "team": {
       "label": "メンバー",
@@ -124,9 +133,37 @@
     },
     "cta": {
       "title": "BioMath Core を試してみませんか？",
-      "description": "複数モデルによる分析が、健康の信号を分かりやすく人に寄り添うガイダンスへ変えるようすをご覧ください。",
+      "description": "生物数学モデリングとデュアルインテリジェンスが、健康シグナルを明確で人間的なガイダンスに変える様子をご覧ください。",
       "primary": "サービスを見る",
       "secondary": "料金を見る"
+    },
+    "partners": {
+      "label": "信頼とパートナーシップ",
+      "title": "企業と認知",
+      "subtitle": "公開資料で確認できる提携のみ — 架空のチーム経歴は記載しません。",
+      "items": [
+        {
+          "name": "Digital Invest Inc.",
+          "body": "BioMath Core は Digital Invest Inc. の下で開発されています。",
+          "href": "https://digitalinvest.com/#home"
+        },
+        {
+          "name": "BioMath Life",
+          "body": "より広い BioMath Life のビジョンに沿っています：日常の予防ケアへ拡張する科学。",
+          "href": "https://biomathlife.com/#"
+        },
+        {
+          "name": "Healthcare Tech Outlook",
+          "body": "Digital Invest Inc. と関連するヘルステック活動の報道。",
+          "href": "https://www.healthcaretechoutlook.com/digital-invest-inc"
+        }
+      ]
+    },
+    "advisors": {
+      "label": "科学アドバイザー",
+      "title": "アドバイザー名簿",
+      "subtitle": "氏名付きの科学アドバイザーは公開発表後にここに掲載します。",
+      "tba": "近日発表"
     }
   }
 }

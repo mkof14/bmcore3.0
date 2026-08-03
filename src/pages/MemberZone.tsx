@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { LogOut, ArrowLeft, CheckCircle, X } from 'lucide-react';
+import { LogOut, ArrowLeft, CheckCircle, X, CreditCard } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { notifyUserError } from '../lib/adminNotify';
 import { userHasMemberAccess } from '../lib/memberAccess';
 import MemberSidebar from '../components/MemberSidebar';
 import DashboardSection from './member/DashboardSection';
-import PlaceholderSection from './member/PlaceholderSection';
 import QuestionnairesSection from './member/QuestionnairesSection';
 import ReportSettingsSection from './member/ReportSettingsSection';
 import AIHealthAdvisorSection from './member/AIHealthAdvisorSection';
@@ -28,7 +27,6 @@ import ServiceDetail from './ServiceDetail';
 import WorkspaceStatusBanner from '../components/WorkspaceStatusBanner';
 import MemberSectionHero from '../components/MemberSectionHero';
 import { scrollAppToTopAfterNavigate } from '../lib/scrollAppToTop';
-import { CreditCard } from 'lucide-react';
 
 interface MemberZoneProps {
   onNavigate: (page: string, data?: string) => void;
@@ -40,6 +38,7 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
   const { t } = useTranslation();
   const [currentSection, setCurrentSection] = useState(initialServiceRef ? 'service-workspace' : 'dashboard');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [hasActiveSubscription, setHasActiveSubscription] = useState(false);
   const [subChecked, setSubChecked] = useState(false);
@@ -95,8 +94,8 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
 
       const hasAccess = await userHasMemberAccess(user.id, user.email);
       setHasActiveSubscription(hasAccess);
-    } catch (error) {
-      notifyUserError('Subscription status load failed');
+    } catch {
+      notifyUserError(t('member.zone.subscriptionLoadFailed'));
     } finally {
       setSubChecked(true);
     }
@@ -107,7 +106,6 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
 
-      // Get user subscription
       const { data: subscription } = await supabase
         .from('user_subscriptions')
         .select('plan_id, billing_period')
@@ -118,29 +116,29 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
         .maybeSingle();
 
       if (subscription) {
-        // Send email via email provider
+        const planLabel = subscription.plan_id.toUpperCase();
         const { sendEmail } = await import('../lib/emailProvider');
         await sendEmail({
           to: user.email!,
-          subject: 'Welcome to BioMath Core! 🎉',
+          subject: t('member.welcome.emailSubject'),
           html: `
-            <h1>Welcome to BioMath Core!</h1>
-            <p>Thank you for subscribing to our ${subscription.plan_id.toUpperCase()} plan!</p>
-            <p>You now have full access to all features of the BioMath Core platform.</p>
-            <p>Get started by exploring:</p>
+            <h1>${t('member.welcome.emailHeading')}</h1>
+            <p>${t('member.welcome.emailThanks', { plan: planLabel })}</p>
+            <p>${t('member.welcome.emailAccess')}</p>
+            <p>${t('member.welcome.emailGetStarted')}</p>
             <ul>
-              <li>📊 Your health dashboard</li>
-              <li>Health Guide</li>
-              <li>📱 Device connectivity</li>
-              <li>📈 Comprehensive reports</li>
+              <li>${t('member.welcome.emailItemDashboard')}</li>
+              <li>${t('member.welcome.emailItemHealthGuide')}</li>
+              <li>${t('member.welcome.emailItemDevices')}</li>
+              <li>${t('member.welcome.emailItemReports')}</li>
             </ul>
-            <p>If you have any questions, our support team is here to help!</p>
-            <p>Best regards,<br/>The BioMath Core Team</p>
-          `
+            <p>${t('member.welcome.emailSupport')}</p>
+            <p>${t('member.welcome.emailSignOff')}</p>
+          `,
         });
       }
-    } catch (error) {
-      notifyUserError('Welcome email failed to send');
+    } catch {
+      notifyUserError(t('member.welcome.emailFailed'));
     }
   };
 
@@ -314,24 +312,35 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
     settings: t('member.nav.settings'),
   };
 
+  const contentMarginClass = sidebarCollapsed ? 'lg:ml-20' : 'lg:ml-64';
+
   return (
     <div className="member-zone min-h-screen bg-page transition-colors pt-16">
       <MemberSidebar
         currentSection={currentSection === 'service-workspace' ? 'catalog' : currentSection}
         onSectionChange={setCurrentSection}
         hasActiveSubscription={hasActiveSubscription}
+        isCollapsed={sidebarCollapsed}
+        onCollapsedChange={setSidebarCollapsed}
+        mobileOpen={mobileSidebarOpen}
+        onMobileOpenChange={setMobileSidebarOpen}
       />
 
-      <div className="ml-64 transition-all duration-300" data-scroll-root data-scroll-blur>
-        <div className="px-6 pt-6">
+      <div
+        className={`ml-0 ${contentMarginClass} transition-all duration-300 pt-12 lg:pt-0`}
+        data-scroll-root
+        data-scroll-blur
+      >
+        <div className="px-4 sm:px-6 pt-6">
           <WorkspaceStatusBanner
             zone="member"
             sectionLabel={sectionLabels[currentSection] || currentSection}
             className="mb-4"
           />
 
-          <div className="mb-4 flex items-center justify-between">
+          <div className="mb-4 flex items-center justify-between gap-2">
             <button
+              type="button"
               onClick={() => onNavigate('home')}
               className="member-btn"
             >
@@ -339,6 +348,7 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
               <span>{t('member.zone.backHome')}</span>
             </button>
             <button
+              type="button"
               onClick={handleSignOut}
               className="member-btn"
             >

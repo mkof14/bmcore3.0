@@ -5,7 +5,12 @@
       "workspace": "Signed-in workspace",
       "backHome": "Back to Home",
       "signOut": "Sign Out",
-      "collapse": "Collapse"
+      "collapse": "Collapse",
+      "menu": "Menu",
+      "openMenu": "Open member menu",
+      "closeMenu": "Close member menu",
+      "expand": "Expand sidebar",
+      "subscriptionLoadFailed": "Subscription status load failed"
     },
     "nav": {
       "main": "Main",
@@ -50,7 +55,19 @@
       "dailyPlan": "Daily plan: choose up to 10 categories",
       "maxPlan": "Max plan: all 20 categories included",
       "emailNote": "A confirmation email with all the details has been sent to your inbox.",
-      "goToCatalog": "Go to catalog"
+      "goToCatalog": "Go to catalog",
+      "emailSubject": "Welcome to BioMath Core!",
+      "emailHeading": "Welcome to BioMath Core!",
+      "emailThanks": "Thank you for subscribing to our {{plan}} plan!",
+      "emailAccess": "You now have full access to BioMath Core member features.",
+      "emailGetStarted": "Get started by exploring:",
+      "emailItemDashboard": "Your health dashboard",
+      "emailItemHealthGuide": "Health Guide",
+      "emailItemDevices": "Device connectivity",
+      "emailItemReports": "Comprehensive reports",
+      "emailSupport": "If you have any questions, our support team is here to help!",
+      "emailSignOff": "Best regards,<br/>The BioMath Core Team",
+      "emailFailed": "Welcome email failed to send"
     },
     "dashboard": {
       "title": "My Health",
@@ -148,7 +165,17 @@
         "whoop": "WHOOP",
         "garmin": "Garmin",
         "cgm": "CGM (Dexcom/Libre)"
-      }
+      },
+      "demoBadge": "Demo",
+      "linkAccount": "Link account",
+      "linkModalTitle": "Link a device account",
+      "linkModalBody": "Live OAuth sync is not available yet. Linking saves a device record in your account for upcoming integrations.",
+      "clickToLink": "Click to link account",
+      "linked": "Linked",
+      "linkedSuccess": "{{name}} linked",
+      "linkAccountNote": "Account linking is a placeholder — live wearable OAuth sync is coming soon.",
+      "syncDemoNote": "Sync timestamp updated locally. Live vendor sync is not connected yet.",
+      "markSynced": "Mark synced"
     },
     "billing": {
       "title": "Billing & Subscription",
@@ -201,7 +228,10 @@
       "statusFailed": "Failed",
       "quickActions": "Quick actions",
       "quickActionsBody": "Manage your subscription and billing with these quick shortcuts",
-      "changeCycleBody": "Switch between monthly and annual billing (save 17%)"
+      "changeCycleBody": "Switch between monthly and annual billing (save 17%)",
+      "loadFailed": "Billing data load failed",
+      "portalComingSoon": "Stripe Customer Portal is coming soon. Contact support to update billing for now.",
+      "pdfComingSoon": "Invoice PDF download is coming soon."
     },
     "profile": {
       "title": "Personal Information",
@@ -227,7 +257,15 @@
       "fieldNamePlaceholder": "Field name (e.g., Blood type)",
       "fieldValuePlaceholder": "Value (e.g., O+)",
       "fullNamePlaceholder": "John Doe",
-      "countryPlaceholder": "United States"
+      "countryPlaceholder": "United States",
+      "updated": "Profile updated",
+      "saveFailed": "Profile save failed",
+      "fileTooLarge": "File size must be less than 5MB",
+      "imageOnly": "Please upload an image file",
+      "signInToUpload": "Please sign in to upload photos",
+      "storageUnavailable": "Storage upload not available. Use an image URL instead.",
+      "photoUploaded": "Photo uploaded",
+      "uploadFailed": "Upload failed. Use an image URL instead."
     },
     "support": {
       "title": "Support",
@@ -335,7 +373,7 @@
     },
     "reminders": {
       "title": "Smart Reminders",
-      "subtitle": "Local reminders to keep your health routines consistent.",
+      "subtitle": "Device-local reminders to keep your health routines consistent.",
       "create": "Create reminder",
       "titlePlaceholder": "Reminder title",
       "notePlaceholder": "Note (optional)",
@@ -349,7 +387,9 @@
         "weekly": "Weekly",
         "monthly": "Monthly",
         "custom": "Custom"
-      }
+      },
+      "deviceLocalBadge": "Device-local",
+      "deviceLocalNote": "Reminders are stored on this device only (browser storage) and are not synced to your account yet."
     },
     "secondOpinion": {
       "title": "Health Second Opinion",
@@ -436,7 +476,35 @@
       "download": "Download",
       "share": "Share",
       "print": "Print",
-      "copyUrl": "Copy URL"
+      "copyUrl": "Copy URL",
+      "loadFailed": "Unable to load medical files",
+      "signInRequired": "Please sign in to manage medical files",
+      "fileNameRequired": "Please enter a file name",
+      "fileOrUrlRequired": "Choose a file to upload or paste a private URL",
+      "storageUnavailable": "Private storage upload is not available yet. Metadata was saved; file bytes were not uploaded.",
+      "uploadSuccess": "Medical file saved",
+      "uploadFailed": "Medical file upload failed",
+      "deleteSuccess": "File deleted",
+      "deleteFailed": "File delete failed",
+      "pendingFile": "This file is pending private storage. Open/download will be available after storage is configured.",
+      "urlUnavailable": "Unable to open this file securely right now",
+      "shareNotice": "Sharing “{{name}}” securely is not enabled yet. File URLs are not copied to the clipboard.",
+      "sizeUnknown": "Size unknown",
+      "privacyNote": "File lists are no longer stored in browser localStorage. Prefer private storage upload when available.",
+      "chooseFile": "Choose file",
+      "chooseFileHint": "Preferred: upload to private storage when the bucket is configured.",
+      "fileUrlOptional": "External URL (optional fallback)",
+      "fileUrlHint": "Only use a private URL you control. We do not copy sensitive URLs to the clipboard.",
+      "uploading": "Uploading…",
+      "categories": {
+        "labResults": "Lab Results",
+        "xray": "X-Ray",
+        "mri": "MRI",
+        "ctScan": "CT Scan",
+        "prescription": "Prescription",
+        "report": "Report",
+        "other": "Other"
+      }
     },
     "blackBox": {
       "title": "Black Box Storage",
@@ -507,7 +575,9 @@
       "manageApiKeys": "Manage API keys",
       "dataExport": "Data export",
       "dataExportBody": "Export your health data in various formats",
-      "exportData": "Export data"
+      "exportData": "Export data",
+      "demoBadge": "Simulated",
+      "simulatedNote": "These metrics are simulated for demonstration and do not reflect live infrastructure."
     },
     "questionnaires": {
       "title": "Health Questionnaires",
@@ -889,7 +959,15 @@
       "maxPremium": "Full feature set",
       "servicesCount": "{{count}} services",
       "selectedCount": "{{count}} selected",
-      "nextStepsBody": "After you upgrade, we'll guide you through health questionnaires that help personalize your insights."
+      "nextStepsBody": "After you upgrade, we'll guide you through health questionnaires that help personalize your insights.",
+      "loadFailed": "Catalog data load failed",
+      "loadFailedRetry": "Catalog data load failed. Please try again.",
+      "plansLoadFailed": "Unable to load subscription plans.",
+      "subscriptionLoadFailed": "Unable to load your subscription.",
+      "selectCategoryFirst": "Please select at least one category to upgrade",
+      "signInToUpgrade": "Please sign in to upgrade",
+      "redirectingPricing": "Redirecting to pricing page for {{plan}} plan…",
+      "upgradeFailed": "Failed to process upgrade. Please try again."
     },
     "healthGuide": {
       "ask": "Ask your health question",
@@ -919,7 +997,9 @@
       "insight1": "Both models agree on the importance of consulting healthcare professionals",
       "insight2": "Evidence-based opinion focuses on general medical guidelines",
       "insight3": "Contextual opinion considers your individual health profile",
-      "askAnother": "Ask another question"
+      "askAnother": "Ask another question",
+      "demoBadge": "Demo",
+      "simulatedNote": "Responses are simulated for demonstration until live models are connected."
     },
     "placeholder": {
       "comingSoon": "Coming soon",
@@ -949,6 +1029,28 @@
       "delete": "Delete",
       "access": "Access",
       "since": "Since"
+    },
+    "workspaceBanner": {
+      "memberZone": "Member Zone",
+      "admin": "Admin",
+      "signedIn": "Signed in",
+      "memberAccess": "Full service access",
+      "adminAccess": "Admin access",
+      "superadminAccess": "Superadmin access"
+    },
+    "serviceWorkspace": {
+      "demoBadge": "Demo",
+      "simulatedNote": "Generated opinions are simulated templates until live multi-model analysis is connected.",
+      "backToCatalog": "Back to Member Catalog",
+      "interactiveBadge": "Full interactive service",
+      "unlockedTitle": "Interactive workspace unlocked",
+      "unlockedBody": "Ask questions, run multi-model reports, edit locally, and continue the dialog — all fields below are active.",
+      "tabAsk": "Ask question",
+      "tabFaq": "FAQ",
+      "tabLearn": "Learning",
+      "tabReport": "Report & second opinion",
+      "enterQuestion": "Please enter your health question or concern",
+      "reportCopied": "Report copied to clipboard"
     }
   }
 }

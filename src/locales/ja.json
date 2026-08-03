@@ -13,7 +13,7 @@
     "languageSwitching": "言語を切り替えています…"
   },
   "footer": {
-    "tagline": "体を理解するための生物数学に基づくウェルネスインテリジェンス。",
+    "tagline": "生物数学的なヒューマンデータモデル — あなたの健康の生きたデジタルツイン。",
     "navigation": "ナビゲーション",
     "resources": "リソース",
     "company": "会社",
@@ -35,7 +35,8 @@
     "rights": "全著作権所有。",
     "legalSafety": "法務と安全",
     "memberArea": "メンバーエリア",
-    "infoHelp": "情報とヘルプ"
+    "infoHelp": "情報とヘルプ",
+    "appsStatus": "App Store / Google Play のネイティブアプリはまだ公開していません。ブラウザで BioMath Core を使うか、ウェブアプリ（PWA）をインストールしてください。"
   },
   "common": {
     "getStarted": "始める",
@@ -53,7 +54,7 @@
   },
   "healthGuide": {
     "name": "ヘルスガイド",
-    "tagline": "二重の視点による明確なウェルネスガイダンス",
+    "tagline": "ヒューマンデータモデルに基づくデュアルモデル・ガイダンス",
     "welcome": "こんにちは。ヘルスガイドです。健康に関する質問に対して二つの相補的な視点を提供できます。「セカンドオピニオン」をオンにしてください。",
     "askAnything": "健康について何でも聞いてください…",
     "askDual": "二重の視点を尋ねる…",
@@ -77,33 +78,35 @@
   },
   "home": {
     "heroTitle": "生涯にわたる Human Data Model",
-    "heroSubtitle": "重要な健康イベントは生きたモデルの一部になり、理解はあなたと共に深まります。",
+    "heroSubtitle": "検証された健康イベントごとに成長する生物数学的デジタルツイン — 汎用的なインサイトフィードではありません。",
     "ctaExplore": "サービスを探す",
     "ctaHow": "仕組み",
     "modelTitle": "Human Data Model",
-    "modelSubtitle": "検証された健康情報から構築されています。",
+    "modelSubtitle": "検証された健康情報から構築される生物数学的デジタルツイン。",
     "section2": "セクション 2",
     "whatTitle": "何を理解できますか？",
-    "whatSubtitle": "情報が分断されていると気づきにくいつながりを、Human Data Model が明らかにします。",
+    "whatSubtitle": "検査・ウェアラブル・履歴が分断されていると見えにくいつながりを、ヒューマンデータモデルが明らかにします。",
     "section3": "セクション 3",
     "timelineTitle": "Human Data Timeline",
-    "timelineSubtitle": "健康の履歴を、文脈の中で理解する。",
+    "timelineSubtitle": "生物数学的な文脈で理解する健康履歴。",
     "openTimeline": "タイムラインを開く",
     "section4": "セクション 4",
     "changesTitle1": "すべてが変わります。",
     "changesTitle2": "Human Data Model は覚えています。",
-    "changesSubtitle": "重要な健康イベントはすべて、生涯の Human Data Model の一部になります。",
+    "changesSubtitle": "重要な健康イベントはすべて、生涯にわたる生物数学的ヒューマンデータモデルを更新します。",
     "cta": {
-      "title": "健康をより明確に捉えませんか？",
-      "description": "あなたに合うプランから始めましょう。Health Guide が Human Data Model の理解をサポートします。",
+      "title": "ヒューマンデータモデルを構築する準備はできましたか？",
+      "description": "生物数学的な文脈を深めるプランから始めましょう。Health Guide はデュアルモデルのガイダンスを提供します — 汎用的なパーソナライズではありません。",
       "primary": "料金を見る",
       "secondary": "アカウント作成"
-    }
+    },
+    "seoTitle": "生物数学的ヒューマンデータモデル",
+    "seoDescription": "BioMath Core は生きたヒューマンデータモデル — 健康の生物数学的デジタルツイン — を構築し、Health Guide のデュアル分析で導きます。"
   },
   "about": {
     "label": "BioMath Core について",
     "title": "ミッション、ビジョン、そして BioMath Core を支える人々",
-    "subtitle": "精度・透明性・人間中心の知性のために設計されたデジタルヘルスと生物数学分析。"
+    "subtitle": "生きたヒューマンデータモデルのための生物数学モデリングと計算生物学 — 透明で予防的、人中心。"
   },
   "pricing": {
     "label": "料金",
@@ -118,14 +121,14 @@
   "investors": {
     "label": "投資家",
     "title": "パーソナルヘルスインテリジェンスへの戦略的投資",
-    "subtitle": "BioMath Core は生物数学モデリングと AI により複雑な健康データを個人向けガイダンスに変えます。"
+    "subtitle": "BioMath Core は生物数学的ヒューマンデータモデルと、Health Guide によるデュアルインテリジェンス・ガイダンスを構築します。"
   },
   "summary": {
     "label": "概要",
-    "healthIntelligence": "パーソナルヘルスインテリジェンス",
-    "healthIntelligenceSub": "より多くのグラフではなく、理解に導かれた健康ナビゲーション。",
+    "healthIntelligence": "生物数学的ヘルスインテリジェンス",
+    "healthIntelligenceSub": "生きたヒューマンデータモデルでナビゲート — まず理解、グラフはその次。",
     "advisorTitle": "ヘルスガイド",
-    "advisorLead": "BioMath Core との主な接点 — ナビの前にガイダンス。"
+    "advisorLead": "BioMath Core との主な接点 — ナビゲートの前にデュアルモデル・ガイダンス。"
   },
   "catalog": {
     "label": "サービスカタログ",

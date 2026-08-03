@@ -2,12 +2,12 @@
   "science": {
     "seo": {
       "title": "科学与研究 — 生物数学健康建模",
-      "description": "了解 BioMath Core 的科学基础：生物数学建模、多信号整合、基因组分析与预测分析，共同支撑个性化的健康洞察。"
+      "description": "BioMath Core 的科学基础：生物数学建模与活体人体数据模型——而非泛化的个性化洞察或仅有生物标志物的仪表盘。"
     },
     "hero": {
       "label": "科学",
       "title": "BioMath Core 背后的科学",
-      "body": "BioMath Core 建立在系统生物学、生物数学与生理建模数十年的研究之上，并通过 Human Data Model 加以应用。"
+      "body": "BioMath Core 建立在系统生物学、生物数学与生理建模数十年研究之上——以活体人体数据模型（健康的生物数学数字孪生）形式应用。"
     },
     "pillars": {
       "label": "基础",

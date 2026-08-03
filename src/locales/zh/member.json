@@ -5,7 +5,12 @@
       "workspace": "已登录的工作区",
       "backHome": "返回首页",
       "signOut": "退出登录",
-      "collapse": "收起"
+      "collapse": "收起",
+      "menu": "菜单",
+      "openMenu": "打开会员菜单",
+      "closeMenu": "关闭会员菜单",
+      "expand": "展开侧边栏",
+      "subscriptionLoadFailed": "订阅状态加载失败"
     },
     "nav": {
       "main": "主要",
@@ -50,7 +55,19 @@
       "dailyPlan": "Daily 方案：最多选择 10 个类别",
       "maxPlan": "Max 方案：包含全部 20 个类别",
       "emailNote": "包含全部详情的确认邮件已发送至您的邮箱。",
-      "goToCatalog": "前往服务目录"
+      "goToCatalog": "前往服务目录",
+      "emailSubject": "欢迎加入 BioMath Core！",
+      "emailHeading": "欢迎加入 BioMath Core！",
+      "emailThanks": "感谢订阅我们的 {{plan}} 方案！",
+      "emailAccess": "您现在可以完整使用 BioMath Core 会员功能。",
+      "emailGetStarted": "可以从这些开始：",
+      "emailItemDashboard": "您的健康仪表盘",
+      "emailItemHealthGuide": "Health Guide",
+      "emailItemDevices": "设备连接",
+      "emailItemReports": "完整报告",
+      "emailSupport": "如有问题，我们的支持团队随时协助！",
+      "emailSignOff": "此致，<br/>BioMath Core 团队",
+      "emailFailed": "欢迎邮件发送失败"
     },
     "dashboard": {
       "title": "我的健康",
@@ -148,7 +165,17 @@
         "whoop": "WHOOP",
         "garmin": "Garmin",
         "cgm": "CGM (Dexcom/Libre)"
-      }
+      },
+      "demoBadge": "演示",
+      "linkAccount": "关联账户",
+      "linkModalTitle": "关联设备账户",
+      "linkModalBody": "实时 OAuth 同步尚未可用。关联会保存设备记录，供后续集成使用。",
+      "clickToLink": "点击关联",
+      "linked": "已关联",
+      "linkedSuccess": "已关联 {{name}}",
+      "linkAccountNote": "账户关联为占位功能 — 实时可穿戴 OAuth 同步即将推出。",
+      "syncDemoNote": "同步时间戳已在本地更新。厂商同步尚未连接。",
+      "markSynced": "标记为已同步"
     },
     "billing": {
       "title": "账单与订阅",
@@ -201,7 +228,10 @@
       "statusFailed": "失败",
       "quickActions": "快捷操作",
       "quickActionsBody": "使用这些快捷方式管理订阅和账单",
-      "changeCycleBody": "在月付与年付之间切换（节省 17%）"
+      "changeCycleBody": "在月付与年付之间切换（节省 17%）",
+      "loadFailed": "账单数据加载失败",
+      "portalComingSoon": "Stripe 客户门户即将推出。目前请联系支持更新账单。",
+      "pdfComingSoon": "发票 PDF 下载即将推出。"
     },
     "profile": {
       "title": "个人信息",
@@ -227,7 +257,15 @@
       "fieldNamePlaceholder": "字段名称（例如：血型）",
       "fieldValuePlaceholder": "值（例如：O+）",
       "fullNamePlaceholder": "张三",
-      "countryPlaceholder": "中国"
+      "countryPlaceholder": "中国",
+      "updated": "个人资料已更新",
+      "saveFailed": "个人资料保存失败",
+      "fileTooLarge": "文件大小必须小于 5MB",
+      "imageOnly": "请上传图片文件",
+      "signInToUpload": "请登录以上传照片",
+      "storageUnavailable": "存储上传不可用。请改用图片 URL。",
+      "photoUploaded": "照片已上传",
+      "uploadFailed": "上传失败。请改用图片 URL。"
     },
     "support": {
       "title": "支持",
@@ -335,7 +373,7 @@
     },
     "reminders": {
       "title": "智能提醒",
-      "subtitle": "本地提醒，帮助您保持健康习惯的连续性。",
+      "subtitle": "保存在本设备上的健康习惯提醒。",
       "create": "创建提醒",
       "titlePlaceholder": "提醒标题",
       "notePlaceholder": "备注（可选）",
@@ -349,7 +387,9 @@
         "weekly": "每周",
         "monthly": "每月",
         "custom": "自定义"
-      }
+      },
+      "deviceLocalBadge": "仅本设备",
+      "deviceLocalNote": "提醒仅保存在本设备（浏览器存储），尚未同步到您的账户。"
     },
     "secondOpinion": {
       "title": "健康第二意见",
@@ -436,7 +476,35 @@
       "download": "下载",
       "share": "分享",
       "print": "打印",
-      "copyUrl": "复制 URL"
+      "copyUrl": "复制 URL",
+      "loadFailed": "无法加载医疗文件",
+      "signInRequired": "请登录以管理医疗文件",
+      "fileNameRequired": "请输入文件名",
+      "fileOrUrlRequired": "选择文件或粘贴私有 URL",
+      "storageUnavailable": "私有存储上传尚不可用。已保存元数据；文件字节未上传。",
+      "uploadSuccess": "医疗文件已保存",
+      "uploadFailed": "医疗文件上传失败",
+      "deleteSuccess": "文件已删除",
+      "deleteFailed": "文件删除失败",
+      "pendingFile": "该文件等待私有存储。配置完成后可打开/下载。",
+      "urlUnavailable": "目前无法安全打开此文件",
+      "shareNotice": "“{{name}}”的安全分享尚未启用。不会将敏感 URL 复制到剪贴板。",
+      "sizeUnknown": "大小未知",
+      "privacyNote": "文件列表不再保存在浏览器 localStorage。可用时请优先私有存储上传。",
+      "chooseFile": "选择文件",
+      "chooseFileHint": "推荐：在存储桶配置后上传到私有存储。",
+      "fileUrlOptional": "外部 URL（可选）",
+      "fileUrlHint": "仅使用您可控的私有 URL。我们不会复制敏感 URL。",
+      "uploading": "上传中…",
+      "categories": {
+        "labResults": "化验结果",
+        "xray": "X光",
+        "mri": "核磁共振",
+        "ctScan": "CT",
+        "prescription": "处方",
+        "report": "报告",
+        "other": "其他"
+      }
     },
     "blackBox": {
       "title": "Black Box 存储",
@@ -507,7 +575,9 @@
       "processDeviceIntegration": "设备集成",
       "processAnalytics": "分析管道",
       "manageApiKeys": "管理 API 密钥",
-      "exportData": "导出数据"
+      "exportData": "导出数据",
+      "demoBadge": "模拟",
+      "simulatedNote": "这些指标为演示模拟，不反映真实基础设施。"
     },
     "questionnaires": {
       "title": "健康问卷",
@@ -889,7 +959,15 @@
       "maxPremium": "完整功能集",
       "servicesCount": "{{count}} 项服务",
       "selectedCount": "已选 {{count}} 个",
-      "nextStepsBody": "升级后，我们将引导您完成健康问卷，帮助个性化洞察。"
+      "nextStepsBody": "升级后，我们将引导您完成健康问卷，帮助个性化洞察。",
+      "loadFailed": "目录数据加载失败",
+      "loadFailedRetry": "目录数据加载失败。请重试。",
+      "plansLoadFailed": "无法加载订阅方案。",
+      "subscriptionLoadFailed": "无法加载您的订阅。",
+      "selectCategoryFirst": "请至少选择一个类别以升级",
+      "signInToUpgrade": "请登录以升级",
+      "redirectingPricing": "正在跳转到 {{plan}} 方案的定价页…",
+      "upgradeFailed": "升级处理失败。请重试。"
     },
     "healthGuide": {
       "ask": "提出您的健康问题",
@@ -919,7 +997,9 @@
       "insight1": "两个模型都同意咨询医疗专业人员的重要性",
       "insight2": "循证意见侧重于一般医疗指南",
       "insight3": "情境意见考虑您的个人健康档案",
-      "askAnother": "再提一个问题"
+      "askAnother": "再提一个问题",
+      "demoBadge": "演示",
+      "simulatedNote": "在连接实时模型之前，回复为演示用模拟内容。"
     },
     "placeholder": {
       "comingSoon": "即将推出",
@@ -949,6 +1029,28 @@
       "delete": "删除",
       "access": "访问",
       "since": "自"
+    },
+    "workspaceBanner": {
+      "memberZone": "会员区",
+      "admin": "管理",
+      "signedIn": "已登录",
+      "memberAccess": "完整服务访问",
+      "adminAccess": "管理员访问",
+      "superadminAccess": "超级管理员访问"
+    },
+    "serviceWorkspace": {
+      "demoBadge": "演示",
+      "simulatedNote": "在连接实时多模型分析之前，生成的意见为模拟模板。",
+      "backToCatalog": "返回会员目录",
+      "interactiveBadge": "完整交互服务",
+      "unlockedTitle": "交互工作区已解锁",
+      "unlockedBody": "提问、运行多模型报告、本地编辑并继续对话 — 下方字段均可用。",
+      "tabAsk": "提问",
+      "tabFaq": "常见问题",
+      "tabLearn": "学习",
+      "tabReport": "报告与第二意见",
+      "enterQuestion": "请输入您的健康问题或顾虑",
+      "reportCopied": "报告已复制到剪贴板"
     }
   }
 }

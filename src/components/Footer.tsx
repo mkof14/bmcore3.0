@@ -246,6 +246,9 @@ export default function Footer({ onNavigate }: FooterProps) {
             © 2026 BioMath Core. {t('footer.rights')}
           </p>
           <p className="mx-auto mt-3 max-w-3xl text-center text-xs text-gray-800 dark:text-gray-400">
+            {t('footer.appsStatus')}
+          </p>
+          <p className="mx-auto mt-3 max-w-3xl text-center text-xs text-gray-800 dark:text-gray-400">
             {t('footer.disclaimer')}
           </p>
         </div>
