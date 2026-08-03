@@ -1,5 +1,5 @@
 import {
-  LayoutDashboard,
+  Heart,
   Brain,
   Watch,
   HeadphonesIcon,
@@ -36,7 +36,7 @@ export default function MemberSidebar({ currentSection, onSectionChange, hasActi
     {
       title: t('member.nav.main'),
       items: [
-        { id: 'dashboard', label: t('member.nav.dashboard'), icon: LayoutDashboard },
+        { id: 'dashboard', label: t('member.nav.dashboard'), icon: Heart },
         { id: 'human-data-model', label: t('member.nav.humanDataModel'), icon: Waypoints },
         { id: 'ai-assistant', label: t('member.nav.healthGuide'), icon: Scale },
         { id: 'devices', label: t('member.nav.devices'), icon: Watch },

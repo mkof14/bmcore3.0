@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Settings, Lock, Unlock, Info, Save } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError } from '../../lib/adminNotify';
-import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 
 interface ReportSettings {
   detail_level: 'short' | 'standard' | 'extended';
@@ -129,19 +128,14 @@ export default function ReportSettingsSection() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-gray-400">Loading settings...</div>
+      <div className="flex flex-col items-center justify-center h-64 gap-3">
+        <p className="member-muted">{t('member.reportSettings.loading')}</p>
       </div>
     );
   }
 
   return (
     <div className="space-y-8">
-      <ReportBrandHeader
-        title="BioMath Core"
-        subtitle="Report Settings"
-        compact
-      />
       {lastSaved && (
         <div className="flex items-center justify-end space-x-2 text-sm text-gray-500 dark:text-neutral-400">
           <Save className="h-4 w-4" />
@@ -158,20 +152,20 @@ export default function ReportSettingsSection() {
         <div className="flex items-start space-x-3 mb-4">
           <Settings className="h-5 w-5 text-orange-500 mt-0.5" />
           <div className="flex-1">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-1">
-              Level of Detail
+            <h3 className="member-heading text-lg mb-1">
+              {t('member.reportSettings.detailLevelTitle')}
             </h3>
-            <p className="text-sm text-gray-600 dark:text-neutral-300 mb-4">
-              Choose how detailed your reports should be
+            <p className="text-sm member-body mb-4">
+              {t('member.reportSettings.detailLevelBody')}
             </p>
           </div>
         </div>
 
         <div className="grid grid-cols-3 gap-3">
           {[
-            { value: 'short', label: 'Short Summary', desc: 'Key points only' },
-            { value: 'standard', label: 'Standard Detail', desc: 'Recommended default' },
-            { value: 'extended', label: 'Extended Detail', desc: 'Long-form explanation' }
+            { value: 'short', label: t('member.reportSettings.detailShort'), desc: t('member.reportSettings.detailShortDesc') },
+            { value: 'standard', label: t('member.reportSettings.detailStandard'), desc: t('member.reportSettings.detailStandardDesc') },
+            { value: 'extended', label: t('member.reportSettings.detailExtended'), desc: t('member.reportSettings.detailExtendedDesc') }
           ].map(option => (
             <button
               key={option.value}
@@ -191,15 +185,15 @@ export default function ReportSettingsSection() {
 
       {/* Tone Style */}
       <div className="member-card p-6 shadow-lg">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4">
-          Report Tone Style
+        <h3 className="member-heading text-lg mb-4">
+          {t('member.reportSettings.toneTitle')}
         </h3>
 
         <div className="grid grid-cols-3 gap-3">
           {[
-            { value: 'analytical', label: 'Analytical', desc: 'Data-focused, objective' },
-            { value: 'supportive', label: 'Supportive', desc: 'Encouraging, reassuring' },
-            { value: 'coaching', label: 'Coaching', desc: 'Action-oriented guidance' }
+            { value: 'analytical', label: t('member.reportSettings.toneAnalytical'), desc: t('member.reportSettings.toneAnalyticalDesc') },
+            { value: 'supportive', label: t('member.reportSettings.toneSupportive'), desc: t('member.reportSettings.toneSupportiveDesc') },
+            { value: 'coaching', label: t('member.reportSettings.toneCoaching'), desc: t('member.reportSettings.toneCoachingDesc') }
           ].map(option => (
             <button
               key={option.value}
@@ -219,15 +213,15 @@ export default function ReportSettingsSection() {
 
       {/* Visualization Mode */}
       <div className="member-card p-6 shadow-lg">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4">
-          Visualization Preference
+        <h3 className="member-heading text-lg mb-4">
+          {t('member.reportSettings.visualizationTitle')}
         </h3>
 
         <div className="grid grid-cols-3 gap-3">
           {[
-            { value: 'text_first', label: 'Text First', desc: 'Narrative-focused' },
-            { value: 'chart_first', label: 'Chart First', desc: 'Visual-focused' },
-            { value: 'mixed', label: 'Mixed', desc: 'Balanced hybrid' }
+            { value: 'text_first', label: t('member.reportSettings.vizText'), desc: t('member.reportSettings.vizTextDesc') },
+            { value: 'chart_first', label: t('member.reportSettings.vizChart'), desc: t('member.reportSettings.vizChartDesc') },
+            { value: 'mixed', label: t('member.reportSettings.vizMixed'), desc: t('member.reportSettings.vizMixedDesc') }
           ].map(option => (
             <button
               key={option.value}
@@ -247,15 +241,15 @@ export default function ReportSettingsSection() {
 
       {/* Insight Focus */}
       <div className="member-card p-6 shadow-lg">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4">
-          Recommendation Focus
+        <h3 className="member-heading text-lg mb-4">
+          {t('member.reportSettings.insightTitle')}
         </h3>
 
         <div className="grid grid-cols-3 gap-3">
           {[
-            { value: 'lifestyle', label: 'Lifestyle Guidance', desc: 'Habits and routines' },
-            { value: 'risk_awareness', label: 'Risk Awareness', desc: 'Prevention-focused' },
-            { value: 'performance', label: 'Performance', desc: 'Optimization-focused' }
+            { value: 'lifestyle', label: t('member.reportSettings.insightLifestyle'), desc: t('member.reportSettings.insightLifestyleDesc') },
+            { value: 'risk_awareness', label: t('member.reportSettings.insightRisk'), desc: t('member.reportSettings.insightRiskDesc') },
+            { value: 'performance', label: t('member.reportSettings.insightPerformance'), desc: t('member.reportSettings.insightPerformanceDesc') }
           ].map(option => (
             <button
               key={option.value}
@@ -287,11 +281,11 @@ export default function ReportSettingsSection() {
               <Lock className="h-5 w-5 text-gray-400 mt-0.5" />
             )}
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-1">
-                Advanced Mode
+              <h3 className="member-heading text-lg mb-1">
+                {t('member.reportSettings.advancedTitle')}
               </h3>
-              <p className="text-sm text-gray-600 dark:text-neutral-300">
-                Deeper analytical interpretation with multi-factor correlation
+              <p className="text-sm member-body">
+                {t('member.reportSettings.advancedBody')}
               </p>
             </div>
           </div>
@@ -305,7 +299,7 @@ export default function ReportSettingsSection() {
                   : 'bg-slate-100 border border-slate-200 dark:border-[var(--bm-border)] text-gray-700 dark:text-neutral-200 hover:border-orange-300'
               }`}
             >
-              {settings.advanced_mode_enabled ? 'Enabled' : 'Disabled'}
+              {settings.advanced_mode_enabled ? t('member.common.enabled') : t('member.common.disabled')}
             </button>
           )}
         </div>
@@ -315,10 +309,9 @@ export default function ReportSettingsSection() {
             <div className="flex items-start space-x-3">
               <Info className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
               <div className="text-sm text-gray-700 dark:text-neutral-200">
-                <p className="font-medium mb-1">Advanced Mode is locked</p>
-                <p>
-                  Complete enough baseline questionnaires to unlock deeper interpretations.
-                  This ensures accurate multi-factor analysis based on your complete health profile.
+                <p className="font-medium mb-1 member-heading">{t('member.reportSettings.advancedLockedTitle')}</p>
+                <p className="member-body">
+                  {t('member.reportSettings.advancedLockedBody')}
                 </p>
               </div>
             </div>
@@ -327,14 +320,14 @@ export default function ReportSettingsSection() {
 
         {settings.advanced_mode_enabled && (
           <div className="mt-4 pt-4 border-t border-slate-200 dark:border-[var(--bm-border)]">
-            <h4 className="text-sm font-semibold text-gray-900 dark:text-neutral-50 mb-3">
-              Interpretation Priority
+            <h4 className="text-sm font-semibold member-heading mb-3">
+              {t('member.reportSettings.interpretationPriority')}
             </h4>
             <div className="grid grid-cols-3 gap-3">
               {[
-                { value: 'preventive_first', label: 'Preventive First' },
-                { value: 'physiological_first', label: 'Physiological First' },
-                { value: 'behavioral_first', label: 'Behavioral First' }
+                { value: 'preventive_first', label: t('member.reportSettings.priorityPreventive') },
+                { value: 'physiological_first', label: t('member.reportSettings.priorityPhysiological') },
+                { value: 'behavioral_first', label: t('member.reportSettings.priorityBehavioral') }
               ].map(option => (
                 <button
                   key={option.value}
@@ -355,18 +348,18 @@ export default function ReportSettingsSection() {
 
       {/* Additional Options */}
       <div className="member-card p-6 shadow-lg">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4">
-          Additional Options
+        <h3 className="member-heading text-lg mb-4">
+          {t('member.reportSettings.additionalOptions')}
         </h3>
 
         <div className="space-y-4">
-          <label className="flex items-center justify-between p-4 bg-slate-50 rounded-lg cursor-pointer">
+          <label className="flex items-center justify-between p-4 bg-slate-50 dark:bg-[var(--bm-surface)] rounded-lg cursor-pointer">
             <div>
-              <div className="font-medium text-gray-900 dark:text-neutral-50 mb-1">
-                Second Opinion Default
+              <div className="font-medium member-heading mb-1">
+                {t('member.reportSettings.secondOpinionDefault')}
               </div>
-              <div className="text-sm text-gray-600 dark:text-neutral-300">
-                Automatically show second interpretation for all reports
+              <div className="text-sm member-body">
+                {t('member.reportSettings.secondOpinionDefaultDesc')}
               </div>
             </div>
             <input
@@ -377,13 +370,13 @@ export default function ReportSettingsSection() {
             />
           </label>
 
-          <label className="flex items-center justify-between p-4 bg-slate-50 rounded-lg cursor-pointer">
+          <label className="flex items-center justify-between p-4 bg-slate-50 dark:bg-[var(--bm-surface)] rounded-lg cursor-pointer">
             <div>
-              <div className="font-medium text-gray-900 dark:text-neutral-50 mb-1">
-                Save to History
+              <div className="font-medium member-heading mb-1">
+                {t('member.reportSettings.saveToHistory')}
               </div>
-              <div className="text-sm text-gray-600 dark:text-neutral-300">
-                Automatically save all generated reports for later review
+              <div className="text-sm member-body">
+                {t('member.reportSettings.saveToHistoryDesc')}
               </div>
             </div>
             <input
@@ -394,13 +387,13 @@ export default function ReportSettingsSection() {
             />
           </label>
 
-          <label className="flex items-center justify-between p-4 bg-slate-50 rounded-lg cursor-pointer">
+          <label className="flex items-center justify-between p-4 bg-slate-50 dark:bg-[var(--bm-surface)] rounded-lg cursor-pointer">
             <div>
-              <div className="font-medium text-gray-900 dark:text-neutral-50 mb-1">
-                Allow Caregiver View
+              <div className="font-medium member-heading mb-1">
+                {t('member.reportSettings.allowCaregiverView')}
               </div>
-              <div className="text-sm text-gray-600 dark:text-neutral-300">
-                Enable linked caregivers or healthcare professionals to view reports
+              <div className="text-sm member-body">
+                {t('member.reportSettings.allowCaregiverDesc')}
               </div>
             </div>
             <input
@@ -415,20 +408,20 @@ export default function ReportSettingsSection() {
 
       {/* Auto-refresh Frequency */}
       <div className="member-card p-6 shadow-lg">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4">
-          Report Refresh Frequency
+        <h3 className="member-heading text-lg mb-4">
+          {t('member.reportSettings.refreshTitle')}
         </h3>
-        <p className="text-sm text-gray-600 dark:text-neutral-300 mb-4">
-          How often should reports be regenerated based on new data?
+        <p className="text-sm member-body mb-4">
+          {t('member.reportSettings.refreshBody')}
         </p>
 
         <div className="grid grid-cols-5 gap-2">
           {[
-            { value: 'daily', label: 'Daily' },
-            { value: 'weekly', label: 'Weekly' },
-            { value: 'biweekly', label: 'Bi-weekly' },
-            { value: 'monthly', label: 'Monthly' },
-            { value: 'manual', label: 'Manual' }
+            { value: 'daily', label: t('member.reportSettings.freqDaily') },
+            { value: 'weekly', label: t('member.reportSettings.freqWeekly') },
+            { value: 'biweekly', label: t('member.reportSettings.freqBiweekly') },
+            { value: 'monthly', label: t('member.reportSettings.freqMonthly') },
+            { value: 'manual', label: t('member.reportSettings.freqManual') }
           ].map(option => (
             <button
               key={option.value}
@@ -450,10 +443,9 @@ export default function ReportSettingsSection() {
         <div className="flex items-start space-x-3">
           <Info className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
           <div className="text-sm text-gray-700 dark:text-neutral-200">
-            <p className="font-medium mb-1">All settings are automatically saved</p>
-            <p>
-              Your preferences will apply to all future reports. You can change these settings
-              at any time without re-entering questionnaires or losing data.
+            <p className="font-medium mb-1 member-heading">{t('member.reportSettings.autoSaveTitle')}</p>
+            <p className="member-body">
+              {t('member.reportSettings.autoSaveBody')}
             </p>
           </div>
         </div>

@@ -21,7 +21,6 @@ import {
 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserInfo } from '../../lib/adminNotify';
-import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 
 interface Invoice {
   id: string;
@@ -257,20 +256,15 @@ export default function BillingSection() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-96">
+      <div className="flex flex-col items-center justify-center h-96 gap-3">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
+        <p className="text-sm member-muted">{t('member.billing.loading')}</p>
       </div>
     );
   }
 
   return (
-    <div>
-<ReportBrandHeader
-        title="BioMath Core"
-        subtitle="Billing & Usage"
-        variant="strip"
-        className="mb-6"
-      />
+    <div className="space-y-6">
 
       {/* Help Banner */}
       {!subscription && (
@@ -279,21 +273,21 @@ export default function BillingSection() {
           <div>
             <h3 className="member-heading font-semibold mb-1">{t('member.billing.noSubscription')}</h3>
             <p className="text-sm member-body mb-3">
-              You don't have an active subscription yet. Choose a plan to unlock all features and start your health journey!
+              {t('member.billing.noSubscriptionBody')}
             </p>
             <button
               onClick={handleUpgradePlan}
               className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-semibold transition-all"
             >
-              View Plans & Pricing
+              {t('member.billing.viewPlans')}
             </button>
           </div>
         </div>
       )}
 
       {/* Current Plan Card */}
-      <div className="mb-6 member-card p-6 shadow-lg">
-        <ReportBrandHeader variant="strip" subtitle="Current Plan" className="mb-4" />
+      <div className="member-card p-6 shadow-lg">
+        <h3 className="member-heading mb-4">{t('member.billing.currentPlan')}</h3>
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex items-start gap-4">
             <div className={`bg-gradient-to-br ${getPlanColor(subscription?.plan_id || '')} to-gray-900 border rounded-xl p-4`}>
@@ -301,17 +295,17 @@ export default function BillingSection() {
             </div>
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <h2 className="text-2xl font-semibold text-gray-900 dark:text-neutral-50">
-                  {plan?.name || 'No Plan'}
+                <h2 className="text-2xl font-semibold member-heading">
+                  {plan?.name || t('member.billing.noPlan')}
                 </h2>
                 {subscription?.is_trial && (
                   <span className="px-3 py-1 bg-blue-500/20 border border-blue-500/50 text-blue-400 text-xs font-semibold rounded-full">
-                    Trial
+                    {t('member.billing.trial')}
                   </span>
                 )}
                 {subscription?.cancel_at_period_end && (
                   <span className="px-3 py-1 bg-red-500/20 border border-red-500/50 text-red-400 text-xs font-semibold rounded-full">
-                    Canceling
+                    {t('member.billing.canceling')}
                   </span>
                 )}
               </div>
@@ -321,11 +315,11 @@ export default function BillingSection() {
                     ? plan?.annual_price_cents || 0
                     : plan?.monthly_price_cents || 0
                 )}
-                /{subscription?.billing_period || 'month'}
+                /{subscription?.billing_period || t('member.common.month')}
               </p>
-              <p className="text-sm text-gray-500 dark:text-neutral-400">
-                {subscription?.status === 'active' ? 'Active since ' : 'Status: '}
-                {subscription ? formatDate(subscription.current_period_start) : 'N/A'}
+              <p className="text-sm member-muted">
+                {subscription?.status === 'active' ? t('member.billing.activeSince') + ' ' : t('member.billing.statusLabel') + ': '}
+                {subscription ? formatDate(subscription.current_period_start) : t('member.common.na')}
               </p>
             </div>
           </div>
@@ -336,15 +330,14 @@ export default function BillingSection() {
               title="View all available plans and upgrade to access more features"
             >
               <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              Upgrade Plan
+              {t('member.billing.upgradePlanBtn')}
             </button>
             <button
               onClick={handleManageBilling}
               className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-gray-700 dark:text-neutral-200 rounded-lg font-semibold transition-all flex items-center gap-2 group"
-              title="Update payment method, view invoices, or cancel subscription"
             >
               <ExternalLink className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              Manage Billing
+              {t('member.billing.manageBilling')}
             </button>
           </div>
         </div>
@@ -353,106 +346,90 @@ export default function BillingSection() {
       {/* Stats Grid - Your subscription metrics at a glance */}
       <div className="mb-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Next Billing - When your card will be charged next */}
-        <div
-          className="member-card border-emerald-200 p-4 cursor-help shadow-lg"
-          title="Your next automatic payment date"
-        >
-          <ReportBrandHeader variant="strip" subtitle="Next Billing" className="mb-3" />
+        <div className="member-card border-emerald-200 p-4 shadow-lg">
+          <h4 className="member-heading text-sm mb-3">{t('member.billing.nextBilling')}</h4>
           <div className="flex items-center justify-between mb-2">
             <Calendar className="h-5 w-5 text-emerald-600" />
             <span className="text-xs text-emerald-700 font-semibold">
-              {getDaysUntilRenewal()} days away
+              {t('member.billing.daysAway', { count: getDaysUntilRenewal() })}
             </span>
           </div>
-          <p className="text-xs text-gray-500 dark:text-neutral-400 mb-1">{t('member.billing.nextBillingDate')}</p>
-          <p className="text-lg font-semibold text-gray-900 dark:text-neutral-50">
-            {subscription ? formatDate(subscription.current_period_end) : 'No subscription'}
+          <p className="text-xs member-muted mb-1">{t('member.billing.nextBillingDate')}</p>
+          <p className="text-lg font-semibold member-heading">
+            {subscription ? formatDate(subscription.current_period_end) : t('member.billing.noSubscriptionLabel')}
           </p>
-          <p className="text-xs text-gray-500 dark:text-neutral-400 mt-1">
-            {subscription ? `${formatPrice(
-              subscription?.billing_period === 'annual'
-                ? plan?.annual_price_cents || 0
-                : plan?.monthly_price_cents || 0
-            )} will be charged` : 'Select a plan to start'}
+          <p className="text-xs member-muted mt-1">
+            {subscription ? t('member.billing.willBeCharged', {
+              amount: formatPrice(
+                subscription?.billing_period === 'annual'
+                  ? plan?.annual_price_cents || 0
+                  : plan?.monthly_price_cents || 0
+              )
+            }) : t('member.billing.selectPlan')}
           </p>
         </div>
 
-        {/* Total Paid - Lifetime spending */}
-        <div
-          className="member-card border-blue-200 p-4 cursor-help shadow-lg"
-          title="Total amount you've paid since joining"
-        >
-          <ReportBrandHeader variant="strip" subtitle="Total Paid" className="mb-3" />
+        <div className="member-card border-blue-200 p-4 shadow-lg">
+          <h4 className="member-heading text-sm mb-3">{t('member.billing.totalPaidLifetime')}</h4>
           <div className="flex items-center justify-between mb-2">
             <DollarSign className="h-5 w-5 text-blue-600" />
             <TrendingUp className="h-4 w-4 text-blue-600" />
           </div>
-          <p className="text-xs text-gray-500 dark:text-neutral-400 mb-1">Total Paid (Lifetime)</p>
-          <p className="text-lg font-semibold text-gray-900 dark:text-neutral-50">${totalPaid.toFixed(2)}</p>
-          <p className="text-xs text-gray-500 dark:text-neutral-400 mt-1">
-            {invoices.filter(i => i.status === 'paid').length} successful payment{invoices.filter(i => i.status === 'paid').length !== 1 ? 's' : ''}
+          <p className="text-lg font-semibold member-heading">${totalPaid.toFixed(2)}</p>
+          <p className="text-xs member-muted mt-1">
+            {t('member.billing.successfulPayments', { count: invoices.filter(i => i.status === 'paid').length })}
           </p>
         </div>
 
-        {/* Reports Usage - Track your monthly report generation */}
-        <div
-          className="member-card border-purple-200 p-4 cursor-help shadow-lg"
-          title="Number of health reports generated this billing period"
-        >
-          <ReportBrandHeader variant="strip" subtitle="Reports Usage" className="mb-3" />
+        <div className="member-card border-purple-200 p-4 shadow-lg">
+          <h4 className="member-heading text-sm mb-3">{t('member.billing.reportsThisMonth')}</h4>
           <div className="flex items-center justify-between mb-2">
             <RefreshCw className="h-5 w-5 text-purple-600" />
             <span className="text-xs text-purple-700 font-semibold">
-              {usageStats?.reportsLimit === -1 ? 'Unlimited' : `${usageStats?.reportsUsed}/${usageStats?.reportsLimit}`}
+              {usageStats?.reportsLimit === -1 ? t('member.billing.unlimited') : `${usageStats?.reportsUsed}/${usageStats?.reportsLimit}`}
             </span>
           </div>
-          <p className="text-xs text-gray-500 dark:text-neutral-400 mb-1">{t('member.billing.reportsThisMonth')}</p>
-          <p className="text-lg font-semibold text-gray-900 dark:text-neutral-50">{usageStats?.reportsUsed || 0}</p>
+          <p className="text-lg font-semibold member-heading">{usageStats?.reportsUsed || 0}</p>
           {usageStats && usageStats.reportsLimit !== -1 ? (
-            <div className="mt-2 bg-slate-200 rounded-full h-1.5">
+            <div className="mt-2 bg-slate-200 dark:bg-gray-800 rounded-full h-1.5">
               <div
                 className="bg-purple-500 h-1.5 rounded-full transition-all"
                 style={{ width: `${getUsagePercentage(usageStats.reportsUsed, usageStats.reportsLimit)}%` }}
               />
             </div>
           ) : (
-            <p className="text-xs text-purple-600 mt-1">∞ Generate unlimited reports</p>
+            <p className="text-xs text-purple-600 mt-1">{t('member.billing.generateUnlimited')}</p>
           )}
         </div>
 
-        {/* Storage Usage - Your data storage consumption */}
-        <div
-          className="member-card border-orange-200 p-4 cursor-help shadow-lg"
-          title="Storage space used for your health data and files"
-        >
-          <ReportBrandHeader variant="strip" subtitle="Storage Usage" className="mb-3" />
+        <div className="member-card border-orange-200 p-4 shadow-lg">
+          <h4 className="member-heading text-sm mb-3">{t('member.billing.storageUsed')}</h4>
           <div className="flex items-center justify-between mb-2">
             <CreditCard className="h-5 w-5 text-orange-500" />
             <span className="text-xs text-orange-700 font-semibold">
               {usageStats?.storageUsed}GB / {usageStats?.storageLimit}GB
             </span>
           </div>
-          <p className="text-xs text-gray-500 dark:text-neutral-400 mb-1">{t('member.billing.storageUsed')}</p>
-          <p className="text-lg font-semibold text-gray-900 dark:text-neutral-50">{usageStats?.storageUsed || 0} GB</p>
+          <p className="text-lg font-semibold member-heading">{usageStats?.storageUsed || 0} GB</p>
           {usageStats && (
-            <div className="mt-2 bg-slate-200 rounded-full h-1.5">
+            <div className="mt-2 bg-slate-200 dark:bg-gray-800 rounded-full h-1.5">
               <div
                 className="bg-orange-500 h-1.5 rounded-full transition-all"
                 style={{ width: `${getUsagePercentage(usageStats.storageUsed, usageStats.storageLimit)}%` }}
               />
             </div>
           )}
-          <p className="text-xs text-gray-500 dark:text-neutral-400 mt-1">
-            {usageStats ? `${(usageStats.storageLimit - usageStats.storageUsed).toFixed(1)} GB remaining` : 'N/A'}
+          <p className="text-xs member-muted mt-1">
+            {usageStats ? t('member.billing.remaining', { amount: (usageStats.storageLimit - usageStats.storageUsed).toFixed(1) }) : t('member.common.na')}
           </p>
         </div>
       </div>
 
       {/* Payment History */}
       <div className="mb-6">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-neutral-50 mb-4 flex items-center gap-2">
+        <h2 className="member-heading text-xl mb-4 flex items-center gap-2">
           <Clock className="h-5 w-5 text-orange-500" />
-          Payment History
+          {t('member.billing.paymentHistory')}
         </h2>
 
         <div className="mb-4 flex flex-col md:flex-row gap-4">
@@ -472,24 +449,24 @@ export default function BillingSection() {
             className="px-4 py-3 member-input"
           >
             <option value="all">{t('member.billing.allStatus')}</option>
-            <option value="paid">Paid</option>
-            <option value="pending">Pending</option>
-            <option value="failed">Failed</option>
+            <option value="paid">{t('member.billing.statusPaid')}</option>
+            <option value="pending">{t('member.billing.statusPending')}</option>
+            <option value="failed">{t('member.billing.statusFailed')}</option>
           </select>
         </div>
 
         <div className="member-card overflow-hidden shadow-lg">
-          <ReportBrandHeader variant="strip" subtitle="Invoices & Payments" className="m-4 mb-0" />
+          <h3 className="member-heading m-4 mb-0">{t('member.billing.invoicesPayments')}</h3>
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-slate-50 border-b border-slate-200 dark:border-[var(--bm-border)]">
+              <thead className="bg-slate-50 dark:bg-[var(--bm-surface)] border-b border-slate-200 dark:border-[var(--bm-border)]">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-neutral-400 uppercase tracking-wider">Invoice</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-neutral-400 uppercase tracking-wider">Plan</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-neutral-400 uppercase tracking-wider">Amount</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-neutral-400 uppercase tracking-wider">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-neutral-400 uppercase tracking-wider">Date</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-neutral-400 uppercase tracking-wider">Actions</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium member-muted uppercase tracking-wider">{t('member.billing.invoice')}</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium member-muted uppercase tracking-wider">{t('member.billing.plan')}</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium member-muted uppercase tracking-wider">{t('member.billing.amount')}</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium member-muted uppercase tracking-wider">{t('member.billing.status')}</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium member-muted uppercase tracking-wider">{t('member.billing.date')}</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium member-muted uppercase tracking-wider">{t('member.billing.actions')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200">
@@ -517,7 +494,7 @@ export default function BillingSection() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`px-2 py-1 text-xs rounded-full border flex items-center gap-1 w-fit ${getStatusColor(invoice.status)}`}>
                           {getStatusIcon(invoice.status)}
-                          {invoice.status}
+                          {invoice.status === 'paid' ? t('member.billing.statusPaid') : invoice.status === 'pending' ? t('member.billing.statusPending') : invoice.status === 'failed' ? t('member.billing.statusFailed') : invoice.status}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-neutral-400">
@@ -526,7 +503,7 @@ export default function BillingSection() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm">
                         <button className="text-orange-600 hover:text-orange-500 flex items-center gap-1 transition-colors">
                           <Download className="h-4 w-4" />
-                          PDF
+                          {t('member.billing.pdf')}
                         </button>
                       </td>
                     </tr>
@@ -540,12 +517,12 @@ export default function BillingSection() {
 
       {/* Quick Actions - Common billing tasks */}
       <div className="mb-4">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-3 flex items-center gap-2">
+        <h3 className="member-heading text-lg mb-3 flex items-center gap-2">
           <Zap className="h-5 w-5 text-orange-500" />
-          Quick Actions
+          {t('member.billing.quickActions')}
         </h3>
-        <p className="text-sm text-gray-600 dark:text-neutral-300 mb-4">
-          Manage your subscription and billing with these quick shortcuts
+        <p className="text-sm member-body mb-4">
+          {t('member.billing.quickActionsBody')}
         </p>
       </div>
       <div className="grid md:grid-cols-3 gap-4">
@@ -566,7 +543,7 @@ export default function BillingSection() {
         >
           <RefreshCw className="h-6 w-6 text-blue-500 mb-2 group-hover:rotate-180 transition-transform duration-500" />
           <h3 className="text-gray-900 dark:text-neutral-50 font-semibold mb-1">{t('member.billing.changeCycle')}</h3>
-          <p className="text-sm text-gray-600 dark:text-neutral-300">Switch between monthly and annual billing (save 17%)</p>
+          <p className="text-sm member-body">{t('member.billing.changeCycleBody')}</p>
         </button>
 
         <button

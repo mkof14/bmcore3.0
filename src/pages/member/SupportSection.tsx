@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HeadphonesIcon, Send, Mail, MessageCircle, Plus, Clock } from 'lucide-react';
+import { HeadphonesIcon, Send, Mail, MessageCircle, Plus, Clock, Loader2 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserInfo, notifyUserSuccess } from '../../lib/adminNotify';
 import ErrorBanner from '../../components/ui/ErrorBanner';
 import StateCard from '../../components/ui/StateCard';
 import ModalShell from '../../components/ui/ModalShell';
 import Button from '../../components/ui/Button';
-import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 
 interface Ticket {
   id: string;
@@ -27,7 +26,7 @@ interface Message {
 }
 
 export default function SupportSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [currentTicket, setCurrentTicket] = useState<Ticket | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -60,7 +59,7 @@ export default function SupportSection() {
       setLoadingTickets(true);
       const { data: user } = await supabase.auth.getUser();
       if (!user.user) {
-        setError('Please sign in to view support tickets');
+        setError(t('member.support.signInRequired'));
         return;
       }
       setUserId(user.user.id);
@@ -75,8 +74,8 @@ export default function SupportSection() {
       setTickets(data || []);
       setError(null);
     } catch (error) {
-      notifyUserError('Support tickets load failed');
-      setError('Unable to load support tickets. Please try again.');
+      notifyUserError(t('member.support.loadFailed'));
+      setError(t('member.support.loadFailed'));
     } finally {
       setLoadingTickets(false);
     }
@@ -95,8 +94,8 @@ export default function SupportSection() {
       setMessages(data || []);
       setMessageError(null);
     } catch (error) {
-      notifyUserError('Support messages load failed');
-      setMessageError('Unable to load messages. Please try again.');
+      notifyUserError(t('member.support.loadFailed'));
+      setMessageError(t('member.support.loadFailed'));
     } finally {
       setLoadingMessages(false);
     }
@@ -104,14 +103,14 @@ export default function SupportSection() {
 
   const createTicket = async () => {
     if (!newTicketForm.subject || !newTicketForm.message) {
-      notifyUserInfo('Subject and message are required');
+      notifyUserInfo(t('member.support.subject'));
       return;
     }
 
     try {
       const resolvedUserId = userId || (await supabase.auth.getUser()).data.user?.id;
       if (!resolvedUserId) {
-        notifyUserError('Please sign in to create a ticket');
+        notifyUserError(t('member.support.signInRequired'));
         return;
       }
 
@@ -144,15 +143,15 @@ export default function SupportSection() {
       setShowNewTicket(false);
       setNewTicketForm({ subject: '', category: 'technical', priority: 'normal', message: '' });
       loadTickets();
-      notifyUserSuccess('Support ticket created');
+      notifyUserSuccess(t('member.support.createTicket'));
     } catch (error) {
-      notifyUserError('Support ticket creation failed');
+      notifyUserError(t('member.support.createTicket'));
     }
   };
 
   const sendMessage = async () => {
     if (!newMessage.trim() || !currentTicket) {
-      notifyUserInfo('Select a ticket to send a message');
+      notifyUserInfo(t('member.support.selectTicket'));
       return;
     }
 
@@ -176,8 +175,8 @@ export default function SupportSection() {
       loadMessages(currentTicket.id);
       loadTickets();
     } catch (error) {
-      notifyUserError('Support message send failed');
-      setMessageError('Unable to send message. Please try again.');
+      notifyUserError(t('member.support.loadFailed'));
+      setMessageError(t('member.support.loadFailed'));
     }
   };
 
@@ -200,53 +199,62 @@ export default function SupportSection() {
     }
   };
 
+  const statusLabel = (status: string) => {
+    const map: Record<string, string> = {
+      open: t('member.support.statusOpen'),
+      in_progress: t('member.support.statusInProgress'),
+      resolved: t('member.support.statusResolved'),
+    };
+    return map[status] ?? status;
+  };
+
+  const priorityLabel = (priority: string) => {
+    const map: Record<string, string> = {
+      urgent: t('member.support.priUrgent'),
+      high: t('member.support.priHigh'),
+      normal: t('member.support.priNormal'),
+      low: t('member.support.priLow'),
+    };
+    return map[priority] ?? priority;
+  };
+
   return (
-    <div>
-<ReportBrandHeader
-        title="BioMath Core"
-        subtitle="Support Center"
-        variant="strip"
-        className="mb-6"
-      />
-
-      <div className="mb-6 grid md:grid-cols-3 gap-4">
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-3 gap-4">
         <div className="member-card p-4 shadow-lg">
-          <ReportBrandHeader variant="strip" subtitle="Live Chat" className="mb-3" />
           <MessageCircle className="h-6 w-6 text-blue-600 mb-2" />
-          <h3 className="font-semibold text-gray-900 dark:text-neutral-50 mb-1">{t('member.support.liveChat')}</h3>
-          <p className="text-xs text-gray-500 dark:text-neutral-400 mb-3">{t('member.support.liveChatBody')}</p>
-          <button className="text-xs text-blue-600 hover:text-blue-700">Start Chat →</button>
+          <h3 className="member-heading mb-1">{t('member.support.liveChat')}</h3>
+          <p className="text-xs member-muted mb-3">{t('member.support.liveChatBody')}</p>
+          <button className="text-xs text-blue-600 hover:text-blue-700">{t('member.support.startChat')}</button>
         </div>
 
         <div className="member-card p-4 shadow-lg">
-          <ReportBrandHeader variant="strip" subtitle="Email Support" className="mb-3" />
           <Mail className="h-6 w-6 text-emerald-600 mb-2" />
-          <h3 className="font-semibold text-gray-900 dark:text-neutral-50 mb-1">{t('member.support.emailSupport')}</h3>
-          <p className="text-xs text-gray-500 dark:text-neutral-400 mb-3">support@biomathcore.com</p>
-          <p className="text-xs text-gray-500 dark:text-neutral-300">Response within 24 hours</p>
+          <h3 className="member-heading mb-1">{t('member.support.emailSupport')}</h3>
+          <p className="text-xs member-muted mb-3">support@biomathcore.com</p>
+          <p className="text-xs member-muted">{t('member.support.responseTime')}</p>
         </div>
 
         <div className="member-card p-4 shadow-lg">
-          <ReportBrandHeader variant="strip" subtitle="Support Hours" className="mb-3" />
           <Clock className="h-6 w-6 text-orange-500 mb-2" />
-          <h3 className="font-semibold text-gray-900 dark:text-neutral-50 mb-1">{t('member.support.supportHours')}</h3>
-          <p className="text-xs text-gray-500 dark:text-neutral-400 mb-1">24/7 for Pro users</p>
-          <p className="text-xs text-gray-500 dark:text-neutral-400">9AM-6PM EST for Basic</p>
+          <h3 className="member-heading mb-1">{t('member.support.supportHours')}</h3>
+          <p className="text-xs member-muted mb-1">{t('member.support.proHours')}</p>
+          <p className="text-xs member-muted">{t('member.support.basicHours')}</p>
         </div>
       </div>
 
-      <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('member.support.tickets')}</h3>
+      <div className="flex justify-between items-center">
+        <h3 className="member-heading text-xl">{t('member.support.tickets')}</h3>
         <div className="flex items-center gap-2">
           <Button size="sm" onClick={loadTickets}>
-            Refresh
+            {t('member.common.refresh')}
           </Button>
           <button
             onClick={() => setShowNewTicket(true)}
             className="px-6 py-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all flex items-center gap-2"
           >
             <Plus className="h-4 w-4" />
-            New Ticket
+            {t('member.support.newTicket')}
           </button>
         </div>
       </div>
@@ -256,9 +264,9 @@ export default function SupportSection() {
       <div className="grid md:grid-cols-3 gap-6">
         <div className="md:col-span-1 space-y-2">
           {loadingTickets ? (
-            <StateCard title="Loading tickets..." description="Fetching your support history." />
+            <StateCard title={t('member.support.loadingTickets')} description={t('member.support.loadingTicketsDesc')} />
           ) : tickets.length === 0 ? (
-            <StateCard title="No tickets yet" description="Create your first support ticket to get help." />
+            <StateCard title={t('member.support.noTickets')} description={t('member.support.noTicketsDesc')} />
           ) : (
             tickets.map((ticket) => (
               <div
@@ -267,57 +275,51 @@ export default function SupportSection() {
                 className={`p-4 rounded-xl cursor-pointer transition-all ${
                   currentTicket?.id === ticket.id
                     ? 'bg-orange-100 dark:bg-orange-900/30 border border-orange-200 dark:border-orange-600/30'
-                    : 'bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700/30 hover:bg-gray-50 dark:hover:bg-gray-800'
+                    : 'member-card hover:border-orange-300/40'
                 }`}
               >
-                <div className="flex items-start justify-between mb-2">
-                  <h4 className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2">{ticket.subject}</h4>
-                </div>
+                <h4 className="text-sm font-semibold member-heading line-clamp-2 mb-2">{ticket.subject}</h4>
                 <div className="flex gap-2 mb-2">
                   <span className={`px-2 py-0.5 text-xs rounded-full border ${getStatusColor(ticket.status)}`}>
-                    {ticket.status}
+                    {statusLabel(ticket.status)}
                   </span>
                   <span className={`px-2 py-0.5 text-xs rounded-full border ${getPriorityColor(ticket.priority)}`}>
-                    {ticket.priority}
+                    {priorityLabel(ticket.priority)}
                   </span>
                 </div>
-                <p className="text-xs text-gray-500 dark:text-neutral-400">{new Date(ticket.created_at).toLocaleDateString()}</p>
+                <p className="text-xs member-muted">{new Date(ticket.created_at).toLocaleDateString(i18n.language)}</p>
               </div>
             ))
           )}
         </div>
 
         <div className="md:col-span-2 member-card flex flex-col h-[600px] shadow-lg">
-          <ReportBrandHeader
-            variant="strip"
-            subtitle="Ticket Details"
-            className="m-4 mb-0"
-          />
           {currentTicket ? (
             <>
               <div className="p-4 border-b border-slate-200 dark:border-[var(--bm-border)]">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{currentTicket.subject}</h3>
-                <div className="flex gap-2">
+                <h3 className="member-heading mb-2">{currentTicket.subject}</h3>
+                <div className="flex gap-2 flex-wrap">
                   <span className={`px-2 py-0.5 text-xs rounded-full border ${getStatusColor(currentTicket.status)}`}>
-                    {currentTicket.status}
+                    {statusLabel(currentTicket.status)}
                   </span>
                   <span className={`px-2 py-0.5 text-xs rounded-full border ${getPriorityColor(currentTicket.priority)}`}>
-                    {currentTicket.priority}
+                    {priorityLabel(currentTicket.priority)}
                   </span>
-                  <span className="px-2 py-0.5 text-xs rounded-full border bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/30 text-gray-700 dark:text-neutral-300">
+                  <span className="px-2 py-0.5 text-xs rounded-full border bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/30 member-muted">
                     {currentTicket.category}
                   </span>
                 </div>
               </div>
 
               <div className="flex-1 overflow-y-auto p-6 space-y-4">
-                {messageError && (
-                  <ErrorBanner message={messageError} className="mb-4" />
-                )}
+                {messageError && <ErrorBanner message={messageError} className="mb-4" />}
                 {loadingMessages ? (
-                  <div className="text-center text-sm text-gray-600 dark:text-neutral-300">Loading messages...</div>
+                  <div className="flex items-center justify-center gap-2 text-sm member-muted">
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    {t('member.support.loadingMessages')}
+                  </div>
                 ) : messages.length === 0 ? (
-                  <div className="text-center text-sm text-gray-600 dark:text-neutral-300">No messages yet.</div>
+                  <div className="text-center text-sm member-muted">{t('member.support.noMessages')}</div>
                 ) : (
                   messages.map((msg) => (
                     <div
@@ -331,9 +333,9 @@ export default function SupportSection() {
                             : 'bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700/30'
                         }`}
                       >
-                        <p className="text-sm text-gray-900 dark:text-white whitespace-pre-wrap">{msg.message}</p>
-                        <p className="text-xs text-gray-500 dark:text-neutral-400 mt-2">
-                          {new Date(msg.created_at).toLocaleTimeString()}
+                        <p className="text-sm member-body whitespace-pre-wrap">{msg.message}</p>
+                        <p className="text-xs member-muted mt-2">
+                          {new Date(msg.created_at).toLocaleTimeString(i18n.language)}
                         </p>
                       </div>
                     </div>
@@ -356,7 +358,7 @@ export default function SupportSection() {
                     className="px-6 py-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all flex items-center gap-2"
                   >
                     <Send className="h-4 w-4" />
-                    Send
+                    {t('member.common.send')}
                   </button>
                 </div>
               </div>
@@ -364,8 +366,8 @@ export default function SupportSection() {
           ) : (
             <div className="flex-1 flex items-center justify-center">
               <div className="text-center">
-                <MessageCircle className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-500 dark:text-neutral-400">Select a ticket to view conversation or create a new one.</p>
+                <MessageCircle className="h-16 w-16 member-muted mx-auto mb-4" />
+                <p className="member-muted">{t('member.support.selectTicket')}</p>
               </div>
             </div>
           )}
@@ -374,14 +376,14 @@ export default function SupportSection() {
 
       {showNewTicket && (
         <ModalShell
-          title="Create Support Ticket"
+          title={t('member.support.createTicketTitle')}
           icon={<HeadphonesIcon className="h-6 w-6 text-orange-500" />}
           onClose={() => setShowNewTicket(false)}
           panelClassName="max-w-md"
         >
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">Subject</label>
+              <label className="block text-sm font-medium member-body mb-2">{t('member.support.subject')}</label>
               <input
                 type="text"
                 value={newTicketForm.subject}
@@ -393,37 +395,37 @@ export default function SupportSection() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">Category</label>
+                <label className="block text-sm font-medium member-body mb-2">{t('member.support.category')}</label>
                 <select
                   value={newTicketForm.category}
                   onChange={(e) => setNewTicketForm({ ...newTicketForm, category: e.target.value })}
                   className="w-full px-4 py-2 member-input"
                 >
-                  <option value="technical">Technical</option>
-                  <option value="billing">Billing</option>
-                  <option value="account">Account</option>
-                  <option value="feature">Feature Request</option>
-                  <option value="other">Other</option>
+                  <option value="technical">{t('member.support.catTechnical')}</option>
+                  <option value="billing">{t('member.support.catBilling')}</option>
+                  <option value="account">{t('member.support.catAccount')}</option>
+                  <option value="feature">{t('member.support.catFeature')}</option>
+                  <option value="other">{t('member.support.catOther')}</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">Priority</label>
+                <label className="block text-sm font-medium member-body mb-2">{t('member.support.priority')}</label>
                 <select
                   value={newTicketForm.priority}
                   onChange={(e) => setNewTicketForm({ ...newTicketForm, priority: e.target.value })}
                   className="w-full px-4 py-2 member-input"
                 >
-                  <option value="low">Low</option>
-                  <option value="normal">Normal</option>
-                  <option value="high">High</option>
-                  <option value="urgent">Urgent</option>
+                  <option value="low">{t('member.support.priLow')}</option>
+                  <option value="normal">{t('member.support.priNormal')}</option>
+                  <option value="high">{t('member.support.priHigh')}</option>
+                  <option value="urgent">{t('member.support.priUrgent')}</option>
                 </select>
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-600 dark:text-neutral-200 mb-2">Message</label>
+              <label className="block text-sm font-medium member-body mb-2">{t('member.support.message')}</label>
               <textarea
                 value={newTicketForm.message}
                 onChange={(e) => setNewTicketForm({ ...newTicketForm, message: e.target.value })}
@@ -439,13 +441,13 @@ export default function SupportSection() {
               onClick={createTicket}
               className="flex-1 px-6 py-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all"
             >
-              Create Ticket
+              {t('member.support.createTicket')}
             </button>
             <button
               onClick={() => setShowNewTicket(false)}
               className="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              Cancel
+              {t('member.common.cancel')}
             </button>
           </div>
         </ModalShell>

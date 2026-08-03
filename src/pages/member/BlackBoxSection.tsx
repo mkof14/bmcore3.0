@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Lock, Shield, Key, Activity, AlertTriangle, Upload, Eye, Trash2, FileText } from 'lucide-react';
+import { Lock, Shield, Key, Activity, AlertTriangle, Upload, Eye, Trash2, FileText, Loader2 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserSuccess } from '../../lib/adminNotify';
 import ModalShell from '../../components/ui/ModalShell';
 import ErrorBanner from '../../components/ui/ErrorBanner';
 import Button from '../../components/ui/Button';
-import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 import MemberMetricCard from '../../components/ui/MemberMetricCard';
 
 interface BlackBoxFile {
@@ -22,7 +21,7 @@ interface BlackBoxFile {
 }
 
 export default function BlackBoxSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [files, setFiles] = useState<BlackBoxFile[]>([]);
   const [loading, setLoading] = useState(true);
   const [showUploadModal, setShowUploadModal] = useState(false);
@@ -43,7 +42,7 @@ export default function BlackBoxSection() {
     try {
       const { data: user } = await supabase.auth.getUser();
       if (!user.user) {
-        setError('Please sign in to view Black Box files');
+        setError(t('member.blackBox.signInRequired'));
         return;
       }
       setUserId(user.user.id);
@@ -75,18 +74,18 @@ export default function BlackBoxSection() {
       });
       setError(null);
     } catch (error) {
-      notifyUserError('Black Box files load failed');
-      setError('Unable to load Black Box files. Please try again.');
+      notifyUserError(t('member.blackBox.loadFailed'));
+      setError(t('member.blackBox.loadFailed'));
     } finally {
       setLoading(false);
     }
   };
 
-  const handleUpload = async (formData: any) => {
+  const handleUpload = async (formData: { file_name: string; file_url: string; file_type: string }) => {
     try {
       const resolvedUserId = userId || (await supabase.auth.getUser()).data.user?.id;
       if (!resolvedUserId) {
-        notifyUserError('Please sign in to upload files');
+        notifyUserError(t('member.blackBox.signInRequired'));
         return;
       }
 
@@ -104,10 +103,10 @@ export default function BlackBoxSection() {
 
       if (error) throw error;
       setShowUploadModal(false);
-      notifyUserSuccess('File uploaded to Black Box');
+      notifyUserSuccess(t('member.common.upload'));
       loadFiles();
     } catch (error) {
-      notifyUserError('File upload failed');
+      notifyUserError(t('member.common.upload'));
     }
   };
 
@@ -132,15 +131,15 @@ export default function BlackBoxSection() {
       if (error) throw error;
 
       window.open(file.file_url, '_blank');
-      notifyUserSuccess('File access logged');
+      notifyUserSuccess(t('member.common.access'));
       loadFiles();
     } catch (error) {
-      notifyUserError('File access failed');
+      notifyUserError(t('member.common.access'));
     }
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Delete this file from Black Box? This action cannot be undone and will be logged.')) return;
+    if (!confirm(t('member.blackBox.deleteConfirm'))) return;
 
     try {
       const { error } = await supabase
@@ -149,10 +148,10 @@ export default function BlackBoxSection() {
         .eq('id', id);
 
       if (error) throw error;
-      notifyUserSuccess('File deleted');
+      notifyUserSuccess(t('member.common.delete'));
       loadFiles();
     } catch (error) {
-      notifyUserError('File delete failed');
+      notifyUserError(t('member.common.delete'));
     }
   };
 
@@ -165,39 +164,29 @@ export default function BlackBoxSection() {
   };
 
   return (
-    <div>
-<ReportBrandHeader
-        title="BioMath Core"
-        subtitle="Black Box Storage"
-        variant="strip"
-        className="mb-6"
-      />
-
+    <div className="space-y-6">
       {error && <ErrorBanner message={error} className="mb-4" />}
 
-      <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-600/30 rounded-xl">
+      <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-600/30 rounded-xl">
         <div className="flex items-start gap-3">
           <AlertTriangle className="h-5 w-5 text-red-600 dark:text-red-500 flex-shrink-0 mt-0.5" />
           <div>
             <p className="text-sm text-red-700 dark:text-red-200 font-medium mb-1">{t('member.blackBox.legalNotice')}</p>
-            <p className="text-xs text-red-700/80 dark:text-red-300/80 mb-2">
-              You are FULLY RESPONSIBLE for all content stored in your Black Box. Only store legal information
-              relevant to health services. Any illegal content will result in immediate account termination and
-              legal action. All access is logged and monitored for compliance.
+            <p className="text-xs text-red-700/80 dark:text-red-300/80 member-body mb-2">
+              {t('member.blackBox.legalNoticeBody')}
             </p>
-            <p className="text-xs text-red-700/80 dark:text-red-300/80">
-              By using Black Box Storage, you acknowledge full legal responsibility for your data and agree to
-              comply with all applicable laws (HIPAA, GDPR, local regulations).
+            <p className="text-xs text-red-700/80 dark:text-red-300/80 member-body">
+              {t('member.blackBox.legalNoticeBody2')}
             </p>
           </div>
         </div>
       </div>
 
-      <div className="grid md:grid-cols-4 gap-4 mb-6">
+      <div className="grid md:grid-cols-4 gap-4">
         <MemberMetricCard
           accent="blue"
           icon={<Shield className="h-5 w-5" />}
-          badge={<span className="text-xs text-blue-600 dark:text-blue-400 font-medium">ENCRYPTED</span>}
+          badge={<span className="text-xs text-blue-600 dark:text-blue-400 font-medium">{t('member.blackBox.badgeEncrypted')}</span>}
           value={stats.totalFiles}
           label={t('member.blackBox.securedFiles')}
         />
@@ -211,24 +200,23 @@ export default function BlackBoxSection() {
         <MemberMetricCard
           accent="orange"
           icon={<Activity className="h-5 w-5" />}
-          badge={<span className="text-xs text-orange-600 dark:text-orange-400 font-medium">MONITORED</span>}
+          badge={<span className="text-xs text-orange-600 dark:text-orange-400 font-medium">{t('member.blackBox.badgeMonitored')}</span>}
           value={stats.accessCount}
           label={t('member.blackBox.accessLogs')}
         />
         <MemberMetricCard
           accent="purple"
           icon={<Lock className="h-5 w-5" />}
-          badge={<span className="text-xs text-purple-600 dark:text-purple-400 font-medium">SECURE</span>}
-          value={stats.lastAccess ? new Date(stats.lastAccess).toLocaleDateString() : 'Never'}
+          badge={<span className="text-xs text-purple-600 dark:text-purple-400 font-medium">{t('member.blackBox.badgeSecure')}</span>}
+          value={stats.lastAccess ? new Date(stats.lastAccess).toLocaleDateString(i18n.language) : t('member.blackBox.never')}
           label={t('member.blackBox.lastAccess')}
         />
       </div>
 
-      <div className="mb-6 member-card rounded-xl p-6 shadow-sm">
-        <ReportBrandHeader variant="strip" subtitle="Security Features" className="mb-4" />
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+      <div className="member-card rounded-xl p-6 shadow-sm">
+        <h3 className="member-heading text-lg mb-4 flex items-center gap-2">
           <Shield className="h-5 w-5 text-orange-500" />
-          Security Features
+          {t('member.blackBox.securityFeatures')}
         </h3>
         <div className="grid md:grid-cols-2 gap-4">
           <div className="flex items-start gap-3">
@@ -236,8 +224,8 @@ export default function BlackBoxSection() {
               <Key className="h-4 w-4 text-green-600 dark:text-green-400" />
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-900 dark:text-white">AES-256-GCM Encryption</p>
-              <p className="text-xs text-gray-600 dark:text-neutral-300">Military-grade encryption for all files</p>
+              <p className="text-sm font-medium member-heading">{t('member.blackBox.securityAesTitle')}</p>
+              <p className="text-xs member-muted">{t('member.blackBox.securityAesBody')}</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -245,8 +233,8 @@ export default function BlackBoxSection() {
               <Activity className="h-4 w-4 text-blue-600 dark:text-blue-400" />
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-900 dark:text-white">Tamper-Proof Audit Logs</p>
-              <p className="text-xs text-gray-600 dark:text-neutral-300">All access is recorded and immutable</p>
+              <p className="text-sm font-medium member-heading">{t('member.blackBox.securityAuditTitle')}</p>
+              <p className="text-xs member-muted">{t('member.blackBox.securityAuditBody')}</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -254,8 +242,8 @@ export default function BlackBoxSection() {
               <Lock className="h-4 w-4 text-orange-600 dark:text-orange-400" />
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-900 dark:text-white">Zero-Knowledge Architecture</p>
-              <p className="text-xs text-gray-600 dark:text-neutral-300">Only you can decrypt your files</p>
+              <p className="text-sm font-medium member-heading">{t('member.blackBox.securityZeroTitle')}</p>
+              <p className="text-xs member-muted">{t('member.blackBox.securityZeroBody')}</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -263,33 +251,36 @@ export default function BlackBoxSection() {
               <Shield className="h-4 w-4 text-purple-600 dark:text-purple-400" />
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-900 dark:text-white">Biometric Access Control</p>
-              <p className="text-xs text-gray-600 dark:text-neutral-300">Multi-factor authentication required</p>
+              <p className="text-sm font-medium member-heading">{t('member.blackBox.securityBioTitle')}</p>
+              <p className="text-xs member-muted">{t('member.blackBox.securityBioBody')}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{t('member.blackBox.encryptedFiles')}</h3>
+      <div className="flex justify-between items-center">
+        <h3 className="member-heading text-xl">{t('member.blackBox.encryptedFiles')}</h3>
         <div className="flex items-center gap-2">
           <Button size="sm" onClick={loadFiles}>
-            Refresh
+            {t('member.common.refresh')}
           </Button>
           <button
             onClick={() => setShowUploadModal(true)}
             className="px-6 py-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all flex items-center gap-2"
           >
             <Upload className="h-4 w-4" />
-            Upload to Black Box
+            {t('member.blackBox.uploadToBlackBox')}
           </button>
         </div>
       </div>
 
       {loading ? (
-        <div className="text-center py-12 text-gray-600 dark:text-neutral-300">Loading secure storage...</div>
+        <div className="flex flex-col items-center justify-center py-16 gap-3">
+          <Loader2 className="h-8 w-8 text-orange-500 animate-spin" />
+          <p className="text-sm member-muted">{t('member.blackBox.loading')}</p>
+        </div>
       ) : files.length === 0 ? (
-        <div className="text-center py-12 bg-white/70 dark:bg-[var(--bm-surface)]/40 border border-slate-200 dark:border-[var(--bm-border)] rounded-2xl shadow-sm">
+        <div className="text-center py-12 member-card">
           <Lock className="h-16 w-16 member-muted mx-auto mb-4" />
           <p className="member-body mb-2">{t('member.blackBox.empty')}</p>
           <p className="text-sm member-muted">{t('member.blackBox.emptyHint')}</p>
@@ -301,41 +292,40 @@ export default function BlackBoxSection() {
               key={file.id}
               className="member-card rounded-xl border-orange-200 dark:border-orange-600/30 p-4 hover:border-orange-500/50 transition-all shadow-sm"
             >
-              <ReportBrandHeader variant="strip" subtitle="Encrypted File" className="mb-3" />
               <div className="flex items-start justify-between mb-3">
-                <div className="p-2 bg-orange-50 border border-orange-200 rounded-lg">
-                  <FileText className="h-5 w-5 text-orange-600" />
+                <div className="p-2 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-600/30 rounded-lg">
+                  <FileText className="h-5 w-5 text-orange-600 dark:text-orange-400" />
                 </div>
                 <div className="flex items-center gap-1">
                   <Lock className="h-3 w-3 text-green-500" />
-                  <span className="text-xs text-green-400 font-medium">ENCRYPTED</span>
+                  <span className="text-xs text-green-600 dark:text-green-400 font-medium">{t('member.blackBox.badgeEncrypted')}</span>
                 </div>
               </div>
 
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">{file.file_name}</h3>
+              <h3 className="text-sm font-semibold member-heading mb-2 line-clamp-2">{file.file_name}</h3>
 
-              <div className="space-y-2 mb-3">
-                <div className="flex justify-between text-xs">
-                  <span className="text-gray-500 dark:text-neutral-400">Encryption:</span>
-                  <span className="text-green-600 font-mono">{file.encryption_method}</span>
+              <div className="space-y-2 mb-3 text-xs">
+                <div className="flex justify-between">
+                  <span className="member-muted">{t('member.blackBox.encryption')}</span>
+                  <span className="text-green-600 dark:text-green-400 font-mono">{file.encryption_method}</span>
                 </div>
-                <div className="flex justify-between text-xs">
-                  <span className="text-gray-500 dark:text-neutral-400 dark:text-neutral-400">Size:</span>
-                  <span className="text-gray-700 dark:text-neutral-300">{formatFileSize(file.file_size)}</span>
+                <div className="flex justify-between">
+                  <span className="member-muted">{t('member.blackBox.size')}</span>
+                  <span className="member-body">{formatFileSize(file.file_size)}</span>
                 </div>
-                <div className="flex justify-between text-xs">
-                  <span className="text-gray-500 dark:text-neutral-400 dark:text-neutral-400">Uploaded:</span>
-                  <span className="text-gray-700 dark:text-neutral-300">{new Date(file.upload_date).toLocaleDateString()}</span>
+                <div className="flex justify-between">
+                  <span className="member-muted">{t('member.blackBox.uploaded')}</span>
+                  <span className="member-body">{new Date(file.upload_date).toLocaleDateString(i18n.language)}</span>
                 </div>
                 {file.last_accessed && (
-                  <div className="flex justify-between text-xs">
-                  <span className="text-gray-500 dark:text-neutral-400">Last Access:</span>
-                  <span className="text-orange-600">{new Date(file.last_accessed).toLocaleDateString()}</span>
-                </div>
+                  <div className="flex justify-between">
+                    <span className="member-muted">{t('member.blackBox.lastAccessLabel')}</span>
+                    <span className="text-orange-600 dark:text-orange-400">{new Date(file.last_accessed).toLocaleDateString(i18n.language)}</span>
+                  </div>
                 )}
-                <div className="flex justify-between text-xs">
-                  <span className="text-gray-500 dark:text-neutral-400 dark:text-neutral-400">Access Logs:</span>
-                  <span className="text-blue-600 dark:text-blue-400">{file.access_log?.length || 0} entries</span>
+                <div className="flex justify-between">
+                  <span className="member-muted">{t('member.blackBox.accessLogsLabel')}</span>
+                  <span className="text-blue-600 dark:text-blue-400">{t('member.blackBox.entries', { count: file.access_log?.length || 0 })}</span>
                 </div>
               </div>
 
@@ -345,12 +335,12 @@ export default function BlackBoxSection() {
                   className="flex-1 p-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors flex items-center justify-center gap-2 dark:bg-green-900/30 dark:hover:bg-green-900/50 dark:border-green-600/30"
                 >
                   <Eye className="h-4 w-4 text-emerald-700 dark:text-green-300" />
-                  <span className="text-xs text-emerald-700 dark:text-green-300">Access</span>
+                  <span className="text-xs text-emerald-700 dark:text-green-300">{t('member.common.access')}</span>
                 </button>
                 <button
                   onClick={() => handleDelete(file.id)}
                   className="p-2 bg-red-50 hover:bg-red-100 border border-red-200 rounded-lg transition-colors dark:bg-red-900/30 dark:hover:bg-red-900/50 dark:border-red-600/30"
-                  title="Delete"
+                  title={t('member.common.delete')}
                 >
                   <Trash2 className="h-4 w-4 text-red-600 dark:text-red-300" />
                 </button>
@@ -361,27 +351,65 @@ export default function BlackBoxSection() {
       )}
 
       {showUploadModal && (
-        <ModalShell
-          title="Upload to Black Box"
-          icon={<Lock className="h-6 w-6 text-orange-500" />}
-          onClose={() => setShowUploadModal(false)}
-          panelClassName="max-w-md"
-        >
-          <p className="text-sm text-gray-600 dark:text-neutral-300 mb-4">
-            Files will be encrypted with AES-256-GCM before storage
-          </p>
-          <p className="text-xs text-orange-700 dark:text-orange-300 mb-4 p-3 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-600/30 rounded-lg">
-            By uploading, you confirm this content is legal and compliant with all regulations
-          </p>
-
-          <button
-            onClick={() => setShowUploadModal(false)}
-            className="w-full px-6 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors border border-slate-200 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700"
-          >
-            Close
-          </button>
-        </ModalShell>
+        <UploadModal onClose={() => setShowUploadModal(false)} onUpload={handleUpload} />
       )}
     </div>
+  );
+}
+
+function UploadModal({
+  onClose,
+  onUpload,
+}: {
+  onClose: () => void;
+  onUpload: (data: { file_name: string; file_url: string; file_type: string }) => void;
+}) {
+  const { t } = useTranslation();
+  const [form, setForm] = useState({ file_name: '', file_url: '', file_type: 'pdf' });
+
+  return (
+    <ModalShell
+      title={t('member.blackBox.uploadTitle')}
+      icon={<Lock className="h-6 w-6 text-orange-500" />}
+      onClose={onClose}
+      panelClassName="max-w-md"
+    >
+      <p className="text-sm member-body mb-4">{t('member.blackBox.uploadBody')}</p>
+      <p className="text-xs text-orange-700 dark:text-orange-300 mb-4 p-3 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-600/30 rounded-lg">
+        {t('member.blackBox.uploadConfirm')}
+      </p>
+
+      <div className="space-y-3 mb-6">
+        <input
+          type="text"
+          value={form.file_name}
+          onChange={(e) => setForm({ ...form, file_name: e.target.value })}
+          placeholder={t('member.medicalFiles.fileName')}
+          className="w-full member-input"
+        />
+        <input
+          type="text"
+          value={form.file_url}
+          onChange={(e) => setForm({ ...form, file_url: e.target.value })}
+          placeholder={t('member.medicalFiles.fileUrl')}
+          className="w-full member-input"
+        />
+      </div>
+
+      <div className="flex gap-3">
+        <button
+          onClick={() => form.file_name && form.file_url && onUpload(form)}
+          className="flex-1 px-6 py-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-lg"
+        >
+          {t('member.common.upload')}
+        </button>
+        <button
+          onClick={onClose}
+          className="px-6 py-2 bg-slate-100 dark:bg-gray-800 member-body rounded-lg border border-slate-200 dark:border-gray-700"
+        >
+          {t('member.common.close')}
+        </button>
+      </div>
+    </ModalShell>
   );
 }

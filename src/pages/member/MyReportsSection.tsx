@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FileText, Download, Eye, Clock, Plus } from 'lucide-react';
+import { FileText, Download, Eye, Clock, Plus, Loader2 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserInfo } from '../../lib/adminNotify';
 import ErrorBanner from '../../components/ui/ErrorBanner';
 import Button from '../../components/ui/Button';
-import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 import MemberMetricCard from '../../components/ui/MemberMetricCard';
 import { loadKnowledgeSnapshot } from '../../lib/secondOpinionEngine';
 
@@ -17,8 +16,10 @@ interface Report {
   created_at: string;
 }
 
+const COVERAGE_KEYS = ['profile', 'devices', 'reports', 'inputs', 'documents', 'services'] as const;
+
 export default function MyReportsSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [reports, setReports] = useState<Report[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterType, setFilterType] = useState('all');
@@ -68,7 +69,7 @@ export default function MyReportsSection() {
     try {
       const { data: user } = await supabase.auth.getUser();
       if (!user.user) {
-        setError('Please sign in to view reports');
+        setError(t('member.reports.signInRequired'));
         return;
       }
       setUserId(user.user.id);
@@ -83,8 +84,8 @@ export default function MyReportsSection() {
       setReports(data || []);
       setError(null);
     } catch (error) {
-      notifyUserError('Reports load failed');
-      setError('Unable to load reports. Please try again.');
+      notifyUserError(t('member.reports.loadFailed'));
+      setError(t('member.reports.loadFailed'));
     } finally {
       setLoading(false);
     }
@@ -123,23 +124,37 @@ export default function MyReportsSection() {
     }
   };
 
-  return (
-    <div>
-<ReportBrandHeader
-        title="BioMath Core"
-        subtitle="Report Library"
-        compact
-        className="mb-6"
-      />
+  const statusLabel = (status: string) => {
+    const map: Record<string, string> = {
+      completed: t('member.reports.statusCompleted'),
+      processing: t('member.reports.statusProcessing'),
+      pending: t('member.reports.statusPending'),
+    };
+    return map[status] ?? status;
+  };
 
-      <div className="mb-6 member-card rounded-xl p-4">
-        <ReportBrandHeader variant="strip" subtitle="Data Coverage" className="mb-3" />
-        <div className="grid md:grid-cols-3 gap-3 text-xs text-gray-700 dark:text-neutral-200">
-          {['profile', 'devices', 'reports', 'inputs', 'documents', 'services'].map((key) => (
+  const coverageLabel = (key: string) => {
+    const map: Record<string, string> = {
+      profile: t('member.reports.coverageProfile'),
+      devices: t('member.reports.coverageDevices'),
+      reports: t('member.reports.coverageReports'),
+      inputs: t('member.reports.coverageInputs'),
+      documents: t('member.reports.coverageDocuments'),
+      services: t('member.reports.coverageServices'),
+    };
+    return map[key] ?? key;
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="member-card rounded-xl p-4">
+        <h3 className="member-heading mb-3">{t('member.reports.dataCoverage')}</h3>
+        <div className="grid md:grid-cols-3 gap-3 text-xs member-body">
+          {COVERAGE_KEYS.map((key) => (
             <div key={key} className="rounded-lg border border-gray-200 dark:border-[var(--bm-border)] bg-gray-50 dark:bg-[var(--bm-surface)]/40 p-3">
               <div className="flex items-center justify-between">
-                <span className="capitalize">{key.replace('-', ' ')}</span>
-                <span className="text-gray-500 dark:text-neutral-400">{coverage[key] || 0}</span>
+                <span>{coverageLabel(key)}</span>
+                <span className="member-muted">{coverage[key] || 0}</span>
               </div>
               <div className="mt-2 h-1.5 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
                 <div className="h-full bg-orange-500" style={{ width: `${Math.min(100, (coverage[key] || 0) * 10)}%` }} />
@@ -147,10 +162,10 @@ export default function MyReportsSection() {
             </div>
           ))}
         </div>
-        <p className="mt-3 text-xs text-gray-500 dark:text-neutral-400">Tip: add device data or files to increase coverage.</p>
+        <p className="mt-3 text-xs member-muted">{t('member.reports.coverageTip')}</p>
       </div>
 
-      <div className="mb-6 grid md:grid-cols-4 gap-4">
+      <div className="grid md:grid-cols-4 gap-4">
         <MemberMetricCard
           accent="blue"
           icon={<FileText className="h-6 w-6" />}
@@ -161,77 +176,69 @@ export default function MyReportsSection() {
           accent="green"
           icon={<Clock className="h-6 w-6" />}
           value={reports.filter(r => r.status === 'completed').length}
-          label="Completed"
+          label={t('member.reports.completed')}
         />
         <MemberMetricCard
           accent="orange"
           icon={<Clock className="h-6 w-6" />}
           value={reports.filter(r => r.status === 'processing').length}
-          label="Processing"
+          label={t('member.reports.processing')}
         />
         <MemberMetricCard
           accent="purple"
           icon={<FileText className="h-6 w-6" />}
-          value={reports[0] ? new Date(reports[0].created_at).toLocaleDateString() : 'N/A'}
+          value={reports[0] ? new Date(reports[0].created_at).toLocaleDateString(i18n.language) : t('member.common.na')}
           label={t('member.reports.latestReport')}
         />
       </div>
 
-      <div className="mb-6 flex flex-col md:flex-row gap-4 justify-between">
-        <div className="flex gap-2">
-          <button
-            onClick={() => setFilterType('all')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              filterType === 'all'
-                ? 'bg-orange-600 text-white'
-                : 'bg-white dark:bg-gray-800/50 text-gray-700 dark:text-neutral-300 border border-gray-200 dark:border-transparent hover:bg-gray-50 dark:hover:bg-gray-800'
-            }`}
-          >
-            All Reports
-          </button>
-          <button
-            onClick={() => setFilterType('comprehensive')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              filterType === 'comprehensive'
-                ? 'bg-orange-600 text-white'
-                : 'bg-white dark:bg-gray-800/50 text-gray-700 dark:text-neutral-300 border border-gray-200 dark:border-transparent hover:bg-gray-50 dark:hover:bg-gray-800'
-            }`}
-          >
-            Comprehensive
-          </button>
-          <button
-            onClick={() => setFilterType('focused')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              filterType === 'focused'
-                ? 'bg-orange-600 text-white'
-                : 'bg-white dark:bg-gray-800/50 text-gray-700 dark:text-neutral-300 border border-gray-200 dark:border-transparent hover:bg-gray-50 dark:hover:bg-gray-800'
-            }`}
-          >
-            Focused
-          </button>
+      <div className="flex flex-col md:flex-row gap-4 justify-between">
+        <div className="flex flex-wrap gap-2">
+          {[
+            { id: 'all', label: t('member.reports.filterAll') },
+            { id: 'comprehensive', label: t('member.reports.filterComprehensive') },
+            { id: 'focused', label: t('member.reports.filterFocused') },
+          ].map((filter) => (
+            <button
+              key={filter.id}
+              onClick={() => setFilterType(filter.id)}
+              className={`px-4 py-2 rounded-lg transition-colors ${
+                filterType === filter.id
+                  ? 'bg-orange-600 text-white'
+                  : 'member-body border border-gray-200 dark:border-[var(--bm-border)] hover:bg-[var(--bm-surface)]'
+              }`}
+            >
+              {filter.label}
+            </button>
+          ))}
         </div>
 
-        <button
-          onClick={() => notifyUserInfo('Generate New Report will redirect to the Reports page.')}
-          className="px-6 py-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all flex items-center gap-2"
-        >
-          <Plus className="h-5 w-5" />
-          Generate New Report
-        </button>
-        <Button onClick={loadReports} className="flex items-center gap-2">
-          Refresh
-        </Button>
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={() => notifyUserInfo(t('member.reports.generateNew'))}
+            className="px-6 py-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all flex items-center gap-2"
+          >
+            <Plus className="h-5 w-5" />
+            {t('member.reports.generateNew')}
+          </button>
+          <Button onClick={loadReports} className="flex items-center gap-2">
+            {t('member.common.refresh')}
+          </Button>
+        </div>
       </div>
 
       {error && <ErrorBanner message={error} className="mb-4" />}
 
       {loading ? (
-        <div className="text-center py-12 text-gray-600 dark:text-neutral-300">Loading reports...</div>
+        <div className="flex flex-col items-center justify-center py-16 gap-3">
+          <Loader2 className="h-8 w-8 text-orange-500 animate-spin" />
+          <p className="text-sm member-muted">{t('member.reports.loading')}</p>
+        </div>
       ) : filteredReports.length === 0 ? (
-        <div className="text-center py-12">
-          <FileText className="h-16 w-16 text-gray-500 dark:text-gray-600 dark:text-neutral-300 mx-auto mb-4" />
-          <p className="text-gray-700 dark:text-neutral-300 mb-2">{t('member.reports.empty')}</p>
-          <p className="text-sm text-gray-600 dark:text-neutral-400 dark:text-neutral-400">{t('member.reports.emptyHint')}</p>
+        <div className="text-center py-12 member-card">
+          <FileText className="h-16 w-16 member-muted mx-auto mb-4" />
+          <p className="member-body mb-2">{t('member.reports.empty')}</p>
+          <p className="text-sm member-muted">{t('member.reports.emptyHint')}</p>
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -240,46 +247,41 @@ export default function MyReportsSection() {
               key={report.id}
               className="member-card rounded-xl p-6 hover:border-orange-500/30 transition-all cursor-pointer"
             >
-              <ReportBrandHeader
-                variant="strip"
-                subtitle={report.report_type}
-                className="mb-4"
-              />
               <div className="flex items-start justify-between mb-4">
                 <div className="p-2 bg-orange-100 dark:bg-orange-900/30 border border-orange-200 dark:border-orange-600/30 rounded-lg">
                   <FileText className="h-5 w-5 text-orange-600 dark:text-orange-400" />
                 </div>
                 <span className={`px-2 py-1 text-xs rounded-full border ${getStatusColor(report.status)}`}>
-                  {report.status}
+                  {statusLabel(report.status)}
                 </span>
               </div>
 
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
+              <h3 className="member-heading text-lg mb-2 line-clamp-2">
                 {report.report_title}
               </h3>
 
-              <div className="space-y-2 mb-4">
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500 dark:text-neutral-400 dark:text-neutral-400">Type:</span>
-                  <span className="text-gray-700 dark:text-neutral-200 capitalize">{report.report_type}</span>
+              <div className="space-y-2 mb-4 text-sm">
+                <div className="flex justify-between">
+                  <span className="member-muted">{t('member.reports.type')}</span>
+                  <span className="member-body capitalize">{report.report_type}</span>
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500 dark:text-neutral-400 dark:text-neutral-400">Generated:</span>
-                  <span className="text-gray-700 dark:text-neutral-200">{new Date(report.created_at).toLocaleDateString()}</span>
+                <div className="flex justify-between">
+                  <span className="member-muted">{t('member.reports.generated')}</span>
+                  <span className="member-body">{new Date(report.created_at).toLocaleDateString(i18n.language)}</span>
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500 dark:text-neutral-400 dark:text-neutral-400">Notes:</span>
-                  <span className="text-gray-700 dark:text-neutral-200">{hasNotes(report.id) ? 'Yes' : 'No'}</span>
+                <div className="flex justify-between">
+                  <span className="member-muted">{t('member.reports.notes')}</span>
+                  <span className="member-body">{hasNotes(report.id) ? t('member.common.yes') : t('member.common.no')}</span>
                 </div>
               </div>
 
               <div className="flex gap-2">
                 <button
-                  onClick={() => notifyUserInfo(`Viewing report: ${report.report_title}`)}
+                  onClick={() => notifyUserInfo(`${t('member.common.view')}: ${report.report_title}`)}
                   className="flex-1 p-2 bg-blue-50 border border-blue-200 text-blue-700 rounded-lg hover:bg-blue-100 dark:bg-blue-900/30 dark:border-blue-600/30 dark:text-blue-300 dark:hover:bg-blue-900/50 transition-colors flex items-center justify-center gap-2"
                 >
                   <Eye className="h-4 w-4" />
-                  View
+                  {t('member.common.view')}
                 </button>
                 <button
                   onClick={() => toggleFavorite(report.id)}
@@ -288,12 +290,14 @@ export default function MyReportsSection() {
                       ? 'border-yellow-300 bg-yellow-50 text-yellow-700 dark:border-yellow-500/40 dark:bg-yellow-500/10 dark:text-yellow-300'
                       : 'border-slate-200 text-slate-500 hover:bg-slate-50 dark:border-gray-700 dark:text-neutral-300 dark:hover:bg-gray-800'
                   }`}
+                  aria-label={favorites.includes(report.id) ? 'Unfavorite' : 'Favorite'}
                 >
                   {favorites.includes(report.id) ? '★' : '☆'}
                 </button>
                 <button
-                  onClick={() => notifyUserInfo(`Downloading report: ${report.report_title}`)}
+                  onClick={() => notifyUserInfo(`${t('member.common.download')}: ${report.report_title}`)}
                   className="p-2 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-lg hover:bg-emerald-100 dark:bg-green-900/30 dark:border-green-600/30 dark:text-green-300 dark:hover:bg-green-900/50 transition-colors"
+                  aria-label={t('member.common.download')}
                 >
                   <Download className="h-4 w-4" />
                 </button>

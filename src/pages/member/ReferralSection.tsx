@@ -3,18 +3,17 @@ import { useTranslation } from 'react-i18next';
 import { Users, Copy, Mail, TrendingUp, Gift, DollarSign } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserInfo } from '../../lib/adminNotify';
-import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 import MemberMetricCard from '../../components/ui/MemberMetricCard';
 
 export default function ReferralSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [referralCode, setReferralCode] = useState('');
   const [referrals, setReferrals] = useState<any[]>([]);
   const [stats, setStats] = useState({
     total: 0,
     pending: 0,
     completed: 0,
-    earnings: 0
+    earnings: 0,
   });
 
   useEffect(() => {
@@ -47,37 +46,39 @@ export default function ReferralSection() {
 
       setStats({
         total: referralData.length,
-        pending: referralData.filter(r => r.status === 'pending').length,
-        completed: referralData.filter(r => r.status === 'completed').length,
-        earnings: referralData.reduce((sum, r) => sum + (r.reward_credited ? r.reward_amount : 0), 0)
+        pending: referralData.filter((r) => r.status === 'pending').length,
+        completed: referralData.filter((r) => r.status === 'completed').length,
+        earnings: referralData.reduce(
+          (sum, r) => sum + (r.reward_credited ? r.reward_amount : 0),
+          0
+        ),
       });
-    } catch (error) {
-      notifyUserError('Referral data load failed');
+    } catch {
+      notifyUserError(t('member.referral.loadFailed'));
     }
   };
 
   const copyReferralLink = () => {
     const link = `https://biomathcore.com/signup?ref=${referralCode}`;
     navigator.clipboard.writeText(link);
-    notifyUserInfo('Referral link copied');
+    notifyUserInfo(t('member.referral.linkCopied'));
   };
 
   const shareViaEmail = () => {
-    const subject = 'Join BiomathCore - Get $20 Credit';
-    const body = `I'm inviting you to join BiomathCore! Use my referral code ${referralCode} to get $20 credit on signup. https://biomathcore.com/signup?ref=${referralCode}`;
+    const subject = t('member.referral.emailSubject');
+    const body = t('member.referral.emailBody', { code: referralCode });
     window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  const statusLabel = (status: string) => {
+    if (status === 'completed') return t('member.referral.statusCompleted');
+    if (status === 'pending') return t('member.referral.statusPending');
+    return status;
   };
 
   return (
     <div>
-<ReportBrandHeader
-        title="BioMath Core"
-        subtitle="Referral Program"
-        variant="strip"
-        className="mb-6"
-      />
-
-      <div className="mb-6 grid md:grid-cols-4 gap-4">
+      <div className="mb-6 grid gap-4 md:grid-cols-4">
         <MemberMetricCard
           accent="blue"
           icon={<Users className="h-6 w-6" />}
@@ -88,13 +89,13 @@ export default function ReferralSection() {
           accent="amber"
           icon={<TrendingUp className="h-6 w-6" />}
           value={stats.pending}
-          label="Pending"
+          label={t('member.referral.pending')}
         />
         <MemberMetricCard
           accent="emerald"
           icon={<Gift className="h-6 w-6" />}
           value={stats.completed}
-          label="Completed"
+          label={t('member.referral.completed')}
         />
         <MemberMetricCard
           accent="orange"
@@ -104,71 +105,81 @@ export default function ReferralSection() {
         />
       </div>
 
-      <div className="member-card p-6 shadow-lg mb-6">
-        <ReportBrandHeader variant="strip" subtitle="Your Referral Code" className="mb-4" />
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-neutral-50 mb-4">{t('member.referral.yourCode')}</h3>
+      <div className="member-card mb-6 p-6">
+        <h3 className="member-heading mb-4 text-xl font-semibold">{t('member.referral.yourCode')}</h3>
         <div className="flex gap-3">
-          <div className="member-inset flex-1 px-4 py-3 rounded-lg font-mono text-xl text-orange-600 font-semibold text-center">
-            {referralCode || 'Loading...'}
+          <div className="member-inset flex-1 rounded-lg px-4 py-3 text-center font-mono text-xl font-semibold text-orange-600">
+            {referralCode || t('member.referral.loading')}
           </div>
           <button
+            type="button"
             onClick={copyReferralLink}
-            className="px-6 py-3 member-btn text-blue-700 dark:text-blue-400 hover:border-blue-400 transition-colors flex items-center gap-2"
+            className="member-btn flex items-center gap-2 px-6 py-3 text-blue-700 transition-colors hover:border-blue-400 dark:text-blue-400"
           >
             <Copy className="h-5 w-5" />
-            Copy Link
+            {t('member.referral.copyLink')}
           </button>
           <button
+            type="button"
             onClick={shareViaEmail}
-            className="px-6 py-3 member-btn text-emerald-700 dark:text-emerald-400 hover:border-emerald-400 transition-colors flex items-center gap-2"
+            className="member-btn flex items-center gap-2 px-6 py-3 text-emerald-700 transition-colors hover:border-emerald-400 dark:text-emerald-400"
           >
             <Mail className="h-5 w-5" />
-            Email
+            {t('member.referral.email')}
           </button>
         </div>
-        <p className="text-sm text-gray-600 dark:text-neutral-300 mt-4">
-          Share your code with friends. When they sign up and make their first purchase, you both get $20 credit!
-        </p>
+        <p className="member-body mt-4 text-sm">{t('member.referral.shareHint')}</p>
       </div>
 
-      <div className="member-card p-6 shadow-lg">
-        <ReportBrandHeader variant="strip" subtitle="Referral History" className="mb-4" />
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-neutral-50 mb-4">{t('member.referral.history')}</h3>
+      <div className="member-card p-6">
+        <h3 className="member-heading mb-4 text-xl font-semibold">{t('member.referral.history')}</h3>
         {referrals.length === 0 ? (
-          <div className="text-center py-12">
-            <Users className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-600 dark:text-neutral-300 mb-2">{t('member.referral.empty')}</p>
-            <p className="text-sm text-gray-500 dark:text-neutral-400">Start inviting friends to earn rewards!</p>
+          <div className="py-12 text-center">
+            <Users className="member-muted mx-auto mb-4 h-16 w-16" />
+            <p className="member-body mb-2">{t('member.referral.empty')}</p>
+            <p className="member-muted text-sm">{t('member.referral.emptyHint')}</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-slate-50 border-b border-slate-200 dark:border-[var(--bm-border)]">
+              <thead className="border-b border-[var(--bm-border)] bg-[var(--bm-surface)]">
                 <tr>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-neutral-400 uppercase">Email</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-neutral-400 uppercase">Status</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-neutral-400 uppercase">Reward</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-neutral-400 uppercase">Date</th>
+                  <th className="member-muted px-4 py-3 text-left text-xs font-medium uppercase">
+                    {t('member.referral.tableEmail')}
+                  </th>
+                  <th className="member-muted px-4 py-3 text-left text-xs font-medium uppercase">
+                    {t('member.referral.tableStatus')}
+                  </th>
+                  <th className="member-muted px-4 py-3 text-left text-xs font-medium uppercase">
+                    {t('member.referral.tableReward')}
+                  </th>
+                  <th className="member-muted px-4 py-3 text-left text-xs font-medium uppercase">
+                    {t('member.referral.tableDate')}
+                  </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200">
+              <tbody className="divide-y divide-[var(--bm-border)]">
                 {referrals.map((ref) => (
-                  <tr key={ref.id} className="hover:bg-slate-50">
-                    <td className="px-4 py-3 text-sm text-gray-900 dark:text-neutral-50">{ref.referred_email}</td>
+                  <tr key={ref.id} className="hover:bg-[var(--bm-surface)]/50">
+                    <td className="member-heading px-4 py-3 text-sm">{ref.referred_email}</td>
                     <td className="px-4 py-3">
-                      <span className={`px-2 py-1 text-xs rounded-full ${
-                        ref.status === 'completed' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' :
-                        ref.status === 'pending' ? 'bg-amber-50 text-amber-700 border border-amber-200' :
-                        'bg-slate-100 text-gray-600 dark:text-neutral-300 border border-slate-200 dark:border-[var(--bm-border)]'
-                      }`}>
-                        {ref.status}
+                      <span
+                        className={`rounded-full px-2 py-1 text-xs ${
+                          ref.status === 'completed'
+                            ? 'border border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-600/30 dark:bg-emerald-900/30 dark:text-emerald-400'
+                            : ref.status === 'pending'
+                              ? 'border border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-600/30 dark:bg-amber-900/30 dark:text-amber-400'
+                              : 'member-muted border border-[var(--bm-border)]'
+                        }`}
+                      >
+                        {statusLabel(ref.status)}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-900 dark:text-neutral-50 font-semibold">
+                    <td className="member-heading px-4 py-3 text-sm font-semibold">
                       ${ref.reward_amount}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-500 dark:text-neutral-400">
-                      {new Date(ref.created_at).toLocaleDateString()}
+                    <td className="member-muted px-4 py-3 text-sm">
+                      {new Date(ref.created_at).toLocaleDateString(i18n.language)}
                     </td>
                   </tr>
                 ))}

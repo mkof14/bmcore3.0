@@ -5,7 +5,6 @@ import {
   humanDataModelServices,
   serviceDetailPath,
 } from '../../data/services';
-import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 import { tService, tServiceDescription } from '../../i18n/serviceLabels';
 
 const TOOL_ICONS = {
@@ -26,7 +25,7 @@ export default function HumanDataModelSection({ onOpenService }: Props) {
 
   return (
     <div className="space-y-6">
-      <ReportBrandHeader variant="strip" subtitle={t('member.humanDataModel.title')} className="mb-2" />
+      <p className="member-body text-sm leading-relaxed">{t('member.humanDataModel.subtitle')}</p>
       <div className="grid gap-4 md:grid-cols-3">
         {humanDataModelServices.map((service) => {
           const Icon = TOOL_ICONS[service.id as keyof typeof TOOL_ICONS] ?? FileStack;

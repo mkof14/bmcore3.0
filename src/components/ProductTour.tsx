@@ -268,13 +268,13 @@ export const tourSteps = {
   memberZone: [
     {
       target: '[data-tour="dashboard"]',
-      title: 'Your Health Dashboard',
-      content: 'Get a comprehensive overview of your health metrics and insights.'
+      title: 'My Health',
+      content: 'See today\'s health state, your goals, and daily habits in one friendly view.'
     },
     {
       target: '[data-tour="ai-assistant"]',
-      title: 'AI Health Assistant',
-      content: 'Ask questions and get personalized health guidance powered by AI.'
+      title: 'Health Guide',
+      content: 'Ask health questions and get personalized guidance from Health Guide.'
     },
     {
       target: '[data-tour="reports"]',

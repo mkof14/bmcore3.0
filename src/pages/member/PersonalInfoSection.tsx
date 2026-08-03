@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { User, Camera, Save, Plus, Trash2 } from 'lucide-react';
+import { User, Camera, Save, Plus, Trash2, Loader2 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserInfo, notifyUserSuccess } from '../../lib/adminNotify';
-import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 
 interface Profile {
   id: string;
@@ -176,23 +175,21 @@ export default function PersonalInfoSection() {
   };
 
   if (loading || !profile) {
-    return <div className="text-center py-12 text-gray-400">Loading...</div>;
+    return (
+      <div className="flex flex-col items-center justify-center py-16 gap-3">
+        <Loader2 className="h-8 w-8 text-orange-500 animate-spin" />
+        <p className="text-sm member-muted">{t('member.profile.loading')}</p>
+      </div>
+    );
   }
 
   return (
-    <div>
-<ReportBrandHeader
-        title="BioMath Core"
-        subtitle="Personal Information"
-        variant="strip"
-        className="mb-6"
-      />
+    <div className="space-y-6">
 
       <div className="grid md:grid-cols-3 gap-6">
         <div className="md:col-span-1">
           <div className="member-card p-6 shadow-lg">
-            <ReportBrandHeader variant="strip" subtitle="Profile Photo" className="mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4">{t('member.profile.photo')}</h3>
+            <h3 className="member-heading text-lg mb-4">{t('member.profile.photo')}</h3>
             <div className="flex flex-col items-center">
               <div className="relative mb-4">
                 {profile.avatar_url ? (
@@ -231,10 +228,10 @@ export default function PersonalInfoSection() {
                 placeholder={t('member.profile.imageUrl')}
                 className="w-full px-4 py-2 member-input"
               />
-              <div className="text-xs text-gray-500 dark:text-neutral-400 mt-2 text-center space-y-1">
-                <p className="font-medium text-gray-700 dark:text-neutral-200">Two ways to add photo:</p>
-                <p>1. Click camera icon to upload file (max 5MB)</p>
-                <p>2. Paste image URL in the field above</p>
+              <div className="text-xs member-muted mt-2 text-center space-y-1">
+                <p className="font-medium member-body">{t('member.profile.photoHintTitle')}</p>
+                <p>{t('member.profile.photoHintUpload')}</p>
+                <p>{t('member.profile.photoHintUrl')}</p>
               </div>
             </div>
           </div>
@@ -242,8 +239,7 @@ export default function PersonalInfoSection() {
 
         <div className="md:col-span-2">
           <div className="member-card p-6 shadow-lg">
-            <ReportBrandHeader variant="strip" subtitle="Basic Information" className="mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4">{t('member.profile.basicInfo')}</h3>
+            <h3 className="member-heading text-lg mb-4">{t('member.profile.basicInfo')}</h3>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">{t('member.profile.fullName')}</label>
@@ -252,24 +248,24 @@ export default function PersonalInfoSection() {
                   value={profile.name || ''}
                   onChange={(e) => setProfile({ ...profile, name: e.target.value })}
                   className="w-full px-4 py-2 member-input"
-                  placeholder="John Doe"
+                  placeholder={t('member.profile.fullNamePlaceholder')}
                 />
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">Country</label>
+                  <label className="block text-sm font-medium member-body mb-2">{t('member.profile.country')}</label>
                   <input
                     type="text"
                     value={profile.country || ''}
                     onChange={(e) => setProfile({ ...profile, country: e.target.value })}
                     className="w-full px-4 py-2 member-input"
-                    placeholder="United States"
+                    placeholder={t('member.profile.countryPlaceholder')}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">Timezone</label>
+                  <label className="block text-sm font-medium member-body mb-2">{t('member.profile.timezone')}</label>
                   <select
                     value={profile.timezone || 'UTC'}
                     onChange={(e) => setProfile({ ...profile, timezone: e.target.value })}
@@ -295,8 +291,8 @@ export default function PersonalInfoSection() {
                     onChange={(e) => setProfile({ ...profile, marketing_optin: e.target.checked })}
                     className="w-4 h-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
                   />
-                  <span className="text-sm text-gray-600 dark:text-neutral-300">
-                    I want to receive health tips and product updates
+                  <span className="text-sm member-body">
+                    {t('member.profile.marketingOptin')}
                   </span>
                 </label>
               </div>
@@ -304,10 +300,9 @@ export default function PersonalInfoSection() {
           </div>
 
           <div className="mt-6 member-card p-6 shadow-lg">
-            <ReportBrandHeader variant="strip" subtitle="Custom Fields" className="mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4">{t('member.profile.customFields')}</h3>
-            <p className="text-sm text-gray-600 dark:text-neutral-300 mb-4">
-              Add any additional information you consider important for your health profile
+            <h3 className="member-heading text-lg mb-4">{t('member.profile.customFields')}</h3>
+            <p className="text-sm member-body mb-4">
+              {t('member.profile.customFieldsBody')}
             </p>
 
             <div className="space-y-3 mb-4">
@@ -322,7 +317,7 @@ export default function PersonalInfoSection() {
                       setCustomFields(newFields);
                     }}
                     className="flex-1 px-4 py-2 member-input"
-                    placeholder="Field name (e.g., Blood Type)"
+                    placeholder={t('member.profile.fieldNamePlaceholder')}
                   />
                   <input
                     type="text"
@@ -333,7 +328,7 @@ export default function PersonalInfoSection() {
                       setCustomFields(newFields);
                     }}
                     className="flex-1 px-4 py-2 member-input"
-                    placeholder="Value (e.g., O+)"
+                    placeholder={t('member.profile.fieldValuePlaceholder')}
                   />
                   <button
                     onClick={() => removeCustomField(index)}
@@ -365,7 +360,7 @@ export default function PersonalInfoSection() {
                 className="px-4 py-2 bg-blue-50 border border-blue-200 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors flex items-center gap-2"
               >
                 <Plus className="h-5 w-5" />
-                Add
+                {t('member.profile.addField')}
               </button>
             </div>
           </div>
@@ -379,7 +374,7 @@ export default function PersonalInfoSection() {
           className="px-8 py-3 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all disabled:opacity-50 flex items-center gap-2"
         >
           <Save className="h-5 w-5" />
-          {saving ? 'Saving...' : 'Save Changes'}
+          {saving ? t('member.profile.saving') : t('member.profile.saveChanges')}
         </button>
       </div>
     </div>

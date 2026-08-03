@@ -7,7 +7,7 @@ import {
   Plus,
   FileText,
   Activity,
-  Clock,
+  Loader2,
   Heart,
   MessageSquare,
   Calendar,
@@ -18,7 +18,6 @@ import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserSuccess } from '../../lib/adminNotify';
 import BackButton from '../../components/BackButton';
 import ModalShell from '../../components/ui/ModalShell';
-import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 import type { DailySnapshot, UserGoal, Habit, HabitCompletion, HealthReport } from '../../types/database';
 
 interface DashboardSectionProps {
@@ -26,7 +25,7 @@ interface DashboardSectionProps {
 }
 
 export default function DashboardSection({ onBack }: DashboardSectionProps = {}) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [loading, setLoading] = useState(true);
   const [todaySnapshot, setTodaySnapshot] = useState<DailySnapshot | null>(null);
   const [activeGoals, setActiveGoals] = useState<UserGoal[]>([]);
@@ -110,7 +109,7 @@ export default function DashboardSection({ onBack }: DashboardSectionProps = {})
       }
 
     } catch (error) {
-      notifyUserError('Dashboard load failed');
+      notifyUserError(t('member.dashboard.loading'));
     } finally {
       setLoading(false);
     }
@@ -135,9 +134,9 @@ export default function DashboardSection({ onBack }: DashboardSectionProps = {})
       if (error) throw error;
       setShowCreateGoal(false);
       loadDashboardData();
-      notifyUserSuccess('Goal created');
+      notifyUserSuccess(t('member.dashboard.createGoal'));
     } catch (error) {
-      notifyUserError('Goal creation failed');
+      notifyUserError(t('member.dashboard.createGoal'));
     }
   }
 
@@ -170,41 +169,42 @@ export default function DashboardSection({ onBack }: DashboardSectionProps = {})
 
       loadDashboardData();
     } catch (error) {
-      notifyUserError('Habit update failed');
+      notifyUserError(t('member.dashboard.allHabitsComplete'));
     }
   }
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-12">
-        <Clock className="h-8 w-8 text-orange-500 animate-spin" />
+      <div className="flex flex-col items-center justify-center py-16 gap-3">
+        <Loader2 className="h-8 w-8 text-orange-500 animate-spin" />
+        <p className="text-sm member-muted">{t('member.dashboard.loading')}</p>
       </div>
     );
   }
 
   return (
     <div className="space-y-6">
-      {onBack && <BackButton onClick={onBack} label="Back to Home" />}
+      {onBack && <BackButton onClick={onBack} label={t('member.zone.backHome')} />}
       {!todaySnapshot ? (
         <div className="member-card rounded-xl p-8 border-2 border-dashed text-center">
           <Sun className="h-12 w-12 text-orange-500 mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-            Ready for today's snapshot?
+          <h3 className="member-heading text-xl mb-2">
+            {t('member.dashboard.emptySnapshotTitle')}
           </h3>
-          <p className="text-gray-600 dark:text-neutral-300 mb-6 max-w-md mx-auto">
-            Your snapshot appears after new data arrives from devices or reports.
+          <p className="member-body mb-6 max-w-md mx-auto">
+            {t('member.dashboard.emptySnapshotBody')}
           </p>
         </div>
       ) : (
-        <TodaySnapshotCard snapshot={todaySnapshot} />
+        <TodaySnapshotCard snapshot={todaySnapshot} locale={i18n.language} />
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <GoalsCard goals={activeGoals} onCreateGoal={() => setShowCreateGoal(true)} />
-        <HabitsCard habits={todayHabits} onToggle={toggleHabitCompletion} />
+        <GoalsCard goals={activeGoals} onCreateGoal={() => setShowCreateGoal(true)} locale={i18n.language} />
+        <HabitsCard habits={todayHabits} onToggle={toggleHabitCompletion} locale={i18n.language} />
       </div>
 
-      {latestReport && <LatestReportCard report={latestReport} />}
+      {latestReport && <LatestReportCard report={latestReport} locale={i18n.language} />}
 
       <QuickActionsCard />
 
@@ -213,7 +213,8 @@ export default function DashboardSection({ onBack }: DashboardSectionProps = {})
   );
 }
 
-function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
+function TodaySnapshotCard({ snapshot, locale }: { snapshot: DailySnapshot; locale: string }) {
+  const { t } = useTranslation();
   const [showSecondOpinion, setShowSecondOpinion] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
 
@@ -239,21 +240,16 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
 
   return (
     <div className="member-card p-6 shadow-lg">
-      <ReportBrandHeader
-        title="BioMath Core"
-        subtitle="Daily Snapshot"
-        variant="strip"
-        className="mb-4"
-      />
+      <h3 className="member-heading mb-4">{t('member.dashboard.dailySnapshot')}</h3>
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">
           <Sun className="h-8 w-8 text-orange-500" />
           <div>
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-neutral-50">
-              Today
+            <h2 className="member-heading text-xl">
+              {t('member.dashboard.today')}
             </h2>
             <p className="text-sm member-muted">
-              {new Date(snapshot.snapshot_date).toLocaleDateString('en-US', {
+              {new Date(snapshot.snapshot_date).toLocaleDateString(locale, {
                 month: 'long',
                 day: 'numeric'
               })}
@@ -263,7 +259,7 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
         <div className="flex space-x-4 text-sm">
           {snapshot.energy_level && (
             <div className="text-center">
-              <p className="text-gray-600 dark:text-neutral-300 mb-1">Energy</p>
+              <p className="member-muted mb-1">{t('member.dashboard.energy')}</p>
               <p className={`font-semibold capitalize ${getEnergyColor(snapshot.energy_level)}`}>
                 {snapshot.energy_level}
               </p>
@@ -271,7 +267,7 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
           )}
           {snapshot.recovery_status && (
             <div className="text-center">
-              <p className="text-gray-600 dark:text-neutral-300 mb-1">Recovery</p>
+              <p className="member-muted mb-1">{t('member.dashboard.recovery')}</p>
               <p className={`font-semibold capitalize ${getRecoveryColor(snapshot.recovery_status)}`}>
                 {snapshot.recovery_status}
               </p>
@@ -280,12 +276,12 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
         </div>
       </div>
 
-      <div className="member-card p-4 mb-4 shadow-sm">
-        <p className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-2">
+      <div className="member-inset p-4 mb-4">
+        <p className="text-lg font-semibold member-heading mb-2">
           {snapshot.state_summary}
         </p>
         {snapshot.state_reason && (
-          <p className="text-gray-600 dark:text-neutral-200 text-sm">
+          <p className="member-body text-sm">
             {snapshot.state_reason}
           </p>
         )}
@@ -295,31 +291,30 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
           className="mt-2 text-sm text-orange-500 hover:text-orange-400 font-semibold transition-colors inline-flex items-center"
         >
           <Info className="h-4 w-4 mr-1" />
-          {showExplanation ? 'Hide explanation' : 'Why is this happening?'}
+          {showExplanation ? t('member.dashboard.hideExplanation') : t('member.dashboard.showExplanation')}
         </button>
 
         {showExplanation && (
           <div className="member-inset mt-3 p-3">
-            <p className="text-sm text-gray-600 dark:text-neutral-200">
-              When your nervous system stays active during rest, your body doesn't fully switch to recovery mode.
-              This is common after sustained effort and means gentle support is more helpful than pushing harder.
+            <p className="text-sm member-body">
+              {t('member.dashboard.explanationBody')}
             </p>
           </div>
         )}
       </div>
 
       {snapshot.suggestion_of_day && (
-        <div className="bg-orange-50/80 border border-orange-200 rounded-2xl p-4">
+        <div className="bg-orange-50/80 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-600/30 rounded-2xl p-4">
           <div className="flex items-start space-x-3">
             <Heart className="h-6 w-6 text-orange-500 flex-shrink-0 mt-0.5" />
             <div>
-              <p className="font-semibold text-gray-900 dark:text-white mb-1">
-                Today's Suggestion
+              <p className="font-semibold member-heading mb-1">
+                {t('member.dashboard.todaysSuggestion')}
               </p>
-              <p className="text-sm text-gray-900 dark:text-white font-medium mb-1">
+              <p className="text-sm member-heading font-medium mb-1">
                 {snapshot.suggestion_of_day.title}
               </p>
-              <p className="text-sm text-gray-700 dark:text-neutral-200">
+              <p className="text-sm member-body">
                 {snapshot.suggestion_of_day.description}
               </p>
             </div>
@@ -333,23 +328,23 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
             onClick={() => setShowSecondOpinion(!showSecondOpinion)}
             className="text-sm text-orange-500 hover:text-orange-400 font-semibold transition-colors"
           >
-            {showSecondOpinion ? '▼ Hide second opinion' : '▶ Show second opinion'}
+            {showSecondOpinion ? t('member.dashboard.hideSecondOpinion') : t('member.dashboard.showSecondOpinion')}
           </button>
           {showSecondOpinion && (
             <div className="mt-3 space-y-3">
-              <div className="member-card rounded-lg p-3">
+              <div className="member-inset rounded-lg p-3">
                 <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1">
-                  Opinion A (Physiological)
+                  {t('member.dashboard.opinionPhysiological')}
                 </p>
-                <p className="text-sm text-gray-600 dark:text-neutral-200">
+                <p className="text-sm member-body">
                   {snapshot.second_opinion_a}
                 </p>
               </div>
-              <div className="member-card rounded-lg p-3">
+              <div className="member-inset rounded-lg p-3">
                 <p className="text-xs font-semibold text-pink-700 dark:text-pink-300 mb-1">
-                  Opinion B (Lifestyle)
+                  {t('member.dashboard.opinionLifestyle')}
                 </p>
-                <p className="text-sm text-gray-600 dark:text-neutral-200">
+                <p className="text-sm member-body">
                   {snapshot.second_opinion_b}
                 </p>
               </div>
@@ -361,24 +356,31 @@ function TodaySnapshotCard({ snapshot }: { snapshot: DailySnapshot }) {
   );
 }
 
-function GoalsCard({ goals, onCreateGoal }: { goals: UserGoal[]; onCreateGoal: () => void }) {
+function GoalsCard({
+  goals,
+  onCreateGoal,
+  locale
+}: {
+  goals: UserGoal[];
+  onCreateGoal: () => void;
+  locale: string;
+}) {
+  const { t } = useTranslation();
+
   return (
     <div className="member-card rounded-xl p-6">
-      <ReportBrandHeader
-        title="BioMath Core"
-        subtitle="Goals Overview"
-        variant="strip"
-        className="mb-4"
-      />
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
           <Target className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-            Active Goals
+          <h3 className="member-heading text-lg">
+            {t('member.dashboard.activeGoals')}
           </h3>
         </div>
-        <button className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors">
-          + Add
+        <button
+          onClick={onCreateGoal}
+          className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors"
+        >
+          + {t('member.common.add')}
         </button>
       </div>
 
@@ -386,14 +388,14 @@ function GoalsCard({ goals, onCreateGoal }: { goals: UserGoal[]; onCreateGoal: (
         <div className="text-center py-8">
           <Target className="h-12 w-12 member-muted mx-auto mb-3" />
           <p className="text-sm member-body mb-4">
-            No active goals yet
+            {t('member.dashboard.noGoals')}
           </p>
           <button
             onClick={onCreateGoal}
             className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-colors"
           >
             <Plus className="h-4 w-4 mr-2" />
-            Create First Goal
+            {t('member.dashboard.createFirstGoal')}
           </button>
         </div>
       ) : (
@@ -405,23 +407,27 @@ function GoalsCard({ goals, onCreateGoal }: { goals: UserGoal[]; onCreateGoal: (
             >
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
+                  <h4 className="font-semibold member-heading mb-1">
                     {goal.title}
                   </h4>
                   {goal.description && (
-                    <p className="text-sm text-gray-600 dark:text-neutral-300 mb-2">
+                    <p className="text-sm member-body mb-2">
                       {goal.description}
                     </p>
                   )}
-                  <div className="flex items-center space-x-3 text-xs text-gray-600 dark:text-neutral-300">
+                  <div className="flex items-center space-x-3 text-xs member-muted">
                     <span className={`px-2 py-1 rounded capitalize ${
                       goal.priority === 'high' ? 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400' :
                       goal.priority === 'medium' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400' :
                       'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-neutral-200'
                     }`}>
-                      {goal.priority}
+                      {{
+                        high: t('member.dashboard.priorityHigh'),
+                        medium: t('member.dashboard.priorityMedium'),
+                        low: t('member.dashboard.priorityLow'),
+                      }[goal.priority] ?? goal.priority}
                     </span>
-                    <span>Since {new Date(goal.start_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                    <span>{t('member.common.since')} {new Date(goal.start_date).toLocaleDateString(locale, { month: 'short', day: 'numeric' })}</span>
                   </div>
                 </div>
                 <ChevronRight className="h-5 w-5 member-muted flex-shrink-0" />
@@ -436,42 +442,39 @@ function GoalsCard({ goals, onCreateGoal }: { goals: UserGoal[]; onCreateGoal: (
 
 function HabitsCard({
   habits,
-  onToggle
+  onToggle,
+  locale: _locale
 }: {
   habits: Array<{ habit: Habit; completion: HabitCompletion | null }>;
   onToggle: (habitId: string, completion: HabitCompletion | null) => void;
+  locale: string;
 }) {
+  const { t } = useTranslation();
   const completedCount = habits.filter(h => h.completion?.completed).length;
 
   const formatTimeAnchor = (anchor: string) => {
-    const map: Record<string, string> = {
-      morning: 'Morning',
-      afternoon: 'Afternoon',
-      evening: 'Evening',
-      after_meal: 'After meal',
-      before_sleep: 'Before sleep',
-      custom: 'Custom'
+    const keyMap: Record<string, string> = {
+      morning: 'member.dashboard.timeMorning',
+      afternoon: 'member.dashboard.timeAfternoon',
+      evening: 'member.dashboard.timeEvening',
+      after_meal: 'member.dashboard.timeAfterMeal',
+      before_sleep: 'member.dashboard.timeBeforeSleep',
+      custom: 'member.dashboard.timeCustom',
     };
-    return map[anchor] || anchor;
+    return keyMap[anchor] ? t(keyMap[anchor]) : anchor;
   };
 
   return (
     <div className="member-card rounded-xl p-6">
-      <ReportBrandHeader
-        title="BioMath Core"
-        subtitle="Habit Tracker"
-        variant="strip"
-        className="mb-4"
-      />
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
           <Activity className="h-6 w-6 text-green-600 dark:text-green-400" />
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-            Today's Habits
+          <h3 className="member-heading text-lg">
+            {t('member.dashboard.todaysHabits')}
           </h3>
         </div>
         {habits.length > 0 && (
-          <span className="text-sm text-gray-600 dark:text-neutral-300">
+          <span className="text-sm member-muted">
             {completedCount} / {habits.length}
           </span>
         )}
@@ -481,7 +484,7 @@ function HabitsCard({
         <div className="text-center py-8">
           <Activity className="h-12 w-12 member-muted mx-auto mb-3" />
           <p className="text-sm member-body">
-            Habits will appear after creating goals
+            {t('member.dashboard.habitsEmpty')}
           </p>
         </div>
       ) : (
@@ -500,15 +503,15 @@ function HabitsCard({
               <div className="flex-1">
                 <p className={`font-medium ${
                   completion?.completed
-                    ? 'text-gray-500 dark:text-neutral-300 line-through'
-                    : 'text-gray-900 dark:text-white'
+                    ? 'member-muted line-through'
+                    : 'member-heading'
                 }`}>
                   {habit.title}
                 </p>
-                <div className="flex items-center space-x-3 mt-1 text-xs text-gray-600 dark:text-neutral-300">
+                <div className="flex items-center space-x-3 mt-1 text-xs member-muted">
                   <span>{formatTimeAnchor(habit.time_anchor)}</span>
                   <span>•</span>
-                  <span>{habit.duration_minutes} min</span>
+                  <span>{habit.duration_minutes} {t('member.common.min')}</span>
                 </div>
               </div>
               {completion?.completed && (
@@ -522,7 +525,7 @@ function HabitsCard({
       {habits.length > 0 && completedCount === habits.length && (
         <div className="mt-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800 text-center">
           <p className="text-sm text-green-800 dark:text-green-300 font-semibold">
-            Excellent! All habits completed
+            {t('member.dashboard.allHabitsComplete')}
           </p>
         </div>
       )}
@@ -530,24 +533,20 @@ function HabitsCard({
   );
 }
 
-function LatestReportCard({ report }: { report: HealthReport }) {
+function LatestReportCard({ report, locale }: { report: HealthReport; locale: string }) {
+  const { t } = useTranslation();
+
   return (
     <div className="member-card rounded-xl border-l-4 border-l-purple-500 p-6 shadow-sm">
-      <ReportBrandHeader
-        title="BioMath Core"
-        subtitle="Latest Report"
-        variant="strip"
-        className="mb-4"
-      />
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">
           <FileText className="h-6 w-6 text-purple-600 dark:text-purple-400" />
           <div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-              Latest Report
+            <h3 className="member-heading text-lg">
+              {t('member.dashboard.latestReport')}
             </h3>
-            <p className="text-sm text-gray-600 dark:text-neutral-300">
-              {new Date(report.created_at).toLocaleDateString('en-US', {
+            <p className="text-sm member-muted">
+              {new Date(report.created_at).toLocaleDateString(locale, {
                 month: 'long',
                 day: 'numeric'
               })}
@@ -555,24 +554,24 @@ function LatestReportCard({ report }: { report: HealthReport }) {
           </div>
         </div>
         <button className="text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold transition-colors flex items-center">
-          Open
+          {t('member.common.open')}
           <ChevronRight className="h-4 w-4 ml-1" />
         </button>
       </div>
 
-      <p className="text-gray-700 dark:text-neutral-200 line-clamp-2 mb-4">
+      <p className="member-body line-clamp-2 mb-4">
         {report.summary}
       </p>
 
-      <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-neutral-300">
+      <div className="flex items-center space-x-4 text-sm member-muted">
         {report.insights && Array.isArray(report.insights) && (
-          <span>{report.insights.length} insights</span>
+          <span>{t('member.dashboard.insights', { count: report.insights.length })}</span>
         )}
         {report.recommendations && Array.isArray(report.recommendations) && (
-          <span>•</span>
-        )}
-        {report.recommendations && Array.isArray(report.recommendations) && (
-          <span>{report.recommendations.length} recommendations</span>
+          <>
+            <span>•</span>
+            <span>{t('member.dashboard.recommendations', { count: report.recommendations.length })}</span>
+          </>
         )}
       </div>
     </div>
@@ -580,40 +579,36 @@ function LatestReportCard({ report }: { report: HealthReport }) {
 }
 
 function QuickActionsCard() {
+  const { t } = useTranslation();
+
   return (
     <div className="member-card rounded-xl p-6">
-      <ReportBrandHeader
-        title="BioMath Core"
-        subtitle="Quick Actions"
-        variant="strip"
-        className="mb-4"
-      />
-      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
-        Quick Actions
+      <h3 className="member-heading text-lg mb-4">
+        {t('member.dashboard.quickActions')}
       </h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <button className="flex flex-col items-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors">
           <FileText className="h-6 w-6 text-blue-600 dark:text-blue-400 mb-2" />
-          <span className="text-sm font-semibold text-gray-900 dark:text-white">
-            Create Report
+          <span className="text-sm font-semibold member-heading">
+            {t('member.dashboard.createReport')}
           </span>
         </button>
         <button className="flex flex-col items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors">
           <Target className="h-6 w-6 text-green-600 dark:text-green-400 mb-2" />
-          <span className="text-sm font-semibold text-gray-900 dark:text-white">
-            Add Goal
+          <span className="text-sm font-semibold member-heading">
+            {t('member.dashboard.addGoal')}
           </span>
         </button>
-        <button className="flex flex-col items-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors">
+        <button className="flex flex-col items-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg hover:bg-purple-900/30 transition-colors">
           <MessageSquare className="h-6 w-6 text-purple-600 dark:text-purple-400 mb-2" />
-          <span className="text-sm font-semibold text-gray-900 dark:text-white">
-            Open Chat
+          <span className="text-sm font-semibold member-heading">
+            {t('member.dashboard.openChat')}
           </span>
         </button>
         <button className="flex flex-col items-center p-4 bg-teal-50 dark:bg-teal-900/20 rounded-lg hover:bg-teal-100 dark:hover:bg-teal-900/30 transition-colors">
           <Calendar className="h-6 w-6 text-teal-600 dark:text-teal-400 mb-2" />
-          <span className="text-sm font-semibold text-gray-900 dark:text-white">
-            History
+          <span className="text-sm font-semibold member-heading">
+            {t('member.dashboard.history')}
           </span>
         </button>
       </div>
@@ -621,7 +616,8 @@ function QuickActionsCard() {
   );
 }
 
-function CreateGoalModal({ onClose, onCreate }: { onClose: () => void; onCreate: (data: any) => void }) {
+function CreateGoalModal({ onClose, onCreate }: { onClose: () => void; onCreate: (data: { title: string; description: string; priority: string }) => void }) {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -637,50 +633,50 @@ function CreateGoalModal({ onClose, onCreate }: { onClose: () => void; onCreate:
 
   return (
     <ModalShell
-      title="Create New Goal"
+      title={t('member.dashboard.createGoalTitle')}
       onClose={onClose}
       panelClassName="max-w-md"
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">
-            Goal Title
+          <label className="block text-sm font-medium member-body mb-2">
+            {t('member.dashboard.goalTitle')}
           </label>
           <input
             type="text"
             value={formData.title}
             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             className="member-input focus:ring-blue-500"
-            placeholder="e.g., Improve sleep quality"
+            placeholder={t('member.dashboard.goalTitlePlaceholder')}
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">
-            Description (optional)
+          <label className="block text-sm font-medium member-body mb-2">
+            {t('member.dashboard.descriptionOptional')}
           </label>
           <textarea
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
             rows={3}
             className="member-input focus:ring-blue-500"
-            placeholder="Describe your goal..."
+            placeholder={t('member.dashboard.descriptionPlaceholder')}
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-neutral-200 mb-2">
-            Priority
+          <label className="block text-sm font-medium member-body mb-2">
+            {t('member.dashboard.priority')}
           </label>
           <select
             value={formData.priority}
             onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
             className="member-input focus:ring-blue-500"
           >
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+            <option value="low">{t('member.dashboard.priorityLow')}</option>
+            <option value="medium">{t('member.dashboard.priorityMedium')}</option>
+            <option value="high">{t('member.dashboard.priorityHigh')}</option>
           </select>
         </div>
 
@@ -689,14 +685,14 @@ function CreateGoalModal({ onClose, onCreate }: { onClose: () => void; onCreate:
             type="submit"
             className="flex-1 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
           >
-            Create Goal
+            {t('member.dashboard.createGoal')}
           </button>
           <button
             type="button"
             onClick={onClose}
-            className="px-6 py-2 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+            className="px-6 py-2 bg-gray-200 dark:bg-gray-800 member-heading rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
           >
-            Cancel
+            {t('member.common.cancel')}
           </button>
         </div>
       </form>

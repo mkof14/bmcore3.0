@@ -4,7 +4,6 @@ import { Check, X, ArrowRight, CheckCircle, Info, Hexagon, Layers, Crown } from 
 import { Heart, Brain, Users, Activity, Sun, Moon, Shield, Apple, Leaf, Eye, Tablet, Hourglass, Dumbbell, Flower2, User, Droplets, HeartHandshake, Smartphone, Fingerprint, Target, Blend } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { serviceCategories, serviceDetailPath } from '../../data/services';
-import ReportBrandHeader from '../../components/report/ReportBrandHeader';
 import { localizeCategory, localizeService } from '../../lib/localizeServices';
 import { unlocksFromCatalogSelection } from '../../lib/questionnaire';
 
@@ -282,11 +281,10 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
         </div>
       )}
 <section className="member-card p-6 sm:p-8">
-          <ReportBrandHeader variant="strip" subtitle="Full Services" className="mb-4" />
           <div className="mb-6">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{t('member.catalog.openService')}</h3>
-            <p className="mt-1 text-gray-600 dark:text-neutral-300">
-              Full commercial workspace: questions, dual AI second opinion, FAQ, learning, reports, and exports.
+            <h3 className="text-2xl font-bold member-heading">{t('member.catalog.openService')}</h3>
+            <p className="mt-1 member-body">
+              {t('member.catalog.openServiceBody')}
             </p>
           </div>
 
@@ -319,40 +317,39 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
 
 
       <div className="group relative member-card p-6 hover:border-orange-600/50 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-md">
-        <ReportBrandHeader variant="strip" subtitle="Plan Calculator" className="mb-4" />
         <div className="absolute inset-0 bg-gradient-to-br from-orange-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
         <div className="relative">
           <div className="flex items-start justify-between mb-6">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{t('member.catalog.planCalculator')}</h2>
-              <p className="text-gray-600 dark:text-neutral-300 text-sm">{t('member.catalog.planCalculatorHint')}</p>
+              <h2 className="text-2xl font-bold member-heading mb-1">{t('member.catalog.planCalculator')}</h2>
+              <p className="member-body text-sm">{t('member.catalog.planCalculatorHint')}</p>
             </div>
             <div className="text-right">
               <div className="text-4xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
                 ${(currentPrice / 100).toFixed(0)}
               </div>
-              <div className="text-xs text-gray-600 dark:text-neutral-400 dark:text-neutral-400">per month</div>
+              <div className="text-xs member-muted">{t('member.catalog.perMonth')}</div>
             </div>
           </div>
 
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-3">
-                <span className="text-xs font-medium text-gray-600 dark:text-neutral-300">
-                  {selectedCount} of 20 categories selected
+                <span className="text-xs font-medium member-body">
+                  {t('member.catalog.selectedOf', { count: selectedCount })}
                 </span>
                 {selectedCount > 0 && (
                   <button
                     onClick={() => setSelectedCategories(new Set())}
                     className="text-xs px-3 py-1.5 bg-red-100 dark:bg-red-500/30 hover:bg-red-200 dark:hover:bg-red-500/50 text-red-700 dark:text-red-300 font-semibold rounded-md border border-red-200 dark:border-red-500/50 transition-all hover:scale-105 shadow-sm"
                   >
-                    Clear All
+                    {t('member.catalog.clearAll')}
                   </button>
                 )}
               </div>
-              <span className={`text-xs font-bold ${currentPlan === 'Free' ? 'text-gray-500 dark:text-neutral-400' : 'bg-gradient-to-r ' + getPlanColor(currentPlan) + ' bg-clip-text text-transparent'}`}>
-                {currentPlan} Plan
+              <span className={`text-xs font-bold ${currentPlan === 'Free' ? 'member-muted' : 'bg-gradient-to-r ' + getPlanColor(currentPlan) + ' bg-clip-text text-transparent'}`}>
+                {t('member.catalog.planLabel', { plan: currentPlan })}
               </span>
             </div>
             <div className="relative h-4 rounded-full bg-[var(--bm-inset)] overflow-hidden shadow-inner">
@@ -378,15 +375,15 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
                 <h3 className={`text-center font-bold text-base mb-0.5 ${selectedCount <= 3 && selectedCount > 0 ? 'text-orange-500' : 'text-gray-900 dark:text-white'}`}>Core</h3>
                 <div className="text-center">
                   <div className={`text-xl font-bold mb-0.5 ${selectedCount <= 3 && selectedCount > 0 ? 'text-gray-900 dark:text-white' : 'text-gray-700 dark:text-neutral-300'}`}>$19</div>
-                  <p className="text-[10px] text-gray-600 dark:text-neutral-400 dark:text-neutral-400 mb-2">per month</p>
+                  <p className="text-[10px] member-muted mb-2">{t('member.catalog.perMonth')}</p>
                   <div className="space-y-0.5">
-                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-neutral-300">
+                    <div className="flex items-center justify-center gap-1 text-[9px] member-body">
                       <CheckCircle className="w-2.5 h-2.5 text-orange-600 flex-shrink-0" />
-                      <span>Any 3 categories</span>
+                      <span>{t('member.catalog.coreAny3')}</span>
                     </div>
-                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-neutral-300">
+                    <div className="flex items-center justify-center gap-1 text-[9px] member-body">
                       <CheckCircle className="w-2.5 h-2.5 text-orange-600 flex-shrink-0" />
-                      <span>Basic AI insights</span>
+                      <span>{t('member.catalog.coreInsights')}</span>
                     </div>
                   </div>
                 </div>
@@ -402,15 +399,15 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
                 <h3 className={`text-center font-bold text-base mb-0.5 ${selectedCount > 3 && selectedCount <= 10 ? 'text-blue-600' : 'text-gray-900 dark:text-white'}`}>Daily</h3>
                 <div className="text-center">
                   <div className={`text-xl font-bold mb-0.5 ${selectedCount > 3 && selectedCount <= 10 ? 'text-gray-900 dark:text-white' : 'text-gray-700 dark:text-neutral-300'}`}>$39</div>
-                  <p className="text-[10px] text-gray-600 dark:text-neutral-400 dark:text-neutral-400 mb-2">per month</p>
+                  <p className="text-[10px] member-muted mb-2">{t('member.catalog.perMonth')}</p>
                   <div className="space-y-0.5">
-                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-neutral-300">
+                    <div className="flex items-center justify-center gap-1 text-[9px] member-body">
                       <CheckCircle className="w-2.5 h-2.5 text-blue-600 flex-shrink-0" />
-                      <span>4-10 categories</span>
+                      <span>{t('member.catalog.dailyRange')}</span>
                     </div>
-                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-neutral-300">
+                    <div className="flex items-center justify-center gap-1 text-[9px] member-body">
                       <CheckCircle className="w-2.5 h-2.5 text-blue-600 flex-shrink-0" />
-                      <span>Advanced analytics</span>
+                      <span>{t('member.catalog.dailyAnalytics')}</span>
                     </div>
                   </div>
                 </div>
@@ -426,15 +423,15 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
                 <h3 className={`text-center font-bold text-base mb-0.5 ${selectedCount > 10 ? 'text-slate-700 dark:text-slate-300' : 'text-gray-900 dark:text-white'}`}>Max</h3>
                 <div className="text-center">
                   <div className={`text-xl font-bold mb-0.5 ${selectedCount > 10 ? 'text-gray-900 dark:text-white' : 'text-gray-700 dark:text-neutral-300'}`}>$79</div>
-                  <p className="text-[10px] text-gray-600 dark:text-neutral-400 dark:text-neutral-400 mb-2">per month</p>
+                  <p className="text-[10px] member-muted mb-2">{t('member.catalog.perMonth')}</p>
                   <div className="space-y-0.5">
-                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-neutral-300">
+                    <div className="flex items-center justify-center gap-1 text-[9px] member-body">
                       <CheckCircle className="w-2.5 h-2.5 text-slate-600 flex-shrink-0" />
-                      <span>All 20 categories</span>
+                      <span>{t('member.catalog.maxAll')}</span>
                     </div>
-                    <div className="flex items-center justify-center gap-1 text-[9px] text-gray-600 dark:text-neutral-300">
+                    <div className="flex items-center justify-center gap-1 text-[9px] member-body">
                       <CheckCircle className="w-2.5 h-2.5 text-slate-600 flex-shrink-0" />
-                      <span>Premium features</span>
+                      <span>{t('member.catalog.maxPremium')}</span>
                     </div>
                   </div>
                 </div>
@@ -494,7 +491,6 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
                     : 'border-slate-200 dark:border-[var(--bm-border)] hover:border-gray-300 dark:hover:border-gray-600/60'
                 }`}
               >
-                <ReportBrandHeader variant="strip" subtitle={category.name} className="mb-3" />
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-900/0 to-orange-900/5 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>
 
                 {isSelected && (
@@ -511,8 +507,8 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
                     <h4 className={`font-bold text-sm mb-1 ${isSelected ? colors.text : 'text-gray-900 dark:text-neutral-200'}`}>
                       {category.name}
                     </h4>
-                    <p className="text-xs text-gray-600 dark:text-neutral-400 dark:text-neutral-400">
-                      {category.services.length} services
+                    <p className="text-xs member-muted">
+                      {t('member.catalog.servicesCount', { count: category.services.length })}
                     </p>
                   </div>
                 </div>
@@ -524,14 +520,13 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
 
       {selectedCount > 0 && (
         <section className="member-card p-8">
-          <ReportBrandHeader variant="strip" subtitle="Selected Categories" className="mb-4" />
           <div className="flex items-start justify-between mb-4">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('member.catalog.selectedTitle')}</h3>
-              <p className="text-gray-600 dark:text-neutral-300">{t('member.catalog.selectedSubtitle')}</p>
+              <h3 className="text-2xl font-bold member-heading mb-2">{t('member.catalog.selectedTitle')}</h3>
+              <p className="member-body">{t('member.catalog.selectedSubtitle')}</p>
             </div>
             <div className="px-4 py-2 bg-green-100 dark:bg-green-500/20 border border-green-200 dark:border-green-500/30 rounded-lg">
-              <span className="text-green-700 dark:text-green-400 font-bold">{selectedCount} selected</span>
+              <span className="text-green-700 dark:text-green-400 font-bold">{t('member.catalog.selectedCount', { count: selectedCount })}</span>
             </div>
           </div>
 
@@ -569,9 +564,9 @@ export default function CatalogSection({ onSectionChange, onOpenService }: Catal
             <Info className="h-6 w-6 text-blue-600 dark:text-blue-400" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t('member.catalog.nextSteps')}</h3>
-            <p className="text-gray-600 dark:text-neutral-300 leading-relaxed">
-              After you upgrade, we'll guide you through health questionnaires that help personalize your insights.
+            <h3 className="text-xl font-bold member-heading mb-2">{t('member.catalog.nextSteps')}</h3>
+            <p className="member-body leading-relaxed">
+              {t('member.catalog.nextStepsBody')}
             </p>
           </div>
         </div>
