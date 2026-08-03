@@ -106,6 +106,88 @@ def clinical_grade(img: Image.Image, dark: bool) -> Image.Image:
     return Image.merge("RGBA", (*rgb.split(), a))
 
 
+def clean_feet_alpha(img: Image.Image) -> Image.Image:
+    """Strip studio-floor spill under ankles; keep foot silhouettes intact."""
+    w, h = img.size
+    alpha = img.split()[-1].point(lambda v: 255 if v >= 40 else 0)
+    bbox = alpha.getbbox()
+    if not bbox:
+        return img
+    _x0, _y0, _x1, y1 = bbox
+    # Bottom ~7% of the figure bbox: kill dark/low-alpha floor fringe.
+    y_zone = max(0, y1 - max(22, int((y1 - _y0) * 0.07)))
+    px = img.load()
+    for y in range(y_zone, h):
+        # Stronger kill on the very last rows (sole contact / floor plate).
+        bottom_boost = (y - y_zone) / max(1, (h - 1 - y_zone))
+        for x in range(w):
+            rr, gg, bb, aa = px[x, y]
+            if aa == 0:
+                continue
+            lum = 0.2126 * rr + 0.7152 * gg + 0.0722 * bb
+            # Floor spill is dark / semi-transparent; real feet stay brighter.
+            if aa < 110 and lum < (78 if bottom_boost > 0.55 else 68):
+                px[x, y] = (0, 0, 0, 0)
+            elif lum < (38 if bottom_boost > 0.55 else 30) and aa < 210:
+                px[x, y] = (0, 0, 0, 0)
+            elif aa < (70 if bottom_boost > 0.45 else 50):
+                px[x, y] = (0, 0, 0, 0)
+    # Soften only the bottom band edge.
+    r, g, b, a = img.split()
+    band = Image.new("L", (w, h), 0)
+    bd = ImageDraw.Draw(band)
+    bd.rectangle([0, y_zone, w, h], fill=255)
+    a_blur = a.filter(ImageFilter.GaussianBlur(0.5))
+    a = Image.composite(a_blur, a, band)
+    return Image.merge("RGBA", (r, g, b, a))
+
+
+def soften_crown_hair(img: Image.Image) -> Image.Image:
+    """Lift crushed hair blacks / compress harsh highlights near the crown."""
+    w, h = img.size
+    r, g, b, a = img.split()
+    rgb = Image.merge("RGB", (r, g, b))
+    # Soft blurred plate — reduces crunchy specular grain in short hair.
+    soft = rgb.filter(ImageFilter.GaussianBlur(2.2))
+    soft = ImageEnhance.Contrast(soft).enhance(0.72)
+    soft = ImageEnhance.Brightness(soft).enhance(1.14)
+    # Cool slate wash matching clinical body grade.
+    wash = Image.new("RGB", (w, h), (58, 70, 88))
+    soft = Image.blend(soft, wash, 0.22)
+
+    alpha = a.point(lambda v: 255 if v >= 40 else 0)
+    bbox = alpha.getbbox()
+    if not bbox:
+        return img
+    x0, y0, x1, y1 = bbox
+    fh = max(1, y1 - y0)
+    fw = max(1, x1 - x0)
+    # Crown region: top ~14% of figure height, centered.
+    y_end = y0 + max(14, int(fh * 0.14))
+    cx = (x0 + x1) * 0.5
+    rx = fw * 0.32
+    mask = Image.new("L", (w, h), 0)
+    md = ImageDraw.Draw(mask)
+    md.ellipse(
+        [int(cx - rx), y0 - int(fh * 0.02), int(cx + rx), y_end],
+        fill=255,
+    )
+    mask = mask.filter(ImageFilter.GaussianBlur(10))
+    # Don't over-soften bright facial skin inside the ellipse.
+    lum = rgb.convert("L")
+    face_protect = lum.point(lambda v: 0 if v < 95 else min(255, int((v - 95) * 3.6)))
+    face_protect = ImageChops.multiply(face_protect, mask)
+    mask = ImageChops.subtract(mask, face_protect.point(lambda v: int(v * 0.9)))
+    mask = ImageChops.multiply(mask, a)
+    # Stronger mix on darkest hair (crushed blacks), lighter on midtones.
+    dark_boost = lum.point(lambda v: 255 if v < 70 else max(0, 255 - int((v - 70) * 2.2)))
+    mask = ImageChops.lighter(mask, ImageChops.multiply(mask, dark_boost).point(lambda v: int(v * 0.55)))
+    mask = ImageChops.multiply(mask, a)
+
+    blended = Image.composite(soft, rgb, mask)
+    return Image.merge("RGBA", (*blended.split(), a))
+
+
 def make_overlay(size: tuple[int, int], dark: bool, rng: random.Random) -> Image.Image:
     w, h = size
     ov = Image.new("RGBA", size, (0, 0, 0, 0))
@@ -157,14 +239,22 @@ def thin_edge(alpha: Image.Image, dark: bool) -> Image.Image:
     return layer
 
 
-def compose(cut_path: Path, dark: bool, seed: int) -> Image.Image:
+def compose(cut_path: Path, dark: bool, seed: int, *, male: bool = False) -> Image.Image:
     rng = random.Random(seed + (1 if dark else 0))
     cut = Image.open(cut_path).convert("RGBA")
+    if male:
+        cut = clean_feet_alpha(cut)
     base = fit_cutout(cut, OUT_W, OUT_H)
+    if male:
+        # Second pass after fit: catch any residual floor that scaled into frame.
+        base = clean_feet_alpha(base)
     r, g, b, a = base.split()
-    a = a.point(lambda v: 0 if v < 12 else v).filter(ImageFilter.GaussianBlur(0.4))
+    # Male: slightly higher floor threshold kills leftover studio fringe.
+    a = a.point(lambda v: 0 if v < (18 if male else 12) else v).filter(ImageFilter.GaussianBlur(0.4))
     base = Image.merge("RGBA", (r, g, b, a))
     graded = clinical_grade(base, dark=dark)
+    if male:
+        graded = soften_crown_hair(graded)
     wash = Image.new("RGBA", graded.size, (15, 23, 42, 0) if dark else (241, 245, 249, 0))
     wash.putalpha(a.point(lambda v: int(v * (0.28 if dark else 0.12))))
     graded = Image.alpha_composite(graded, wash)
@@ -188,9 +278,10 @@ def build_figure(name: str) -> None:
     cut = cfg["cut"]
     if not cut.exists():
         raise SystemExit(f"missing cutout master for {name}: {cut}")
+    male = name == "male"
     # Do not regenerate female from scratch unless cutout exists — still OK to rebuild grade.
-    dark = compose(cut, True, cfg["seed"])
-    light = compose(cut, False, cfg["seed"])
+    dark = compose(cut, True, cfg["seed"], male=male)
+    light = compose(cut, False, cfg["seed"], male=male)
     for p in cfg["out_dark"]:
         save_webp(dark, p, 84)
     for p in cfg["out_light"]:
