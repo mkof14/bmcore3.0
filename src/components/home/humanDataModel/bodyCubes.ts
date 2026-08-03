@@ -14,45 +14,46 @@ export interface BodyCube {
 
 /**
  * Equal cells; L/R symmetric.
- * Horizontal span matches the filled human contour (arms wider mid-body, legs inward).
+ * Positions tuned to the smooth anatomical WebP contour
+ * (egg head, neck, sloping shoulders, waist taper, hip flare, thicker limbs).
  */
 export const BODY_CUBES: BodyCube[] = [
   // Head / neck
-  { c: 2, r: 0, left: 42.2, top: 3.2, sizeW: 15.6, sizeH: 7.2 },
-  { c: 2, r: 1, left: 42.2, top: 11.0, sizeW: 15.6, sizeH: 7.2 },
+  { c: 2, r: 0, left: 42.2, top: 3.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 2, r: 1, left: 42.2, top: 10.4, sizeW: 15.6, sizeH: 7.2 },
   // Shoulders / upper chest
-  { c: 1, r: 2, left: 28.6, top: 19.0, sizeW: 15.6, sizeH: 7.2 },
-  { c: 2, r: 2, left: 42.2, top: 19.0, sizeW: 15.6, sizeH: 7.2 },
-  { c: 3, r: 2, left: 55.8, top: 19.0, sizeW: 15.6, sizeH: 7.2 },
+  { c: 1, r: 2, left: 29.0, top: 18.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 2, r: 2, left: 42.2, top: 18.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 3, r: 2, left: 55.4, top: 18.4, sizeW: 15.6, sizeH: 7.2 },
   // Mid chest
-  { c: 1, r: 3, left: 28.6, top: 27.0, sizeW: 15.6, sizeH: 7.2 },
-  { c: 2, r: 3, left: 42.2, top: 27.0, sizeW: 15.6, sizeH: 7.2 },
-  { c: 3, r: 3, left: 55.8, top: 27.0, sizeW: 15.6, sizeH: 7.2 },
+  { c: 1, r: 3, left: 29.0, top: 26.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 2, r: 3, left: 42.2, top: 26.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 3, r: 3, left: 55.4, top: 26.4, sizeW: 15.6, sizeH: 7.2 },
   // Arms + torso
-  { c: 0, r: 4, left: 14.8, top: 35.2, sizeW: 15.6, sizeH: 7.2 },
-  { c: 1, r: 4, left: 28.6, top: 35.2, sizeW: 15.6, sizeH: 7.2 },
-  { c: 2, r: 4, left: 42.2, top: 35.2, sizeW: 15.6, sizeH: 7.2 },
-  { c: 3, r: 4, left: 55.8, top: 35.2, sizeW: 15.6, sizeH: 7.2 },
-  { c: 4, r: 4, left: 69.6, top: 35.2, sizeW: 15.6, sizeH: 7.2 },
-  { c: 0, r: 5, left: 13.2, top: 43.5, sizeW: 15.6, sizeH: 7.2 },
-  { c: 1, r: 5, left: 28.6, top: 43.5, sizeW: 15.6, sizeH: 7.2 },
-  { c: 2, r: 5, left: 42.2, top: 43.5, sizeW: 15.6, sizeH: 7.2 },
-  { c: 3, r: 5, left: 55.8, top: 43.5, sizeW: 15.6, sizeH: 7.2 },
-  { c: 4, r: 5, left: 71.2, top: 43.5, sizeW: 15.6, sizeH: 7.2 },
+  { c: 0, r: 4, left: 15.3, top: 34.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 1, r: 4, left: 29.0, top: 34.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 2, r: 4, left: 42.2, top: 34.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 3, r: 4, left: 55.4, top: 34.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 4, r: 4, left: 69.0, top: 34.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 0, r: 5, left: 14.4, top: 42.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 1, r: 5, left: 29.0, top: 42.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 2, r: 5, left: 42.2, top: 42.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 3, r: 5, left: 55.4, top: 42.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 4, r: 5, left: 69.9, top: 42.4, sizeW: 15.6, sizeH: 7.2 },
   // Waist / pelvis
-  { c: 1, r: 6, left: 30.2, top: 52.0, sizeW: 15.6, sizeH: 7.2 },
-  { c: 2, r: 6, left: 42.2, top: 52.0, sizeW: 15.6, sizeH: 7.2 },
-  { c: 3, r: 6, left: 54.2, top: 52.0, sizeW: 15.6, sizeH: 7.2 },
+  { c: 1, r: 6, left: 30.6, top: 50.8, sizeW: 15.6, sizeH: 7.2 },
+  { c: 2, r: 6, left: 42.2, top: 50.8, sizeW: 15.6, sizeH: 7.2 },
+  { c: 3, r: 6, left: 53.8, top: 50.8, sizeW: 15.6, sizeH: 7.2 },
   // Thighs
-  { c: 1, r: 7, left: 31.4, top: 60.5, sizeW: 15.6, sizeH: 7.2 },
-  { c: 2, r: 7, left: 42.2, top: 60.5, sizeW: 15.6, sizeH: 7.2 },
-  { c: 3, r: 7, left: 53.0, top: 60.5, sizeW: 15.6, sizeH: 7.2 },
-  { c: 1, r: 8, left: 32.0, top: 69.0, sizeW: 15.6, sizeH: 7.2 },
-  { c: 2, r: 8, left: 42.2, top: 69.0, sizeW: 15.6, sizeH: 7.2 },
-  { c: 3, r: 8, left: 52.4, top: 69.0, sizeW: 15.6, sizeH: 7.2 },
+  { c: 1, r: 7, left: 31.4, top: 59.2, sizeW: 15.6, sizeH: 7.2 },
+  { c: 2, r: 7, left: 42.2, top: 59.2, sizeW: 15.6, sizeH: 7.2 },
+  { c: 3, r: 7, left: 53.0, top: 59.2, sizeW: 15.6, sizeH: 7.2 },
+  { c: 1, r: 8, left: 31.4, top: 67.6, sizeW: 15.6, sizeH: 7.2 },
+  { c: 2, r: 8, left: 42.2, top: 67.6, sizeW: 15.6, sizeH: 7.2 },
+  { c: 3, r: 8, left: 53.0, top: 67.6, sizeW: 15.6, sizeH: 7.2 },
   // Lower legs / feet
-  { c: 1, r: 9, left: 32.6, top: 78.0, sizeW: 15.6, sizeH: 7.2 },
-  { c: 3, r: 9, left: 51.8, top: 78.0, sizeW: 15.6, sizeH: 7.2 },
-  { c: 1, r: 10, left: 33.0, top: 87.0, sizeW: 15.6, sizeH: 7.2 },
-  { c: 3, r: 10, left: 51.4, top: 87.0, sizeW: 15.6, sizeH: 7.2 },
+  { c: 1, r: 9, left: 30.4, top: 76.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 3, r: 9, left: 53.9, top: 76.4, sizeW: 15.6, sizeH: 7.2 },
+  { c: 1, r: 10, left: 30.4, top: 85.6, sizeW: 15.6, sizeH: 7.2 },
+  { c: 3, r: 10, left: 53.9, top: 85.6, sizeW: 15.6, sizeH: 7.2 },
 ];

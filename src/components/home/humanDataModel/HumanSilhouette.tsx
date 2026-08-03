@@ -280,8 +280,8 @@ export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
 
         <img
           key={dark ? 'hdm-dark' : 'hdm-light'}
-          src={`${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=12`}
-          srcSet={`${dark ? HUMAN_SRC_DARK_480 : HUMAN_SRC_LIGHT_480}?v=12 480w, ${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=12 800w`}
+          src={`${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=13`}
+          srcSet={`${dark ? HUMAN_SRC_DARK_480 : HUMAN_SRC_LIGHT_480}?v=13 480w, ${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=13 800w`}
           sizes="(max-width: 640px) 48vw, min(52vw, 728px)"
           alt=""
           width={HUMAN_W}
@@ -291,20 +291,20 @@ export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
           className="pointer-events-none absolute inset-0 z-10 h-full w-full object-contain select-none transition-[filter,opacity] duration-200 ease-out"
           style={{
             filter: dark
-              ? 'brightness(1.02) contrast(1.06)'
-              : 'brightness(1.01) contrast(1.04)',
+              ? 'brightness(1.01) contrast(1.04)'
+              : 'brightness(1.0) contrast(1.03)',
           }}
           draggable={false}
           aria-hidden
         />
 
-        {/* Subtle body wash so limbs stay readable under hotspots */}
+        {/* Soft clinical wash — keeps limbs readable under hotspots without neon cast */}
         <div
           className="pointer-events-none absolute inset-0 z-[11]"
           style={{
             background: dark
-              ? 'radial-gradient(ellipse 42% 70% at 50% 42%, rgba(56,189,248,0.08), transparent 72%)'
-              : 'radial-gradient(ellipse 42% 70% at 50% 42%, rgba(14,165,233,0.06), transparent 72%)',
+              ? 'radial-gradient(ellipse 42% 70% at 50% 42%, rgba(148,163,184,0.06), transparent 72%)'
+              : 'radial-gradient(ellipse 42% 70% at 50% 42%, rgba(71,85,105,0.05), transparent 72%)',
           }}
           aria-hidden
         />
