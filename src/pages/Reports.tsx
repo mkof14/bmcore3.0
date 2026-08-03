@@ -268,7 +268,9 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
 
-      const mockReport: Partial<HealthReport> = {
+      const { createPersonalizedReport } = await import('../lib/personalContext');
+
+      const result = await createPersonalizedReport(user.id, {
         user_id: user.id,
         report_type: reportType,
         topic: topic || null,
@@ -277,39 +279,36 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
           'Sleep quality is stable, duration within normal range',
           'HRV shows slight decrease over the last 3 days',
           'Energy remains steady, small drops after lunch',
-          'Physical activity in adaptive zone'
+          'Physical activity in adaptive zone',
         ],
         analysis: 'Your body is functioning well overall. Sleep metrics are adequate, but there\'s room for deeper recovery. HRV shows a slight drop - a signal of mild stress on the nervous system. Energy drops after lunch, which may be related to nutrition or lack of brief rest.',
         recommendations: [
           {
             title: 'Recovery Practices',
             description: 'Add 10 minutes of breathing exercises before bed. This will lower nervous system tension.',
-            priority: 'high'
+            priority: 'high',
           },
           {
             title: 'Eating Pattern',
             description: 'Reduce carbohydrate load at lunch, add more protein and fiber.',
-            priority: 'medium'
+            priority: 'medium',
           },
           {
             title: 'Short Walk',
             description: 'Take a 10-15 minute walk after lunch to stabilize glucose levels.',
-            priority: 'medium'
-          }
+            priority: 'medium',
+          },
         ],
-        device_data: null
-      };
+        device_data: null,
+        second_opinion_a: includeSecondOpinion
+          ? 'Your state is related to a slight decrease in parasympathetic activity. HRV drops due to insufficient recovery between stressful periods. This is a normal adaptive response, but it\'s important not to allow chronic overload.'
+          : null,
+        second_opinion_b: includeSecondOpinion
+          ? 'It looks like you\'ve picked up a slightly fast pace and your body is trying to catch up. This doesn\'t mean you need to stop - just add pauses between efforts. The body adapts better when load and recovery alternate.'
+          : null,
+      });
 
-      if (includeSecondOpinion) {
-        mockReport.second_opinion_a = 'Your state is related to a slight decrease in parasympathetic activity. HRV drops due to insufficient recovery between stressful periods. This is a normal adaptive response, but it\'s important not to allow chronic overload.';
-        mockReport.second_opinion_b = 'It looks like you\'ve picked up a slightly fast pace and your body is trying to catch up. This doesn\'t mean you need to stop - just add pauses between efforts. The body adapts better when load and recovery alternate.';
-      }
-
-      const { error } = await supabase
-        .from('health_reports')
-        .insert(mockReport);
-
-      if (error) throw error;
+      if (!result.ok) throw new Error(result.error || 'Report creation failed');
 
       const stepTimer = window.setInterval(() => {
         setPipelineStep((prev) => Math.min(prev + 1, 3));

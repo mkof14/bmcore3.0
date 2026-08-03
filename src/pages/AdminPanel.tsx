@@ -1,4 +1,4 @@
-import {  Settings, Users, FileText, Newspaper, Briefcase, FolderOpen, BarChart3, Shield, Menu, X, LayoutDashboard, Mail, Key, Map, Gift, Database, MessageSquare, Layers, Code, Film } from 'lucide-react';
+import {  Settings, Users, FileText, Newspaper, Briefcase, FolderOpen, BarChart3, Shield, Menu, X, LayoutDashboard, Mail, Key, Map, Gift, Database, MessageSquare, Layers, Code, Film, Link2 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +17,7 @@ import AllAPIKeysManager from '../components/admin/AllAPIKeysManager';
 import SiteMapManager from '../components/admin/SiteMapManager';
 import InvitationManager from '../components/admin/InvitationManager';
 import ServicesCatalogAdmin from '../components/admin/ServicesCatalogAdmin';
+import PersonalContextInspector from '../components/admin/PersonalContextInspector';
 import ConfigSystem from './admin/ConfigSystem';
 import SupportChatPanel from './admin/SupportChatPanel';
 import { supabase } from '../lib/supabase';
@@ -41,6 +42,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
     { id: 'services-catalog', label: 'Health Services', icon: Layers },
     { id: 'sitemap', label: 'Site Map & Pages', icon: Map },
     { id: 'users', label: 'User Management', icon: Users },
+    { id: 'personal-context', label: t('admin.personalContext.menuLabel'), icon: Link2 },
     { id: 'invitations', label: 'Invitations', icon: Gift },
     { id: 'blog', label: 'Blog Management', icon: FileText },
     { id: 'news', label: 'News Management', icon: Newspaper },
@@ -114,6 +116,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
             {activeSection === 'services-catalog' && <ServicesCatalogAdmin />}
             {activeSection === 'sitemap' && <SiteMapManager />}
             {activeSection === 'users' && <UserManagementSection />}
+            {activeSection === 'personal-context' && <PersonalContextInspector />}
             {activeSection === 'invitations' && <InvitationManager />}
             {activeSection === 'blog' && <BlogManager />}
             {activeSection === 'news' && <NewsManager />}

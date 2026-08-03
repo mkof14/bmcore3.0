@@ -112,9 +112,42 @@ function detectTopic(input: string): Topic {
   return 'default';
 }
 
-export function healthGuideReply(input: string, lang: AppLanguage): string {
+export type HealthGuideReplyOptions = {
+  /** Compact personal-context grounding (questionnaire / profile blurb). */
+  personalContextBlurb?: string | null;
+  /** Full system preface from buildPersonalContext.aiPayload.systemPreface */
+  systemPreface?: string | null;
+};
+
+/**
+ * Canned Health Guide reply. Optional personal context is appended as grounding
+ * for voice + chat until a live model is connected.
+ * Voice path uses browser SpeechRecognition / speechSynthesis only (no cloud STT).
+ */
+export function healthGuideReply(
+  input: string,
+  lang: AppLanguage,
+  options?: HealthGuideReplyOptions,
+): string {
   const topic = detectTopic(input);
-  return REPLIES[lang]?.[topic] ?? REPLIES.en[topic];
+  const base = REPLIES[lang]?.[topic] ?? REPLIES.en[topic];
+  const blurb = options?.personalContextBlurb?.trim();
+  if (!blurb && !options?.systemPreface) return base;
+
+  const groundingByLang: Record<AppLanguage, string> = {
+    en: 'Personal context',
+    es: 'Contexto personal',
+    fr: 'Contexte personnel',
+    de: 'Persönlicher Kontext',
+    ja: '個人コンテキスト',
+    he: 'הקשר אישי',
+    zh: '个人背景',
+    ar: 'السياق الشخصي',
+    uk: 'Особистий контекст',
+    ru: 'Личный контекст',
+  };
+  const label = groundingByLang[lang] ?? groundingByLang.en;
+  return `${base}\n\n${label}: ${blurb || options?.systemPreface}`;
 }
 
 export function healthGuideDualSpeak(

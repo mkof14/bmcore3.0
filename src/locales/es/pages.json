@@ -304,6 +304,50 @@
         "fileUrl": "https://… o sube un archivo",
         "thumbnailUrl": "https://… o sube una imagen"
       }
+    },
+    "personalContext": {
+      "menuLabel": "Contexto personal",
+      "title": "Inspector de contexto personal",
+      "subtitle": "Verifica la vinculación cuestionario ↔ perfil ↔ servicios ↔ informe para calidad y anclaje de informes con IA.",
+      "lookupLabel": "Buscar usuario",
+      "lookupPlaceholder": "Correo o id de usuario…",
+      "refreshUsers": "Actualizar usuarios",
+      "loadingUsers": "Cargando usuarios…",
+      "noUsers": "No hay usuarios",
+      "loadUsersFailed": "Error al cargar usuarios",
+      "loadContextFailed": "Error al cargar el contexto personal",
+      "loadingContext": "Construyendo contexto personal…",
+      "selectUser": "Selecciona un usuario para inspeccionar el enlace.",
+      "rebuild": "Reconstruir contexto",
+      "rebuildSuccess": "Contexto personal reconstruido",
+      "rebuildFailed": "Error al reconstruir",
+      "exportFile": "Exportar archivo digital del cuestionario",
+      "exportSuccess": "Archivo digital exportado",
+      "exportFailed": "Error al exportar",
+      "simulate": "Simular contexto de informe",
+      "simulateReady": "Contexto de informe simulado listo",
+      "simulateResult": "Payload de IA del informe simulado",
+      "completeness": "Completitud {{score}}% (cuestionario {{questionnaire}}% · perfil {{profile}}%)",
+      "profileFields": "Campos de perfil presentes",
+      "servicesTouched": "Servicios usados",
+      "metaCounts": "Conteos de metadatos (sin URL de PHI)",
+      "medicalFiles": "Archivos médicos: {{count}}",
+      "devices": "Dispositivos: {{count}}",
+      "tier": "Suscripción: {{tier}}",
+      "signals": "Señales de conocimiento: {{count}}",
+      "sections": "Secciones del cuestionario",
+      "locked": "bloqueado",
+      "lastSnapshot": "Última instantánea de contexto del informe",
+      "noSnapshot": "Aún no hay instantánea de informe",
+      "contextBlurb": "Resumen de contexto",
+      "none": "Ninguno",
+      "yes": "Sí",
+      "no": "No",
+      "linkage": {
+        "green": "Enlace saludable",
+        "yellow": "Enlace parcial",
+        "red": "Enlace débil"
+      }
     }
   }
 }

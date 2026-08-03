@@ -1050,7 +1050,29 @@
       "tabLearn": "Apprentissage",
       "tabReport": "Rapport et second avis",
       "enterQuestion": "Veuillez saisir votre question ou préoccupation de santé",
-      "reportCopied": "Rapport copié dans le presse-papiers"
+      "reportCopied": "Rapport copié dans le presse-papiers",
+      "personalContextHint": "Le statut du contexte personnel apparaît lorsque vous générez, calculez ou discutez."
+    },
+    "personalContext": {
+      "loading": "Chargement du contexte personnel…",
+      "unavailableTitle": "Contexte personnel indisponible",
+      "unavailableBody": "Connectez-vous et complétez les questionnaires pour que les analyses utilisent votre profil.",
+      "openQuestionnaires": "Ouvrir les questionnaires",
+      "openQuestionnairesHint": "Ouvrez Questionnaires dans l’Espace membre pour compléter votre profil santé.",
+      "linkedLabel": "Profil lié",
+      "questionnairePercent": "Questionnaire {{percent}} %",
+      "statusReady": "Prêt pour une analyse personnalisée",
+      "statusPartial": "Profil partiel — complétez les questionnaires pour une personnalisation plus riche",
+      "statusIncomplete": "Contexte personnel incomplet — l’analyse restera plus générale",
+      "completeCta": "Compléter les questionnaires",
+      "generatedSummary": "Rapport membre personnalisé basé sur votre questionnaire et le contexte de profil.",
+      "generatedInsightProfile": "Les champs de profil et l’abonnement sont liés à l’instantané de ce rapport.",
+      "generatedInsightQuestionnaire": "Le taux de complétion du questionnaire est stocké avec le rapport pour l’évaluation qualité.",
+      "generatedAnalysis": "Ce rapport utilise votre fichier numérique de questionnaire et l’instantané de contexte personnel. Guidance éducative uniquement — pas un diagnostic médical.",
+      "generatedRecTitle": "Gardez le questionnaire à jour",
+      "generatedRecBody": "Mettez à jour les questionnaires lorsque votre état de santé change pour des rapports futurs précis.",
+      "generateSuccess": "Rapport personnalisé généré avec instantané de contexte personnel.",
+      "generateFailed": "Impossible de générer le rapport personnalisé."
     }
   }
 }

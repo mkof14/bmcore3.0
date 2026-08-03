@@ -1050,7 +1050,29 @@
       "tabLearn": "Learning",
       "tabReport": "Report & second opinion",
       "enterQuestion": "Please enter your health question or concern",
-      "reportCopied": "Report copied to clipboard"
+      "reportCopied": "Report copied to clipboard",
+      "personalContextHint": "Personal context status appears when you start generating, computing, or discussing."
+    },
+    "personalContext": {
+      "loading": "Loading personal context…",
+      "unavailableTitle": "Personal context unavailable",
+      "unavailableBody": "Sign in and complete questionnaires so analyses can use your profile.",
+      "openQuestionnaires": "Open questionnaires",
+      "openQuestionnairesHint": "Open Questionnaires in Member Zone to complete your health profile.",
+      "linkedLabel": "Profile linked",
+      "questionnairePercent": "Questionnaire {{percent}}%",
+      "statusReady": "Ready for personalized analysis",
+      "statusPartial": "Partial profile — complete questionnaires for fuller personalization",
+      "statusIncomplete": "Incomplete personal context — analysis will stay more general",
+      "completeCta": "Complete questionnaires",
+      "generatedSummary": "Personalized member report built from your questionnaire and profile context.",
+      "generatedInsightProfile": "Profile fields and subscription tier are linked to this report snapshot.",
+      "generatedInsightQuestionnaire": "Questionnaire completeness is stored with the report for quality assessment.",
+      "generatedAnalysis": "This report uses your digital questionnaire file and personal context snapshot. Educational wellness guidance only — not a medical diagnosis.",
+      "generatedRecTitle": "Keep your questionnaire current",
+      "generatedRecBody": "Update questionnaires when your health state changes so future reports stay accurate.",
+      "generateSuccess": "Personalized report generated with personal context snapshot.",
+      "generateFailed": "Could not generate personalized report."
     }
   }
 }

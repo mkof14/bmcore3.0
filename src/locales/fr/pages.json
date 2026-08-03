@@ -304,6 +304,50 @@
         "fileUrl": "https://… ou importez un fichier",
         "thumbnailUrl": "https://… ou importez une image"
       }
+    },
+    "personalContext": {
+      "menuLabel": "Contexte personnel",
+      "title": "Inspecteur de contexte personnel",
+      "subtitle": "Vérifier la liaison questionnaire ↔ profil ↔ services ↔ rapport pour la qualité et l’ancrage IA.",
+      "lookupLabel": "Rechercher un utilisateur",
+      "lookupPlaceholder": "E-mail ou id utilisateur…",
+      "refreshUsers": "Actualiser les utilisateurs",
+      "loadingUsers": "Chargement des utilisateurs…",
+      "noUsers": "Aucun utilisateur",
+      "loadUsersFailed": "Échec du chargement des utilisateurs",
+      "loadContextFailed": "Échec du chargement du contexte personnel",
+      "loadingContext": "Construction du contexte personnel…",
+      "selectUser": "Sélectionnez un utilisateur pour inspecter la liaison.",
+      "rebuild": "Reconstruire le contexte",
+      "rebuildSuccess": "Contexte personnel reconstruit",
+      "rebuildFailed": "Échec de la reconstruction",
+      "exportFile": "Exporter le fichier numérique du questionnaire",
+      "exportSuccess": "Fichier numérique exporté",
+      "exportFailed": "Échec de l’export",
+      "simulate": "Simuler le contexte de rapport",
+      "simulateReady": "Contexte de rapport simulé prêt",
+      "simulateResult": "Payload IA du rapport simulé",
+      "completeness": "Complétude {{score}} % (questionnaire {{questionnaire}} % · profil {{profile}} %)",
+      "profileFields": "Champs de profil présents",
+      "servicesTouched": "Services utilisés",
+      "metaCounts": "Comptes de métadonnées (pas d’URL PHI)",
+      "medicalFiles": "Fichiers médicaux : {{count}}",
+      "devices": "Appareils : {{count}}",
+      "tier": "Abonnement : {{tier}}",
+      "signals": "Signaux de connaissance : {{count}}",
+      "sections": "Sections du questionnaire",
+      "locked": "verrouillé",
+      "lastSnapshot": "Dernier instantané de contexte du rapport",
+      "noSnapshot": "Pas encore d’instantané de rapport",
+      "contextBlurb": "Résumé de contexte",
+      "none": "Aucun",
+      "yes": "Oui",
+      "no": "Non",
+      "linkage": {
+        "green": "Liaison saine",
+        "yellow": "Liaison partielle",
+        "red": "Liaison faible"
+      }
     }
   }
 }

@@ -21,6 +21,10 @@ import {
   speakNaturally,
   warmUpSpeechVoices,
 } from '../lib/healthGuideSpeech';
+import {
+  buildPersonalContext,
+  type PersonalContext,
+} from '../lib/personalContext';
 
 interface BaseMessage {
   id: string;
@@ -76,6 +80,7 @@ export default function AIHealthAssistant({ isOpen, onClose }: AIHealthAssistant
   const uiLang = resolveFallbackLanguage(i18n.language);
   const [conversationLang, setConversationLang] = useState<AppLanguage>(uiLang);
 
+  const personalContextRef = useRef<PersonalContext | null>(null);
   const silenceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
@@ -120,6 +125,26 @@ export default function AIHealthAssistant({ isOpen, onClose }: AIHealthAssistant
   }, [isSpeakerMuted]);
 
   useEffect(() => warmUpSpeechVoices(), []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        if (!user || cancelled) return;
+        const ctx = await buildPersonalContext(user.id);
+        if (!cancelled) personalContextRef.current = ctx;
+      } catch {
+        if (!cancelled) personalContextRef.current = null;
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [isOpen]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -198,7 +223,11 @@ export default function AIHealthAssistant({ isOpen, onClose }: AIHealthAssistant
           detected,
         );
       } else {
-        const response = healthGuideReply(userMsg.content, detected);
+        const ctx = personalContextRef.current;
+        const response = healthGuideReply(userMsg.content, detected, {
+          personalContextBlurb: ctx?.contextBlurb,
+          systemPreface: ctx?.aiPayload.systemPreface,
+        });
 
         const assistantMsg: AssistantMessage = {
           id: (Date.now() + 1).toString(),
@@ -209,6 +238,7 @@ export default function AIHealthAssistant({ isOpen, onClose }: AIHealthAssistant
         };
 
         setMessages((prev) => [...prev, assistantMsg]);
+        // Speech is triggered after typing animation; browser SpeechSynthesis only.
       }
 
       setIsLoading(false);

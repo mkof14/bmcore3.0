@@ -11,6 +11,12 @@ import ReportBrandHeader from '../components/report/ReportBrandHeader';
 import ModelRadarComparison, { buildModelScores } from '../components/report/ModelRadarComparison';
 import { localizeCategory, localizeService } from '../lib/localizeServices';
 import MemberDemoBadge from '../components/MemberDemoBadge';
+import PersonalContextIndicator from '../components/PersonalContextIndicator';
+import {
+  buildPersonalContext,
+  createPersonalizedReport,
+  type PersonalContext,
+} from '../lib/personalContext';
 
 const categoryColors: Record<string, string> = {
   'human-data-model': 'text-slate-500 dark:text-slate-300',
@@ -115,7 +121,11 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
   const [dialogInput, setDialogInput] = useState('');
   const [dialog, setDialog] = useState<Array<{ role: 'user' | 'ai'; content: string }>>([]);
   const [showWhySummary, setShowWhySummary] = useState(false);
+  const [personalContext, setPersonalContext] = useState<PersonalContext | null>(null);
+  const [personalContextLoading, setPersonalContextLoading] = useState(false);
   const getSnapshotUserId = (snapshot: UserKnowledgeSnapshot | null) => snapshot?.userId;
+  const showPersonalContextIndicator =
+    embedded && (isGenerating || reportGenerated || Boolean(userQuestion.trim()) || dialog.length > 0);
 
   const aggregatedOpinion = useMemo(() => {
     if (!firstOpinion || !secondOpinion) return null;
@@ -152,6 +162,29 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
     }
     checkAuth();
   }, [embedded]);
+
+  useEffect(() => {
+    if (!embedded) return;
+    let cancelled = false;
+    (async () => {
+      setPersonalContextLoading(true);
+      try {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        if (!user || cancelled) return;
+        const ctx = await buildPersonalContext(user.id);
+        if (!cancelled) setPersonalContext(ctx);
+      } catch {
+        if (!cancelled) setPersonalContext(null);
+      } finally {
+        if (!cancelled) setPersonalContextLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [embedded, serviceId]);
 
   useEffect(() => {
     if (!serviceId) return;
@@ -274,23 +307,35 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
     }, 700);
 
     setTimeout(async () => {
-      const ai1Opinion = `AI-1 Analysis: Based on your question about ${service.name.toLowerCase()} and your health profile:\n\nYour patterns show positive trends with stable regulation. The data suggests balanced responses and healthy adaptation in this area.\n\n${userQuestion}\n\nConsidering your specific concern, the indicators point toward a supportive baseline. Small lifestyle adjustments can enhance these results further.\n\nThis is educational guidance, not medical diagnosis.`;
-
-      const ai2Opinion = `AI-2 Perspective: Looking at your ${service.name.toLowerCase()} question from another analytical angle:\n\n${userQuestion}\n\nThe patterns confirm stability with room for optimization. Your body's signals indicate positive trajectory. Consider this insight complementary to the first opinion.\n\nBoth views suggest you're on a good path with opportunities for gentle improvement through consistent habits.\n\nRemember: wellness is a journey, and you're making progress.`;
-
-      if (selectedAI === 'both') {
-        setFirstOpinion(ai1Opinion);
-        setSecondOpinion(ai2Opinion);
-        setShowSecondOpinion(true);
-      } else if (selectedAI === 'ai1') {
-        setFirstOpinion(ai1Opinion);
-      } else {
-        setFirstOpinion(ai2Opinion);
-      }
-
       try {
-        const { data: { user } } = await supabase.auth.getUser();
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
         const userId = user?.id || 'guest';
+        const ctx =
+          user && embedded
+            ? await buildPersonalContext(user.id, { forceRefresh: true })
+            : personalContext;
+        if (ctx) setPersonalContext(ctx);
+
+        const contextLine = ctx
+          ? `\n\nPersonal context (${ctx.completeness.score}%): ${ctx.contextBlurb}`
+          : '\n\nPersonal context: not linked yet — complete questionnaires for fuller personalization.';
+
+        const ai1Opinion = `AI-1 Analysis: Based on your question about ${service.name.toLowerCase()} and your health profile:\n\nYour patterns show positive trends with stable regulation. The data suggests balanced responses and healthy adaptation in this area.\n\n${userQuestion}${contextLine}\n\nConsidering your specific concern, the indicators point toward a supportive baseline. Small lifestyle adjustments can enhance these results further.\n\nThis is educational guidance, not medical diagnosis.`;
+
+        const ai2Opinion = `AI-2 Perspective: Looking at your ${service.name.toLowerCase()} question from another analytical angle:\n\n${userQuestion}${contextLine}\n\nThe patterns confirm stability with room for optimization. Your body's signals indicate positive trajectory. Consider this insight complementary to the first opinion.\n\nBoth views suggest you're on a good path with opportunities for gentle improvement through consistent habits.\n\nRemember: wellness is a journey, and you're making progress.`;
+
+        if (selectedAI === 'both') {
+          setFirstOpinion(ai1Opinion);
+          setSecondOpinion(ai2Opinion);
+          setShowSecondOpinion(true);
+        } else if (selectedAI === 'ai1') {
+          setFirstOpinion(ai1Opinion);
+        } else {
+          setFirstOpinion(ai2Opinion);
+        }
+
         const localCounts = estimateLocalSignalCounts();
         const snapshot = addKnowledgeSignals(userId, {
           profile: 1,
@@ -301,8 +346,55 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
           documents: Math.max(1, localCounts.documents || 0),
         });
         setKnowledgeSnapshot(snapshot);
+
+        if (user && embedded) {
+          await createPersonalizedReport(user.id, {
+            user_id: user.id,
+            report_type: 'thematic',
+            topic: service.name,
+            report_title: `${service.name} service report`,
+            summary: `Service workspace report for ${service.name}. Question: ${userQuestion}`,
+            insights: [
+              `Service: ${service.name}`,
+              `Questionnaire completeness: ${ctx?.completeness.questionnairePercent ?? 0}%`,
+              `Linkage: ${ctx?.linkageHealth ?? 'red'}`,
+            ],
+            analysis: ai1Opinion,
+            recommendations: [
+              {
+                title: 'Continue personalization',
+                description: ctx?.completeness.readyForPersonalizedAnalysis
+                  ? 'Personal context is linked; keep questionnaires current as your state changes.'
+                  : 'Complete questionnaires so future service analyses use your full profile.',
+                priority: 'medium',
+              },
+            ],
+            second_opinion_a: selectedAI === 'ai2' ? null : ai1Opinion,
+            second_opinion_b: selectedAI === 'ai1' ? null : ai2Opinion,
+          });
+
+          try {
+            localStorage.setItem(
+              `bmcore.service.report.${serviceId}`,
+              JSON.stringify({
+                firstOpinion: ai1Opinion,
+                secondOpinion: selectedAI === 'ai1' ? '' : ai2Opinion,
+                question: userQuestion,
+                personalContextSnapshot: ctx ? {
+                  version: ctx.version,
+                  completenessScore: ctx.completeness.score,
+                  linkageHealth: ctx.linkageHealth,
+                  contextBlurb: ctx.contextBlurb,
+                } : null,
+                updatedAt: new Date().toISOString(),
+              }),
+            );
+          } catch {
+            /* ignore */
+          }
+        }
       } catch {
-        // ignore knowledge persistence failures
+        // ignore knowledge / context persistence failures
       } finally {
         window.clearInterval(stepTimer);
         setPipelineStep(3);
@@ -376,10 +468,14 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
   const handleDialogSubmit = () => {
     if (!dialogInput.trim()) return;
     const question = dialogInput.trim();
+    const contextNote = personalContext
+      ? ` Personal context (${personalContext.completeness.score}%): ${personalContext.contextBlurb}.`
+      : '';
     const response = [
       `Based on your service report, here is a concise answer:`,
       firstOpinion || 'No primary opinion generated yet.',
       secondOpinion ? `Second opinion adds: ${secondOpinion}` : '',
+      contextNote,
     ].filter(Boolean).join(' ');
     setDialog((prev) => [...prev, { role: 'user', content: question }, { role: 'ai', content: response }]);
     setDialogInput('');
@@ -490,6 +586,17 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
               <p className="mt-1 text-xs text-green-700/90 dark:text-green-300/90">
                 {t('member.serviceWorkspace.unlockedBody')}
               </p>
+            </div>
+          )}
+
+          {showPersonalContextIndicator && (
+            <div className="mb-6">
+              <PersonalContextIndicator
+                context={personalContext}
+                loading={personalContextLoading}
+                compact={isGenerating}
+                onOpenQuestionnaires={() => onNavigate('questionnaires')}
+              />
             </div>
           )}
 

@@ -1050,7 +1050,29 @@
       "tabLearn": "Lernen",
       "tabReport": "Bericht & Zweitmeinung",
       "enterQuestion": "Bitte geben Sie Ihre Gesundheitsfrage oder Ihr Anliegen ein",
-      "reportCopied": "Bericht in die Zwischenablage kopiert"
+      "reportCopied": "Bericht in die Zwischenablage kopiert",
+      "personalContextHint": "Der Status des persönlichen Kontexts erscheint beim Generieren, Berechnen oder Diskutieren."
+    },
+    "personalContext": {
+      "loading": "Persönlicher Kontext wird geladen…",
+      "unavailableTitle": "Persönlicher Kontext nicht verfügbar",
+      "unavailableBody": "Melden Sie sich an und füllen Sie Fragebögen aus, damit Analysen Ihr Profil nutzen.",
+      "openQuestionnaires": "Fragebögen öffnen",
+      "openQuestionnairesHint": "Öffnen Sie Fragebögen in der Mitgliederzone, um Ihr Gesundheitsprofil zu vervollständigen.",
+      "linkedLabel": "Profil verknüpft",
+      "questionnairePercent": "Fragebogen {{percent}}%",
+      "statusReady": "Bereit für personalisierte Analyse",
+      "statusPartial": "Teilprofil — Fragebögen vervollständigen für bessere Personalisierung",
+      "statusIncomplete": "Unvollständiger persönlicher Kontext — Analyse bleibt allgemeiner",
+      "completeCta": "Fragebögen vervollständigen",
+      "generatedSummary": "Personalisierter Mitgliederbericht aus Fragebogen- und Profilkontext.",
+      "generatedInsightProfile": "Profilfelder und Abo sind mit dem Berichtssnapshot verknüpft.",
+      "generatedInsightQuestionnaire": "Fragebogen-Vollständigkeit wird mit dem Bericht für Qualitätsprüfung gespeichert.",
+      "generatedAnalysis": "Dieser Bericht nutzt Ihre digitale Fragebogendatei und den persönlichen Kontext-Snapshot. Nur Bildungsleitfaden — keine medizinische Diagnose.",
+      "generatedRecTitle": "Fragebogen aktuell halten",
+      "generatedRecBody": "Aktualisieren Sie Fragebögen bei Gesundheitsänderungen, damit künftige Berichte stimmen.",
+      "generateSuccess": "Personalisierter Bericht mit Kontext-Snapshot erzeugt.",
+      "generateFailed": "Personalisierter Bericht konnte nicht erzeugt werden."
     }
   }
 }

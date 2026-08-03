@@ -10,6 +10,10 @@ type MockQueryResult = {
 };
 
 const MOCK_AUTH_KEY = 'bmcore.mock.auth.v1';
+const MOCK_QUESTIONNAIRE_PREFIX = 'bmcore.mock.questionnaire.';
+const MOCK_HEALTH_REPORTS_KEY = 'bmcore.mock.health_reports.v1';
+const MOCK_MEDICAL_FILES_KEY = 'bmcore.mock.medical_files.v1';
+const MOCK_USER_DEVICES_KEY = 'bmcore.mock.user_devices.v1';
 const SUPERADMIN_ID = '00000000-0000-4000-8000-000000000001';
 
 type MockAuthState = {
@@ -41,6 +45,40 @@ function writeMockAuth(state: MockAuthState | null) {
   } catch {
     /* ignore */
   }
+}
+
+function readMockJson<T>(key: string, fallback: T): T {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return fallback;
+    return JSON.parse(raw) as T;
+  } catch {
+    return fallback;
+  }
+}
+
+function writeMockJson(key: string, value: unknown) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    /* ignore */
+  }
+}
+
+function readMockQuestionnaire(userId: string): Record<string, unknown> | null {
+  return readMockJson<Record<string, unknown> | null>(`${MOCK_QUESTIONNAIRE_PREFIX}${userId}`, null);
+}
+
+function writeMockQuestionnaire(userId: string, row: Record<string, unknown>) {
+  writeMockJson(`${MOCK_QUESTIONNAIRE_PREFIX}${userId}`, row);
+}
+
+function readMockHealthReports(): Array<Record<string, unknown>> {
+  return readMockJson<Array<Record<string, unknown>>>(MOCK_HEALTH_REPORTS_KEY, []);
+}
+
+function writeMockHealthReports(rows: Array<Record<string, unknown>>) {
+  writeMockJson(MOCK_HEALTH_REPORTS_KEY, rows);
 }
 
 function makeSuperadminUser(email: string): User {
@@ -88,10 +126,16 @@ function createMockQuery(table: string) {
   const filters: Record<string, any> = {};
   let op: 'select' | 'update' | 'insert' | 'upsert' | 'delete' = 'select';
   let updatePayload: any = null;
+  let returningAfterWrite = false;
 
   const api: any = {
     select(_cols?: string) {
-      op = 'select';
+      // Supabase chain: insert(...).select() keeps the write op.
+      if (op === 'insert' || op === 'upsert' || op === 'update') {
+        returningAfterWrite = true;
+      } else {
+        op = 'select';
+      }
       return api;
     },
     insert(payload: any) {
@@ -134,6 +178,14 @@ function createMockQuery(table: string) {
       return Promise.resolve(resolveRow());
     },
     then(onfulfilled: any, onrejected: any) {
+      // Write chains (insert/upsert/update) resolve via resolveRow so localStorage persists.
+      if (op === 'insert' || op === 'upsert' || op === 'update' || op === 'delete') {
+        const written = resolveRow();
+        const payload = returningAfterWrite
+          ? emptyResult(written.data ? [written.data] : [])
+          : written;
+        return Promise.resolve(payload).then(onfulfilled, onrejected);
+      }
       return Promise.resolve(resolveList()).then(onfulfilled, onrejected);
     },
   };
@@ -150,6 +202,12 @@ function createMockQuery(table: string) {
           role: 'superadmin',
           first_name: 'Super',
           last_name: 'Admin',
+          name: 'Super Admin',
+          country: 'US',
+          timezone: 'America/New_York',
+          locale: 'en',
+          avatar_url: null,
+          custom_fields: {},
         };
         if (op === 'update' || op === 'upsert') {
           return emptyResult({ ...base, ...updatePayload });
@@ -176,6 +234,77 @@ function createMockQuery(table: string) {
       return emptyResult(null);
     }
 
+    if (table === 'questionnaire_responses') {
+      const userId = filters.user_id || auth?.user.id;
+      if (!userId) return emptyResult(null);
+
+      if (op === 'upsert' || op === 'update' || op === 'insert') {
+        const payload = Array.isArray(updatePayload) ? updatePayload[0] : updatePayload;
+        const prev = readMockQuestionnaire(userId) || { user_id: userId };
+        const next = {
+          ...prev,
+          ...payload,
+          user_id: userId,
+          updated_at: new Date().toISOString(),
+        };
+        writeMockQuestionnaire(userId, next);
+        return emptyResult(next);
+      }
+
+      const row = readMockQuestionnaire(userId);
+      return emptyResult(row);
+    }
+
+    if (table === 'health_reports') {
+      const userId = filters.user_id || auth?.user.id;
+      const all = readMockHealthReports();
+
+      if (op === 'insert' || op === 'upsert') {
+        const payload = Array.isArray(updatePayload) ? updatePayload[0] : updatePayload;
+        const now = new Date().toISOString();
+        const row = {
+          id: payload?.id || `mock-report-${Date.now()}`,
+          created_at: now,
+          updated_at: now,
+          status: 'completed',
+          report_title: payload?.topic || payload?.report_type || 'Health report',
+          metadata: {},
+          ...payload,
+          user_id: payload?.user_id || userId,
+        };
+        writeMockHealthReports([row, ...all]);
+        return emptyResult(row);
+      }
+
+      const filtered = userId ? all.filter((r) => r.user_id === userId) : all;
+      return emptyResult(filtered[0] || null);
+    }
+
+    if (table === 'medical_files') {
+      const userId = filters.user_id || auth?.user.id;
+      const all = readMockJson<Array<Record<string, unknown>>>(MOCK_MEDICAL_FILES_KEY, []);
+      if (op === 'insert' || op === 'upsert') {
+        const payload = Array.isArray(updatePayload) ? updatePayload[0] : updatePayload;
+        const row = {
+          id: `mock-file-${Date.now()}`,
+          created_at: new Date().toISOString(),
+          ...payload,
+          user_id: payload?.user_id || userId,
+        };
+        writeMockJson(MOCK_MEDICAL_FILES_KEY, [row, ...all]);
+        return emptyResult(row);
+      }
+      const filtered = userId ? all.filter((r) => r.user_id === userId) : all;
+      return emptyResult(filtered[0] || null);
+    }
+
+    if (table === 'user_devices') {
+      const userId = filters.user_id || auth?.user.id;
+      const all = readMockJson<Array<Record<string, unknown>>>(MOCK_USER_DEVICES_KEY, []);
+      const filtered = userId ? all.filter((r) => r.user_id === userId) : all;
+      return emptyResult(filtered[0] || null);
+    }
+
     return emptyResult(null);
   }
 
@@ -200,6 +329,35 @@ function createMockQuery(table: string) {
         },
       ]);
     }
+
+    if (table === 'health_reports') {
+      const auth = readMockAuth();
+      const userId = filters.user_id || auth?.user.id;
+      const all = readMockHealthReports();
+      return emptyResult(userId ? all.filter((r) => r.user_id === userId) : all);
+    }
+
+    if (table === 'medical_files') {
+      const auth = readMockAuth();
+      const userId = filters.user_id || auth?.user.id;
+      const all = readMockJson<Array<Record<string, unknown>>>(MOCK_MEDICAL_FILES_KEY, []);
+      return emptyResult(userId ? all.filter((r) => r.user_id === userId) : all);
+    }
+
+    if (table === 'user_devices') {
+      const auth = readMockAuth();
+      const userId = filters.user_id || auth?.user.id;
+      const all = readMockJson<Array<Record<string, unknown>>>(MOCK_USER_DEVICES_KEY, []);
+      return emptyResult(userId ? all.filter((r) => r.user_id === userId) : all);
+    }
+
+    if (table === 'questionnaire_responses') {
+      const auth = readMockAuth();
+      const userId = filters.user_id || auth?.user.id;
+      const row = userId ? readMockQuestionnaire(userId) : null;
+      return emptyResult(row ? [row] : []);
+    }
+
     const row = resolveRow();
     return emptyResult(row.data ? [row.data] : []);
   }

@@ -35,6 +35,7 @@ import {
   type UnitSystem,
   type SexualHealthUnlocks,
 } from '../../lib/questionnaire';
+import { invalidatePersonalContextCache } from '../../lib/personalContext';
 
 type FormChangeHandler = (field: string, value: unknown) => void;
 
@@ -209,6 +210,7 @@ export default function QuestionnairesSection({ onNavigateSection }: Props) {
       } else {
         setLastSaved(new Date());
         setAutoSaveError(false);
+        invalidatePersonalContextCache(user.id);
       }
     } catch {
       setAutoSaveError(true);

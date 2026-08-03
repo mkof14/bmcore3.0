@@ -267,6 +267,12 @@ export interface HealthReport {
   } | null;
   second_opinion_a: string | null;
   second_opinion_b: string | null;
+  /** Snapshot of personal context at generation time (questionnaire + profile completeness). */
+  personal_context_snapshot?: Record<string, unknown> | null;
+  personal_context_version?: string | null;
+  metadata?: Record<string, unknown> | null;
+  report_title?: string | null;
+  status?: string | null;
   created_at: string;
   updated_at: string;
 }

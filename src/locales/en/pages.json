@@ -513,6 +513,50 @@
         "fileUrl": "https://… or upload a file",
         "thumbnailUrl": "https://… or upload an image"
       }
+    },
+    "personalContext": {
+      "menuLabel": "Personal Context",
+      "title": "Personal Context Inspector",
+      "subtitle": "Verify questionnaire ↔ profile ↔ services ↔ report linkage for quality assessment and AI report grounding.",
+      "lookupLabel": "Lookup user",
+      "lookupPlaceholder": "Email or user id…",
+      "refreshUsers": "Refresh users",
+      "loadingUsers": "Loading users…",
+      "noUsers": "No users found",
+      "loadUsersFailed": "Failed to load users",
+      "loadContextFailed": "Failed to load personal context",
+      "loadingContext": "Building personal context…",
+      "selectUser": "Select a user to inspect linkage health.",
+      "rebuild": "Rebuild context",
+      "rebuildSuccess": "Personal context rebuilt",
+      "rebuildFailed": "Rebuild failed",
+      "exportFile": "Export digital questionnaire file",
+      "exportSuccess": "Digital questionnaire file exported",
+      "exportFailed": "Export failed",
+      "simulate": "Simulate report context",
+      "simulateReady": "Simulated report context ready",
+      "simulateResult": "Simulated report AI payload",
+      "completeness": "Completeness {{score}}% (questionnaire {{questionnaire}}% · profile {{profile}}%)",
+      "profileFields": "Profile fields present",
+      "servicesTouched": "Services touched",
+      "metaCounts": "Metadata counts (no PHI URLs)",
+      "medicalFiles": "Medical files: {{count}}",
+      "devices": "Devices: {{count}}",
+      "tier": "Subscription: {{tier}}",
+      "signals": "Knowledge signals: {{count}}",
+      "sections": "Questionnaire sections",
+      "locked": "locked",
+      "lastSnapshot": "Last report context snapshot",
+      "noSnapshot": "No report snapshot yet",
+      "contextBlurb": "Context blurb",
+      "none": "None",
+      "yes": "Yes",
+      "no": "No",
+      "linkage": {
+        "green": "Linkage healthy",
+        "yellow": "Linkage partial",
+        "red": "Linkage weak"
+      }
     }
   }
 }

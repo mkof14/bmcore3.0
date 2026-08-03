@@ -304,6 +304,50 @@
         "fileUrl": "https://… או העלו קובץ",
         "thumbnailUrl": "https://… או העלו תמונה"
       }
+    },
+    "personalContext": {
+      "menuLabel": "הקשר אישי",
+      "title": "בודק הקשר אישי",
+      "subtitle": "אימות קישור שאלון ↔ פרופיל ↔ שירותים ↔ דוח להערכת איכות ועיגון דוחות AI.",
+      "lookupLabel": "חיפוש משתמש",
+      "lookupPlaceholder": "אימייל או מזהה משתמש…",
+      "refreshUsers": "רענון משתמשים",
+      "loadingUsers": "טוען משתמשים…",
+      "noUsers": "לא נמצאו משתמשים",
+      "loadUsersFailed": "טעינת משתמשים נכשלה",
+      "loadContextFailed": "טעינת הקשר אישי נכשלה",
+      "loadingContext": "בונה הקשר אישי…",
+      "selectUser": "בחרו משתמש לבדיקת בריאות הקישור.",
+      "rebuild": "בניית הקשר מחדש",
+      "rebuildSuccess": "הקשר אישי נבנה מחדש",
+      "rebuildFailed": "בנייה מחדש נכשלה",
+      "exportFile": "ייצוא קובץ שאלון דיגיטלי",
+      "exportSuccess": "קובץ השאלון הדיגיטלי יוצא",
+      "exportFailed": "הייצוא נכשל",
+      "simulate": "סימולציית הקשר דוח",
+      "simulateReady": "הקשר דוח מדומה מוכן",
+      "simulateResult": "מטען AI מדומה לדוח",
+      "completeness": "שלמות {{score}}% (שאלון {{questionnaire}}% · פרופיל {{profile}}%)",
+      "profileFields": "שדות פרופיל קיימים",
+      "servicesTouched": "שירותים שנעשה בהם שימוש",
+      "metaCounts": "ספירות מטא־נתונים (ללא URL של PHI)",
+      "medicalFiles": "קבצים רפואיים: {{count}}",
+      "devices": "מכשירים: {{count}}",
+      "tier": "מנוי: {{tier}}",
+      "signals": "אותות ידע: {{count}}",
+      "sections": "מדורי שאלון",
+      "locked": "נעול",
+      "lastSnapshot": "צילום הקשר אחרון של דוח",
+      "noSnapshot": "עדיין אין צילום דוח",
+      "contextBlurb": "תקציר הקשר",
+      "none": "אין",
+      "yes": "כן",
+      "no": "לא",
+      "linkage": {
+        "green": "קישור תקין",
+        "yellow": "קישור חלקי",
+        "red": "קישור חלש"
+      }
     }
   }
 }

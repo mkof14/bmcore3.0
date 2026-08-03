@@ -3,17 +3,19 @@ import { useTranslation } from 'react-i18next';
 import { Send, AlertCircle, Scale, Brain, Loader2 } from 'lucide-react';
 
 import { supabase } from '../../lib/supabase';
-import {
-  getQuestionnaireSummary,
-  type QuestionnaireSummary,
-} from '../../lib/questionnaire';
 import MemberDemoBadge from '../../components/MemberDemoBadge';
+import PersonalContextIndicator from '../../components/PersonalContextIndicator';
+import {
+  buildPersonalContext,
+  type PersonalContext,
+} from '../../lib/personalContext';
 
 export default function AIHealthAdvisorSection() {
   const { t } = useTranslation();
   const [question, setQuestion] = useState('');
   const [loading, setLoading] = useState(false);
-  const [profileSummary, setProfileSummary] = useState<QuestionnaireSummary | null>(null);
+  const [personalContext, setPersonalContext] = useState<PersonalContext | null>(null);
+  const [contextLoading, setContextLoading] = useState(true);
   const [responses, setResponses] = useState<{
     opinion1: string | null;
     opinion2: string | null;
@@ -22,12 +24,19 @@ export default function AIHealthAdvisorSection() {
   useEffect(() => {
     let cancelled = false;
     (async () => {
+      setContextLoading(true);
       const {
         data: { user },
       } = await supabase.auth.getUser();
-      if (!user || cancelled) return;
-      const summary = await getQuestionnaireSummary(user.id);
-      if (!cancelled) setProfileSummary(summary);
+      if (!user || cancelled) {
+        if (!cancelled) setContextLoading(false);
+        return;
+      }
+      const ctx = await buildPersonalContext(user.id);
+      if (!cancelled) {
+        setPersonalContext(ctx);
+        setContextLoading(false);
+      }
     })();
     return () => {
       cancelled = true;
@@ -40,7 +49,7 @@ export default function AIHealthAdvisorSection() {
     setLoading(true);
     setResponses({ opinion1: null, opinion2: null });
 
-    const context = profileSummary?.contextBlurb;
+    const context = personalContext?.aiPayload.systemPreface || personalContext?.contextBlurb;
     const contextLine = context
       ? ` ${t('member.healthGuide.questionnaireContextTitle')}: ${context}.`
       : ` ${t('member.healthGuide.questionnaireContextEmpty')}`;
@@ -82,19 +91,21 @@ export default function AIHealthAdvisorSection() {
         </div>
       </div>
 
+      <PersonalContextIndicator context={personalContext} loading={contextLoading} />
+
       <div className="member-card p-4">
         <p className="text-sm font-semibold member-heading mb-1">
           {t('member.healthGuide.questionnaireContextTitle')}
         </p>
-        {profileSummary ? (
+        {personalContext ? (
           <p className="text-xs member-body">
             {t('member.healthGuide.questionnaireContextBody', {
-              percent: profileSummary.overallProgress,
-              completed: profileSummary.completedCount,
-              total: profileSummary.unlockedCount,
+              percent: personalContext.completeness.questionnairePercent,
+              completed: personalContext.questionnaire?.completedCount ?? 0,
+              total: personalContext.questionnaire?.unlockedCount ?? 0,
             })}
-            {profileSummary.contextBlurb ? (
-              <span className="block mt-1 member-muted">{profileSummary.contextBlurb}</span>
+            {personalContext.contextBlurb ? (
+              <span className="block mt-1 member-muted">{personalContext.contextBlurb}</span>
             ) : null}
           </p>
         ) : (

@@ -304,6 +304,50 @@
         "fileUrl": "https://… أو ارفع ملفًا",
         "thumbnailUrl": "https://… أو ارفع صورة"
       }
+    },
+    "personalContext": {
+      "menuLabel": "السياق الشخصي",
+      "title": "فاحص السياق الشخصي",
+      "subtitle": "تحقق من ربط الاستبيان ↔ الملف ↔ الخدمات ↔ التقرير لتقييم الجودة وتأسيس تقارير الذكاء الاصطناعي.",
+      "lookupLabel": "البحث عن مستخدم",
+      "lookupPlaceholder": "البريد أو معرّف المستخدم…",
+      "refreshUsers": "تحديث المستخدمين",
+      "loadingUsers": "جارٍ تحميل المستخدمين…",
+      "noUsers": "لا يوجد مستخدمون",
+      "loadUsersFailed": "فشل تحميل المستخدمين",
+      "loadContextFailed": "فشل تحميل السياق الشخصي",
+      "loadingContext": "جارٍ بناء السياق الشخصي…",
+      "selectUser": "اختر مستخدمًا لفحص صحة الربط.",
+      "rebuild": "إعادة بناء السياق",
+      "rebuildSuccess": "أُعيد بناء السياق الشخصي",
+      "rebuildFailed": "فشلت إعادة البناء",
+      "exportFile": "تصدير ملف الاستبيان الرقمي",
+      "exportSuccess": "تم تصدير ملف الاستبيان الرقمي",
+      "exportFailed": "فشل التصدير",
+      "simulate": "محاكاة سياق التقرير",
+      "simulateReady": "سياق التقرير المحاكى جاهز",
+      "simulateResult": "حمولة الذكاء الاصطناعي للتقرير المحاكى",
+      "completeness": "الاكتمال {{score}}٪ (استبيان {{questionnaire}}٪ · ملف {{profile}}٪)",
+      "profileFields": "حقول الملف الموجودة",
+      "servicesTouched": "الخدمات المستخدمة",
+      "metaCounts": "عدادات البيانات الوصفية (بدون عناوين PHI)",
+      "medicalFiles": "الملفات الطبية: {{count}}",
+      "devices": "الأجهزة: {{count}}",
+      "tier": "الاشتراك: {{tier}}",
+      "signals": "إشارات المعرفة: {{count}}",
+      "sections": "أقسام الاستبيان",
+      "locked": "مقفل",
+      "lastSnapshot": "آخر لقطة لسياق التقرير",
+      "noSnapshot": "لا توجد لقطة تقرير بعد",
+      "contextBlurb": "ملخص السياق",
+      "none": "لا شيء",
+      "yes": "نعم",
+      "no": "لا",
+      "linkage": {
+        "green": "ربط سليم",
+        "yellow": "ربط جزئي",
+        "red": "ربط ضعيف"
+      }
     }
   }
 }

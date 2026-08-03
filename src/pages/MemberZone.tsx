@@ -247,6 +247,10 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
                 setCurrentSection('service-workspace');
                 return;
               }
+              if (page === 'questionnaires') {
+                setCurrentSection('questionnaires');
+                return;
+              }
               onNavigate(page, data);
             }}
           />

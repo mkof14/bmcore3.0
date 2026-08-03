@@ -304,6 +304,50 @@
         "fileUrl": "https://… 或上传文件",
         "thumbnailUrl": "https://… 或上传图片"
       }
+    },
+    "personalContext": {
+      "menuLabel": "个人背景",
+      "title": "个人背景检查器",
+      "subtitle": "验证问卷 ↔ 个人资料 ↔ 服务 ↔ 报告的关联，用于质量评估与 AI 报告锚定。",
+      "lookupLabel": "查找用户",
+      "lookupPlaceholder": "邮箱或用户 ID…",
+      "refreshUsers": "刷新用户",
+      "loadingUsers": "正在加载用户…",
+      "noUsers": "未找到用户",
+      "loadUsersFailed": "加载用户失败",
+      "loadContextFailed": "加载个人背景失败",
+      "loadingContext": "正在构建个人背景…",
+      "selectUser": "选择用户以检查关联健康度。",
+      "rebuild": "重建背景",
+      "rebuildSuccess": "个人背景已重建",
+      "rebuildFailed": "重建失败",
+      "exportFile": "导出数字问卷文件",
+      "exportSuccess": "已导出数字问卷文件",
+      "exportFailed": "导出失败",
+      "simulate": "模拟报告背景",
+      "simulateReady": "模拟报告背景已就绪",
+      "simulateResult": "模拟报告 AI 载荷",
+      "completeness": "完整度 {{score}}%（问卷 {{questionnaire}}% · 资料 {{profile}}%）",
+      "profileFields": "已有个人资料字段",
+      "servicesTouched": "使用过的服务",
+      "metaCounts": "元数据计数（不含 PHI URL）",
+      "medicalFiles": "医疗文件：{{count}}",
+      "devices": "设备：{{count}}",
+      "tier": "订阅：{{tier}}",
+      "signals": "知识信号：{{count}}",
+      "sections": "问卷章节",
+      "locked": "已锁定",
+      "lastSnapshot": "上次报告背景快照",
+      "noSnapshot": "尚无报告快照",
+      "contextBlurb": "背景摘要",
+      "none": "无",
+      "yes": "是",
+      "no": "否",
+      "linkage": {
+        "green": "关联健康",
+        "yellow": "关联部分",
+        "red": "关联较弱"
+      }
     }
   }
 }

@@ -1050,7 +1050,29 @@
       "tabLearn": "学習",
       "tabReport": "レポートとセカンドオピニオン",
       "enterQuestion": "健康に関する質問または懸念を入力してください",
-      "reportCopied": "レポートをクリップボードにコピーしました"
+      "reportCopied": "レポートをクリップボードにコピーしました",
+      "personalContextHint": "生成・計算・対話を始めると個人コンテキストの状態が表示されます。"
+    },
+    "personalContext": {
+      "loading": "個人コンテキストを読み込み中…",
+      "unavailableTitle": "個人コンテキストを利用できません",
+      "unavailableBody": "サインインして問診を完了すると、分析にプロフィールを使えます。",
+      "openQuestionnaires": "問診を開く",
+      "openQuestionnairesHint": "メンバーゾーンの問診を開き、健康プロフィールを完成させてください。",
+      "linkedLabel": "プロフィール連携済み",
+      "questionnairePercent": "問診 {{percent}}%",
+      "statusReady": "パーソナライズ分析の準備完了",
+      "statusPartial": "プロフィール一部のみ — 問診を完了するとより詳細にカスタマイズされます",
+      "statusIncomplete": "個人コンテキスト未完成 — 分析は一般的になります",
+      "completeCta": "問診を完了する",
+      "generatedSummary": "問診とプロフィール文脈から作成されたパーソナライズ会員レポート。",
+      "generatedInsightProfile": "プロフィール項目とプランがこのレポートのスナップショットに紐づいています。",
+      "generatedInsightQuestionnaire": "問診の完了度は品質評価のためレポートに保存されます。",
+      "generatedAnalysis": "このレポートはデジタル問診ファイルと個人コンテキストのスナップショットを使用します。教育的なウェルネス案内のみで、医学的診断ではありません。",
+      "generatedRecTitle": "問診を最新に保つ",
+      "generatedRecBody": "健康状態が変わったら問診を更新し、今後のレポート精度を保ちましょう。",
+      "generateSuccess": "個人コンテキストのスナップショット付きパーソナライズレポートを生成しました。",
+      "generateFailed": "パーソナライズレポートを生成できませんでした。"
     }
   }
 }

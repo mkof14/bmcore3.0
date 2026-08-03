@@ -2,11 +2,17 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FileText, Download, Eye, Clock, Plus, Loader2 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
-import { notifyUserError, notifyUserInfo } from '../../lib/adminNotify';
+import { notifyUserError, notifyUserInfo, notifyUserSuccess } from '../../lib/adminNotify';
 import ErrorBanner from '../../components/ui/ErrorBanner';
 import Button from '../../components/ui/Button';
 import MemberMetricCard from '../../components/ui/MemberMetricCard';
 import { loadKnowledgeSnapshot } from '../../lib/secondOpinionEngine';
+import PersonalContextIndicator from '../../components/PersonalContextIndicator';
+import {
+  buildPersonalContext,
+  createPersonalizedReport,
+  type PersonalContext,
+} from '../../lib/personalContext';
 
 interface Report {
   id: string;
@@ -14,6 +20,9 @@ interface Report {
   report_type: string;
   status: string;
   created_at: string;
+  personal_context_snapshot?: Record<string, unknown> | null;
+  topic?: string | null;
+  summary?: string | null;
 }
 
 const COVERAGE_KEYS = ['profile', 'devices', 'reports', 'inputs', 'documents', 'services'] as const;
@@ -27,6 +36,9 @@ export default function MyReportsSection() {
   const [userId, setUserId] = useState<string | null>(null);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [coverage, setCoverage] = useState<Record<string, number>>({});
+  const [personalContext, setPersonalContext] = useState<PersonalContext | null>(null);
+  const [contextLoading, setContextLoading] = useState(false);
+  const [generating, setGenerating] = useState(false);
 
   useEffect(() => {
     loadReports();
@@ -73,6 +85,14 @@ export default function MyReportsSection() {
         return;
       }
       setUserId(user.user.id);
+      setContextLoading(true);
+      try {
+        setPersonalContext(await buildPersonalContext(user.user.id));
+      } catch {
+        setPersonalContext(null);
+      } finally {
+        setContextLoading(false);
+      }
 
       const { data, error } = await supabase
         .from('health_reports')
@@ -81,7 +101,13 @@ export default function MyReportsSection() {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setReports(data || []);
+      setReports(
+        (data || []).map((row: Report) => ({
+          ...row,
+          report_title: row.report_title || row.topic || row.report_type || 'Report',
+          status: row.status || 'completed',
+        })),
+      );
       setError(null);
     } catch (error) {
       notifyUserError(t('member.reports.loadFailed'));
@@ -145,8 +171,48 @@ export default function MyReportsSection() {
     return map[key] ?? key;
   };
 
+  const handleGeneratePersonalized = async () => {
+    if (!userId || generating) return;
+    setGenerating(true);
+    try {
+      const result = await createPersonalizedReport(userId, {
+        user_id: userId,
+        report_type: 'general',
+        topic: t('member.reports.generateNew'),
+        report_title: t('member.reports.generateNew'),
+        summary: t('member.personalContext.generatedSummary'),
+        insights: [
+          t('member.personalContext.generatedInsightProfile'),
+          t('member.personalContext.generatedInsightQuestionnaire'),
+        ],
+        analysis: t('member.personalContext.generatedAnalysis'),
+        recommendations: [
+          {
+            title: t('member.personalContext.generatedRecTitle'),
+            description: t('member.personalContext.generatedRecBody'),
+            priority: 'medium',
+          },
+        ],
+      });
+      if (!result.ok) throw new Error(result.error || 'failed');
+      setPersonalContext(result.context);
+      notifyUserSuccess(t('member.personalContext.generateSuccess'));
+      await loadReports();
+    } catch {
+      notifyUserError(t('member.personalContext.generateFailed'));
+    } finally {
+      setGenerating(false);
+    }
+  };
+
   return (
     <div className="space-y-6">
+      <PersonalContextIndicator
+        context={personalContext}
+        loading={contextLoading}
+        onOpenQuestionnaires={() => notifyUserInfo(t('member.personalContext.openQuestionnairesHint'))}
+      />
+
       <div className="member-card rounded-xl p-4">
         <h3 className="member-heading mb-3">{t('member.reports.dataCoverage')}</h3>
         <div className="grid md:grid-cols-3 gap-3 text-xs member-body">
@@ -215,10 +281,11 @@ export default function MyReportsSection() {
 
         <div className="flex flex-wrap gap-2">
           <button
-            onClick={() => notifyUserInfo(t('member.reports.generateNew'))}
-            className="px-6 py-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all flex items-center gap-2"
+            onClick={handleGeneratePersonalized}
+            disabled={generating}
+            className="px-6 py-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all flex items-center gap-2 disabled:opacity-50"
           >
-            <Plus className="h-5 w-5" />
+            {generating ? <Loader2 className="h-5 w-5 animate-spin" /> : <Plus className="h-5 w-5" />}
             {t('member.reports.generateNew')}
           </button>
           <Button onClick={loadReports} className="flex items-center gap-2">

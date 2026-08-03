@@ -304,6 +304,50 @@
         "fileUrl": "https://… oder Datei hochladen",
         "thumbnailUrl": "https://… oder Bild hochladen"
       }
+    },
+    "personalContext": {
+      "menuLabel": "Persönlicher Kontext",
+      "title": "Persönlicher-Kontext-Inspector",
+      "subtitle": "Prüft die Verknüpfung Fragebogen ↔ Profil ↔ Dienste ↔ Bericht für Qualität und KI-Verankerung.",
+      "lookupLabel": "Benutzer suchen",
+      "lookupPlaceholder": "E-Mail oder Benutzer-ID…",
+      "refreshUsers": "Benutzer aktualisieren",
+      "loadingUsers": "Benutzer werden geladen…",
+      "noUsers": "Keine Benutzer gefunden",
+      "loadUsersFailed": "Benutzer konnten nicht geladen werden",
+      "loadContextFailed": "Persönlicher Kontext konnte nicht geladen werden",
+      "loadingContext": "Persönlicher Kontext wird erstellt…",
+      "selectUser": "Wählen Sie einen Benutzer zur Prüfung der Verknüpfung.",
+      "rebuild": "Kontext neu aufbauen",
+      "rebuildSuccess": "Persönlicher Kontext neu aufgebaut",
+      "rebuildFailed": "Neuaufbau fehlgeschlagen",
+      "exportFile": "Digitale Fragebogendatei exportieren",
+      "exportSuccess": "Digitale Fragebogendatei exportiert",
+      "exportFailed": "Export fehlgeschlagen",
+      "simulate": "Berichtskontext simulieren",
+      "simulateReady": "Simulierter Berichtskontext bereit",
+      "simulateResult": "Simuliertes KI-Payload des Berichts",
+      "completeness": "Vollständigkeit {{score}}% (Fragebogen {{questionnaire}}% · Profil {{profile}}%)",
+      "profileFields": "Vorhandene Profilfelder",
+      "servicesTouched": "Genutzte Dienste",
+      "metaCounts": "Metadaten-Zähler (keine PHI-URLs)",
+      "medicalFiles": "Medizinische Dateien: {{count}}",
+      "devices": "Geräte: {{count}}",
+      "tier": "Abo: {{tier}}",
+      "signals": "Wissenssignale: {{count}}",
+      "sections": "Fragebogenabschnitte",
+      "locked": "gesperrt",
+      "lastSnapshot": "Letzter Berichtskontext-Snapshot",
+      "noSnapshot": "Noch kein Berichtssnapshot",
+      "contextBlurb": "Kontextkurztext",
+      "none": "Keine",
+      "yes": "Ja",
+      "no": "Nein",
+      "linkage": {
+        "green": "Verknüpfung gesund",
+        "yellow": "Verknüpfung teilweise",
+        "red": "Verknüpfung schwach"
+      }
     }
   }
 }

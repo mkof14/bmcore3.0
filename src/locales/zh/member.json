@@ -1050,7 +1050,29 @@
       "tabLearn": "学习",
       "tabReport": "报告与第二意见",
       "enterQuestion": "请输入您的健康问题或顾虑",
-      "reportCopied": "报告已复制到剪贴板"
+      "reportCopied": "报告已复制到剪贴板",
+      "personalContextHint": "开始生成、计算或讨论时会显示个人背景状态。"
+    },
+    "personalContext": {
+      "loading": "正在加载个人背景…",
+      "unavailableTitle": "个人背景不可用",
+      "unavailableBody": "请登录并完成问卷，以便分析使用您的个人资料。",
+      "openQuestionnaires": "打开问卷",
+      "openQuestionnairesHint": "在会员区打开问卷以完善您的健康档案。",
+      "linkedLabel": "已关联个人资料",
+      "questionnairePercent": "问卷 {{percent}}%",
+      "statusReady": "已准备好进行个性化分析",
+      "statusPartial": "资料不完整 — 完成问卷可获得更充分的个性化",
+      "statusIncomplete": "个人背景不完整 — 分析将较为笼统",
+      "completeCta": "完成问卷",
+      "generatedSummary": "基于问卷与个人资料背景生成的个性化会员报告。",
+      "generatedInsightProfile": "个人资料字段与订阅层级已关联到本报告快照。",
+      "generatedInsightQuestionnaire": "问卷完整度已随报告保存，用于质量评估。",
+      "generatedAnalysis": "本报告使用您的数字问卷文件与个人背景快照。仅供健康教育参考，并非医疗诊断。",
+      "generatedRecTitle": "保持问卷最新",
+      "generatedRecBody": "健康状态变化时请更新问卷，以便后续报告保持准确。",
+      "generateSuccess": "已生成带个人背景快照的个性化报告。",
+      "generateFailed": "无法生成个性化报告。"
     }
   }
 }

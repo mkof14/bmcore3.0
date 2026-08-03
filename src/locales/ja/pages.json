@@ -304,6 +304,50 @@
         "fileUrl": "https://… またはファイルをアップロード",
         "thumbnailUrl": "https://… または画像をアップロード"
       }
+    },
+    "personalContext": {
+      "menuLabel": "個人コンテキスト",
+      "title": "個人コンテキスト検査",
+      "subtitle": "問診 ↔ プロフィール ↔ サービス ↔ レポートの連携を品質評価とAIレポート接地のために確認します。",
+      "lookupLabel": "ユーザー検索",
+      "lookupPlaceholder": "メールまたはユーザーID…",
+      "refreshUsers": "ユーザーを更新",
+      "loadingUsers": "ユーザーを読み込み中…",
+      "noUsers": "ユーザーが見つかりません",
+      "loadUsersFailed": "ユーザーの読み込みに失敗しました",
+      "loadContextFailed": "個人コンテキストの読み込みに失敗しました",
+      "loadingContext": "個人コンテキストを構築中…",
+      "selectUser": "連携状態を確認するユーザーを選択してください。",
+      "rebuild": "コンテキストを再構築",
+      "rebuildSuccess": "個人コンテキストを再構築しました",
+      "rebuildFailed": "再構築に失敗しました",
+      "exportFile": "デジタル問診ファイルを書き出し",
+      "exportSuccess": "デジタル問診ファイルを書き出しました",
+      "exportFailed": "書き出しに失敗しました",
+      "simulate": "レポート文脈をシミュレート",
+      "simulateReady": "シミュレート済みレポート文脈の準備完了",
+      "simulateResult": "シミュレート済みレポートのAIペイロード",
+      "completeness": "完了度 {{score}}%（問診 {{questionnaire}}% · プロフィール {{profile}}%）",
+      "profileFields": "存在するプロフィール項目",
+      "servicesTouched": "利用したサービス",
+      "metaCounts": "メタデータ件数（PHIのURLなし）",
+      "medicalFiles": "医療ファイル: {{count}}",
+      "devices": "デバイス: {{count}}",
+      "tier": "サブスクリプション: {{tier}}",
+      "signals": "知識シグナル: {{count}}",
+      "sections": "問診セクション",
+      "locked": "ロック中",
+      "lastSnapshot": "前回のレポート文脈スナップショット",
+      "noSnapshot": "レポートスナップショットはまだありません",
+      "contextBlurb": "コンテキスト要約",
+      "none": "なし",
+      "yes": "はい",
+      "no": "いいえ",
+      "linkage": {
+        "green": "連携良好",
+        "yellow": "連携一部",
+        "red": "連携弱い"
+      }
     }
   }
 }

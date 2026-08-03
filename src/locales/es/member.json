@@ -1050,7 +1050,29 @@
       "tabLearn": "Aprendizaje",
       "tabReport": "Informe y segunda opinión",
       "enterQuestion": "Introduce tu pregunta o preocupación de salud",
-      "reportCopied": "Informe copiado al portapapeles"
+      "reportCopied": "Informe copiado al portapapeles",
+      "personalContextHint": "El estado del contexto personal aparece al generar, calcular o discutir."
+    },
+    "personalContext": {
+      "loading": "Cargando contexto personal…",
+      "unavailableTitle": "Contexto personal no disponible",
+      "unavailableBody": "Inicia sesión y completa los cuestionarios para que los análisis usen tu perfil.",
+      "openQuestionnaires": "Abrir cuestionarios",
+      "openQuestionnairesHint": "Abre Cuestionarios en la Zona de Miembros para completar tu perfil de salud.",
+      "linkedLabel": "Perfil vinculado",
+      "questionnairePercent": "Cuestionario {{percent}}%",
+      "statusReady": "Listo para análisis personalizado",
+      "statusPartial": "Perfil parcial — completa los cuestionarios para una personalización más completa",
+      "statusIncomplete": "Contexto personal incompleto — el análisis será más general",
+      "completeCta": "Completar cuestionarios",
+      "generatedSummary": "Informe personalizado creado a partir de tu cuestionario y contexto de perfil.",
+      "generatedInsightProfile": "Los campos de perfil y el plan se vinculan a la instantánea de este informe.",
+      "generatedInsightQuestionnaire": "La completitud del cuestionario se guarda con el informe para evaluación de calidad.",
+      "generatedAnalysis": "Este informe usa tu archivo digital de cuestionario y la instantánea de contexto personal. Solo orientación educativa — no es un diagnóstico médico.",
+      "generatedRecTitle": "Mantén el cuestionario actualizado",
+      "generatedRecBody": "Actualiza los cuestionarios cuando cambie tu estado de salud para que los informes futuros sean precisos.",
+      "generateSuccess": "Informe personalizado generado con instantánea de contexto personal.",
+      "generateFailed": "No se pudo generar el informe personalizado."
     }
   }
 }
