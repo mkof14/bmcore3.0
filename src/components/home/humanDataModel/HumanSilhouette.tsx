@@ -29,8 +29,10 @@ interface Props {
   onSelectCategory: (id: string) => void;
 }
 
-/** Bump only when locked public/hdm-human-*.webp assets intentionally change. */
-const FIGURE_CACHE = 'v=19';
+/** Bump when locked public/hdm-human-*.webp assets intentionally change. */
+const FIGURE_CACHE = 'v=20';
+/** Bump when body cube / CATEGORY_AT hotspot layout changes (visible in DOM). */
+export const CUBE_LAYOUT = 'cl=4';
 
 function hexToRgba(hex: string, alpha: number): string {
   const h = hex.replace('#', '');
@@ -397,7 +399,12 @@ export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
           aria-hidden
         />
 
-        <div className="absolute inset-0 z-20" style={{ perspective: 900 }}>
+        <div
+          className="absolute inset-0 z-20"
+          style={{ perspective: 900 }}
+          data-cube-layout={CUBE_LAYOUT}
+          data-figure-cache={FIGURE_CACHE}
+        >
           {cubes.map((cube) => {
             const hoverKey = cube.categoryId;
             const isHot = hovered === hoverKey;

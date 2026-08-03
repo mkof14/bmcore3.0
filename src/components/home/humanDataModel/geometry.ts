@@ -173,11 +173,12 @@ export const CATEGORY_AT: Record<string, { c: number; r: number }> = {
   'fitness-performance': { c: 4, r: 4 },
   'senior-care': { c: 1, r: 5 },
   'nutrition-diet': { c: 2, r: 5 },
-  'digital-therapeutics': { c: 2, r: 6 },
+  // Mid-chest gap (was pelvis c2r6 — never put numbered hotspots on crotch).
+  'digital-therapeutics': { c: 2, r: 3 },
   'womens-health': { c: 1, r: 7 },
   'mens-health': { c: 3, r: 7 },
   // Sexual categories sit on mid-thigh / outer lower leg — not pelvic center.
-  'general-sexual': { c: 2, r: 8 },
+  'general-sexual': { c: 1, r: 8 },
   'mens-sexual-health': { c: 1, r: 10 },
   'womens-sexual-health': { c: 3, r: 10 },
 };

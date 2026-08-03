@@ -216,50 +216,89 @@ def clean_feet_alpha(img: Image.Image) -> Image.Image:
     return Image.merge("RGBA", (r, g, b, a))
 
 
-def soften_crown_hair(img: Image.Image) -> Image.Image:
-    """Lift crushed hair blacks / compress harsh highlights near the crown."""
-    w, h = img.size
-    r, g, b, a = img.split()
-    rgb = Image.merge("RGB", (r, g, b))
-    # Soft blurred plate — reduces crunchy specular grain in short hair.
-    soft = rgb.filter(ImageFilter.GaussianBlur(2.2))
-    soft = ImageEnhance.Contrast(soft).enhance(0.72)
-    soft = ImageEnhance.Brightness(soft).enhance(1.14)
-    # Cool slate wash matching clinical body grade.
-    wash = Image.new("RGB", (w, h), (58, 70, 88))
-    soft = Image.blend(soft, wash, 0.22)
+def soften_crown_hair(img: Image.Image, *, dark: bool) -> Image.Image:
+    """Crush short-hair specular just under the silhouette top — never the forehead."""
+    # Local import keeps the rest of the module Pillow-only at import time.
+    import numpy as np
 
-    alpha = a.point(lambda v: 255 if v >= 40 else 0)
-    bbox = alpha.getbbox()
-    if not bbox:
+    arr = np.array(img)
+    rgb = arr[..., :3].astype(np.float32)
+    a = arr[..., 3].astype(np.float32)
+    lum = 0.2126 * rgb[..., 0] + 0.7152 * rgb[..., 1] + 0.0722 * rgb[..., 2]
+    h, w = a.shape
+    opaque = a >= 40
+    if not opaque.any():
         return img
-    x0, y0, x1, y1 = bbox
-    fh = max(1, y1 - y0)
-    fw = max(1, x1 - x0)
-    # Crown region: top ~14% of figure height, centered.
-    y_end = y0 + max(14, int(fh * 0.14))
-    cx = (x0 + x1) * 0.5
-    rx = fw * 0.32
-    mask = Image.new("L", (w, h), 0)
-    md = ImageDraw.Draw(mask)
-    md.ellipse(
-        [int(cx - rx), y0 - int(fh * 0.02), int(cx + rx), y_end],
-        fill=255,
-    )
-    mask = mask.filter(ImageFilter.GaussianBlur(10))
-    # Don't over-soften bright facial skin inside the ellipse.
-    lum = rgb.convert("L")
-    face_protect = lum.point(lambda v: 0 if v < 95 else min(255, int((v - 95) * 3.6)))
-    face_protect = ImageChops.multiply(face_protect, mask)
-    mask = ImageChops.subtract(mask, face_protect.point(lambda v: int(v * 0.9)))
-    mask = ImageChops.multiply(mask, a)
-    # Stronger mix on darkest hair (crushed blacks), lighter on midtones.
-    dark_boost = lum.point(lambda v: 255 if v < 70 else max(0, 255 - int((v - 70) * 2.2)))
-    mask = ImageChops.lighter(mask, ImageChops.multiply(mask, dark_boost).point(lambda v: int(v * 0.55)))
-    mask = ImageChops.multiply(mask, a)
 
-    blended = Image.composite(soft, rgb, mask)
-    return Image.merge("RGBA", (*blended.split(), a))
+    top_y = np.full(w, h, dtype=np.int32)
+    for x in range(w):
+        col = np.where(opaque[:, x])[0]
+        if len(col):
+            top_y[x] = int(col[0])
+    k = 21
+    pad = np.pad(top_y.astype(np.float32), (k // 2, k // 2), mode="edge")
+    top_s = np.convolve(pad, np.ones(k) / k, mode="valid")
+
+    ys = np.where(opaque)[0]
+    y0, y1 = int(ys.min()), int(ys.max())
+    fh = max(1, y1 - y0)
+    xs = np.where(opaque)[1]
+    x0, x1 = int(xs.min()), int(xs.max())
+    cx = (x0 + x1) * 0.5
+    fw = max(1, x1 - x0)
+
+    yy = np.arange(h, dtype=np.float32)[:, None]
+    xx = np.arange(w, dtype=np.float32)[None, :]
+    dist = yy - top_s[None, :]
+    # Tight band from silhouette crown only (avoids forehead).
+    depth = fh * (0.042 if dark else 0.038)
+    hair = opaque & (dist >= -1.5) & (dist <= depth) & (np.abs(xx - cx) <= fw * 0.36)
+    temple = (
+        opaque
+        & (np.abs(xx - cx) > fw * 0.20)
+        & (np.abs(xx - cx) <= fw * 0.40)
+        & (dist >= -1.5)
+        & (dist <= fh * 0.075)
+    )
+    hair = hair | temple
+
+    # Light mode: short hair reads silvery on pale UI — darken the whole crown band.
+    # Dark mode: only crush hot specular speckles.
+    thr = 108.0 if dark else 70.0
+    hot = hair & (lum >= thr)
+    if not hot.any():
+        return img
+
+    dark_ref = hair & (lum < (80 if dark else 95))
+    if dark_ref.sum() > 40:
+        ref = np.median(rgb[dark_ref], axis=0).astype(np.float32)
+    else:
+        ref = np.array([50.0, 42.0, 36.0] if dark else [58.0, 48.0, 40.0], dtype=np.float32)
+
+    m = np.zeros((h, w), dtype=np.float32)
+    if dark:
+        m[hot] = np.clip((lum[hot] - thr) / 55.0, 0.45, 0.92)
+    else:
+        # Even midtone crown hair gets pulled toward brown on light plates.
+        m[hot] = np.clip(0.35 + (lum[hot] - thr) / 90.0, 0.35, 0.88)
+    m_img = Image.fromarray((np.clip(m, 0, 1) * 255).astype(np.uint8)).filter(
+        ImageFilter.GaussianBlur(1.6)
+    )
+    m = np.array(m_img).astype(np.float32) / 255.0
+    # Hard stop: no spill onto forehead / face.
+    m[dist > depth * 1.25] = 0
+    m[dist > fh * 0.09] = 0
+    m[~opaque] = 0
+
+    blur = np.array(
+        Image.fromarray(np.clip(lum, 0, 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(1.5))
+    ).astype(np.float32)
+    tex = (lum - blur) * 0.18
+    mul = 0.86 + np.clip(blur, 0, 160) / 160.0 * 0.30
+    target = np.clip(ref[None, None, :] * mul[..., None] + tex[..., None], 0, 255)
+    out = rgb * (1.0 - m[..., None]) + target * m[..., None]
+    arr[..., :3] = np.clip(out, 0, 255).astype(np.uint8)
+    return Image.fromarray(arr, "RGBA")
 
 
 def make_overlay(size: tuple[int, int], dark: bool, rng: random.Random) -> Image.Image:
@@ -301,13 +340,32 @@ def make_overlay(size: tuple[int, int], dark: bool, rng: random.Random) -> Image
     return ov
 
 
-def thin_edge(alpha: Image.Image, dark: bool) -> Image.Image:
+def thin_edge(alpha: Image.Image, dark: bool, *, male: bool = False) -> Image.Image:
     solid = alpha.point(lambda v: 255 if v > 40 else 0)
     dil = solid.filter(ImageFilter.MaxFilter(3))
     ero = solid.filter(ImageFilter.MinFilter(3))
     edge = ImageChops.subtract(dil, ero).filter(ImageFilter.GaussianBlur(0.6))
     color = (186, 198, 214) if dark else (51, 65, 85)
-    e = edge.point(lambda v: int(v * (0.55 if dark else 0.45)))
+    strength = 0.55 if dark else 0.45
+    if male:
+        # Male short-hair fringe reads as blown white if the rim is too bright.
+        strength *= 0.55 if dark else 0.7
+        color = (120, 132, 148) if dark else (55, 60, 70)
+    e = edge.point(lambda v: int(v * strength))
+    # Further fade the crown rim for male.
+    if male:
+        bbox = solid.getbbox()
+        if bbox:
+            x0, y0, x1, y1 = bbox
+            fh = max(1, y1 - y0)
+            fade = Image.new("L", alpha.size, 255)
+            fd = ImageDraw.Draw(fade)
+            fd.ellipse(
+                [x0 - 20, y0 - 20, x1 + 20, y0 + int(fh * 0.14)],
+                fill=90,
+            )
+            fade = fade.filter(ImageFilter.GaussianBlur(18))
+            e = ImageChops.multiply(e, fade)
     layer = Image.new("RGBA", alpha.size, (*color, 0))
     layer.putalpha(e)
     return layer
@@ -327,16 +385,31 @@ def compose(cut_path: Path, dark: bool, seed: int, *, male: bool = False) -> Ima
     a = a.point(lambda v: 0 if v < (18 if male else 12) else v).filter(ImageFilter.GaussianBlur(0.4))
     base = Image.merge("RGBA", (r, g, b, a))
     graded = clinical_grade(base, dark=dark)
-    if male:
-        graded = soften_crown_hair(graded)
     wash = Image.new("RGBA", graded.size, (15, 23, 42, 0) if dark else (241, 245, 249, 0))
     wash.putalpha(a.point(lambda v: int(v * (0.28 if dark else 0.12))))
     graded = Image.alpha_composite(graded, wash)
     ov = make_overlay(graded.size, dark=dark, rng=rng)
     ov_r, ov_g, ov_b, ov_a = ov.split()
     ov_a = ImageChops.multiply(ov_a, a.point(lambda v: int(v * 0.85)))
+    if male:
+        # Soften math overlay on the crown so short hair isn't read as blown white.
+        bbox = a.point(lambda v: 255 if v >= 40 else 0).getbbox()
+        if bbox:
+            x0, y0, x1, y1 = bbox
+            fh = max(1, y1 - y0)
+            crown_fade = Image.new("L", graded.size, 255)
+            cd = ImageDraw.Draw(crown_fade)
+            cd.ellipse(
+                [x0 - 30, y0 - 24, x1 + 30, y0 + int(fh * 0.12)],
+                fill=55,
+            )
+            crown_fade = crown_fade.filter(ImageFilter.GaussianBlur(16))
+            ov_a = ImageChops.multiply(ov_a, crown_fade)
     graded = Image.alpha_composite(graded, Image.merge("RGBA", (ov_r, ov_g, ov_b, ov_a)))
-    graded = Image.alpha_composite(graded, thin_edge(a, dark=dark))
+    graded = Image.alpha_composite(graded, thin_edge(a, dark=dark, male=male))
+    # Hair recovery last so wash/overlay/edge cannot re-blow the crown.
+    if male:
+        graded = soften_crown_hair(graded, dark=dark)
     fr, fg, fb, _ = graded.split()
     return Image.merge("RGBA", (fr, fg, fb, a))
 
