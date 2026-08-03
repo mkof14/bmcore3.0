@@ -29,7 +29,8 @@ interface Props {
   onSelectCategory: (id: string) => void;
 }
 
-const FIGURE_CACHE = 'v=18';
+/** Bump only when locked public/hdm-human-*.webp assets intentionally change. */
+const FIGURE_CACHE = 'v=19';
 
 function hexToRgba(hex: string, alpha: number): string {
   const h = hex.replace('#', '');

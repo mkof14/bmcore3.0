@@ -15,3 +15,7 @@ Unify mixed stock people photography under a cool-slate clinical look that match
 - Poses, framing, and lighting still differ across stock sources — grade unifies *color*, not composition.
 - Category heroes that were already abstract/clinical were left as-is; nutrition / environmental nature stock was replaced with brand data-grid WebPs.
 - Remote Supabase blog `featured_image` URLs (if any) are not rewritten client-side; seed posts use `/blog/cover-*.webp`.
+
+## HDM figures (separate)
+
+Home Human Data Model female/male cutouts are **locked** and are not part of this marketing photo-grade pass. See `docs/ops/hdm-figures.md`.

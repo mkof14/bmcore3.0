@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """Composite photorealistic HDM human: photo cutout + math overlay treatment.
 
-Supports female (locked) and male figures. Usage:
-  python3 scripts/generate-hdm-human.py            # both
+Female and male public WebPs are LOCKED (see scripts/hdm-locked/ and docs/ops/hdm-figures.md).
+By default this script writes previews under .tmp-hdm-out/ and refuses to overwrite
+frozen public/hdm-human*.webp paths unless --force is passed.
+
+Usage:
+  python3 scripts/generate-hdm-human.py            # both → .tmp-hdm-out/
   python3 scripts/generate-hdm-human.py female
   python3 scripts/generate-hdm-human.py male
+  python3 scripts/generate-hdm-human.py male --force   # overwrite locked public assets
 """
 from __future__ import annotations
 
@@ -17,6 +22,27 @@ from PIL import Image, ImageChops, ImageDraw, ImageEnhance, ImageFilter
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_W, OUT_H = 800, 1747
+PREVIEW_DIR = ROOT / ".tmp-hdm-out"
+LOCKED_DIR = ROOT / "scripts/hdm-locked"
+
+# Canonical frozen production paths — do not overwrite without --force.
+FROZEN_PUBLIC = frozenset(
+    {
+        ROOT / "public/hdm-human-female.webp",
+        ROOT / "public/hdm-human-female-light.webp",
+        ROOT / "public/hdm-human-female-480.webp",
+        ROOT / "public/hdm-human-female-light-480.webp",
+        ROOT / "public/hdm-human-male.webp",
+        ROOT / "public/hdm-human-male-light.webp",
+        ROOT / "public/hdm-human-male-480.webp",
+        ROOT / "public/hdm-human-male-light-480.webp",
+        # Legacy female aliases
+        ROOT / "public/hdm-human.webp",
+        ROOT / "public/hdm-human-light.webp",
+        ROOT / "public/hdm-human-480.webp",
+        ROOT / "public/hdm-human-light-480.webp",
+    }
+)
 
 FIGURES = {
     "female": {
@@ -315,58 +341,78 @@ def compose(cut_path: Path, dark: bool, seed: int, *, male: bool = False) -> Ima
     return Image.merge("RGBA", (fr, fg, fb, a))
 
 
-def save_webp(im: Image.Image, path: Path, quality: int = 82) -> None:
+def _is_frozen(path: Path) -> bool:
+    try:
+        return path.resolve() in {p.resolve() for p in FROZEN_PUBLIC}
+    except OSError:
+        return path in FROZEN_PUBLIC
+
+
+def save_webp(im: Image.Image, path: Path, quality: int = 82, *, force: bool = False) -> None:
+    if _is_frozen(path) and not force:
+        raise SystemExit(
+            f"refusing to overwrite locked HDM asset: {path}\n"
+            f"  masters: {LOCKED_DIR}\n"
+            f"  pass --force only with explicit approval (see docs/ops/hdm-figures.md)\n"
+            f"  or omit --force to write previews under {PREVIEW_DIR}/"
+        )
     path.parent.mkdir(parents=True, exist_ok=True)
     im.save(path, "WEBP", quality=quality, method=6)
     print("wrote", path, path.stat().st_size)
 
 
-def build_figure(name: str) -> None:
+def _remap_outs(paths: list[Path], *, force: bool) -> list[Path]:
+    """Without --force, redirect frozen public paths into PREVIEW_DIR."""
+    if force:
+        return paths
+    remapped: list[Path] = []
+    for p in paths:
+        if _is_frozen(p):
+            remapped.append(PREVIEW_DIR / p.name)
+        else:
+            remapped.append(p)
+    return remapped
+
+
+def build_figure(name: str, *, force: bool = False) -> None:
     cfg = FIGURES[name]
     cut = cfg["cut"]
     if not cut.exists():
         raise SystemExit(f"missing cutout master for {name}: {cut}")
     male = name == "male"
-    # Do not regenerate female from scratch unless cutout exists — still OK to rebuild grade.
     dark = compose(cut, True, cfg["seed"], male=male)
     light = compose(cut, False, cfg["seed"], male=male)
-    for p in cfg["out_dark"]:
-        save_webp(dark, p, 84)
-    for p in cfg["out_light"]:
-        save_webp(light, p, 84)
+    out_dark = _remap_outs(cfg["out_dark"], force=force)
+    out_light = _remap_outs(cfg["out_light"], force=force)
+    out_dark_480 = _remap_outs(cfg["out_dark_480"], force=force)
+    out_light_480 = _remap_outs(cfg["out_light_480"], force=force)
+    if not force:
+        print(f"preview mode for {name}: writing under {PREVIEW_DIR} (public/ locked)")
+    for p in out_dark:
+        save_webp(dark, p, 84, force=force)
+    for p in out_light:
+        save_webp(light, p, 84, force=force)
     d480 = dark.resize((480, int(1747 * 480 / 800)), Image.Resampling.LANCZOS)
     l480 = light.resize((480, int(1747 * 480 / 800)), Image.Resampling.LANCZOS)
-    for p in cfg["out_dark_480"]:
-        save_webp(d480, p, 80)
-    for p in cfg["out_light_480"]:
-        save_webp(l480, p, 80)
+    for p in out_dark_480:
+        save_webp(d480, p, 80, force=force)
+    for p in out_light_480:
+        save_webp(l480, p, 80, force=force)
 
 
 def main() -> None:
-    arg = (sys.argv[1] if len(sys.argv) > 1 else "both").lower().strip()
+    args = [a.lower().strip() for a in sys.argv[1:]]
+    force = "--force" in args or "--force-female" in args
+    # Keep --force-female as alias for --force (female-only historical flag).
+    figures = [a for a in args if a not in ("--force", "--force-female")]
+    arg = figures[0] if figures else "both"
     if arg in ("both", "all"):
-        # Female first (locked master); male second.
-        # Skip rewriting female public assets unless --force-female.
-        force_female = "--force-female" in sys.argv
-        if force_female:
-            build_figure("female")
-        else:
-            # Ensure female named aliases exist without regenerating grade from cutout.
-            for src, dst in [
-                ("public/hdm-human.webp", "public/hdm-human-female.webp"),
-                ("public/hdm-human-light.webp", "public/hdm-human-female-light.webp"),
-                ("public/hdm-human-480.webp", "public/hdm-human-female-480.webp"),
-                ("public/hdm-human-light-480.webp", "public/hdm-human-female-light-480.webp"),
-            ]:
-                sp, dp = ROOT / src, ROOT / dst
-                if sp.exists() and (not dp.exists() or dp.stat().st_mtime < sp.stat().st_mtime):
-                    dp.write_bytes(sp.read_bytes())
-                    print("synced", dp)
-        build_figure("male")
+        build_figure("female", force=force)
+        build_figure("male", force=force)
         return
     if arg not in FIGURES:
-        raise SystemExit(f"unknown figure {arg!r}; use female|male|both")
-    build_figure(arg)
+        raise SystemExit(f"unknown figure {arg!r}; use female|male|both [--force]")
+    build_figure(arg, force=force)
 
 
 if __name__ == "__main__":

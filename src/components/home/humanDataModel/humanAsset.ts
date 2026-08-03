@@ -1,4 +1,9 @@
-/** Photorealistic standing human cutout with math data-viz overlay — WebP + alpha (LCP). */
+/**
+ * Photorealistic standing human cutout with math data-viz overlay — WebP + alpha (LCP).
+ *
+ * Paths are frozen production assets under public/. Canonical locked copies live in
+ * scripts/hdm-locked/ — see docs/ops/hdm-figures.md. Do not point these at temp outputs.
+ */
 
 export type HumanFigure = 'female' | 'male';
 
@@ -11,6 +16,7 @@ type FigureSrcs = {
   light480: string;
 };
 
+/** Frozen public URLs (must match scripts/hdm-locked/ masters). */
 const FIGURE_SRCS: Record<HumanFigure, FigureSrcs> = {
   female: {
     dark: '/hdm-human-female.webp',
