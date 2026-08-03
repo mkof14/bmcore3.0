@@ -38,8 +38,11 @@ function hexToRgba(hex: string, alpha: number): string {
   return `rgba(${r},${g},${b},${alpha})`;
 }
 
-/** +40% figure and category cubes vs previous layout. */
-const SCALE = 1.4;
+/**
+ * Hotspot size relative to the body-cube grid cell.
+ * Keep well below 1 so the WebP silhouette (head/torso/limbs) stays the readable figure.
+ */
+const SCALE = 0.72;
 
 /** Catalog order 01–10 left, 11–20 right. */
 const LEFT_IDS = [
@@ -196,7 +199,8 @@ function CategoryColumn({
 }
 
 /**
- * Sharp human + 20 category cubes, with colored text columns on both sides.
+ * Clear human-body silhouette (WebP) with math data-viz fill.
+ * Category cubes are translucent hotspots inside the contour — not the figure itself.
  */
 export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
   const { t } = useTranslation();
@@ -254,6 +258,8 @@ export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
 
       <div
         className="relative shrink-0"
+        role="img"
+        aria-label={t('home.modelTitle')}
         style={{
           height: 'min(90vh, 1232px)',
           aspectRatio: HUMAN_ASPECT,
@@ -274,21 +280,33 @@ export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
 
         <img
           key={dark ? 'hdm-dark' : 'hdm-light'}
-          src={`${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=11`}
-          srcSet={`${dark ? HUMAN_SRC_DARK_480 : HUMAN_SRC_LIGHT_480}?v=11 480w, ${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=11 800w`}
+          src={`${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=12`}
+          srcSet={`${dark ? HUMAN_SRC_DARK_480 : HUMAN_SRC_LIGHT_480}?v=12 480w, ${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=12 800w`}
           sizes="(max-width: 640px) 48vw, min(52vw, 728px)"
-          alt="Human Data Model"
+          alt=""
           width={HUMAN_W}
           height={HUMAN_H}
           fetchPriority="high"
           decoding="async"
-          className="pointer-events-none absolute inset-0 z-10 h-full w-full object-fill select-none transition-[filter,opacity] duration-200 ease-out"
+          className="pointer-events-none absolute inset-0 z-10 h-full w-full object-contain select-none transition-[filter,opacity] duration-200 ease-out"
           style={{
             filter: dark
-              ? 'brightness(0.95) contrast(1.04)'
-              : 'brightness(1.02) contrast(1.03)',
+              ? 'brightness(1.02) contrast(1.06)'
+              : 'brightness(1.01) contrast(1.04)',
           }}
           draggable={false}
+          aria-hidden
+        />
+
+        {/* Subtle body wash so limbs stay readable under hotspots */}
+        <div
+          className="pointer-events-none absolute inset-0 z-[11]"
+          style={{
+            background: dark
+              ? 'radial-gradient(ellipse 42% 70% at 50% 42%, rgba(56,189,248,0.08), transparent 72%)'
+              : 'radial-gradient(ellipse 42% 70% at 50% 42%, rgba(14,165,233,0.06), transparent 72%)',
+          }}
+          aria-hidden
         />
 
         <div className="absolute inset-0 z-20" style={{ perspective: 900 }}>
@@ -296,6 +314,7 @@ export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
             const hoverKey = cube.categoryId;
             const isHot = hovered === hoverKey;
             const critical = cube.categoryId === 'critical-health';
+            const dimOthers = Boolean(hovered && !isHot);
 
             return (
               <button
@@ -312,30 +331,31 @@ export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
                   top: `${cube.top}%`,
                   width: `${sizeW}%`,
                   height: `${sizeH}%`,
-                  borderRadius: RADIUS * SCALE,
+                  borderRadius: Math.max(999, RADIUS * SCALE),
                   zIndex: isHot ? 50 : critical ? 28 : 24,
+                  opacity: dimOthers ? 0.22 : 1,
                   transform: isHot
-                    ? 'scale(1.22) translateZ(40px)'
+                    ? 'scale(1.35) translateZ(28px)'
                     : 'scale(1) translateZ(0)',
                   transition:
-                    'transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease, background-color 220ms ease, border-color 220ms ease',
+                    'transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease, background-color 220ms ease, border-color 220ms ease, opacity 180ms ease',
                   backgroundColor: isHot
-                    ? hexToRgba(cube.color, dark ? 0.42 : 0.4)
+                    ? hexToRgba(cube.color, dark ? 0.55 : 0.5)
                     : dark
-                      ? 'rgba(226,232,240,0.14)'
-                      : 'rgba(248,250,252,0.28)',
+                      ? 'rgba(226,232,240,0.06)'
+                      : 'rgba(15,23,42,0.05)',
                   border: isHot
-                    ? `2.5px solid ${cube.color}`
+                    ? `2px solid ${cube.color}`
                     : dark
-                      ? '2px solid rgba(226,232,240,0.42)'
-                      : '2px solid rgba(148,163,184,0.55)',
+                      ? '1.5px solid rgba(226,232,240,0.28)'
+                      : '1.5px solid rgba(71,85,105,0.32)',
                   boxShadow: isHot
-                    ? `0 16px 36px rgba(0,0,0,0.45), 0 0 24px ${cube.color}88`
+                    ? `0 12px 28px rgba(0,0,0,0.4), 0 0 20px ${cube.color}77`
                     : critical
-                      ? '0 0 0 1.5px rgba(255,255,255,0.55), 0 4px 14px rgba(0,0,0,0.2)'
-                      : dark
-                        ? '0 3px 10px rgba(0,0,0,0.25)'
-                        : '0 3px 10px rgba(15,23,42,0.1)',
+                      ? dark
+                        ? '0 0 0 1px rgba(248,250,252,0.35), 0 0 12px rgba(56,189,248,0.25)'
+                        : '0 0 0 1px rgba(15,23,42,0.2), 0 0 10px rgba(14,165,233,0.18)'
+                      : 'none',
                   cursor: 'pointer',
                 }}
                 aria-label={`${cube.name}, ${cube.serviceCount} services`}
@@ -347,22 +367,23 @@ export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
                     color: isHot
                       ? '#F8FAFC'
                       : dark
-                        ? 'rgba(226,232,240,0.7)'
-                        : 'rgba(71,85,105,0.75)',
+                        ? 'rgba(226,232,240,0.55)'
+                        : 'rgba(51,65,85,0.55)',
                     textShadow: isHot ? '0 1px 8px rgba(0,0,0,0.55)' : undefined,
-                    transition: 'color 220ms ease',
+                    transition: 'color 220ms ease, opacity 180ms ease',
+                    opacity: isHot ? 1 : 0.75,
                   }}
                 >
-                  <span style={{ fontSize: isHot ? '1.25rem' : '1.05rem', lineHeight: 1 }}>
+                  <span style={{ fontSize: isHot ? '0.95rem' : '0.72rem', lineHeight: 1 }}>
                     {cube.serviceCount}
                   </span>
                   <span
                     style={{
-                      marginTop: 2,
-                      fontSize: '0.55rem',
+                      marginTop: 1,
+                      fontSize: '0.45rem',
                       letterSpacing: '0.06em',
                       textTransform: 'uppercase',
-                      opacity: isHot ? 0.95 : 0.65,
+                      opacity: isHot ? 0.95 : 0.5,
                     }}
                   >
                     svc
