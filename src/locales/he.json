@@ -101,7 +101,12 @@
       "secondary": "צרו חשבון"
     },
     "seoTitle": "מודל נתוני אדם ביו־מתמטי",
-    "seoDescription": "BioMath Core בונה מודל נתוני אדם חי — תאום דיגיטלי ביו־מתמטי של הבריאות שלך — ומנחה באמצעות ניתוח כפול של Health Guide."
+    "seoDescription": "BioMath Core בונה מודל נתוני אדם חי — תאום דיגיטלי ביו־מתמטי של הבריאות שלך — ומנחה באמצעות ניתוח כפול של Health Guide.",
+    "figure": {
+      "female": "אישה",
+      "male": "גבר",
+      "toggleLabel": "דמות"
+    }
   },
   "about": {
     "label": "אודות BioMath Core",

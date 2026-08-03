@@ -1,16 +1,20 @@
 #!/usr/bin/env node
 /**
- * Rebuild HDM human WebPs from the photographic cutout master.
+ * Rebuild HDM human WebPs from photographic cutout masters.
  *
  * Source masters (checked in):
- *   scripts/hdm-human-photo-base.png   — full-body standing photo
- *   scripts/hdm-human-photo-cutout.png — alpha cutout (rembg)
+ *   scripts/hdm-human-female-photo-cutout.png — locked female alpha cutout
+ *   scripts/hdm-human-male-photo-cutout.png   — male alpha cutout
+ *   (legacy aliases: hdm-human-photo-cutout.png / photo-base.png)
  *
  * Output:
- *   public/hdm-human.webp (+ light + 480w variants)
+ *   public/hdm-human-female*.webp (+ legacy hdm-human*.webp aliases)
+ *   public/hdm-human-male*.webp
  *
- * Usage (repo root, Pillow required; rembg only if regenerating cutout):
- *   python3 scripts/generate-hdm-human.py
+ * Usage (repo root, Pillow required):
+ *   python3 scripts/generate-hdm-human.py          # male + sync female aliases
+ *   python3 scripts/generate-hdm-human.py male
+ *   python3 scripts/generate-hdm-human.py female --force-female
  */
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';

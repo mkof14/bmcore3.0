@@ -1,17 +1,58 @@
 #!/usr/bin/env python3
-"""Composite photorealistic HDM human: photo cutout + math overlay treatment."""
+"""Composite photorealistic HDM human: photo cutout + math overlay treatment.
+
+Supports female (locked) and male figures. Usage:
+  python3 scripts/generate-hdm-human.py            # both
+  python3 scripts/generate-hdm-human.py female
+  python3 scripts/generate-hdm-human.py male
+"""
 from __future__ import annotations
 
 import math
 import random
+import sys
 from pathlib import Path
 
 from PIL import Image, ImageChops, ImageDraw, ImageEnhance, ImageFilter
 
 ROOT = Path(__file__).resolve().parents[1]
-CUT = ROOT / "scripts/hdm-human-photo-cutout.png"
 OUT_W, OUT_H = 800, 1747
-rng = random.Random(42)
+
+FIGURES = {
+    "female": {
+        "cut": ROOT / "scripts/hdm-human-female-photo-cutout.png",
+        # Backward-compat aliases kept in sync with female.
+        "out_dark": [
+            ROOT / "public/hdm-human-female.webp",
+            ROOT / "public/hdm-human.webp",
+        ],
+        "out_light": [
+            ROOT / "public/hdm-human-female-light.webp",
+            ROOT / "public/hdm-human-light.webp",
+        ],
+        "out_dark_480": [
+            ROOT / "public/hdm-human-female-480.webp",
+            ROOT / "public/hdm-human-480.webp",
+        ],
+        "out_light_480": [
+            ROOT / "public/hdm-human-female-light-480.webp",
+            ROOT / "public/hdm-human-light-480.webp",
+        ],
+        "seed": 42,
+    },
+    "male": {
+        "cut": ROOT / "scripts/hdm-human-male-photo-cutout.png",
+        "out_dark": [ROOT / "public/hdm-human-male.webp"],
+        "out_light": [ROOT / "public/hdm-human-male-light.webp"],
+        "out_dark_480": [ROOT / "public/hdm-human-male-480.webp"],
+        "out_light_480": [ROOT / "public/hdm-human-male-light-480.webp"],
+        "seed": 77,
+    },
+}
+
+# Prefer new female cutout name; fall back to legacy master path.
+if not FIGURES["female"]["cut"].exists():
+    FIGURES["female"]["cut"] = ROOT / "scripts/hdm-human-photo-cutout.png"
 
 
 def fit_cutout(cut: Image.Image, tw: int, th: int, pad_frac: float = 0.045) -> Image.Image:
@@ -49,7 +90,7 @@ def clinical_grade(img: Image.Image, dark: bool) -> Image.Image:
     return Image.merge("RGBA", (*rgb.split(), a))
 
 
-def make_overlay(size: tuple[int, int], dark: bool) -> Image.Image:
+def make_overlay(size: tuple[int, int], dark: bool, rng: random.Random) -> Image.Image:
     w, h = size
     ov = Image.new("RGBA", size, (0, 0, 0, 0))
     d = ImageDraw.Draw(ov)
@@ -100,8 +141,9 @@ def thin_edge(alpha: Image.Image, dark: bool) -> Image.Image:
     return layer
 
 
-def compose(dark: bool) -> Image.Image:
-    cut = Image.open(CUT).convert("RGBA")
+def compose(cut_path: Path, dark: bool, seed: int) -> Image.Image:
+    rng = random.Random(seed + (1 if dark else 0))
+    cut = Image.open(cut_path).convert("RGBA")
     base = fit_cutout(cut, OUT_W, OUT_H)
     r, g, b, a = base.split()
     a = a.point(lambda v: 0 if v < 12 else v).filter(ImageFilter.GaussianBlur(0.4))
@@ -110,7 +152,7 @@ def compose(dark: bool) -> Image.Image:
     wash = Image.new("RGBA", graded.size, (15, 23, 42, 0) if dark else (241, 245, 249, 0))
     wash.putalpha(a.point(lambda v: int(v * (0.28 if dark else 0.12))))
     graded = Image.alpha_composite(graded, wash)
-    ov = make_overlay(graded.size, dark=dark)
+    ov = make_overlay(graded.size, dark=dark, rng=rng)
     ov_r, ov_g, ov_b, ov_a = ov.split()
     ov_a = ImageChops.multiply(ov_a, a.point(lambda v: int(v * 0.85)))
     graded = Image.alpha_composite(graded, Image.merge("RGBA", (ov_r, ov_g, ov_b, ov_a)))
@@ -120,21 +162,56 @@ def compose(dark: bool) -> Image.Image:
 
 
 def save_webp(im: Image.Image, path: Path, quality: int = 82) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     im.save(path, "WEBP", quality=quality, method=6)
     print("wrote", path, path.stat().st_size)
 
 
-def main() -> None:
-    if not CUT.exists():
-        raise SystemExit(f"missing cutout master: {CUT}")
-    dark = compose(True)
-    light = compose(False)
-    save_webp(dark, ROOT / "public/hdm-human.webp", 84)
-    save_webp(light, ROOT / "public/hdm-human-light.webp", 84)
+def build_figure(name: str) -> None:
+    cfg = FIGURES[name]
+    cut = cfg["cut"]
+    if not cut.exists():
+        raise SystemExit(f"missing cutout master for {name}: {cut}")
+    # Do not regenerate female from scratch unless cutout exists — still OK to rebuild grade.
+    dark = compose(cut, True, cfg["seed"])
+    light = compose(cut, False, cfg["seed"])
+    for p in cfg["out_dark"]:
+        save_webp(dark, p, 84)
+    for p in cfg["out_light"]:
+        save_webp(light, p, 84)
     d480 = dark.resize((480, int(1747 * 480 / 800)), Image.Resampling.LANCZOS)
     l480 = light.resize((480, int(1747 * 480 / 800)), Image.Resampling.LANCZOS)
-    save_webp(d480, ROOT / "public/hdm-human-480.webp", 80)
-    save_webp(l480, ROOT / "public/hdm-human-light-480.webp", 80)
+    for p in cfg["out_dark_480"]:
+        save_webp(d480, p, 80)
+    for p in cfg["out_light_480"]:
+        save_webp(l480, p, 80)
+
+
+def main() -> None:
+    arg = (sys.argv[1] if len(sys.argv) > 1 else "both").lower().strip()
+    if arg in ("both", "all"):
+        # Female first (locked master); male second.
+        # Skip rewriting female public assets unless --force-female.
+        force_female = "--force-female" in sys.argv
+        if force_female:
+            build_figure("female")
+        else:
+            # Ensure female named aliases exist without regenerating grade from cutout.
+            for src, dst in [
+                ("public/hdm-human.webp", "public/hdm-human-female.webp"),
+                ("public/hdm-human-light.webp", "public/hdm-human-female-light.webp"),
+                ("public/hdm-human-480.webp", "public/hdm-human-female-480.webp"),
+                ("public/hdm-human-light-480.webp", "public/hdm-human-female-light-480.webp"),
+            ]:
+                sp, dp = ROOT / src, ROOT / dst
+                if sp.exists() and (not dp.exists() or dp.stat().st_mtime < sp.stat().st_mtime):
+                    dp.write_bytes(sp.read_bytes())
+                    print("synced", dp)
+        build_figure("male")
+        return
+    if arg not in FIGURES:
+        raise SystemExit(f"unknown figure {arg!r}; use female|male|both")
+    build_figure(arg)
 
 
 if __name__ == "__main__":

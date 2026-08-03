@@ -101,7 +101,12 @@
       "secondary": "Konto erstellen"
     },
     "seoTitle": "Biomathematisches Human Data Model",
-    "seoDescription": "BioMath Core baut ein lebendiges Human Data Model — einen biomathematischen digitalen Zwilling Ihrer Gesundheit — und führt Sie mit der Dualanalyse von Health Guide."
+    "seoDescription": "BioMath Core baut ein lebendiges Human Data Model — einen biomathematischen digitalen Zwilling Ihrer Gesundheit — und führt Sie mit der Dualanalyse von Health Guide.",
+    "figure": {
+      "female": "Frau",
+      "male": "Mann",
+      "toggleLabel": "Figur"
+    }
   },
   "about": {
     "label": "Über BioMath Core",

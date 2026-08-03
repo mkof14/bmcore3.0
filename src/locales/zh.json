@@ -101,7 +101,12 @@
       "secondary": "创建账户"
     },
     "seoTitle": "生物数学人体数据模型",
-    "seoDescription": "BioMath Core 构建活体人体数据模型——健康的生物数学数字孪生——并通过 Health Guide 双分析为您指引。"
+    "seoDescription": "BioMath Core 构建活体人体数据模型——健康的生物数学数字孪生——并通过 Health Guide 双分析为您指引。",
+    "figure": {
+      "female": "女性",
+      "male": "男性",
+      "toggleLabel": "人形"
+    }
   },
   "about": {
     "label": "关于 BioMath Core",

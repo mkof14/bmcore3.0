@@ -101,7 +101,12 @@
       "secondary": "アカウント作成"
     },
     "seoTitle": "生物数学的ヒューマンデータモデル",
-    "seoDescription": "BioMath Core は生きたヒューマンデータモデル — 健康の生物数学的デジタルツイン — を構築し、Health Guide のデュアル分析で導きます。"
+    "seoDescription": "BioMath Core は生きたヒューマンデータモデル — 健康の生物数学的デジタルツイン — を構築し、Health Guide のデュアル分析で導きます。",
+    "figure": {
+      "female": "女性",
+      "male": "男性",
+      "toggleLabel": "体型"
+    }
   },
   "about": {
     "label": "BioMath Core について",

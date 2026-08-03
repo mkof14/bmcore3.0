@@ -101,7 +101,12 @@
       "secondary": "Crear cuenta"
     },
     "seoTitle": "Modelo de Datos Humanos biomatemático",
-    "seoDescription": "BioMath Core construye un Modelo de Datos Humanos vivo — un gemelo digital biomatemático de tu salud — y te orienta con el análisis dual de Health Guide."
+    "seoDescription": "BioMath Core construye un Modelo de Datos Humanos vivo — un gemelo digital biomatemático de tu salud — y te orienta con el análisis dual de Health Guide.",
+    "figure": {
+      "female": "Mujer",
+      "male": "Hombre",
+      "toggleLabel": "Figura"
+    }
   },
   "about": {
     "label": "Acerca de BioMath Core",

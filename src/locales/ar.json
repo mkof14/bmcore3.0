@@ -101,7 +101,12 @@
       "secondary": "إنشاء حساب"
     },
     "seoTitle": "نموذج بيانات بشرية بيومرياضي",
-    "seoDescription": "يبني BioMath Core نموذج بيانات بشرية حيًا — توأمًا رقميًا بيومرياضيًا لصحتك — ويرشدك بتحليل Health Guide المزدوج."
+    "seoDescription": "يبني BioMath Core نموذج بيانات بشرية حيًا — توأمًا رقميًا بيومرياضيًا لصحتك — ويرشدك بتحليل Health Guide المزدوج.",
+    "figure": {
+      "female": "امرأة",
+      "male": "رجل",
+      "toggleLabel": "الشكل"
+    }
   },
   "about": {
     "label": "عن BioMath Core",

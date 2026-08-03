@@ -101,7 +101,12 @@
       "secondary": "Créer un compte"
     },
     "seoTitle": "Modèle de données humaines biomathématique",
-    "seoDescription": "BioMath Core construit un Modèle de données humaines vivant — un jumeau numérique biomathématique de votre santé — et vous guide avec l’analyse duale de Health Guide."
+    "seoDescription": "BioMath Core construit un Modèle de données humaines vivant — un jumeau numérique biomathématique de votre santé — et vous guide avec l’analyse duale de Health Guide.",
+    "figure": {
+      "female": "Femme",
+      "male": "Homme",
+      "toggleLabel": "Figure"
+    }
   },
   "about": {
     "label": "À propos de BioMath Core",

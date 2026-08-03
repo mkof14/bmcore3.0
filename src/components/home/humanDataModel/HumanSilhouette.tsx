@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TFunction } from 'i18next';
 import { categoryAccent } from '../../../data/categoryTheme';
@@ -16,11 +16,11 @@ import { categoryIcon } from './icons';
 import {
   HUMAN_ASPECT,
   HUMAN_H,
-  HUMAN_SRC_DARK,
-  HUMAN_SRC_DARK_480,
-  HUMAN_SRC_LIGHT,
-  HUMAN_SRC_LIGHT_480,
   HUMAN_W,
+  type HumanFigure,
+  humanSrcs,
+  readStoredHumanFigure,
+  storeHumanFigure,
 } from './humanAsset';
 import { localizeCategory } from '../../../lib/localizeServices';
 
@@ -28,6 +28,8 @@ interface Props {
   dark: boolean;
   onSelectCategory: (id: string) => void;
 }
+
+const FIGURE_CACHE = 'v=15';
 
 function hexToRgba(hex: string, alpha: number): string {
   const h = hex.replace('#', '');
@@ -198,6 +200,68 @@ function CategoryColumn({
   );
 }
 
+function FigureToggle({
+  figure,
+  onChange,
+  dark,
+}: {
+  figure: HumanFigure;
+  onChange: (next: HumanFigure) => void;
+  dark: boolean;
+}) {
+  const { t } = useTranslation();
+  const options: { id: HumanFigure; label: string }[] = [
+    { id: 'female', label: t('home.figure.female') },
+    { id: 'male', label: t('home.figure.male') },
+  ];
+
+  return (
+    <div
+      role="group"
+      aria-label={t('home.figure.toggleLabel')}
+      className="inline-flex items-center rounded-md p-0.5"
+      style={{
+        background: dark ? 'rgba(226,232,240,0.08)' : 'rgba(15,23,42,0.06)',
+        border: dark ? '1px solid rgba(226,232,240,0.14)' : '1px solid rgba(15,23,42,0.1)',
+      }}
+    >
+      {options.map((opt) => {
+        const active = figure === opt.id;
+        return (
+          <button
+            key={opt.id}
+            type="button"
+            aria-pressed={active}
+            onClick={() => onChange(opt.id)}
+            className="rounded px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-[0.14em] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400/70"
+            style={{
+              color: active
+                ? dark
+                  ? '#F8FAFC'
+                  : '#0F172A'
+                : dark
+                  ? 'rgba(226,232,240,0.55)'
+                  : 'rgba(15,23,42,0.45)',
+              background: active
+                ? dark
+                  ? 'rgba(148,163,184,0.22)'
+                  : 'rgba(255,255,255,0.92)'
+                : 'transparent',
+              boxShadow: active
+                ? dark
+                  ? 'inset 0 0 0 1px rgba(226,232,240,0.18)'
+                  : '0 1px 2px rgba(15,23,42,0.08)'
+                : 'none',
+            }}
+          >
+            {opt.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 /**
  * Photorealistic standing human (WebP) with math data-viz as overlay treatment.
  * Category cubes are translucent hotspots on body landmarks — not the figure itself.
@@ -205,6 +269,20 @@ function CategoryColumn({
 export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
   const { t } = useTranslation();
   const [hovered, setHovered] = useState<string | null>(null);
+  const [figure, setFigure] = useState<HumanFigure>('female');
+
+  useEffect(() => {
+    setFigure(readStoredHumanFigure());
+  }, []);
+
+  const setFigurePersist = (next: HumanFigure) => {
+    setFigure(next);
+    storeHumanFigure(next);
+  };
+
+  const srcs = humanSrcs(figure);
+  const primarySrc = dark ? srcs.dark : srcs.light;
+  const src480 = dark ? srcs.dark480 : srcs.light480;
 
   const baseW = BODY_CUBES[0]?.sizeW ?? 16;
   const baseH = BODY_CUBES[0]?.sizeH ?? 7.3;
@@ -258,8 +336,6 @@ export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
 
       <div
         className="relative shrink-0"
-        role="img"
-        aria-label={t('home.modelTitle')}
         style={{
           height: 'min(90vh, 1232px)',
           aspectRatio: HUMAN_ASPECT,
@@ -267,6 +343,17 @@ export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
           width: 'auto',
         }}
       >
+        <div className="absolute left-1/2 top-1 z-30 -translate-x-1/2">
+          <FigureToggle figure={figure} onChange={setFigurePersist} dark={dark} />
+        </div>
+
+        <div
+          className="relative h-full w-full"
+          role="img"
+          aria-label={`${t('home.modelTitle')} — ${
+            figure === 'female' ? t('home.figure.female') : t('home.figure.male')
+          }`}
+        >
         <div
           className="pointer-events-none absolute inset-[1%] rounded-[40%] blur-3xl"
           style={{
@@ -279,9 +366,9 @@ export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
         />
 
         <img
-          key={dark ? 'hdm-dark' : 'hdm-light'}
-          src={`${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=14`}
-          srcSet={`${dark ? HUMAN_SRC_DARK_480 : HUMAN_SRC_LIGHT_480}?v=14 480w, ${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=14 800w`}
+          key={`${figure}-${dark ? 'dark' : 'light'}`}
+          src={`${primarySrc}?${FIGURE_CACHE}`}
+          srcSet={`${src480}?${FIGURE_CACHE} 480w, ${primarySrc}?${FIGURE_CACHE} 800w`}
           sizes="(max-width: 640px) 48vw, min(52vw, 728px)"
           alt=""
           width={HUMAN_W}
@@ -392,6 +479,7 @@ export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
               </button>
             );
           })}
+        </div>
         </div>
       </div>
 

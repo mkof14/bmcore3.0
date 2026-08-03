@@ -101,6 +101,11 @@
       "description": "Start with a plan that deepens your biomathematical context. Health Guide delivers dual-model guidance — not generic personalization.",
       "primary": "View pricing",
       "secondary": "Create account"
+    },
+    "figure": {
+      "female": "Woman",
+      "male": "Man",
+      "toggleLabel": "Figure"
     }
   },
   "about": {
