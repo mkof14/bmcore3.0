@@ -1,0 +1,191 @@
+{
+  "reportTemplate": {
+    "fallbackTitle": "Wellness-Bericht",
+    "footer": "Nur bildungsorientierte Wellness-Hinweise. Keine medizinische Diagnose. Besprechen Sie Fragen bei Bedarf mit einer qualifizierten Fachkraft. Health Guide hilft bei den nächsten Schritten.",
+    "meta": {
+      "type": "Typ",
+      "generated": "Erstellt",
+      "id": "Berichts-ID"
+    },
+    "typeLabel": {
+      "general": "Allgemein",
+      "thematic": "Thematisch",
+      "dynamic": "Dynamisch",
+      "device_enhanced": "Gerätegestützt"
+    },
+    "title": {
+      "general": "Persönlicher Wellness-Bericht",
+      "thematic": "Thematischer Wellness-Bericht",
+      "dynamic": "Fortschrittsvergleichsbericht",
+      "device_enhanced": "Gerätegestützter Wellness-Bericht",
+      "service": "{{service}} — personalisierter Bericht",
+      "topic": "{{topic}} — personalisierter Bericht"
+    },
+    "section": {
+      "summary": "Zusammenfassung",
+      "profile": "Aus dem Fragebogen abgeleitetes Profil",
+      "focusAreas": "Schwerpunkte",
+      "insights": "Wichtige Erkenntnisse",
+      "analysis": "Analyse",
+      "recommendations": "Empfehlungsrahmen",
+      "nextSteps": "Nächste Schritte",
+      "healthGuidePrompt": "Vorgeschlagene Health-Guide-Eingabe",
+      "secondOpinionA": "Perspektive A",
+      "secondOpinionB": "Perspektive B"
+    },
+    "linkage": {
+      "green": "stark",
+      "yellow": "teilweise",
+      "red": "begrenzt"
+    },
+    "summary": {
+      "opening": "Dieser {{subject}}-Bericht basiert auf Ihrem persönlichen Kontext (Bereitschaft {{score}} %, Fragebogen {{questionnaire}} %).",
+      "educational": "Es handelt sich um strukturierte bildungsorientierte Wellness-Hinweise, keine klinische Diagnose."
+    },
+    "tone": {
+      "analytical": {
+        "summaryLead": "Der Text betont messbare Muster, Bereitschaftssignale und klare Abwägungen.",
+        "analysisLead": "Analytische Sicht: Wir ordnen Ihre Signale in strukturierte Beobachtungen und praktische Hebel."
+      },
+      "supportive": {
+        "summaryLead": "Der Text bleibt ruhig, ermutigend und auf nachhaltige Gewohnheiten ausgerichtet.",
+        "analysisLead": "Unterstützende Sicht: Wir heben hervor, was bereits funktioniert, und wo sanfte Anpassungen helfen können."
+      },
+      "coaching": {
+        "summaryLead": "Der Text ist handlungsorientiert, mit klaren Gewohnheiten und Verantwortungshinweisen.",
+        "analysisLead": "Coaching-Sicht: Wir übersetzen Ihren Kontext in konkrete Übungsblöcke für diese Woche."
+      }
+    },
+    "toneShort": {
+      "analytical": "analytisch",
+      "supportive": "unterstützend",
+      "coaching": "coachingorientiert"
+    },
+    "profile": {
+      "memberFallback": "Mitglied",
+      "tierNone": "nicht festgelegt",
+      "intro": "{{name}}: Fragebogen zu {{questionnaire}} % ausgefüllt · Gesamtbereitschaft {{score}} %.",
+      "signals": "Profilsignale: {{blurb}}",
+      "activeSections": "Aktivste Fragebogenbereiche: {{sections}}.",
+      "noSections": "Noch keine Fragebogenabschnitte mit wesentlichen Antworten.",
+      "assets": "Verbundene Geräte: {{devices}}. Gesundheitsdokumente: {{files}}. Plan: {{tier}}.",
+      "linkage": "Die Verknüpfung des persönlichen Kontexts ist {{health}}."
+    },
+    "focus": {
+      "lifestyle": "Stabilisieren Sie Alltagsroutinen, die Energie, Erholung und Stimmung stützen.",
+      "risk_awareness": "Beobachten Sie frühe Signale längerfristiger Risiken und handeln Sie präventiv.",
+      "performance": "Schützen Sie Kapazität für Fokus, Training und Erholung und vermeiden Sie Überlastung.",
+      "fromSection": "Vertiefen Sie Klarheit in {{section}} anhand Ihres Fragebogenfortschritts.",
+      "fromService": "Behalten Sie {{service}} als Hauptfokus dieses Berichtszyklus.",
+      "devices": "Nutzen Sie Trends Ihrer {{count}} verknüpften Geräte(s), um zu prüfen, wie Gewohnheiten im Alltag ankommen.",
+      "consistency": "Bevorzugen Sie kleine, wiederholbare Gewohnheiten statt kurzer intensiver Schübe."
+    },
+    "focusShort": {
+      "lifestyle": "Lebensstil",
+      "risk_awareness": "Risikobewusstsein",
+      "performance": "Leistungsfähigkeit"
+    },
+    "focusDetail": {
+      "lifestyle": "Fokus — Lebensstil: Schlafzeiten, kurze Bewegung, Essensrhythmus und Stresserholung.",
+      "risk_awareness": "Fokus — Risikobewusstsein: Frühwarnmuster, Prävention und wann eine Fachkraft hinzuziehen.",
+      "performance": "Fokus — Leistungsfähigkeit: Kapazität, Erholungsschulden und nachhaltige Intensität."
+    },
+    "priority": {
+      "preventive_first": "Priorität — Prävention zuerst: Reibung verringern, die zu Rückschlägen werden könnte.",
+      "physiological_first": "Priorität — Physiologie zuerst: Schlaf, Erholung und Basisregulation vor Optimierung schützen.",
+      "behavioral_first": "Priorität — Verhalten zuerst: Cue–Routine–Belohnung-Schleifen ändern, die den Alltag prägen."
+    },
+    "priorityShort": {
+      "preventive_first": "Prävention",
+      "physiological_first": "Physiologie",
+      "behavioral_first": "Verhalten"
+    },
+    "analysis": {
+      "context": "Snapshot des persönlichen Kontexts: {{blurb}} (Bereitschaft {{score}} %).",
+      "service": "Service-Fokus: {{service}}. Die folgenden Empfehlungen bleiben bildungsorientiert und servicebezogen.",
+      "question": "Ihre Frage für diesen Bericht: {{question}}",
+      "devices": "Geräteebene: {{count}} Quelle(n) ({{brands}}). Behandeln Sie Signale als Trends, nicht als Diagnosen.",
+      "extended": "Erweiterte Detailtiefe: Vergleichen Sie Fragebogen-Highlights mit aktueller Service-Aktivität und Geräteabdeckung, um Lücken zwischen Absicht und Alltagspraxis zu finden.",
+      "sectionsDeep": "Derzeit stärkste Fragebogentiefe in: {{sections}}.",
+      "shortClose": "Kurzform: eine Hauptgewohnheit, eine Erholungspraxis und ein Check-in mit Health Guide diese Woche.",
+      "standardClose": "Standardform: Kombinieren Sie einen Schwerpunkt mit einer messbaren Wochengewohnheit und prüfen Sie den Fortschritt in der Mitgliederzone.",
+      "disclaimer": "Dieser Bericht diagnostiziert nicht, behandelt nicht und ersetzt keine professionelle medizinische Versorgung."
+    },
+    "insight": {
+      "completeness": "Bereitschaft {{score}} % (Fragebogen {{questionnaire}} % · Profil {{profile}} %).",
+      "linkage": "Verknüpfungsstatus: {{health}}.",
+      "focus": {
+        "lifestyle": "Lebensstilsignale sollten die nächsten Gewohnheitsexperimente leiten.",
+        "risk_awareness": "Prävention und frühe Signale sollten die nächsten Gewohnheitsexperimente leiten.",
+        "performance": "Kapazitäts- und Erholungsgleichgewicht sollten die nächsten Gewohnheitsexperimente leiten."
+      },
+      "service": "Service-Ausrichtung: {{service}}.",
+      "question": "Berichtsfrage erfasst: {{question}}",
+      "devices": "Geräteabdeckung vorhanden ({{count}}).",
+      "noDevices": "Noch keine Geräte verknüpft — Fragebogen und Profil tragen mehr Kontextgewicht.",
+      "topSection": "Stärkster Fragebogen-Signalbereich: {{section}}."
+    },
+    "rec": {
+      "preventive_first": {
+        "title": "Präventionsblock",
+        "body": "Wählen Sie eine reibungsarme Gewohnheit, die Überlastung diese Woche verringert (früherer Feierabend, Hydratationsanker oder kurzer täglicher Spaziergang)."
+      },
+      "physiological_first": {
+        "title": "Physiologieblock",
+        "body": "Schützen Sie ein konsistentes Schlaffenster und ergänzen Sie eine Erholungspraxis, bevor Intensität oder neue Ziele steigen."
+      },
+      "behavioral_first": {
+        "title": "Verhaltensblock",
+        "body": "Definieren Sie einen klaren Cue und eine 10-Minuten-Startrroutine, damit die Gewohnheit auch an vollen Tagen hält."
+      },
+      "lifestyle": {
+        "title": "Lebensstil-Rhythmus",
+        "body": "Stimmen Sie Mahlzeiten, Tageslicht und Bewegung auf die Stunden ab, in denen Sie sich am stabilsten fühlen."
+      },
+      "risk_awareness": {
+        "title": "Risikobewusster Check-in",
+        "body": "Notieren Sie neue oder sich verschlechternde Symptome und suchen Sie bei Anhalten eine Fachkraft auf; Health Guide nur für den bildungsorientierten Rahmen nutzen."
+      },
+      "performance": {
+        "title": "Leistungsbalance",
+        "body": "Kombinieren Sie Trainings- oder Deep-Work-Blöcke mit gleichwertigen Erholungsblöcken für nachhaltigen Fortschritt."
+      },
+      "questionnaire": {
+        "title": "Fragebogen aktuell halten",
+        "body": "Ihr Fragebogen ist zu {{percent}} % ausgefüllt. Aktualisieren Sie Abschnitte bei Zustandsänderungen, damit künftige Berichte genau bleiben."
+      },
+      "service": {
+        "title": "Mit {{service}} fortfahren",
+        "body": "Kehren Sie nach einer Empfehlung zum {{service}}-Arbeitsbereich zurück und halten Sie fest, was sich geändert hat."
+      },
+      "devices": {
+        "title": "Optionale Geräteebene",
+        "body": "Verknüpfen Sie bei Bedarf ein Wearable, damit Trends den Fragebogenkontext ergänzen."
+      },
+      "devicesActive": {
+        "title": "Gerätetrends prüfen",
+        "body": "Sehen Sie sich die letzte Woche Ihrer {{count}} verknüpften Geräte an und notieren Sie ein Muster, das zu Ihrem Empfinden passt."
+      }
+    },
+    "next": {
+      "review": "Lesen Sie die Schwerpunkte und wählen Sie eine Empfehlung für sieben Tage.",
+      "healthGuide": "Öffnen Sie Health Guide mit der vorgeschlagenen Eingabe, um Abwägungen zu erkunden.",
+      "completeQuestionnaires": "Vervollständigen Sie weitere Fragebogenabschnitte, damit der nächste Bericht stärker personalisiert werden kann.",
+      "refreshQuestionnaires": "Aktualisieren Sie veraltete Antworten nach bedeutsamen Lebensstiländerungen.",
+      "connectDevice": "Verbinden Sie optional ein Gerät, um den Trendkontext zu bereichern.",
+      "focus": {
+        "lifestyle": "Planen Sie Lebensstilgewohnheiten im Kalender statt nur auf Motivation zu setzen.",
+        "risk_awareness": "Notieren Sie zwei frühe Signale, die Sie diese Woche beobachten.",
+        "performance": "Legen Sie eine Erholungsuntergrenze fest, bevor die Belastung steigt."
+      }
+    },
+    "healthGuidePrompt": "Anhand meines persönlichen Kontexts ({{blurb}}; Bereitschaft {{score}} %) hilf mir, die nächste Woche um {{service}} zu planen. Meine Frage: {{question}}. Halte die Hinweise bildungsorientiert und praktisch.",
+    "healthGuidePromptGeneral": "allgemeines Wohlbefinden",
+    "healthGuidePromptDefaultQuestion": "Was sollte ich zuerst priorisieren?",
+    "secondOpinion": {
+      "subjectGeneral": "Ihr allgemeines Wohlbefinden",
+      "a": "Perspektive A zu {{subject}}: priorisieren Sie {{priority}} anhand Ihrer aktuellen Signale ({{blurb}}). Halten Sie Änderungen klein genug für den Alltag.",
+      "b": "Perspektive B zu {{subject}}: betonen Sie {{focus}} in einem {{tone}} Ton. Kombinieren Sie Einsatz mit Erholung und prüfen Sie nach einer Woche erneut."
+    }
+  }
+}

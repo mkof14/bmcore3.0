@@ -260,7 +260,7 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
         return <QuestionnairesSection onNavigateSection={setCurrentSection} />;
 
       case 'reports':
-        return <MyReportsSection />;
+        return <MyReportsSection onNavigateSection={setCurrentSection} />;
 
       case 'signal-hub':
         return <SignalHubSection />;

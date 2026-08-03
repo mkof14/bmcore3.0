@@ -14,6 +14,8 @@ const MOCK_QUESTIONNAIRE_PREFIX = 'bmcore.mock.questionnaire.';
 const MOCK_HEALTH_REPORTS_KEY = 'bmcore.mock.health_reports.v1';
 const MOCK_MEDICAL_FILES_KEY = 'bmcore.mock.medical_files.v1';
 const MOCK_USER_DEVICES_KEY = 'bmcore.mock.user_devices.v1';
+const MOCK_REPORT_SETTINGS_KEY = 'bmcore.mock.report_settings.v1';
+const MOCK_SHAREABLE_REPORTS_KEY = 'bmcore.mock.shareable_reports.v1';
 const SUPERADMIN_ID = '00000000-0000-4000-8000-000000000001';
 
 type MockAuthState = {
@@ -277,7 +279,65 @@ function createMockQuery(table: string) {
       }
 
       const filtered = userId ? all.filter((r) => r.user_id === userId) : all;
+      if (filters.id) {
+        return emptyResult(filtered.find((r) => r.id === filters.id) || null);
+      }
       return emptyResult(filtered[0] || null);
+    }
+
+    if (table === 'report_settings') {
+      const userId = filters.user_id || auth?.user.id;
+      const all = readMockJson<Array<Record<string, unknown>>>(MOCK_REPORT_SETTINGS_KEY, []);
+      if (op === 'insert' || op === 'upsert' || op === 'update') {
+        const payload = Array.isArray(updatePayload) ? updatePayload[0] : updatePayload;
+        const uid = payload?.user_id || userId;
+        const next = {
+          id: payload?.id || `mock-settings-${uid}`,
+          updated_at: new Date().toISOString(),
+          ...payload,
+          user_id: uid,
+        };
+        const others = all.filter((r) => r.user_id !== uid);
+        writeMockJson(MOCK_REPORT_SETTINGS_KEY, [next, ...others]);
+        return emptyResult(next);
+      }
+      return emptyResult(all.find((r) => r.user_id === userId) || null);
+    }
+
+    if (table === 'shareable_reports') {
+      const userId = filters.user_id || auth?.user.id;
+      const all = readMockJson<Array<Record<string, unknown>>>(MOCK_SHAREABLE_REPORTS_KEY, []);
+      if (op === 'insert' || op === 'upsert') {
+        const payload = Array.isArray(updatePayload) ? updatePayload[0] : updatePayload;
+        const now = new Date().toISOString();
+        const row = {
+          id: payload?.id || `mock-share-${Date.now()}`,
+          created_at: now,
+          views: 0,
+          ...payload,
+          user_id: payload?.user_id || userId,
+        };
+        writeMockJson(MOCK_SHAREABLE_REPORTS_KEY, [row, ...all]);
+        return emptyResult(row);
+      }
+      if (op === 'delete') {
+        const next = all.filter((r) => r.id !== filters.id);
+        writeMockJson(MOCK_SHAREABLE_REPORTS_KEY, next);
+        return emptyResult(null);
+      }
+      if (op === 'update') {
+        const idx = all.findIndex((r) => r.id === filters.id);
+        if (idx < 0) return emptyResult(null);
+        const next = { ...all[idx], ...updatePayload, updated_at: new Date().toISOString() };
+        const copy = [...all];
+        copy[idx] = next;
+        writeMockJson(MOCK_SHAREABLE_REPORTS_KEY, copy);
+        return emptyResult(next);
+      }
+      if (filters.share_token) {
+        return emptyResult(all.find((r) => r.share_token === filters.share_token) || null);
+      }
+      return emptyResult(all.find((r) => r.user_id === userId) || null);
     }
 
     if (table === 'medical_files') {
@@ -334,6 +394,23 @@ function createMockQuery(table: string) {
       const auth = readMockAuth();
       const userId = filters.user_id || auth?.user.id;
       const all = readMockHealthReports();
+      return emptyResult(userId ? all.filter((r) => r.user_id === userId) : all);
+    }
+
+    if (table === 'report_settings') {
+      const auth = readMockAuth();
+      const userId = filters.user_id || auth?.user.id;
+      const all = readMockJson<Array<Record<string, unknown>>>(MOCK_REPORT_SETTINGS_KEY, []);
+      return emptyResult(userId ? all.filter((r) => r.user_id === userId) : all);
+    }
+
+    if (table === 'shareable_reports') {
+      const auth = readMockAuth();
+      const userId = filters.user_id || auth?.user.id;
+      const all = readMockJson<Array<Record<string, unknown>>>(MOCK_SHAREABLE_REPORTS_KEY, []);
+      if (filters.share_token) {
+        return emptyResult(all.filter((r) => r.share_token === filters.share_token));
+      }
       return emptyResult(userId ? all.filter((r) => r.user_id === userId) : all);
     }
 
@@ -455,7 +532,15 @@ function createMockSupabaseClient() {
       unlinkIdentity: async () => ({ data: null, error: null }),
     },
     from: (table: string) => createMockQuery(table),
-    rpc: async () => emptyResult(null),
+    rpc: async (fn: string) => {
+      if (fn === 'check_advanced_mode_prerequisites') {
+        return emptyResult(true);
+      }
+      if (fn === 'increment_shareable_report_views') {
+        return emptyResult(null);
+      }
+      return emptyResult(null);
+    },
     channel: () => createMockChannel(),
     removeChannel: async () => 'ok',
     removeAllChannels: async () => [],

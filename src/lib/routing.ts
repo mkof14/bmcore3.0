@@ -49,13 +49,15 @@ export type AppPage =
   | 'why-two-models'
   | 'privacy-trust'
   | 'redeem-invitation'
-  | 'second-opinion-demo';
+  | 'second-opinion-demo'
+  | 'shared-report';
 
 export interface RouteState {
   page: AppPage;
   serviceDetailId: string;
   categoryFilter: string;
   memberServiceRef: string;
+  shareToken: string;
   /** When set, caller should replaceState to this URL (hash → path normalization). */
   normalizeUrl?: string;
 }
@@ -128,6 +130,7 @@ export const PAGE_PATHS: Partial<Record<AppPage, string>> & Record<string, strin
   'privacy-trust': '/privacy-trust',
   'redeem-invitation': '/redeem-invitation',
   'second-opinion-demo': '/second-opinion-demo',
+  'shared-report': '/share',
 };
 
 /** Extra path aliases → page key (sitemap / older links). */
@@ -172,6 +175,7 @@ function emptyRoute(page: AppPage = 'home'): RouteState {
     serviceDetailId: '',
     categoryFilter: '',
     memberServiceRef: '',
+    shareToken: '',
   };
 }
 
@@ -208,6 +212,10 @@ export function pageToPath(page: string, data?: string): string {
     return `${PAGE_PATHS['redeem-invitation'] ?? '/redeem-invitation'}?code=${encodeURIComponent(data)}`;
   }
 
+  if (key === 'shared-report' && data) {
+    return `/share/${encodeURIComponent(data)}`;
+  }
+
   return PAGE_PATHS[key] || '/';
 }
 
@@ -221,6 +229,14 @@ export function pathToRoute(pathname: string, search = ''): RouteState {
     return {
       ...emptyRoute('service-detail'),
       serviceDetailId: `${decodeURIComponent(serviceMatch[1])}/${decodeURIComponent(serviceMatch[2])}`,
+    };
+  }
+
+  const shareMatch = path.match(/^\/share\/([^/]+)$/);
+  if (shareMatch) {
+    return {
+      ...emptyRoute('shared-report'),
+      shareToken: decodeURIComponent(shareMatch[1]),
     };
   }
 

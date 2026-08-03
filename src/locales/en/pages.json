@@ -556,7 +556,10 @@
         "green": "Linkage healthy",
         "yellow": "Linkage partial",
         "red": "Linkage weak"
-      }
+      },
+      "insertTest": "Insert test report",
+      "insertSuccess": "Test report inserted for selected user",
+      "insertFailed": "Could not insert test report"
     }
   }
 }

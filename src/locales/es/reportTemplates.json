@@ -1,0 +1,191 @@
+{
+  "reportTemplate": {
+    "fallbackTitle": "Informe de bienestar",
+    "footer": "Orientación educativa de bienestar únicamente. No es un diagnóstico médico. Consulte a un clínico cualificado cuando sea necesario. Health Guide puede ayudarle a explorar los siguientes pasos.",
+    "meta": {
+      "type": "Tipo",
+      "generated": "Generado",
+      "id": "ID del informe"
+    },
+    "typeLabel": {
+      "general": "General",
+      "thematic": "Temático",
+      "dynamic": "Dinámico",
+      "device_enhanced": "Con dispositivos"
+    },
+    "title": {
+      "general": "Informe personal de bienestar",
+      "thematic": "Informe temático de bienestar",
+      "dynamic": "Informe de comparación de progreso",
+      "device_enhanced": "Informe de bienestar con dispositivos",
+      "service": "{{service}} — informe personalizado",
+      "topic": "{{topic}} — informe personalizado"
+    },
+    "section": {
+      "summary": "Resumen",
+      "profile": "Perfil derivado del cuestionario",
+      "focusAreas": "Áreas de enfoque",
+      "insights": "Ideas clave",
+      "analysis": "Análisis",
+      "recommendations": "Marco de recomendaciones",
+      "nextSteps": "Próximos pasos",
+      "healthGuidePrompt": "Indicación sugerida para Health Guide",
+      "secondOpinionA": "Perspectiva A",
+      "secondOpinionB": "Perspectiva B"
+    },
+    "linkage": {
+      "green": "sólido",
+      "yellow": "parcial",
+      "red": "limitado"
+    },
+    "summary": {
+      "opening": "Este informe de {{subject}} se compone a partir de su contexto personal (preparación {{score}}%, cuestionario {{questionnaire}}%).",
+      "educational": "Es orientación educativa de bienestar estructurada, no un diagnóstico clínico."
+    },
+    "tone": {
+      "analytical": {
+        "summaryLead": "La narrativa enfatiza patrones medibles, señales de preparación y equilibrios claros.",
+        "analysisLead": "Vista analítica: organizamos sus señales en observaciones estructuradas y palancas prácticas."
+      },
+      "supportive": {
+        "summaryLead": "La narrativa se mantiene calmada, alentadora y centrada en hábitos sostenibles.",
+        "analysisLead": "Vista de apoyo: destacamos lo que ya funciona y dónde ajustes suaves pueden ayudar."
+      },
+      "coaching": {
+        "summaryLead": "La narrativa está orientada a la acción, con hábitos claros y señales de responsabilidad.",
+        "analysisLead": "Vista de coaching: traducimos su contexto en bloques de práctica concretos para esta semana."
+      }
+    },
+    "toneShort": {
+      "analytical": "analítico",
+      "supportive": "de apoyo",
+      "coaching": "de coaching"
+    },
+    "profile": {
+      "memberFallback": "Miembro",
+      "tierNone": "sin definir",
+      "intro": "{{name}}: cuestionario {{questionnaire}}% completo · preparación general {{score}}%.",
+      "signals": "Señales del perfil: {{blurb}}",
+      "activeSections": "Áreas más activas del cuestionario: {{sections}}.",
+      "noSections": "Aún no hay secciones del cuestionario con respuestas sustanciales.",
+      "assets": "Dispositivos conectados: {{devices}}. Documentos de salud: {{files}}. Plan: {{tier}}.",
+      "linkage": "La vinculación del contexto personal es {{health}}."
+    },
+    "focus": {
+      "lifestyle": "Estabilice rutinas diarias que apoyen energía, recuperación y ánimo.",
+      "risk_awareness": "Observe señales tempranas que puedan elevar el riesgo a largo plazo y actúe de forma preventiva.",
+      "performance": "Proteja la capacidad de concentración, entrenamiento y recuperación evitando la sobrecarga.",
+      "fromSection": "Profundice claridad en {{section}} según el progreso de su cuestionario.",
+      "fromService": "Mantenga {{service}} como foco principal de este ciclo de informe.",
+      "devices": "Use tendencias de sus {{count}} dispositivo(s) vinculados para validar cómo aterrizan los hábitos día a día.",
+      "consistency": "Prefiera hábitos pequeños y repetibles a esfuerzos intensos breves."
+    },
+    "focusShort": {
+      "lifestyle": "estilo de vida",
+      "risk_awareness": "conciencia de riesgo",
+      "performance": "rendimiento"
+    },
+    "focusDetail": {
+      "lifestyle": "Enfoque — estilo de vida: horario de sueño, movimiento breve, ritmo de comidas y hábitos de recuperación del estrés.",
+      "risk_awareness": "Enfoque — conciencia de riesgo: patrones de alerta temprana, hábitos de prevención y cuándo consultar a un clínico.",
+      "performance": "Enfoque — rendimiento: capacidad, deuda de recuperación e intensidad sostenible."
+    },
+    "priority": {
+      "preventive_first": "Prioridad — prevención primero: reduzca fricciones que puedan acumularse en contratiempos.",
+      "physiological_first": "Prioridad — fisiología primero: proteja sueño, recuperación y regulación básica antes de optimizar.",
+      "behavioral_first": "Prioridad — comportamiento primero: cambie los bucles señal–rutina–recompensa que dan forma a los resultados diarios."
+    },
+    "priorityShort": {
+      "preventive_first": "prevención",
+      "physiological_first": "fisiología",
+      "behavioral_first": "comportamiento"
+    },
+    "analysis": {
+      "context": "Instantánea del contexto personal: {{blurb}} (preparación {{score}}%).",
+      "service": "Foco del servicio: {{service}}. Las recomendaciones siguientes son educativas y alineadas al servicio.",
+      "question": "Su pregunta para este informe: {{question}}",
+      "devices": "Capa de dispositivos: {{count}} fuente(s) ({{brands}}). Trate las señales como tendencias, no como diagnósticos.",
+      "extended": "Detalle ampliado: compare lo destacado del cuestionario con la actividad reciente del servicio y la cobertura de dispositivos para detectar brechas entre intención y práctica diaria.",
+      "sectionsDeep": "La profundidad del cuestionario es mayor actualmente en: {{sections}}.",
+      "shortClose": "Formato breve: mantenga un hábito principal, una práctica de recuperación y una consulta con Health Guide esta semana.",
+      "standardClose": "Formato estándar: combine un área de enfoque con un hábito semanal medible y revise el progreso en la Zona de miembros.",
+      "disclaimer": "Este informe no diagnostica, trata ni sustituye la atención médica profesional."
+    },
+    "insight": {
+      "completeness": "Preparación {{score}}% (cuestionario {{questionnaire}}% · perfil {{profile}}%).",
+      "linkage": "Salud de vinculación: {{health}}.",
+      "focus": {
+        "lifestyle": "Las señales de estilo de vida deben guiar los próximos experimentos de hábitos.",
+        "risk_awareness": "La prevención y la conciencia de señales tempranas deben guiar los próximos experimentos de hábitos.",
+        "performance": "El equilibrio entre capacidad y recuperación debe guiar los próximos experimentos de hábitos."
+      },
+      "service": "Alineación del servicio: {{service}}.",
+      "question": "Pregunta del informe capturada: {{question}}",
+      "devices": "Cobertura de dispositivos presente ({{count}}).",
+      "noDevices": "Aún no hay dispositivos vinculados: el cuestionario y el perfil aportan más peso al contexto.",
+      "topSection": "Área de señal más fuerte del cuestionario: {{section}}."
+    },
+    "rec": {
+      "preventive_first": {
+        "title": "Bloque de prevención",
+        "body": "Elija un hábito de baja fricción que reduzca el riesgo de sobrecarga esta semana (relajación más temprana, ancla de hidratación o un paseo diario breve)."
+      },
+      "physiological_first": {
+        "title": "Bloque fisiológico",
+        "body": "Proteja una ventana de sueño constante y añada una práctica de recuperación antes de aumentar la intensidad o nuevos objetivos."
+      },
+      "behavioral_first": {
+        "title": "Bloque de comportamiento",
+        "body": "Defina una señal clara y una rutina inicial de 10 minutos para que el hábito resista los días ocupados."
+      },
+      "lifestyle": {
+        "title": "Ritmo de estilo de vida",
+        "body": "Alinee horarios de comida, luz diurna y movimiento con las horas en que se siente más estable."
+      },
+      "risk_awareness": {
+        "title": "Revisión consciente del riesgo",
+        "body": "Anote síntomas nuevos o que empeoren y consúltelos con un clínico si persisten; use Health Guide solo para enmarcar educativamente."
+      },
+      "performance": {
+        "title": "Equilibrio de rendimiento",
+        "body": "Combine bloques de entrenamiento o trabajo profundo con bloques iguales de recuperación para que el progreso sea sostenible."
+      },
+      "questionnaire": {
+        "title": "Mantenga el cuestionario actualizado",
+        "body": "Su cuestionario está completo al {{percent}}%. Actualice las secciones cuando cambie su estado para que los próximos informes sean precisos."
+      },
+      "service": {
+        "title": "Continúe con {{service}}",
+        "body": "Vuelva al espacio de {{service}} tras probar una recomendación y registre qué cambió."
+      },
+      "devices": {
+        "title": "Capa opcional de dispositivos",
+        "body": "Vincule un wearable cuando esté listo para que las tendencias complementen el contexto del cuestionario."
+      },
+      "devicesActive": {
+        "title": "Revise tendencias de dispositivos",
+        "body": "Revise la última semana de sus {{count}} dispositivo(s) y anote un patrón que coincida con cómo se sintió."
+      }
+    },
+    "next": {
+      "review": "Lea las áreas de enfoque y elija una recomendación para practicar durante siete días.",
+      "healthGuide": "Abra Health Guide con la indicación sugerida para explorar equilibrios.",
+      "completeQuestionnaires": "Complete más secciones del cuestionario para que el próximo informe se personalice más.",
+      "refreshQuestionnaires": "Actualice respuestas desactualizadas tras cambios importantes de estilo de vida.",
+      "connectDevice": "Opcionalmente conecte un dispositivo para enriquecer el contexto de tendencias.",
+      "focus": {
+        "lifestyle": "Programe hábitos de estilo de vida en el calendario en lugar de depender solo de la motivación.",
+        "risk_awareness": "Anote dos señales tempranas que observará esta semana.",
+        "performance": "Defina un piso de recuperación antes de aumentar la carga."
+      }
+    },
+    "healthGuidePrompt": "Usando mi contexto personal ({{blurb}}; preparación {{score}}%), ayúdame a planificar la próxima semana en torno a {{service}}. Mi pregunta: {{question}}. Mantén la orientación educativa y práctica.",
+    "healthGuidePromptGeneral": "bienestar general",
+    "healthGuidePromptDefaultQuestion": "¿Qué debo priorizar primero?",
+    "secondOpinion": {
+      "subjectGeneral": "su bienestar general",
+      "a": "Perspectiva A sobre {{subject}}: priorice {{priority}} usando sus señales actuales ({{blurb}}). Mantenga cambios lo bastante pequeños para repetirlos a diario.",
+      "b": "Perspectiva B sobre {{subject}}: enfatice {{focus}} con un tono {{tone}}. Combine esfuerzo con recuperación y revise tras una semana."
+    }
+  }
+}

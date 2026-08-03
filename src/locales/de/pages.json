@@ -347,7 +347,10 @@
         "green": "Verknüpfung gesund",
         "yellow": "Verknüpfung teilweise",
         "red": "Verknüpfung schwach"
-      }
+      },
+      "insertTest": "Testbericht einfügen",
+      "insertSuccess": "Testbericht für ausgewählten Benutzer eingefügt",
+      "insertFailed": "Testbericht konnte nicht eingefügt werden"
     }
   }
 }

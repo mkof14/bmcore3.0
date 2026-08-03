@@ -347,7 +347,10 @@
         "green": "Liaison saine",
         "yellow": "Liaison partielle",
         "red": "Liaison faible"
-      }
+      },
+      "insertTest": "Insérer un rapport de test",
+      "insertSuccess": "Rapport de test inséré pour l’utilisateur sélectionné",
+      "insertFailed": "Échec de l’insertion du rapport de test"
     }
   }
 }

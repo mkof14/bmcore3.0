@@ -8,6 +8,7 @@ import {
   Search,
   ShieldCheck,
   FlaskConical,
+  FilePlus2,
 } from 'lucide-react';
 import { supabase, isSupabaseMock } from '../../lib/supabase';
 import { notifyError, notifySuccess, notifyInfo } from '../../lib/adminNotify';
@@ -17,6 +18,7 @@ import {
   rebuildPersonalContext,
   type PersonalContextInspectorView,
 } from '../../lib/personalContext';
+import { generatePersonalizedReport } from '../../lib/reports';
 
 type ListedUser = {
   id: string;
@@ -157,6 +159,38 @@ export default function PersonalContextInspector() {
     notifyInfo(t('admin.personalContext.simulateReady'));
   };
 
+  const handleInsertTestReport = async () => {
+    if (!selectedId) return;
+    setLoadingContext(true);
+    try {
+      const result = await generatePersonalizedReport({
+        userId: selectedId,
+        reportType: 'general',
+        topic: t('admin.personalContext.insertTest'),
+        skipGate: true,
+        t,
+      });
+      if (!result.ok) throw new Error(result.error || 'insert failed');
+      setSimJson(
+        JSON.stringify(
+          {
+            reportId: result.reportId,
+            content: result.content,
+            snapshot: result.snapshot,
+          },
+          null,
+          2,
+        ),
+      );
+      await runInspect(selectedId, true);
+      notifySuccess(t('admin.personalContext.insertSuccess'));
+    } catch {
+      notifyError(t('admin.personalContext.insertFailed'));
+    } finally {
+      setLoadingContext(false);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div>
@@ -244,6 +278,15 @@ export default function PersonalContextInspector() {
             >
               <FlaskConical className="h-4 w-4" />
               {t('admin.personalContext.simulate')}
+            </button>
+            <button
+              type="button"
+              onClick={() => void handleInsertTestReport()}
+              disabled={!selectedId || loadingContext}
+              className="inline-flex items-center gap-2 rounded-lg border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-medium text-orange-900 hover:bg-orange-100 disabled:opacity-50"
+            >
+              <FilePlus2 className="h-4 w-4" />
+              {t('admin.personalContext.insertTest')}
             </button>
           </div>
 

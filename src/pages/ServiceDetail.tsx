@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ChevronLeft, Lock, Copy, Printer, Share2, Download, FileDown, ChevronDown, ChevronUp, BookOpen, MessageSquareText, Brain, Scale, GitCompare, FileOutput, Layers } from 'lucide-react';
 import { resolveServiceRef, serviceDetailPath } from '../data/services';
 import { supabase } from '../lib/supabase';
-import { notifyUserInfo } from '../lib/adminNotify';
+import { notifyUserError, notifyUserInfo } from '../lib/adminNotify';
 import SEO from '../components/SEO';
 import { addKnowledgeSignals, buildAggregatedSecondOpinion, estimateLocalSignalCounts, getKnowledgeSignalScore, loadKnowledgeSnapshot, shouldUseMultiModel } from '../lib/secondOpinionEngine';
 import type { UserKnowledgeSnapshot } from '../lib/secondOpinionEngine';
@@ -14,9 +14,12 @@ import MemberDemoBadge from '../components/MemberDemoBadge';
 import PersonalContextIndicator from '../components/PersonalContextIndicator';
 import {
   buildPersonalContext,
-  createPersonalizedReport,
   type PersonalContext,
 } from '../lib/personalContext';
+import {
+  canGeneratePersonalizedReport,
+  generatePersonalizedReport,
+} from '../lib/reports';
 
 const categoryColors: Record<string, string> = {
   'human-data-model': 'text-slate-500 dark:text-slate-300',
@@ -318,22 +321,64 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
             : personalContext;
         if (ctx) setPersonalContext(ctx);
 
-        const contextLine = ctx
-          ? `\n\nPersonal context (${ctx.completeness.score}%): ${ctx.contextBlurb}`
-          : '\n\nPersonal context: not linked yet — complete questionnaires for fuller personalization.';
+        if (user && embedded && ctx && !canGeneratePersonalizedReport(ctx)) {
+          notifyUserError(t('member.reports.generateBlocked'));
+          onNavigate('questionnaires');
+          return;
+        }
 
-        const ai1Opinion = `AI-1 Analysis: Based on your question about ${service.name.toLowerCase()} and your health profile:\n\nYour patterns show positive trends with stable regulation. The data suggests balanced responses and healthy adaptation in this area.\n\n${userQuestion}${contextLine}\n\nConsidering your specific concern, the indicators point toward a supportive baseline. Small lifestyle adjustments can enhance these results further.\n\nThis is educational guidance, not medical diagnosis.`;
+        let opinionA = '';
+        let opinionB = '';
 
-        const ai2Opinion = `AI-2 Perspective: Looking at your ${service.name.toLowerCase()} question from another analytical angle:\n\n${userQuestion}${contextLine}\n\nThe patterns confirm stability with room for optimization. Your body's signals indicate positive trajectory. Consider this insight complementary to the first opinion.\n\nBoth views suggest you're on a good path with opportunities for gentle improvement through consistent habits.\n\nRemember: wellness is a journey, and you're making progress.`;
+        if (user && embedded) {
+          const result = await generatePersonalizedReport({
+            userId: user.id,
+            reportType: 'thematic',
+            topic: service.name,
+            serviceName: service.name,
+            categoryId,
+            userQuestion,
+            t,
+          });
+          if (result.gated) {
+            notifyUserError(t('member.reports.generateBlocked'));
+            onNavigate('questionnaires');
+            return;
+          }
+          if (!result.ok || !result.content) {
+            throw new Error(result.error || 'generate failed');
+          }
+          if (result.context) setPersonalContext(result.context);
+          opinionA = result.content.second_opinion_a || result.content.analysis;
+          opinionB = result.content.second_opinion_b || result.content.summary;
+          try {
+            localStorage.setItem(
+              `bmcore.service.report.${serviceId}`,
+              JSON.stringify({
+                firstOpinion: opinionA,
+                secondOpinion: selectedAI === 'ai1' ? '' : opinionB,
+                question: userQuestion,
+                personalContextSnapshot: result.snapshot || null,
+                updatedAt: new Date().toISOString(),
+              }),
+            );
+          } catch {
+            /* ignore */
+          }
+        } else {
+          const blurb = ctx?.contextBlurb || t('member.personalContext.statusIncomplete');
+          opinionA = `${t('reportTemplate.section.analysis')}\n\n${service.name}\n${userQuestion}\n\n${blurb}\n\n${t('reportTemplate.analysis.disclaimer')}`;
+          opinionB = `${t('reportTemplate.section.secondOpinionB')}\n\n${service.name}\n${userQuestion}\n\n${blurb}`;
+        }
 
         if (selectedAI === 'both') {
-          setFirstOpinion(ai1Opinion);
-          setSecondOpinion(ai2Opinion);
+          setFirstOpinion(opinionA);
+          setSecondOpinion(opinionB);
           setShowSecondOpinion(true);
         } else if (selectedAI === 'ai1') {
-          setFirstOpinion(ai1Opinion);
+          setFirstOpinion(opinionA);
         } else {
-          setFirstOpinion(ai2Opinion);
+          setFirstOpinion(opinionB);
         }
 
         const localCounts = estimateLocalSignalCounts();
@@ -346,55 +391,8 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
           documents: Math.max(1, localCounts.documents || 0),
         });
         setKnowledgeSnapshot(snapshot);
-
-        if (user && embedded) {
-          await createPersonalizedReport(user.id, {
-            user_id: user.id,
-            report_type: 'thematic',
-            topic: service.name,
-            report_title: `${service.name} service report`,
-            summary: `Service workspace report for ${service.name}. Question: ${userQuestion}`,
-            insights: [
-              `Service: ${service.name}`,
-              `Questionnaire completeness: ${ctx?.completeness.questionnairePercent ?? 0}%`,
-              `Linkage: ${ctx?.linkageHealth ?? 'red'}`,
-            ],
-            analysis: ai1Opinion,
-            recommendations: [
-              {
-                title: 'Continue personalization',
-                description: ctx?.completeness.readyForPersonalizedAnalysis
-                  ? 'Personal context is linked; keep questionnaires current as your state changes.'
-                  : 'Complete questionnaires so future service analyses use your full profile.',
-                priority: 'medium',
-              },
-            ],
-            second_opinion_a: selectedAI === 'ai2' ? null : ai1Opinion,
-            second_opinion_b: selectedAI === 'ai1' ? null : ai2Opinion,
-          });
-
-          try {
-            localStorage.setItem(
-              `bmcore.service.report.${serviceId}`,
-              JSON.stringify({
-                firstOpinion: ai1Opinion,
-                secondOpinion: selectedAI === 'ai1' ? '' : ai2Opinion,
-                question: userQuestion,
-                personalContextSnapshot: ctx ? {
-                  version: ctx.version,
-                  completenessScore: ctx.completeness.score,
-                  linkageHealth: ctx.linkageHealth,
-                  contextBlurb: ctx.contextBlurb,
-                } : null,
-                updatedAt: new Date().toISOString(),
-              }),
-            );
-          } catch {
-            /* ignore */
-          }
-        }
       } catch {
-        // ignore knowledge / context persistence failures
+        notifyUserError(t('member.personalContext.generateFailed'));
       } finally {
         window.clearInterval(stepTimer);
         setPipelineStep(3);

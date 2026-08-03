@@ -347,7 +347,10 @@
         "green": "关联健康",
         "yellow": "关联部分",
         "red": "关联较弱"
-      }
+      },
+      "insertTest": "插入测试报告",
+      "insertSuccess": "已为所选用户插入测试报告",
+      "insertFailed": "无法插入测试报告"
     }
   }
 }

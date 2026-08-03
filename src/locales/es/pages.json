@@ -347,7 +347,10 @@
         "green": "Enlace saludable",
         "yellow": "Enlace parcial",
         "red": "Enlace débil"
-      }
+      },
+      "insertTest": "Insertar informe de prueba",
+      "insertSuccess": "Informe de prueba insertado para el usuario seleccionado",
+      "insertFailed": "No se pudo insertar el informe de prueba"
     }
   }
 }

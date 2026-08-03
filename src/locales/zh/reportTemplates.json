@@ -1,0 +1,191 @@
+{
+  "reportTemplate": {
+    "fallbackTitle": "健康报告",
+    "footer": "仅供教育性健康指导，并非医学诊断。必要时请与合格临床医生讨论。Health Guide 可帮助您梳理下一步。",
+    "meta": {
+      "type": "类型",
+      "generated": "生成时间",
+      "id": "报告 ID"
+    },
+    "typeLabel": {
+      "general": "综合",
+      "thematic": "专题",
+      "dynamic": "动态",
+      "device_enhanced": "设备增强"
+    },
+    "title": {
+      "general": "个人健康报告",
+      "thematic": "专题健康报告",
+      "dynamic": "进度对比报告",
+      "device_enhanced": "设备增强健康报告",
+      "service": "{{service}} — 个性化报告",
+      "topic": "{{topic}} — 个性化报告"
+    },
+    "section": {
+      "summary": "摘要",
+      "profile": "问卷衍生画像",
+      "focusAreas": "关注领域",
+      "insights": "关键洞察",
+      "analysis": "分析",
+      "recommendations": "建议框架",
+      "nextSteps": "下一步",
+      "healthGuidePrompt": "建议的 Health Guide 提示",
+      "secondOpinionA": "视角 A",
+      "secondOpinionB": "视角 B"
+    },
+    "linkage": {
+      "green": "良好",
+      "yellow": "部分",
+      "red": "有限"
+    },
+    "summary": {
+      "opening": "这份{{subject}}报告基于您的个人背景（准备度 {{score}}%，问卷 {{questionnaire}}%）编写。",
+      "educational": "这是结构化的教育性健康指导，不是临床诊断。"
+    },
+    "tone": {
+      "analytical": {
+        "summaryLead": "叙述强调可衡量模式、准备度信号与清晰取舍。",
+        "analysisLead": "分析视角：将信号整理为结构化观察与可执行杠杆。"
+      },
+      "supportive": {
+        "summaryLead": "叙述保持平和鼓励，聚焦可持续习惯。",
+        "analysisLead": "支持视角：突出已有效之处，以及温和调整可能帮助的地方。"
+      },
+      "coaching": {
+        "summaryLead": "叙述以行动为导向，提供清晰习惯与责任感提示。",
+        "analysisLead": "教练视角：将背景转化为本周可尝试的具体练习块。"
+      }
+    },
+    "toneShort": {
+      "analytical": "分析型",
+      "supportive": "支持型",
+      "coaching": "教练型"
+    },
+    "profile": {
+      "memberFallback": "成员",
+      "tierNone": "未设置",
+      "intro": "{{name}}：问卷完成 {{questionnaire}}% · 总体准备度 {{score}}%。",
+      "signals": "画像信号：{{blurb}}",
+      "activeSections": "最活跃的问卷领域：{{sections}}。",
+      "noSections": "尚无具有实质回答的问卷部分。",
+      "assets": "已连接设备：{{devices}}。健康文件：{{files}}。方案：{{tier}}。",
+      "linkage": "个人背景关联为{{health}}。"
+    },
+    "focus": {
+      "lifestyle": "稳定支持精力、恢复与情绪的日常节律。",
+      "risk_awareness": "关注可能提高长期风险的早期信号，并采取预防行动。",
+      "performance": "保护专注、训练与恢复的容量，避免过载。",
+      "fromSection": "根据问卷进度加深对{{section}}的理解。",
+      "fromService": "将{{service}}保持为本报告周期的主要关注点。",
+      "devices": "用已关联的 {{count}} 台设备趋势验证习惯的日常效果。",
+      "consistency": "优先选择可重复的小习惯，而不是短暂高强度冲刺。"
+    },
+    "focusShort": {
+      "lifestyle": "生活方式",
+      "risk_awareness": "风险意识",
+      "performance": "表现"
+    },
+    "focusDetail": {
+      "lifestyle": "关注点 — 生活方式：睡眠时间、短时活动、进餐节奏与压力恢复习惯。",
+      "risk_awareness": "关注点 — 风险意识：早期预警模式、预防习惯，以及何时寻求临床评估。",
+      "performance": "关注点 — 表现：容量、恢复债与可持续强度。"
+    },
+    "priority": {
+      "preventive_first": "优先级 — 预防优先：减少可能累积为挫败的摩擦。",
+      "physiological_first": "优先级 — 生理优先：在优化前先保护睡眠、恢复与基本调节。",
+      "behavioral_first": "优先级 — 行为优先：改变塑造日常结果的提示–惯例–奖励循环。"
+    },
+    "priorityShort": {
+      "preventive_first": "预防",
+      "physiological_first": "生理",
+      "behavioral_first": "行为"
+    },
+    "analysis": {
+      "context": "个人背景快照：{{blurb}}（准备度 {{score}}%）。",
+      "service": "服务焦点：{{service}}。以下建议保持教育性并与服务对齐。",
+      "question": "本报告的问题：{{question}}",
+      "devices": "设备层：{{count}} 个来源（{{brands}}）。将可穿戴信号视为趋势，而非诊断。",
+      "extended": "扩展细节：将问卷要点与近期服务活动、设备覆盖对比，找出意图与日常实践之间的差距。",
+      "sectionsDeep": "当前问卷深度最强的领域：{{sections}}。",
+      "shortClose": "简版：本周保持一个主习惯、一项恢复练习，以及一次 Health Guide 核对。",
+      "standardClose": "标准版：将一个关注领域与可衡量的每周习惯配对，并在会员区复查进度。",
+      "disclaimer": "本报告不诊断、不治疗，也不替代专业医疗照护。"
+    },
+    "insight": {
+      "completeness": "准备度 {{score}}%（问卷 {{questionnaire}}% · 资料 {{profile}}%）。",
+      "linkage": "关联健康度：{{health}}。",
+      "focus": {
+        "lifestyle": "生活方式信号应引导下一轮习惯实验。",
+        "risk_awareness": "预防与早期信号意识应引导下一轮习惯实验。",
+        "performance": "容量与恢复平衡应引导下一轮习惯实验。"
+      },
+      "service": "服务对齐：{{service}}。",
+      "question": "已记录报告问题：{{question}}",
+      "devices": "已有设备覆盖（{{count}}）。",
+      "noDevices": "尚未关联设备 — 问卷与资料承担更多背景权重。",
+      "topSection": "最强问卷信号领域：{{section}}。"
+    },
+    "rec": {
+      "preventive_first": {
+        "title": "预防模块",
+        "body": "选择一个低摩擦习惯，降低本周过载风险（更早放松、补水锚点或每日短步行）。"
+      },
+      "physiological_first": {
+        "title": "生理模块",
+        "body": "保护稳定睡眠窗口，并在增加强度或新目标前加入一项恢复练习。"
+      },
+      "behavioral_first": {
+        "title": "行为模块",
+        "body": "定义清晰提示与 10 分钟起步惯例，使习惯能撑过忙碌的日子。"
+      },
+      "lifestyle": {
+        "title": "生活节律",
+        "body": "将进餐时间、日照与活动对齐到您感觉最稳定的时段。"
+      },
+      "risk_awareness": {
+        "title": "风险意识核对",
+        "body": "记录新出现或加重的症状；若持续请咨询临床医生。Health Guide 仅用于教育性框架。"
+      },
+      "performance": {
+        "title": "表现平衡",
+        "body": "将训练或深度工作块与同等恢复块配对，使进步可持续。"
+      },
+      "questionnaire": {
+        "title": "保持问卷最新",
+        "body": "问卷完成度为 {{percent}}%。状态变化时更新各部分，使后续报告保持准确。"
+      },
+      "service": {
+        "title": "继续使用 {{service}}",
+        "body": "尝试一条建议后返回 {{service}} 工作区，并记录变化。"
+      },
+      "devices": {
+        "title": "可选设备层",
+        "body": "准备好时关联可穿戴设备，让趋势补充问卷背景。"
+      },
+      "devicesActive": {
+        "title": "查看设备趋势",
+        "body": "浏览已关联 {{count}} 台设备过去一周的数据，记下一个与体感相符的模式。"
+      }
+    },
+    "next": {
+      "review": "阅读关注领域，并选择一条建议练习七天。",
+      "healthGuide": "用下方建议提示打开 Health Guide，探索取舍。",
+      "completeQuestionnaires": "完成更多问卷部分，使下一份报告更个性化。",
+      "refreshQuestionnaires": "在重大生活方式变化后更新过时问卷答案。",
+      "connectDevice": "可选连接设备以丰富趋势背景。",
+      "focus": {
+        "lifestyle": "把生活习惯排进日历，而不是只靠动力。",
+        "risk_awareness": "写下本周要观察的两个早期信号。",
+        "performance": "在增加负荷前设定恢复下限。"
+      }
+    },
+    "healthGuidePrompt": "基于我的个人背景（{{blurb}}；准备度 {{score}}%），请围绕 {{service}} 帮助规划下周。我的问题：{{question}}。请保持教育性与可操作性。",
+    "healthGuidePromptGeneral": "整体健康",
+    "healthGuidePromptDefaultQuestion": "我应该先优先做什么？",
+    "secondOpinion": {
+      "subjectGeneral": "您的整体健康",
+      "a": "关于{{subject}}的视角 A：用当前信号（{{blurb}}）优先关注{{priority}}。保持足够小、可每天重复的改变。",
+      "b": "关于{{subject}}的视角 B：以{{tone}}语气强调{{focus}}。将努力与恢复配对，一周后复查。"
+    }
+  }
+}

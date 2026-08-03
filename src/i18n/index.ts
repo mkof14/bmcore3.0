@@ -44,7 +44,7 @@ const packGlobs: Record<AppLanguage, Record<string, JsonLoader>> = {
  * Packs needed for chrome + Member Zone to feel instant on language switch.
  * Remaining packs (legal, servicesData, faq, …) hydrate in the background.
  */
-const PRIORITY_PACK_RE = /\/(chrome|member|pages|devices|catalog)\.json$/;
+const PRIORITY_PACK_RE = /\/(chrome|member|pages|devices|catalog|reportTemplates)\.json$/;
 
 const loadedLanguages = new Set<AppLanguage>();
 const criticalLoaded = new Set<AppLanguage>();

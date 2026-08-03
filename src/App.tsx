@@ -72,6 +72,7 @@ const WhyTwoModels = lazy(() => import('./pages/WhyTwoModels'));
 const PrivacyTrust = lazy(() => import('./pages/PrivacyTrust'));
 const ConfigSystem = lazy(() => import('./pages/admin/ConfigSystem'));
 const SecondOpinionDemo = lazy(() => import('./pages/SecondOpinionDemo'));
+const SharedReport = lazy(() => import('./pages/SharedReport'));
 /** Health Guide panel — kept off the critical path until first open. */
 const AIHealthAssistant = lazy(() => import('./components/AIHealthAssistant'));
 
@@ -88,6 +89,7 @@ function App() {
   const [serviceDetailId, setServiceDetailId] = useState<string>(initialRoute.serviceDetailId);
   const [categoryFilter, setCategoryFilter] = useState<string>(initialRoute.categoryFilter);
   const [memberServiceRef, setMemberServiceRef] = useState<string>(initialRoute.memberServiceRef);
+  const [shareToken, setShareToken] = useState<string>(initialRoute.shareToken);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAssistantOpen, setIsAssistantOpen] = useState(false);
   /** Mount Health Guide chunk only after first open (button stays eager/light). */
@@ -109,10 +111,12 @@ function App() {
     setServiceDetailId(route.serviceDetailId);
     setCategoryFilter(route.categoryFilter);
     setMemberServiceRef(route.memberServiceRef);
+    setShareToken(route.shareToken);
     setCurrentPage(route.page);
   };
 
   const goToPage = (page: Page, data?: string, options?: { replace?: boolean }) => {
+    if (page === 'shared-report') setShareToken(data || '');
     setCurrentPage(page);
     syncUrl(page, data, { replace: options?.replace });
     // Sync + post-paint: pushState keeps scroll; focused footer links can re-scroll after paint.
@@ -422,6 +426,13 @@ function App() {
         return <PrivacyTrust onNavigate={handleNavigate} />;
       case 'second-opinion-demo':
         return <SecondOpinionDemo onNavigate={handleNavigate} />;
+      case 'shared-report':
+        return (
+          <SharedReport
+            shareToken={shareToken}
+            onNavigate={handleNavigate}
+          />
+        );
       default:
         return <Home onNavigate={handleNavigate} />;
     }

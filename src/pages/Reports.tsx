@@ -8,6 +8,8 @@ import type { HealthReport } from '../types/database';
 import { buildAggregatedSecondOpinion, getKnowledgeSignalScore, loadKnowledgeSnapshot, loadKnowledgeTimeline } from '../lib/secondOpinionEngine';
 import ReportBrandHeader from '../components/report/ReportBrandHeader';
 import ModelRadarComparison, { buildModelScores } from '../components/report/ModelRadarComparison';
+import { generatePersonalizedReport, printReport } from '../lib/reports';
+import '../styles/report-print.css';
 
 interface ReportsProps {
   onNavigate: (page: string) => void;
@@ -268,46 +270,19 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
 
-      const { createPersonalizedReport } = await import('../lib/personalContext');
-
-      const result = await createPersonalizedReport(user.id, {
-        user_id: user.id,
-        report_type: reportType,
+      const result = await generatePersonalizedReport({
+        userId: user.id,
+        reportType,
         topic: topic || null,
-        summary: 'Your body is currently in a stabilization state. Sleep is supporting recovery, but your nervous system hasn\'t returned to normal tone yet.',
-        insights: [
-          'Sleep quality is stable, duration within normal range',
-          'HRV shows slight decrease over the last 3 days',
-          'Energy remains steady, small drops after lunch',
-          'Physical activity in adaptive zone',
-        ],
-        analysis: 'Your body is functioning well overall. Sleep metrics are adequate, but there\'s room for deeper recovery. HRV shows a slight drop - a signal of mild stress on the nervous system. Energy drops after lunch, which may be related to nutrition or lack of brief rest.',
-        recommendations: [
-          {
-            title: 'Recovery Practices',
-            description: 'Add 10 minutes of breathing exercises before bed. This will lower nervous system tension.',
-            priority: 'high',
-          },
-          {
-            title: 'Eating Pattern',
-            description: 'Reduce carbohydrate load at lunch, add more protein and fiber.',
-            priority: 'medium',
-          },
-          {
-            title: 'Short Walk',
-            description: 'Take a 10-15 minute walk after lunch to stabilize glucose levels.',
-            priority: 'medium',
-          },
-        ],
-        device_data: null,
-        second_opinion_a: includeSecondOpinion
-          ? 'Your state is related to a slight decrease in parasympathetic activity. HRV drops due to insufficient recovery between stressful periods. This is a normal adaptive response, but it\'s important not to allow chronic overload.'
-          : null,
-        second_opinion_b: includeSecondOpinion
-          ? 'It looks like you\'ve picked up a slightly fast pace and your body is trying to catch up. This doesn\'t mean you need to stop - just add pauses between efforts. The body adapts better when load and recovery alternate.'
-          : null,
+        settingsOverride: includeSecondOpinion ? { second_opinion_default: true } : { second_opinion_default: false },
+        t,
       });
 
+      if (result.gated) {
+        notifyUserError(t('member.reports.generateBlocked'));
+        setStep('options');
+        return;
+      }
       if (!result.ok) throw new Error(result.error || 'Report creation failed');
 
       const stepTimer = window.setInterval(() => {
@@ -319,8 +294,8 @@ function CreateReportFlow({ onBack, onComplete, reportCount }: CreateReportFlowP
         setPipelineStep(3);
         onComplete();
       }, 2000);
-    } catch (error) {
-      notifyUserError('Report creation failed');
+    } catch {
+      notifyUserError(t('member.personalContext.generateFailed'));
       setStep('options');
     }
   };
@@ -705,7 +680,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
   }, [liveReport]);
 
   const handleExportPDF = () => {
-    notifyUserInfo('PDF export not available');
+    printReport();
   };
 
   const handleDiscussWithAI = () => {
@@ -799,12 +774,12 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <button
           onClick={onBack}
-          className="mb-6 text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+          className="mb-6 text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors no-print"
         >
           ← {t('reportsPage.backToList')}
         </button>
 
-        <div className="mb-8">
+        <div className="mb-8 report-print-root">
           <ReportBrandHeader
             title="BioMath Core"
             subtitle="Health Intelligence Report"

@@ -8,4 +8,7 @@ export {
   toReportSnapshot,
 } from './buildPersonalContext';
 export { createPersonalizedReport } from './attachToReport';
-export type { PersonalizedReportInsert } from './attachToReport';
+export type {
+  PersonalizedReportInsert,
+  CreatePersonalizedReportOptions,
+} from './attachToReport';

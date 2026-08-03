@@ -1,0 +1,191 @@
+{
+  "reportTemplate": {
+    "fallbackTitle": "ウェルネスレポート",
+    "footer": "教育的なウェルネスガイダンスのみです。医学的診断ではありません。必要な場合は資格のある医療者にご相談ください。Health Guide が次の一歩の整理をサポートします。",
+    "meta": {
+      "type": "種類",
+      "generated": "作成日",
+      "id": "レポートID"
+    },
+    "typeLabel": {
+      "general": "総合",
+      "thematic": "テーマ別",
+      "dynamic": "動態",
+      "device_enhanced": "デバイス連携"
+    },
+    "title": {
+      "general": "パーソナルウェルネスレポート",
+      "thematic": "テーマ別ウェルネスレポート",
+      "dynamic": "進捗比較レポート",
+      "device_enhanced": "デバイス連携ウェルネスレポート",
+      "service": "{{service}} — パーソナライズドレポート",
+      "topic": "{{topic}} — パーソナライズドレポート"
+    },
+    "section": {
+      "summary": "要約",
+      "profile": "問診から導いたプロフィール",
+      "focusAreas": "フォーカス領域",
+      "insights": "主な洞察",
+      "analysis": "分析",
+      "recommendations": "推奨の枠組み",
+      "nextSteps": "次のステップ",
+      "healthGuidePrompt": "Health Guide への推奨プロンプト",
+      "secondOpinionA": "視点 A",
+      "secondOpinionB": "視点 B"
+    },
+    "linkage": {
+      "green": "良好",
+      "yellow": "部分的",
+      "red": "限定的"
+    },
+    "summary": {
+      "opening": "この{{subject}}レポートは、個人コンテキスト（準備度 {{score}}%、問診 {{questionnaire}}%）から構成されています。",
+      "educational": "構造化された教育的ウェルネスガイダンスであり、臨床診断ではありません。"
+    },
+    "tone": {
+      "analytical": {
+        "summaryLead": "測定可能なパターン、準備度シグナル、明確なトレードオフを重視します。",
+        "analysisLead": "分析的視点：シグナルを構造化された観察と実践的レバーに整理します。"
+      },
+      "supportive": {
+        "summaryLead": "落ち着いた励ましのトーンで、持続可能な習慣に焦点を当てます。",
+        "analysisLead": "支援的視点：すでに機能している点と、穏やかな調整が役立つ点を示します。"
+      },
+      "coaching": {
+        "summaryLead": "行動志向で、明確な習慣と責任の手がかりを示します。",
+        "analysisLead": "コーチング視点：コンテキストを今週試せる具体的な実践ブロックに変換します。"
+      }
+    },
+    "toneShort": {
+      "analytical": "分析的",
+      "supportive": "支援的",
+      "coaching": "コーチング"
+    },
+    "profile": {
+      "memberFallback": "メンバー",
+      "tierNone": "未設定",
+      "intro": "{{name}}：問診完了 {{questionnaire}}% · 総合準備度 {{score}}%。",
+      "signals": "プロフィールシグナル：{{blurb}}",
+      "activeSections": "最も活発な問診領域：{{sections}}。",
+      "noSections": "実質的な回答がある問診セクションはまだありません。",
+      "assets": "連携デバイス：{{devices}}。健康書類：{{files}}。プラン：{{tier}}。",
+      "linkage": "個人コンテキストの連携は{{health}}です。"
+    },
+    "focus": {
+      "lifestyle": "エネルギー・回復・気分を支える日々のルーチンを安定させましょう。",
+      "risk_awareness": "長期リスクを高めうる早期シグナルに注意し、予防的に行動しましょう。",
+      "performance": "集中・トレーニング・回復の余力を守り、過負荷を避けましょう。",
+      "fromSection": "問診の進捗に基づき、{{section}}の理解を深めましょう。",
+      "fromService": "このレポート周期では {{service}} を主フォーカスに保ちましょう。",
+      "devices": "連携済み {{count}} 台のデバイストレンドで、習慣の効果を日々検証しましょう。",
+      "consistency": "短期間の激しい努力より、小さく繰り返せる習慣を優先しましょう。"
+    },
+    "focusShort": {
+      "lifestyle": "ライフスタイル",
+      "risk_awareness": "リスク認識",
+      "performance": "パフォーマンス"
+    },
+    "focusDetail": {
+      "lifestyle": "フォーカス — ライフスタイル：睡眠タイミング、短い運動、食事リズム、ストレス回復習慣。",
+      "risk_awareness": "フォーカス — リスク認識：早期警告パターン、予防習慣、医療者相談のタイミング。",
+      "performance": "フォーカス — パフォーマンス：余力、回復負債、持続可能な強度。"
+    },
+    "priority": {
+      "preventive_first": "優先 — 予防優先：後退につながる摩擦を減らします。",
+      "physiological_first": "優先 — 生理優先：最適化の前に睡眠・回復・基本調節を守ります。",
+      "behavioral_first": "優先 — 行動優先：日々の結果を形づくる合図–ルーチン–報酬ループを変えます。"
+    },
+    "priorityShort": {
+      "preventive_first": "予防",
+      "physiological_first": "生理",
+      "behavioral_first": "行動"
+    },
+    "analysis": {
+      "context": "個人コンテキストのスナップショット：{{blurb}}（準備度 {{score}}%）。",
+      "service": "サービス焦点：{{service}}。以下の推奨は教育的でサービスに沿った内容です。",
+      "question": "このレポートへの質問：{{question}}",
+      "devices": "デバイス層：{{count}} ソース（{{brands}}）。ウェアラブル信号は診断ではなくトレンドとして扱ってください。",
+      "extended": "詳細版：問診ハイライトと最近のサービス活動・デバイスカバレッジを比較し、意図と日々の実践のギャップを見つけます。",
+      "sectionsDeep": "現在問診の深さが最も強い領域：{{sections}}。",
+      "shortClose": "短縮版：今週は主習慣1つ、回復実践1つ、Health Guide での確認1回を保ちましょう。",
+      "standardClose": "標準版：1つのフォーカス領域と測定可能な週間習慣を組み合わせ、メンバーゾーンで進捗を確認しましょう。",
+      "disclaimer": "このレポートは診断・治療を行わず、専門医療の代替にもなりません。"
+    },
+    "insight": {
+      "completeness": "準備度 {{score}}%（問診 {{questionnaire}}% · プロフィール {{profile}}%）。",
+      "linkage": "連携状態：{{health}}。",
+      "focus": {
+        "lifestyle": "ライフスタイル信号が次の習慣実験を導くべきです。",
+        "risk_awareness": "予防と早期シグナル認識が次の習慣実験を導くべきです。",
+        "performance": "余力と回復のバランスが次の習慣実験を導くべきです。"
+      },
+      "service": "サービス整合：{{service}}。",
+      "question": "レポート質問を記録：{{question}}",
+      "devices": "デバイスカバレッジあり（{{count}}）。",
+      "noDevices": "デバイス未連携 — 問診とプロフィールがコンテキストの比重を担います。",
+      "topSection": "最も強い問診シグナル領域：{{section}}。"
+    },
+    "rec": {
+      "preventive_first": {
+        "title": "予防ブロック",
+        "body": "今週の過負荷リスクを下げる低摩擦習慣を1つ選びましょう（早めの就寝準備、水分の錨、短い毎日の散歩）。"
+      },
+      "physiological_first": {
+        "title": "生理ブロック",
+        "body": "一定の睡眠窓を守り、強度や新しい目標を増やす前に回復実践を1つ追加しましょう。"
+      },
+      "behavioral_first": {
+        "title": "行動ブロック",
+        "body": "明確な合図と10分の開始ルーチンを決め、忙しい日でも習慣が続くようにしましょう。"
+      },
+      "lifestyle": {
+        "title": "ライフスタイルリズム",
+        "body": "食事タイミング、日光、動きを、最も安定して感じる時間帯に合わせましょう。"
+      },
+      "risk_awareness": {
+        "title": "リスク意識チェック",
+        "body": "新規または悪化する症状を記録し、持続する場合は医療者へ。Health Guide は教育的な枠組みのみに使いましょう。"
+      },
+      "performance": {
+        "title": "パフォーマンスバランス",
+        "body": "トレーニングや深い作業ブロックに同等の回復ブロックを合わせ、進歩を持続可能にしましょう。"
+      },
+      "questionnaire": {
+        "title": "問診を最新に保つ",
+        "body": "問診完了率は {{percent}}% です。状態が変わったらセクションを更新し、今後のレポート精度を保ちましょう。"
+      },
+      "service": {
+        "title": "{{service}} を続ける",
+        "body": "推奨を1つ試したあと {{service}} ワークスペースに戻り、変化を記録しましょう。"
+      },
+      "devices": {
+        "title": "任意のデバイス層",
+        "body": "準備ができたらウェアラブルを連携し、トレンドで問診コンテキストを補いましょう。"
+      },
+      "devicesActive": {
+        "title": "デバイストレンドを確認",
+        "body": "連携済み {{count}} 台の直近1週間をざっと見て、体感と一致するパターンを1つメモしましょう。"
+      }
+    },
+    "next": {
+      "review": "フォーカス領域を読み、7日間実践する推奨を1つ選びましょう。",
+      "healthGuide": "下記の推奨プロンプトで Health Guide を開き、トレードオフを検討しましょう。",
+      "completeQuestionnaires": "問診セクションをさらに完成させ、次のレポートのパーソナライズを進めましょう。",
+      "refreshQuestionnaires": "意味のある生活変化のあと、古い問診回答を更新しましょう。",
+      "connectDevice": "任意でデバイスを接続し、トレンドコンテキストを豊かにしましょう。",
+      "focus": {
+        "lifestyle": "やる気だけに頼らず、ライフスタイル習慣をカレンダーに入れましょう。",
+        "risk_awareness": "今週見守る早期シグナルを2つ書き出しましょう。",
+        "performance": "負荷を増やす前に回復の下限を決めましょう。"
+      }
+    },
+    "healthGuidePrompt": "個人コンテキスト（{{blurb}}；準備度 {{score}}%）を踏まえ、{{service}} を中心に来週の計画を立ててください。質問：{{question}}。教育的で実践的な案内にしてください。",
+    "healthGuidePromptGeneral": "総合的なウェルネス",
+    "healthGuidePromptDefaultQuestion": "最初に何を優先すべきですか？",
+    "secondOpinion": {
+      "subjectGeneral": "総合的なウェルネス",
+      "a": "{{subject}} への視点 A：現在のシグナル（{{blurb}}）を使い {{priority}} を優先。毎日繰り返せる小さな変化に留めましょう。",
+      "b": "{{subject}} への視点 B：{{tone}} なトーンで {{focus}} を強調。努力と回復を組み合わせ、1週間後に見直しましょう。"
+    }
+  }
+}
