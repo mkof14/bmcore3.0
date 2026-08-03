@@ -30,7 +30,7 @@ interface Props {
 }
 
 /** Bump when locked public/hdm-human-*.webp assets intentionally change. */
-const FIGURE_CACHE = 'v=20';
+const FIGURE_CACHE = 'v=22';
 /** Bump when body cube / CATEGORY_AT hotspot layout changes (visible in DOM). */
 export const CUBE_LAYOUT = 'cl=4';
 

@@ -217,7 +217,12 @@ def clean_feet_alpha(img: Image.Image) -> Image.Image:
 
 
 def soften_crown_hair(img: Image.Image, *, dark: bool) -> Image.Image:
-    """Crush short-hair specular just under the silhouette top — never the forehead."""
+    """Crush short-hair specular on the head crown only — never face, arms, or torso.
+
+    Critical: per-column silhouette tops follow the *arms* at the sides, so a
+    naive crown band paints shoulders black. Always measure distance from the
+    head midline crown (central columns), not from arm tops.
+    """
     # Local import keeps the rest of the module Pillow-only at import time.
     import numpy as np
 
@@ -230,15 +235,6 @@ def soften_crown_hair(img: Image.Image, *, dark: bool) -> Image.Image:
     if not opaque.any():
         return img
 
-    top_y = np.full(w, h, dtype=np.int32)
-    for x in range(w):
-        col = np.where(opaque[:, x])[0]
-        if len(col):
-            top_y[x] = int(col[0])
-    k = 21
-    pad = np.pad(top_y.astype(np.float32), (k // 2, k // 2), mode="edge")
-    top_s = np.convolve(pad, np.ones(k) / k, mode="valid")
-
     ys = np.where(opaque)[0]
     y0, y1 = int(ys.min()), int(ys.max())
     fh = max(1, y1 - y0)
@@ -247,56 +243,96 @@ def soften_crown_hair(img: Image.Image, *, dark: bool) -> Image.Image:
     cx = (x0 + x1) * 0.5
     fw = max(1, x1 - x0)
 
+    # Crown line from central columns only (head), never arm/leg columns.
+    top_y = np.full(w, h, dtype=np.int32)
+    for x in range(w):
+        col = np.where(opaque[:, x])[0]
+        if len(col):
+            top_y[x] = int(col[0])
+    center = np.abs(np.arange(w) - cx) <= fw * 0.22
+    head_cols = top_y[center & (top_y < h)]
+    if head_cols.size == 0:
+        return img
+    head_top = float(np.median(head_cols.astype(np.float32)))
+    # Smooth a short crown polyline only near the head width.
+    crown_x0 = max(0, int(cx - fw * 0.34))
+    crown_x1 = min(w, int(cx + fw * 0.34))
+    top_s = np.full(w, head_top, dtype=np.float32)
+    seg = top_y[crown_x0:crown_x1].astype(np.float32)
+    # Ignore columns whose local top is clearly an arm (far below head).
+    seg = np.where(np.abs(seg - head_top) <= fh * 0.025, seg, head_top)
+    if seg.size >= 5:
+        k = 11
+        pad = np.pad(seg, (k // 2, k // 2), mode="edge")
+        seg_s = np.convolve(pad, np.ones(k) / k, mode="valid")
+        top_s[crown_x0:crown_x1] = seg_s
+
     yy = np.arange(h, dtype=np.float32)[:, None]
     xx = np.arange(w, dtype=np.float32)[None, :]
     dist = yy - top_s[None, :]
-    # Tight band from silhouette crown only (avoids forehead).
-    depth = fh * (0.042 if dark else 0.038)
-    hair = opaque & (dist >= -1.5) & (dist <= depth) & (np.abs(xx - cx) <= fw * 0.36)
+    # Tight crown only — stop above eyes/forehead. Light needs a bit more depth
+    # than dark to catch short-hair specular, but never reach the eye band.
+    depth = fh * (0.042 if dark else 0.052)
+    head_x = np.abs(xx - cx) <= fw * 0.34
+    hair = opaque & head_x & (dist >= -1.5) & (dist <= depth)
     temple = (
         opaque
-        & (np.abs(xx - cx) > fw * 0.20)
-        & (np.abs(xx - cx) <= fw * 0.40)
+        & (np.abs(xx - cx) > fw * 0.18)
+        & (np.abs(xx - cx) <= fw * 0.36)
         & (dist >= -1.5)
-        & (dist <= fh * 0.075)
+        & (dist <= fh * (0.065 if dark else 0.072))
     )
     hair = hair | temple
+    # Absolute safety: never touch below upper forehead / into face or body.
+    y_stop = head_top + fh * (0.07 if dark else 0.075)
+    hair = hair & (yy <= y_stop) & (yy >= head_top - 2.0)
 
-    # Light mode: short hair reads silvery on pale UI — darken the whole crown band.
+    # Light mode: short hair reads silvery on pale UI — darken hot crown pixels.
     # Dark mode: only crush hot specular speckles.
-    thr = 108.0 if dark else 70.0
+    thr = 108.0 if dark else 95.0
     hot = hair & (lum >= thr)
     if not hot.any():
         return img
 
-    dark_ref = hair & (lum < (80 if dark else 95))
+    dark_ref = hair & (lum < (80 if dark else 100))
     if dark_ref.sum() > 40:
         ref = np.median(rgb[dark_ref], axis=0).astype(np.float32)
     else:
-        ref = np.array([50.0, 42.0, 36.0] if dark else [58.0, 48.0, 40.0], dtype=np.float32)
+        ref = np.array([50.0, 42.0, 36.0] if dark else [52.0, 44.0, 38.0], dtype=np.float32)
+    if not dark:
+        ref = np.minimum(ref, np.array([58.0, 48.0, 42.0], dtype=np.float32))
 
     m = np.zeros((h, w), dtype=np.float32)
     if dark:
         m[hot] = np.clip((lum[hot] - thr) / 55.0, 0.45, 0.92)
     else:
-        # Even midtone crown hair gets pulled toward brown on light plates.
-        m[hot] = np.clip(0.35 + (lum[hot] - thr) / 90.0, 0.35, 0.88)
+        m[hot] = np.clip(0.40 + (lum[hot] - thr) / 85.0, 0.40, 0.90)
     m_img = Image.fromarray((np.clip(m, 0, 1) * 255).astype(np.uint8)).filter(
-        ImageFilter.GaussianBlur(1.6)
+        ImageFilter.GaussianBlur(1.5)
     )
     m = np.array(m_img).astype(np.float32) / 255.0
-    # Hard stop: no spill onto forehead / face.
-    m[dist > depth * 1.25] = 0
-    m[dist > fh * 0.09] = 0
+    m[dist > depth * 1.2] = 0
     m[~opaque] = 0
+    m[~hair] = 0  # no soft bleed onto face / arms / torso
 
     blur = np.array(
         Image.fromarray(np.clip(lum, 0, 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(1.5))
     ).astype(np.float32)
-    tex = (lum - blur) * 0.18
-    mul = 0.86 + np.clip(blur, 0, 160) / 160.0 * 0.30
+    tex = (lum - blur) * (0.18 if dark else 0.12)
+    mul = (0.86 if dark else 0.78) + np.clip(blur, 0, 160) / 160.0 * (0.30 if dark else 0.22)
     target = np.clip(ref[None, None, :] * mul[..., None] + tex[..., None], 0, 255)
     out = rgb * (1.0 - m[..., None]) + target * m[..., None]
+
+    if not dark:
+        # Cap residual specular only inside the hair mask (no full-frame scale).
+        out_lum = 0.2126 * out[..., 0] + 0.7152 * out[..., 1] + 0.0722 * out[..., 2]
+        cap = 135.0
+        over = hair & (m > 0.08) & (out_lum > cap)
+        if over.any():
+            scale = np.ones_like(out_lum)
+            scale[over] = cap / np.maximum(out_lum[over], 1.0)
+            out[over] = out[over] * scale[over][..., None]
+
     arr[..., :3] = np.clip(out, 0, 255).astype(np.uint8)
     return Image.fromarray(arr, "RGBA")
 
@@ -349,8 +385,8 @@ def thin_edge(alpha: Image.Image, dark: bool, *, male: bool = False) -> Image.Im
     strength = 0.55 if dark else 0.45
     if male:
         # Male short-hair fringe reads as blown white if the rim is too bright.
-        strength *= 0.55 if dark else 0.7
-        color = (120, 132, 148) if dark else (55, 60, 70)
+        strength *= 0.55 if dark else 0.5
+        color = (120, 132, 148) if dark else (48, 52, 58)
     e = edge.point(lambda v: int(v * strength))
     # Further fade the crown rim for male.
     if male:
