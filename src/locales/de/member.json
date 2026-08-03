@@ -1052,8 +1052,6 @@
       "superadminAccess": "Superadmin-Zugriff"
     },
     "serviceWorkspace": {
-      "demoBadge": "Demo",
-      "simulatedNote": "Erzeugte Meinungen sind simulierte Vorlagen, bis die Multi-Modell-Analyse verbunden ist.",
       "backToCatalog": "Zurück zum Mitgliederkatalog",
       "interactiveBadge": "Voll interaktiver Service",
       "unlockedTitle": "Interaktiver Arbeitsbereich freigeschaltet",
@@ -1064,7 +1062,8 @@
       "tabReport": "Bericht & Zweitmeinung",
       "enterQuestion": "Bitte geben Sie Ihre Gesundheitsfrage oder Ihr Anliegen ein",
       "reportCopied": "Bericht in die Zwischenablage kopiert",
-      "personalContextHint": "Der Status des persönlichen Kontexts erscheint beim Generieren, Berechnen oder Diskutieren."
+      "personalContextHint": "Der Status des persönlichen Kontexts erscheint beim Generieren, Berechnen oder Diskutieren.",
+      "personalizedNote": "Berichte nutzen Ihre Fragebögen, Ihr Profil und die Berichteinstellungen für personalisierte Hinweise."
     },
     "personalContext": {
       "loading": "Persönlicher Kontext wird geladen…",

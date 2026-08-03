@@ -1052,8 +1052,6 @@
       "superadminAccess": "スーパー管理者アクセス"
     },
     "serviceWorkspace": {
-      "demoBadge": "デモ",
-      "simulatedNote": "マルチモデル分析の接続まで、生成された見解はシミュレーションテンプレートです。",
       "backToCatalog": "メンバーカタログに戻る",
       "interactiveBadge": "完全インタラクティブサービス",
       "unlockedTitle": "インタラクティブワークスペースが利用可能",
@@ -1064,7 +1062,8 @@
       "tabReport": "レポートとセカンドオピニオン",
       "enterQuestion": "健康に関する質問または懸念を入力してください",
       "reportCopied": "レポートをクリップボードにコピーしました",
-      "personalContextHint": "生成・計算・対話を始めると個人コンテキストの状態が表示されます。"
+      "personalContextHint": "生成・計算・対話を始めると個人コンテキストの状態が表示されます。",
+      "personalizedNote": "レポートはアンケート、プロフィール、レポート設定を使ってパーソナライズされたガイダンスを提供します。"
     },
     "personalContext": {
       "loading": "個人コンテキストを読み込み中…",

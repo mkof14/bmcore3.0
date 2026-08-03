@@ -43,6 +43,7 @@
   padding: 1.5rem 1.35rem 2rem;
 }
 
+.report-print h1,
 .report-print-root h1 {
   font-size: 1.55rem;
   font-weight: 700;
@@ -50,6 +51,7 @@
   color: #0f172a;
 }
 
+.report-print .report-meta,
 .report-print-root .report-meta {
   display: flex;
   flex-wrap: wrap;
@@ -59,11 +61,13 @@
   margin-bottom: 1.25rem;
 }
 
+.report-print section,
 .report-print-root section {
   margin-bottom: 1.35rem;
   break-inside: avoid;
 }
 
+.report-print section h2,
 .report-print-root section h2 {
   font-size: 0.95rem;
   font-weight: 700;
@@ -75,6 +79,8 @@
   border-bottom: 1px solid #fed7aa;
 }
 
+.report-print p,
+.report-print li,
 .report-print-root p,
 .report-print-root li {
   font-size: 0.95rem;
@@ -83,20 +89,24 @@
   white-space: pre-wrap;
 }
 
+.report-print ul,
 .report-print-root ul {
   margin: 0;
   padding-inline-start: 1.2rem;
 }
 
+.report-print .report-rec,
 .report-print-root .report-rec {
   margin-bottom: 0.75rem;
 }
 
+.report-print .report-rec strong,
 .report-print-root .report-rec strong {
   display: block;
   margin-bottom: 0.2rem;
 }
 
+.report-print .report-footer,
 .report-print-root .report-footer {
   margin-top: 1.75rem;
   padding-top: 0.85rem;
@@ -114,6 +124,8 @@
     visibility: hidden !important;
   }
 
+  .report-print,
+  .report-print *,
   .report-print-root,
   .report-print-root * {
     visibility: visible !important;
@@ -144,10 +156,12 @@
     padding: 0 !important;
   }
 
+  .report-print,
   .report-print-root {
     color: #000 !important;
   }
 
+  .report-print section h2,
   .report-print-root section h2 {
     color: #000 !important;
     border-bottom-color: #ccc !important;

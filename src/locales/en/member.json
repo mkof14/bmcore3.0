@@ -1052,8 +1052,6 @@
       "superadminAccess": "Superadmin access"
     },
     "serviceWorkspace": {
-      "demoBadge": "Demo",
-      "simulatedNote": "Generated opinions are simulated templates until live multi-model analysis is connected.",
       "backToCatalog": "Back to Member Catalog",
       "interactiveBadge": "Full interactive service",
       "unlockedTitle": "Interactive workspace unlocked",
@@ -1064,7 +1062,8 @@
       "tabReport": "Report & second opinion",
       "enterQuestion": "Please enter your health question or concern",
       "reportCopied": "Report copied to clipboard",
-      "personalContextHint": "Personal context status appears when you start generating, computing, or discussing."
+      "personalContextHint": "Personal context status appears when you start generating, computing, or discussing.",
+      "personalizedNote": "Reports use your questionnaires, profile, and Report Settings for personalized guidance."
     },
     "personalContext": {
       "loading": "Loading personal context…",

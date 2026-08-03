@@ -83,7 +83,8 @@ export default function PersonalContextIndicator({
           {!compact ? (
             <p className="mt-1 member-muted opacity-80 break-words">{context.contextBlurb}</p>
           ) : null}
-          {!context.completeness.readyForPersonalizedAnalysis && onOpenQuestionnaires ? (
+          {(health === 'red' || !context.completeness.readyForPersonalizedAnalysis) &&
+          onOpenQuestionnaires ? (
             <button
               type="button"
               onClick={onOpenQuestionnaires}

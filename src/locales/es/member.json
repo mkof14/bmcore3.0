@@ -1052,8 +1052,6 @@
       "superadminAccess": "Acceso de superadministrador"
     },
     "serviceWorkspace": {
-      "demoBadge": "Demo",
-      "simulatedNote": "Las opiniones generadas son plantillas simuladas hasta conectar el análisis multi-modelo.",
       "backToCatalog": "Volver al catálogo de miembros",
       "interactiveBadge": "Servicio interactivo completo",
       "unlockedTitle": "Espacio interactivo desbloqueado",
@@ -1064,7 +1062,8 @@
       "tabReport": "Informe y segunda opinión",
       "enterQuestion": "Introduce tu pregunta o preocupación de salud",
       "reportCopied": "Informe copiado al portapapeles",
-      "personalContextHint": "El estado del contexto personal aparece al generar, calcular o discutir."
+      "personalContextHint": "El estado del contexto personal aparece al generar, calcular o discutir.",
+      "personalizedNote": "Los informes usan tus cuestionarios, perfil y Ajustes de informe para orientación personalizada."
     },
     "personalContext": {
       "loading": "Cargando contexto personal…",

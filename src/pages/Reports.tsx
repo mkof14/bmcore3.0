@@ -779,7 +779,7 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
           ← {t('reportsPage.backToList')}
         </button>
 
-        <div className="mb-8 report-print-root">
+        <div className="mb-8 report-print report-print-root">
           <ReportBrandHeader
             title="BioMath Core"
             subtitle="Health Intelligence Report"

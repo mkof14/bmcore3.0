@@ -10,7 +10,6 @@ import type { UserKnowledgeSnapshot } from '../lib/secondOpinionEngine';
 import ReportBrandHeader from '../components/report/ReportBrandHeader';
 import ModelRadarComparison, { buildModelScores } from '../components/report/ModelRadarComparison';
 import { localizeCategory, localizeService } from '../lib/localizeServices';
-import MemberDemoBadge from '../components/MemberDemoBadge';
 import PersonalContextIndicator from '../components/PersonalContextIndicator';
 import {
   buildPersonalContext,
@@ -541,7 +540,6 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
                 <span className="inline-flex items-center rounded-full bg-orange-50 px-2.5 py-1 text-[11px] font-semibold text-orange-700 ring-1 ring-orange-200 dark:bg-orange-950/40 dark:text-orange-200 dark:ring-orange-500/30">
                   {t('member.serviceWorkspace.interactiveBadge')}
                 </span>
-                <MemberDemoBadge labelKey="member.serviceWorkspace.demoBadge" />
                 <span className="text-xs text-gray-500 dark:text-gray-400">{category.name}</span>
               </div>
             )}
@@ -551,7 +549,7 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
                   {service.name}
                 </h1>
                 <p className="text-lg text-gray-600 dark:text-gray-400">{service.description}</p>
-                <p className="mt-2 text-xs member-muted">{t('member.serviceWorkspace.simulatedNote')}</p>
+                <p className="mt-2 text-xs member-muted">{t('member.serviceWorkspace.personalizedNote')}</p>
               </>
             )}
           </div>

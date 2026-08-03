@@ -1052,8 +1052,6 @@
       "superadminAccess": "Accès superadmin"
     },
     "serviceWorkspace": {
-      "demoBadge": "Démo",
-      "simulatedNote": "Les avis générés sont des modèles simulés jusqu’à la connexion de l’analyse multi-modèles.",
       "backToCatalog": "Retour au catalogue membre",
       "interactiveBadge": "Service interactif complet",
       "unlockedTitle": "Espace interactif déverrouillé",
@@ -1064,7 +1062,8 @@
       "tabReport": "Rapport et second avis",
       "enterQuestion": "Veuillez saisir votre question ou préoccupation de santé",
       "reportCopied": "Rapport copié dans le presse-papiers",
-      "personalContextHint": "Le statut du contexte personnel apparaît lorsque vous générez, calculez ou discutez."
+      "personalContextHint": "Le statut du contexte personnel apparaît lorsque vous générez, calculez ou discutez.",
+      "personalizedNote": "Les rapports utilisent vos questionnaires, votre profil et les Paramètres de rapport pour des conseils personnalisés."
     },
     "personalContext": {
       "loading": "Chargement du contexte personnel…",

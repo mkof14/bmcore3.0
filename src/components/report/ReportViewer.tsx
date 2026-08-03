@@ -86,7 +86,7 @@ export default function ReportViewer({ report, onClose, onShare, sharing }: Prop
         </div>
 
         <div className="report-viewer-body">
-          <article className="report-print-root">
+          <article className="report-print report-print-root">
             <h1>{title}</h1>
             <div className="report-meta">
               <span>

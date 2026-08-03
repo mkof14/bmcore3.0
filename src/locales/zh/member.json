@@ -1052,8 +1052,6 @@
       "superadminAccess": "超级管理员访问"
     },
     "serviceWorkspace": {
-      "demoBadge": "演示",
-      "simulatedNote": "在连接实时多模型分析之前，生成的意见为模拟模板。",
       "backToCatalog": "返回会员目录",
       "interactiveBadge": "完整交互服务",
       "unlockedTitle": "交互工作区已解锁",
@@ -1064,7 +1062,8 @@
       "tabReport": "报告与第二意见",
       "enterQuestion": "请输入您的健康问题或顾虑",
       "reportCopied": "报告已复制到剪贴板",
-      "personalContextHint": "开始生成、计算或讨论时会显示个人背景状态。"
+      "personalContextHint": "开始生成、计算或讨论时会显示个人背景状态。",
+      "personalizedNote": "报告会结合您的问卷、资料与报告设置，提供个性化指导。"
     },
     "personalContext": {
       "loading": "正在加载个人背景…",
