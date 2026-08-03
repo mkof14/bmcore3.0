@@ -31,7 +31,7 @@ export default function HumanDataModelCoreTools({ dark, onOpenTool }: Props) {
       className={`w-full max-w-3xl border-t pt-8 ${
         dark ? 'border-white/10' : 'border-neutral-200'
       }`}
-      aria-label="Human Data Model core tools"
+      aria-label={t('home.coreTools.title')}
     >
       <div className="mb-5 text-center">
         <p
@@ -46,14 +46,14 @@ export default function HumanDataModelCoreTools({ dark, onOpenTool }: Props) {
             dark ? 'text-neutral-100' : 'text-neutral-900'
           }`}
         >
-          Build and read your model
+          {t('home.coreTools.title')}
         </h2>
         <p
           className={`mx-auto mt-2 max-w-xl text-sm ${
             dark ? 'text-neutral-400' : 'text-neutral-600'
           }`}
         >
-          Import records, see the timeline, and track what changed — across every category.
+          {t('home.coreTools.subtitle')}
         </p>
       </div>
 
@@ -101,7 +101,7 @@ export default function HumanDataModelCoreTools({ dark, onOpenTool }: Props) {
                   dark ? 'text-orange-400' : 'text-orange-600'
                 }`}
               >
-                Read description
+                {t('home.coreTools.readMore')}
                 <ArrowRight className="h-3.5 w-3.5 transition duration-200 group-hover:translate-x-1" />
               </span>
             </button>

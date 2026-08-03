@@ -79,26 +79,94 @@
   "home": {
     "seoTitle": "Biomathematical Human Data Model",
     "seoDescription": "BioMath Core builds a living Human Data Model — a biomathematical digital twin of your health — and guides you with Health Guide dual analysis.",
+    "brand": "BioMath Core",
     "heroTitle": "Your lifelong Human Data Model",
-    "heroSubtitle": "A biomathematical digital twin that grows with every verified health event — not a generic insights feed.",
-    "ctaExplore": "Explore services",
+    "heroSubtitle": "A biomathematical digital twin that grows with every verified health event — not a biomarker dashboard.",
+    "ctaPricing": "View pricing",
     "ctaHow": "How it works",
-    "modelTitle": "Human Data Model",
-    "modelSubtitle": "A biomathematical digital twin built from verified health information.",
-    "section2": "Section 2",
-    "whatTitle": "What can you understand?",
-    "whatSubtitle": "Your Human Data Model reveals connections that stay hidden when labs, wearables, and history remain separate.",
-    "section3": "Section 3",
-    "timelineTitle": "Human Data Timeline",
-    "timelineSubtitle": "Your health history, understood in biomathematical context.",
-    "openTimeline": "Open your timeline",
-    "section4": "Section 4",
-    "changesTitle1": "Everything changes.",
-    "changesTitle2": "Human Data Model remembers.",
-    "changesSubtitle": "Every important health event updates your lifelong biomathematical Human Data Model.",
+    "coreTools": {
+      "title": "Build and read your model",
+      "subtitle": "Import records, see the timeline, and track what changed — across every category.",
+      "readMore": "Read description"
+    },
+    "what": {
+      "label": "What it is",
+      "title": "A living biomathematical model of you",
+      "body": "The Human Data Model is a digital twin built from verified labs, clinical notes, medications, symptoms, and lifestyle signals. It keeps one continuous structure — so Health Guide can reason over your full history, not isolated snapshots.",
+      "points": [
+        {
+          "title": "One model, many sources",
+          "body": "Scattered reports become a single biomathematical structure you can revisit as life changes."
+        },
+        {
+          "title": "Context over charts",
+          "body": "Numbers matter when they connect to diagnosis, treatment, and what you actually feel."
+        },
+        {
+          "title": "Built to last decades",
+          "body": "Every important event updates the twin — so tomorrow’s question still has yesterday’s evidence."
+        }
+      ],
+      "signals": [
+        "Labs",
+        "Clinical notes",
+        "Medications",
+        "Lifestyle"
+      ],
+      "vizTitle": "Signals converging into the Human Data Model",
+      "vizCore": "HDM",
+      "vizCoreSub": "digital twin",
+      "vizCaption": "Verified inputs feed one model — not a pile of disconnected dashboards."
+    },
+    "steps": {
+      "label": "How it works",
+      "title": "From records to reasoned guidance",
+      "body": "Four steps. No lifestyle filler — just how the model becomes useful.",
+      "items": [
+        {
+          "title": "Import what you have",
+          "body": "Bring in labs, imaging notes, prescriptions, and personal observations."
+        },
+        {
+          "title": "Structure the twin",
+          "body": "BioMath Core organizes events into your Human Data Model across health categories."
+        },
+        {
+          "title": "See what changed",
+          "body": "Compare periods, spot connections, and prepare clearer questions for care."
+        },
+        {
+          "title": "Ask Health Guide",
+          "body": "Dual-model analysis uses your twin — biomathematical and clinically oriented views side by side."
+        }
+      ]
+    },
+    "different": {
+      "label": "Why different",
+      "title": "Biomathematics, not another biomarker feed",
+      "body": "Most wellness products visualize metrics. BioMath Core models the person behind them.",
+      "them": {
+        "label": "Typical biomarker dashboards",
+        "points": [
+          "Scoreboards for the latest lab or wearable reading",
+          "Insights that reset when you switch apps or providers",
+          "Little memory of why a number moved after a medication change",
+          "Generic tips that ignore your full clinical trail"
+        ]
+      },
+      "us": {
+        "label": "Human Data Model",
+        "points": [
+          "A biomathematical digital twin that compounds over years",
+          "Events stay linked: labs, diagnosis, treatment, symptoms",
+          "Category map you can explore on the figure — not a flat feed",
+          "Health Guide answers with dual analysis grounded in your model"
+        ]
+      }
+    },
     "cta": {
       "title": "Ready to build your Human Data Model?",
-      "description": "Start with a plan that deepens your biomathematical context. Health Guide delivers dual-model guidance — not generic personalization.",
+      "description": "Choose a plan that deepens biomathematical context. Health Guide delivers dual-model guidance — not generic personalization.",
       "primary": "View pricing",
       "secondary": "Create account"
     },

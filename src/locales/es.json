@@ -77,31 +77,99 @@
     "detectedLang": "Respondiendo en {{lang}}"
   },
   "home": {
-    "heroTitle": "Tu Human Data Model de por vida",
-    "heroSubtitle": "Un gemelo digital biomatemático que crece con cada evento de salud verificado — no un feed genérico de insights.",
-    "ctaExplore": "Explorar servicios",
+    "seoTitle": "Modelo de Datos Humanos biomatemático",
+    "seoDescription": "BioMath Core construye un Modelo de Datos Humanos vivo — un gemelo digital biomatemático de tu salud — y te orienta con el análisis dual de Health Guide.",
+    "brand": "BioMath Core",
+    "heroTitle": "Tu Modelo de Datos Humanos de por vida",
+    "heroSubtitle": "Un gemelo digital biomatemático que crece con cada evento de salud verificado — no un panel de biomarcadores.",
+    "ctaPricing": "Ver precios",
     "ctaHow": "Cómo funciona",
-    "modelTitle": "Human Data Model",
-    "modelSubtitle": "Un gemelo digital biomatemático construido a partir de información de salud verificada.",
-    "section2": "Sección 2",
-    "whatTitle": "¿Qué puedes entender?",
-    "whatSubtitle": "Tu Modelo de Datos Humanos revela conexiones que permanecen ocultas cuando laboratorios, wearables e historial siguen separados.",
-    "section3": "Sección 3",
-    "timelineTitle": "Línea de tiempo de datos humanos",
-    "timelineSubtitle": "Tu historial de salud, entendido en contexto biomatemático.",
-    "openTimeline": "Abrir tu línea de tiempo",
-    "section4": "Sección 4",
-    "changesTitle1": "Todo cambia.",
-    "changesTitle2": "Human Data Model lo recuerda.",
-    "changesSubtitle": "Cada evento de salud importante actualiza tu Modelo de Datos Humanos biomatemático de por vida.",
+    "coreTools": {
+      "title": "Construye y lee tu modelo",
+      "subtitle": "Importa registros, ve la línea de tiempo y sigue qué cambió — en cada categoría.",
+      "readMore": "Leer descripción"
+    },
+    "what": {
+      "label": "Qué es",
+      "title": "Un modelo biomatemático vivo de ti",
+      "body": "El Modelo de Datos Humanos es un gemelo digital construido a partir de laboratorios verificados, notas clínicas, medicamentos, síntomas y señales de estilo de vida. Mantiene una estructura continua — para que Health Guide razone sobre tu historia completa, no sobre capturas aisladas.",
+      "points": [
+        {
+          "title": "Un modelo, muchas fuentes",
+          "body": "Informes dispersos se convierten en una sola estructura biomatemática que puedes revisitar cuando la vida cambia."
+        },
+        {
+          "title": "Contexto por encima de gráficos",
+          "body": "Los números importan cuando se conectan con el diagnóstico, el tratamiento y lo que realmente sientes."
+        },
+        {
+          "title": "Hecho para durar décadas",
+          "body": "Cada evento importante actualiza el gemelo — para que la pregunta de mañana aún tenga la evidencia de ayer."
+        }
+      ],
+      "signals": [
+        "Laboratorios",
+        "Notas clínicas",
+        "Medicamentos",
+        "Estilo de vida"
+      ],
+      "vizTitle": "Señales que convergen en el Modelo de Datos Humanos",
+      "vizCore": "HDM",
+      "vizCoreSub": "gemelo digital",
+      "vizCaption": "Entradas verificadas alimentan un solo modelo — no un montón de paneles desconectados."
+    },
+    "steps": {
+      "label": "Cómo funciona",
+      "title": "De los registros a una orientación razonada",
+      "body": "Cuatro pasos. Sin relleno de estilo de vida — solo cómo el modelo se vuelve útil.",
+      "items": [
+        {
+          "title": "Importa lo que tienes",
+          "body": "Incorpora laboratorios, notas de imagen, recetas y observaciones personales."
+        },
+        {
+          "title": "Estructura el gemelo",
+          "body": "BioMath Core organiza los eventos en tu Modelo de Datos Humanos por categorías de salud."
+        },
+        {
+          "title": "Ve qué cambió",
+          "body": "Compara periodos, detecta conexiones y prepara preguntas más claras para tu cuidado."
+        },
+        {
+          "title": "Pregunta a Health Guide",
+          "body": "El análisis dual usa tu gemelo — vistas biomatemática y clínicamente orientada, lado a lado."
+        }
+      ]
+    },
+    "different": {
+      "label": "Por qué es distinto",
+      "title": "Biomatemática, no otro feed de biomarcadores",
+      "body": "La mayoría de productos de bienestar visualizan métricas. BioMath Core modela a la persona detrás de ellas.",
+      "them": {
+        "label": "Paneles típicos de biomarcadores",
+        "points": [
+          "Marcadores del último laboratorio o lectura de wearables",
+          "Ideas que se reinician al cambiar de app o proveedor",
+          "Poca memoria de por qué un número se movió tras un cambio de medicación",
+          "Consejos genéricos que ignoran tu historial clínico completo"
+        ]
+      },
+      "us": {
+        "label": "Modelo de Datos Humanos",
+        "points": [
+          "Un gemelo digital biomatemático que se acumula con los años",
+          "Los eventos quedan vinculados: laboratorios, diagnóstico, tratamiento, síntomas",
+          "Mapa de categorías que exploras en la figura — no un feed plano",
+          "Health Guide responde con análisis dual anclado en tu modelo"
+        ]
+      }
+    },
     "cta": {
       "title": "¿Listo para construir tu Modelo de Datos Humanos?",
-      "description": "Empieza con un plan que profundice tu contexto biomatemático. Health Guide ofrece orientación de doble modelo — no personalización genérica.",
+      "description": "Elige un plan que profundice el contexto biomatemático. Health Guide ofrece orientación con doble modelo — no personalización genérica.",
       "primary": "Ver precios",
       "secondary": "Crear cuenta"
     },
-    "seoTitle": "Modelo de Datos Humanos biomatemático",
-    "seoDescription": "BioMath Core construye un Modelo de Datos Humanos vivo — un gemelo digital biomatemático de tu salud — y te orienta con el análisis dual de Health Guide.",
     "figure": {
       "female": "Mujer",
       "male": "Hombre",

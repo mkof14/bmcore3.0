@@ -77,31 +77,99 @@
     "detectedLang": "正在以{{lang}}回复"
   },
   "home": {
-    "heroTitle": "伴随一生的 Human Data Model",
-    "heroSubtitle": "随每条已验证健康事件成长的生物数学数字孪生——而非泛化的洞察信息流。",
-    "ctaExplore": "探索服务",
+    "seoTitle": "生物数学人体数据模型",
+    "seoDescription": "BioMath Core 构建持续演进的人体数据模型——您健康的生物数学数字孪生——并由 Health Guide 双模型分析提供指引。",
+    "brand": "BioMath Core",
+    "heroTitle": "伴随一生的人体数据模型",
+    "heroSubtitle": "随每一项经核实的健康事件成长的生物数学数字孪生——不是生物标志物看板。",
+    "ctaPricing": "查看价格",
     "ctaHow": "如何运作",
-    "modelTitle": "Human Data Model",
-    "modelSubtitle": "基于已验证健康信息构建的生物数学数字孪生。",
-    "section2": "第 2 部分",
-    "whatTitle": "你能理解什么？",
-    "whatSubtitle": "当化验、可穿戴与病史彼此割裂时，人体数据模型揭示难以察觉的关联。",
-    "section3": "第 3 部分",
-    "timelineTitle": "人体数据时间线",
-    "timelineSubtitle": "在生物数学语境中理解您的健康史。",
-    "openTimeline": "打开你的时间线",
-    "section4": "第 4 部分",
-    "changesTitle1": "一切都会改变。",
-    "changesTitle2": "Human Data Model 会记得。",
-    "changesSubtitle": "每一个重要健康事件都会更新您终身的生物数学人体数据模型。",
+    "coreTools": {
+      "title": "构建并阅读您的模型",
+      "subtitle": "导入记录、查看时间线、追踪变化——覆盖每一类健康主题。",
+      "readMore": "阅读说明"
+    },
+    "what": {
+      "label": "它是什么",
+      "title": "关于您的活体生物数学模型",
+      "body": "人体数据模型是由经核实的化验、临床记录、用药、症状与生活方式信号构建的数字孪生。它保持连续结构——让 Health Guide 能基于完整病史推理，而非孤立快照。",
+      "points": [
+        {
+          "title": "一个模型，多种来源",
+          "body": "分散报告汇成可随人生变化反复查阅的单一生物数学结构。"
+        },
+        {
+          "title": "情境重于图表",
+          "body": "当数字与诊断、治疗以及真实感受相连时，它们才有意义。"
+        },
+        {
+          "title": "为数十年而建",
+          "body": "每一个重要事件都会更新孪生——明天的问题仍保有昨天的证据。"
+        }
+      ],
+      "signals": [
+        "化验",
+        "临床记录",
+        "用药",
+        "生活方式"
+      ],
+      "vizTitle": "汇入人体数据模型的信号",
+      "vizCore": "HDM",
+      "vizCoreSub": "数字孪生",
+      "vizCaption": "经核实的输入喂养一个模型——不是一堆互不相关的看板。"
+    },
+    "steps": {
+      "label": "如何运作",
+      "title": "从记录到有依据的指引",
+      "body": "四个步骤。没有生活方式空话——只说明模型如何变得有用。",
+      "items": [
+        {
+          "title": "导入已有资料",
+          "body": "纳入化验、影像说明、处方与个人观察。"
+        },
+        {
+          "title": "结构化孪生",
+          "body": "BioMath Core 按健康类别将事件组织进您的人体数据模型。"
+        },
+        {
+          "title": "看清变化",
+          "body": "比较时段、发现关联，并为就医准备更清晰的问题。"
+        },
+        {
+          "title": "询问 Health Guide",
+          "body": "双模型分析使用您的孪生——生物数学视角与临床导向视角并排呈现。"
+        }
+      ]
+    },
+    "different": {
+      "label": "为何不同",
+      "title": "生物数学，而非又一条生物标志物信息流",
+      "body": "多数健康产品可视化指标。BioMath Core 建模的是指标背后的人。",
+      "them": {
+        "label": "典型生物标志物看板",
+        "points": [
+          "最新化验或可穿戴读数的记分板",
+          "更换应用或服务商后洞察就会重置",
+          "几乎记不住用药变更后数字为何波动",
+          "忽略完整临床轨迹的通用建议"
+        ]
+      },
+      "us": {
+        "label": "人体数据模型",
+        "points": [
+          "随年月累积的生物数学数字孪生",
+          "事件保持关联：化验、诊断、治疗、症状",
+          "在人体图上探索的类别地图——不是扁平信息流",
+          "Health Guide 基于您的模型给出双分析回答"
+        ]
+      }
+    },
     "cta": {
       "title": "准备好构建您的人体数据模型了吗？",
-      "description": "从加深生物数学语境的方案开始。Health Guide 提供双模型指引——而非泛化的个性化。",
+      "description": "选择能加深生物数学情境的方案。Health Guide 提供双模型指引——不是泛泛的个性化。",
       "primary": "查看价格",
       "secondary": "创建账户"
     },
-    "seoTitle": "生物数学人体数据模型",
-    "seoDescription": "BioMath Core 构建活体人体数据模型——健康的生物数学数字孪生——并通过 Health Guide 双分析为您指引。",
     "figure": {
       "female": "女性",
       "male": "男性",

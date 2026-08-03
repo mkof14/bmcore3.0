@@ -77,31 +77,99 @@
     "detectedLang": "Réponse en {{lang}}"
   },
   "home": {
-    "heroTitle": "Votre Human Data Model pour la vie",
-    "heroSubtitle": "Un jumeau numérique biomathématique qui grandit avec chaque événement de santé vérifié — pas un flux générique d’insights.",
-    "ctaExplore": "Explorer les services",
+    "seoTitle": "Modèle de données humaines biomatématique",
+    "seoDescription": "BioMath Core construit un Modèle de données humaines vivant — un jumeau numérique biomatématique de votre santé — et vous guide avec l’analyse duale de Health Guide.",
+    "brand": "BioMath Core",
+    "heroTitle": "Votre Modèle de données humaines à vie",
+    "heroSubtitle": "Un jumeau numérique biomatématique qui grandit avec chaque événement de santé vérifié — pas un tableau de biomarqueurs.",
+    "ctaPricing": "Voir les tarifs",
     "ctaHow": "Comment ça marche",
-    "modelTitle": "Human Data Model",
-    "modelSubtitle": "Un jumeau numérique biomathématique construit à partir d’informations de santé vérifiées.",
-    "section2": "Section 2",
-    "whatTitle": "Que pouvez-vous comprendre ?",
-    "whatSubtitle": "Votre Modèle de données humaines révèle des liens invisibles lorsque laboratoires, wearables et historique restent séparés.",
-    "section3": "Section 3",
-    "timelineTitle": "Chronologie des données humaines",
-    "timelineSubtitle": "Votre historique de santé, compris dans un contexte biomathématique.",
-    "openTimeline": "Ouvrir votre chronologie",
-    "section4": "Section 4",
-    "changesTitle1": "Tout change.",
-    "changesTitle2": "Human Data Model s’en souvient.",
-    "changesSubtitle": "Chaque événement de santé important met à jour votre Modèle de données humaines biomathématique à vie.",
+    "coreTools": {
+      "title": "Construire et lire votre modèle",
+      "subtitle": "Importez des dossiers, consultez la chronologie et suivez ce qui a changé — dans chaque catégorie.",
+      "readMore": "Lire la description"
+    },
+    "what": {
+      "label": "Ce que c’est",
+      "title": "Un modèle biomatématique vivant de vous",
+      "body": "Le Modèle de données humaines est un jumeau numérique bâti à partir d’analyses vérifiées, de notes cliniques, de médicaments, de symptômes et de signaux de mode de vie. Il conserve une structure continue — pour que Health Guide raisonne sur votre histoire complète, pas sur des instantanés isolés.",
+      "points": [
+        {
+          "title": "Un modèle, de nombreuses sources",
+          "body": "Des rapports dispersés deviennent une structure biomatématique unique à revisiter quand la vie change."
+        },
+        {
+          "title": "Le contexte avant les graphiques",
+          "body": "Les chiffres comptent lorsqu’ils se relient au diagnostic, au traitement et à ce que vous ressentez vraiment."
+        },
+        {
+          "title": "Conçu pour des décennies",
+          "body": "Chaque événement important met à jour le jumeau — pour que la question de demain garde encore les preuves d’hier."
+        }
+      ],
+      "signals": [
+        "Analyses",
+        "Notes cliniques",
+        "Médicaments",
+        "Mode de vie"
+      ],
+      "vizTitle": "Signaux qui convergent vers le Modèle de données humaines",
+      "vizCore": "HDM",
+      "vizCoreSub": "jumeau numérique",
+      "vizCaption": "Des entrées vérifiées alimentent un seul modèle — pas une pile de tableaux déconnectés."
+    },
+    "steps": {
+      "label": "Comment ça marche",
+      "title": "Des dossiers à une guidance raisonnée",
+      "body": "Quatre étapes. Pas de remplissage lifestyle — seulement comment le modèle devient utile.",
+      "items": [
+        {
+          "title": "Importez ce que vous avez",
+          "body": "Ajoutez analyses, notes d’imagerie, ordonnances et observations personnelles."
+        },
+        {
+          "title": "Structurez le jumeau",
+          "body": "BioMath Core organise les événements dans votre Modèle de données humaines par catégories de santé."
+        },
+        {
+          "title": "Voyez ce qui a changé",
+          "body": "Comparez des périodes, repérez des liens et préparez des questions plus claires pour les soins."
+        },
+        {
+          "title": "Demandez à Health Guide",
+          "body": "L’analyse duale s’appuie sur votre jumeau — vues biomatématique et cliniquement orientée, côte à côte."
+        }
+      ]
+    },
+    "different": {
+      "label": "Pourquoi c’est différent",
+      "title": "De la biomatématique, pas un autre flux de biomarqueurs",
+      "body": "La plupart des produits bien-être visualisent des métriques. BioMath Core modélise la personne derrière elles.",
+      "them": {
+        "label": "Tableaux de biomarqueurs typiques",
+        "points": [
+          "Des scores pour la dernière analyse ou lecture de wearable",
+          "Des insights qui se réinitialisent quand vous changez d’app ou de prestataire",
+          "Peu de mémoire sur pourquoi un chiffre a bougé après un changement de médicament",
+          "Des conseils génériques qui ignorent votre parcours clinique complet"
+        ]
+      },
+      "us": {
+        "label": "Modèle de données humaines",
+        "points": [
+          "Un jumeau numérique biomatématique qui s’enrichit sur des années",
+          "Les événements restent liés : analyses, diagnostic, traitement, symptômes",
+          "Une carte de catégories à explorer sur la figure — pas un fil plat",
+          "Health Guide répond avec une analyse duale ancrée dans votre modèle"
+        ]
+      }
+    },
     "cta": {
       "title": "Prêt à construire votre Modèle de données humaines ?",
-      "description": "Commencez par une offre qui approfondit votre contexte biomathématique. Health Guide fournit une orientation à double modèle — pas une personnalisation générique.",
+      "description": "Choisissez une offre qui approfondit le contexte biomatématique. Health Guide offre une guidance à double modèle — pas une personnalisation générique.",
       "primary": "Voir les tarifs",
       "secondary": "Créer un compte"
     },
-    "seoTitle": "Modèle de données humaines biomathématique",
-    "seoDescription": "BioMath Core construit un Modèle de données humaines vivant — un jumeau numérique biomathématique de votre santé — et vous guide avec l’analyse duale de Health Guide.",
     "figure": {
       "female": "Femme",
       "male": "Homme",

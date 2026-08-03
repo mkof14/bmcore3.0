@@ -77,31 +77,99 @@
     "detectedLang": "Antwort auf {{lang}}"
   },
   "home": {
+    "seoTitle": "Biomathematisches Human Data Model",
+    "seoDescription": "BioMath Core baut ein lebendiges Human Data Model — einen biomathematischen digitalen Zwilling Ihrer Gesundheit — und führt Sie mit der Dual-Analyse von Health Guide.",
+    "brand": "BioMath Core",
     "heroTitle": "Ihr lebenslanges Human Data Model",
-    "heroSubtitle": "Ein biomathematischer digitaler Zwilling, der mit jedem verifizierten Gesundheitsereignis wächst — kein generischer Insight-Feed.",
-    "ctaExplore": "Dienste entdecken",
+    "heroSubtitle": "Ein biomathematischer digitaler Zwilling, der mit jedem verifizierten Gesundheitsereignis wächst — kein Biomarker-Dashboard.",
+    "ctaPricing": "Preise ansehen",
     "ctaHow": "So funktioniert’s",
-    "modelTitle": "Human Data Model",
-    "modelSubtitle": "Ein biomathematischer digitaler Zwilling aus verifizierten Gesundheitsinformationen.",
-    "section2": "Abschnitt 2",
-    "whatTitle": "Was können Sie verstehen?",
-    "whatSubtitle": "Ihr Human Data Model zeigt Zusammenhänge, die verborgen bleiben, wenn Labore, Wearables und Historie getrennt sind.",
-    "section3": "Abschnitt 3",
-    "timelineTitle": "Human Data Timeline",
-    "timelineSubtitle": "Ihre Gesundheitsgeschichte im biomathematischen Kontext.",
-    "openTimeline": "Ihre Timeline öffnen",
-    "section4": "Abschnitt 4",
-    "changesTitle1": "Alles verändert sich.",
-    "changesTitle2": "Human Data Model erinnert sich.",
-    "changesSubtitle": "Jedes wichtige Gesundheitsereignis aktualisiert Ihr lebenslanges biomathematisches Human Data Model.",
+    "coreTools": {
+      "title": "Modell aufbauen und lesen",
+      "subtitle": "Datensätze importieren, Zeitlinie sehen und Änderungen verfolgen — über alle Kategorien.",
+      "readMore": "Beschreibung lesen"
+    },
+    "what": {
+      "label": "Was es ist",
+      "title": "Ein lebendiges biomathematisches Modell von Ihnen",
+      "body": "Das Human Data Model ist ein digitaler Zwilling aus verifizierten Laborwerten, klinischen Notizen, Medikamenten, Symptomen und Lifestyle-Signalen. Es hält eine durchgängige Struktur — damit Health Guide über Ihre gesamte Geschichte nachdenken kann, nicht über isolierte Momentaufnahmen.",
+      "points": [
+        {
+          "title": "Ein Modell, viele Quellen",
+          "body": "Verstreute Berichte werden zu einer biomathematischen Struktur, die Sie bei Lebensänderungen erneut öffnen können."
+        },
+        {
+          "title": "Kontext vor Charts",
+          "body": "Zahlen zählen, wenn sie mit Diagnose, Behandlung und dem verbunden sind, was Sie wirklich spüren."
+        },
+        {
+          "title": "Für Jahrzehnte gebaut",
+          "body": "Jedes wichtige Ereignis aktualisiert den Zwilling — damit die Frage von morgen noch die Evidenz von gestern hat."
+        }
+      ],
+      "signals": [
+        "Labore",
+        "Klinische Notizen",
+        "Medikamente",
+        "Lifestyle"
+      ],
+      "vizTitle": "Signale, die im Human Data Model zusammenlaufen",
+      "vizCore": "HDM",
+      "vizCoreSub": "digitaler Zwilling",
+      "vizCaption": "Verifizierte Eingaben speisen ein Modell — keinen Haufen getrennter Dashboards."
+    },
+    "steps": {
+      "label": "So funktioniert’s",
+      "title": "Von Akten zu begründeter Orientierung",
+      "body": "Vier Schritte. Kein Lifestyle-Fülltext — nur, wie das Modell nützlich wird.",
+      "items": [
+        {
+          "title": "Importieren Sie, was Sie haben",
+          "body": "Bringen Sie Labore, Bildgebungsnotizen, Rezepte und persönliche Beobachtungen ein."
+        },
+        {
+          "title": "Den Zwilling strukturieren",
+          "body": "BioMath Core ordnet Ereignisse in Ihrem Human Data Model über Gesundheitskategorien."
+        },
+        {
+          "title": "Sehen, was sich geändert hat",
+          "body": "Vergleichen Sie Zeiträume, erkennen Sie Zusammenhänge und bereiten Sie klarere Fragen für die Versorgung vor."
+        },
+        {
+          "title": "Health Guide fragen",
+          "body": "Die Dual-Analyse nutzt Ihren Zwilling — biomathematische und klinisch ausgerichtete Sicht nebeneinander."
+        }
+      ]
+    },
+    "different": {
+      "label": "Warum anders",
+      "title": "Biomathematik, kein weiterer Biomarker-Feed",
+      "body": "Die meisten Wellness-Produkte visualisieren Kennzahlen. BioMath Core modelliert die Person dahinter.",
+      "them": {
+        "label": "Typische Biomarker-Dashboards",
+        "points": [
+          "Anzeigetafeln für den letzten Labor- oder Wearable-Wert",
+          "Hinweise, die zurückgesetzt werden, wenn Sie App oder Anbieter wechseln",
+          "Wenig Erinnerung, warum eine Zahl nach einer Medikamentenänderung sprang",
+          "Generische Tipps, die Ihre volle klinische Spur ignorieren"
+        ]
+      },
+      "us": {
+        "label": "Human Data Model",
+        "points": [
+          "Ein biomathematischer digitaler Zwilling, der über Jahre wächst",
+          "Ereignisse bleiben verknüpft: Labore, Diagnose, Behandlung, Symptome",
+          "Kategoriekarte auf der Figur — kein flacher Feed",
+          "Health Guide antwortet mit Dual-Analyse, verankert in Ihrem Modell"
+        ]
+      }
+    },
     "cta": {
       "title": "Bereit, Ihr Human Data Model aufzubauen?",
-      "description": "Starten Sie mit einem Plan, der Ihren biomathematischen Kontext vertieft. Health Guide liefert Doppelmodell-Guidance — keine generische Personalisierung.",
+      "description": "Wählen Sie einen Plan, der den biomathematischen Kontext vertieft. Health Guide liefert Dual-Modell-Orientierung — keine generische Personalisierung.",
       "primary": "Preise ansehen",
       "secondary": "Konto erstellen"
     },
-    "seoTitle": "Biomathematisches Human Data Model",
-    "seoDescription": "BioMath Core baut ein lebendiges Human Data Model — einen biomathematischen digitalen Zwilling Ihrer Gesundheit — und führt Sie mit der Dualanalyse von Health Guide.",
     "figure": {
       "female": "Frau",
       "male": "Mann",
