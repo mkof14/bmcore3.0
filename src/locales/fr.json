@@ -9,7 +9,8 @@
     "signInUp": "Connexion/Inscription",
     "signOut": "Déconnexion",
     "admin": "Admin",
-    "language": "Langue"
+    "language": "Langue",
+    "languageSwitching": "Changement de langue…"
   },
   "footer": {
     "tagline": "Intelligence bien-être fondée sur la biomathématique pour comprendre votre corps.",

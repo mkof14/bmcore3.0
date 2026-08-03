@@ -9,7 +9,8 @@
     "signInUp": "התחברות/הרשמה",
     "signOut": "התנתקות",
     "admin": "ניהול",
-    "language": "שפה"
+    "language": "שפה",
+    "languageSwitching": "מחליף שפה…"
   },
   "footer": {
     "tagline": "אינטליגנציית בריאות מבוססת ביו-מתמטיקה להבנת הגוף.",

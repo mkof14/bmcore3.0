@@ -9,7 +9,8 @@
     "signInUp": "Sign In/Up",
     "signOut": "Sign Out",
     "admin": "Admin",
-    "language": "Language"
+    "language": "Language",
+    "languageSwitching": "Switching language…"
   },
   "footer": {
     "tagline": "Biomathematics-based wellness intelligence for understanding your body.",

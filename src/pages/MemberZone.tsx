@@ -323,18 +323,14 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
       />
 
       <div className="ml-64 transition-all duration-300" data-scroll-root data-scroll-blur>
-        <div
-          className={`mx-auto px-6 py-8 ${
-            currentSection === 'service-workspace' ? 'max-w-6xl' : 'max-w-7xl'
-          }`}
-        >
+        <div className="px-6 pt-6">
           <WorkspaceStatusBanner
             zone="member"
             sectionLabel={sectionLabels[currentSection] || currentSection}
             className="mb-4"
           />
 
-          <div className="mb-6 flex items-center justify-between">
+          <div className="mb-4 flex items-center justify-between">
             <button
               onClick={() => onNavigate('home')}
               className="member-btn"
@@ -350,11 +346,18 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
               <span>{t('member.zone.signOut')}</span>
             </button>
           </div>
+        </div>
 
-          {currentSection !== 'service-workspace' && (
-            <MemberSectionHero section={currentSection} />
-          )}
+        {/* Full-bleed photo hero across the member content column (all sections except service workspace). */}
+        {currentSection !== 'service-workspace' && (
+          <MemberSectionHero section={currentSection} />
+        )}
 
+        <div
+          className={`mx-auto px-6 py-8 ${
+            currentSection === 'service-workspace' ? 'max-w-6xl' : 'max-w-7xl'
+          }`}
+        >
           {renderSection()}
         </div>
       </div>

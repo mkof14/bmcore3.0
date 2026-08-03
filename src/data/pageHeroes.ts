@@ -4,7 +4,7 @@
  * Bump HERO_CACHE when replacing assets so browsers fetch fresh files.
  */
 
-const HERO_CACHE = 'v2';
+const HERO_CACHE = 'v3';
 
 export const PAGE_HEROES = {
   investors: '/hero/pages/investors.webp',

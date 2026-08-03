@@ -18,7 +18,7 @@ export type PageHeroProps = {
 /**
  * Full-bleed photo hero with dark overlay for readable type.
  * Marketing pages: default height. Member Zone: pass compact —
- * overlay fades into --bm-page so the banner blends into content below.
+ * still photo-forward (dark veil + light type) so banners read as real heroes.
  */
 export default function PageHero({
   imageSrc,
@@ -35,7 +35,7 @@ export default function PageHero({
     <section
       className={`relative w-full overflow-hidden ${
         compact
-          ? 'min-h-[140px] sm:min-h-[160px]'
+          ? 'min-h-[180px] sm:min-h-[210px]'
           : 'min-h-[240px] sm:min-h-[300px] md:min-h-[360px]'
       } ${className}`}
     >
@@ -49,14 +49,13 @@ export default function PageHero({
       />
       {compact ? (
         <>
-          {/* Side read veil — page-tinted (not pure black) so it matches the canvas */}
+          {/* Keep the photo visible — dark read veil, not page-color wash */}
           <div
-            className="absolute inset-0 bg-gradient-to-r from-[var(--bm-page)]/90 via-[var(--bm-page)]/55 to-[var(--bm-page)]/20"
+            className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/25"
             aria-hidden
           />
-          {/* Bottom fade into page — photo → content without a hard cut */}
           <div
-            className="absolute inset-0 bg-gradient-to-t from-[var(--bm-page)] from-15% via-[var(--bm-page)]/50 to-transparent"
+            className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/15"
             aria-hidden
           />
         </>
@@ -75,7 +74,7 @@ export default function PageHero({
 
       <div
         className={`relative mx-auto flex h-full w-full max-w-[1100px] flex-col justify-end px-4 sm:px-6 lg:px-8 ${
-          compact ? 'py-8 sm:py-10' : 'py-12 sm:py-14 md:py-16'
+          compact ? 'py-9 sm:py-11' : 'py-12 sm:py-14 md:py-16'
         } ${contentClassName}`}
       >
         {label ? (
@@ -86,7 +85,7 @@ export default function PageHero({
         <h1
           className={`max-w-3xl font-semibold tracking-tight ${
             compact
-              ? 'text-2xl text-[var(--bm-text)] sm:text-3xl dark:text-[var(--bm-text)]'
+              ? 'text-2xl text-white sm:text-3xl'
               : 'text-3xl text-white sm:text-4xl md:text-[3rem] md:leading-[1.12]'
           }`}
         >
@@ -96,7 +95,7 @@ export default function PageHero({
           <p
             className={`mt-3 max-w-2xl leading-relaxed ${
               compact
-                ? 'text-sm text-[var(--bm-text-secondary)] sm:text-base'
+                ? 'text-sm text-neutral-200 sm:text-base'
                 : 'text-base text-neutral-200 sm:text-lg'
             }`}
           >

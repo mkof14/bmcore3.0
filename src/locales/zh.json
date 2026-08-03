@@ -9,7 +9,8 @@
     "signInUp": "登录/注册",
     "signOut": "退出登录",
     "admin": "管理",
-    "language": "语言"
+    "language": "语言",
+    "languageSwitching": "正在切换语言…"
   },
   "footer": {
     "tagline": "基于生物数学的健康智能，帮助你理解身体。",

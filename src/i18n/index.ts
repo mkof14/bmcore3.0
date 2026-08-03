@@ -40,8 +40,18 @@ const packGlobs: Record<AppLanguage, Record<string, JsonLoader>> = {
   ru: import.meta.glob('../locales/ru/*.json') as Record<string, JsonLoader>,
 };
 
+/**
+ * Packs needed for chrome + Member Zone to feel instant on language switch.
+ * Remaining packs (legal, servicesData, faq, …) hydrate in the background.
+ */
+const PRIORITY_PACK_RE = /\/(chrome|member|pages|devices|catalog)\.json$/;
+
 const loadedLanguages = new Set<AppLanguage>();
-const inflightLoads = new Map<AppLanguage, Promise<void>>();
+const criticalLoaded = new Set<AppLanguage>();
+const inflightLoads = new Map<string, Promise<void>>();
+
+/** Bumps when the user picks another language so stale work is ignored. */
+let languageSwitchGeneration = 0;
 
 function unwrapJson(mod: JsonModule | Record<string, unknown>): Record<string, unknown> {
   if (mod && typeof mod === 'object' && 'default' in mod && mod.default) {
@@ -50,37 +60,109 @@ function unwrapJson(mod: JsonModule | Record<string, unknown>): Record<string, u
   return mod as Record<string, unknown>;
 }
 
-async function buildLanguageBundle(code: AppLanguage): Promise<Record<string, unknown>> {
-  const baseMod = await baseLoaders[code]();
-  const packLoaders = Object.values(packGlobs[code] || {});
-  const packMods = await Promise.all(packLoaders.map((load) => load()));
-  const packs = packMods.map(unwrapJson);
-  return mergeDeep(unwrapJson(baseMod), ...packs);
+function packEntries(
+  code: AppLanguage,
+  mode: 'priority' | 'remainder' | 'all',
+): Array<[string, JsonLoader]> {
+  const entries = Object.entries(packGlobs[code] || {});
+  if (mode === 'all') return entries;
+  if (mode === 'priority') {
+    return entries.filter(([path]) => PRIORITY_PACK_RE.test(path));
+  }
+  return entries.filter(([path]) => !PRIORITY_PACK_RE.test(path));
 }
 
-/** Ensure a language bundle is registered with i18next (idempotent). */
-export async function ensureLanguageLoaded(code: AppLanguage): Promise<void> {
-  if (loadedLanguages.has(code)) return;
+/** Yield so the language menu / Member Zone stay responsive during heavy JSON work. */
+function yieldToMain(): Promise<void> {
+  return new Promise((resolve) => {
+    if (typeof requestAnimationFrame === 'function') {
+      requestAnimationFrame(() => resolve());
+    } else {
+      setTimeout(resolve, 0);
+    }
+  });
+}
 
-  const inflight = inflightLoads.get(code);
+async function loadPackBundle(
+  code: AppLanguage,
+  mode: 'priority' | 'remainder' | 'all',
+): Promise<Record<string, unknown>> {
+  const loaders = packEntries(code, mode);
+  const mods: Record<string, unknown>[] = [];
+  // Batch to avoid saturating the main thread with 20+ JSON parses at once.
+  const BATCH = 4;
+  for (let i = 0; i < loaders.length; i += BATCH) {
+    const slice = loaders.slice(i, i + BATCH);
+    const batchMods = await Promise.all(slice.map(([, load]) => load()));
+    for (const mod of batchMods) mods.push(unwrapJson(mod));
+    if (i + BATCH < loaders.length) await yieldToMain();
+  }
+  return mergeDeep({}, ...mods);
+}
+
+async function registerBundle(code: AppLanguage, bundle: Record<string, unknown>) {
+  i18n.addResourceBundle(code, 'translation', bundle, true, true);
+}
+
+/**
+ * Load only base + priority packs so changeLanguage can run quickly.
+ * Idempotent for the critical set.
+ */
+async function ensureCriticalLoaded(code: AppLanguage): Promise<void> {
+  if (loadedLanguages.has(code) || criticalLoaded.has(code)) return;
+
+  const key = `critical:${code}`;
+  const inflight = inflightLoads.get(key);
   if (inflight) {
     await inflight;
     return;
   }
 
   const promise = (async () => {
-    const bundle = await buildLanguageBundle(code);
-    if (!i18n.hasResourceBundle(code, 'translation')) {
-      i18n.addResourceBundle(code, 'translation', bundle, true, true);
-    }
-    loadedLanguages.add(code);
+    const baseMod = await baseLoaders[code]();
+    await yieldToMain();
+    const packs = await loadPackBundle(code, 'priority');
+    await registerBundle(code, mergeDeep(unwrapJson(baseMod), packs));
+    criticalLoaded.add(code);
   })();
 
-  inflightLoads.set(code, promise);
+  inflightLoads.set(key, promise);
   try {
     await promise;
   } finally {
-    inflightLoads.delete(code);
+    inflightLoads.delete(key);
+  }
+}
+
+/** Ensure a language bundle is fully registered with i18next (idempotent). */
+export async function ensureLanguageLoaded(code: AppLanguage): Promise<void> {
+  if (loadedLanguages.has(code)) return;
+
+  const key = `full:${code}`;
+  const inflight = inflightLoads.get(key);
+  if (inflight) {
+    await inflight;
+    return;
+  }
+
+  const promise = (async () => {
+    // Prefer upgrading from critical rather than reloading base+priority.
+    if (!criticalLoaded.has(code)) {
+      await ensureCriticalLoaded(code);
+    }
+    const remainder = await loadPackBundle(code, 'remainder');
+    if (Object.keys(remainder).length > 0) {
+      await registerBundle(code, remainder);
+    }
+    loadedLanguages.add(code);
+    criticalLoaded.add(code);
+  })();
+
+  inflightLoads.set(key, promise);
+  try {
+    await promise;
+  } finally {
+    inflightLoads.delete(key);
   }
 }
 
@@ -125,19 +207,33 @@ export function initI18n(): Promise<typeof i18n> {
         partialBundledLanguages: true,
         interpolation: { escapeValue: false },
         returnNull: false,
-        react: { useSuspense: false },
+        react: {
+          useSuspense: false,
+          // Re-render when background packs arrive after a fast language switch.
+          bindI18n: 'languageChanged loaded',
+          bindI18nStore: 'added removed',
+        },
       });
     }
 
-    const loads: Array<Promise<void>> = [ensureLanguageLoaded(lng)];
+    // Boot: critical first for fast first paint, then finish full packs.
+    const criticalLoads: Array<Promise<void>> = [ensureCriticalLoaded(lng)];
     if (lng !== DEFAULT_LANGUAGE) {
-      loads.push(ensureLanguageLoaded(DEFAULT_LANGUAGE));
+      criticalLoads.push(ensureCriticalLoaded(DEFAULT_LANGUAGE));
     }
-    await Promise.all(loads);
+    await Promise.all(criticalLoads);
 
     if (i18n.language !== lng) {
       await i18n.changeLanguage(lng);
     }
+
+    // Finish remaining packs without blocking first paint.
+    void ensureLanguageLoaded(lng);
+    if (lng !== DEFAULT_LANGUAGE) {
+      void ensureLanguageLoaded(DEFAULT_LANGUAGE);
+    }
+
+    scheduleLanguagePrefetch(lng);
 
     return i18n;
   })();
@@ -157,11 +253,65 @@ i18n.on('languageChanged', (lng) => {
 
 export default i18n;
 
+/**
+ * Switch UI language without freezing the Member Zone.
+ * Applies critical packs first, changes language immediately, then hydrates the rest.
+ */
 export async function setAppLanguage(code: AppLanguage) {
-  const loads: Array<Promise<void>> = [ensureLanguageLoaded(code)];
-  if (code !== DEFAULT_LANGUAGE) {
-    loads.push(ensureLanguageLoaded(DEFAULT_LANGUAGE));
+  const generation = ++languageSwitchGeneration;
+
+  // Apply dir/lang early so the header feels responsive even before packs finish.
+  applyDocumentLanguage(code);
+  try {
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, code);
+  } catch {
+    // ignore
   }
-  await Promise.all(loads);
+
+  if (!loadedLanguages.has(code)) {
+    await ensureCriticalLoaded(code);
+    if (generation !== languageSwitchGeneration) return;
+  }
+
+  // English fallback for missing keys — never block the switch on a cold en load.
+  if (code !== DEFAULT_LANGUAGE && !criticalLoaded.has(DEFAULT_LANGUAGE) && !loadedLanguages.has(DEFAULT_LANGUAGE)) {
+    void ensureCriticalLoaded(DEFAULT_LANGUAGE).then(() => ensureLanguageLoaded(DEFAULT_LANGUAGE));
+  }
+
+  if (generation !== languageSwitchGeneration) return;
   await i18n.changeLanguage(code);
+
+  // Background: finish large packs (legal, servicesData, …) without blocking UI.
+  if (!loadedLanguages.has(code)) {
+    void ensureLanguageLoaded(code);
+  }
+
+  scheduleLanguagePrefetch(code);
+}
+
+/** Warm nearby languages in idle time so the next switch is instant. */
+function scheduleLanguagePrefetch(active: AppLanguage) {
+  if (typeof window === 'undefined') return;
+  const others = (
+    ['en', 'ru', 'es', 'uk', 'de', 'fr', 'he', 'ar', 'ja', 'zh'] as AppLanguage[]
+  ).filter((code) => code !== active && !loadedLanguages.has(code) && !criticalLoaded.has(code));
+
+  const run = () => {
+    const next = others.shift();
+    if (!next) return;
+    void ensureCriticalLoaded(next).finally(() => {
+      if (others.length === 0) return;
+      if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(() => run(), { timeout: 4000 });
+      } else {
+        setTimeout(run, 800);
+      }
+    });
+  };
+
+  if (typeof requestIdleCallback === 'function') {
+    requestIdleCallback(() => run(), { timeout: 5000 });
+  } else {
+    setTimeout(run, 1200);
+  }
 }

@@ -71,8 +71,8 @@ export default function MemberSectionHero({ section, title, subtitle, className 
       imageSrc={pageHeroUrl(heroKey)}
       title={resolvedTitle}
       subtitle={resolvedSubtitle}
-      className={`-mx-6 mb-6 rounded-none sm:rounded-xl ${className ?? ''}`}
-      contentClassName="max-w-7xl"
+      className={`mb-0 w-full ${className ?? ''}`}
+      contentClassName="max-w-7xl px-6 sm:px-8"
     />
   );
 }

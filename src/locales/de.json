@@ -9,7 +9,8 @@
     "signInUp": "Anmelden/Registrieren",
     "signOut": "Abmelden",
     "admin": "Admin",
-    "language": "Sprache"
+    "language": "Sprache",
+    "languageSwitching": "Sprache wird gewechselt…"
   },
   "footer": {
     "tagline": "Biomathematik-basierte Wellness-Intelligenz zum Verstehen Ihres Körpers.",

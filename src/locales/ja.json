@@ -9,7 +9,8 @@
     "signInUp": "ログイン/登録",
     "signOut": "ログアウト",
     "admin": "管理",
-    "language": "言語"
+    "language": "言語",
+    "languageSwitching": "言語を切り替えています…"
   },
   "footer": {
     "tagline": "体を理解するための生物数学に基づくウェルネスインテリジェンス。",
