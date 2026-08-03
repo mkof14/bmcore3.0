@@ -55,18 +55,34 @@ if not FIGURES["female"]["cut"].exists():
     FIGURES["female"]["cut"] = ROOT / "scripts/hdm-human-photo-cutout.png"
 
 
-def fit_cutout(cut: Image.Image, tw: int, th: int, pad_frac: float = 0.045) -> Image.Image:
-    a = cut.split()[-1]
-    bbox = a.getbbox()
+def _alpha_bbox(alpha: Image.Image, thresh: int = 16) -> tuple[int, int, int, int]:
+    """Tight bbox ignoring fringe alpha so wide poses don't inflate empty padding."""
+    solid = alpha.point(lambda v: 255 if v >= thresh else 0)
+    bbox = solid.getbbox()
     if not bbox:
         raise SystemExit("empty cutout")
+    return bbox
+
+
+def fit_cutout(cut: Image.Image, tw: int, th: int, pad_frac: float = 0.045) -> Image.Image:
+    """Fit cutout into OUT canvas with consistent head-to-toe height.
+
+    Height is the primary constraint (match female ~90% frame). Wide male poses
+    may exceed canvas width and are center-cropped — never shrink the whole
+    figure to preserve side padding (that left male ~61% tall).
+    """
+    a = cut.split()[-1]
+    bbox = _alpha_bbox(a)
     person = cut.crop(bbox)
     pw, ph = person.size
-    max_w = int(tw * (1 - 2 * pad_frac))
     max_h = int(th * (1 - 2 * pad_frac))
-    scale = min(max_w / pw, max_h / ph)
+    scale = max_h / ph
     nw, nh = max(1, int(pw * scale)), max(1, int(ph * scale))
     person = person.resize((nw, nh), Image.Resampling.LANCZOS)
+    if nw > tw:
+        left = (nw - tw) // 2
+        person = person.crop((left, 0, left + tw, nh))
+        nw = tw
     canvas = Image.new("RGBA", (tw, th), (0, 0, 0, 0))
     x = (tw - nw) // 2
     y = max(int(th * pad_frac * 0.6), (th - nh) // 2 - int(th * 0.01))

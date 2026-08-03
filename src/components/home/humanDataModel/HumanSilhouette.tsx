@@ -29,7 +29,7 @@ interface Props {
   onSelectCategory: (id: string) => void;
 }
 
-const FIGURE_CACHE = 'v=15';
+const FIGURE_CACHE = 'v=16';
 
 function hexToRgba(hex: string, alpha: number): string {
   const h = hex.replace('#', '');
