@@ -64,29 +64,77 @@ def _alpha_bbox(alpha: Image.Image, thresh: int = 16) -> tuple[int, int, int, in
     return bbox
 
 
+def _optical_cx(alpha: Image.Image, thresh: int = 40) -> float:
+    """Mean horizontal midline of solid rows (body axis), ignoring soft fringe."""
+    solid = alpha.point(lambda v: 255 if v >= thresh else 0)
+    bbox = solid.getbbox()
+    if not bbox:
+        # Fall back to any-alpha bbox center.
+        bbox = alpha.getbbox()
+        if not bbox:
+            raise SystemExit("empty cutout")
+        return (bbox[0] + bbox[2]) * 0.5
+    x0, y0, x1, y1 = bbox
+    px = solid.load()
+    mids: list[float] = []
+    for y in range(y0, y1):
+        left = None
+        right = None
+        for x in range(x0, x1):
+            if px[x, y]:
+                if left is None:
+                    left = x
+                right = x
+        if left is not None and right is not None:
+            mids.append((left + right) * 0.5)
+    if not mids:
+        return (x0 + x1) * 0.5
+    return sum(mids) / len(mids)
+
+
+# Female-locked placement on the 800×1747 canvas (bodyCubes / hotspot reference).
+_FEMALE_TOP_FRAC = 74 / 1747
+_FEMALE_OPTICAL_CX_FRAC = 403.6 / 800  # measured solid mid-of-row on locked female WebP
+
+
 def fit_cutout(cut: Image.Image, tw: int, th: int, pad_frac: float = 0.045) -> Image.Image:
     """Fit cutout into OUT canvas with consistent head-to-toe height.
 
-    Height is the primary constraint (match female ~90% frame). Wide male poses
-    may exceed canvas width and are center-cropped — never shrink the whole
-    figure to preserve side padding (that left male ~61% tall).
+    Height is the primary constraint (match female ~90% frame). Wide poses may
+    exceed canvas width and are cropped — never shrink the whole figure to
+    preserve side padding (that left male ~61% tall).
+
+    Horizontal placement uses the solid-body optical axis (not the soft-alpha
+    bbox). Male cutouts carry a wide left fringe that used to bias center-crop
+    ~140px right of the hotspot column. Vertical top + optical CX match female.
     """
     a = cut.split()[-1]
-    bbox = _alpha_bbox(a)
+    # Soft silhouette extent (hair/feet fringe); optical axis uses solid body.
+    bbox = _alpha_bbox(a, thresh=16)
     person = cut.crop(bbox)
     pw, ph = person.size
+    opt_cx = _optical_cx(person.split()[-1], thresh=40)
+
     max_h = int(th * (1 - 2 * pad_frac))
     scale = max_h / ph
     nw, nh = max(1, int(pw * scale)), max(1, int(ph * scale))
+    opt_cx *= scale
     person = person.resize((nw, nh), Image.Resampling.LANCZOS)
-    if nw > tw:
-        left = (nw - tw) // 2
-        person = person.crop((left, 0, left + tw, nh))
-        nw = tw
+
+    # Place so body midline → female optical CX (hotspot axis). x may be negative
+    # (drop left fringe) or person may overhang the right — composite overlap only.
+    target_cx = tw * _FEMALE_OPTICAL_CX_FRAC
+    x = int(round(target_cx - opt_cx))
+    y = int(round(th * _FEMALE_TOP_FRAC))
+    y = max(0, min(y, th - nh))
+
     canvas = Image.new("RGBA", (tw, th), (0, 0, 0, 0))
-    x = (tw - nw) // 2
-    y = max(int(th * pad_frac * 0.6), (th - nh) // 2 - int(th * 0.01))
-    canvas.alpha_composite(person, (x, y))
+    src_x0 = max(0, -x)
+    dst_x0 = max(0, x)
+    copy_w = min(nw - src_x0, tw - dst_x0)
+    if copy_w > 0:
+        tile = person.crop((src_x0, 0, src_x0 + copy_w, nh))
+        canvas.alpha_composite(tile, (dst_x0, y))
     return canvas
 
 
