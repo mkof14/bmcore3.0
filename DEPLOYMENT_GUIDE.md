@@ -9,11 +9,26 @@ BioMath Core is still **one Vite SPA repo**, with a pragmatic SEO split:
 | **Marketing / public** | `/`, `/about`, `/pricing`, `/science`, `/how-it-works`, `/why-two-models`, `/blog`, `/investors`, `/contact`, `/faq`, `/learning-center`, `/privacy-trust`, `/services-catalog`, … | Static HTML shells written by `scripts/prerender.mjs` after `vite build` (real `<title>`, description, H1 in `<noscript>`, Organization + SoftwareApplication JSON-LD on home). Vercel `filesystem` handle serves `dist/{path}/index.html` before the SPA fallback. |
 | **Product app** | `/member-zone`, `/admin-panel`, `/command-center`, `/signin`, `/signup`, devices/reports, … | Client SPA behind auth / admin gates (not prerendered; `robots.txt` disallows private paths). |
 
-**Done (mitigation):** SPA prerender for key marketing routes (`npm run build` → `vite build && node scripts/prerender.mjs`).
+**Done (mitigation):** SPA prerender for key marketing routes. Every production build runs prerender + verify:
 
-**Not done (full split):** Separate Next.js/Remix marketing site + isolated product app (two deploys / two repos). That remains a future project if organic search or editorial CMS needs demand it.
+```bash
+npm run build
+# → vite build && node scripts/prerender.mjs && node scripts/verify-prerender.mjs
+```
 
-See also: `docs/ops/health-guide-naming.md`, `src/lib/routing.ts` (`MARKETING_PRERENDER_PATHS`).
+(`build:mock` / `vercel-build` call the same `build` chain, so Vercel always ships verified shells.)
+
+| Script | Role |
+|--------|------|
+| `scripts/prerender-routes.mjs` | Route list + title / description / H1 (keep in sync with `MARKETING_PRERENDER_PATHS` in `src/lib/routing.ts`) |
+| `scripts/prerender.mjs` | Writes `dist/` and `dist/{path}/index.html` shells (title, meta description, OG, canonical, JSON-LD, `<noscript>` H1) |
+| `scripts/verify-prerender.mjs` | Fails the build if priority routes lack title / description / H1 / `bm-prerender` marker |
+
+**Priority SEO shells (must pass verify):** `/`, `/about`, `/pricing`, `/science`, `/how-it-works`, `/blog` — plus the rest of `PRERENDER_ROUTES` (investors, contact, FAQ, learning-center, privacy-trust, services-catalog, why-two-models).
+
+**Not done (full split):** Separate Next.js/Remix marketing site + isolated product app (two deploys / two repos). That remains a future project if organic search or editorial CMS needs demand it. Do **not** migrate to Next.js solely for these shells — prerender covers bot-visible title/description/H1 today.
+
+See also: `docs/ops/health-guide-naming.md`, `docs/ops/photo-grade.md`, `src/lib/routing.ts` (`MARKETING_PRERENDER_PATHS`).
 
 ### Performance / Core Web Vitals notes
 

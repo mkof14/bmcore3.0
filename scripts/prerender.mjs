@@ -131,7 +131,8 @@ function applyRoute(html, route) {
   out = injectJsonLd(out, schemas);
   out = injectNoscriptSeo(out, route);
 
-  // Marker for ops/debugging.
+  // Marker for ops/debugging (strip prior runs so re-prerender stays idempotent).
+  out = out.replace(/\s*<meta[^>]+name=["']bm-prerender["'][^>]*>/gi, '');
   out = out.replace(
     '</head>',
     `    <meta name="bm-prerender" content="${escapeHtml(route.path)}" />\n  </head>`,

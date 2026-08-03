@@ -108,12 +108,13 @@ export default function WhatCanYouUnderstand() {
               <div className="relative mx-auto aspect-[3/4] w-full overflow-hidden rounded-sm bg-[var(--bm-surface)]">
                 <img
                   key={portraitSrc}
-                  src={portraitSrc}
+                  src={`${portraitSrc}?v=slate1`}
                   alt={t('homeExtra.understand.portraitAlt')}
-                  className="h-full w-full object-cover object-[center_18%] transition-opacity duration-200"
+                  className="bm-people-photo h-full w-full object-cover object-[center_18%] transition-opacity duration-200"
                   loading="lazy"
                   decoding="async"
                 />
+                <div className="bm-people-photo-wash absolute inset-0" aria-hidden />
                 <div
                   className={`pointer-events-none absolute inset-0 bg-gradient-to-t ${
                     dark

@@ -1,6 +1,6 @@
-/** Auto from transparent tight crop of T6 human — WebP with alpha (LCP). */
+/** Data-viz mosaic silhouette (slate grid / nodes / sparklines) — WebP with alpha (LCP). */
 export const HUMAN_SRC_DARK = '/hdm-human.webp';
-/** Same figure, black matte removed for light canvas. */
+/** Light-canvas variant of the same math-driven figure. */
 export const HUMAN_SRC_LIGHT = '/hdm-human-light.webp';
 
 /** Narrower src for phones / small viewports (srcset). */

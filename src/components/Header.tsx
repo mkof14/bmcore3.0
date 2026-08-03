@@ -41,13 +41,13 @@ export default function Header({
     onNavigate('home');
   }, [onNavigate, onSignOut]);
 
+  // Consumer primary nav — Investors stays in Footer + direct /investors route.
   const navItems = [
     { name: t('nav.home'), path: 'home' },
     { name: t('nav.about'), path: 'about' },
     { name: t('nav.pricing'), path: 'pricing' },
     { name: t('nav.allServices'), path: 'services-catalog' },
     { name: t('nav.memberZone'), path: 'member-zone' },
-    { name: t('nav.investors'), path: 'investors' },
   ];
 
   const isMemberPage = currentPage === 'member' || currentPage === 'member-zone';

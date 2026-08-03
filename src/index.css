@@ -70,6 +70,24 @@
   .member-muted {
     color: var(--bm-text-muted);
   }
+
+  /**
+   * Marketing people / lifestyle photos — cool-slate clinical grade.
+   * Slight desaturate + cool shift toward brand slate; orange accents stay in UI chrome.
+   * Pair with .bm-people-photo-wash on heroes for a consistent site-wide look.
+   * Residual: mixed poses/lighting from stock still read as different shoots;
+   * full custom 3D/photo production is out of scope.
+   */
+  .bm-people-photo {
+    filter: saturate(0.78) contrast(1.05) brightness(0.96) hue-rotate(8deg);
+  }
+
+  .bm-people-photo-wash {
+    background:
+      linear-gradient(125deg, rgba(15, 23, 42, 0.28) 0%, rgba(15, 23, 42, 0.08) 45%, rgba(194, 65, 12, 0.1) 100%);
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+  }
 }
 
 html.dark .member-card {

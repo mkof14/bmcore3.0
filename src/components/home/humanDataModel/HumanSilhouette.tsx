@@ -274,8 +274,8 @@ export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
 
         <img
           key={dark ? 'hdm-dark' : 'hdm-light'}
-          src={`${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=10`}
-          srcSet={`${dark ? HUMAN_SRC_DARK_480 : HUMAN_SRC_LIGHT_480}?v=10 480w, ${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=10 800w`}
+          src={`${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=11`}
+          srcSet={`${dark ? HUMAN_SRC_DARK_480 : HUMAN_SRC_LIGHT_480}?v=11 480w, ${dark ? HUMAN_SRC_DARK : HUMAN_SRC_LIGHT}?v=11 800w`}
           sizes="(max-width: 640px) 48vw, min(52vw, 728px)"
           alt="Human Data Model"
           width={HUMAN_W}
@@ -285,8 +285,8 @@ export default function HumanSilhouette({ dark, onSelectCategory }: Props) {
           className="pointer-events-none absolute inset-0 z-10 h-full w-full object-fill select-none transition-[filter,opacity] duration-200 ease-out"
           style={{
             filter: dark
-              ? 'brightness(0.78) contrast(1.05)'
-              : 'brightness(1.02) contrast(1.03) saturate(1.05)',
+              ? 'brightness(0.95) contrast(1.04)'
+              : 'brightness(1.02) contrast(1.03)',
           }}
           draggable={false}
         />

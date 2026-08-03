@@ -42,11 +42,13 @@ export default function PageHero({
       <img
         src={imageSrc}
         alt={imageAlt}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="bm-people-photo absolute inset-0 h-full w-full object-cover"
         loading="eager"
         decoding="async"
         fetchPriority="high"
       />
+      {/* Cool slate brand wash — unifies mixed stock people/lifestyle heroes */}
+      <div className="bm-people-photo-wash absolute inset-0" aria-hidden />
       {compact ? (
         <>
           {/* Keep the photo visible — dark read veil, not page-color wash */}

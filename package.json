@@ -11,9 +11,10 @@
   },
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
-    "build": "vite build && node scripts/prerender.mjs",
+    "build": "vite build && node scripts/prerender.mjs && node scripts/verify-prerender.mjs",
     "build:mock": "VITE_MOCK_MODE=1 npm run build",
-    "prerender": "node scripts/prerender.mjs",
+    "prerender": "node scripts/prerender.mjs && node scripts/verify-prerender.mjs",
+    "prerender:verify": "node scripts/verify-prerender.mjs",
     "vercel-build": "npm run build:mock",
     "start": "vite preview --host 127.0.0.1 --port 5173 --strictPort",
     "lint": "eslint .",

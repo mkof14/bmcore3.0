@@ -33,7 +33,7 @@ Pure pattern matching can overfit noise. Biomathematical priors constrain learni
 What this is not
 
 This is not a medical diagnosis device. It is wellness intelligence: clearer context for prevention conversations with qualified clinicians.`,
-    featured_image: '',
+    featured_image: '/blog/cover-method.webp',
     category: 'Method',
     published_at: '2026-07-15T10:00:00.000Z',
   },
@@ -56,7 +56,7 @@ The Human Data Model accumulates events into one evolving structure. Categories 
 When a dashboard is still fine
 
 If you only need a one-time lab readout, a dashboard may be enough. If you want continuity — what changed, why it might matter, what to watch next — you need a model.`,
-    featured_image: '',
+    featured_image: '/blog/cover-dashboard.webp',
     category: 'Method',
     published_at: '2026-07-22T10:00:00.000Z',
   },
@@ -81,7 +81,7 @@ The second-opinion effect
 When both agree, confidence rises. When they diverge, Health Guide surfaces the tension — similar to seeking a second opinion — so you and your clinician know where attention is warranted.
 
 Learn more on the Why Two Models page.`,
-    featured_image: '',
+    featured_image: '/blog/cover-dual.webp',
     category: 'Product',
     published_at: '2026-07-29T10:00:00.000Z',
   },
@@ -106,7 +106,7 @@ Transparent guidance
 Health Guide is an assistant, not a doctor. Dual-model outputs are meant to be inspectable enough to support — not replace — professional care.
 
 If you have questions about enterprise or partnership data handling, contact the team.`,
-    featured_image: '',
+    featured_image: '/blog/cover-privacy.webp',
     category: 'Trust',
     published_at: '2026-08-01T10:00:00.000Z',
   },

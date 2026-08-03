@@ -23,7 +23,7 @@ export default function EverythingChanges() {
   const { theme } = useTheme();
   const dark = theme === 'dark';
   // Cache-bust when portrait assets are swapped (avoid stale mid/later mixups)
-  const v = 'age3';
+  const v = 'slate1';
   const young = dark ? `/home/life-young.webp?v=${v}` : `/home/life-young-light.webp?v=${v}`;
   const mid = dark ? `/home/life-mid.webp?v=${v}` : `/home/life-mid-light.webp?v=${v}`;
   const later = dark ? `/home/life-later.webp?v=${v}` : `/home/life-later-light.webp?v=${v}`;
@@ -58,10 +58,11 @@ export default function EverythingChanges() {
                 key={young}
                 src={young}
                 alt={t('homeExtra.changes.youngAlt')}
-                className="absolute inset-0 h-full w-full object-cover object-[center_20%] transition-opacity duration-200"
+                className="bm-people-photo absolute inset-0 h-full w-full object-cover object-[center_20%] transition-opacity duration-200"
                 loading="lazy"
                 decoding="async"
               />
+              <div className="bm-people-photo-wash absolute inset-0" aria-hidden />
             </div>
             <figcaption className="mt-3">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-neutral-400">
@@ -92,10 +93,11 @@ export default function EverythingChanges() {
                   key={mid}
                   src={mid}
                   alt={t('homeExtra.changes.midAlt')}
-                  className="absolute inset-0 h-full w-full object-cover object-[center_25%] transition-opacity duration-200"
+                  className="bm-people-photo absolute inset-0 h-full w-full object-cover object-[center_25%] transition-opacity duration-200"
                   loading="lazy"
                   decoding="async"
                 />
+                <div className="bm-people-photo-wash absolute inset-0" aria-hidden />
               </div>
               <figcaption className="mt-3">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-neutral-400">
@@ -113,10 +115,11 @@ export default function EverythingChanges() {
                   key={later}
                   src={later}
                   alt={t('homeExtra.changes.laterAlt')}
-                  className="absolute inset-0 h-full w-full object-cover object-[center_20%] transition-opacity duration-200"
+                  className="bm-people-photo absolute inset-0 h-full w-full object-cover object-[center_20%] transition-opacity duration-200"
                   loading="lazy"
                   decoding="async"
                 />
+                <div className="bm-people-photo-wash absolute inset-0" aria-hidden />
               </div>
               <figcaption className="mt-3">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-neutral-400">
