@@ -175,10 +175,11 @@ export const CATEGORY_AT: Record<string, { c: number; r: number }> = {
   'nutrition-diet': { c: 2, r: 5 },
   'digital-therapeutics': { c: 2, r: 6 },
   'womens-health': { c: 1, r: 7 },
-  'general-sexual': { c: 2, r: 7 },
   'mens-health': { c: 3, r: 7 },
-  'mens-sexual-health': { c: 1, r: 9 },
-  'womens-sexual-health': { c: 3, r: 9 },
+  // Sexual categories sit on mid-thigh / outer lower leg — not pelvic center.
+  'general-sexual': { c: 2, r: 8 },
+  'mens-sexual-health': { c: 1, r: 10 },
+  'womens-sexual-health': { c: 3, r: 10 },
 };
 
 export const CATEGORY_META: Record<string, { number: number; color: string }> = {

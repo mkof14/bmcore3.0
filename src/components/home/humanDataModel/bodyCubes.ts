@@ -44,16 +44,18 @@ export const BODY_CUBES: BodyCube[] = [
   { c: 1, r: 6, left: 33.0, top: 51.5, sizeW: 14.5, sizeH: 6.5 },
   { c: 2, r: 6, left: 42.8, top: 51.5, sizeW: 14.5, sizeH: 6.5 },
   { c: 3, r: 6, left: 52.5, top: 51.5, sizeW: 14.5, sizeH: 6.5 },
-  // Thighs
+  // Upper thighs / outer hips (r7 sides = mens/womens health; r7 center unused by primaries)
   { c: 1, r: 7, left: 31.0, top: 59.5, sizeW: 14.5, sizeH: 6.5 },
   { c: 2, r: 7, left: 42.8, top: 59.5, sizeW: 14.5, sizeH: 6.5 },
   { c: 3, r: 7, left: 54.5, top: 59.5, sizeW: 14.5, sizeH: 6.5 },
-  { c: 1, r: 8, left: 31.5, top: 67.5, sizeW: 14.5, sizeH: 6.5 },
-  { c: 2, r: 8, left: 42.8, top: 67.5, sizeW: 14.5, sizeH: 6.5 },
-  { c: 3, r: 8, left: 54.0, top: 67.5, sizeW: 14.5, sizeH: 6.5 },
-  // Lower legs / feet
-  { c: 1, r: 9, left: 32.0, top: 76.5, sizeW: 14.5, sizeH: 6.5 },
-  { c: 3, r: 9, left: 53.5, top: 76.5, sizeW: 14.5, sizeH: 6.5 },
-  { c: 1, r: 10, left: 32.5, top: 85.0, sizeW: 14.5, sizeH: 6.5 },
-  { c: 3, r: 10, left: 53.0, top: 85.0, sizeW: 14.5, sizeH: 6.5 },
+  // Mid thighs — general-sexual on center; sides free of sexual primaries
+  { c: 1, r: 8, left: 30.5, top: 69.0, sizeW: 14.5, sizeH: 6.5 },
+  { c: 2, r: 8, left: 42.8, top: 69.0, sizeW: 14.5, sizeH: 6.5 },
+  { c: 3, r: 8, left: 55.0, top: 69.0, sizeW: 14.5, sizeH: 6.5 },
+  // Lower thighs
+  { c: 1, r: 9, left: 31.0, top: 76.5, sizeW: 14.5, sizeH: 6.5 },
+  { c: 3, r: 9, left: 54.5, top: 76.5, sizeW: 14.5, sizeH: 6.5 },
+  // Outer lower legs — mens/womens sexual-health (away from pelvic center)
+  { c: 1, r: 10, left: 30.0, top: 83.5, sizeW: 14.5, sizeH: 6.5 },
+  { c: 3, r: 10, left: 55.5, top: 83.5, sizeW: 14.5, sizeH: 6.5 },
 ];
