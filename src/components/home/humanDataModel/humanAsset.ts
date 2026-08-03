@@ -1,6 +1,6 @@
-/** Human body silhouette filled with math data-viz (grid / nodes / sparklines) — WebP + alpha (LCP). */
+/** Photorealistic standing human cutout with math data-viz overlay — WebP + alpha (LCP). */
 export const HUMAN_SRC_DARK = '/hdm-human.webp';
-/** Light-canvas variant of the same anatomical figure. */
+/** Light-canvas variant of the same photographic figure. */
 export const HUMAN_SRC_LIGHT = '/hdm-human-light.webp';
 
 /** Narrower src for phones / small viewports (srcset). */
