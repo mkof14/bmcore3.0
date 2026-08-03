@@ -266,8 +266,9 @@ export default function Blog({ onNavigate }: BlogProps) {
                           <img
                             src={post.featured_image}
                             alt={post.title}
-                            className="w-full h-full object-cover"
+                            className="bm-people-photo w-full h-full object-cover"
                           />
+                          <div className="bm-people-photo-wash absolute inset-0" aria-hidden />
                         </div>
                       )}
                       <div className="p-6 relative">
@@ -360,12 +361,13 @@ export default function Blog({ onNavigate }: BlogProps) {
               </div>
             </div>
             {selectedPost.featured_image && (
-              <div className="aspect-video bg-gray-100 dark:bg-[var(--bm-surface)]">
+              <div className="relative aspect-video bg-gray-100 dark:bg-[var(--bm-surface)] overflow-hidden">
                 <img
                   src={selectedPost.featured_image}
                   alt={selectedPost.title}
-                  className="w-full h-full object-cover"
+                  className="bm-people-photo w-full h-full object-cover"
                 />
+                <div className="bm-people-photo-wash absolute inset-0" aria-hidden />
               </div>
             )}
             <div className="p-6">

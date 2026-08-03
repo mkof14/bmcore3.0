@@ -78,6 +78,9 @@ export const MARKETING_PRERENDER_PATHS = [
   '/learning-center',
   '/privacy-trust',
   '/services-catalog',
+  '/services',
+  '/media',
+  '/partnership',
 ] as const;
 
 /** Canonical page key → URL path (no query). `service-detail` uses `/services/:cat/:id`. */

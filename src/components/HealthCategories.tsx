@@ -229,8 +229,9 @@ export default function HealthCategories({ onNavigate }: HealthCategoriesProps) 
                 <img
                   src={categoryHeroUrl(category.id)}
                   alt={category.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-all duration-300 brightness-[0.35] group-hover:brightness-[0.55] group-hover:saturate-100"
+                  className="bm-people-photo absolute inset-0 w-full h-full object-cover transition-all duration-300 brightness-[0.35] group-hover:brightness-[0.55] group-hover:saturate-100"
                 />
+                <div className="bm-people-photo-wash absolute inset-0" aria-hidden />
 
                 <div className={`absolute inset-0 bg-gradient-to-t ${category.gradient} opacity-95 transition-opacity duration-300 group-hover:opacity-60`}></div>
 

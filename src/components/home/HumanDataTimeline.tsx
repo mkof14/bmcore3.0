@@ -124,15 +124,16 @@ export default function HumanDataTimeline({ onNavigate }: Props) {
             </button>
           )}
 
-          <div className="mt-8 hidden overflow-hidden rounded-sm bg-[var(--bm-surface)] lg:block">
+          <div className="relative mt-8 hidden overflow-hidden rounded-sm bg-[var(--bm-surface)] lg:block">
             <img
               key={stillSrc}
               src={stillSrc}
               alt=""
-              className="h-52 w-full object-cover object-center opacity-95 transition-opacity duration-200 dark:opacity-85"
+              className="bm-people-photo h-52 w-full object-cover object-center opacity-95 transition-opacity duration-200 dark:opacity-85"
               loading="lazy"
               decoding="async"
             />
+            <div className="bm-people-photo-wash absolute inset-0" aria-hidden />
           </div>
         </aside>
 

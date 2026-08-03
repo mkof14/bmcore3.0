@@ -129,10 +129,11 @@ export default function ServicesCatalog({ onNavigate, initialCategory }: Service
                   <img
                     src={categoryHeroUrl(selectedCategoryData.id)}
                     alt=""
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="bm-people-photo absolute inset-0 h-full w-full object-cover"
                     loading="eager"
                     decoding="async"
                   />
+                  <div className="bm-people-photo-wash absolute inset-0" aria-hidden />
                   <div className="absolute inset-0 bg-gradient-to-t from-[var(--bm-page)] via-[var(--bm-page)]/55 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 px-5 pb-6 sm:px-8 sm:pb-8">
                     {selectedCategoryIndex !== null && (
@@ -255,10 +256,11 @@ export default function ServicesCatalog({ onNavigate, initialCategory }: Service
                         <img
                           src={categoryHeroUrl(category.id)}
                           alt=""
-                          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-200 group-hover:opacity-95"
+                          className="bm-people-photo absolute inset-0 h-full w-full object-cover transition-opacity duration-200 group-hover:opacity-95"
                           loading="lazy"
                           decoding="async"
                         />
+                        <div className="bm-people-photo-wash absolute inset-0" aria-hidden />
                       </div>
                       <div className="p-5">
                         <div className="flex items-start justify-between gap-3">

@@ -11,8 +11,28 @@ import { PRERENDER_ROUTES } from './prerender-routes.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(__dirname, '..', 'dist');
 
-/** Priority routes that must always ship with real SEO shells. */
-const PRIORITY = ['/', '/about', '/pricing', '/science', '/how-it-works', '/blog'];
+/**
+ * Priority marketing routes — always verified first.
+ * Entire PRERENDER_ROUTES list is hard-fail (missing file / bad title / description / H1 / marker).
+ */
+const PRIORITY = [
+  '/',
+  '/about',
+  '/pricing',
+  '/science',
+  '/how-it-works',
+  '/blog',
+  '/why-two-models',
+  '/learning-center',
+  '/contact',
+  '/faq',
+  '/privacy-trust',
+  '/services',
+  '/services-catalog',
+  '/investors',
+  '/media',
+  '/partnership',
+];
 
 function fileFor(routePath) {
   if (routePath === '/') return path.join(DIST, 'index.html');
@@ -55,43 +75,45 @@ function checkHtml(file, route) {
   if (!new RegExp(`<h1[^>]*>\\s*${escapeReg(h1Esc)}\\s*</h1>`, 'i').test(html)) {
     errors.push(`missing H1 “${route.h1}”`);
   }
+  if (!/<noscript>[\s\S]*?<h1[\s\S]*?<\/h1>[\s\S]*?<\/noscript>/i.test(html)) {
+    errors.push('missing noscript H1 block (bots without JS)');
+  }
   if (!/name=["']bm-prerender["']/i.test(html)) {
     errors.push('missing bm-prerender marker');
+  }
+  if (!/property=["']og:title["']/i.test(html)) {
+    errors.push('missing og:title');
+  }
+  if (!/rel=["']canonical["']/i.test(html)) {
+    errors.push('missing canonical link');
   }
   return errors;
 }
 
 function main() {
+  if (!fs.existsSync(DIST)) {
+    console.error('[verify-prerender] dist/ missing — run vite build + prerender first');
+    process.exit(1);
+  }
+
   const byPath = new Map(PRERENDER_ROUTES.map((r) => [r.path, r]));
   let failed = 0;
 
   for (const p of PRIORITY) {
-    const route = byPath.get(p);
-    if (!route) {
+    if (!byPath.has(p)) {
       console.error(`[verify-prerender] PRIORITY route ${p} missing from PRERENDER_ROUTES`);
       failed += 1;
-      continue;
-    }
-    const errs = checkHtml(fileFor(p), route);
-    if (errs.length) {
-      console.error(`[verify-prerender] FAIL ${p}:`);
-      for (const e of errs) console.error(`  - ${e}`);
-      failed += 1;
-    } else {
-      console.log(`[verify-prerender] OK ${p}`);
     }
   }
 
-  // Soft-check remaining routes (warn, still fail build if file missing)
-  for (const route of PRERENDER_ROUTES) {
-    if (PRIORITY.includes(route.path)) continue;
-    const file = fileFor(route.path);
-    if (!fs.existsSync(file)) {
-      console.error(`[verify-prerender] FAIL ${route.path}: missing shell`);
-      failed += 1;
-      continue;
-    }
-    const errs = checkHtml(file, route);
+  // Hard-fail every marketing shell (priority first for clearer CI logs).
+  const ordered = [
+    ...PRIORITY.filter((p) => byPath.has(p)).map((p) => byPath.get(p)),
+    ...PRERENDER_ROUTES.filter((r) => !PRIORITY.includes(r.path)),
+  ];
+
+  for (const route of ordered) {
+    const errs = checkHtml(fileFor(route.path), route);
     if (errs.length) {
       console.error(`[verify-prerender] FAIL ${route.path}:`);
       for (const e of errs) console.error(`  - ${e}`);
@@ -102,7 +124,7 @@ function main() {
   }
 
   if (failed) {
-    console.error(`[verify-prerender] ${failed} route(s) failed`);
+    console.error(`[verify-prerender] ${failed} check(s) failed — refusing to ship broken prerender`);
     process.exit(1);
   }
   console.log(`[verify-prerender] All ${PRERENDER_ROUTES.length} marketing shells verified`);

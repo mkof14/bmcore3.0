@@ -6,10 +6,10 @@ BioMath Core is still **one Vite SPA repo**, with a pragmatic SEO split:
 
 | Surface | Routes | Delivery |
 |---------|--------|----------|
-| **Marketing / public** | `/`, `/about`, `/pricing`, `/science`, `/how-it-works`, `/why-two-models`, `/blog`, `/investors`, `/contact`, `/faq`, `/learning-center`, `/privacy-trust`, `/services-catalog`, … | Static HTML shells written by `scripts/prerender.mjs` after `vite build` (real `<title>`, description, H1 in `<noscript>`, Organization + SoftwareApplication JSON-LD on home). Vercel `filesystem` handle serves `dist/{path}/index.html` before the SPA fallback. |
+| **Marketing / public** | `/`, `/about`, `/pricing`, `/science`, `/how-it-works`, `/why-two-models`, `/blog`, `/investors`, `/contact`, `/faq`, `/learning-center`, `/privacy-trust`, `/services`, `/services-catalog`, `/media`, `/partnership`, … | Static HTML shells written by `scripts/prerender.mjs` after `vite build` (real `<title>`, description, OG, canonical, H1 in `<noscript>`, Organization + SoftwareApplication JSON-LD on home). Vercel `filesystem` handle serves `dist/{path}/index.html` before the SPA fallback. |
 | **Product app** | `/member-zone`, `/admin-panel`, `/command-center`, `/signin`, `/signup`, devices/reports, … | Client SPA behind auth / admin gates (not prerendered; `robots.txt` disallows private paths). |
 
-**Done (mitigation):** SPA prerender for key marketing routes. Every production build runs prerender + verify:
+**Done (mitigation):** SPA prerender for key marketing routes. Every production build runs prerender + verify and **fails the build** if any shell is broken:
 
 ```bash
 npm run build
@@ -22,9 +22,11 @@ npm run build
 |--------|------|
 | `scripts/prerender-routes.mjs` | Route list + title / description / H1 (keep in sync with `MARKETING_PRERENDER_PATHS` in `src/lib/routing.ts`) |
 | `scripts/prerender.mjs` | Writes `dist/` and `dist/{path}/index.html` shells (title, meta description, OG, canonical, JSON-LD, `<noscript>` H1) |
-| `scripts/verify-prerender.mjs` | Fails the build if priority routes lack title / description / H1 / `bm-prerender` marker |
+| `scripts/verify-prerender.mjs` | **Hard-fails** the build if any `PRERENDER_ROUTES` shell lacks title / description / noscript H1 / OG / canonical / `bm-prerender` marker |
 
-**Priority SEO shells (must pass verify):** `/`, `/about`, `/pricing`, `/science`, `/how-it-works`, `/blog` — plus the rest of `PRERENDER_ROUTES` (investors, contact, FAQ, learning-center, privacy-trust, services-catalog, why-two-models).
+**SEO shells (all must pass verify):** `/`, `/about`, `/pricing`, `/science`, `/how-it-works`, `/why-two-models`, `/blog`, `/investors`, `/contact`, `/faq`, `/learning-center`, `/privacy-trust`, `/services`, `/services-catalog`, `/media`, `/partnership`.
+
+**Bot check (no JS):** `curl -sL https://YOUR_DOMAIN/` (and top paths) should contain the route `<title>`, meta description, and `<noscript><h1>…</h1>` from prerender — not an empty `#root` only.
 
 **Not done (full split):** Separate Next.js/Remix marketing site + isolated product app (two deploys / two repos). That remains a future project if organic search or editorial CMS needs demand it. Do **not** migrate to Next.js solely for these shells — prerender covers bot-visible title/description/H1 today.
 

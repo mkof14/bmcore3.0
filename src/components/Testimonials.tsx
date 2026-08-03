@@ -132,7 +132,7 @@ export default function Testimonials() {
                     <img
                       src={testimonial.avatar_url}
                       alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover"
+                      className="bm-people-photo w-12 h-12 rounded-full object-cover"
                     />
                   ) : (
                     <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold">

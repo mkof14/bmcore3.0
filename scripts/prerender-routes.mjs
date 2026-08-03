@@ -101,6 +101,27 @@ export const PRERENDER_ROUTES = [
       'Browse BioMath Core services organized around the Human Data Model — biomathematical context across health categories.',
     h1: 'Browse all BioMath Core services',
   },
+  {
+    path: '/services',
+    title: 'Services & Pricing | BioMath Core Plans',
+    description:
+      'Choose Core, Daily, or Max plans for intelligent health analytics — Human Data Model depth across 200+ services and 20 categories.',
+    h1: 'Choose the depth of your Human Data Model',
+  },
+  {
+    path: '/media',
+    title: 'Media | Videos, Presentations & Documents',
+    description:
+      'Watch BioMath Core videos, browse presentations, and download documents about health understanding and the Human Data Model.',
+    h1: 'Media',
+  },
+  {
+    path: '/partnership',
+    title: 'Partnerships | Work With BioMath Core',
+    description:
+      'Partner with BioMath Core on business development, research collaboration, or clinical integration — distribution, co-marketing, and data partnerships.',
+    h1: 'Build with BioMath Core',
+  },
 ];
 
 export function organizationJsonLd() {
