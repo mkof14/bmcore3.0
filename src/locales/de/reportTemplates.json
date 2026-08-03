@@ -1,7 +1,7 @@
 {
   "reportTemplate": {
     "fallbackTitle": "Wellness-Bericht",
-    "footer": "Nur bildungsorientierte Wellness-Hinweise. Keine medizinische Diagnose. Besprechen Sie Fragen bei Bedarf mit einer qualifizierten Fachkraft. Health Guide hilft bei den nächsten Schritten.",
+    "footer": "Dies ist freundliche, praxisnahe Wellness-Orientierung zu Bildungszwecken — keine medizinische Diagnose. Wenn Sie etwas beunruhigt, sprechen Sie mit einer qualifizierten Fachperson. Health Guide hilft Ihnen, die nächsten Schritte ruhig zu erkunden.",
     "meta": {
       "type": "Typ",
       "generated": "Erstellt",
@@ -14,22 +14,22 @@
       "device_enhanced": "Gerätegestützt"
     },
     "title": {
-      "general": "Persönlicher Wellness-Bericht",
-      "thematic": "Thematischer Wellness-Bericht",
-      "dynamic": "Fortschrittsvergleichsbericht",
-      "device_enhanced": "Gerätegestützter Wellness-Bericht",
-      "service": "{{service}} — personalisierter Bericht",
-      "topic": "{{topic}} — personalisierter Bericht"
+      "general": "Ihr persönlicher Wellness-Bericht",
+      "thematic": "Ihr thematischer Wellness-Bericht",
+      "dynamic": "Ihr Fortschrittsvergleichsbericht",
+      "device_enhanced": "Ihr Wellness-Bericht mit Geräten",
+      "service": "{{service}} — Ihr persönlicher Bericht",
+      "topic": "{{topic}} — Ihr persönlicher Bericht"
     },
     "section": {
-      "summary": "Zusammenfassung",
-      "profile": "Aus dem Fragebogen abgeleitetes Profil",
-      "focusAreas": "Schwerpunkte",
-      "insights": "Wichtige Erkenntnisse",
-      "analysis": "Analyse",
-      "recommendations": "Empfehlungsrahmen",
-      "nextSteps": "Nächste Schritte",
-      "healthGuidePrompt": "Vorgeschlagene Health-Guide-Eingabe",
+      "summary": "Kurz gesagt",
+      "profile": "Ihr Profilüberblick",
+      "focusAreas": "Worauf Sie sanft achten können",
+      "insights": "Was bemerkenswert ist",
+      "analysis": "Was uns aufgefallen ist",
+      "recommendations": "Freundliche Empfehlungen",
+      "nextSteps": "Einfache nächste Schritte",
+      "healthGuidePrompt": "Ein hilfreicher Health-Guide-Prompt",
       "secondOpinionA": "Perspektive A",
       "secondOpinionB": "Perspektive B"
     },
@@ -39,8 +39,8 @@
       "red": "begrenzt"
     },
     "summary": {
-      "opening": "Dieser {{subject}}-Bericht basiert auf Ihrem persönlichen Kontext (Bereitschaft {{score}} %, Fragebogen {{questionnaire}} %).",
-      "educational": "Es handelt sich um strukturierte bildungsorientierte Wellness-Hinweise, keine klinische Diagnose."
+      "opening": "Dieser {{subject}}-Bericht wurde aus Ihrem persönlichen Kontext erstellt (Bereitschaft {{score}} %, Fragebogen {{questionnaire}} %).",
+      "educational": "Es ist warme, praktische Wellness-Orientierung — keine klinische Diagnose."
     },
     "tone": {
       "analytical": {
@@ -48,8 +48,8 @@
         "analysisLead": "Analytische Sicht: Wir ordnen Ihre Signale in strukturierte Beobachtungen und praktische Hebel."
       },
       "supportive": {
-        "summaryLead": "Der Text bleibt ruhig, ermutigend und auf nachhaltige Gewohnheiten ausgerichtet.",
-        "analysisLead": "Unterstützende Sicht: Wir heben hervor, was bereits funktioniert, und wo sanfte Anpassungen helfen können."
+        "summaryLead": "Der Ton bleibt ruhig, ermutigend und auf Alltagstaugliche Gewohnheiten ausgerichtet.",
+        "analysisLead": "Unterstützende Sicht: Wir würdigen, was bereits hilft, und schlagen behutsame Anpassungen vor."
       },
       "coaching": {
         "summaryLead": "Der Text ist handlungsorientiert, mit klaren Gewohnheiten und Verantwortungshinweisen.",
@@ -186,6 +186,7 @@
       "subjectGeneral": "Ihr allgemeines Wohlbefinden",
       "a": "Perspektive A zu {{subject}}: priorisieren Sie {{priority}} anhand Ihrer aktuellen Signale ({{blurb}}). Halten Sie Änderungen klein genug für den Alltag.",
       "b": "Perspektive B zu {{subject}}: betonen Sie {{focus}} in einem {{tone}} Ton. Kombinieren Sie Einsatz mit Erholung und prüfen Sie nach einer Woche erneut."
-    }
+    },
+    "copyright": "© {{year}} BioMath Core. Alle Rechte vorbehalten."
   }
 }

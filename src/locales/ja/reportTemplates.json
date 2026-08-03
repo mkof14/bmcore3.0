@@ -1,7 +1,7 @@
 {
   "reportTemplate": {
     "fallbackTitle": "ウェルネスレポート",
-    "footer": "教育的なウェルネスガイダンスのみです。医学的診断ではありません。必要な場合は資格のある医療者にご相談ください。Health Guide が次の一歩の整理をサポートします。",
+    "footer": "これはやさしく実践的なウェルネスの教育的ガイドであり、医学的診断ではありません。気になることがあれば、資格のある医療者にご相談ください。Health Guide が次の一歩を穏やかに考えるお手伝いをします。",
     "meta": {
       "type": "種類",
       "generated": "作成日",
@@ -14,22 +14,22 @@
       "device_enhanced": "デバイス連携"
     },
     "title": {
-      "general": "パーソナルウェルネスレポート",
-      "thematic": "テーマ別ウェルネスレポート",
-      "dynamic": "進捗比較レポート",
-      "device_enhanced": "デバイス連携ウェルネスレポート",
-      "service": "{{service}} — パーソナライズドレポート",
-      "topic": "{{topic}} — パーソナライズドレポート"
+      "general": "あなたのパーソナル・ウェルネスレポート",
+      "thematic": "あなたのテーマ別ウェルネスレポート",
+      "dynamic": "あなたの進捗比較レポート",
+      "device_enhanced": "デバイス付きのウェルネスレポート",
+      "service": "{{service}} — あなたのパーソナルレポート",
+      "topic": "{{topic}} — あなたのパーソナルレポート"
     },
     "section": {
-      "summary": "要約",
-      "profile": "問診から導いたプロフィール",
-      "focusAreas": "フォーカス領域",
-      "insights": "主な洞察",
-      "analysis": "分析",
-      "recommendations": "推奨の枠組み",
-      "nextSteps": "次のステップ",
-      "healthGuidePrompt": "Health Guide への推奨プロンプト",
+      "summary": "ひとことで",
+      "profile": "プロフィールのスナップショット",
+      "focusAreas": "やさしく意識したいこと",
+      "insights": "気づいておきたいこと",
+      "analysis": "気づいたこと",
+      "recommendations": "やさしいおすすめ",
+      "nextSteps": "かんたんな次の一歩",
+      "healthGuidePrompt": "役立つ Health Guide のプロンプト",
       "secondOpinionA": "視点 A",
       "secondOpinionB": "視点 B"
     },
@@ -39,8 +39,8 @@
       "red": "限定的"
     },
     "summary": {
-      "opening": "この{{subject}}レポートは、個人コンテキスト（準備度 {{score}}%、問診 {{questionnaire}}%）から構成されています。",
-      "educational": "構造化された教育的ウェルネスガイダンスであり、臨床診断ではありません。"
+      "opening": "この{{subject}}レポートは、あなたのパーソナルコンテキスト（準備度 {{score}}%、質問票 {{questionnaire}}%）から作成されました。",
+      "educational": "あたたかく実践的なウェルネスガイドであり、臨床的な診断ではありません。"
     },
     "tone": {
       "analytical": {
@@ -48,8 +48,8 @@
         "analysisLead": "分析的視点：シグナルを構造化された観察と実践的レバーに整理します。"
       },
       "supportive": {
-        "summaryLead": "落ち着いた励ましのトーンで、持続可能な習慣に焦点を当てます。",
-        "analysisLead": "支援的視点：すでに機能している点と、穏やかな調整が役立つ点を示します。"
+        "summaryLead": "落ち着いて励ますトーンで、毎日続けやすい習慣に焦点を当てます。",
+        "analysisLead": "サポートの視点：すでにうまくいっていることを大切にし、役立つところだけやさしく調整します。"
       },
       "coaching": {
         "summaryLead": "行動志向で、明確な習慣と責任の手がかりを示します。",
@@ -186,6 +186,7 @@
       "subjectGeneral": "総合的なウェルネス",
       "a": "{{subject}} への視点 A：現在のシグナル（{{blurb}}）を使い {{priority}} を優先。毎日繰り返せる小さな変化に留めましょう。",
       "b": "{{subject}} への視点 B：{{tone}} なトーンで {{focus}} を強調。努力と回復を組み合わせ、1週間後に見直しましょう。"
-    }
+    },
+    "copyright": "© {{year}} BioMath Core. 無断転載を禁じます。"
   }
 }

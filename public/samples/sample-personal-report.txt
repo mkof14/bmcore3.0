@@ -1,83 +1,85 @@
-Personal wellness report
-================================
+Ваш персональный отчёт о самочувствии
+=============================================
 
-Type: General
-Generated: 2026-08-03T23:18:42.633Z
-Report ID: mock-sample-personal-report
+Тип: Общий
+Создан: 2026-08-03T23:53:49.866Z
+ID отчёта: mock-sample-personal-report
 
-Summary
+Коротко о главном
 
-This General report is composed from your personal context (readiness 81%, questionnaire 78%). The narrative stays calm, encouraging, and focused on sustainable habits. It is structured educational wellness guidance, not a clinical diagnosis.
+Этот отчёт «Общий» собран из вашего личного контекста (готовность 81%, опросник 78%). Тон спокойный и поддерживающий — с акцентом на привычки, которые реально удержать день за днём. Это тёплые практичные рекомендации по самочувствию — не клинический диагноз.
 
-Questionnaire-derived profile
-Alex Rivera: questionnaire 78% complete · overall readiness 81%.
+Снимок вашего профиля
+Алекс Ривера — опросник заполнен на 78% · общая готовность 81%.
 
-Profile signals: priority=Sleep & Recovery; areas=Sleep & Recovery, Energy & Fatigue, Stress Management, Longevity; sex=female; sleep_h=6.5; exercise=4 times / week; stress=Moderate-high on workdays; profile=6/8 sections complete; progress=82%
+Что показывает ваш профиль: приоритет — сон и восстановление; области — сон и восстановление, энергия и усталость, управление стрессом, долголетие; сон около 6,5 часов; движение 4 раза в неделю; стресс умеренно-высокий в рабочие дни; профиль 6/8 разделов; прогресс 82%
 
-Most active questionnaire areas: lifestyle, psychological health, personal info, vital signs.
+Разделы опросника с наибольшей детализацией: образ жизни, психологическое здоровье, личные данные, жизненные показатели.
 
-Connected devices: 1. Health documents on file: 1. Plan: max.
+Подключённые устройства: 1. Документы о здоровье: 1. План: max.
 
-Personal-context linkage is strong.
+Насколько хорошо собран ваш личный контекст: хорошая.
 
-Key insights
+Что важно заметить
 
-1. Readiness 81% (questionnaire 78% · profile 100%).
-2. Linkage health: strong.
-3. Lifestyle signals should guide the next habit experiments.
-4. Device coverage present (1).
-5. Strongest questionnaire signal area: lifestyle.
+1. Готовность 81% (опросник 78% · профиль 100%).
+2. Связность контекста: хорошая.
+3. Сигналы образа жизни — хороший ориентир для следующих мягких экспериментов с привычками.
+4. Есть покрытие устройств (1).
+5. Сейчас самая выразительная область сигналов опросника: образ жизни.
 
-Analysis
+Что мы заметили
 
-Supportive view: we highlight what already works and where gentle adjustments can help.
+Поддерживающий взгляд: отмечаем, что уже помогает, и мягко предлагаем, где можно чуть подправить.
 
-Personal context snapshot: priority=Sleep & Recovery; areas=Sleep & Recovery, Energy & Fatigue, Stress Management, Longevity; sex=female; sleep_h=6.5; exercise=4 times / week; stress=Moderate-high on workdays; profile=6/8 sections complete; progress=82% (readiness 81%).
+Снимок вашего личного контекста: приоритет — сон и восстановление; области — сон и восстановление, энергия и усталость, управление стрессом, долголетие; сон около 6,5 часов; движение 4 раза в неделю; стресс умеренно-высокий в рабочие дни; профиль 6/8 разделов; прогресс 82% (готовность 81%).
 
-Interpretation priority — preventive first: reduce friction that could compound into setbacks.
+Приоритет — сначала профилактика: снижайте то трение, которое может перерасти в сбои.
 
-Insight focus — lifestyle: sleep timing, movement snacks, meal rhythm, and stress recovery habits.
+Фокус — образ жизни: режим сна, короткие движения, ритм питания и спокойное восстановление после стресса.
 
-Device layer: 1 source(s) (Apple). Treat wearable signals as trends, not diagnoses.
+Слой устройств: 1 источник(ов) (Apple). Считайте сигналы трендами, а не диагнозами.
 
-Standard form: pair one focus area with a measurable weekly habit and review progress in Member Zone.
+Обычный формат: свяжите одну область внимания с простой недельной привычкой и загляните в прогресс в зоне участника.
 
-This report does not diagnose, treat, or replace professional medical care.
+Этот отчёт не ставит диагноз, не лечит и не заменяет профессиональную медицинскую помощь.
 
-Focus areas
-1. Stabilize daily routines that support energy, recovery, and mood.
-2. Deepen clarity in lifestyle based on your questionnaire progress.
-3. Deepen clarity in psychological health based on your questionnaire progress.
-4. Keep sleep recovery as a primary focus for this report cycle.
+На что мягко обратить внимание
+1. Спокойные ежедневные ритмы, которые поддерживают энергию, восстановление и настроение.
+2. Добавьте чуть больше ясности в разделе «образ жизни» по прогрессу опросника.
+3. Добавьте чуть больше ясности в разделе «психологическое здоровье» по прогрессу опросника.
+4. Сохраните «сон и восстановление» как главный фокус этого цикла отчёта.
 
-Next steps
-1. Read the focus areas and pick one recommendation to practice for seven days.
-2. Open Health Guide with the suggested prompt below to explore trade-offs.
-3. Schedule lifestyle habits into your calendar rather than relying on motivation alone.
-4. Refresh any outdated questionnaire answers after meaningful lifestyle changes.
+Простые следующие шаги
+1. Прочитайте области внимания и выберите одну рекомендацию на семь дней.
+2. Откройте Health Guide с предложенным запросом, чтобы спокойно разобрать варианты.
+3. Внесите привычки образа жизни в календарь — так надёжнее, чем полагаться только на мотивацию.
+4. Обновите устаревшие ответы опросника после заметных изменений образа жизни.
 
-Suggested Health Guide prompt
-Using my personal context (priority=Sleep & Recovery; areas=Sleep & Recovery, Energy & Fatigue, Stress Management, Longevity; sex=female; sleep_h=6.5; exercise=4 times / week; stress=Moderate-high on workdays; profile=6/8 sections complete; progress=82%; readiness 81%), help me plan the next week around overall wellness. My question: What should I prioritize first?. Keep guidance educational and practical.
+Полезный запрос для Health Guide
+Используя мой личный контекст (приоритет — сон и восстановление; области — сон и восстановление, энергия и усталость, управление стрессом, долголетие; сон около 6,5 часов; движение 4 раза в неделю; стресс умеренно-высокий в рабочие дни; профиль 6/8 разделов; прогресс 82%; готовность 81%), помоги мягко спланировать следующую неделю вокруг «общее самочувствие». Мой вопрос: С чего лучше начать в первую очередь?. Держи рекомендации образовательными, практичными и простыми для выполнения.
 
-Recommendations framework
+Добрые рекомендации
 
-1. Prevention block
-   Choose one low-friction habit that reduces the chance of overload this week (earlier wind-down, hydration anchor, or a short daily walk).
-2. Lifestyle rhythm
-   Align meal timing, daylight exposure, and movement with the hours you feel most stable.
-3. Keep questionnaires current
-   Your questionnaire is 78% complete. Update sections when your state changes so future reports stay accurate.
+1. Мягкий шаг профилактики
+   Выберите одну лёгкую привычку, которая снизит перегрузку на этой неделе — более раннее засыпание, напоминание о воде или короткую ежедневную прогулку.
+2. Более добрый дневной ритм
+   Согласуйте приёмы пищи, дневной свет и движение с часами, когда вы и так чувствуете себя спокойнее.
+3. Держите ответы актуальными
+   Опросник заполнен на 78%. Обновляйте разделы, когда жизнь меняется, — тогда следующие отчёты будут точнее и полезнее.
 
-Perspective A
+Взгляд A
 
-Perspective A on your overall wellness: prioritize prevention using your current signals (priority=Sleep & Recovery; areas=Sleep & Recovery, Energy & Fatigue, Stress Management, Longevity; sex=female; sleep_h=6.5; exercise=4 times / week; stress=Moderate-high on workdays; profile=6/8 sections complete; progress=82%). Keep changes small enough to repeat daily.
+Взгляд A на ваше общее самочувствие: приоритет — профилактика, опираясь на текущие сигналы (приоритет — сон и восстановление; области — сон и восстановление, энергия и усталость, управление стрессом, долголетие; сон около 6,5 часов; движение 4 раза в неделю; стресс умеренно-высокий в рабочие дни; профиль 6/8 разделов; прогресс 82%). Меняйте ровно столько, сколько можете спокойно повторять каждый день.
 
-Perspective B
+Взгляд B
 
-Perspective B on your overall wellness: emphasize lifestyle with a supportive tone. Pair effort with recovery and revisit after one week.
+Взгляд B на ваше общее самочувствие: акцент на образ жизни в поддерживающем тоне. Сочетайте усилие с восстановлением и пересмотрите через неделю.
 
-Suggested Health Guide prompt
+Полезный запрос для Health Guide
 
-Using my personal context (priority=Sleep & Recovery; areas=Sleep & Recovery, Energy & Fatigue, Stress Management, Longevity; sex=female; sleep_h=6.5; exercise=4 times / week; stress=Moderate-high on workdays; profile=6/8 sections complete; progress=82%; readiness 81%), help me plan the next week around overall wellness. My question: What should I prioritize first?. Keep guidance educational and practical.
+Используя мой личный контекст (приоритет — сон и восстановление; области — сон и восстановление, энергия и усталость, управление стрессом, долголетие; сон около 6,5 часов; движение 4 раза в неделю; стресс умеренно-высокий в рабочие дни; профиль 6/8 разделов; прогресс 82%; готовность 81%), помоги мягко спланировать следующую неделю вокруг «общее самочувствие». Мой вопрос: С чего лучше начать в первую очередь?. Держи рекомендации образовательными, практичными и простыми для выполнения.
 
-Educational wellness guidance only. Not a medical diagnosis. Discuss questions with a qualified clinician when needed. Health Guide can help you explore next steps.
+Это добрые образовательные рекомендации по самочувствию — не медицинский диагноз. Если что-то беспокоит, обсудите это с квалифицированным врачом. Health Guide поможет мягко наметить следующие шаги.
+
+© 2026 BioMath Core. Все права защищены.

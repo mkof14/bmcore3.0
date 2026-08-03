@@ -1,35 +1,36 @@
 {
   "reportTemplate": {
     "fallbackTitle": "Wellness report",
-    "footer": "Educational wellness guidance only. Not a medical diagnosis. Discuss questions with a qualified clinician when needed. Health Guide can help you explore next steps.",
+    "footer": "This report is friendly educational wellness guidance — not a medical diagnosis. If something worries you, please talk with a qualified clinician. Health Guide is here to help you explore gentle next steps.",
+    "copyright": "© {{year}} BioMath Core. All rights reserved.",
     "meta": {
       "type": "Type",
-      "generated": "Generated",
+      "generated": "Created",
       "id": "Report ID"
     },
     "typeLabel": {
       "general": "General",
       "thematic": "Thematic",
-      "dynamic": "Dynamic",
-      "device_enhanced": "Device-enhanced"
+      "dynamic": "Progress",
+      "device_enhanced": "With devices"
     },
     "title": {
-      "general": "Personal wellness report",
-      "thematic": "Thematic wellness report",
-      "dynamic": "Progress comparison report",
-      "device_enhanced": "Device-enhanced wellness report",
-      "service": "{{service}} — personalized report",
-      "topic": "{{topic}} — personalized report"
+      "general": "Your personal wellness report",
+      "thematic": "Your thematic wellness report",
+      "dynamic": "Your progress comparison report",
+      "device_enhanced": "Your wellness report with devices",
+      "service": "{{service}} — your personal report",
+      "topic": "{{topic}} — your personal report"
     },
     "section": {
-      "summary": "Summary",
-      "profile": "Questionnaire-derived profile",
-      "focusAreas": "Focus areas",
-      "insights": "Key insights",
-      "analysis": "Analysis",
-      "recommendations": "Recommendations framework",
-      "nextSteps": "Next steps",
-      "healthGuidePrompt": "Suggested Health Guide prompt",
+      "summary": "In a nutshell",
+      "profile": "Your profile snapshot",
+      "focusAreas": "Where to focus gently",
+      "insights": "Things worth noticing",
+      "analysis": "What we noticed",
+      "recommendations": "Kind recommendations",
+      "nextSteps": "Easy next steps",
+      "healthGuidePrompt": "A helpful Health Guide prompt",
       "secondOpinionA": "Perspective A",
       "secondOpinionB": "Perspective B"
     },
@@ -39,147 +40,147 @@
       "red": "limited"
     },
     "summary": {
-      "opening": "This {{subject}} report is composed from your personal context (readiness {{score}}%, questionnaire {{questionnaire}}%).",
-      "educational": "It is structured educational wellness guidance, not a clinical diagnosis."
+      "opening": "This {{subject}} report was shaped from your personal context (readiness {{score}}%, questionnaire {{questionnaire}}%).",
+      "educational": "It is warm, practical wellness guidance — not a clinical diagnosis."
     },
     "tone": {
       "analytical": {
-        "summaryLead": "The narrative emphasizes measurable patterns, readiness signals, and clear trade-offs.",
-        "analysisLead": "Analytical view: we organize your signals into structured observations and practical levers."
+        "summaryLead": "We keep the story clear: simple patterns, readiness signals, and choices you can weigh calmly.",
+        "analysisLead": "Clear view: we sort your signals into plain observations and practical levers."
       },
       "supportive": {
-        "summaryLead": "The narrative stays calm, encouraging, and focused on sustainable habits.",
-        "analysisLead": "Supportive view: we highlight what already works and where gentle adjustments can help."
+        "summaryLead": "The tone stays calm, encouraging, and focused on habits that feel doable day to day.",
+        "analysisLead": "Supportive view: we celebrate what already works and suggest gentle adjustments where helpful."
       },
       "coaching": {
-        "summaryLead": "The narrative is action-oriented, with clear habits and accountability cues.",
-        "analysisLead": "Coaching view: we translate your context into concrete practice blocks you can try this week."
+        "summaryLead": "The tone is action-friendly — clear habits and kind accountability cues.",
+        "analysisLead": "Coaching view: we turn your context into simple practice blocks you can try this week."
       }
     },
     "toneShort": {
-      "analytical": "analytical",
+      "analytical": "clear",
       "supportive": "supportive",
       "coaching": "coaching"
     },
     "profile": {
       "memberFallback": "Member",
       "tierNone": "not set",
-      "intro": "{{name}}: questionnaire {{questionnaire}}% complete · overall readiness {{score}}%.",
-      "signals": "Profile signals: {{blurb}}",
-      "activeSections": "Most active questionnaire areas: {{sections}}.",
-      "noSections": "No questionnaire sections have substantial answers yet.",
+      "intro": "{{name}} — questionnaire {{questionnaire}}% complete · overall readiness {{score}}%.",
+      "signals": "What your profile shows: {{blurb}}",
+      "activeSections": "Questionnaire areas with the most detail: {{sections}}.",
+      "noSections": "Questionnaire sections still need more answers before a fuller picture appears.",
       "assets": "Connected devices: {{devices}}. Health documents on file: {{files}}. Plan: {{tier}}.",
-      "linkage": "Personal-context linkage is {{health}}."
+      "linkage": "How well your personal context fits together: {{health}}."
     },
     "focus": {
-      "lifestyle": "Stabilize daily routines that support energy, recovery, and mood.",
-      "risk_awareness": "Watch early signals that may raise longer-term wellness risk and act preventively.",
-      "performance": "Protect capacity for focus, training, and recovery while avoiding overload.",
-      "fromSection": "Deepen clarity in {{section}} based on your questionnaire progress.",
+      "lifestyle": "Steady daily rhythms that support energy, recovery, and mood.",
+      "risk_awareness": "Notice early signals early and respond with kind, preventive habits.",
+      "performance": "Protect energy for focus and training while leaving room to recover.",
+      "fromSection": "Add a little more clarity in {{section}} based on your questionnaire progress.",
       "fromService": "Keep {{service}} as a primary focus for this report cycle.",
-      "devices": "Use trends from your {{count}} linked device(s) to validate how habits land day to day.",
+      "devices": "Use trends from your {{count}} linked device(s) as gentle feedback on daily habits.",
       "consistency": "Prefer small, repeatable habits over short intensive bursts."
     },
     "focusShort": {
       "lifestyle": "lifestyle",
-      "risk_awareness": "risk awareness",
+      "risk_awareness": "early signals",
       "performance": "performance"
     },
     "focusDetail": {
-      "lifestyle": "Insight focus — lifestyle: sleep timing, movement snacks, meal rhythm, and stress recovery habits.",
-      "risk_awareness": "Insight focus — risk awareness: early warning patterns, prevention habits, and when to seek clinician review.",
-      "performance": "Insight focus — performance: capacity, recovery debt, and sustainable intensity."
+      "lifestyle": "Focus — lifestyle: sleep timing, short movement breaks, meal rhythm, and calm recovery after stress.",
+      "risk_awareness": "Focus — early signals: noticing changes early, prevention habits, and when to ask a clinician.",
+      "performance": "Focus — performance: capacity, recovery needs, and a sustainable pace."
     },
     "priority": {
-      "preventive_first": "Interpretation priority — preventive first: reduce friction that could compound into setbacks.",
-      "physiological_first": "Interpretation priority — physiological first: protect sleep, recovery, and basic regulation before optimization.",
-      "behavioral_first": "Interpretation priority — behavioral first: change the cue–routine–reward loops that shape daily outcomes."
+      "preventive_first": "Priority — prevention first: ease friction that could grow into setbacks.",
+      "physiological_first": "Priority — body basics first: protect sleep, recovery, and steady rhythms before adding more.",
+      "behavioral_first": "Priority — habits first: reshape the small cue–routine–reward loops that shape your days."
     },
     "priorityShort": {
       "preventive_first": "prevention",
-      "physiological_first": "physiology",
-      "behavioral_first": "behavior"
+      "physiological_first": "body basics",
+      "behavioral_first": "habits"
     },
     "analysis": {
-      "context": "Personal context snapshot: {{blurb}} (readiness {{score}}%).",
-      "service": "Service focus: {{service}}. Recommendations below stay educational and service-aligned.",
+      "context": "Your personal context snapshot: {{blurb}} (readiness {{score}}%).",
+      "service": "Service focus: {{service}}. The ideas below stay educational and aligned with this service.",
       "question": "Your question for this report: {{question}}",
       "devices": "Device layer: {{count}} source(s) ({{brands}}). Treat wearable signals as trends, not diagnoses.",
-      "extended": "Extended detail: compare questionnaire highlights with recent service activity and device coverage to spot gaps between intention and daily practice.",
-      "sectionsDeep": "Questionnaire depth currently strongest in: {{sections}}.",
+      "extended": "Deeper look: we compare questionnaire highlights with recent activity and device coverage to spot kind gaps between intention and daily practice.",
+      "sectionsDeep": "Your questionnaire currently has the most detail in: {{sections}}.",
       "shortClose": "Short form: keep one primary habit, one recovery practice, and one check-in with Health Guide this week.",
-      "standardClose": "Standard form: pair one focus area with a measurable weekly habit and review progress in Member Zone.",
+      "standardClose": "Standard form: pair one focus area with a simple weekly habit and revisit progress in Member Zone.",
       "disclaimer": "This report does not diagnose, treat, or replace professional medical care."
     },
     "insight": {
       "completeness": "Readiness {{score}}% (questionnaire {{questionnaire}}% · profile {{profile}}%).",
-      "linkage": "Linkage health: {{health}}.",
+      "linkage": "Context fit: {{health}}.",
       "focus": {
-        "lifestyle": "Lifestyle signals should guide the next habit experiments.",
-        "risk_awareness": "Prevention and early-signal awareness should guide the next habit experiments.",
-        "performance": "Capacity and recovery balance should guide the next habit experiments."
+        "lifestyle": "Lifestyle signals are a good guide for your next gentle habit experiments.",
+        "risk_awareness": "Prevention and early-signal awareness are a good guide for your next habit experiments.",
+        "performance": "Balancing effort and recovery is a good guide for your next habit experiments."
       },
-      "service": "Service alignment: {{service}}.",
-      "question": "Report question captured: {{question}}",
+      "service": "Aligned with: {{service}}.",
+      "question": "Your question for this report: {{question}}",
       "devices": "Device coverage present ({{count}}).",
-      "noDevices": "No devices linked yet — questionnaire and profile carry more of the context weight.",
-      "topSection": "Strongest questionnaire signal area: {{section}}."
+      "noDevices": "No devices linked yet — your questionnaire and profile carry more of the story for now.",
+      "topSection": "Strongest questionnaire signal area right now: {{section}}."
     },
     "rec": {
       "preventive_first": {
-        "title": "Prevention block",
-        "body": "Choose one low-friction habit that reduces the chance of overload this week (earlier wind-down, hydration anchor, or a short daily walk)."
+        "title": "A soft prevention step",
+        "body": "Choose one easy habit that lowers overload this week — an earlier wind-down, a water reminder, or a short daily walk."
       },
       "physiological_first": {
-        "title": "Physiology block",
-        "body": "Protect a consistent sleep window and add one recovery practice before adding intensity or new goals."
+        "title": "Protect your basics",
+        "body": "Keep a steady sleep window and add one recovery practice before raising intensity or adding new goals."
       },
       "behavioral_first": {
-        "title": "Behavior block",
-        "body": "Define a clear cue and a 10-minute starter routine so the habit can survive busy days."
+        "title": "Make the habit easy",
+        "body": "Pick a clear cue and a 10-minute starter routine so the habit can survive busy days."
       },
       "lifestyle": {
-        "title": "Lifestyle rhythm",
-        "body": "Align meal timing, daylight exposure, and movement with the hours you feel most stable."
+        "title": "A kinder daily rhythm",
+        "body": "Align meals, daylight, and movement with the hours you already feel most steady."
       },
       "risk_awareness": {
-        "title": "Risk-aware check-in",
+        "title": "A calm check-in",
         "body": "Note any new or worsening symptoms and bring them to a clinician if they persist; use Health Guide for educational framing only."
       },
       "performance": {
-        "title": "Performance balance",
-        "body": "Match training or deep-work blocks with equal recovery blocks so progress stays sustainable."
+        "title": "Balance effort and recovery",
+        "body": "Match training or deep-work blocks with equal recovery so progress stays kind and sustainable."
       },
       "questionnaire": {
-        "title": "Keep questionnaires current",
-        "body": "Your questionnaire is {{percent}}% complete. Update sections when your state changes so future reports stay accurate."
+        "title": "Keep your answers current",
+        "body": "Your questionnaire is {{percent}}% complete. Update sections when life changes so future reports stay accurate and helpful."
       },
       "service": {
         "title": "Continue with {{service}}",
-        "body": "Return to the {{service}} workspace after trying one recommendation and capture what changed."
+        "body": "Return to the {{service}} workspace after trying one recommendation and note what felt better."
       },
       "devices": {
         "title": "Optional device layer",
-        "body": "Link a wearable when ready so trends can complement questionnaire context."
+        "body": "Link a wearable when you are ready so trends can gently complement your questionnaire context."
       },
       "devicesActive": {
-        "title": "Review device trends",
+        "title": "Glance at device trends",
         "body": "Skim the last week from your {{count}} linked device(s) and note one pattern that matches how you felt."
       }
     },
     "next": {
-      "review": "Read the focus areas and pick one recommendation to practice for seven days.",
-      "healthGuide": "Open Health Guide with the suggested prompt below to explore trade-offs.",
-      "completeQuestionnaires": "Complete more questionnaire sections so the next report can personalize further.",
+      "review": "Read the focus areas and choose one recommendation to practice for seven days.",
+      "healthGuide": "Open Health Guide with the suggested prompt below to explore options calmly.",
+      "completeQuestionnaires": "Complete a few more questionnaire sections so the next report can feel even more personal.",
       "refreshQuestionnaires": "Refresh any outdated questionnaire answers after meaningful lifestyle changes.",
       "connectDevice": "Optionally connect a device to enrich trend context.",
       "focus": {
-        "lifestyle": "Schedule lifestyle habits into your calendar rather than relying on motivation alone.",
-        "risk_awareness": "Write down two early signals you will watch this week.",
+        "lifestyle": "Put lifestyle habits on your calendar instead of relying on motivation alone.",
+        "risk_awareness": "Write down two early signals you will kindly watch this week.",
         "performance": "Set a recovery floor before increasing load."
       }
     },
-    "healthGuidePrompt": "Using my personal context ({{blurb}}; readiness {{score}}%), help me plan the next week around {{service}}. My question: {{question}}. Keep guidance educational and practical.",
+    "healthGuidePrompt": "Using my personal context ({{blurb}}; readiness {{score}}%), help me plan a kind next week around {{service}}. My question: {{question}}. Keep guidance educational, practical, and easy to follow.",
     "healthGuidePromptGeneral": "overall wellness",
     "healthGuidePromptDefaultQuestion": "What should I prioritize first?",
     "secondOpinion": {

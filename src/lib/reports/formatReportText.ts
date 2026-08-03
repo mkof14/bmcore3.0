@@ -91,6 +91,8 @@ export function formatReportAsText(
   }
 
   lines.push(t('reportTemplate.footer'));
+  lines.push('');
+  lines.push(t('reportTemplate.copyright', { year: new Date().getFullYear() }));
   return lines.join('\n');
 }
 

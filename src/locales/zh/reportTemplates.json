@@ -1,7 +1,7 @@
 {
   "reportTemplate": {
     "fallbackTitle": "健康报告",
-    "footer": "仅供教育性健康指导，并非医学诊断。必要时请与合格临床医生讨论。Health Guide 可帮助您梳理下一步。",
+    "footer": "这是温和、实用的健康教育指引——不是医学诊断。如有担忧，请咨询合格的临床医生。Health Guide 可以帮助您平静地探索下一步。",
     "meta": {
       "type": "类型",
       "generated": "生成时间",
@@ -14,22 +14,22 @@
       "device_enhanced": "设备增强"
     },
     "title": {
-      "general": "个人健康报告",
-      "thematic": "专题健康报告",
-      "dynamic": "进度对比报告",
-      "device_enhanced": "设备增强健康报告",
-      "service": "{{service}} — 个性化报告",
-      "topic": "{{topic}} — 个性化报告"
+      "general": "您的个人健康报告",
+      "thematic": "您的主题健康报告",
+      "dynamic": "您的进度对比报告",
+      "device_enhanced": "您的设备增强健康报告",
+      "service": "{{service}} — 您的个人报告",
+      "topic": "{{topic}} — 您的个人报告"
     },
     "section": {
-      "summary": "摘要",
-      "profile": "问卷衍生画像",
-      "focusAreas": "关注领域",
-      "insights": "关键洞察",
-      "analysis": "分析",
-      "recommendations": "建议框架",
-      "nextSteps": "下一步",
-      "healthGuidePrompt": "建议的 Health Guide 提示",
+      "summary": "一句话概览",
+      "profile": "您的档案快照",
+      "focusAreas": "可以温柔关注的方面",
+      "insights": "值得留意的事",
+      "analysis": "我们注意到的内容",
+      "recommendations": "温和建议",
+      "nextSteps": "简单的下一步",
+      "healthGuidePrompt": "有用的 Health Guide 提示",
       "secondOpinionA": "视角 A",
       "secondOpinionB": "视角 B"
     },
@@ -39,8 +39,8 @@
       "red": "有限"
     },
     "summary": {
-      "opening": "这份{{subject}}报告基于您的个人背景（准备度 {{score}}%，问卷 {{questionnaire}}%）编写。",
-      "educational": "这是结构化的教育性健康指导，不是临床诊断。"
+      "opening": "这份{{subject}}报告依据您的个人上下文生成（准备度 {{score}}%，问卷 {{questionnaire}}%）。",
+      "educational": "这是温暖、实用的健康指引——不是临床诊断。"
     },
     "tone": {
       "analytical": {
@@ -48,8 +48,8 @@
         "analysisLead": "分析视角：将信号整理为结构化观察与可执行杠杆。"
       },
       "supportive": {
-        "summaryLead": "叙述保持平和鼓励，聚焦可持续习惯。",
-        "analysisLead": "支持视角：突出已有效之处，以及温和调整可能帮助的地方。"
+        "summaryLead": "语气保持平静、鼓励，并关注每天都能坚持的习惯。",
+        "analysisLead": "支持性视角：我们肯定已经奏效的部分，并在有帮助处提出温和调整。"
       },
       "coaching": {
         "summaryLead": "叙述以行动为导向，提供清晰习惯与责任感提示。",
@@ -186,6 +186,7 @@
       "subjectGeneral": "您的整体健康",
       "a": "关于{{subject}}的视角 A：用当前信号（{{blurb}}）优先关注{{priority}}。保持足够小、可每天重复的改变。",
       "b": "关于{{subject}}的视角 B：以{{tone}}语气强调{{focus}}。将努力与恢复配对，一周后复查。"
-    }
+    },
+    "copyright": "© {{year}} BioMath Core. 保留所有权利。"
   }
 }

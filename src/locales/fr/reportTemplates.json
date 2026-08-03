@@ -1,7 +1,7 @@
 {
   "reportTemplate": {
     "fallbackTitle": "Rapport de bien-être",
-    "footer": "Conseils éducatifs de bien-être uniquement. Pas un diagnostic médical. Discutez avec un clinicien qualifié si nécessaire. Health Guide peut vous aider pour les prochaines étapes.",
+    "footer": "Ceci est un guidage éducatif de bien-être, doux et pratique — pas un diagnostic médical. Si quelque chose vous inquiète, parlez-en à un clinicien qualifié. Health Guide peut vous aider à explorer les prochaines étapes avec calme.",
     "meta": {
       "type": "Type",
       "generated": "Généré",
@@ -14,22 +14,22 @@
       "device_enhanced": "Enrichi par appareils"
     },
     "title": {
-      "general": "Rapport de bien-être personnel",
-      "thematic": "Rapport de bien-être thématique",
-      "dynamic": "Rapport de comparaison de progression",
-      "device_enhanced": "Rapport enrichi par appareils",
-      "service": "{{service}} — rapport personnalisé",
-      "topic": "{{topic}} — rapport personnalisé"
+      "general": "Votre rapport de bien-être personnel",
+      "thematic": "Votre rapport de bien-être thématique",
+      "dynamic": "Votre rapport de comparaison de progression",
+      "device_enhanced": "Votre rapport enrichi par appareils",
+      "service": "{{service}} — votre rapport personnalisé",
+      "topic": "{{topic}} — votre rapport personnalisé"
     },
     "section": {
-      "summary": "Résumé",
-      "profile": "Profil issu du questionnaire",
-      "focusAreas": "Axes de focus",
-      "insights": "Points clés",
-      "analysis": "Analyse",
-      "recommendations": "Cadre de recommandations",
-      "nextSteps": "Prochaines étapes",
-      "healthGuidePrompt": "Invite Health Guide suggérée",
+      "summary": "En bref",
+      "profile": "Aperçu de votre profil",
+      "focusAreas": "Où porter une attention douce",
+      "insights": "Points utiles à remarquer",
+      "analysis": "Ce que nous avons remarqué",
+      "recommendations": "Recommandations bienveillantes",
+      "nextSteps": "Prochaines étapes simples",
+      "healthGuidePrompt": "Une invite utile pour Health Guide",
       "secondOpinionA": "Perspective A",
       "secondOpinionB": "Perspective B"
     },
@@ -39,8 +39,8 @@
       "red": "limitée"
     },
     "summary": {
-      "opening": "Ce rapport {{subject}} est composé à partir de votre contexte personnel (préparation {{score}} %, questionnaire {{questionnaire}} %).",
-      "educational": "Il s’agit d’un guidage éducatif structuré, pas d’un diagnostic clinique."
+      "opening": "Ce rapport {{subject}} a été composé à partir de votre contexte personnel (préparation {{score}} %, questionnaire {{questionnaire}} %).",
+      "educational": "Il s’agit d’un guidage de bien-être chaleureux et pratique — pas d’un diagnostic clinique."
     },
     "tone": {
       "analytical": {
@@ -48,8 +48,8 @@
         "analysisLead": "Vue analytique : nous organisons vos signaux en observations structurées et leviers pratiques."
       },
       "supportive": {
-        "summaryLead": "Le récit reste calme, encourageant et centré sur des habitudes durables.",
-        "analysisLead": "Vue bienveillante : nous soulignons ce qui fonctionne déjà et où de légers ajustements peuvent aider."
+        "summaryLead": "Le ton reste calme, encourageant et centré sur des habitudes tenables au quotidien.",
+        "analysisLead": "Vue bienveillante : nous soulignons ce qui fonctionne déjà et proposons de légers ajustements utiles."
       },
       "coaching": {
         "summaryLead": "Le récit est orienté action, avec des habitudes claires et des repères de responsabilité.",
@@ -186,6 +186,7 @@
       "subjectGeneral": "votre bien-être global",
       "a": "Perspective A sur {{subject}} : priorisez {{priority}} avec vos signaux actuels ({{blurb}}). Gardez des changements assez petits pour les répéter chaque jour.",
       "b": "Perspective B sur {{subject}} : mettez l’accent sur {{focus}} avec un ton {{tone}}. Associez effort et récupération, puis révisez après une semaine."
-    }
+    },
+    "copyright": "© {{year}} BioMath Core. Tous droits réservés."
   }
 }

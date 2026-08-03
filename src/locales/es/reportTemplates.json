@@ -1,7 +1,7 @@
 {
   "reportTemplate": {
     "fallbackTitle": "Informe de bienestar",
-    "footer": "Orientación educativa de bienestar únicamente. No es un diagnóstico médico. Consulte a un clínico cualificado cuando sea necesario. Health Guide puede ayudarle a explorar los siguientes pasos.",
+    "footer": "Esta es una orientación educativa de bienestar, amable y práctica — no un diagnóstico médico. Si algo le preocupa, hable con un clínico cualificado. Health Guide puede ayudarle a explorar los siguientes pasos con calma.",
     "meta": {
       "type": "Tipo",
       "generated": "Generado",
@@ -14,22 +14,22 @@
       "device_enhanced": "Con dispositivos"
     },
     "title": {
-      "general": "Informe personal de bienestar",
-      "thematic": "Informe temático de bienestar",
-      "dynamic": "Informe de comparación de progreso",
-      "device_enhanced": "Informe de bienestar con dispositivos",
-      "service": "{{service}} — informe personalizado",
-      "topic": "{{topic}} — informe personalizado"
+      "general": "Su informe personal de bienestar",
+      "thematic": "Su informe temático de bienestar",
+      "dynamic": "Su informe de comparación de progreso",
+      "device_enhanced": "Su informe de bienestar con dispositivos",
+      "service": "{{service}} — su informe personalizado",
+      "topic": "{{topic}} — su informe personalizado"
     },
     "section": {
-      "summary": "Resumen",
-      "profile": "Perfil derivado del cuestionario",
-      "focusAreas": "Áreas de enfoque",
-      "insights": "Ideas clave",
-      "analysis": "Análisis",
-      "recommendations": "Marco de recomendaciones",
-      "nextSteps": "Próximos pasos",
-      "healthGuidePrompt": "Indicación sugerida para Health Guide",
+      "summary": "En pocas palabras",
+      "profile": "Instantánea de su perfil",
+      "focusAreas": "Dónde enfocarse con suavidad",
+      "insights": "Cosas que vale la pena notar",
+      "analysis": "Lo que observamos",
+      "recommendations": "Recomendaciones amables",
+      "nextSteps": "Próximos pasos sencillos",
+      "healthGuidePrompt": "Una indicación útil para Health Guide",
       "secondOpinionA": "Perspectiva A",
       "secondOpinionB": "Perspectiva B"
     },
@@ -39,8 +39,8 @@
       "red": "limitado"
     },
     "summary": {
-      "opening": "Este informe de {{subject}} se compone a partir de su contexto personal (preparación {{score}}%, cuestionario {{questionnaire}}%).",
-      "educational": "Es orientación educativa de bienestar estructurada, no un diagnóstico clínico."
+      "opening": "Este informe de {{subject}} se elaboró a partir de su contexto personal (preparación {{score}}%, cuestionario {{questionnaire}}%).",
+      "educational": "Es una orientación de bienestar cálida y práctica — no un diagnóstico clínico."
     },
     "tone": {
       "analytical": {
@@ -48,8 +48,8 @@
         "analysisLead": "Vista analítica: organizamos sus señales en observaciones estructuradas y palancas prácticas."
       },
       "supportive": {
-        "summaryLead": "La narrativa se mantiene calmada, alentadora y centrada en hábitos sostenibles.",
-        "analysisLead": "Vista de apoyo: destacamos lo que ya funciona y dónde ajustes suaves pueden ayudar."
+        "summaryLead": "El tono se mantiene calmado, alentador y centrado en hábitos sostenibles día a día.",
+        "analysisLead": "Vista solidaria: destacamos lo que ya funciona y sugerimos ajustes suaves donde ayuden."
       },
       "coaching": {
         "summaryLead": "La narrativa está orientada a la acción, con hábitos claros y señales de responsabilidad.",
@@ -186,6 +186,7 @@
       "subjectGeneral": "su bienestar general",
       "a": "Perspectiva A sobre {{subject}}: priorice {{priority}} usando sus señales actuales ({{blurb}}). Mantenga cambios lo bastante pequeños para repetirlos a diario.",
       "b": "Perspectiva B sobre {{subject}}: enfatice {{focus}} con un tono {{tone}}. Combine esfuerzo con recuperación y revise tras una semana."
-    }
+    },
+    "copyright": "© {{year}} BioMath Core. Todos los derechos reservados."
   }
 }

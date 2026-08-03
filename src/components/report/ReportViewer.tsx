@@ -325,6 +325,9 @@ export default function ReportViewer({ report, onClose, onShare, sharing }: Prop
             {!hasBody ? <p>{t('member.reports.noBody')}</p> : null}
 
             <p className="report-footer">{t('reportTemplate.footer')}</p>
+            <p className="report-copyright">
+              {t('reportTemplate.copyright', { year: new Date().getFullYear() })}
+            </p>
           </article>
         </div>
       </div>

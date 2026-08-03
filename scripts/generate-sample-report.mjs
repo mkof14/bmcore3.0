@@ -1,7 +1,9 @@
 /**
- * Builds a complete English personal wellness report from en/reportTemplates.json
+ * Builds a complete personal wellness report from reportTemplates.json
  * + the same composition rules as buildReportTemplate, then writes
  * public/samples/sample-personal-report.txt
+ *
+ * Default locale: Russian (primary public sample). Override with SAMPLE_LANG=en.
  */
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -9,8 +11,9 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
+const lang = process.env.SAMPLE_LANG || 'ru';
 const templates = JSON.parse(
-  readFileSync(join(root, 'src/locales/en/reportTemplates.json'), 'utf8'),
+  readFileSync(join(root, `src/locales/${lang}/reportTemplates.json`), 'utf8'),
 ).reportTemplate;
 
 function getByPath(obj, path) {
@@ -41,8 +44,35 @@ const settings = {
   second_opinion_default: true,
 };
 
+const localized = {
+  ru: {
+    name: 'Алекс Ривера',
+    blurb:
+      'приоритет — сон и восстановление; области — сон и восстановление, энергия и усталость, управление стрессом, долголетие; сон около 6,5 часов; движение 4 раза в неделю; стресс умеренно-высокий в рабочие дни; профиль 6/8 разделов; прогресс 82%',
+    serviceId: 'сон и восстановление',
+    sectionMap: {
+      categories: 'категории',
+      personal_info: 'личные данные',
+      medical_history: 'медицинская история',
+      medications: 'лекарства',
+      allergies: 'аллергии',
+      vital_signs: 'жизненные показатели',
+      lifestyle: 'образ жизни',
+      psychological_health: 'психологическое здоровье',
+    },
+  },
+  en: {
+    name: 'Alex Rivera',
+    blurb:
+      'priority=Sleep & Recovery; areas=Sleep & Recovery, Energy & Fatigue, Stress Management, Longevity; sex=female; sleep_h=6.5; exercise=4 times / week; stress=Moderate-high on workdays; profile=6/8 sections complete; progress=82%',
+    serviceId: 'sleep recovery',
+    sectionMap: null,
+  },
+};
+const L = localized[lang] || localized.en;
+
 const context = {
-  profile: { name: 'Alex Rivera' },
+  profile: { name: L.name },
   subscriptionTier: 'max',
   completeness: {
     score: 81,
@@ -50,12 +80,11 @@ const context = {
     profilePercent: 100,
     readyForPersonalizedAnalysis: true,
   },
-  contextBlurb:
-    'priority=Sleep & Recovery; areas=Sleep & Recovery, Energy & Fatigue, Stress Management, Longevity; sex=female; sleep_h=6.5; exercise=4 times / week; stress=Moderate-high on workdays; profile=6/8 sections complete; progress=82%',
+  contextBlurb: L.blurb,
   linkageHealth: 'green',
   devices: { count: 1, brands: ['Apple'] },
   medicalFiles: { count: 1 },
-  services: { serviceIds: ['sleep-recovery', 'stress-resilience'] },
+  services: { serviceIds: [L.serviceId] },
   digitalFile: {
     sections: [
       { id: 'categories', locked: false, progress: 85 },
@@ -75,7 +104,10 @@ function sectionLabels(digitalFile) {
     .filter((s) => !s.locked && s.progress > 0)
     .sort((a, b) => b.progress - a.progress)
     .slice(0, 4)
-    .map((s) => s.id.replace(/_/g, ' '));
+    .map((s) => {
+      if (L.sectionMap && L.sectionMap[s.id]) return L.sectionMap[s.id];
+      return s.id.replace(/_/g, ' ');
+    });
 }
 
 function buildFocusAreas() {
@@ -85,7 +117,7 @@ function buildFocusAreas() {
   }
   areas.push(
     t('reportTemplate.focus.fromService', {
-      service: context.services.serviceIds[0].replace(/[-_]/g, ' '),
+      service: context.services.serviceIds[0],
     }),
   );
   areas.push(t('reportTemplate.focus.devices', { count: context.devices.count }));
@@ -275,10 +307,12 @@ const lines = [
   '',
   t('reportTemplate.footer'),
   '',
+  t('reportTemplate.copyright', { year: 2026 }),
+  '',
 ];
 
 const outDir = join(root, 'public/samples');
 mkdirSync(outDir, { recursive: true });
 const outPath = join(outDir, 'sample-personal-report.txt');
 writeFileSync(outPath, lines.join('\n'), 'utf8');
-console.log(`Wrote ${outPath} (${lines.join('\n').split('\n').length} lines)`);
+console.log(`Wrote ${outPath} (${lang}; ${lines.join('\n').split('\n').length} lines)`);
