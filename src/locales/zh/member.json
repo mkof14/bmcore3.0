@@ -354,7 +354,13 @@
       "shareFailed": "无法创建分享链接",
       "close": "关闭",
       "gateTitle": "个人背景尚未就绪",
-      "noBody": "此报告尚无内容。"
+      "noBody": "此报告尚无内容。",
+      "metricReadiness": "就绪度",
+      "metricReadinessNote": "个人上下文综合得分",
+      "metricQuestionnaire": "问卷",
+      "metricQuestionnaireNote": "已启用部分的完成度",
+      "metricLinkage": "关联",
+      "metricProfileNote": "资料完整度 {{percent}}%"
     },
     "signalHub": {
       "title": "信号中心",

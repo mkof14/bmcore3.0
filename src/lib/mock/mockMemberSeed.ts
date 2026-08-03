@@ -105,6 +105,24 @@ export async function ensureMockSampleReport(
         second_opinion_b: content.second_opinion_b,
         status: 'completed',
         device_data: null,
+        personal_context_snapshot: {
+          version: ctx.version,
+          builtAt: ctx.builtAt,
+          completenessScore: ctx.completeness.score,
+          questionnairePercent: ctx.completeness.questionnairePercent,
+          profilePercent: ctx.completeness.profilePercent,
+          linkageHealth: ctx.linkageHealth,
+          contextBlurb: ctx.contextBlurb,
+          subscriptionTier: ctx.subscriptionTier,
+          medicalFilesCount: ctx.medicalFiles.count,
+          devicesCount: ctx.devices.count,
+          servicesTouched: ctx.services.serviceIds.slice(0, 40),
+          readyForPersonalizedAnalysis: ctx.completeness.readyForPersonalizedAnalysis,
+        },
+        metadata: {
+          report_sections: content.sections,
+          report_settings: content.settingsApplied,
+        },
       })
       .select()
       .maybeSingle();

@@ -354,7 +354,13 @@
       "shareFailed": "Link konnte nicht erstellt werden",
       "close": "Schließen",
       "gateTitle": "Persönlicher Kontext nicht bereit",
-      "noBody": "Dieser Bericht hat noch keinen Inhalt."
+      "noBody": "Dieser Bericht hat noch keinen Inhalt.",
+      "metricReadiness": "Bereitschaft",
+      "metricReadinessNote": "Gesamtscore des persönlichen Kontexts",
+      "metricQuestionnaire": "Fragebogen",
+      "metricQuestionnaireNote": "Abschluss aktiver Abschnitte",
+      "metricLinkage": "Verknüpfung",
+      "metricProfileNote": "Profilvollständigkeit {{percent}}%"
     },
     "signalHub": {
       "title": "Signal-Hub",

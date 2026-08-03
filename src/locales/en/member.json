@@ -354,7 +354,13 @@
       "shareFailed": "Could not create share link",
       "close": "Close",
       "gateTitle": "Personal context not ready",
-      "noBody": "This report has no content yet."
+      "noBody": "This report has no content yet.",
+      "metricReadiness": "Readiness",
+      "metricReadinessNote": "Overall personal-context score",
+      "metricQuestionnaire": "Questionnaire",
+      "metricQuestionnaireNote": "Completion across active sections",
+      "metricLinkage": "Linkage",
+      "metricProfileNote": "Profile completeness {{percent}}%"
     },
     "signalHub": {
       "title": "Signal Hub",

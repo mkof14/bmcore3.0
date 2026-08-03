@@ -354,7 +354,13 @@
       "shareFailed": "تعذّر إنشاء رابط المشاركة",
       "close": "إغلاق",
       "gateTitle": "السياق الشخصي غير جاهز",
-      "noBody": "لا يحتوي هذا التقرير على محتوى بعد."
+      "noBody": "لا يحتوي هذا التقرير على محتوى بعد.",
+      "metricReadiness": "الجاهزية",
+      "metricReadinessNote": "درجة السياق الشخصي الإجمالية",
+      "metricQuestionnaire": "الاستبيان",
+      "metricQuestionnaireNote": "اكتمال الأقسام النشطة",
+      "metricLinkage": "الربط",
+      "metricProfileNote": "اكتمال الملف الشخصي {{percent}}%"
     },
     "signalHub": {
       "title": "مركز الإشارات",

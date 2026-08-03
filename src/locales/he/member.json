@@ -354,7 +354,13 @@
       "shareFailed": "לא ניתן ליצור קישור לשיתוף",
       "close": "סגירה",
       "gateTitle": "ההקשר האישי אינו מוכן",
-      "noBody": "לדוח זה עדיין אין תוכן."
+      "noBody": "לדוח זה עדיין אין תוכן.",
+      "metricReadiness": "מוכנות",
+      "metricReadinessNote": "ציון כולל של ההקשר האישי",
+      "metricQuestionnaire": "שאלון",
+      "metricQuestionnaireNote": "השלמה במקטעים הפעילים",
+      "metricLinkage": "קישוריות",
+      "metricProfileNote": "שלמות הפרופיל {{percent}}%"
     },
     "signalHub": {
       "title": "מרכז האותות",

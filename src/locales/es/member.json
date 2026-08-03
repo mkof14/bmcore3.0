@@ -354,7 +354,13 @@
       "shareFailed": "No se pudo crear el enlace",
       "close": "Cerrar",
       "gateTitle": "Contexto personal no listo",
-      "noBody": "Este informe aún no tiene contenido."
+      "noBody": "Este informe aún no tiene contenido.",
+      "metricReadiness": "Preparación",
+      "metricReadinessNote": "Puntuación general del contexto personal",
+      "metricQuestionnaire": "Cuestionario",
+      "metricQuestionnaireNote": "Completado en las secciones activas",
+      "metricLinkage": "Vinculación",
+      "metricProfileNote": "Completitud del perfil {{percent}}%"
     },
     "signalHub": {
       "title": "Centro de señales",

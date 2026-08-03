@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal wellness report — Alex Rivera | BioMath Core</title>
+  <meta name="description" content="Personalized wellness report for Alex Rivera — sleep &amp; recovery, readiness, and practical next steps from BioMath Core." />
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --ink: #0f172a;
+      --ink-soft: #334155;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --line-soft: #f1f5f9;
+      --paper: #ffffff;
+      --canvas: #f8fafc;
+      --accent: #ea580c;
+      --accent-soft: #fff7ed;
+      --accent-line: #fed7aa;
+      --bar-track: #e2e8f0;
+      --bar-fill: #ea580c;
+      --ok: #15803d;
+      --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 32px rgba(15, 23, 42, 0.06);
+      --radius: 14px;
+      --font: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+      --sans: "Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 480px at 10% -10%, rgba(234, 88, 12, 0.08), transparent 55%),
+        radial-gradient(900px 420px at 100% 0%, rgba(15, 23, 42, 0.05), transparent 50%),
+        linear-gradient(180deg, #f1f5f9 0%, var(--canvas) 28%, #eef2f7 100%);
+      font-family: var(--sans);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: min(920px, calc(100% - 2rem));
+      margin: 2rem auto 3.5rem;
+    }
+
+    .cover {
+      background: linear-gradient(165deg, #0f172a 0%, #1e293b 58%, #334155 100%);
+      color: #f8fafc;
+      border-radius: calc(var(--radius) + 4px);
+      padding: 2rem 2rem 1.75rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -40% 40%;
+      height: 220px;
+      background: radial-gradient(circle, rgba(234, 88, 12, 0.28), transparent 68%);
+      pointer-events: none;
+    }
+    .cover-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      min-width: 0;
+    }
+    .brand img {
+      height: 42px;
+      width: auto;
+      display: block;
+      filter: brightness(1.08);
+    }
+    .brand-text strong {
+      display: block;
+      font-size: 1.05rem;
+      letter-spacing: 0.01em;
+    }
+    .brand-text span {
+      display: block;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      margin-top: 0.15rem;
+    }
+    .cover-meta {
+      text-align: right;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+    .cover-meta strong {
+      color: #fff;
+      font-weight: 600;
+    }
+    .cover h1 {
+      position: relative;
+      z-index: 1;
+      margin: 1.6rem 0 0.45rem;
+      font-family: var(--font);
+      font-size: clamp(1.7rem, 3.4vw, 2.25rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      max-width: 16ch;
+    }
+    .cover-lead {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 54ch;
+      color: #e2e8f0;
+      font-size: 0.98rem;
+    }
+    .cover-chips {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 1.25rem;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.06);
+      color: #f8fafc;
+      font-size: 0.72rem;
+      letter-spacing: 0.02em;
+    }
+    .chip em {
+      font-style: normal;
+      color: #fdba74;
+      font-weight: 600;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
+      margin: 1.1rem 0 1.35rem;
+    }
+    .metric {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1rem 1.05rem 1.05rem;
+      box-shadow: var(--shadow);
+    }
+    .metric-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 0 0 0.35rem;
+      font-weight: 700;
+    }
+    .metric-value {
+      font-family: var(--font);
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .metric-note {
+      margin: 0.2rem 0 0.7rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .bar {
+      height: 7px;
+      border-radius: 999px;
+      background: var(--bar-track);
+      overflow: hidden;
+    }
+    .bar > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #fb923c, var(--bar-fill));
+    }
+    .metric.linkage .metric-value { color: var(--ok); font-size: 1.25rem; padding-top: 0.2rem; }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem 1.35rem;
+      margin-bottom: 0.95rem;
+      box-shadow: var(--shadow);
+    }
+    .card h2 {
+      margin: 0 0 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--accent-line);
+    }
+    .card p {
+      margin: 0 0 0.75rem;
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+    }
+    .card p:last-child { margin-bottom: 0; }
+    .card .lede {
+      font-family: var(--font);
+      font-size: 1.08rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin-top: 0.85rem;
+    }
+    .signal {
+      background: var(--line-soft);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.7rem 0.8rem;
+    }
+    .signal strong {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+    .signal span {
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+
+    ol.clean, ul.clean {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+    }
+    ol.clean li, ul.clean li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.7rem;
+      align-items: start;
+      padding: 0.7rem 0.8rem;
+      border-radius: 10px;
+      background: var(--line-soft);
+      border: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: 0.93rem;
+    }
+    .num {
+      width: 1.55rem;
+      height: 1.55rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 800;
+      border: 1px solid var(--accent-line);
+      flex-shrink: 0;
+    }
+
+    .rec {
+      padding: 0.85rem 0.9rem;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #fff 0%, var(--line-soft) 100%);
+      margin-bottom: 0.65rem;
+    }
+    .rec:last-child { margin-bottom: 0; }
+    .rec strong {
+      display: block;
+      color: var(--ink);
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .rec p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .prompt {
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      border: 1px solid #1e293b;
+    }
+    .prompt-label {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fdba74;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+
+    .perspectives {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+    .perspective {
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      padding: 1rem 1.05rem 1.1rem;
+    }
+    .perspective h3 {
+      margin: 0 0 0.55rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .perspective p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    .footer-note {
+      margin-top: 0.4rem;
+      padding: 1rem 1.15rem;
+      border-radius: var(--radius);
+      border: 1px dashed #cbd5e1;
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .site-foot {
+      margin-top: 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+    .site-foot a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    @media (max-width: 720px) {
+      .page { width: min(100% - 1.25rem, 920px); margin-top: 1rem; }
+      .cover { padding: 1.35rem 1.2rem 1.3rem; }
+      .cover-meta { text-align: left; }
+      .metrics, .signal-grid, .perspectives { grid-template-columns: 1fr; }
+      .card { padding: 1.05rem 1.05rem 1.15rem; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { width: 100%; margin: 0; }
+      .cover, .card, .metric, .perspective { box-shadow: none; break-inside: avoid; }
+      .cover { border: 1px solid #cbd5e1; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="cover">
+      <div class="cover-top">
+        <div class="brand">
+          <img src="/logo-header.png" alt="BioMath Core" width="160" height="42" />
+          <div class="brand-text">
+            <strong>BioMath Core</strong>
+            <span>Personal wellness report</span>
+          </div>
+        </div>
+        <div class="cover-meta">
+          <div><strong>Generated</strong><br />August 3, 2026</div>
+          <div style="margin-top:0.55rem"><strong>Type</strong><br />General</div>
+          <div style="margin-top:0.55rem"><strong>Report ID</strong><br />mock-sample-personal-report</div>
+        </div>
+      </div>
+      <h1>Alex Rivera</h1>
+      <p class="cover-lead">
+        Sleep &amp; recovery–led guidance from your personal context — calm, practical, and built for habits you can keep.
+      </p>
+      <div class="cover-chips">
+        <span class="chip">Priority <em>Sleep &amp; Recovery</em></span>
+        <span class="chip">Focus <em>Lifestyle</em></span>
+        <span class="chip">Plan <em>Max</em></span>
+        <span class="chip">Devices <em>1 · Apple</em></span>
+      </div>
+    </header>
+
+    <section class="metrics" aria-label="Readiness metrics">
+      <div class="metric">
+        <p class="metric-label">Readiness</p>
+        <p class="metric-value">81%</p>
+        <p class="metric-note">Overall personal-context score</p>
+        <div class="bar" aria-hidden="true"><span style="width:81%"></span></div>
+      </div>
+      <div class="metric">
+        <p class="metric-label">Questionnaire</p>
+        <p class="metric-value">78%</p>
+        <p class="metric-note">Completion across active sections</p>
+        <div class="bar" aria-hidden="true"><span style="width:78%"></span></div>
+      </div>
+      <div class="metric linkage">
+        <p class="metric-label">Linkage</p>
+        <p class="metric-value">Strong</p>
+        <p class="metric-note">Profile completeness 100%</p>
+        <div class="bar" aria-hidden="true"><span style="width:100%; background:linear-gradient(90deg,#4ade80,#15803d)"></span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Summary</h2>
+      <p class="lede">
+        This General report is composed from your personal context (readiness 81%, questionnaire 78%). The narrative stays calm, encouraging, and focused on sustainable habits. It is structured educational wellness guidance, not a clinical diagnosis.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Questionnaire-derived profile</h2>
+      <p><strong>Alex Rivera</strong> — questionnaire 78% complete · overall readiness 81%.</p>
+      <p>
+        Profile signals: priority=Sleep &amp; Recovery; areas=Sleep &amp; Recovery, Energy &amp; Fatigue, Stress Management, Longevity; sex=female; sleep_h=6.5; exercise=4 times / week; stress=Moderate-high on workdays; profile=6/8 sections complete; progress=82%.
+      </p>
+      <div class="signal-grid">
+        <div class="signal"><strong>Active areas</strong><span>Lifestyle, psychological health, personal info, vital signs</span></div>
+        <div class="signal"><strong>Connected assets</strong><span>1 device · 1 health document · plan max</span></div>
+        <div class="signal"><strong>Sleep</strong><span>6.5 hours typical</span></div>
+        <div class="signal"><strong>Exercise</strong><span>4 times / week</span></div>
+        <div class="signal"><strong>Stress</strong><span>Moderate-high on workdays</span></div>
+        <div class="signal"><strong>Linkage</strong><span>Personal-context linkage is strong</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Key insights</h2>
+      <ol class="clean">
+        <li><span class="num">1</span><span>Readiness 81% (questionnaire 78% · profile 100%).</span></li>
+        <li><span class="num">2</span><span>Linkage health: strong.</span></li>
+        <li><span class="num">3</span><span>Lifestyle signals should guide the next habit experiments.</span></li>
+        <li><span class="num">4</span><span>Device coverage present (1).</span></li>
+        <li><span class="num">5</span><span>Strongest questionnaire signal area: lifestyle.</span></li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Analysis</h2>
+      <p>Supportive view: we highlight what already works and where gentle adjustments can help.</p>
+      <p>Personal context snapshot: priority=Sleep &amp; Recovery; areas=Sleep &amp; Recovery, Energy &amp; Fatigue, Stress Management, Longevity; sex=female; sleep_h=6.5; exercise=4 times / week; stress=Moderate-high on workdays; profile=6/8 sections complete; progress=82% (readiness 81%).</p>
+      <p>Interpretation priority — preventive first: reduce friction that could compound into setbacks.</p>
+      <p>Insight focus — lifestyle: sleep timing, movement snacks, meal rhythm, and stress recovery habits.</p>
+      <p>Device layer: 1 source(s) (Apple). Treat wearable signals as trends, not diagnoses.</p>
+      <p>Standard form: pair one focus area with a measurable weekly habit and review progress in Member Zone.</p>
+      <p>This report does not diagnose, treat, or replace professional medical care.</p>
+    </section>
+
+    <section class="card">
+      <h2>Focus areas</h2>
+      <ol class="clean">
+        <li><span class="num">1</span><span>Stabilize daily routines that support energy, recovery, and mood.</span></li>
+        <li><span class="num">2</span><span>Deepen clarity in lifestyle based on your questionnaire progress.</span></li>
+        <li><span class="num">3</span><span>Deepen clarity in psychological health based on your questionnaire progress.</span></li>
+        <li><span class="num">4</span><span>Keep sleep recovery as a primary focus for this report cycle.</span></li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Recommendations framework</h2>
+      <div class="rec">
+        <strong>1. Prevention block</strong>
+        <p>Choose one low-friction habit that reduces the chance of overload this week (earlier wind-down, hydration anchor, or a short daily walk).</p>
+      </div>
+      <div class="rec">
+        <strong>2. Lifestyle rhythm</strong>
+        <p>Align meal timing, daylight exposure, and movement with the hours you feel most stable.</p>
+      </div>
+      <div class="rec">
+        <strong>3. Keep questionnaires current</strong>
+        <p>Your questionnaire is 78% complete. Update sections when your state changes so future reports stay accurate.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Next steps</h2>
+      <ol class="clean">
+        <li><span class="num">1</span><span>Read the focus areas and pick one recommendation to practice for seven days.</span></li>
+        <li><span class="num">2</span><span>Open Health Guide with the suggested prompt below to explore trade-offs.</span></li>
+        <li><span class="num">3</span><span>Schedule lifestyle habits into your calendar rather than relying on motivation alone.</span></li>
+        <li><span class="num">4</span><span>Refresh any outdated questionnaire answers after meaningful lifestyle changes.</span></li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Suggested Health Guide prompt</h2>
+      <div class="prompt">
+        <div class="prompt-label">Copy into Health Guide</div>
+        Using my personal context (priority=Sleep &amp; Recovery; areas=Sleep &amp; Recovery, Energy &amp; Fatigue, Stress Management, Longevity; sex=female; sleep_h=6.5; exercise=4 times / week; stress=Moderate-high on workdays; profile=6/8 sections complete; progress=82%; readiness 81%), help me plan the next week around overall wellness. My question: What should I prioritize first?. Keep guidance educational and practical.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Perspectives</h2>
+      <div class="perspectives">
+        <article class="perspective">
+          <h3>Perspective A</h3>
+          <p>Perspective A on your overall wellness: prioritize prevention using your current signals (priority=Sleep &amp; Recovery; areas=Sleep &amp; Recovery, Energy &amp; Fatigue, Stress Management, Longevity; sex=female; sleep_h=6.5; exercise=4 times / week; stress=Moderate-high on workdays; profile=6/8 sections complete; progress=82%). Keep changes small enough to repeat daily.</p>
+        </article>
+        <article class="perspective">
+          <h3>Perspective B</h3>
+          <p>Perspective B on your overall wellness: emphasize lifestyle with a supportive tone. Pair effort with recovery and revisit after one week.</p>
+        </article>
+      </div>
+    </section>
+
+    <aside class="footer-note">
+      Educational wellness guidance only. Not a medical diagnosis. Discuss questions with a qualified clinician when needed. Health Guide can help you explore next steps.
+    </aside>
+
+    <p class="site-foot">
+      <a href="https://www.biomathcore.com">biomathcore.com</a>
+      · support@biomathcore.com
+    </p>
+  </main>
+</body>
+</html>

@@ -354,7 +354,13 @@
       "shareFailed": "Impossible de créer le lien",
       "close": "Fermer",
       "gateTitle": "Contexte personnel non prêt",
-      "noBody": "Ce rapport n’a pas encore de contenu."
+      "noBody": "Ce rapport n’a pas encore de contenu.",
+      "metricReadiness": "Préparation",
+      "metricReadinessNote": "Score global du contexte personnel",
+      "metricQuestionnaire": "Questionnaire",
+      "metricQuestionnaireNote": "Complétion des sections actives",
+      "metricLinkage": "Lien",
+      "metricProfileNote": "Complétude du profil {{percent}}%"
     },
     "signalHub": {
       "title": "Hub de signaux",

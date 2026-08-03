@@ -354,7 +354,13 @@
       "shareFailed": "Не вдалося створити посилання",
       "close": "Закрити",
       "gateTitle": "Особистий контекст не готовий",
-      "noBody": "У цьому звіті ще немає вмісту."
+      "noBody": "У цьому звіті ще немає вмісту.",
+      "metricReadiness": "Готовність",
+      "metricReadinessNote": "Загальний бал особистого контексту",
+      "metricQuestionnaire": "Опитувальник",
+      "metricQuestionnaireNote": "Заповнення активних розділів",
+      "metricLinkage": "Звʼязок",
+      "metricProfileNote": "Повнота профілю {{percent}}%"
     },
     "signalHub": {
       "title": "Хаб сигналів",

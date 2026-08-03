@@ -354,7 +354,13 @@
       "shareFailed": "Не удалось создать ссылку",
       "close": "Закрыть",
       "gateTitle": "Личный контекст не готов",
-      "noBody": "В этом отчёте пока нет содержимого."
+      "noBody": "В этом отчёте пока нет содержимого.",
+      "metricReadiness": "Готовность",
+      "metricReadinessNote": "Общий балл личного контекста",
+      "metricQuestionnaire": "Опросник",
+      "metricQuestionnaireNote": "Заполнение активных разделов",
+      "metricLinkage": "Связь",
+      "metricProfileNote": "Полнота профиля {{percent}}%"
     },
     "signalHub": {
       "title": "Хаб сигналов",

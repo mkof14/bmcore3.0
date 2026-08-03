@@ -354,7 +354,13 @@
       "shareFailed": "共有リンクを作成できませんでした",
       "close": "閉じる",
       "gateTitle": "個人コンテキストの準備ができていません",
-      "noBody": "このレポートにはまだ内容がありません。"
+      "noBody": "このレポートにはまだ内容がありません。",
+      "metricReadiness": "準備度",
+      "metricReadinessNote": "パーソナルコンテキストの総合スコア",
+      "metricQuestionnaire": "アンケート",
+      "metricQuestionnaireNote": "有効なセクションの完了度",
+      "metricLinkage": "連携",
+      "metricProfileNote": "プロフィール完成度 {{percent}}%"
     },
     "signalHub": {
       "title": "シグナルハブ",
