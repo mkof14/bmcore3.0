@@ -1,7 +1,7 @@
 {
   "reportTemplate": {
     "fallbackTitle": "Informe de bienestar",
-    "footer": "Este informe es una orientación educativa y amable sobre el bienestar — no un diagnóstico médico. Si algo le preocupa, hable con un profesional cualificado. Health Guide está aquí para explorar siguientes pasos suaves.",
+    "footer": "Este informe es una orientación educativa y clara sobre el bienestar — no un diagnóstico médico. Si algo le preocupa, hable con un profesional cualificado. Health Guide está aquí para explorar siguientes pasos concretos.",
     "copyright": "© {{year}} BioMath Core. Todos los derechos reservados.",
     "meta": {
       "type": "Tipo",
@@ -28,7 +28,7 @@
       "focusAreas": "Dónde enfocarse con suavidad",
       "insights": "Lo que vale la pena notar",
       "analysis": "Lo que observamos",
-      "recommendations": "Recomendaciones amables",
+      "recommendations": "Recomendaciones prácticas",
       "nextSteps": "Próximos pasos sencillos",
       "healthGuidePrompt": "Una indicación útil para Health Guide",
       "secondOpinionA": "Perspectiva A",
@@ -52,7 +52,7 @@
         "analysisLead": "Destacamos lo que ya ayuda y nombramos uno o dos ajustes suaves para esta semana."
       },
       "coaching": {
-        "summaryLead": "Tono orientado a la acción: hábitos claros y responsabilidad amable para los próximos siete días.",
+        "summaryLead": "Tono orientado a la acción: hábitos claros y responsabilidad de apoyo para los próximos siete días.",
         "analysisLead": "Convertimos su contexto en bloques de práctica para esta semana — con horarios, duraciones y señales."
       }
     },
@@ -73,7 +73,7 @@
     },
     "focus": {
       "lifestyle": "Ritmos diarios estables que apoyan la energía, la recuperación y el ánimo.",
-      "risk_awareness": "Note las señales tempranas a tiempo y responda con hábitos preventivos amables.",
+      "risk_awareness": "Note las señales tempranas a tiempo y responda con hábitos preventivos tranquilos.",
       "performance": "Proteja la energía para el foco y el entrenamiento, dejando espacio para recuperarse.",
       "fromSection": "Añada un poco más de claridad en {{section}} según el progreso del cuestionario.",
       "fromService": "Mantenga {{service}} como foco principal de este ciclo de informe.",
@@ -222,7 +222,7 @@
         "performance": "Fije un suelo de recuperación (horas en cama + movimiento suave) antes de subir la carga."
       }
     },
-    "healthGuidePrompt": "Usando mi contexto personal ({{blurb}}; preparación {{score}} %), ayúdame a planificar una próxima semana amable en torno a {{service}}. Mi pregunta: {{question}}. Mantén la orientación educativa, práctica y fácil de seguir — con horarios y duraciones concretas cuando ayude.",
+    "healthGuidePrompt": "Usando mi contexto personal ({{blurb}}; preparación {{score}} %), ayúdame a planificar una próxima semana tranquila en torno a {{service}}. Mi pregunta: {{question}}. Mantén la orientación educativa, práctica y fácil de seguir — con horarios y duraciones concretas cuando ayude.",
     "healthGuidePromptGeneral": "bienestar general",
     "healthGuidePromptDefaultQuestion": "¿Qué debería priorizar primero?",
     "secondOpinion": {

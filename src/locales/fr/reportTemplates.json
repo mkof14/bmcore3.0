@@ -1,7 +1,7 @@
 {
   "reportTemplate": {
     "fallbackTitle": "Rapport de bien-être",
-    "footer": "Ce rapport est une orientation éducative et bienveillante sur le bien-être — pas un diagnostic médical. Si quelque chose vous inquiète, parlez-en à un clinicien qualifié. Health Guide est là pour explorer des prochaines étapes douces.",
+    "footer": "Ce rapport est une orientation éducative et claire sur le bien-être — pas un diagnostic médical. Si quelque chose vous inquiète, parlez-en à un clinicien qualifié. Health Guide est là pour explorer des prochaines étapes concrètes.",
     "copyright": "© {{year}} BioMath Core. Tous droits réservés.",
     "meta": {
       "type": "Type",
@@ -28,7 +28,7 @@
       "focusAreas": "Où porter une attention douce",
       "insights": "Ce qui mérite d’être remarqué",
       "analysis": "Ce que nous avons remarqué",
-      "recommendations": "Recommandations bienveillantes",
+      "recommendations": "Recommandations pratiques",
       "nextSteps": "Prochaines étapes simples",
       "healthGuidePrompt": "Une invite utile pour Health Guide",
       "secondOpinionA": "Perspective A",
@@ -52,7 +52,7 @@
         "analysisLead": "Nous soulignons ce qui aide déjà, puis nommons un ou deux ajustements doux pour cette semaine."
       },
       "coaching": {
-        "summaryLead": "Ton orienté action : habitudes claires et responsabilité bienveillante pour les sept prochains jours.",
+        "summaryLead": "Ton orienté action : habitudes claires et responsabilité soutenue pour les sept prochains jours.",
         "analysisLead": "Nous transformons votre contexte en blocs de pratique pour cette semaine — avec horaires, durées et indices."
       }
     },
@@ -73,7 +73,7 @@
     },
     "focus": {
       "lifestyle": "Des rythmes quotidiens stables qui soutiennent l’énergie, la récupération et l’humeur.",
-      "risk_awareness": "Repérer tôt les signaux précoces et y répondre par des habitudes préventives bienveillantes.",
+      "risk_awareness": "Repérer tôt les signaux précoces et y répondre par des habitudes préventives calmes.",
       "performance": "Protéger l’énergie pour le focus et l’entraînement tout en laissant de la place à la récupération.",
       "fromSection": "Ajoutez un peu plus de clarté dans {{section}} selon la progression du questionnaire.",
       "fromService": "Gardez {{service}} comme focus principal de ce cycle de rapport.",

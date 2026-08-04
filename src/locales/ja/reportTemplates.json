@@ -28,7 +28,7 @@
       "focusAreas": "やさしく注目したいところ",
       "insights": "気づいておきたいこと",
       "analysis": "気づいたこと",
-      "recommendations": "やさしいおすすめ",
+      "recommendations": "実践的なおすすめ",
       "nextSteps": "かんたんな次の一歩",
       "healthGuidePrompt": "Health Guide 用の便利なプロンプト",
       "secondOpinionA": "視点 A",
@@ -52,7 +52,7 @@
         "analysisLead": "すでに役立っていることを認め、今週のやさしい調整を1〜2つ挙げます。"
       },
       "coaching": {
-        "summaryLead": "行動しやすいトーン：明確な習慣と、これからの7日間へのやさしい責任感。",
+        "summaryLead": "行動しやすいトーン：明確な習慣と、これからの7日間への支えとなる責任感。",
         "analysisLead": "コンテキストを今週試せる実践ブロックに変えます — 時刻・時間・きっかけ付きです。"
       }
     },
@@ -73,7 +73,7 @@
     },
     "focus": {
       "lifestyle": "エネルギー・回復・気分を支える安定した毎日のリズム。",
-      "risk_awareness": "早期信号に早めに気づき、やさしい予防習慣で応える。",
+      "risk_awareness": "早期信号に早めに気づき、落ち着いた予防習慣で応える。",
       "performance": "集中とトレーニングのエネルギーを守りつつ、回復の余白を残す。",
       "fromSection": "問診の進み具合に沿い、{{section}}をもう少し明確にしましょう。",
       "fromService": "このレポート周期では {{service}} を主な焦点に保ちましょう。",
@@ -222,7 +222,7 @@
         "performance": "負荷を上げる前に回復フロア（ベッド時間＋軽い動き）を設定します。"
       }
     },
-    "healthGuidePrompt": "私の個人コンテキスト（{{blurb}}；準備度 {{score}}%）を使い、{{service}} を中心にやさしい来週を計画するのを手伝ってください。質問：{{question}}。案内は教育的・実践的・実行しやすく、役立つところでは具体的な時刻と時間を入れてください。",
+    "healthGuidePrompt": "私の個人コンテキスト（{{blurb}}；準備度 {{score}}%）を使い、{{service}} を中心に落ち着いた来週を計画するのを手伝ってください。質問：{{question}}。案内は教育的・実践的・実行しやすく、役立つところでは具体的な時刻と時間を入れてください。",
     "healthGuidePromptGeneral": "全体的なウェルネス",
     "healthGuidePromptDefaultQuestion": "まず何を優先すべき？",
     "secondOpinion": {

@@ -1,7 +1,7 @@
 {
   "reportTemplate": {
     "fallbackTitle": "Wellness-Bericht",
-    "footer": "Dieser Bericht ist freundliche, bildungsorientierte Wellness-Orientierung — keine medizinische Diagnose. Wenn Sie etwas beunruhigt, sprechen Sie bitte mit einer qualifizierten Fachkraft. Health Guide hilft Ihnen, behutsame nächste Schritte zu finden.",
+    "footer": "Dieser Bericht ist verständliche, bildungsorientierte Wellness-Orientierung — keine medizinische Diagnose. Wenn Sie etwas beunruhigt, sprechen Sie bitte mit einer qualifizierten Fachkraft. Health Guide hilft Ihnen, konkrete nächste Schritte zu finden.",
     "copyright": "© {{year}} BioMath Core. Alle Rechte vorbehalten.",
     "meta": {
       "type": "Typ",
@@ -28,7 +28,7 @@
       "focusAreas": "Worauf Sie behutsam achten können",
       "insights": "Was auffällt",
       "analysis": "Was wir bemerkt haben",
-      "recommendations": "Freundliche Empfehlungen",
+      "recommendations": "Praktische Empfehlungen",
       "nextSteps": "Leichte nächste Schritte",
       "healthGuidePrompt": "Hilfreiche Health-Guide-Eingabe",
       "secondOpinionA": "Perspektive A",
@@ -52,7 +52,7 @@
         "analysisLead": "Wir würdigen, was bereits hilft, und benennen ein oder zwei behutsame Anpassungen für diese Woche."
       },
       "coaching": {
-        "summaryLead": "Handlungsfreundlicher Ton: klare Gewohnheiten und freundliche Verantwortung für die nächsten sieben Tage.",
+        "summaryLead": "Handlungsfreundlicher Ton: klare Gewohnheiten und unterstützende Verantwortung für die nächsten sieben Tage.",
         "analysisLead": "Wir übersetzen Ihren Kontext in Übungsblöcke für diese Woche — mit Zeiten, Dauern und Auslösern."
       }
     },
@@ -73,7 +73,7 @@
     },
     "focus": {
       "lifestyle": "Stabile Alltagsrhythmen, die Energie, Erholung und Stimmung stützen.",
-      "risk_awareness": "Frühe Signale früh erkennen und mit freundlichen Präventionsgewohnheiten reagieren.",
+      "risk_awareness": "Frühe Signale früh erkennen und mit ruhigen Präventionsgewohnheiten reagieren.",
       "performance": "Energie für Fokus und Training schützen und Raum für Erholung lassen.",
       "fromSection": "Schaffen Sie etwas mehr Klarheit in {{section}} anhand Ihres Fragebogenfortschritts.",
       "fromService": "Behalten Sie {{service}} als Hauptfokus dieses Berichtszyklus.",
@@ -222,7 +222,7 @@
         "performance": "Setzen Sie eine Erholungsuntergrenze (Stunden im Bett + leichte Bewegung), bevor die Last steigt."
       }
     },
-    "healthGuidePrompt": "Mit meinem persönlichen Kontext ({{blurb}}; Bereitschaft {{score}} %) hilf mir, eine freundliche nächste Woche um {{service}} zu planen. Meine Frage: {{question}}. Halte die Orientierung bildungsorientiert, praktisch und leicht umsetzbar — mit konkreten Zeiten und Dauern, wo hilfreich.",
+    "healthGuidePrompt": "Mit meinem persönlichen Kontext ({{blurb}}; Bereitschaft {{score}} %) hilf mir, eine ruhige nächste Woche um {{service}} zu planen. Meine Frage: {{question}}. Halte die Orientierung bildungsorientiert, praktisch und leicht umsetzbar — mit konkreten Zeiten und Dauern, wo hilfreich.",
     "healthGuidePromptGeneral": "allgemeines Wohlbefinden",
     "healthGuidePromptDefaultQuestion": "Was sollte ich zuerst priorisieren?",
     "secondOpinion": {

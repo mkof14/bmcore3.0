@@ -28,7 +28,7 @@
       "focusAreas": "Where to focus gently",
       "insights": "Things worth noticing",
       "analysis": "What we noticed",
-      "recommendations": "Kind recommendations",
+      "recommendations": "Practical recommendations",
       "nextSteps": "Easy next steps",
       "healthGuidePrompt": "A helpful Health Guide prompt",
       "secondOpinionA": "Perspective A",
@@ -52,7 +52,7 @@
         "analysisLead": "We highlight what already helps, then name one or two gentle adjustments for this week."
       },
       "coaching": {
-        "summaryLead": "Action-friendly tone: clear habits and kind accountability for the next seven days.",
+        "summaryLead": "Action-friendly tone: clear habits and supportive accountability for the next seven days.",
         "analysisLead": "We turn your context into practice blocks you can try this week — times, durations, and cues included."
       }
     },
@@ -73,7 +73,7 @@
     },
     "focus": {
       "lifestyle": "Steady daily rhythms that support energy, recovery, and mood.",
-      "risk_awareness": "Notice early signals early and respond with kind, preventive habits.",
+      "risk_awareness": "Notice early signals early and respond with calm, preventive habits.",
       "performance": "Protect energy for focus and training while leaving room to recover.",
       "fromSection": "Add a little more clarity in {{section}} based on your questionnaire progress.",
       "fromService": "Keep {{service}} as a primary focus for this report cycle.",
@@ -222,7 +222,7 @@
         "performance": "Set a recovery floor (hours in bed + easy movement) before any load increase."
       }
     },
-    "healthGuidePrompt": "Using my personal context ({{blurb}}; readiness {{score}}%), help me plan a kind next week around {{service}}. My question: {{question}}. Keep guidance educational, practical, and easy to follow — with specific times and durations where helpful.",
+    "healthGuidePrompt": "Using my personal context ({{blurb}}; readiness {{score}}%), help me plan a calm next week around {{service}}. My question: {{question}}. Keep guidance educational, practical, and easy to follow — with specific times and durations where helpful.",
     "healthGuidePromptGeneral": "overall wellness",
     "healthGuidePromptDefaultQuestion": "What should I prioritize first?",
     "secondOpinion": {

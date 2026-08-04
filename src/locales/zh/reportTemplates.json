@@ -28,7 +28,7 @@
       "focusAreas": "可温和关注的方向",
       "insights": "值得留意的信号",
       "analysis": "我们注意到的内容",
-      "recommendations": "温和建议",
+      "recommendations": "实用建议",
       "nextSteps": "简单下一步",
       "healthGuidePrompt": "实用的 Health Guide 提示",
       "secondOpinionA": "视角 A",
@@ -52,7 +52,7 @@
         "analysisLead": "我们肯定已经有效的做法，并为本周提出一到两个温和调整。"
       },
       "coaching": {
-        "summaryLead": "行动友好的语气：清晰习惯，以及对未来七天的温和责任感。",
+        "summaryLead": "行动友好的语气：清晰习惯，以及对未来七天的支持性责任感。",
         "analysisLead": "我们将背景转化为本周可尝试的练习块——包含时间、时长与提示。"
       }
     },
@@ -73,7 +73,7 @@
     },
     "focus": {
       "lifestyle": "支持精力、恢复与情绪的稳定日常节奏。",
-      "risk_awareness": "及早察觉早期信号，并以温和的预防习惯回应。",
+      "risk_awareness": "及早察觉早期信号，并以平静的预防习惯回应。",
       "performance": "保护用于专注与训练的精力，同时留出恢复空间。",
       "fromSection": "根据问卷进度，在{{section}}中再增加一点清晰度。",
       "fromService": "将{{service}}保持为本报告周期的主要焦点。",
@@ -222,7 +222,7 @@
         "performance": "在增加负荷前设定恢复底线（卧床小时数 + 轻松活动）。"
       }
     },
-    "healthGuidePrompt": "请根据我的个人背景（{{blurb}}；准备度 {{score}}%），帮我围绕 {{service}} 温和规划下一周。我的问题：{{question}}。请保持教育性、实用且易执行——在有帮助处给出具体时间与时长。",
+    "healthGuidePrompt": "请根据我的个人背景（{{blurb}}；准备度 {{score}}%），帮我围绕 {{service}} 平静规划下一周。我的问题：{{question}}。请保持教育性、实用且易执行——在有帮助处给出具体时间与时长。",
     "healthGuidePromptGeneral": "整体健康",
     "healthGuidePromptDefaultQuestion": "我应该先优先做什么？",
     "secondOpinion": {
