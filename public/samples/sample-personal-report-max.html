@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Персональный отчёт о самочувствии — расширенный · Даниил Орлов | BioMath Core</title>
+  <meta name="description" content="Расширенный персональный отчёт о самочувствии: полный доступ ко всем категориям каталога и 218 сервисам, два взгляда и практичный план от BioMath Core." />
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --ink: #1e293b;
+      --ink-soft: #3f4b5a;
+      --muted: #788396;
+      --line: #ebe4da;
+      --line-soft: #f8f3ec;
+      --paper: #fffdf9;
+      --canvas: #f7f4ef;
+      --accent: #ea580c;
+      --accent-soft: #fff7ed;
+      --accent-line: #f3d5b5;
+      --bar-track: #efe8df;
+      --bar-fill: #f97316;
+      --ok: #15803d;
+      --shadow: 0 4px 14px rgba(148, 126, 104, 0.08);
+      --radius: 16px;
+      --font: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+      --sans: "Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink-soft);
+      background:
+        radial-gradient(1100px 460px at 8% -8%, rgba(251, 146, 60, 0.12), transparent 55%),
+        radial-gradient(900px 420px at 100% 0%, rgba(45, 212, 191, 0.08), transparent 52%),
+        linear-gradient(180deg, #f3efe8 0%, var(--canvas) 30%, #efeae3 100%);
+      font-family: var(--sans);
+      font-size: 1.04rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.1rem;
+      background: rgba(255, 252, 248, 0.94);
+      border-bottom: 1px solid #ebe6de;
+      backdrop-filter: blur(10px);
+    }
+    .toolbar-title {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .toolbar-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .tool-btn {
+      appearance: none;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+      color: #334155;
+      border-radius: 10px;
+      padding: 0.45rem 0.8rem;
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 650;
+      cursor: pointer;
+    }
+    .tool-btn:hover { background: #f8fafc; }
+    .tool-btn:disabled { opacity: 0.55; cursor: wait; }
+    .tool-status {
+      min-height: 1.1rem;
+      font-size: 0.78rem;
+      color: #0f766e;
+      padding: 0 1.1rem 0.55rem;
+      background: rgba(255, 252, 248, 0.94);
+    }
+    .page { width: min(920px, calc(100% - 2rem)); margin: 1.35rem auto 3.5rem; }
+    .cover {
+      background:
+        radial-gradient(720px 220px at 90% 0%, rgba(251, 146, 60, 0.2), transparent 58%),
+        radial-gradient(520px 180px at 0% 100%, rgba(45, 212, 191, 0.12), transparent 55%),
+        linear-gradient(160deg, #fffaf5 0%, #f4efe8 55%, #ebe6de 100%);
+      color: var(--ink-soft);
+      border-radius: calc(var(--radius) + 4px);
+      padding: 2.1rem 2rem 1.9rem;
+      box-shadow: var(--shadow);
+      border: 1px solid #e7e0d6;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover-top {
+      display: flex; flex-wrap: wrap; gap: 1rem 1.5rem;
+      align-items: center; justify-content: space-between; position: relative; z-index: 1;
+    }
+    .brand { display: flex; align-items: center; gap: 1rem; min-width: 0; }
+    .brand img { height: 58px; width: auto; display: block; }
+    .brand-text strong {
+      display: block; font-size: 1.28rem; color: var(--ink); font-weight: 700; letter-spacing: -0.01em;
+    }
+    .brand-text span { display: block; font-size: 0.92rem; color: var(--muted); margin-top: 0.2rem; }
+    .cover-meta { text-align: right; font-size: 0.84rem; color: var(--muted); line-height: 1.5; }
+    .cover-meta strong { color: #475569; font-weight: 600; }
+    .cover h1 {
+      position: relative; z-index: 1; margin: 1.55rem 0 0.55rem;
+      font-family: var(--font); font-size: clamp(1.95rem, 4vw, 2.55rem);
+      font-weight: 700; letter-spacing: -0.03em; line-height: 1.12; max-width: 22ch; color: var(--ink);
+    }
+    .cover-lead {
+      position: relative; z-index: 1; margin: 0; max-width: 58ch; color: #475569;
+      font-size: 1.08rem; line-height: 1.6;
+    }
+    .cover-chips {
+      position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.35rem;
+    }
+    .chip {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.38rem 0.85rem; border-radius: 999px; border: 1px solid #f3d5b5;
+      background: rgba(255, 247, 237, 0.85); color: #475569; font-size: 0.78rem;
+    }
+    .chip em { font-style: normal; color: var(--accent); font-weight: 650; }
+    .metrics {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.95rem; margin: 1.25rem 0 1.45rem;
+    }
+    .metric {
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1.1rem 1.1rem 1.15rem; box-shadow: var(--shadow);
+    }
+    .metric-top { display: flex; gap: 0.85rem; align-items: center; margin-bottom: 0.7rem; }
+    .ring {
+      width: 3.5rem; height: 3.5rem; border-radius: 999px; display: grid; place-items: center; flex-shrink: 0;
+    }
+    .ring > span {
+      width: 2.5rem; height: 2.5rem; border-radius: inherit; background: var(--paper);
+      display: grid; place-items: center; font-size: 0.74rem; font-weight: 700; color: var(--ink);
+    }
+    .metric-label {
+      font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--muted); margin: 0 0 0.2rem; font-weight: 700;
+    }
+    .metric-value {
+      font-family: var(--font); font-size: 1.35rem; font-weight: 600; color: var(--ink); margin: 0;
+    }
+    .metric-note { margin: 0; font-size: 0.84rem; color: var(--muted); }
+    .bar { height: 8px; border-radius: 999px; background: var(--bar-track); overflow: hidden; }
+    .bar > span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #fdba74, var(--bar-fill)); }
+    .metric.linkage .metric-value { color: var(--ok); }
+    .card {
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1.4rem 1.45rem 1.5rem; margin-bottom: 1.05rem; box-shadow: var(--shadow);
+      border-left: 4px solid var(--accent);
+    }
+    .card.summary { border-left-color: #f97316; background: linear-gradient(180deg, #fffaf5 0%, var(--paper) 48%); }
+    .card.profile { border-left-color: #0d9488; background: linear-gradient(180deg, #f0fdfa 0%, var(--paper) 48%); }
+    .card.catalog { border-left-color: #0891b2; background: linear-gradient(180deg, #ecfeff 0%, var(--paper) 48%); }
+    .card.insights { border-left-color: #d97706; background: linear-gradient(180deg, #fffbeb 0%, var(--paper) 48%); }
+    .card.analysis { border-left-color: #2563eb; background: linear-gradient(180deg, #eff6ff 0%, var(--paper) 48%); }
+    .card.focus { border-left-color: #059669; background: linear-gradient(180deg, #ecfdf5 0%, var(--paper) 48%); }
+    .card.recs { border-left-color: #ea580c; background: linear-gradient(180deg, #fff7ed 0%, var(--paper) 48%); }
+    .card.next { border-left-color: #7c3aed; background: linear-gradient(180deg, #f5f3ff 0%, var(--paper) 48%); }
+    .card.prompt { border-left-color: #c2410c; background: linear-gradient(180deg, #fff7ed 0%, var(--paper) 48%); }
+    .card.perspectives { border-left-color: #475569; background: linear-gradient(180deg, #f8fafc 0%, var(--paper) 48%); }
+    .card h2 {
+      margin: 0 0 0.85rem; font-size: 1rem; font-weight: 700; letter-spacing: 0.01em;
+      color: #c2410c; padding-bottom: 0.55rem; border-bottom: 1px solid var(--accent-line);
+    }
+    .card.profile h2 { color: #0f766e; border-bottom-color: #99f6e4; }
+    .card.catalog h2 { color: #0e7490; border-bottom-color: #a5f3fc; }
+    .card.insights h2 { color: #b45309; border-bottom-color: #fde68a; }
+    .card.analysis h2 { color: #1d4ed8; border-bottom-color: #bfdbfe; }
+    .card.focus h2 { color: #047857; border-bottom-color: #a7f3d0; }
+    .card.recs h2 { color: #c2410c; border-bottom-color: #fed7aa; }
+    .card.next h2 { color: #6d28d9; border-bottom-color: #ddd6fe; }
+    .card.prompt h2 { color: #9a3412; border-bottom-color: #fdba74; }
+    .card.perspectives h2 { color: #334155; border-bottom-color: #cbd5e1; }
+    .card p { margin: 0 0 0.85rem; color: var(--ink-soft); font-size: 1.02rem; }
+    .card p:last-child { margin-bottom: 0; }
+    .card .lede { font-family: var(--font); font-size: 1.14rem; color: var(--ink); line-height: 1.55; }
+    .signal-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.95rem;
+    }
+    .signal {
+      background: rgba(255,255,255,0.72); border: 1px solid var(--line); border-radius: 12px; padding: 0.8rem 0.9rem;
+    }
+    .signal strong {
+      display: block; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--muted); margin-bottom: 0.25rem;
+    }
+    .signal span { font-size: 0.96rem; color: var(--ink); }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+    .cat-chip {
+      display: flex; align-items: center; justify-content: space-between; gap: 0.65rem;
+      padding: 0.7rem 0.85rem; border-radius: 12px; border: 1px solid #bae6fd;
+      background: rgba(255,255,255,0.78); font-size: 0.9rem; color: var(--ink);
+    }
+    .cat-chip span { min-width: 0; }
+    .cat-chip em {
+      font-style: normal; flex-shrink: 0; font-size: 0.78rem; font-weight: 700;
+      color: #0e7490; background: #ecfeff; border: 1px solid #a5f3fc;
+      border-radius: 999px; padding: 0.18rem 0.55rem;
+    }
+    .cat-total {
+      margin-top: 0.95rem; padding: 0.85rem 1rem; border-radius: 12px;
+      border: 1px solid #a5f3fc; background: linear-gradient(180deg, #ecfeff 0%, #fff 100%);
+      font-size: 0.95rem; color: #0f766e;
+    }
+    .cat-total strong { color: var(--ink); }
+    ol.clean, ul.clean {
+      margin: 0; padding: 0; list-style: none; display: grid; gap: 0.65rem;
+    }
+    ol.clean li, ul.clean li {
+      display: grid; grid-template-columns: auto 1fr; gap: 0.75rem; align-items: start;
+      padding: 0.85rem 0.95rem; border-radius: 12px; background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line); color: var(--ink-soft); font-size: 1rem;
+    }
+    .num {
+      width: 1.6rem; height: 1.6rem; border-radius: 999px; display: inline-flex;
+      align-items: center; justify-content: center; background: var(--accent-soft);
+      color: var(--accent); font-size: 0.78rem; font-weight: 700; border: 1px solid #fed7aa; flex-shrink: 0;
+    }
+    .rec {
+      display: grid; grid-template-columns: auto 1fr; gap: 0.85rem;
+      padding: 1rem 1.05rem; border-radius: 14px; border: 1px solid #fed7aa;
+      background: linear-gradient(180deg, #fffdf9 0%, #fff7ed 100%); margin-bottom: 0.75rem;
+    }
+    .rec:last-child { margin-bottom: 0; }
+    .rec-num {
+      width: 2rem; height: 2rem; border-radius: 999px; display: inline-flex;
+      align-items: center; justify-content: center; background: var(--accent); color: #fff;
+      font-size: 0.85rem; font-weight: 700;
+    }
+    .rec strong { display: block; color: var(--ink); font-size: 1.05rem; margin-bottom: 0.3rem; }
+    .rec p { margin: 0; font-size: 0.98rem; }
+    .rec .tag {
+      display: inline-block; margin-top: 0.45rem; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.04em; text-transform: uppercase; color: #9a3412;
+      background: #ffedd5; border-radius: 999px; padding: 0.15rem 0.5rem;
+    }
+    .prompt {
+      background: var(--accent-soft); color: #475569; border-radius: 14px;
+      padding: 1.1rem 1.2rem; font-size: 0.98rem; line-height: 1.65; border: 1px solid #fed7aa;
+    }
+    .prompt-label {
+      display: inline-block; font-size: 0.74rem; letter-spacing: 0.04em; text-transform: uppercase;
+      color: #c2410c; font-weight: 700; margin-bottom: 0.5rem;
+    }
+    .perspectives { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.95rem; }
+    .perspective {
+      border-radius: 14px; border: 1px solid #e2e8f0; background: #fff; padding: 1.1rem 1.15rem 1.2rem;
+    }
+    .perspective h3 {
+      margin: 0 0 0.6rem; font-size: 0.95rem; color: #334155; font-weight: 700;
+    }
+    .perspective p { margin: 0 0 0.75rem; font-size: 0.98rem; color: var(--ink-soft); }
+    .perspective p:last-child { margin-bottom: 0; }
+    .footer-note {
+      margin-top: 0.5rem; padding: 1.1rem 1.25rem; border-radius: var(--radius);
+      border: 1px solid var(--line); background: rgba(255, 253, 249, 0.85);
+      color: var(--muted); font-size: 0.92rem; line-height: 1.55;
+    }
+    .site-foot {
+      margin-top: 1.35rem; text-align: center; color: #94a3b8; font-size: 0.84rem; line-height: 1.6;
+    }
+    .site-foot a { color: #64748b; text-decoration: none; border-bottom: 1px solid #ddd4c8; }
+    .copyright { display: block; margin-top: 0.35rem; color: #94a3b8; }
+    @media (max-width: 720px) {
+      .page { width: min(100% - 1.25rem, 920px); margin-top: 1rem; }
+      .cover { padding: 1.45rem 1.25rem 1.4rem; }
+      .cover-meta { text-align: left; }
+      .metrics, .signal-grid, .perspectives, .cat-grid { grid-template-columns: 1fr; }
+      .brand img { height: 48px; }
+      .card { padding: 1.15rem 1.15rem 1.25rem; }
+    }
+    @media print {
+      body { background: #fff; }
+      .toolbar, .tool-status { display: none !important; }
+      .page { width: 100%; margin: 0; }
+      .cover, .card, .metric, .perspective { box-shadow: none; break-inside: avoid; }
+      .cover { border: 1px solid #ddd4c8; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar no-print">
+    <div class="toolbar-title">Персональный отчёт · расширенный</div>
+    <div class="toolbar-actions">
+      <button type="button" class="tool-btn" id="btn-copy">Копировать</button>
+      <button type="button" class="tool-btn" id="btn-share">Поделиться</button>
+      <button type="button" class="tool-btn" id="btn-txt">Скачать TXT</button>
+      <button type="button" class="tool-btn" id="btn-pdf">Скачать PDF</button>
+    </div>
+  </div>
+  <div class="tool-status" id="tool-status" aria-live="polite"></div>
+
+  <main class="page" id="report-root">
+    <header class="cover">
+      <div class="cover-top">
+        <div class="brand">
+          <img src="/logo-header.png" alt="BioMath Core" width="220" height="58" />
+          <div class="brand-text">
+            <strong>BioMath Core</strong>
+            <span>Персональный отчёт о самочувствии · расширенный</span>
+          </div>
+        </div>
+        <div class="cover-meta">
+          <div><strong>Создан</strong><br />3 августа 2026</div>
+          <div style="margin-top:0.55rem"><strong>Тип</strong><br />Общий · detail_level: extended</div>
+          <div style="margin-top:0.55rem"><strong>ID отчёта</strong><br />mock-sample-personal-report-max</div>
+        </div>
+      </div>
+      <h1>Даниил Орлов</h1>
+      <p class="cover-lead">
+        Полный доступ: все 20 категорий здоровья, 218 сервисов (включая Human Data Model), план Max.
+        Ниже — связный разбор профиля, два независимых взгляда и конкретный план на 14 дней.
+      </p>
+      <div class="cover-chips">
+        <span class="chip">План <em>Max · полный доступ</em></span>
+        <span class="chip">Категории <em>20 + HDM</em></span>
+        <span class="chip">Сервисы <em>218 активных</em></span>
+        <span class="chip">Уровень детализации <em>расширенный</em></span>
+        <span class="chip">Второй взгляд <em>A + B</em></span>
+        <span class="chip">Устройства <em>3 · Apple · Oura · Withings</em></span>
+      </div>
+    </header>
+
+    <section class="metrics" aria-label="Показатели готовности">
+      <div class="metric">
+        <div class="metric-top">
+          <div class="ring" style="background: conic-gradient(#ea580c 349.2deg, #ffedd5 0deg)" aria-hidden="true"><span>97%</span></div>
+          <div>
+            <p class="metric-label">Готовность</p>
+            <p class="metric-value">97%</p>
+            <p class="metric-note">Общий балл личного контекста</p>
+          </div>
+        </div>
+        <div class="bar" aria-hidden="true"><span style="width:97%"></span></div>
+      </div>
+      <div class="metric">
+        <div class="metric-top">
+          <div class="ring" style="background: conic-gradient(#ea580c 360deg, #ffedd5 0deg)" aria-hidden="true"><span>100%</span></div>
+          <div>
+            <p class="metric-label">Опросник</p>
+            <p class="metric-value">100%</p>
+            <p class="metric-note">Все обязательные поля заполнены</p>
+          </div>
+        </div>
+        <div class="bar" aria-hidden="true"><span style="width:100%"></span></div>
+      </div>
+      <div class="metric linkage">
+        <div class="metric-top">
+          <div class="ring" style="background: conic-gradient(#15803d 360deg, #dcfce7 0deg)" aria-hidden="true"><span>100%</span></div>
+          <div>
+            <p class="metric-label">Связность</p>
+            <p class="metric-value">Отличная</p>
+            <p class="metric-note">Профиль и каталог синхронизированы</p>
+          </div>
+        </div>
+        <div class="bar" aria-hidden="true"><span style="width:100%; background:linear-gradient(90deg,#4ade80,#15803d)"></span></div>
+      </div>
+    </section>
+
+    <section class="card summary">
+      <h2>Коротко о главном</h2>
+      <p class="lede">
+        Этот отчёт «Общий» собран при максимальной полноте контекста: готовность 97%, опросник 100%,
+        план Max с подпиской на все категории каталога и активным использованием 218 сервисов.
+      </p>
+      <p>
+        Главный вывод цикла: у вас уже сильная база данных и устройств. Самый высокий прирост в ближайшие
+        две недели даст не расширение охвата, а <strong>сжатие фокуса</strong> — связать сон, гликемический
+        ритм, силовую нагрузку и когнитивную нагрузку в один повторяемый протокол, вместо параллельного
+        «запуска» всех сервисов сразу.
+      </p>
+      <p>
+        Вторичные рычаги: утренний свет и HRV-окно восстановления; белок и клетчатка на завтрак;
+        два силовых блока + одна зона 2 в неделю; короткий вечерний ритуал без экранов; еженедельный
+        просмотр What Changed в Human Data Model.
+      </p>
+    </section>
+
+    <section class="card profile">
+      <h2>Снимок вашего профиля</h2>
+      <p>
+        <strong>Даниил Орлов</strong> — 38 лет · Москва / Europe/Moscow · мужской профиль с полным доступом
+        ко всем разделам каталога, включая женское и семейное здоровье (семейный контекст и caregiver-доступ).
+      </p>
+      <p>
+        Опросник и цифровой файл заполнены полностью (8/8 основных разделов + разблокированные модули
+        мужского и женского сексуального здоровья). Приоритеты профиля: долголетие, сон и восстановление,
+        фитнес и производительность, психическое здоровье, питание. Сон в среднем 7,2 часа; движение
+        5 раз в неделю (сила + зона 2); стресс умеренный с пиками в среду–четверг; HRV за 28 дней —
+        стабильный тренд с провалами после поздних ужинов.
+      </p>
+      <div class="signal-grid">
+        <div class="signal"><strong>План и доступ</strong><span>Max · полный доступ · все категории каталога</span></div>
+        <div class="signal"><strong>Сервисы в работе</strong><span>218 активных (215 по категориям + 3 HDM)</span></div>
+        <div class="signal"><strong>Сон</strong><span>обычно 7,1–7,4 ч · цель 23:15–06:30</span></div>
+        <div class="signal"><strong>Движение</strong><span>5×/нед · 2 сила · 2 зона 2 · 1 мобильность</span></div>
+        <div class="signal"><strong>Стресс</strong><span>умеренный · пики в середине рабочей недели</span></div>
+        <div class="signal"><strong>Питание</strong><span>белок ~1,6 г/кг · клетчатка 28–32 г · кофе до 14:00</span></div>
+        <div class="signal"><strong>Устройства</strong><span>Apple Watch Ultra · Oura Gen3 · Withings Body Scan</span></div>
+        <div class="signal"><strong>Документы</strong><span>5 файлов · анализы · генетика · визуализация</span></div>
+        <div class="signal"><strong>Human Data Model</strong><span>импорт записей · таймлайн · What Changed</span></div>
+        <div class="signal"><strong>Связность</strong><span>личный контекст собран полностью</span></div>
+      </div>
+    </section>
+
+    <section class="card catalog">
+      <h2>Подписка: все категории и сервисы</h2>
+      <p>
+        Ниже — полный охват каталога BioMath Core, как в вашем аккаунте Max. Указаны реальные названия
+        категорий и число сервисов в каждой (из каталога). Сумма: <strong>218 сервисов</strong>.
+      </p>
+      <div class="cat-grid" aria-label="Категории и число сервисов">
+        <div class="cat-chip"><span>Критическое здоровье</span><em>22</em></div>
+        <div class="cat-chip"><span>Ежедневное здоровье</span><em>15</em></div>
+        <div class="cat-chip"><span>Долголетие и борьба со старением</span><em>15</em></div>
+        <div class="cat-chip"><span>Психическое здоровье</span><em>11</em></div>
+        <div class="cat-chip"><span>Фитнес и производительность</span><em>19</em></div>
+        <div class="cat-chip"><span>Женское здоровье</span><em>8</em></div>
+        <div class="cat-chip"><span>Мужское здоровье</span><em>8</em></div>
+        <div class="cat-chip"><span>Красота и уход за кожей</span><em>10</em></div>
+        <div class="cat-chip"><span>Питание и диета</span><em>15</em></div>
+        <div class="cat-chip"><span>Сон и восстановление</span><em>8</em></div>
+        <div class="cat-chip"><span>Здоровье окружающей среды</span><em>8</em></div>
+        <div class="cat-chip"><span>Здоровье семьи</span><em>8</em></div>
+        <div class="cat-chip"><span>Профилактическая медицина и долголетие</span><em>9</em></div>
+        <div class="cat-chip"><span>Биохакинг и производительность</span><em>17</em></div>
+        <div class="cat-chip"><span>Уход за пожилыми людьми</span><em>9</em></div>
+        <div class="cat-chip"><span>Люкс для здоровья глаз</span><em>4</em></div>
+        <div class="cat-chip"><span>Магазин цифровой терапии</span><em>5</em></div>
+        <div class="cat-chip"><span>Общее сексуальное долголетие</span><em>16</em></div>
+        <div class="cat-chip"><span>Мужское сексуальное здоровье</span><em>4</em></div>
+        <div class="cat-chip"><span>Женское сексуальное здоровье</span><em>4</em></div>
+        <div class="cat-chip"><span>Модель человеческих данных</span><em>3</em></div>
+      </div>
+      <div class="cat-total">
+        <strong>20 медицинских категорий</strong> (215 сервисов) +
+        <strong>Human Data Model</strong> (3 сервиса) =
+        <strong>218 сервисов в активном доступе</strong>.
+        На этой неделе чаще всего открывались: Lab Results Trend, Biological Age Factors,
+        Sleep Architecture Analyzer, Zone 2 Optimizer, Stress Reduction Guide, What Changed.
+      </div>
+    </section>
+
+    <section class="card insights">
+      <h2>Что важно заметить</h2>
+      <ol class="clean">
+        <li><span class="num">1</span><span>Готовность 97% (опросник 100% · профиль 100%) — контекст достаточен для расширенного анализа без пробелов в обязательных полях.</span></li>
+        <li><span class="num">2</span><span>Связность контекста отличная: устройства, документы и каталог сервисов сходятся в одной Human Data Model.</span></li>
+        <li><span class="num">3</span><span>Охват каталога максимальный (218 сервисов). Риск перегрузки вниманием выше, чем риск «недостатка инструментов» — нужен приоритетный стек из 6–8 сервисов на цикл.</span></li>
+        <li><span class="num">4</span><span>Сон 7,2 ч выглядит стабильным, но поздние ужины (после 21:30) коррелируют с падением deep sleep на 12–18 минут по данным Oura за 28 дней.</span></li>
+        <li><span class="num">5</span><span>Силовая нагрузка 2×/нед уже есть; потолок прогресса сейчас в восстановлении между сессиями и в Zone 2 объёме (сейчас ~70 мин/нед при цели 120+).</span></li>
+        <li><span class="num">6</span><span>Гликемический контроль: утренний белок &lt;25 г в 3 из 5 будних дней — это самый быстрый рычаг энергии до обеда.</span></li>
+        <li><span class="num">7</span><span>Стресс-пики среды–четверга совпадают с падением HRV; короткое заземление 8–10 минут после главного совещания снижает вечернюю «догоняющую» работу.</span></li>
+        <li><span class="num">8</span><span>Мужское здоровье: Androgen Dashboard и Cardiovascular Risk for Men заполнены; следующий осмысленный шаг — Preventive Care Due на квартал, а не новые маркеры «на всякий случай».</span></li>
+        <li><span class="num">9</span><span>Семейный слой активен (Family &amp; Caregiver Access): имеет смысл держать отдельный еженедельный слот 20 минут на семейный таймлайн, чтобы не смешивать личные и caregiver-задачи.</span></li>
+        <li><span class="num">10</span><span>Цифровая терапия и eye-health пока используются эпизодически — достаточно одного закреплённого ритуала (экранные паузы 20-20-20 + один цифровой протокол на вечер).</span></li>
+      </ol>
+    </section>
+
+    <section class="card analysis">
+      <h2>Что мы заметили</h2>
+      <p>
+        При готовности 97% и полном каталоге картина уже не «чего не хватает», а «что удерживать в центре».
+        Ваш личный контекст связывает сон, нагрузку, питание, стресс, лабораторные тренды и семейный
+        caregiver-слой. Это редкий уровень плотности данных — и он требует дисциплины фокуса.
+      </p>
+      <p>
+        <strong>Сон и восстановление.</strong> Средняя длительность 7,2 часа близка к вашей цели.
+        Архитектура сна чувствительна к двум переменным: время последнего приёма пищи и яркость экранов
+        после 22:00. Когда ужин заканчивается до 20:45 и телефон уходит в другую комнату за 45 минут
+        до сна, deep sleep восстанавливается без добавления добавок или новых гаджетов. Sleep Architecture
+        Analyzer и Recovery Score Tracker уже дают достаточно сигнала — не подключайте третий трекер сна
+        в этом цикле.
+      </p>
+      <p>
+        <strong>Фитнес и производительность.</strong> Два силовых блока в неделю — устойчивый каркас.
+        Zone 2 Optimizer показывает недобор объёма (~70 минут против цели 120+). Добавьте один блок
+        40–45 минут в зоне 2 в воскресенье утром (разговорный темп, ЧСС по часам), не удлиняя силовые.
+        Между силовыми оставляйте минимум 48 часов; если HRV ниже вашего 7-дневного медианы на &gt;15%,
+        замените вторую силовую на мобильность и ходьбу.
+      </p>
+      <p>
+        <strong>Питание и гликемия.</strong> Longevity Diet Planner и Glycemic Control Advisor сходятся:
+        завтрак с 30–40 г белка и 8–10 г клетчатки выравнивает энергию до 13:00 и уменьшает тягу к
+        сладкому после обеда. Кофе после 14:00 у вас встречается 2–3 раза в неделю и сдвигает засыпание
+        на 20–35 минут — держите жёсткую отсечку 14:00 на 14 дней и сравните latency засыпания в Oura.
+      </p>
+      <p>
+        <strong>Психическое здоровье и стресс.</strong> Stress Reduction Guide и Work-Life Balance Advisor
+        показывают один и тот же паттерн: перегрузка внимания в среде–четверг, затем компенсаторная
+        «работа допоздна» в пятницу. Практичный ответ — не ещё одно приложение для медитации, а
+        календарный якорь: 10 минут дыхания 4–6 сразу после главного совещания среды и четверга
+        (таймер на часах, глаза закрыты, без телефона в руках).
+      </p>
+      <p>
+        <strong>Долголетие и профилактика.</strong> Biological Age Factors и Epigenetic Age Dashboard
+        заполнены; Preventive Care Due на квартал — главный «административный» рычаг, который не даёт
+        разъехаться скринингам. Не добавляйте новые панели биомаркеров, пока не закрыт текущий список
+        due-пунктов. Mitochondrial Health Assessment и NAD+ Optimization Guide оставьте на второй план
+        этого цикла — сначала сон, зона 2 и белок.
+      </p>
+      <p>
+        <strong>Критическое здоровье и документы.</strong> Lab Results Trend и Medication Reconciliation
+        актуальны; What Changed за последние 90 дней не показывает красных флагов, требующих срочного
+        визита, но отмечает два мягких отклонения (витамин D у нижней границы нормы, ApoB чуть выше
+        вашего целевого коридора). Doctor Visit Prep уже можно собрать к следующему плановому приёму:
+        список вопросов, тренд Labs, текущие лекарства, симптомы за 30 дней.
+      </p>
+      <p>
+        <strong>Мужское здоровье и сексуальное долголетие.</strong> Androgen Dashboard, Cardiovascular Risk
+        for Men и Hormone Balance for Libido согласованы с общей кардиометаболической линией: сон,
+        зона 2, состав тела и стресс важнее «точечных» вмешательств. Vascular Health for Potency имеет
+        смысл пересматривать раз в квартал вместе с кардиориском, а не еженедельно.
+      </p>
+      <p>
+        <strong>Семья, среда, глаза, кожа, биохакинг.</strong> Family Health и Senior Care активны как
+        caregiver-слой — держите отдельный слот, не смешивая с личным протоколом. Environmental Health:
+        Indoor Air Quality Monitor и Blue Light Exposure Tracker достаточно закрывают бытовой контур
+        (спальня, рабочее место). Eye-Health Suite — ритуал 20-20-20 в рабочие блоки. Beauty &amp; Skincare
+        и Biohacking оставляйте как поддерживающий слой: SPF ежедневно, холодный душ 60–90 секунд
+        после утренней зоны 2 по желанию, без стека из пяти новых протоколов одновременно.
+      </p>
+      <p>
+        <strong>Устройства и цифровая гигиена.</strong> Три источника (Apple, Oura, Withings) уже дают
+        избыточность. Считайте сигналы трендами, а не диагнозами. Digital Wellbeing Score и Digital
+        Therapeutics Store: один вечерний протокол без экрана (чтение или растяжка 20 минут) важнее
+        установки ещё одного wellness-приложения.
+      </p>
+      <p>
+        На этом цикле: выберите 3 нумерованные рекомендации ниже, поставьте их в календарь на 14 дней
+        и раз в неделю открывайте What Changed — не весь каталог из 218 сервисов.
+      </p>
+    </section>
+
+    <section class="card focus">
+      <h2>На что мягко обратить внимание</h2>
+      <ol class="clean">
+        <li><span class="num">1</span><span><strong>Сон и восстановление</strong> — закрепить окно ужина до 20:45 и отсечку экранов за 45 минут до сна на 14 вечеров подряд.</span></li>
+        <li><span class="num">2</span><span><strong>Фитнес и производительность</strong> — довести Zone 2 до ≥120 минут/нед без увеличения силовых блоков.</span></li>
+        <li><span class="num">3</span><span><strong>Питание и диета</strong> — завтрак: 30–40 г белка + клетчатка; кофе только до 14:00.</span></li>
+        <li><span class="num">4</span><span><strong>Психическое здоровье</strong> — якорь дыхания 10 минут после пиковых совещаний среды и четверга.</span></li>
+        <li><span class="num">5</span><span><strong>Долголетие и профилактика</strong> — закрыть Preventive Care Due на квартал и не раздувать список биомаркеров.</span></li>
+        <li><span class="num">6</span><span><strong>Критическое здоровье</strong> — подготовить Doctor Visit Prep к плановому приёму (Labs trend + вопросы + лекарства).</span></li>
+        <li><span class="num">7</span><span><strong>Мужское здоровье</strong> — квартальный пересмотр Androgen Dashboard и Cardiovascular Risk for Men вместе с составом тела.</span></li>
+        <li><span class="num">8</span><span><strong>Human Data Model</strong> — еженедельный What Changed (15 минут в воскресенье), без ежедневного «копания» в таймлайне.</span></li>
+        <li><span class="num">9</span><span><strong>Здоровье семьи</strong> — отдельный caregiver-слот 20 минут/нед, чтобы личный протокол не растворялся в чужих задачах.</span></li>
+        <li><span class="num">10</span><span><strong>Среда, глаза, цифровая гигиена</strong> — воздух в спальне, 20-20-20, один вечерний блок без экрана.</span></li>
+      </ol>
+    </section>
+
+    <section class="card recs">
+      <h2>Практичные рекомендации</h2>
+
+      <div class="rec">
+        <span class="rec-num">1</span>
+        <div>
+          <strong>Вечерний протокол сна на 14 дней</strong>
+          <p>Ужин завершать до 20:45. В 22:30 — приглушённый свет, телефон в другой комнате. С 22:30 до 23:15: чтение или лёгкая растяжка 8–10 минут, затем дыхание 4–6 × 5 минут. Цель отхода ко сну 23:15 ±10 минут каждую ночь.</p>
+          <span class="tag">Сон · Sleep &amp; Recovery</span>
+        </div>
+      </div>
+
+      <div class="rec">
+        <span class="rec-num">2</span>
+        <div>
+          <strong>Zone 2: +45 минут в воскресенье</strong>
+          <p>Добавьте один непрерывный блок 40–45 минут в разговорном темпе (ходьба/вело/гребля) в воскресенье 09:00–09:45. Держите ЧСС в зоне 2 по Apple Watch. Цель недели: ≥120 минут Zone 2 суммарно, силовые не удлинять.</p>
+          <span class="tag">Фитнес · Zone 2 Optimizer</span>
+        </div>
+      </div>
+
+      <div class="rec">
+        <span class="rec-num">3</span>
+        <div>
+          <strong>Завтрак «белок + клетчатка»</strong>
+          <p>Каждый будний день до 09:30: 30–40 г белка и 8–10 г клетчатки (например, яйца/йогурт/творог + ягоды/овощи + семена). Зафиксируйте 2 шаблона меню, чтобы не принимать решение с нуля.</p>
+          <span class="tag">Питание · Glycemic Control</span>
+        </div>
+      </div>
+
+      <div class="rec">
+        <span class="rec-num">4</span>
+        <div>
+          <strong>Кофейная отсечка 14:00</strong>
+          <p>На 14 дней — ноль кофеина после 14:00 (включая чай и шоколад с кофеином после обеда). Сравните latency засыпания и deep sleep в Oura на второй неделе с первой.</p>
+          <span class="tag">Сон · энергия</span>
+        </div>
+      </div>
+
+      <div class="rec">
+        <span class="rec-num">5</span>
+        <div>
+          <strong>Стресс-якорь среды и четверга</strong>
+          <p>Сразу после главного совещания: 10 минут дыхания 4–6 (вдох 4, выдох 6), таймер на часах, глаза закрыты, телефон экраном вниз. Не переносите слот «на вечер» — якорь работает только рядом с пиком нагрузки.</p>
+          <span class="tag">Психическое здоровье</span>
+        </div>
+      </div>
+
+      <div class="rec">
+        <span class="rec-num">6</span>
+        <div>
+          <strong>Сила: качество, не объём</strong>
+          <p>Оставьте 2 силовые сессии (например, вторник и пятница, 45–55 минут). Перед стартом проверьте HRV: если ниже 7-дневной медианы &gt;15% — замените сессию на мобильность 30 минут + ходьбу 30 минут. Прогрессия — в технике и RPE, не в дополнительных подходах «на усталости».</p>
+          <span class="tag">Фитнес · восстановление</span>
+        </div>
+      </div>
+
+      <div class="rec">
+        <span class="rec-num">7</span>
+        <div>
+          <strong>Квартальный профилактический список</strong>
+          <p>Откройте Preventive Care Due и закройте все пункты со статусом due в ближайшие 30 дней (анализы, скрининги, визит). Параллельно соберите Doctor Visit Prep: 5 вопросов врачу, тренд Labs за 12 месяцев, актуальный список лекарств/добавок.</p>
+          <span class="tag">Профилактика · Critical Health</span>
+        </div>
+      </div>
+
+      <div class="rec">
+        <span class="rec-num">8</span>
+        <div>
+          <strong>What Changed каждое воскресенье</strong>
+          <p>15 минут в 18:00: откройте What Changed и Lab Results Trend. Запишите 1–2 значимых изменения и одно действие на неделю. Не листайте остальные 200+ сервисов в этот слот.</p>
+          <span class="tag">Human Data Model</span>
+        </div>
+      </div>
+
+      <div class="rec">
+        <span class="rec-num">9</span>
+        <div>
+          <strong>Семейный caregiver-слот</strong>
+          <p>Зафиксируйте 20 минут в воскресенье (после What Changed) только на Family &amp; Caregiver Access / Senior Care: обновления, напоминания, документы. Личный протокол сна и тренировок в этот слот не трогать.</p>
+          <span class="tag">Здоровье семьи</span>
+        </div>
+      </div>
+
+      <div class="rec">
+        <span class="rec-num">10</span>
+        <div>
+          <strong>Глаза и экранная гигиена</strong>
+          <p>В рабочих блоках &gt;50 минут — правило 20-20-20 (каждые 20 минут смотреть 20 секунд на объект ~6 метров). Вечером один блок 20 минут без экранов до сна (уже входит в рекомендацию №1).</p>
+          <span class="tag">Eye-Health · Digital Wellbeing</span>
+        </div>
+      </div>
+
+      <div class="rec">
+        <span class="rec-num">11</span>
+        <div>
+          <strong>Воздух и свет в спальне</strong>
+          <p>Проверьте Indoor Air Quality Monitor: проветривание 10 минут перед сном, влажность 40–50%, температура 18–20°C. Утром в первый час после подъёма — 10–15 минут дневного света на улице без солнцезащитных очков (если небо позволяет).</p>
+          <span class="tag">Среда · циркадный ритм</span>
+        </div>
+      </div>
+
+      <div class="rec">
+        <span class="rec-num">12</span>
+        <div>
+          <strong>Долголетие без расползания стека</strong>
+          <p>На этот цикл держите в «горячем» стеке только: Sleep Architecture Analyzer, Zone 2 Optimizer, Glycemic Control Advisor, Stress Reduction Guide, Preventive Care Due, What Changed. Остальные сервисы каталога — по запросу, не в ежедневной ленте.</p>
+          <span class="tag">Долголетие · фокус</span>
+        </div>
+      </div>
+
+      <div class="rec">
+        <span class="rec-num">13</span>
+        <div>
+          <strong>Мужское здоровье: квартальная сверка</strong>
+          <p>Раз в 90 дней: Androgen Dashboard + Cardiovascular Risk for Men + состав тела (Withings). Между сверками опирайтесь на сон, зону 2 и стресс-якоря — не на еженедельную «тонкую настройку» гормональных панелей.</p>
+          <span class="tag">Мужское здоровье</span>
+        </div>
+      </div>
+
+      <div class="rec">
+        <span class="rec-num">14</span>
+        <div>
+          <strong>Кожа и поддержка без перегруза</strong>
+          <p>Ежедневно SPF на открытые участки; вечером простой барьерный уход. Новые активные средства — не больше одного изменения за 3 недели. Biohacking (например, холодный душ 60–90 секунд) — опционально после Zone 2, не вместо сна.</p>
+          <span class="tag">Красота · биохакинг</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card next">
+      <h2>Простые следующие шаги</h2>
+      <ol class="clean">
+        <li><span class="num">1</span><span>Сегодня: поставьте в календарь рекомендации №1, №2 и №3 на ближайшие 14 дней (конкретное время, не «когда получится»).</span></li>
+        <li><span class="num">2</span><span>Завтра утром: соберите завтрак по шаблону белка+клетчатки и отметьте кофейную отсечку 14:00.</span></li>
+        <li><span class="num">3</span><span>В среду и четверг: включите напоминание на часах сразу после главного совещания (рекомендация №5).</span></li>
+        <li><span class="num">4</span><span>В воскресенье 18:00: What Changed + Lab Results Trend (15 минут), затем caregiver-слот 20 минут.</span></li>
+        <li><span class="num">5</span><span>Откройте Health Guide с запросом ниже, если нужно адаптировать 14-дневный протокол под поездку или смену смены.</span></li>
+        <li><span class="num">6</span><span>Через 14 дней: сравните deep sleep, latency, Zone 2 минуты и HRV-медиану — и только потом решайте, какой следующий сервис из каталога добавить в горячий стек.</span></li>
+      </ol>
+    </section>
+
+    <section class="card prompt">
+      <h2>Полезный запрос для Health Guide</h2>
+      <div class="prompt">
+        <div class="prompt-label">Скопируйте в Health Guide</div>
+        Используя мой личный контекст (план Max, полный доступ ко всем 20 категориям и 218 сервисам; готовность 97%; опросник 100%; сон ~7,2 ч; движение 5×/нед с недобором Zone 2; стресс с пиками в среду–четверг; устройства Apple Watch, Oura, Withings; активны Lab Results Trend, Biological Age Factors, Sleep Architecture Analyzer, Zone 2 Optimizer, Glycemic Control Advisor, What Changed), помоги собрать спокойный 14-дневный протокол с фокусом на сне, Zone 2, белке на завтрак и стресс-якорях. Не предлагай подключать новые сервисы сверх горячего стека из шести пунктов. Мой вопрос: как удержать этот протокол в командировочную неделю с двумя перелётами?. Рекомендации — образовательные, практичные, с конкретным временем и длительностью.
+      </div>
+    </section>
+
+    <section class="card perspectives">
+      <h2>Два взгляда</h2>
+      <div class="perspectives">
+        <article class="perspective">
+          <h3>Взгляд A — профилактика и сжатие фокуса</h3>
+          <p>
+            При полном каталоге и готовности 97% главный риск — не дефицит данных, а распыление внимания.
+            Взгляд A предлагает лечить перегрузку охвата дисциплиной приоритетов: шесть сервисов в горячем
+            стеке, остальное — по запросу.
+          </p>
+          <p>
+            Операционный план на 14 дней: (1) сон с отсечкой ужина и экранов, (2) Zone 2 до 120+ минут,
+            (3) белок на завтрак, (4) кофе до 14:00, (5) дыхательный якорь среды/четверга,
+            (6) воскресный What Changed + Preventive Care Due. Силовые оставляем как есть; новые панели
+            биомаркеров и биохакинг-эксперименты откладываем до завершения цикла.
+          </p>
+          <p>
+            Критерий успеха через две недели: deep sleep +10–15 минут в среднем, Zone 2 ≥120 мин/нед,
+            latency засыпания стабильнее, HRV без провалов после поздних ужинов. Если критерии не
+            достигнуты — сначала чиним исполнение протокола, а не добавляем седьмой сервис.
+          </p>
+          <p>
+            Семейный и caregiver-слой держим отдельно, чтобы личная профилактика не растворялась в чужих
+            задачах. Doctor Visit Prep собираем к плановому визиту, а не «когда накопится тревога».
+          </p>
+        </article>
+        <article class="perspective">
+          <h3>Взгляд B — производительность и восстановление как одна система</h3>
+          <p>
+            Взгляд B читает тот же профиль через линзу устойчивой производительности: сила, зона 2,
+            когнитивная нагрузка и восстановление — одна петля, а не четыре независимые цели.
+          </p>
+          <p>
+            Практическая рамка: тренировочная неделя строится вокруг HRV-гейта. Если восстановление
+            ниже медианы — объём режется автоматически (мобильность вместо второй силовой), а не
+            «через силу». Zone 2 в воскресенье защищает аэробную базу без конкуренции с силовыми днями.
+            Стресс-якоря среды/четверга снимают вечернюю догоняющую работу, которая иначе съедает сон.
+          </p>
+          <p>
+            Питание здесь — топливо для петли, не отдельный проект: белок и клетчатка утром выравнивают
+            дневную энергию; кофейная отсечка защищает ночное восстановление сильнее, чем ещё один
+            ноотроп из Biohacking. Мужское здоровье и кардиориск в этой рамке пересматриваются раз в
+            квартал, опираясь на состав тела и тренды Labs, а не на еженедельную тревожную сверку.
+          </p>
+          <p>
+            Через 14 дней взгляд B смотрит на связку: субъективная энергия после обеда, качество силовых
+            (RPE при том же весе), минуты Zone 2, и только потом — на вторичные метрики устройств.
+            Каталог из 218 сервисов остаётся страховкой и библиотекой, а не ежедневной лентой задач.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <aside class="footer-note">
+      Это понятные образовательные рекомендации по самочувствию — не медицинский диагноз и не замена
+      очной консультации. Если что-то беспокоит, обсудите это с квалифицированным врачом.
+      Health Guide поможет спокойно наметить следующие шаги на основе вашего личного контекста.
+    </aside>
+
+    <p class="site-foot">
+      <a href="https://www.biomathcore.com">biomathcore.com</a>
+      · support@biomathcore.com
+      <span class="copyright">© 2026 BioMath Core. Все права защищены.</span>
+    </p>
+  </main>
+
+  <script>
+    (function () {
+      const statusEl = document.getElementById('tool-status');
+      const setStatus = (msg) => { statusEl.textContent = msg || ''; };
+      const plainText = () => {
+        const root = document.getElementById('report-root');
+        return root ? root.innerText.trim() : '';
+      };
+      async function copyText(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch (_) {
+          const area = document.createElement('textarea');
+          area.value = text;
+          area.setAttribute('readonly', '');
+          area.style.position = 'fixed';
+          area.style.left = '-9999px';
+          document.body.appendChild(area);
+          area.select();
+          const ok = document.execCommand('copy');
+          document.body.removeChild(area);
+          return ok;
+        }
+      }
+      document.getElementById('btn-copy').addEventListener('click', async () => {
+        const ok = await copyText(plainText());
+        setStatus(ok ? 'Отчёт скопирован' : 'Не удалось скопировать');
+      });
+      document.getElementById('btn-share').addEventListener('click', async () => {
+        const text = plainText();
+        const title = 'Персональный отчёт о самочувствии — BioMath Core';
+        try {
+          if (navigator.share) {
+            await navigator.share({ title, text, url: location.href });
+            setStatus('Готово к отправке');
+            return;
+          }
+        } catch (err) {
+          if (err && err.name === 'AbortError') return;
+        }
+        const ok = await copyText(text + '\n\n' + location.href);
+        setStatus(ok ? 'Отчёт скопирован — можно поделиться' : 'Не удалось поделиться');
+      });
+      document.getElementById('btn-txt').addEventListener('click', () => {
+        const blob = new Blob([plainText()], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'personal-wellness-report-max.txt';
+        a.click();
+        URL.revokeObjectURL(url);
+        setStatus('TXT скачан');
+      });
+      document.getElementById('btn-pdf').addEventListener('click', () => {
+        setStatus('Выберите «Сохранить как PDF» в окне печати');
+        window.print();
+      });
+    })();
+  </script>
+</body>
+</html>
