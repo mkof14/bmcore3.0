@@ -366,7 +366,7 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
           }
         } else {
           const blurb = ctx?.contextBlurb || t('member.personalContext.statusIncomplete');
-          opinionA = `${t('reportTemplate.section.analysis')}\n\n${service.name}\n${userQuestion}\n\n${blurb}\n\n${t('reportTemplate.analysis.disclaimer')}`;
+          opinionA = `${t('reportTemplate.section.analysis')}\n\n${service.name}\n${userQuestion}\n\n${blurb}`;
           opinionB = `${t('reportTemplate.section.secondOpinionB')}\n\n${service.name}\n${userQuestion}\n\n${blurb}`;
         }
 

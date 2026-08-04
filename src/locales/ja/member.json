@@ -348,7 +348,7 @@
       "generateBlockedCta": "問診へ",
       "viewTitle": "レポート",
       "downloadTxt": "TXTをダウンロード",
-      "printPdf": "印刷 / PDF",
+      "printPdf": "PDFをダウンロード",
       "share": "共有リンク",
       "shareSuccess": "リンクをコピーしました",
       "shareFailed": "共有リンクを作成できませんでした",
@@ -360,7 +360,14 @@
       "metricQuestionnaire": "アンケート",
       "metricQuestionnaireNote": "有効なセクションの完了度",
       "metricLinkage": "連携",
-      "metricProfileNote": "プロフィール完成度 {{percent}}%"
+      "metricProfileNote": "プロフィール完成度 {{percent}}%",
+      "copy": "コピー",
+      "copySuccess": "レポートをコピーしました",
+      "copyFailed": "レポートをコピーできませんでした",
+      "shareContent": "共有",
+      "shareContentSuccess": "レポートをコピーしました — 共有できます",
+      "shareContentFailed": "レポートを共有できませんでした",
+      "downloadPdf": "PDFをダウンロード"
     },
     "signalHub": {
       "title": "シグナルハブ",

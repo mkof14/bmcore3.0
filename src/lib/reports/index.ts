@@ -7,7 +7,13 @@ export {
 } from './buildReportTemplate';
 export type { BuildReportTemplateParams } from './buildReportTemplate';
 export { generatePersonalizedReport, previewReportTemplate } from './generateReport';
-export { formatReportAsText, downloadReportTxt, printReport } from './formatReportText';
+export {
+  formatReportAsText,
+  downloadReportTxt,
+  printReport,
+  copyReportText,
+  shareReportContent,
+} from './formatReportText';
 export { parseReportView } from './parseReportView';
 export type { ParsedReportView, ReportViewMetrics } from './parseReportView';
 export {

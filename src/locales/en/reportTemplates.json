@@ -40,21 +40,20 @@
       "red": "limited"
     },
     "summary": {
-      "opening": "This {{subject}} report was shaped from your personal context (readiness {{score}}%, questionnaire {{questionnaire}}%).",
-      "educational": "It is warm, practical wellness guidance — not a clinical diagnosis."
+      "opening": "This {{subject}} report was shaped from your personal context (readiness {{score}}%, questionnaire {{questionnaire}}%)."
     },
     "tone": {
       "analytical": {
-        "summaryLead": "We keep the story clear: simple patterns, readiness signals, and choices you can weigh calmly.",
-        "analysisLead": "Clear view: we sort your signals into plain observations and practical levers."
+        "summaryLead": "Below: the clearest patterns in your signals and the choices worth weighing this week.",
+        "analysisLead": "We sort your signals into plain observations and practical levers — without restating your full profile."
       },
       "supportive": {
-        "summaryLead": "The tone stays calm, encouraging, and focused on habits that feel doable day to day.",
-        "analysisLead": "Supportive view: we celebrate what already works and suggest gentle adjustments where helpful."
+        "summaryLead": "The tone stays calm and doable — small habits you can keep day to day.",
+        "analysisLead": "We highlight what already helps, then name one or two gentle adjustments for this week."
       },
       "coaching": {
-        "summaryLead": "The tone is action-friendly — clear habits and kind accountability cues.",
-        "analysisLead": "Coaching view: we turn your context into simple practice blocks you can try this week."
+        "summaryLead": "Action-friendly tone: clear habits and kind accountability for the next seven days.",
+        "analysisLead": "We turn your context into practice blocks you can try this week — times, durations, and cues included."
       }
     },
     "toneShort": {
@@ -87,14 +86,14 @@
       "performance": "performance"
     },
     "focusDetail": {
-      "lifestyle": "Focus — lifestyle: sleep timing, short movement breaks, meal rhythm, and calm recovery after stress.",
-      "risk_awareness": "Focus — early signals: noticing changes early, prevention habits, and when to ask a clinician.",
-      "performance": "Focus — performance: capacity, recovery needs, and a sustainable pace."
+      "lifestyle": "Lifestyle levers this cycle: sleep timing, a daily walk, meal rhythm, and a short wind-down after stress.",
+      "risk_awareness": "Early-signal levers this cycle: a simple daily check, prevention habits, and a clear threshold for contacting a clinician.",
+      "performance": "Performance levers this cycle: protecting capacity, naming recovery needs, and keeping a sustainable weekly pace."
     },
     "priority": {
-      "preventive_first": "Priority — prevention first: ease friction that could grow into setbacks.",
-      "physiological_first": "Priority — body basics first: protect sleep, recovery, and steady rhythms before adding more.",
-      "behavioral_first": "Priority — habits first: reshape the small cue–routine–reward loops that shape your days."
+      "preventive_first": "Priority this week — prevention: remove one source of overload before it grows into a setback.",
+      "physiological_first": "Priority this week — body basics: protect sleep and recovery before adding intensity or new goals.",
+      "behavioral_first": "Priority this week — habits: reshape one cue–routine–reward loop that shapes your days."
     },
     "priorityShort": {
       "preventive_first": "prevention",
@@ -102,23 +101,22 @@
       "behavioral_first": "habits"
     },
     "analysis": {
-      "context": "Your personal context snapshot: {{blurb}} (readiness {{score}}%).",
-      "service": "Service focus: {{service}}. The ideas below stay educational and aligned with this service.",
+      "observation": "With readiness at {{score}}%, the highest-yield moves this week sit in the areas already visible in your profile — not in adding more goals.",
+      "service": "Service focus: {{service}}. Recommendations below stay educational and aligned with this service.",
       "question": "Your question for this report: {{question}}",
       "devices": "Device layer: {{count}} source(s) ({{brands}}). Treat wearable signals as trends, not diagnoses.",
-      "extended": "Deeper look: we compare questionnaire highlights with recent activity and device coverage to spot kind gaps between intention and daily practice.",
+      "extended": "Deeper look: we compare questionnaire highlights with recent activity and device coverage to spot gaps between intention and daily practice.",
       "sectionsDeep": "Your questionnaire currently has the most detail in: {{sections}}.",
-      "shortClose": "Short form: keep one primary habit, one recovery practice, and one check-in with Health Guide this week.",
-      "standardClose": "Standard form: pair one focus area with a simple weekly habit and revisit progress in Member Zone.",
-      "disclaimer": "This report does not diagnose, treat, or replace professional medical care."
+      "shortClose": "Short form: lock one habit with a clock time, one recovery practice, and one Health Guide check-in this week.",
+      "standardClose": "This week: pick one numbered recommendation below, put it on your calendar, and review progress in Member Zone after seven days."
     },
     "insight": {
       "completeness": "Readiness {{score}}% (questionnaire {{questionnaire}}% · profile {{profile}}%).",
       "linkage": "Context fit: {{health}}.",
       "focus": {
-        "lifestyle": "Lifestyle signals are a good guide for your next gentle habit experiments.",
-        "risk_awareness": "Prevention and early-signal awareness are a good guide for your next habit experiments.",
-        "performance": "Balancing effort and recovery is a good guide for your next habit experiments."
+        "lifestyle": "Sleep length, daylight, and daily movement look like the fastest lifestyle levers to test next.",
+        "risk_awareness": "A short daily symptom/stress log will make early changes easier to catch before they stack up.",
+        "performance": "Your next gains likely come from protecting recovery as carefully as effort — not from adding more load yet."
       },
       "service": "Aligned with: {{service}}.",
       "question": "Your question for this report: {{question}}",
@@ -128,65 +126,109 @@
     },
     "rec": {
       "preventive_first": {
-        "title": "A soft prevention step",
-        "body": "Choose one easy habit that lowers overload this week — an earlier wind-down, a water reminder, or a short daily walk."
+        "title": "Protect a 30-minute wind-down",
+        "body": "Start a fixed wind-down 30 minutes before your target bedtime: dim lights, screens off, and 5 minutes of slow breathing or stretching. Keep the same start time for 7 nights."
       },
       "physiological_first": {
-        "title": "Protect your basics",
-        "body": "Keep a steady sleep window and add one recovery practice before raising intensity or adding new goals."
+        "title": "Lock a 7–8 hour sleep window",
+        "body": "Choose a sleep window of 7–8 hours (for example 23:00–07:00) and protect it for the next 7 nights before raising training load or adding new goals."
       },
       "behavioral_first": {
-        "title": "Make the habit easy",
-        "body": "Pick a clear cue and a 10-minute starter routine so the habit can survive busy days."
+        "title": "Attach a 10-minute starter habit",
+        "body": "Pick one daily cue (after morning coffee or right after lunch) and run a 10-minute starter — brisk walk, mobility, or journaling — every day this week."
       },
       "lifestyle": {
-        "title": "A kinder daily rhythm",
-        "body": "Align meals, daylight, and movement with the hours you already feel most steady."
+        "title": "Morning light + 20-minute walk",
+        "body": "Get 10–15 minutes of outdoor daylight within an hour of waking, and add one brisk 20-minute walk on at least 5 days this week."
       },
       "risk_awareness": {
-        "title": "A calm check-in",
-        "body": "Note any new or worsening symptoms and bring them to a clinician if they persist; use Health Guide for educational framing only."
+        "title": "Log two early signals nightly",
+        "body": "Each evening, note sleep hours and peak stress (1–10). If either worsens for 3 days in a row, schedule a clinician check-in; use Health Guide only for educational framing."
       },
       "performance": {
-        "title": "Balance effort and recovery",
-        "body": "Match training or deep-work blocks with equal recovery so progress stays kind and sustainable."
+        "title": "Match effort with equal recovery",
+        "body": "After every hard training or deep-work block, schedule an equal recovery block (easy walk, quiet time, or earlier lights-out). Cap hard days at 4 this week."
+      },
+      "combo": {
+        "preventive_first": {
+          "lifestyle": {
+            "title": "Screens-off by a fixed clock time",
+            "body": "Set a phone/laptop cutoff 45 minutes before bed (same clock time nightly). Replace that slot with reading or light stretching for 7 days."
+          },
+          "risk_awareness": {
+            "title": "Three-day early-warning rule",
+            "body": "If sleep drops below your usual by 60+ minutes or stress stays ≥7/10 for 3 consecutive days, book a clinician consult and pause new experiments."
+          },
+          "performance": {
+            "title": "Deload before you push",
+            "body": "Keep intensity at maintenance for 5 days: no personal records, and end each session with 10 minutes of easy movement or breathwork."
+          }
+        },
+        "physiological_first": {
+          "lifestyle": {
+            "title": "Same wake time ±15 minutes",
+            "body": "Wake within a 15-minute window every day this week (including one weekend day). Pair it with water and daylight before caffeine."
+          },
+          "risk_awareness": {
+            "title": "Rest-day checkpoint",
+            "body": "Schedule two lighter days. On those days, record resting mood and any new symptoms for 2 minutes — escalate to a clinician if something new persists."
+          },
+          "performance": {
+            "title": "Recovery floor before load",
+            "body": "Require at least 7 hours in bed and one 15-minute easy walk on the day before any hard session. Skip the hard session if either is missed."
+          }
+        },
+        "behavioral_first": {
+          "lifestyle": {
+            "title": "Habit stack: meal → 2-minute reset",
+            "body": "After lunch, take 2 minutes of nasal breathing or a hallway walk before sitting again. Repeat after dinner for 7 days."
+          },
+          "risk_awareness": {
+            "title": "Cue a 60-second body scan",
+            "body": "At a fixed evening alarm, do a 60-second check: pain, breath, mood. Write one line. Bring the log to a clinician if a new pattern appears."
+          },
+          "performance": {
+            "title": "Calendar the work–recover pair",
+            "body": "Block focus/training and the matching recovery slot on your calendar for the next 5 workdays so recovery is not optional."
+          }
+        }
       },
       "questionnaire": {
-        "title": "Keep your answers current",
-        "body": "Your questionnaire is {{percent}}% complete. Update sections when life changes so future reports stay accurate and helpful."
+        "title": "Fill the remaining questionnaire gaps",
+        "body": "Your questionnaire is {{percent}}% complete. Spend 10–15 minutes on the thinnest sections so the next report can name sharper, more personal actions."
       },
       "service": {
-        "title": "Continue with {{service}}",
-        "body": "Return to the {{service}} workspace after trying one recommendation and note what felt better."
+        "title": "Return to {{service}} after one trial",
+        "body": "Practice one recommendation for 7 days, then reopen {{service}} and note what felt easier in one short sentence."
       },
       "devices": {
-        "title": "Optional device layer",
-        "body": "Link a wearable when you are ready so trends can gently complement your questionnaire context."
+        "title": "Optional: link one wearable",
+        "body": "When ready, connect a wearable so sleep and movement trends can sit beside your questionnaire — still as trends, not diagnoses."
       },
       "devicesActive": {
-        "title": "Glance at device trends",
-        "body": "Skim the last week from your {{count}} linked device(s) and note one pattern that matches how you felt."
+        "title": "Review 7 days of device trends",
+        "body": "Open the last week from your {{count}} linked device(s). Circle one pattern (sleep, steps, or resting pulse) that matches how you felt, and keep that metric for the habit you chose."
       }
     },
     "next": {
-      "review": "Read the focus areas and choose one recommendation to practice for seven days.",
-      "healthGuide": "Open Health Guide with the suggested prompt below to explore options calmly.",
-      "completeQuestionnaires": "Complete a few more questionnaire sections so the next report can feel even more personal.",
-      "refreshQuestionnaires": "Refresh any outdated questionnaire answers after meaningful lifestyle changes.",
+      "review": "Choose recommendation #1 or #2 and put its clock time on your calendar for the next 7 days.",
+      "healthGuide": "Open Health Guide with the prompt below if you want help adapting the plan to your week.",
+      "completeQuestionnaires": "Complete 1–2 more questionnaire sections (about 10 minutes) before the next report.",
+      "refreshQuestionnaires": "Update any outdated questionnaire answers after a meaningful lifestyle change.",
       "connectDevice": "Optionally connect a device to enrich trend context.",
       "focus": {
-        "lifestyle": "Put lifestyle habits on your calendar instead of relying on motivation alone.",
-        "risk_awareness": "Write down two early signals you will kindly watch this week.",
-        "performance": "Set a recovery floor before increasing load."
+        "lifestyle": "Put the morning-light and walk blocks on your calendar — do not leave them to motivation alone.",
+        "risk_awareness": "Write down the two early signals you will score each night this week.",
+        "performance": "Set a recovery floor (hours in bed + easy movement) before any load increase."
       }
     },
-    "healthGuidePrompt": "Using my personal context ({{blurb}}; readiness {{score}}%), help me plan a kind next week around {{service}}. My question: {{question}}. Keep guidance educational, practical, and easy to follow.",
+    "healthGuidePrompt": "Using my personal context ({{blurb}}; readiness {{score}}%), help me plan a kind next week around {{service}}. My question: {{question}}. Keep guidance educational, practical, and easy to follow — with specific times and durations where helpful.",
     "healthGuidePromptGeneral": "overall wellness",
     "healthGuidePromptDefaultQuestion": "What should I prioritize first?",
     "secondOpinion": {
       "subjectGeneral": "your overall wellness",
-      "a": "Perspective A on {{subject}}: prioritize {{priority}} using your current signals ({{blurb}}). Keep changes small enough to repeat daily.",
-      "b": "Perspective B on {{subject}}: emphasize {{focus}} with a {{tone}} tone. Pair effort with recovery and revisit after one week."
+      "a": "Prioritize {{priority}} using your current signals ({{blurb}}). Change only what you can calmly repeat daily for a full week.",
+      "b": "Emphasize {{focus}} with a {{tone}} tone. Pair every effort block with recovery, then revisit after seven days."
     }
   }
 }

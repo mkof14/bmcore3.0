@@ -348,7 +348,7 @@
       "generateBlockedCta": "מעבר לשאלונים",
       "viewTitle": "דוח",
       "downloadTxt": "הורדת TXT",
-      "printPdf": "הדפסה / PDF",
+      "printPdf": "הורדת PDF",
       "share": "קישור לשיתוף",
       "shareSuccess": "הקישור הועתק",
       "shareFailed": "לא ניתן ליצור קישור לשיתוף",
@@ -360,7 +360,14 @@
       "metricQuestionnaire": "שאלון",
       "metricQuestionnaireNote": "השלמה במקטעים הפעילים",
       "metricLinkage": "קישוריות",
-      "metricProfileNote": "שלמות הפרופיל {{percent}}%"
+      "metricProfileNote": "שלמות הפרופיל {{percent}}%",
+      "copy": "העתקה",
+      "copySuccess": "הדוח הועתק",
+      "copyFailed": "לא ניתן להעתיק את הדוח",
+      "shareContent": "שיתוף",
+      "shareContentSuccess": "הדוח הועתק — מוכן לשיתוף",
+      "shareContentFailed": "לא ניתן לשתף את הדוח",
+      "downloadPdf": "הורדת PDF"
     },
     "signalHub": {
       "title": "מרכז האותות",

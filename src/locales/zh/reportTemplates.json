@@ -1,35 +1,36 @@
 {
   "reportTemplate": {
     "fallbackTitle": "健康报告",
-    "footer": "这是温和、实用的健康教育指引——不是医学诊断。如有担忧，请咨询合格的临床医生。Health Guide 可以帮助您平静地探索下一步。",
+    "footer": "本报告是友好的健康教育指引——不是医学诊断。如有担忧，请咨询合格的临床医生。Health Guide 可帮助您探索温和的下一步。",
+    "copyright": "© {{year}} BioMath Core. 保留所有权利。",
     "meta": {
       "type": "类型",
-      "generated": "生成时间",
+      "generated": "创建时间",
       "id": "报告 ID"
     },
     "typeLabel": {
       "general": "综合",
       "thematic": "专题",
-      "dynamic": "动态",
-      "device_enhanced": "设备增强"
+      "dynamic": "进度",
+      "device_enhanced": "含设备数据"
     },
     "title": {
       "general": "您的个人健康报告",
-      "thematic": "您的主题健康报告",
+      "thematic": "您的专题健康报告",
       "dynamic": "您的进度对比报告",
-      "device_enhanced": "您的设备增强健康报告",
+      "device_enhanced": "您的含设备数据健康报告",
       "service": "{{service}} — 您的个人报告",
       "topic": "{{topic}} — 您的个人报告"
     },
     "section": {
-      "summary": "一句话概览",
+      "summary": "要点速览",
       "profile": "您的档案快照",
-      "focusAreas": "可以温柔关注的方面",
-      "insights": "值得留意的事",
+      "focusAreas": "可温和关注的方向",
+      "insights": "值得留意的信号",
       "analysis": "我们注意到的内容",
       "recommendations": "温和建议",
-      "nextSteps": "简单的下一步",
-      "healthGuidePrompt": "有用的 Health Guide 提示",
+      "nextSteps": "简单下一步",
+      "healthGuidePrompt": "实用的 Health Guide 提示",
       "secondOpinionA": "视角 A",
       "secondOpinionB": "视角 B"
     },
@@ -39,154 +40,195 @@
       "red": "有限"
     },
     "summary": {
-      "opening": "这份{{subject}}报告依据您的个人上下文生成（准备度 {{score}}%，问卷 {{questionnaire}}%）。",
-      "educational": "这是温暖、实用的健康指引——不是临床诊断。"
+      "opening": "这份{{subject}}报告根据您的个人背景整理而成（准备度 {{score}}%，问卷 {{questionnaire}}%）。"
     },
     "tone": {
       "analytical": {
-        "summaryLead": "叙述强调可衡量模式、准备度信号与清晰取舍。",
-        "analysisLead": "分析视角：将信号整理为结构化观察与可执行杠杆。"
+        "summaryLead": "以下是信号中最清晰的规律，以及本周值得冷静权衡的选择。",
+        "analysisLead": "我们将信号整理为简明观察与可行抓手——不会重述完整档案。"
       },
       "supportive": {
-        "summaryLead": "语气保持平静、鼓励，并关注每天都能坚持的习惯。",
-        "analysisLead": "支持性视角：我们肯定已经奏效的部分，并在有帮助处提出温和调整。"
+        "summaryLead": "语气保持平静、可执行——聚焦日复一日能坚持的小习惯。",
+        "analysisLead": "我们肯定已经有效的做法，并为本周提出一到两个温和调整。"
       },
       "coaching": {
-        "summaryLead": "叙述以行动为导向，提供清晰习惯与责任感提示。",
-        "analysisLead": "教练视角：将背景转化为本周可尝试的具体练习块。"
+        "summaryLead": "行动友好的语气：清晰习惯，以及对未来七天的温和责任感。",
+        "analysisLead": "我们将背景转化为本周可尝试的练习块——包含时间、时长与提示。"
       }
     },
     "toneShort": {
-      "analytical": "分析型",
-      "supportive": "支持型",
-      "coaching": "教练型"
+      "analytical": "清晰",
+      "supportive": "支持性",
+      "coaching": "教练式"
     },
     "profile": {
-      "memberFallback": "成员",
+      "memberFallback": "会员",
       "tierNone": "未设置",
-      "intro": "{{name}}：问卷完成 {{questionnaire}}% · 总体准备度 {{score}}%。",
-      "signals": "画像信号：{{blurb}}",
-      "activeSections": "最活跃的问卷领域：{{sections}}。",
-      "noSections": "尚无具有实质回答的问卷部分。",
+      "intro": "{{name}} — 问卷完成 {{questionnaire}}% · 总体准备度 {{score}}%。",
+      "signals": "您的档案显示：{{blurb}}",
+      "activeSections": "细节最多的问卷领域：{{sections}}。",
+      "noSections": "问卷各部分仍需更多回答，才能呈现更完整的图景。",
       "assets": "已连接设备：{{devices}}。健康文件：{{files}}。方案：{{tier}}。",
-      "linkage": "个人背景关联为{{health}}。"
+      "linkage": "个人背景的吻合程度：{{health}}。"
     },
     "focus": {
-      "lifestyle": "稳定支持精力、恢复与情绪的日常节律。",
-      "risk_awareness": "关注可能提高长期风险的早期信号，并采取预防行动。",
-      "performance": "保护专注、训练与恢复的容量，避免过载。",
-      "fromSection": "根据问卷进度加深对{{section}}的理解。",
-      "fromService": "将{{service}}保持为本报告周期的主要关注点。",
-      "devices": "用已关联的 {{count}} 台设备趋势验证习惯的日常效果。",
-      "consistency": "优先选择可重复的小习惯，而不是短暂高强度冲刺。"
+      "lifestyle": "支持精力、恢复与情绪的稳定日常节奏。",
+      "risk_awareness": "及早察觉早期信号，并以温和的预防习惯回应。",
+      "performance": "保护用于专注与训练的精力，同时留出恢复空间。",
+      "fromSection": "根据问卷进度，在{{section}}中再增加一点清晰度。",
+      "fromService": "将{{service}}保持为本报告周期的主要焦点。",
+      "devices": "将 {{count}} 台已连接设备的趋势作为日常习惯的温和反馈。",
+      "consistency": "宁可小而可重复的习惯，也不要短暂的高强度冲刺。"
     },
     "focusShort": {
       "lifestyle": "生活方式",
-      "risk_awareness": "风险意识",
+      "risk_awareness": "早期信号",
       "performance": "表现"
     },
     "focusDetail": {
-      "lifestyle": "关注点 — 生活方式：睡眠时间、短时活动、进餐节奏与压力恢复习惯。",
-      "risk_awareness": "关注点 — 风险意识：早期预警模式、预防习惯，以及何时寻求临床评估。",
-      "performance": "关注点 — 表现：容量、恢复债与可持续强度。"
+      "lifestyle": "本周期的生活方式抓手：睡眠时间、每日步行、用餐节奏，以及压力后的短暂放松。",
+      "risk_awareness": "本周期的早期信号抓手：简单的每日检查、预防习惯，以及联系临床医生的明确阈值。",
+      "performance": "本周期的表现抓手：保护能力、明确恢复需求，并保持可持续的周节奏。"
     },
     "priority": {
-      "preventive_first": "优先级 — 预防优先：减少可能累积为挫败的摩擦。",
-      "physiological_first": "优先级 — 生理优先：在优化前先保护睡眠、恢复与基本调节。",
-      "behavioral_first": "优先级 — 行为优先：改变塑造日常结果的提示–惯例–奖励循环。"
+      "preventive_first": "本周优先——预防：在过载演变成挫折前，先移除一个过载来源。",
+      "physiological_first": "本周优先——身体基础：在增加强度或新目标前，先保护睡眠与恢复。",
+      "behavioral_first": "本周优先——习惯：温和重塑一个塑造日常的提示–流程–奖励回路。"
     },
     "priorityShort": {
       "preventive_first": "预防",
-      "physiological_first": "生理",
-      "behavioral_first": "行为"
+      "physiological_first": "身体基础",
+      "behavioral_first": "习惯"
     },
     "analysis": {
-      "context": "个人背景快照：{{blurb}}（准备度 {{score}}%）。",
-      "service": "服务焦点：{{service}}。以下建议保持教育性并与服务对齐。",
-      "question": "本报告的问题：{{question}}",
-      "devices": "设备层：{{count}} 个来源（{{brands}}）。将可穿戴信号视为趋势，而非诊断。",
-      "extended": "扩展细节：将问卷要点与近期服务活动、设备覆盖对比，找出意图与日常实践之间的差距。",
-      "sectionsDeep": "当前问卷深度最强的领域：{{sections}}。",
-      "shortClose": "简版：本周保持一个主习惯、一项恢复练习，以及一次 Health Guide 核对。",
-      "standardClose": "标准版：将一个关注领域与可衡量的每周习惯配对，并在会员区复查进度。",
-      "disclaimer": "本报告不诊断、不治疗，也不替代专业医疗照护。"
+      "observation": "在准备度 {{score}}% 时，本周最高收益的行动就在档案中已可见的领域——而不是再增加目标。",
+      "service": "服务焦点：{{service}}。以下建议保持教育性，并与该服务对齐。",
+      "question": "您为本报告提出的问题：{{question}}",
+      "devices": "设备层：{{count}} 个来源（{{brands}}）。请将可穿戴信号视为趋势，而非诊断。",
+      "extended": "更深入的视角：我们将问卷重点与近期活动、设备覆盖对照，以发现意图与日常实践之间的差距。",
+      "sectionsDeep": "您的问卷目前在这些部分细节最多：{{sections}}。",
+      "shortClose": "简版：用具体时刻锁定一个习惯、一个恢复练习，以及本周一次 Health Guide 回顾。",
+      "standardClose": "本周：从下方编号建议中选一项，放入日历，并在七天后于会员区查看进度。"
     },
     "insight": {
-      "completeness": "准备度 {{score}}%（问卷 {{questionnaire}}% · 资料 {{profile}}%）。",
-      "linkage": "关联健康度：{{health}}。",
+      "completeness": "准备度 {{score}}%（问卷 {{questionnaire}}% · 档案 {{profile}}%）。",
+      "linkage": "背景吻合：{{health}}。",
       "focus": {
-        "lifestyle": "生活方式信号应引导下一轮习惯实验。",
-        "risk_awareness": "预防与早期信号意识应引导下一轮习惯实验。",
-        "performance": "容量与恢复平衡应引导下一轮习惯实验。"
+        "lifestyle": "睡眠时长、日照与每日活动，看起来是下一轮最快可试的生活方式抓手。",
+        "risk_awareness": "简短的每日症状/压力记录，会让早期变化在堆积前更容易被发现。",
+        "performance": "下一步提升更可能来自像保护努力一样保护恢复——而不是立刻再加负荷。"
       },
-      "service": "服务对齐：{{service}}。",
-      "question": "已记录报告问题：{{question}}",
+      "service": "对齐：{{service}}。",
+      "question": "您为本报告提出的问题：{{question}}",
       "devices": "已有设备覆盖（{{count}}）。",
-      "noDevices": "尚未关联设备 — 问卷与资料承担更多背景权重。",
-      "topSection": "最强问卷信号领域：{{section}}。"
+      "noDevices": "尚未连接设备——目前问卷与档案承担更多叙述。",
+      "topSection": "当前最强的问卷信号领域：{{section}}。"
     },
     "rec": {
       "preventive_first": {
-        "title": "预防模块",
-        "body": "选择一个低摩擦习惯，降低本周过载风险（更早放松、补水锚点或每日短步行）。"
+        "title": "守护 30 分钟放松收尾",
+        "body": "在目标就寝前 30 分钟开始固定收尾：调暗灯光、关闭屏幕，并做 5 分钟缓慢呼吸或拉伸。连续 7 晚保持同一开始时间。"
       },
       "physiological_first": {
-        "title": "生理模块",
-        "body": "保护稳定睡眠窗口，并在增加强度或新目标前加入一项恢复练习。"
+        "title": "锁定 7–8 小时睡眠窗口",
+        "body": "选择 7–8 小时睡眠窗口（例如 23:00–07:00），在提高训练负荷或新增目标前，先守护接下来 7 晚。"
       },
       "behavioral_first": {
-        "title": "行为模块",
-        "body": "定义清晰提示与 10 分钟起步惯例，使习惯能撑过忙碌的日子。"
+        "title": "绑定 10 分钟启动习惯",
+        "body": "选一个每日提示（晨间咖啡后或午餐后），进行 10 分钟启动——快步走、活动度或日记——本周每天执行。"
       },
       "lifestyle": {
-        "title": "生活节律",
-        "body": "将进餐时间、日照与活动对齐到您感觉最稳定的时段。"
+        "title": "晨间光照 + 20 分钟步行",
+        "body": "起床后一小时内获得 10–15 分钟户外日光，并在本周至少 5 天加入一次轻快的 20 分钟步行。"
       },
       "risk_awareness": {
-        "title": "风险意识核对",
-        "body": "记录新出现或加重的症状；若持续请咨询临床医生。Health Guide 仅用于教育性框架。"
+        "title": "每晚记录两个早期信号",
+        "body": "每晚记录睡眠小时数与压力峰值（1–10）。若任一项连续 3 天恶化，请预约临床医生；Health Guide 仅作教育框架。"
       },
       "performance": {
-        "title": "表现平衡",
-        "body": "将训练或深度工作块与同等恢复块配对，使进步可持续。"
+        "title": "让恢复与努力等量匹配",
+        "body": "每次高强度训练或深度工作后，安排等长的恢复块（轻松步行、安静时间或更早熄灯）。本周高强度日最多 4 天。"
+      },
+      "combo": {
+        "preventive_first": {
+          "lifestyle": {
+            "title": "固定时刻关闭屏幕",
+            "body": "设定就寝前 45 分钟的手机/电脑截止（每晚同一时刻）。用阅读或轻度拉伸替换该时段，持续 7 天。"
+          },
+          "risk_awareness": {
+            "title": "三日早期预警规则",
+            "body": "若睡眠比往常少 60 分钟以上，或压力连续 3 天 ≥7/10，请预约临床咨询并暂停新实验。"
+          },
+          "performance": {
+            "title": "先减载再推进",
+            "body": "连续 5 天保持维持强度：不追求个人纪录，并以 10 分钟轻松活动或呼吸结束每次训练。"
+          }
+        },
+        "physiological_first": {
+          "lifestyle": {
+            "title": "起床时间 ±15 分钟",
+            "body": "本周每天（含一个周末日）在 15 分钟窗口内起床。先喝水与日照——再摄入咖啡因。"
+          },
+          "risk_awareness": {
+            "title": "休息日检查点",
+            "body": "安排两个较轻的日子。那天用 2 分钟记录静息情绪与任何新症状——若新情况持续，请联系临床医生。"
+          },
+          "performance": {
+            "title": "负荷前的恢复底线",
+            "body": "任何高强度训练前一天需至少卧床 7 小时，并有一次 15 分钟轻松步行。缺一则跳过该训练。"
+          }
+        },
+        "behavioral_first": {
+          "lifestyle": {
+            "title": "习惯叠加：用餐 → 2 分钟重置",
+            "body": "午餐后、再次坐下前，做 2 分钟鼻呼吸或走廊步行。晚餐后重复，持续 7 天。"
+          },
+          "risk_awareness": {
+            "title": "60 秒身体扫描提示",
+            "body": "在固定晚间闹钟响起时做 60 秒检查：疼痛、呼吸、情绪。写一行笔记。若出现新模式，带给临床医生。"
+          },
+          "performance": {
+            "title": "把「工作–恢复」排进日历",
+            "body": "在接下来 5 个工作日，把专注/训练与对应恢复时段写入日历，使恢复不再是可选项。"
+          }
+        }
       },
       "questionnaire": {
-        "title": "保持问卷最新",
-        "body": "问卷完成度为 {{percent}}%。状态变化时更新各部分，使后续报告保持准确。"
+        "title": "补齐问卷剩余缺口",
+        "body": "您的问卷完成度为 {{percent}}%。花 10–15 分钟完善最薄弱的部分，下一份报告才能给出更尖锐、更个人的行动。"
       },
       "service": {
-        "title": "继续使用 {{service}}",
-        "body": "尝试一条建议后返回 {{service}} 工作区，并记录变化。"
+        "title": "试过一项后回到 {{service}}",
+        "body": "将一项建议实践 7 天，然后重新打开 {{service}}，用一句话记录哪里变得更容易。"
       },
       "devices": {
-        "title": "可选设备层",
-        "body": "准备好时关联可穿戴设备，让趋势补充问卷背景。"
+        "title": "可选：连接可穿戴设备",
+        "body": "准备好后连接可穿戴设备，让睡眠与活动趋势与问卷并列——仍是趋势，不是诊断。"
       },
       "devicesActive": {
-        "title": "查看设备趋势",
-        "body": "浏览已关联 {{count}} 台设备过去一周的数据，记下一个与体感相符的模式。"
+        "title": "查看 7 天设备趋势",
+        "body": "打开 {{count}} 台已连接设备的最近一周。圈出与感受相符的一个模式（睡眠、步数或静息脉搏），并把它与所选习惯一起跟踪。"
       }
     },
     "next": {
-      "review": "阅读关注领域，并选择一条建议练习七天。",
-      "healthGuide": "用下方建议提示打开 Health Guide，探索取舍。",
-      "completeQuestionnaires": "完成更多问卷部分，使下一份报告更个性化。",
-      "refreshQuestionnaires": "在重大生活方式变化后更新过时问卷答案。",
+      "review": "选择建议 #1 或 #2，并将其具体时刻写入未来 7 天的日历。",
+      "healthGuide": "若需按本周调整计划，请用下方提示打开 Health Guide。",
+      "completeQuestionnaires": "在下一份报告前再完成 1–2 个问卷部分（约 10 分钟）。",
+      "refreshQuestionnaires": "在有意义的生活方式变化后，更新过时的问卷回答。",
       "connectDevice": "可选连接设备以丰富趋势背景。",
       "focus": {
-        "lifestyle": "把生活习惯排进日历，而不是只靠动力。",
-        "risk_awareness": "写下本周要观察的两个早期信号。",
-        "performance": "在增加负荷前设定恢复下限。"
+        "lifestyle": "把晨间光照与步行块放进日历——不要只靠动力。",
+        "risk_awareness": "写下本周每晚要打分的两个早期信号。",
+        "performance": "在增加负荷前设定恢复底线（卧床小时数 + 轻松活动）。"
       }
     },
-    "healthGuidePrompt": "基于我的个人背景（{{blurb}}；准备度 {{score}}%），请围绕 {{service}} 帮助规划下周。我的问题：{{question}}。请保持教育性与可操作性。",
+    "healthGuidePrompt": "请根据我的个人背景（{{blurb}}；准备度 {{score}}%），帮我围绕 {{service}} 温和规划下一周。我的问题：{{question}}。请保持教育性、实用且易执行——在有帮助处给出具体时间与时长。",
     "healthGuidePromptGeneral": "整体健康",
     "healthGuidePromptDefaultQuestion": "我应该先优先做什么？",
     "secondOpinion": {
       "subjectGeneral": "您的整体健康",
-      "a": "关于{{subject}}的视角 A：用当前信号（{{blurb}}）优先关注{{priority}}。保持足够小、可每天重复的改变。",
-      "b": "关于{{subject}}的视角 B：以{{tone}}语气强调{{focus}}。将努力与恢复配对，一周后复查。"
-    },
-    "copyright": "© {{year}} BioMath Core. 保留所有权利。"
+      "a": "依据当前信号（{{blurb}}）优先 {{priority}}。只改变您能平静地每天重复整整一周的内容。",
+      "b": "以 {{tone}} 语气强调 {{focus}}。让每个努力块都配上恢复，并在七天后复盘。"
+    }
   }
 }

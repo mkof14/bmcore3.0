@@ -160,15 +160,13 @@ function buildSummary() {
       questionnaire: context.completeness.questionnairePercent,
     }),
     t(`reportTemplate.tone.${settings.tone_style}.summaryLead`),
-    t('reportTemplate.summary.educational'),
   ].join(' ');
 }
 
 function buildAnalysis() {
   const parts = [
     t(`reportTemplate.tone.${settings.tone_style}.analysisLead`),
-    t('reportTemplate.analysis.context', {
-      blurb: context.contextBlurb,
+    t('reportTemplate.analysis.observation', {
       score: context.completeness.score,
     }),
     t(`reportTemplate.priority.${settings.interpretation_priority}`),
@@ -178,7 +176,6 @@ function buildAnalysis() {
       brands: context.devices.brands.join(', '),
     }),
     t('reportTemplate.analysis.standardClose'),
-    t('reportTemplate.analysis.disclaimer'),
   ];
   return parts.join('\n\n');
 }
@@ -202,20 +199,20 @@ function buildInsights() {
 }
 
 function buildRecommendations() {
+  const priority = settings.interpretation_priority;
+  const focus = settings.insight_focus;
   return [
     {
-      title: t(`reportTemplate.rec.${settings.interpretation_priority}.title`),
-      description: t(`reportTemplate.rec.${settings.interpretation_priority}.body`),
+      title: t(`reportTemplate.rec.${priority}.title`),
+      description: t(`reportTemplate.rec.${priority}.body`),
     },
     {
-      title: t(`reportTemplate.rec.${settings.insight_focus}.title`),
-      description: t(`reportTemplate.rec.${settings.insight_focus}.body`),
+      title: t(`reportTemplate.rec.${focus}.title`),
+      description: t(`reportTemplate.rec.${focus}.body`),
     },
     {
-      title: t('reportTemplate.rec.questionnaire.title'),
-      description: t('reportTemplate.rec.questionnaire.body', {
-        percent: context.completeness.questionnairePercent,
-      }),
+      title: t(`reportTemplate.rec.combo.${priority}.${focus}.title`),
+      description: t(`reportTemplate.rec.combo.${priority}.${focus}.body`),
     },
   ];
 }
@@ -300,10 +297,6 @@ const lines = [
   t('reportTemplate.section.secondOpinionB'),
   '',
   secondB,
-  '',
-  t('reportTemplate.section.healthGuidePrompt'),
-  '',
-  healthGuidePrompt,
   '',
   t('reportTemplate.footer'),
   '',

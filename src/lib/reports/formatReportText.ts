@@ -110,3 +110,54 @@ export function downloadReportTxt(filename: string, text: string): void {
 export function printReport(): void {
   window.print();
 }
+
+/** Copy plain-text report body to the clipboard. */
+export async function copyReportText(text: string): Promise<boolean> {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    try {
+      const area = document.createElement('textarea');
+      area.value = text;
+      area.setAttribute('readonly', '');
+      area.style.position = 'fixed';
+      area.style.left = '-9999px';
+      document.body.appendChild(area);
+      area.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(area);
+      return ok;
+    } catch {
+      return false;
+    }
+  }
+}
+
+/**
+ * Share report via Web Share API when available; otherwise copy text to clipboard.
+ * Returns 'shared' | 'copied' | 'aborted' | 'failed'.
+ */
+export async function shareReportContent(input: {
+  title: string;
+  text: string;
+  url?: string;
+}): Promise<'shared' | 'copied' | 'aborted' | 'failed'> {
+  try {
+    if (typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
+      await navigator.share({
+        title: input.title,
+        text: input.text,
+        ...(input.url ? { url: input.url } : {}),
+      });
+      return 'shared';
+    }
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      return 'aborted';
+    }
+  }
+
+  const ok = await copyReportText(input.url ? `${input.text}\n\n${input.url}` : input.text);
+  return ok ? 'copied' : 'failed';
+}

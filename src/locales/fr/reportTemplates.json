@@ -1,31 +1,32 @@
 {
   "reportTemplate": {
     "fallbackTitle": "Rapport de bien-être",
-    "footer": "Ceci est un guidage éducatif de bien-être, doux et pratique — pas un diagnostic médical. Si quelque chose vous inquiète, parlez-en à un clinicien qualifié. Health Guide peut vous aider à explorer les prochaines étapes avec calme.",
+    "footer": "Ce rapport est une orientation éducative et bienveillante sur le bien-être — pas un diagnostic médical. Si quelque chose vous inquiète, parlez-en à un clinicien qualifié. Health Guide est là pour explorer des prochaines étapes douces.",
+    "copyright": "© {{year}} BioMath Core. Tous droits réservés.",
     "meta": {
       "type": "Type",
-      "generated": "Généré",
+      "generated": "Créé",
       "id": "ID du rapport"
     },
     "typeLabel": {
       "general": "Général",
       "thematic": "Thématique",
-      "dynamic": "Dynamique",
-      "device_enhanced": "Enrichi par appareils"
+      "dynamic": "Progrès",
+      "device_enhanced": "Avec appareils"
     },
     "title": {
-      "general": "Votre rapport de bien-être personnel",
-      "thematic": "Votre rapport de bien-être thématique",
-      "dynamic": "Votre rapport de comparaison de progression",
-      "device_enhanced": "Votre rapport enrichi par appareils",
-      "service": "{{service}} — votre rapport personnalisé",
-      "topic": "{{topic}} — votre rapport personnalisé"
+      "general": "Votre rapport personnel de bien-être",
+      "thematic": "Votre rapport thématique de bien-être",
+      "dynamic": "Votre rapport de comparaison de progrès",
+      "device_enhanced": "Votre rapport de bien-être avec appareils",
+      "service": "{{service}} — votre rapport personnel",
+      "topic": "{{topic}} — votre rapport personnel"
     },
     "section": {
       "summary": "En bref",
-      "profile": "Aperçu de votre profil",
+      "profile": "Instantané de votre profil",
       "focusAreas": "Où porter une attention douce",
-      "insights": "Points utiles à remarquer",
+      "insights": "Ce qui mérite d’être remarqué",
       "analysis": "Ce que nous avons remarqué",
       "recommendations": "Recommandations bienveillantes",
       "nextSteps": "Prochaines étapes simples",
@@ -39,154 +40,195 @@
       "red": "limitée"
     },
     "summary": {
-      "opening": "Ce rapport {{subject}} a été composé à partir de votre contexte personnel (préparation {{score}} %, questionnaire {{questionnaire}} %).",
-      "educational": "Il s’agit d’un guidage de bien-être chaleureux et pratique — pas d’un diagnostic clinique."
+      "opening": "Ce rapport {{subject}} a été façonné à partir de votre contexte personnel (préparation {{score}} %, questionnaire {{questionnaire}} %)."
     },
     "tone": {
       "analytical": {
-        "summaryLead": "Le récit met l’accent sur des schémas mesurables, des signaux de préparation et des arbitrages clairs.",
-        "analysisLead": "Vue analytique : nous organisons vos signaux en observations structurées et leviers pratiques."
+        "summaryLead": "Ci-dessous : les motifs les plus clairs dans vos signaux et les choix à peser calmement cette semaine.",
+        "analysisLead": "Nous classons vos signaux en observations simples et leviers pratiques — sans reformuler tout le profil."
       },
       "supportive": {
-        "summaryLead": "Le ton reste calme, encourageant et centré sur des habitudes tenables au quotidien.",
-        "analysisLead": "Vue bienveillante : nous soulignons ce qui fonctionne déjà et proposons de légers ajustements utiles."
+        "summaryLead": "Le ton reste calme et réaliste — de petites habitudes tenables au quotidien.",
+        "analysisLead": "Nous soulignons ce qui aide déjà, puis nommons un ou deux ajustements doux pour cette semaine."
       },
       "coaching": {
-        "summaryLead": "Le récit est orienté action, avec des habitudes claires et des repères de responsabilité.",
-        "analysisLead": "Vue coaching : nous traduisons votre contexte en blocs de pratique concrets pour cette semaine."
+        "summaryLead": "Ton orienté action : habitudes claires et responsabilité bienveillante pour les sept prochains jours.",
+        "analysisLead": "Nous transformons votre contexte en blocs de pratique pour cette semaine — avec horaires, durées et indices."
       }
     },
     "toneShort": {
-      "analytical": "analytique",
-      "supportive": "bienveillant",
+      "analytical": "clair",
+      "supportive": "soutenant",
       "coaching": "coaching"
     },
     "profile": {
       "memberFallback": "Membre",
       "tierNone": "non défini",
-      "intro": "{{name}} : questionnaire complété à {{questionnaire}} % · préparation globale {{score}} %.",
-      "signals": "Signaux du profil : {{blurb}}",
-      "activeSections": "Sections de questionnaire les plus actives : {{sections}}.",
-      "noSections": "Aucune section du questionnaire n’a encore de réponses substantielles.",
+      "intro": "{{name}} — questionnaire rempli à {{questionnaire}} % · préparation globale {{score}} %.",
+      "signals": "Ce que montre votre profil : {{blurb}}",
+      "activeSections": "Domaines du questionnaire les plus détaillés : {{sections}}.",
+      "noSections": "Les sections du questionnaire ont encore besoin de réponses pour une image plus complète.",
       "assets": "Appareils connectés : {{devices}}. Documents de santé : {{files}}. Offre : {{tier}}.",
-      "linkage": "La liaison du contexte personnel est {{health}}."
+      "linkage": "Qualité d’assemblage de votre contexte personnel : {{health}}."
     },
     "focus": {
-      "lifestyle": "Stabilisez les routines quotidiennes qui soutiennent énergie, récupération et humeur.",
-      "risk_awareness": "Surveillez les signaux précoces de risque à plus long terme et agissez en prévention.",
-      "performance": "Protégez la capacité de concentration, d’entraînement et de récupération sans surcharge.",
-      "fromSection": "Approfondissez la clarté sur {{section}} selon la progression de votre questionnaire.",
+      "lifestyle": "Des rythmes quotidiens stables qui soutiennent l’énergie, la récupération et l’humeur.",
+      "risk_awareness": "Repérer tôt les signaux précoces et y répondre par des habitudes préventives bienveillantes.",
+      "performance": "Protéger l’énergie pour le focus et l’entraînement tout en laissant de la place à la récupération.",
+      "fromSection": "Ajoutez un peu plus de clarté dans {{section}} selon la progression du questionnaire.",
       "fromService": "Gardez {{service}} comme focus principal de ce cycle de rapport.",
-      "devices": "Utilisez les tendances de vos {{count}} appareil(s) liés pour valider l’effet des habitudes au quotidien.",
-      "consistency": "Préférez de petites habitudes répétables à de courts efforts intenses."
+      "devices": "Utilisez les tendances de vos {{count}} appareil(s) lié(s) comme retour doux sur les habitudes quotidiennes.",
+      "consistency": "Préférez de petites habitudes répétables à de courtes poussées intensives."
     },
     "focusShort": {
       "lifestyle": "mode de vie",
-      "risk_awareness": "conscience du risque",
+      "risk_awareness": "signaux précoces",
       "performance": "performance"
     },
     "focusDetail": {
-      "lifestyle": "Focus — mode de vie : horaires de sommeil, micro-mouvements, rythme des repas et récupération du stress.",
-      "risk_awareness": "Focus — conscience du risque : signaux d’alerte précoces, prévention et moment de consulter un clinicien.",
-      "performance": "Focus — performance : capacité, dette de récupération et intensité durable."
+      "lifestyle": "Leviers mode de vie ce cycle : horaires de sommeil, marche quotidienne, rythme des repas et court apaisement après le stress.",
+      "risk_awareness": "Leviers signaux précoces ce cycle : un contrôle quotidien simple, la prévention et un seuil clair pour contacter un clinicien.",
+      "performance": "Leviers performance ce cycle : protéger la capacité, nommer le besoin de récupération et tenir un rythme hebdomadaire durable."
     },
     "priority": {
-      "preventive_first": "Priorité — prévention d’abord : réduisez les frictions qui pourraient devenir des revers.",
-      "physiological_first": "Priorité — physiologie d’abord : protégez sommeil, récupération et régulation de base avant d’optimiser.",
-      "behavioral_first": "Priorité — comportement d’abord : changez les boucles signal–routine–récompense qui façonnent le quotidien."
+      "preventive_first": "Priorité cette semaine — prévention : retirer une source de surcharge avant qu’elle ne devient un revers.",
+      "physiological_first": "Priorité cette semaine — bases du corps : protéger sommeil et récupération avant d’augmenter l’intensité ou d’ajouter des objectifs.",
+      "behavioral_first": "Priorité cette semaine — habitudes : reformer en douceur une boucle indice–routine–récompense."
     },
     "priorityShort": {
       "preventive_first": "prévention",
-      "physiological_first": "physiologie",
-      "behavioral_first": "comportement"
+      "physiological_first": "bases du corps",
+      "behavioral_first": "habitudes"
     },
     "analysis": {
-      "context": "Instantané du contexte personnel : {{blurb}} (préparation {{score}} %).",
-      "service": "Focus service : {{service}}. Les recommandations ci-dessous restent éducatives et alignées sur le service.",
+      "observation": "Avec une préparation à {{score}} %, les gestes les plus rentables cette semaine se trouvent dans les zones déjà visibles dans votre profil — pas dans de nouveaux objectifs.",
+      "service": "Focus service : {{service}}. Les idées ci-dessous restent éducatives et alignées sur ce service.",
       "question": "Votre question pour ce rapport : {{question}}",
-      "devices": "Couche appareils : {{count}} source(s) ({{brands}}). Traitez les signaux comme des tendances, pas des diagnostics.",
-      "extended": "Niveau étendu : comparez les points forts du questionnaire avec l’activité récente des services et la couverture des appareils pour repérer les écarts entre intention et pratique quotidienne.",
-      "sectionsDeep": "Profondeur actuelle du questionnaire la plus forte dans : {{sections}}.",
-      "shortClose": "Format court : une habitude principale, une pratique de récupération et un échange avec Health Guide cette semaine.",
-      "standardClose": "Format standard : associez un axe de focus à une habitude hebdomadaire mesurable et revue dans l’espace membre.",
-      "disclaimer": "Ce rapport ne diagnostique pas, ne traite pas et ne remplace pas les soins médicaux professionnels."
+      "devices": "Couche appareils : {{count}} source(s) ({{brands}}). Traitez les signaux du wearable comme des tendances, pas des diagnostics.",
+      "extended": "Regard plus profond : nous comparons les points forts du questionnaire à l’activité récente et à la couverture des appareils pour repérer les écarts entre intention et pratique quotidienne.",
+      "sectionsDeep": "Votre questionnaire a actuellement le plus de détail dans : {{sections}}.",
+      "shortClose": "Format court : verrouiller une habitude avec une heure, une pratique de récupération et un point Health Guide cette semaine.",
+      "standardClose": "Cette semaine : choisissez une recommandation numérotée ci-dessous, placez-la dans votre calendrier et revoyez les progrès dans la zone membre après sept jours."
     },
     "insight": {
       "completeness": "Préparation {{score}} % (questionnaire {{questionnaire}} % · profil {{profile}} %).",
-      "linkage": "Santé de la liaison : {{health}}.",
+      "linkage": "Cohérence du contexte : {{health}}.",
       "focus": {
-        "lifestyle": "Les signaux de mode de vie doivent guider les prochaines expériences d’habitudes.",
-        "risk_awareness": "La prévention et les signaux précoces doivent guider les prochaines expériences d’habitudes.",
-        "performance": "L’équilibre capacité/récupération doit guider les prochaines expériences d’habitudes."
+        "lifestyle": "Durée de sommeil, lumière du jour et mouvement quotidien semblent les leviers mode de vie les plus rapides à tester.",
+        "risk_awareness": "Un court journal quotidien symptômes/stress rendra les changements précoces plus faciles à repérer avant qu’ils ne s’accumulent.",
+        "performance": "Le prochain gain viendra probablement d’une récupération aussi soignée que l’effort — pas d’une charge supplémentaire pour l’instant."
       },
-      "service": "Alignement service : {{service}}.",
-      "question": "Question du rapport capturée : {{question}}",
+      "service": "Aligné avec : {{service}}.",
+      "question": "Votre question pour ce rapport : {{question}}",
       "devices": "Couverture appareils présente ({{count}}).",
-      "noDevices": "Aucun appareil lié pour l’instant — le questionnaire et le profil portent davantage le contexte.",
-      "topSection": "Zone de signal la plus forte du questionnaire : {{section}}."
+      "noDevices": "Aucun appareil lié pour l’instant — le questionnaire et le profil portent davantage du récit.",
+      "topSection": "Zone de signaux du questionnaire la plus forte pour l’instant : {{section}}."
     },
     "rec": {
       "preventive_first": {
-        "title": "Bloc prévention",
-        "body": "Choisissez une habitude à faible friction qui réduit le risque de surcharge cette semaine (coucher plus tôt, ancre d’hydratation ou courte marche quotidienne)."
+        "title": "Protéger 30 minutes d’apaisement",
+        "body": "Commencez un apaisement fixe 30 minutes avant l’heure de coucher cible : lumières tamisées, écrans éteints, et 5 minutes de respiration lente ou d’étirements. Gardez la même heure de début pendant 7 soirs."
       },
       "physiological_first": {
-        "title": "Bloc physiologie",
-        "body": "Protégez une fenêtre de sommeil stable et ajoutez une pratique de récupération avant d’augmenter l’intensité ou les objectifs."
+        "title": "Verrouiller une fenêtre de sommeil de 7–8 h",
+        "body": "Choisissez une fenêtre de sommeil de 7–8 heures (par exemple 23:00–07:00) et protégez-la les 7 prochaines nuits avant d’augmenter la charge d’entraînement ou d’ajouter de nouveaux objectifs."
       },
       "behavioral_first": {
-        "title": "Bloc comportement",
-        "body": "Définissez un signal clair et une routine de démarrage de 10 minutes pour que l’habitude survive aux journées chargées."
+        "title": "Attacher une habitude de démarrage de 10 minutes",
+        "body": "Choisissez un indice quotidien (après le café du matin ou juste après le déjeuner) et faites un démarrage de 10 minutes — marche rapide, mobilité ou journal — chaque jour cette semaine."
       },
       "lifestyle": {
-        "title": "Rythme de vie",
-        "body": "Alignez repas, lumière du jour et mouvement sur les heures où vous vous sentez le plus stable."
+        "title": "Lumière du matin + marche de 20 minutes",
+        "body": "Obtenez 10–15 minutes de lumière extérieure dans l’heure qui suit le réveil, et ajoutez une marche soutenue de 20 minutes au moins 5 jours cette semaine."
       },
       "risk_awareness": {
-        "title": "Point de contrôle du risque",
-        "body": "Notez tout symptôme nouveau ou aggravé et consultez un clinicien s’il persiste ; utilisez Health Guide uniquement pour un cadre éducatif."
+        "title": "Noter deux signaux précoces chaque soir",
+        "body": "Chaque soir, notez les heures de sommeil et le pic de stress (1–10). Si l’un des deux empire 3 jours de suite, planifiez un rendez-vous clinique ; utilisez Health Guide uniquement comme cadre éducatif."
       },
       "performance": {
-        "title": "Équilibre de performance",
-        "body": "Associez blocs d’entraînement ou de travail profond à des blocs égaux de récupération pour un progrès durable."
+        "title": "Associer effort et récupération égale",
+        "body": "Après chaque bloc dur d’entraînement ou de travail profond, planifiez un bloc de récupération de durée égale (marche facile, calme ou coucher plus tôt). Maximum 4 jours durs cette semaine."
+      },
+      "combo": {
+        "preventive_first": {
+          "lifestyle": {
+            "title": "Écrans coupés à heure fixe",
+            "body": "Fixez une coupure téléphone/ordinateur 45 minutes avant le coucher (même heure chaque nuit). Remplacez ce créneau par de la lecture ou des étirements légers pendant 7 jours."
+          },
+          "risk_awareness": {
+            "title": "Règle d’alerte précoce sur trois jours",
+            "body": "Si le sommeil baisse de 60+ minutes par rapport à l’habitude ou si le stress reste ≥7/10 pendant 3 jours consécutifs, prenez rendez-vous avec un clinicien et mettez les nouvelles expériences en pause."
+          },
+          "performance": {
+            "title": "Décharger avant de pousser",
+            "body": "Gardez l’intensité en maintien pendant 5 jours : pas de records personnels, et terminez chaque séance par 10 minutes de mouvement facile ou de respiration."
+          }
+        },
+        "physiological_first": {
+          "lifestyle": {
+            "title": "Même heure de réveil ±15 minutes",
+            "body": "Réveillez-vous dans une fenêtre de 15 minutes chaque jour cette semaine (y compris un jour de week-end). D’abord l’eau et la lumière du jour — ensuite la caféine."
+          },
+          "risk_awareness": {
+            "title": "Point de contrôle les jours de repos",
+            "body": "Planifiez deux jours plus légers. Ces jours-là, notez en 2 minutes l’humeur au repos et tout nouveau symptôme — consultez un clinicien si quelque chose de nouveau persiste."
+          },
+          "performance": {
+            "title": "Plancher de récupération avant la charge",
+            "body": "Exigez au moins 7 heures au lit et une marche facile de 15 minutes la veille de toute séance dure. Si l’un manque — sautez la séance."
+          }
+        },
+        "behavioral_first": {
+          "lifestyle": {
+            "title": "Empilement : repas → reset de 2 minutes",
+            "body": "Après le déjeuner, prenez 2 minutes de respiration nasale ou une marche dans le couloir avant de vous rasseoir. Répétez après le dîner pendant 7 jours."
+          },
+          "risk_awareness": {
+            "title": "Indice pour un scan corporel de 60 secondes",
+            "body": "À une alarme fixe le soir, faites un contrôle de 60 secondes : douleur, souffle, humeur. Écrivez une ligne. Apportez le journal à un clinicien si un nouveau schéma apparaît."
+          },
+          "performance": {
+            "title": "Calendrier de la paire effort–récupération",
+            "body": "Bloquez dans le calendrier le focus/entraînement et le créneau de récupération correspondant pour les 5 prochains jours ouvrés, afin que la récupération ne soit pas optionnelle."
+          }
+        }
       },
       "questionnaire": {
-        "title": "Gardez le questionnaire à jour",
-        "body": "Votre questionnaire est complété à {{percent}} %. Mettez à jour les sections lorsque votre état change pour des rapports futurs précis."
+        "title": "Compléter les lacunes du questionnaire",
+        "body": "Votre questionnaire est rempli à {{percent}} %. Passez 10–15 minutes sur les sections les plus fines pour que le prochain rapport puisse nommer des actions plus nettes et personnelles."
       },
       "service": {
-        "title": "Continuez avec {{service}}",
-        "body": "Revenez à l’espace {{service}} après avoir essayé une recommandation et notez ce qui a changé."
+        "title": "Revenir à {{service}} après un essai",
+        "body": "Pratiquez une recommandation pendant 7 jours, puis rouvrez {{service}} et notez en une courte phrase ce qui a semblé plus facile."
       },
       "devices": {
-        "title": "Couche appareils optionnelle",
-        "body": "Liez un appareil connecté quand vous êtes prêt pour que les tendances complètent le questionnaire."
+        "title": "Optionnel : lier un wearable",
+        "body": "Quand vous êtes prêt, connectez un wearable pour que les tendances de sommeil et de mouvement accompagnent le questionnaire — toujours comme tendances, pas comme diagnostics."
       },
       "devicesActive": {
-        "title": "Revoir les tendances appareils",
-        "body": "Parcourez la semaine dernière de vos {{count}} appareil(s) et notez un schéma qui correspond à votre ressenti."
+        "title": "Parcourir 7 jours de tendances appareils",
+        "body": "Ouvrez la dernière semaine de vos {{count}} appareil(s) lié(s). Entourez un motif (sommeil, pas ou pouls au repos) qui correspond à votre ressenti, et gardez cette métrique avec l’habitude choisie."
       }
     },
     "next": {
-      "review": "Lisez les axes de focus et choisissez une recommandation à pratiquer pendant sept jours.",
-      "healthGuide": "Ouvrez Health Guide avec l’invite suggérée pour explorer les arbitrages.",
-      "completeQuestionnaires": "Complétez davantage de sections du questionnaire pour mieux personnaliser le prochain rapport.",
-      "refreshQuestionnaires": "Actualisez les réponses obsolètes après des changements de mode de vie importants.",
-      "connectDevice": "Connectez éventuellement un appareil pour enrichir le contexte des tendances.",
+      "review": "Choisissez la recommandation n° 1 ou n° 2 et placez son horaire dans le calendrier pour les 7 prochains jours.",
+      "healthGuide": "Ouvrez Health Guide avec l’invite ci-dessous si vous voulez adapter le plan à votre semaine.",
+      "completeQuestionnaires": "Complétez 1–2 sections supplémentaires du questionnaire (environ 10 minutes) avant le prochain rapport.",
+      "refreshQuestionnaires": "Mettez à jour les réponses obsolètes après un changement de mode de vie significatif.",
+      "connectDevice": "Connectez éventuellement un appareil pour enrichir le contexte de tendances.",
       "focus": {
-        "lifestyle": "Planifiez les habitudes de vie dans votre calendrier plutôt que de compter uniquement sur la motivation.",
-        "risk_awareness": "Notez deux signaux précoces à surveiller cette semaine.",
-        "performance": "Fixez un plancher de récupération avant d’augmenter la charge."
+        "lifestyle": "Placez les blocs lumière du matin et marche dans le calendrier — ne les laissez pas à la seule motivation.",
+        "risk_awareness": "Écrivez les deux signaux précoces que vous noterez chaque soir cette semaine.",
+        "performance": "Fixez un plancher de récupération (heures au lit + mouvement facile) avant d’augmenter la charge."
       }
     },
-    "healthGuidePrompt": "En utilisant mon contexte personnel ({{blurb}} ; préparation {{score}} %), aide-moi à planifier la semaine prochaine autour de {{service}}. Ma question : {{question}}. Garde des conseils éducatifs et pratiques.",
+    "healthGuidePrompt": "En utilisant mon contexte personnel ({{blurb}} ; préparation {{score}} %), aide-moi à planifier une semaine douce autour de {{service}}. Ma question : {{question}}. Garde l’orientation éducative, pratique et facile à suivre — avec horaires et durées concrètes quand c’est utile.",
     "healthGuidePromptGeneral": "bien-être global",
     "healthGuidePromptDefaultQuestion": "Que dois-je prioriser en premier ?",
     "secondOpinion": {
       "subjectGeneral": "votre bien-être global",
-      "a": "Perspective A sur {{subject}} : priorisez {{priority}} avec vos signaux actuels ({{blurb}}). Gardez des changements assez petits pour les répéter chaque jour.",
-      "b": "Perspective B sur {{subject}} : mettez l’accent sur {{focus}} avec un ton {{tone}}. Associez effort et récupération, puis révisez après une semaine."
-    },
-    "copyright": "© {{year}} BioMath Core. Tous droits réservés."
+      "a": "Priorisez {{priority}} à partir de vos signaux actuels ({{blurb}}). Ne changez que ce que vous pouvez répéter calmement chaque jour pendant une semaine entière.",
+      "b": "Mettez l’accent sur {{focus}} avec un ton {{tone}}. Associez chaque bloc d’effort à de la récupération, puis revoyez après sept jours."
+    }
   }
 }

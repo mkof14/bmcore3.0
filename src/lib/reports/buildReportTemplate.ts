@@ -104,7 +104,6 @@ function buildSummary(
       questionnaire: context.completeness.questionnairePercent,
     }),
     tone,
-    t('reportTemplate.summary.educational'),
   ].join(' ');
 }
 
@@ -118,8 +117,7 @@ function buildAnalysis(
   const parts: string[] = [];
   parts.push(t(`reportTemplate.tone.${settings.tone_style}.analysisLead`));
   parts.push(
-    t('reportTemplate.analysis.context', {
-      blurb: context.contextBlurb,
+    t('reportTemplate.analysis.observation', {
       score: context.completeness.score,
     }),
   );
@@ -153,7 +151,6 @@ function buildAnalysis(
     parts.push(t('reportTemplate.analysis.standardClose'));
   }
 
-  parts.push(t('reportTemplate.analysis.disclaimer'));
   return parts.join('\n\n');
 }
 
@@ -203,25 +200,36 @@ function buildRecommendations(
   serviceName: string | null | undefined,
   t: Translate,
 ): ReportRecommendation[] {
+  const priority = settings.interpretation_priority;
+  const focus = settings.insight_focus;
+
   const recs: ReportRecommendation[] = [
     {
-      title: t(`reportTemplate.rec.${settings.interpretation_priority}.title`),
-      description: t(`reportTemplate.rec.${settings.interpretation_priority}.body`),
+      title: t(`reportTemplate.rec.${priority}.title`),
+      description: t(`reportTemplate.rec.${priority}.body`),
       priority: 'high',
     },
     {
-      title: t(`reportTemplate.rec.${settings.insight_focus}.title`),
-      description: t(`reportTemplate.rec.${settings.insight_focus}.body`),
+      title: t(`reportTemplate.rec.${focus}.title`),
+      description: t(`reportTemplate.rec.${focus}.body`),
       priority: 'medium',
     },
     {
+      title: t(`reportTemplate.rec.combo.${priority}.${focus}.title`),
+      description: t(`reportTemplate.rec.combo.${priority}.${focus}.body`),
+      priority: 'medium',
+    },
+  ];
+
+  if (context.completeness.questionnairePercent < 70) {
+    recs.push({
       title: t('reportTemplate.rec.questionnaire.title'),
       description: t('reportTemplate.rec.questionnaire.body', {
         percent: context.completeness.questionnairePercent,
       }),
-      priority: context.completeness.questionnairePercent < 70 ? 'high' : 'low',
-    },
-  ];
+      priority: 'high',
+    });
+  }
 
   if (serviceName) {
     recs.push({

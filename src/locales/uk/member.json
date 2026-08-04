@@ -348,7 +348,7 @@
       "generateBlockedCta": "Перейти до опитувальників",
       "viewTitle": "Звіт",
       "downloadTxt": "Завантажити TXT",
-      "printPdf": "Друк / PDF",
+      "printPdf": "Завантажити PDF",
       "share": "Посилання для доступу",
       "shareSuccess": "Посилання скопійовано",
       "shareFailed": "Не вдалося створити посилання",
@@ -360,7 +360,14 @@
       "metricQuestionnaire": "Опитувальник",
       "metricQuestionnaireNote": "Заповнення активних розділів",
       "metricLinkage": "Звʼязок",
-      "metricProfileNote": "Повнота профілю {{percent}}%"
+      "metricProfileNote": "Повнота профілю {{percent}}%",
+      "copy": "Копіювати",
+      "copySuccess": "Звіт скопійовано",
+      "copyFailed": "Не вдалося скопіювати звіт",
+      "shareContent": "Поділитися",
+      "shareContentSuccess": "Звіт скопійовано — можна поділитися",
+      "shareContentFailed": "Не вдалося поділитися звітом",
+      "downloadPdf": "Завантажити PDF"
     },
     "signalHub": {
       "title": "Хаб сигналів",

@@ -348,7 +348,7 @@
       "generateBlockedCta": "Ir a cuestionarios",
       "viewTitle": "Informe",
       "downloadTxt": "Descargar TXT",
-      "printPdf": "Imprimir / PDF",
+      "printPdf": "Descargar PDF",
       "share": "Enlace para compartir",
       "shareSuccess": "Enlace copiado",
       "shareFailed": "No se pudo crear el enlace",
@@ -360,7 +360,14 @@
       "metricQuestionnaire": "Cuestionario",
       "metricQuestionnaireNote": "Completado en las secciones activas",
       "metricLinkage": "Vinculación",
-      "metricProfileNote": "Completitud del perfil {{percent}}%"
+      "metricProfileNote": "Completitud del perfil {{percent}}%",
+      "copy": "Copiar",
+      "copySuccess": "Informe copiado",
+      "copyFailed": "No se pudo copiar el informe",
+      "shareContent": "Compartir",
+      "shareContentSuccess": "Informe copiado — listo para compartir",
+      "shareContentFailed": "No se pudo compartir el informe",
+      "downloadPdf": "Descargar PDF"
     },
     "signalHub": {
       "title": "Centro de señales",

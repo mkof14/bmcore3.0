@@ -348,7 +348,7 @@
       "generateBlockedCta": "الانتقال إلى الاستبيانات",
       "viewTitle": "التقرير",
       "downloadTxt": "تنزيل TXT",
-      "printPdf": "طباعة / PDF",
+      "printPdf": "تنزيل PDF",
       "share": "رابط المشاركة",
       "shareSuccess": "تم نسخ رابط المشاركة",
       "shareFailed": "تعذّر إنشاء رابط المشاركة",
@@ -360,7 +360,14 @@
       "metricQuestionnaire": "الاستبيان",
       "metricQuestionnaireNote": "اكتمال الأقسام النشطة",
       "metricLinkage": "الربط",
-      "metricProfileNote": "اكتمال الملف الشخصي {{percent}}%"
+      "metricProfileNote": "اكتمال الملف الشخصي {{percent}}%",
+      "copy": "نسخ",
+      "copySuccess": "تم نسخ التقرير",
+      "copyFailed": "تعذّر نسخ التقرير",
+      "shareContent": "مشاركة",
+      "shareContentSuccess": "تم نسخ التقرير — جاهز للمشاركة",
+      "shareContentFailed": "تعذّرت مشاركة التقرير",
+      "downloadPdf": "تنزيل PDF"
     },
     "signalHub": {
       "title": "مركز الإشارات",

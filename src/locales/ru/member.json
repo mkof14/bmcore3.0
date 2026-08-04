@@ -348,7 +348,7 @@
       "generateBlockedCta": "Перейти к опросникам",
       "viewTitle": "Отчёт",
       "downloadTxt": "Скачать TXT",
-      "printPdf": "Печать / PDF",
+      "printPdf": "Скачать PDF",
       "share": "Ссылка для доступа",
       "shareSuccess": "Ссылка скопирована",
       "shareFailed": "Не удалось создать ссылку",
@@ -360,7 +360,14 @@
       "metricQuestionnaire": "Опросник",
       "metricQuestionnaireNote": "Заполнение активных разделов",
       "metricLinkage": "Связь",
-      "metricProfileNote": "Полнота профиля {{percent}}%"
+      "metricProfileNote": "Полнота профиля {{percent}}%",
+      "copy": "Копировать",
+      "copySuccess": "Отчёт скопирован",
+      "copyFailed": "Не удалось скопировать отчёт",
+      "shareContent": "Поделиться",
+      "shareContentSuccess": "Отчёт скопирован — можно поделиться",
+      "shareContentFailed": "Не удалось поделиться отчётом",
+      "downloadPdf": "Скачать PDF"
     },
     "signalHub": {
       "title": "Хаб сигналов",

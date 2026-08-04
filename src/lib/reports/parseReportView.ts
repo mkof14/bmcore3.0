@@ -102,6 +102,7 @@ function readMetrics(report: HealthReport): ReportViewMetrics {
       extractPercentFromText(haystack, [
         /readiness\s+(\d+)\s*%/i,
         /overall readiness\s+(\d+)\s*%/i,
+        /готовность\s+(\d+)\s*%/i,
       ]),
     ),
     questionnaire: extractNumber(
@@ -110,19 +111,26 @@ function readMetrics(report: HealthReport): ReportViewMetrics {
       extractPercentFromText(haystack, [
         /questionnaire\s+(\d+)\s*%/i,
         /questionnaire\s+(\d+)\s*%\s*complete/i,
+        /опросник(?:\s+заполнен\s+на)?\s+(\d+)\s*%/i,
       ]),
     ),
     profile: extractNumber(
       snapshot?.profilePercent,
       completeness?.profilePercent,
-      extractPercentFromText(haystack, [/profile\s+(\d+)\s*%/i]),
+      extractPercentFromText(haystack, [
+        /profile\s+(\d+)\s*%/i,
+        /профиль\s+(\d+)\s*%/i,
+      ]),
     ),
     linkage:
       (typeof snapshot?.linkageHealth === 'string' && snapshot.linkageHealth) ||
       (typeof completeness?.linkageHealth === 'string' && completeness.linkageHealth) ||
       (/linkage[^\n]*strong/i.test(haystack) ? 'green' : null) ||
       (/linkage[^\n]*partial/i.test(haystack) ? 'yellow' : null) ||
-      (/linkage[^\n]*limited/i.test(haystack) ? 'red' : null),
+      (/linkage[^\n]*limited/i.test(haystack) ? 'red' : null) ||
+      (/связност[^\n]*(хорош|strong)/i.test(haystack) ? 'green' : null) ||
+      (/связност[^\n]*(частич|partial)/i.test(haystack) ? 'yellow' : null) ||
+      (/связност[^\n]*(огранич|limited)/i.test(haystack) ? 'red' : null),
   };
 }
 

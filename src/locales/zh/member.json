@@ -348,7 +348,7 @@
       "generateBlockedCta": "前往问卷",
       "viewTitle": "报告",
       "downloadTxt": "下载 TXT",
-      "printPdf": "打印 / PDF",
+      "printPdf": "下载 PDF",
       "share": "分享链接",
       "shareSuccess": "已复制分享链接",
       "shareFailed": "无法创建分享链接",
@@ -360,7 +360,14 @@
       "metricQuestionnaire": "问卷",
       "metricQuestionnaireNote": "已启用部分的完成度",
       "metricLinkage": "关联",
-      "metricProfileNote": "资料完整度 {{percent}}%"
+      "metricProfileNote": "资料完整度 {{percent}}%",
+      "copy": "复制",
+      "copySuccess": "报告已复制",
+      "copyFailed": "无法复制报告",
+      "shareContent": "分享",
+      "shareContentSuccess": "报告已复制 — 可以分享",
+      "shareContentFailed": "无法分享报告",
+      "downloadPdf": "下载 PDF"
     },
     "signalHub": {
       "title": "信号中心",

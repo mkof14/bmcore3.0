@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Download, Printer, Share2, X } from 'lucide-react';
+import { Copy, Download, FileDown, Share2, X } from 'lucide-react';
 import type { HealthReport } from '../../types/database';
+import { notifyUserError, notifyUserSuccess } from '../../lib/adminNotify';
 import {
+  copyReportText,
   downloadReportTxt,
   formatReportAsText,
   printReport,
+  shareReportContent,
 } from '../../lib/reports';
 import { parseReportView } from '../../lib/reports/parseReportView';
 import '../../styles/report-print.css';
@@ -16,7 +20,7 @@ type Props = {
   sharing?: boolean;
 };
 
-function MetricBar({
+function MetricRing({
   label,
   value,
   note,
@@ -28,22 +32,43 @@ function MetricBar({
   tone?: 'default' | 'ok';
 }) {
   const numeric = Number(String(value).replace('%', ''));
-  const width = Number.isFinite(numeric) ? Math.max(0, Math.min(100, numeric)) : null;
+  const pct = Number.isFinite(numeric) ? Math.max(0, Math.min(100, numeric)) : null;
+  const color = tone === 'ok' ? '#15803d' : '#ea580c';
+  const track = tone === 'ok' ? '#dcfce7' : '#ffedd5';
   return (
     <div className="report-metric">
-      <p className="report-metric-label">{label}</p>
-      <p
-        className="report-metric-value"
-        style={tone === 'ok' ? { color: '#15803d', fontSize: '1.2rem' } : undefined}
-      >
-        {value}
-      </p>
-      {note ? <p className="report-metric-note">{note}</p> : null}
-      {width != null ? (
+      <div className="report-metric-top">
+        {pct != null ? (
+          <div
+            className="report-ring"
+            style={{
+              background: `conic-gradient(${color} ${pct * 3.6}deg, ${track} 0deg)`,
+            }}
+            aria-hidden="true"
+          >
+            <span>{Math.round(pct)}%</span>
+          </div>
+        ) : (
+          <p
+            className="report-metric-value"
+            style={tone === 'ok' ? { color: '#15803d', fontSize: '1.2rem' } : undefined}
+          >
+            {value}
+          </p>
+        )}
+        <div>
+          <p className="report-metric-label">{label}</p>
+          {note ? <p className="report-metric-note">{note}</p> : null}
+          {pct == null ? null : (
+            <p className="report-metric-value report-metric-value-inline">{value}</p>
+          )}
+        </div>
+      </div>
+      {pct != null ? (
         <div className="report-bar" aria-hidden="true">
           <span
             style={{
-              width: `${width}%`,
+              width: `${pct}%`,
               background:
                 tone === 'ok'
                   ? 'linear-gradient(90deg,#4ade80,#15803d)'
@@ -58,6 +83,7 @@ function MetricBar({
 
 export default function ReportViewer({ report, onClose, onShare, sharing }: Props) {
   const { t, i18n } = useTranslation();
+  const [busy, setBusy] = useState<'copy' | 'share' | null>(null);
   const title =
     report.report_title ||
     report.topic ||
@@ -81,14 +107,48 @@ export default function ReportViewer({ report, onClose, onShare, sharing }: Prop
           ? t('reportTemplate.linkage.red')
           : view.metrics.linkage;
 
+  const reportText = () => formatReportAsText(report, t);
+
   const handleDownloadTxt = () => {
-    const text = formatReportAsText(report, t);
+    const text = reportText();
     const safe = String(title)
       .toLowerCase()
       .replace(/[^a-z0-9]+/gi, '-')
       .replace(/^-|-$/g, '')
       .slice(0, 60);
     downloadReportTxt(safe || 'wellness-report', text);
+  };
+
+  const handleCopy = async () => {
+    setBusy('copy');
+    try {
+      const ok = await copyReportText(reportText());
+      if (ok) notifyUserSuccess(t('member.reports.copySuccess'));
+      else notifyUserError(t('member.reports.copyFailed'));
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const handleShare = async () => {
+    setBusy('share');
+    try {
+      if (onShare) {
+        onShare();
+        return;
+      }
+      const result = await shareReportContent({
+        title: String(title),
+        text: reportText(),
+      });
+      if (result === 'shared' || result === 'copied') {
+        notifyUserSuccess(t('member.reports.shareContentSuccess'));
+      } else if (result === 'failed') {
+        notifyUserError(t('member.reports.shareContentFailed'));
+      }
+    } finally {
+      setBusy(null);
+    }
   };
 
   return (
@@ -101,35 +161,38 @@ export default function ReportViewer({ report, onClose, onShare, sharing }: Prop
           <div className="report-viewer-toolbar-actions">
             <button
               type="button"
-              onClick={handleDownloadTxt}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
+              onClick={() => void handleCopy()}
+              disabled={busy === 'copy'}
+              className="report-tool-btn"
             >
+              <Copy className="h-3.5 w-3.5" />
+              {t('member.reports.copy')}
+            </button>
+            <button
+              type="button"
+              onClick={() => void handleShare()}
+              disabled={sharing || busy === 'share'}
+              className="report-tool-btn"
+            >
+              <Share2 className="h-3.5 w-3.5" />
+              {t('member.reports.shareContent')}
+            </button>
+            <button type="button" onClick={handleDownloadTxt} className="report-tool-btn">
               <Download className="h-3.5 w-3.5" />
               {t('member.reports.downloadTxt')}
             </button>
             <button
               type="button"
               onClick={() => printReport()}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
+              className="report-tool-btn"
             >
-              <Printer className="h-3.5 w-3.5" />
-              {t('member.reports.printPdf')}
+              <FileDown className="h-3.5 w-3.5" />
+              {t('member.reports.downloadPdf')}
             </button>
-            {onShare ? (
-              <button
-                type="button"
-                onClick={onShare}
-                disabled={sharing}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50"
-              >
-                <Share2 className="h-3.5 w-3.5" />
-                {t('member.reports.share')}
-              </button>
-            ) : null}
             <button
               type="button"
               onClick={onClose}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-3 py-1.5 text-xs font-medium text-white hover:bg-slate-800"
+              className="report-tool-btn report-tool-btn-primary"
             >
               <X className="h-3.5 w-3.5" />
               {t('member.reports.close')}
@@ -183,21 +246,21 @@ export default function ReportViewer({ report, onClose, onShare, sharing }: Prop
             linkageLabel ? (
               <div className="report-metrics">
                 {view.metrics.readiness != null ? (
-                  <MetricBar
+                  <MetricRing
                     label={t('member.reports.metricReadiness')}
                     value={`${view.metrics.readiness}%`}
                     note={t('member.reports.metricReadinessNote')}
                   />
                 ) : null}
                 {view.metrics.questionnaire != null ? (
-                  <MetricBar
+                  <MetricRing
                     label={t('member.reports.metricQuestionnaire')}
                     value={`${view.metrics.questionnaire}%`}
                     note={t('member.reports.metricQuestionnaireNote')}
                   />
                 ) : null}
                 {linkageLabel || view.metrics.profile != null ? (
-                  <MetricBar
+                  <MetricRing
                     label={t('member.reports.metricLinkage')}
                     value={
                       linkageLabel
@@ -218,21 +281,21 @@ export default function ReportViewer({ report, onClose, onShare, sharing }: Prop
             ) : null}
 
             {view.summary ? (
-              <section>
+              <section className="report-section report-section-summary">
                 <h2>{t('reportTemplate.section.summary')}</h2>
                 <p>{view.summary}</p>
               </section>
             ) : null}
 
             {view.profile ? (
-              <section>
+              <section className="report-section report-section-profile">
                 <h2>{t('reportTemplate.section.profile')}</h2>
                 <p>{view.profile}</p>
               </section>
             ) : null}
 
             {view.insights.length ? (
-              <section>
+              <section className="report-section report-section-insights">
                 <h2>{t('reportTemplate.section.insights')}</h2>
                 <ol className="report-list">
                   {view.insights.map((item, idx) => (
@@ -246,14 +309,14 @@ export default function ReportViewer({ report, onClose, onShare, sharing }: Prop
             ) : null}
 
             {view.analysis ? (
-              <section>
+              <section className="report-section report-section-analysis">
                 <h2>{t('reportTemplate.section.analysis')}</h2>
                 <p>{view.analysis}</p>
               </section>
             ) : null}
 
             {view.focusAreas.length ? (
-              <section>
+              <section className="report-section report-section-focus">
                 <h2>{t('reportTemplate.section.focusAreas')}</h2>
                 <ol className="report-list">
                   {view.focusAreas.map((item, idx) => (
@@ -267,19 +330,22 @@ export default function ReportViewer({ report, onClose, onShare, sharing }: Prop
             ) : null}
 
             {view.recommendations.length ? (
-              <section>
+              <section className="report-section report-section-recs">
                 <h2>{t('reportTemplate.section.recommendations')}</h2>
                 {view.recommendations.map((rec, idx) => (
                   <div className="report-rec" key={`rec-${idx}`}>
-                    <strong>{rec.title}</strong>
-                    {rec.description ? <p>{rec.description}</p> : null}
+                    <span className="report-rec-num">{idx + 1}</span>
+                    <div>
+                      <strong>{rec.title}</strong>
+                      {rec.description ? <p>{rec.description}</p> : null}
+                    </div>
                   </div>
                 ))}
               </section>
             ) : null}
 
             {view.nextSteps.length ? (
-              <section>
+              <section className="report-section report-section-next">
                 <h2>{t('reportTemplate.section.nextSteps')}</h2>
                 <ol className="report-list">
                   {view.nextSteps.map((item, idx) => (
@@ -293,14 +359,14 @@ export default function ReportViewer({ report, onClose, onShare, sharing }: Prop
             ) : null}
 
             {view.healthGuidePrompt ? (
-              <section>
+              <section className="report-section report-section-prompt">
                 <h2>{t('reportTemplate.section.healthGuidePrompt')}</h2>
                 <div className="report-prompt">{view.healthGuidePrompt}</div>
               </section>
             ) : null}
 
             {report.second_opinion_a || report.second_opinion_b ? (
-              <section>
+              <section className="report-section report-section-perspectives">
                 <h2>
                   {t('reportTemplate.section.secondOpinionA')} /{' '}
                   {t('reportTemplate.section.secondOpinionB')}

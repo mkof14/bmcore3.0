@@ -348,7 +348,7 @@
       "generateBlockedCta": "Go to questionnaires",
       "viewTitle": "Report",
       "downloadTxt": "Download TXT",
-      "printPdf": "Print / PDF",
+      "printPdf": "Download PDF",
       "share": "Share link",
       "shareSuccess": "Share link copied",
       "shareFailed": "Could not create share link",
@@ -360,7 +360,14 @@
       "metricQuestionnaire": "Questionnaire",
       "metricQuestionnaireNote": "Completion across active sections",
       "metricLinkage": "Linkage",
-      "metricProfileNote": "Profile completeness {{percent}}%"
+      "metricProfileNote": "Profile completeness {{percent}}%",
+      "copy": "Copy",
+      "copySuccess": "Report copied",
+      "copyFailed": "Could not copy report",
+      "shareContent": "Share",
+      "shareContentSuccess": "Report copied — ready to share",
+      "shareContentFailed": "Could not share report",
+      "downloadPdf": "Download PDF"
     },
     "signalHub": {
       "title": "Signal Hub",

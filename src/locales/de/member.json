@@ -348,7 +348,7 @@
       "generateBlockedCta": "Zu Fragebögen",
       "viewTitle": "Bericht",
       "downloadTxt": "TXT herunterladen",
-      "printPdf": "Drucken / PDF",
+      "printPdf": "PDF herunterladen",
       "share": "Freigabelink",
       "shareSuccess": "Link kopiert",
       "shareFailed": "Link konnte nicht erstellt werden",
@@ -360,7 +360,14 @@
       "metricQuestionnaire": "Fragebogen",
       "metricQuestionnaireNote": "Abschluss aktiver Abschnitte",
       "metricLinkage": "Verknüpfung",
-      "metricProfileNote": "Profilvollständigkeit {{percent}}%"
+      "metricProfileNote": "Profilvollständigkeit {{percent}}%",
+      "copy": "Kopieren",
+      "copySuccess": "Bericht kopiert",
+      "copyFailed": "Bericht konnte nicht kopiert werden",
+      "shareContent": "Teilen",
+      "shareContentSuccess": "Bericht kopiert — bereit zum Teilen",
+      "shareContentFailed": "Bericht konnte nicht geteilt werden",
+      "downloadPdf": "PDF herunterladen"
     },
     "signalHub": {
       "title": "Signal-Hub",

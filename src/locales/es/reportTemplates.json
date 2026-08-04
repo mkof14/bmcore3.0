@@ -1,16 +1,17 @@
 {
   "reportTemplate": {
     "fallbackTitle": "Informe de bienestar",
-    "footer": "Esta es una orientación educativa de bienestar, amable y práctica — no un diagnóstico médico. Si algo le preocupa, hable con un clínico cualificado. Health Guide puede ayudarle a explorar los siguientes pasos con calma.",
+    "footer": "Este informe es una orientación educativa y amable sobre el bienestar — no un diagnóstico médico. Si algo le preocupa, hable con un profesional cualificado. Health Guide está aquí para explorar siguientes pasos suaves.",
+    "copyright": "© {{year}} BioMath Core. Todos los derechos reservados.",
     "meta": {
       "type": "Tipo",
-      "generated": "Generado",
+      "generated": "Creado",
       "id": "ID del informe"
     },
     "typeLabel": {
       "general": "General",
       "thematic": "Temático",
-      "dynamic": "Dinámico",
+      "dynamic": "Progreso",
       "device_enhanced": "Con dispositivos"
     },
     "title": {
@@ -18,14 +19,14 @@
       "thematic": "Su informe temático de bienestar",
       "dynamic": "Su informe de comparación de progreso",
       "device_enhanced": "Su informe de bienestar con dispositivos",
-      "service": "{{service}} — su informe personalizado",
-      "topic": "{{topic}} — su informe personalizado"
+      "service": "{{service}} — su informe personal",
+      "topic": "{{topic}} — su informe personal"
     },
     "section": {
-      "summary": "En pocas palabras",
+      "summary": "En resumen",
       "profile": "Instantánea de su perfil",
       "focusAreas": "Dónde enfocarse con suavidad",
-      "insights": "Cosas que vale la pena notar",
+      "insights": "Lo que vale la pena notar",
       "analysis": "Lo que observamos",
       "recommendations": "Recomendaciones amables",
       "nextSteps": "Próximos pasos sencillos",
@@ -34,159 +35,200 @@
       "secondOpinionB": "Perspectiva B"
     },
     "linkage": {
-      "green": "sólido",
+      "green": "sólida",
       "yellow": "parcial",
-      "red": "limitado"
+      "red": "limitada"
     },
     "summary": {
-      "opening": "Este informe de {{subject}} se elaboró a partir de su contexto personal (preparación {{score}}%, cuestionario {{questionnaire}}%).",
-      "educational": "Es una orientación de bienestar cálida y práctica — no un diagnóstico clínico."
+      "opening": "Este informe {{subject}} se elaboró a partir de su contexto personal (preparación {{score}} %, cuestionario {{questionnaire}} %)."
     },
     "tone": {
       "analytical": {
-        "summaryLead": "La narrativa enfatiza patrones medibles, señales de preparación y equilibrios claros.",
-        "analysisLead": "Vista analítica: organizamos sus señales en observaciones estructuradas y palancas prácticas."
+        "summaryLead": "Abajo: los patrones más claros en sus señales y las decisiones que conviene sopesar esta semana.",
+        "analysisLead": "Ordenamos sus señales en observaciones sencillas y palancas prácticas — sin repetir todo el perfil."
       },
       "supportive": {
-        "summaryLead": "El tono se mantiene calmado, alentador y centrado en hábitos sostenibles día a día.",
-        "analysisLead": "Vista solidaria: destacamos lo que ya funciona y sugerimos ajustes suaves donde ayuden."
+        "summaryLead": "El tono se mantiene calmado y realista — hábitos pequeños que se pueden sostener día a día.",
+        "analysisLead": "Destacamos lo que ya ayuda y nombramos uno o dos ajustes suaves para esta semana."
       },
       "coaching": {
-        "summaryLead": "La narrativa está orientada a la acción, con hábitos claros y señales de responsabilidad.",
-        "analysisLead": "Vista de coaching: traducimos su contexto en bloques de práctica concretos para esta semana."
+        "summaryLead": "Tono orientado a la acción: hábitos claros y responsabilidad amable para los próximos siete días.",
+        "analysisLead": "Convertimos su contexto en bloques de práctica para esta semana — con horarios, duraciones y señales."
       }
     },
     "toneShort": {
-      "analytical": "analítico",
+      "analytical": "claro",
       "supportive": "de apoyo",
       "coaching": "de coaching"
     },
     "profile": {
       "memberFallback": "Miembro",
-      "tierNone": "sin definir",
-      "intro": "{{name}}: cuestionario {{questionnaire}}% completo · preparación general {{score}}%.",
-      "signals": "Señales del perfil: {{blurb}}",
-      "activeSections": "Áreas más activas del cuestionario: {{sections}}.",
-      "noSections": "Aún no hay secciones del cuestionario con respuestas sustanciales.",
+      "tierNone": "no indicado",
+      "intro": "{{name}} — cuestionario al {{questionnaire}} % · preparación general {{score}} %.",
+      "signals": "Lo que muestra su perfil: {{blurb}}",
+      "activeSections": "Áreas del cuestionario con más detalle: {{sections}}.",
+      "noSections": "Las secciones del cuestionario aún necesitan más respuestas para una imagen más completa.",
       "assets": "Dispositivos conectados: {{devices}}. Documentos de salud: {{files}}. Plan: {{tier}}.",
-      "linkage": "La vinculación del contexto personal es {{health}}."
+      "linkage": "Qué tan bien encaja su contexto personal: {{health}}."
     },
     "focus": {
-      "lifestyle": "Estabilice rutinas diarias que apoyen energía, recuperación y ánimo.",
-      "risk_awareness": "Observe señales tempranas que puedan elevar el riesgo a largo plazo y actúe de forma preventiva.",
-      "performance": "Proteja la capacidad de concentración, entrenamiento y recuperación evitando la sobrecarga.",
-      "fromSection": "Profundice claridad en {{section}} según el progreso de su cuestionario.",
+      "lifestyle": "Ritmos diarios estables que apoyan la energía, la recuperación y el ánimo.",
+      "risk_awareness": "Note las señales tempranas a tiempo y responda con hábitos preventivos amables.",
+      "performance": "Proteja la energía para el foco y el entrenamiento, dejando espacio para recuperarse.",
+      "fromSection": "Añada un poco más de claridad en {{section}} según el progreso del cuestionario.",
       "fromService": "Mantenga {{service}} como foco principal de este ciclo de informe.",
-      "devices": "Use tendencias de sus {{count}} dispositivo(s) vinculados para validar cómo aterrizan los hábitos día a día.",
-      "consistency": "Prefiera hábitos pequeños y repetibles a esfuerzos intensos breves."
+      "devices": "Use las tendencias de sus {{count}} dispositivo(s) vinculado(s) como feedback suave sobre hábitos diarios.",
+      "consistency": "Prefiera hábitos pequeños y repetibles a rachas intensas y cortas."
     },
     "focusShort": {
       "lifestyle": "estilo de vida",
-      "risk_awareness": "conciencia de riesgo",
+      "risk_awareness": "señales tempranas",
       "performance": "rendimiento"
     },
     "focusDetail": {
-      "lifestyle": "Enfoque — estilo de vida: horario de sueño, movimiento breve, ritmo de comidas y hábitos de recuperación del estrés.",
-      "risk_awareness": "Enfoque — conciencia de riesgo: patrones de alerta temprana, hábitos de prevención y cuándo consultar a un clínico.",
-      "performance": "Enfoque — rendimiento: capacidad, deuda de recuperación e intensidad sostenible."
+      "lifestyle": "Palancas de estilo de vida en este ciclo: horario de sueño, caminata diaria, ritmo de comidas y un breve cierre tras el estrés.",
+      "risk_awareness": "Palancas de señales tempranas en este ciclo: un chequeo diario simple, prevención y un umbral claro para consultar a un clínico.",
+      "performance": "Palancas de rendimiento en este ciclo: proteger la capacidad, nombrar la necesidad de recuperación y mantener un ritmo semanal sostenible."
     },
     "priority": {
-      "preventive_first": "Prioridad — prevención primero: reduzca fricciones que puedan acumularse en contratiempos.",
-      "physiological_first": "Prioridad — fisiología primero: proteja sueño, recuperación y regulación básica antes de optimizar.",
-      "behavioral_first": "Prioridad — comportamiento primero: cambie los bucles señal–rutina–recompensa que dan forma a los resultados diarios."
+      "preventive_first": "Prioridad esta semana — prevención: quite una fuente de sobrecarga antes de que se convierta en un contratiempo.",
+      "physiological_first": "Prioridad esta semana — bases del cuerpo: proteja sueño y recuperación antes de subir intensidad o añadir metas.",
+      "behavioral_first": "Prioridad esta semana — hábitos: reforme con suavidad un bucle señal–rutina–recompensa."
     },
     "priorityShort": {
       "preventive_first": "prevención",
-      "physiological_first": "fisiología",
-      "behavioral_first": "comportamiento"
+      "physiological_first": "bases del cuerpo",
+      "behavioral_first": "hábitos"
     },
     "analysis": {
-      "context": "Instantánea del contexto personal: {{blurb}} (preparación {{score}}%).",
-      "service": "Foco del servicio: {{service}}. Las recomendaciones siguientes son educativas y alineadas al servicio.",
+      "observation": "Con preparación al {{score}} %, los pasos de mayor impacto esta semana están en áreas ya visibles en su perfil — no en más metas.",
+      "service": "Foco del servicio: {{service}}. Las ideas siguientes siguen siendo educativas y alineadas con este servicio.",
       "question": "Su pregunta para este informe: {{question}}",
-      "devices": "Capa de dispositivos: {{count}} fuente(s) ({{brands}}). Trate las señales como tendencias, no como diagnósticos.",
-      "extended": "Detalle ampliado: compare lo destacado del cuestionario con la actividad reciente del servicio y la cobertura de dispositivos para detectar brechas entre intención y práctica diaria.",
-      "sectionsDeep": "La profundidad del cuestionario es mayor actualmente en: {{sections}}.",
-      "shortClose": "Formato breve: mantenga un hábito principal, una práctica de recuperación y una consulta con Health Guide esta semana.",
-      "standardClose": "Formato estándar: combine un área de enfoque con un hábito semanal medible y revise el progreso en la Zona de miembros.",
-      "disclaimer": "Este informe no diagnostica, trata ni sustituye la atención médica profesional."
+      "devices": "Capa de dispositivos: {{count}} fuente(s) ({{brands}}). Trate las señales del wearable como tendencias, no diagnósticos.",
+      "extended": "Mirada más profunda: comparamos lo destacado del cuestionario con la actividad reciente y la cobertura de dispositivos para ver brechas entre intención y práctica diaria.",
+      "sectionsDeep": "Su cuestionario tiene actualmente más detalle en: {{sections}}.",
+      "shortClose": "Formato breve: fije un hábito con hora, una práctica de recuperación y una revisión con Health Guide esta semana.",
+      "standardClose": "Esta semana: elija una recomendación numerada abajo, póngala en el calendario y revise el progreso en la zona de miembros a los siete días."
     },
     "insight": {
-      "completeness": "Preparación {{score}}% (cuestionario {{questionnaire}}% · perfil {{profile}}%).",
-      "linkage": "Salud de vinculación: {{health}}.",
+      "completeness": "Preparación {{score}} % (cuestionario {{questionnaire}} % · perfil {{profile}} %).",
+      "linkage": "Ajuste del contexto: {{health}}.",
       "focus": {
-        "lifestyle": "Las señales de estilo de vida deben guiar los próximos experimentos de hábitos.",
-        "risk_awareness": "La prevención y la conciencia de señales tempranas deben guiar los próximos experimentos de hábitos.",
-        "performance": "El equilibrio entre capacidad y recuperación debe guiar los próximos experimentos de hábitos."
+        "lifestyle": "La duración del sueño, la luz diurna y el movimiento diario parecen las palancas de estilo de vida más rápidas para probar.",
+        "risk_awareness": "Un breve registro diario de síntomas/estrés facilitará detectar cambios tempranos antes de que se acumulen.",
+        "performance": "El siguiente avance probablemente viene de proteger la recuperación con el mismo cuidado que el esfuerzo — no de añadir más carga aún."
       },
-      "service": "Alineación del servicio: {{service}}.",
-      "question": "Pregunta del informe capturada: {{question}}",
+      "service": "Alineado con: {{service}}.",
+      "question": "Su pregunta para este informe: {{question}}",
       "devices": "Cobertura de dispositivos presente ({{count}}).",
-      "noDevices": "Aún no hay dispositivos vinculados: el cuestionario y el perfil aportan más peso al contexto.",
-      "topSection": "Área de señal más fuerte del cuestionario: {{section}}."
+      "noDevices": "Aún no hay dispositivos vinculados — por ahora el cuestionario y el perfil llevan más del relato.",
+      "topSection": "Área de señales del cuestionario más fuerte ahora: {{section}}."
     },
     "rec": {
       "preventive_first": {
-        "title": "Bloque de prevención",
-        "body": "Elija un hábito de baja fricción que reduzca el riesgo de sobrecarga esta semana (relajación más temprana, ancla de hidratación o un paseo diario breve)."
+        "title": "Proteja 30 minutos de cierre",
+        "body": "Inicie un cierre fijo 30 minutos antes de su hora objetivo de sueño: luces tenues, pantallas apagadas y 5 minutos de respiración lenta o estiramientos. Mantenga la misma hora de inicio durante 7 noches."
       },
       "physiological_first": {
-        "title": "Bloque fisiológico",
-        "body": "Proteja una ventana de sueño constante y añada una práctica de recuperación antes de aumentar la intensidad o nuevos objetivos."
+        "title": "Fije una ventana de sueño de 7–8 horas",
+        "body": "Elija una ventana de sueño de 7–8 horas (por ejemplo 23:00–07:00) y protéjala las próximas 7 noches antes de subir la carga de entrenamiento o añadir metas nuevas."
       },
       "behavioral_first": {
-        "title": "Bloque de comportamiento",
-        "body": "Defina una señal clara y una rutina inicial de 10 minutos para que el hábito resista los días ocupados."
+        "title": "Acoplar un hábito de arranque de 10 minutos",
+        "body": "Elija una señal diaria (después del café de la mañana o justo después del almuerzo) y haga un arranque de 10 minutos — caminata rápida, movilidad o diario — cada día esta semana."
       },
       "lifestyle": {
-        "title": "Ritmo de estilo de vida",
-        "body": "Alinee horarios de comida, luz diurna y movimiento con las horas en que se siente más estable."
+        "title": "Luz matutina + caminata de 20 minutos",
+        "body": "Obtenga 10–15 minutos de luz exterior en la primera hora tras despertar y añada una caminata enérgica de 20 minutos al menos 5 días esta semana."
       },
       "risk_awareness": {
-        "title": "Revisión consciente del riesgo",
-        "body": "Anote síntomas nuevos o que empeoren y consúltelos con un clínico si persisten; use Health Guide solo para enmarcar educativamente."
+        "title": "Registre dos señales tempranas cada noche",
+        "body": "Cada noche anote horas de sueño y pico de estrés (1–10). Si alguno empeora 3 días seguidos, programe una consulta clínica; use Health Guide solo como marco educativo."
       },
       "performance": {
-        "title": "Equilibrio de rendimiento",
-        "body": "Combine bloques de entrenamiento o trabajo profundo con bloques iguales de recuperación para que el progreso sea sostenible."
+        "title": "Empareje esfuerzo con recuperación igual",
+        "body": "Tras cada bloque duro de entrenamiento o trabajo profundo, programe un bloque de recuperación de igual duración (caminata suave, silencio o apagar luces antes). Máximo 4 días duros esta semana."
+      },
+      "combo": {
+        "preventive_first": {
+          "lifestyle": {
+            "title": "Pantallas apagadas a hora fija",
+            "body": "Fije un corte de teléfono/portátil 45 minutos antes de dormir (misma hora cada noche). Sustituya ese bloque por lectura o estiramientos suaves durante 7 días."
+          },
+          "risk_awareness": {
+            "title": "Regla de alerta temprana de tres días",
+            "body": "Si el sueño baja 60+ minutos de lo habitual o el estrés se mantiene ≥7/10 durante 3 días seguidos, reserve una consulta clínica y pause nuevos experimentos."
+          },
+          "performance": {
+            "title": "Descargue antes de empujar",
+            "body": "Mantenga la intensidad en mantenimiento 5 días: sin récords personales y termine cada sesión con 10 minutos de movimiento suave o respiración."
+          }
+        },
+        "physiological_first": {
+          "lifestyle": {
+            "title": "Misma hora de despertar ±15 minutos",
+            "body": "Despiértese en una ventana de 15 minutos cada día esta semana (incluido un día de fin de semana). Primero agua y luz diurna — después cafeína."
+          },
+          "risk_awareness": {
+            "title": "Punto de control en días de descanso",
+            "body": "Programe dos días más ligeros. Esos días, anote 2 minutos el ánimo en reposo y cualquier síntoma nuevo — acuda a un clínico si algo nuevo persiste."
+          },
+          "performance": {
+            "title": "Suelo de recuperación antes de la carga",
+            "body": "Exija al menos 7 horas en cama y una caminata suave de 15 minutos el día anterior a cualquier sesión dura. Si falta alguno, omita la sesión."
+          }
+        },
+        "behavioral_first": {
+          "lifestyle": {
+            "title": "Pila de hábitos: comida → reinicio de 2 minutos",
+            "body": "Después del almuerzo, tome 2 minutos de respiración nasal o un paseo por el pasillo antes de sentarse de nuevo. Repítalo después de la cena durante 7 días."
+          },
+          "risk_awareness": {
+            "title": "Señal para un escaneo corporal de 60 segundos",
+            "body": "Con una alarma fija por la noche, haga un chequeo de 60 segundos: dolor, respiración, ánimo. Escriba una línea. Lleve el registro a un clínico si aparece un patrón nuevo."
+          },
+          "performance": {
+            "title": "Calendario del par esfuerzo–recuperación",
+            "body": "Bloquee en el calendario el foco/entrenamiento y el hueco de recuperación correspondiente para los próximos 5 días laborables, para que la recuperación no sea opcional."
+          }
+        }
       },
       "questionnaire": {
-        "title": "Mantenga el cuestionario actualizado",
-        "body": "Su cuestionario está completo al {{percent}}%. Actualice las secciones cuando cambie su estado para que los próximos informes sean precisos."
+        "title": "Complete los huecos del cuestionario",
+        "body": "Su cuestionario está al {{percent}} %. Dedique 10–15 minutos a las secciones más delgadas para que el próximo informe pueda nombrar acciones más afiladas y personales."
       },
       "service": {
-        "title": "Continúe con {{service}}",
-        "body": "Vuelva al espacio de {{service}} tras probar una recomendación y registre qué cambió."
+        "title": "Vuelva a {{service}} tras una prueba",
+        "body": "Practique una recomendación durante 7 días, luego reabra {{service}} y anote en una frase corta qué se sintió más fácil."
       },
       "devices": {
-        "title": "Capa opcional de dispositivos",
-        "body": "Vincule un wearable cuando esté listo para que las tendencias complementen el contexto del cuestionario."
+        "title": "Opcional: vincular un wearable",
+        "body": "Cuando esté listo, conecte un wearable para que las tendencias de sueño y movimiento acompañen al cuestionario — aún como tendencias, no diagnósticos."
       },
       "devicesActive": {
-        "title": "Revise tendencias de dispositivos",
-        "body": "Revise la última semana de sus {{count}} dispositivo(s) y anote un patrón que coincida con cómo se sintió."
+        "title": "Revise 7 días de tendencias del dispositivo",
+        "body": "Abra la última semana de sus {{count}} dispositivo(s) vinculado(s). Señale un patrón (sueño, pasos o pulso en reposo) que coincida con cómo se sintió y conserve esa métrica junto al hábito elegido."
       }
     },
     "next": {
-      "review": "Lea las áreas de enfoque y elija una recomendación para practicar durante siete días.",
-      "healthGuide": "Abra Health Guide con la indicación sugerida para explorar equilibrios.",
-      "completeQuestionnaires": "Complete más secciones del cuestionario para que el próximo informe se personalice más.",
-      "refreshQuestionnaires": "Actualice respuestas desactualizadas tras cambios importantes de estilo de vida.",
+      "review": "Elija la recomendación n.º 1 o n.º 2 y ponga su hora en el calendario para los próximos 7 días.",
+      "healthGuide": "Abra Health Guide con la indicación de abajo si quiere adaptar el plan a su semana.",
+      "completeQuestionnaires": "Complete 1–2 secciones más del cuestionario (unos 10 minutos) antes del próximo informe.",
+      "refreshQuestionnaires": "Actualice respuestas desactualizadas tras un cambio significativo de estilo de vida.",
       "connectDevice": "Opcionalmente conecte un dispositivo para enriquecer el contexto de tendencias.",
       "focus": {
-        "lifestyle": "Programe hábitos de estilo de vida en el calendario en lugar de depender solo de la motivación.",
-        "risk_awareness": "Anote dos señales tempranas que observará esta semana.",
-        "performance": "Defina un piso de recuperación antes de aumentar la carga."
+        "lifestyle": "Ponga en el calendario los bloques de luz matutina y caminata — no los deje solo a la motivación.",
+        "risk_awareness": "Anote las dos señales tempranas que puntuará cada noche esta semana.",
+        "performance": "Fije un suelo de recuperación (horas en cama + movimiento suave) antes de subir la carga."
       }
     },
-    "healthGuidePrompt": "Usando mi contexto personal ({{blurb}}; preparación {{score}}%), ayúdame a planificar la próxima semana en torno a {{service}}. Mi pregunta: {{question}}. Mantén la orientación educativa y práctica.",
+    "healthGuidePrompt": "Usando mi contexto personal ({{blurb}}; preparación {{score}} %), ayúdame a planificar una próxima semana amable en torno a {{service}}. Mi pregunta: {{question}}. Mantén la orientación educativa, práctica y fácil de seguir — con horarios y duraciones concretas cuando ayude.",
     "healthGuidePromptGeneral": "bienestar general",
-    "healthGuidePromptDefaultQuestion": "¿Qué debo priorizar primero?",
+    "healthGuidePromptDefaultQuestion": "¿Qué debería priorizar primero?",
     "secondOpinion": {
       "subjectGeneral": "su bienestar general",
-      "a": "Perspectiva A sobre {{subject}}: priorice {{priority}} usando sus señales actuales ({{blurb}}). Mantenga cambios lo bastante pequeños para repetirlos a diario.",
-      "b": "Perspectiva B sobre {{subject}}: enfatice {{focus}} con un tono {{tone}}. Combine esfuerzo con recuperación y revise tras una semana."
-    },
-    "copyright": "© {{year}} BioMath Core. Todos los derechos reservados."
+      "a": "Priorice {{priority}} usando sus señales actuales ({{blurb}}). Cambie solo lo que pueda repetir con calma cada día durante una semana completa.",
+      "b": "Enfatice {{focus}} con un tono {{tone}}. Empareje cada bloque de esfuerzo con recuperación y revise tras siete días."
+    }
   }
 }

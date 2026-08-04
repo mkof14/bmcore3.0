@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Персональный отчёт о самочувствии — Алекс Ривера | BioMath Core</title>
-  <meta name="description" content="Персональный отчёт о самочувствии для Алекс Риверы — сон и восстановление, готовность и мягкие следующие шаги от BioMath Core." />
+  <meta name="description" content="Персональный отчёт о самочувствии для Алекс Риверы — сон и восстановление, готовность и конкретные следующие шаги от BioMath Core." />
   <link rel="icon" href="/favicon.ico" />
   <style>
     :root {
@@ -26,7 +26,6 @@
       --font: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
       --sans: "Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
-
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -34,360 +33,228 @@
       color: var(--ink-soft);
       background:
         radial-gradient(1100px 460px at 8% -8%, rgba(251, 146, 60, 0.12), transparent 55%),
-        radial-gradient(900px 420px at 100% 0%, rgba(148, 126, 104, 0.08), transparent 52%),
+        radial-gradient(900px 420px at 100% 0%, rgba(45, 212, 191, 0.08), transparent 52%),
         linear-gradient(180deg, #f3efe8 0%, var(--canvas) 30%, #efeae3 100%);
       font-family: var(--sans);
       font-size: 1.04rem;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
-
-    .page {
-      width: min(920px, calc(100% - 2rem));
-      margin: 2rem auto 3.5rem;
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.1rem;
+      background: rgba(255, 252, 248, 0.94);
+      border-bottom: 1px solid #ebe6de;
+      backdrop-filter: blur(10px);
     }
-
+    .toolbar-title {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .toolbar-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .tool-btn {
+      appearance: none;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+      color: #334155;
+      border-radius: 10px;
+      padding: 0.45rem 0.8rem;
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 650;
+      cursor: pointer;
+    }
+    .tool-btn:hover { background: #f8fafc; }
+    .tool-btn:disabled { opacity: 0.55; cursor: wait; }
+    .tool-status {
+      min-height: 1.1rem;
+      font-size: 0.78rem;
+      color: #0f766e;
+      padding: 0 1.1rem 0.55rem;
+      background: rgba(255, 252, 248, 0.94);
+    }
+    .page { width: min(920px, calc(100% - 2rem)); margin: 1.35rem auto 3.5rem; }
     .cover {
       background:
-        radial-gradient(720px 220px at 90% 0%, rgba(251, 146, 60, 0.18), transparent 58%),
+        radial-gradient(720px 220px at 90% 0%, rgba(251, 146, 60, 0.2), transparent 58%),
+        radial-gradient(520px 180px at 0% 100%, rgba(45, 212, 191, 0.12), transparent 55%),
         linear-gradient(160deg, #fffaf5 0%, #f4efe8 55%, #ebe6de 100%);
       color: var(--ink-soft);
       border-radius: calc(var(--radius) + 4px);
-      padding: 2rem 2rem 1.85rem;
+      padding: 2.1rem 2rem 1.9rem;
       box-shadow: var(--shadow);
       border: 1px solid #e7e0d6;
       position: relative;
       overflow: hidden;
     }
     .cover-top {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem 1.5rem;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      z-index: 1;
+      display: flex; flex-wrap: wrap; gap: 1rem 1.5rem;
+      align-items: center; justify-content: space-between; position: relative; z-index: 1;
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      min-width: 0;
-    }
-    .brand img {
-      height: 42px;
-      width: auto;
-      display: block;
-    }
+    .brand { display: flex; align-items: center; gap: 1rem; min-width: 0; }
+    .brand img { height: 58px; width: auto; display: block; }
     .brand-text strong {
-      display: block;
-      font-size: 1.08rem;
-      color: var(--ink);
-      font-weight: 650;
-      letter-spacing: 0.01em;
+      display: block; font-size: 1.28rem; color: var(--ink); font-weight: 700; letter-spacing: -0.01em;
     }
-    .brand-text span {
-      display: block;
-      font-size: 0.84rem;
-      color: var(--muted);
-      margin-top: 0.15rem;
-    }
-    .cover-meta {
-      text-align: right;
-      font-size: 0.84rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-    .cover-meta strong {
-      color: #475569;
-      font-weight: 600;
-    }
+    .brand-text span { display: block; font-size: 0.92rem; color: var(--muted); margin-top: 0.2rem; }
+    .cover-meta { text-align: right; font-size: 0.84rem; color: var(--muted); line-height: 1.5; }
+    .cover-meta strong { color: #475569; font-weight: 600; }
     .cover h1 {
-      position: relative;
-      z-index: 1;
-      margin: 1.55rem 0 0.5rem;
-      font-family: var(--font);
-      font-size: clamp(1.75rem, 3.4vw, 2.3rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.18;
-      max-width: 18ch;
-      color: var(--ink);
+      position: relative; z-index: 1; margin: 1.55rem 0 0.55rem;
+      font-family: var(--font); font-size: clamp(1.95rem, 4vw, 2.55rem);
+      font-weight: 700; letter-spacing: -0.03em; line-height: 1.12; max-width: 18ch; color: var(--ink);
     }
     .cover-lead {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      max-width: 56ch;
-      color: #475569;
-      font-size: 1.05rem;
-      line-height: 1.6;
+      position: relative; z-index: 1; margin: 0; max-width: 56ch; color: #475569;
+      font-size: 1.08rem; line-height: 1.6;
     }
     .cover-chips {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.35rem;
+      position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.35rem;
     }
     .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.35rem 0.8rem;
-      border-radius: 999px;
-      border: 1px solid #f3d5b5;
-      background: rgba(255, 247, 237, 0.85);
-      color: #475569;
-      font-size: 0.78rem;
-      letter-spacing: 0.01em;
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.38rem 0.85rem; border-radius: 999px; border: 1px solid #f3d5b5;
+      background: rgba(255, 247, 237, 0.85); color: #475569; font-size: 0.78rem;
     }
-    .chip em {
-      font-style: normal;
-      color: var(--accent);
-      font-weight: 650;
-    }
-
+    .chip em { font-style: normal; color: var(--accent); font-weight: 650; }
     .metrics {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.95rem;
-      margin: 1.25rem 0 1.45rem;
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.95rem; margin: 1.25rem 0 1.45rem;
     }
     .metric {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.1rem 1.1rem 1.15rem;
-      box-shadow: var(--shadow);
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1.1rem 1.1rem 1.15rem; box-shadow: var(--shadow);
+    }
+    .metric-top { display: flex; gap: 0.85rem; align-items: center; margin-bottom: 0.7rem; }
+    .ring {
+      width: 3.5rem; height: 3.5rem; border-radius: 999px; display: grid; place-items: center; flex-shrink: 0;
+    }
+    .ring > span {
+      width: 2.5rem; height: 2.5rem; border-radius: inherit; background: var(--paper);
+      display: grid; place-items: center; font-size: 0.74rem; font-weight: 700; color: var(--ink);
     }
     .metric-label {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      margin: 0 0 0.35rem;
-      font-weight: 700;
+      font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--muted); margin: 0 0 0.2rem; font-weight: 700;
     }
     .metric-value {
-      font-family: var(--font);
-      font-size: 1.75rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin: 0;
-      letter-spacing: -0.02em;
+      font-family: var(--font); font-size: 1.35rem; font-weight: 600; color: var(--ink); margin: 0;
     }
-    .metric-note {
-      margin: 0.25rem 0 0.75rem;
-      font-size: 0.84rem;
-      color: var(--muted);
-    }
-    .bar {
-      height: 8px;
-      border-radius: 999px;
-      background: var(--bar-track);
-      overflow: hidden;
-    }
-    .bar > span {
-      display: block;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, #fdba74, var(--bar-fill));
-    }
-    .metric.linkage .metric-value { color: var(--ok); font-size: 1.3rem; padding-top: 0.2rem; }
-
+    .metric-note { margin: 0; font-size: 0.84rem; color: var(--muted); }
+    .bar { height: 8px; border-radius: 999px; background: var(--bar-track); overflow: hidden; }
+    .bar > span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #fdba74, var(--bar-fill)); }
+    .metric.linkage .metric-value { color: var(--ok); }
     .card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.4rem 1.45rem 1.5rem;
-      margin-bottom: 1.05rem;
-      box-shadow: var(--shadow);
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1.4rem 1.45rem 1.5rem; margin-bottom: 1.05rem; box-shadow: var(--shadow);
+      border-left: 4px solid var(--accent);
     }
+    .card.summary { border-left-color: #f97316; background: linear-gradient(180deg, #fffaf5 0%, var(--paper) 48%); }
+    .card.profile { border-left-color: #0d9488; background: linear-gradient(180deg, #f0fdfa 0%, var(--paper) 48%); }
+    .card.insights { border-left-color: #d97706; background: linear-gradient(180deg, #fffbeb 0%, var(--paper) 48%); }
+    .card.analysis { border-left-color: #2563eb; background: linear-gradient(180deg, #eff6ff 0%, var(--paper) 48%); }
+    .card.focus { border-left-color: #059669; background: linear-gradient(180deg, #ecfdf5 0%, var(--paper) 48%); }
+    .card.recs { border-left-color: #ea580c; background: linear-gradient(180deg, #fff7ed 0%, var(--paper) 48%); }
+    .card.next { border-left-color: #7c3aed; background: linear-gradient(180deg, #f5f3ff 0%, var(--paper) 48%); }
+    .card.prompt { border-left-color: #c2410c; background: linear-gradient(180deg, #fff7ed 0%, var(--paper) 48%); }
+    .card.perspectives { border-left-color: #475569; background: linear-gradient(180deg, #f8fafc 0%, var(--paper) 48%); }
     .card h2 {
-      margin: 0 0 0.85rem;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      text-transform: none;
-      color: #c2410c;
-      padding-bottom: 0.55rem;
-      border-bottom: 1px solid var(--accent-line);
+      margin: 0 0 0.85rem; font-size: 1rem; font-weight: 700; letter-spacing: 0.01em;
+      color: #c2410c; padding-bottom: 0.55rem; border-bottom: 1px solid var(--accent-line);
     }
-    .card p {
-      margin: 0 0 0.85rem;
-      color: var(--ink-soft);
-      font-size: 1.02rem;
-    }
+    .card.profile h2 { color: #0f766e; border-bottom-color: #99f6e4; }
+    .card.insights h2 { color: #b45309; border-bottom-color: #fde68a; }
+    .card.analysis h2 { color: #1d4ed8; border-bottom-color: #bfdbfe; }
+    .card.focus h2 { color: #047857; border-bottom-color: #a7f3d0; }
+    .card.recs h2 { color: #c2410c; border-bottom-color: #fed7aa; }
+    .card.next h2 { color: #6d28d9; border-bottom-color: #ddd6fe; }
+    .card.prompt h2 { color: #9a3412; border-bottom-color: #fdba74; }
+    .card.perspectives h2 { color: #334155; border-bottom-color: #cbd5e1; }
+    .card p { margin: 0 0 0.85rem; color: var(--ink-soft); font-size: 1.02rem; }
     .card p:last-child { margin-bottom: 0; }
-    .card .lede {
-      font-family: var(--font);
-      font-size: 1.14rem;
-      color: var(--ink);
-      line-height: 1.55;
-    }
-
+    .card .lede { font-family: var(--font); font-size: 1.14rem; color: var(--ink); line-height: 1.55; }
     .signal-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
-      margin-top: 0.95rem;
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.95rem;
     }
     .signal {
-      background: var(--line-soft);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 0.8rem 0.9rem;
+      background: rgba(255,255,255,0.72); border: 1px solid var(--line); border-radius: 12px; padding: 0.8rem 0.9rem;
     }
     .signal strong {
-      display: block;
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--muted);
-      margin-bottom: 0.25rem;
+      display: block; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--muted); margin-bottom: 0.25rem;
     }
-    .signal span {
-      font-size: 0.96rem;
-      color: var(--ink);
-    }
-
+    .signal span { font-size: 0.96rem; color: var(--ink); }
     ol.clean, ul.clean {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 0.65rem;
+      margin: 0; padding: 0; list-style: none; display: grid; gap: 0.65rem;
     }
     ol.clean li, ul.clean li {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0.75rem;
-      align-items: start;
-      padding: 0.85rem 0.95rem;
-      border-radius: 12px;
-      background: var(--line-soft);
-      border: 1px solid var(--line);
-      color: var(--ink-soft);
-      font-size: 1rem;
+      display: grid; grid-template-columns: auto 1fr; gap: 0.75rem; align-items: start;
+      padding: 0.85rem 0.95rem; border-radius: 12px; background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line); color: var(--ink-soft); font-size: 1rem;
     }
     .num {
-      width: 1.6rem;
-      height: 1.6rem;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 0.78rem;
-      font-weight: 700;
-      border: 1px solid #fed7aa;
-      flex-shrink: 0;
+      width: 1.6rem; height: 1.6rem; border-radius: 999px; display: inline-flex;
+      align-items: center; justify-content: center; background: var(--accent-soft);
+      color: var(--accent); font-size: 0.78rem; font-weight: 700; border: 1px solid #fed7aa; flex-shrink: 0;
     }
-
     .rec {
-      padding: 0.95rem 1.05rem;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, #fffdf9 0%, var(--line-soft) 100%);
-      margin-bottom: 0.75rem;
+      display: grid; grid-template-columns: auto 1fr; gap: 0.85rem;
+      padding: 1rem 1.05rem; border-radius: 14px; border: 1px solid #fed7aa;
+      background: linear-gradient(180deg, #fffdf9 0%, #fff7ed 100%); margin-bottom: 0.75rem;
     }
     .rec:last-child { margin-bottom: 0; }
-    .rec strong {
-      display: block;
-      color: var(--ink);
-      font-size: 1.02rem;
-      margin-bottom: 0.3rem;
+    .rec-num {
+      width: 2rem; height: 2rem; border-radius: 999px; display: inline-flex;
+      align-items: center; justify-content: center; background: var(--accent); color: #fff;
+      font-size: 0.85rem; font-weight: 700;
     }
-    .rec p {
-      margin: 0;
-      font-size: 0.98rem;
-    }
-
+    .rec strong { display: block; color: var(--ink); font-size: 1.05rem; margin-bottom: 0.3rem; }
+    .rec p { margin: 0; font-size: 0.98rem; }
     .prompt {
-      background: var(--accent-soft);
-      color: #475569;
-      border-radius: 14px;
-      padding: 1.1rem 1.2rem;
-      font-size: 0.98rem;
-      line-height: 1.65;
-      border: 1px solid #fed7aa;
+      background: var(--accent-soft); color: #475569; border-radius: 14px;
+      padding: 1.1rem 1.2rem; font-size: 0.98rem; line-height: 1.65; border: 1px solid #fed7aa;
     }
     .prompt-label {
-      display: inline-block;
-      font-size: 0.74rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: #c2410c;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
+      display: inline-block; font-size: 0.74rem; letter-spacing: 0.04em; text-transform: uppercase;
+      color: #c2410c; font-weight: 700; margin-bottom: 0.5rem;
     }
-
-    .perspectives {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.95rem;
-    }
+    .perspectives { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.95rem; }
     .perspective {
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: var(--line-soft);
-      padding: 1.1rem 1.15rem 1.2rem;
+      border-radius: 14px; border: 1px solid #e2e8f0; background: #fff; padding: 1.1rem 1.15rem 1.2rem;
     }
     .perspective h3 {
-      margin: 0 0 0.6rem;
-      font-size: 0.95rem;
-      letter-spacing: 0.01em;
-      text-transform: none;
-      color: #c2410c;
-      font-weight: 700;
+      margin: 0 0 0.6rem; font-size: 0.95rem; color: #334155; font-weight: 700;
     }
-    .perspective p {
-      margin: 0;
-      font-size: 0.98rem;
-      color: var(--ink-soft);
-    }
-
+    .perspective p { margin: 0; font-size: 0.98rem; color: var(--ink-soft); }
     .footer-note {
-      margin-top: 0.5rem;
-      padding: 1.1rem 1.25rem;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background: rgba(255, 253, 249, 0.85);
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.55;
+      margin-top: 0.5rem; padding: 1.1rem 1.25rem; border-radius: var(--radius);
+      border: 1px solid var(--line); background: rgba(255, 253, 249, 0.85);
+      color: var(--muted); font-size: 0.92rem; line-height: 1.55;
     }
     .site-foot {
-      margin-top: 1.35rem;
-      text-align: center;
-      color: #94a3b8;
-      font-size: 0.84rem;
-      line-height: 1.6;
+      margin-top: 1.35rem; text-align: center; color: #94a3b8; font-size: 0.84rem; line-height: 1.6;
     }
-    .site-foot a {
-      color: #64748b;
-      text-decoration: none;
-      border-bottom: 1px solid #ddd4c8;
-    }
-    .copyright {
-      display: block;
-      margin-top: 0.35rem;
-      color: #94a3b8;
-    }
-
+    .site-foot a { color: #64748b; text-decoration: none; border-bottom: 1px solid #ddd4c8; }
+    .copyright { display: block; margin-top: 0.35rem; color: #94a3b8; }
     @media (max-width: 720px) {
       .page { width: min(100% - 1.25rem, 920px); margin-top: 1rem; }
       .cover { padding: 1.45rem 1.25rem 1.4rem; }
       .cover-meta { text-align: left; }
       .metrics, .signal-grid, .perspectives { grid-template-columns: 1fr; }
+      .brand img { height: 48px; }
       .card { padding: 1.15rem 1.15rem 1.25rem; }
     }
-
     @media print {
       body { background: #fff; }
+      .toolbar, .tool-status { display: none !important; }
       .page { width: 100%; margin: 0; }
       .cover, .card, .metric, .perspective { box-shadow: none; break-inside: avoid; }
       .cover { border: 1px solid #ddd4c8; }
@@ -395,11 +262,22 @@
   </style>
 </head>
 <body>
-  <main class="page">
+  <div class="toolbar no-print">
+    <div class="toolbar-title">Персональный отчёт</div>
+    <div class="toolbar-actions">
+      <button type="button" class="tool-btn" id="btn-copy">Копировать</button>
+      <button type="button" class="tool-btn" id="btn-share">Поделиться</button>
+      <button type="button" class="tool-btn" id="btn-txt">Скачать TXT</button>
+      <button type="button" class="tool-btn" id="btn-pdf">Скачать PDF</button>
+    </div>
+  </div>
+  <div class="tool-status" id="tool-status" aria-live="polite"></div>
+
+  <main class="page" id="report-root">
     <header class="cover">
       <div class="cover-top">
         <div class="brand">
-          <img src="/logo-header.png" alt="BioMath Core" width="160" height="42" />
+          <img src="/logo-header.png" alt="BioMath Core" width="220" height="58" />
           <div class="brand-text">
             <strong>BioMath Core</strong>
             <span>Персональный отчёт о самочувствии</span>
@@ -413,7 +291,7 @@
       </div>
       <h1>Алекс Ривера</h1>
       <p class="cover-lead">
-        Мягкие ориентиры вокруг сна и восстановления — спокойно, понятно и с привычками, которые реально удержать.
+        Конкретные ориентиры вокруг сна и восстановления — с временем, минутами и привычками, которые реально удержать.
       </p>
       <div class="cover-chips">
         <span class="chip">Приоритет <em>Сон и восстановление</em></span>
@@ -425,33 +303,48 @@
 
     <section class="metrics" aria-label="Показатели готовности">
       <div class="metric">
-        <p class="metric-label">Готовность</p>
-        <p class="metric-value">81%</p>
-        <p class="metric-note">Общий балл личного контекста</p>
+        <div class="metric-top">
+          <div class="ring" style="background: conic-gradient(#ea580c 291.6deg, #ffedd5 0deg)" aria-hidden="true"><span>81%</span></div>
+          <div>
+            <p class="metric-label">Готовность</p>
+            <p class="metric-value">81%</p>
+            <p class="metric-note">Общий балл личного контекста</p>
+          </div>
+        </div>
         <div class="bar" aria-hidden="true"><span style="width:81%"></span></div>
       </div>
       <div class="metric">
-        <p class="metric-label">Опросник</p>
-        <p class="metric-value">78%</p>
-        <p class="metric-note">Заполнение активных разделов</p>
+        <div class="metric-top">
+          <div class="ring" style="background: conic-gradient(#ea580c 280.8deg, #ffedd5 0deg)" aria-hidden="true"><span>78%</span></div>
+          <div>
+            <p class="metric-label">Опросник</p>
+            <p class="metric-value">78%</p>
+            <p class="metric-note">Заполнение активных разделов</p>
+          </div>
+        </div>
         <div class="bar" aria-hidden="true"><span style="width:78%"></span></div>
       </div>
       <div class="metric linkage">
-        <p class="metric-label">Связность</p>
-        <p class="metric-value">Хорошая</p>
-        <p class="metric-note">Профиль заполнен на 100%</p>
+        <div class="metric-top">
+          <div class="ring" style="background: conic-gradient(#15803d 360deg, #dcfce7 0deg)" aria-hidden="true"><span>100%</span></div>
+          <div>
+            <p class="metric-label">Связность</p>
+            <p class="metric-value">Хорошая</p>
+            <p class="metric-note">Профиль заполнен на 100%</p>
+          </div>
+        </div>
         <div class="bar" aria-hidden="true"><span style="width:100%; background:linear-gradient(90deg,#4ade80,#15803d)"></span></div>
       </div>
     </section>
 
-    <section class="card">
+    <section class="card summary">
       <h2>Коротко о главном</h2>
       <p class="lede">
-        Этот общий отчёт собран из вашего личного контекста (готовность 81%, опросник 78%). Тон спокойный и поддерживающий — с акцентом на привычки, которые реально удержать день за днём. Это тёплые практичные рекомендации по самочувствию — не клинический диагноз.
+        Этот отчёт «Общий» собран из вашего личного контекста (готовность 81%, опросник 78%). Тон спокойный и посильный — маленькие привычки, которые реально удержать день за днём.
       </p>
     </section>
 
-    <section class="card">
+    <section class="card profile">
       <h2>Снимок вашего профиля</h2>
       <p><strong>Алекс Ривера</strong> — опросник заполнен на 78% · общая готовность 81%.</p>
       <p>
@@ -467,29 +360,28 @@
       </div>
     </section>
 
-    <section class="card">
+    <section class="card insights">
       <h2>Что важно заметить</h2>
       <ol class="clean">
         <li><span class="num">1</span><span>Готовность 81% (опросник 78% · профиль 100%).</span></li>
         <li><span class="num">2</span><span>Связность контекста: хорошая.</span></li>
-        <li><span class="num">3</span><span>Сигналы образа жизни — хороший ориентир для следующих мягких экспериментов с привычками.</span></li>
+        <li><span class="num">3</span><span>Длина сна, дневной свет и ежедневное движение выглядят самыми быстрыми рычагами образа жизни для следующего эксперимента.</span></li>
         <li><span class="num">4</span><span>Есть покрытие устройств (1).</span></li>
         <li><span class="num">5</span><span>Сейчас самая выразительная область сигналов опросника: образ жизни.</span></li>
       </ol>
     </section>
 
-    <section class="card">
+    <section class="card analysis">
       <h2>Что мы заметили</h2>
-      <p>Поддерживающий взгляд: отмечаем, что уже помогает, и мягко предлагаем, где можно чуть подправить.</p>
-      <p>Снимок вашего личного контекста: приоритет — сон и восстановление; области — сон и восстановление, энергия и усталость, управление стрессом, долголетие; сон около 6,5 часов; движение 4 раза в неделю; стресс умеренно-высокий в рабочие дни (готовность 81%).</p>
-      <p>Приоритет — сначала профилактика: снижайте то трение, которое может перерасти в сбои.</p>
-      <p>Фокус — образ жизни: режим сна, короткие движения, ритм питания и спокойное восстановление после стресса.</p>
+      <p>Отмечаем, что уже помогает, и называем одну-две мягкие правки на эту неделю.</p>
+      <p>При готовности 81% самые выгодные шаги этой недели лежат в областях, уже видимых в профиле, — а не в новых целях.</p>
+      <p>Приоритет на этой неделе — профилактика: уберите один источник перегрузки, пока он не перерос в сбой.</p>
+      <p>Рычаги образа жизни в этом цикле: режим сна, ежедневная прогулка, ритм питания и короткое заземление после стресса.</p>
       <p>Слой устройств: 1 источник (Apple). Считайте сигналы трендами, а не диагнозами.</p>
-      <p>Обычный формат: свяжите одну область внимания с простой недельной привычкой и загляните в прогресс в зоне участника.</p>
-      <p>Этот отчёт не ставит диагноз, не лечит и не заменяет профессиональную медицинскую помощь.</p>
+      <p>На этой неделе: выберите одну нумерованную рекомендацию ниже, поставьте её в календарь и через семь дней загляните в прогресс в зоне участника.</p>
     </section>
 
-    <section class="card">
+    <section class="card focus">
       <h2>На что мягко обратить внимание</h2>
       <ol class="clean">
         <li><span class="num">1</span><span>Спокойные ежедневные ритмы, которые поддерживают энергию, восстановление и настроение.</span></li>
@@ -499,50 +391,59 @@
       </ol>
     </section>
 
-    <section class="card">
+    <section class="card recs">
       <h2>Добрые рекомендации</h2>
       <div class="rec">
-        <strong>1. Мягкий шаг профилактики</strong>
-        <p>Выберите одну лёгкую привычку, которая снизит перегрузку на этой неделе — более раннее засыпание, напоминание о воде или короткую ежедневную прогулку.</p>
+        <span class="rec-num">1</span>
+        <div>
+          <strong>Защитите 30 минут на заземление</strong>
+          <p>Начните фиксированное заземление за 30 минут до целевого сна: приглушите свет, уберите экраны и 5 минут медленного дыхания или растяжки. Держите одно и то же время старта 7 вечеров подряд.</p>
+        </div>
       </div>
       <div class="rec">
-        <strong>2. Более добрый дневной ритм</strong>
-        <p>Согласуйте приёмы пищи, дневной свет и движение с часами, когда вы и так чувствуете себя спокойнее.</p>
+        <span class="rec-num">2</span>
+        <div>
+          <strong>Утренний свет + прогулка 20 минут</strong>
+          <p>Получите 10–15 минут дневного света на улице в первый час после пробуждения и добавьте одну бодрую прогулку на 20 минут минимум 5 дней на этой неделе.</p>
+        </div>
       </div>
       <div class="rec">
-        <strong>3. Держите ответы актуальными</strong>
-        <p>Опросник заполнен на 78%. Обновляйте разделы, когда жизнь меняется, — тогда следующие отчёты будут точнее и полезнее.</p>
+        <span class="rec-num">3</span>
+        <div>
+          <strong>Экраны выключаются по часам</strong>
+          <p>Поставьте отсечку телефона/ноутбука за 45 минут до сна (одно и то же время каждую ночь). Замените этот слот чтением или лёгкой растяжкой на 7 дней.</p>
+        </div>
       </div>
     </section>
 
-    <section class="card">
+    <section class="card next">
       <h2>Простые следующие шаги</h2>
       <ol class="clean">
-        <li><span class="num">1</span><span>Прочитайте области внимания и выберите одну рекомендацию на семь дней.</span></li>
-        <li><span class="num">2</span><span>Откройте Health Guide с предложенным запросом, чтобы спокойно разобрать варианты.</span></li>
-        <li><span class="num">3</span><span>Внесите привычки образа жизни в календарь — так надёжнее, чем полагаться только на мотивацию.</span></li>
+        <li><span class="num">1</span><span>Выберите рекомендацию №1 или №2 и поставьте её время в календарь на ближайшие 7 дней.</span></li>
+        <li><span class="num">2</span><span>Откройте Health Guide с запросом ниже, если нужно адаптировать план под вашу неделю.</span></li>
+        <li><span class="num">3</span><span>Поставьте блоки утреннего света и прогулки в календарь — не оставляйте это только мотивации.</span></li>
         <li><span class="num">4</span><span>Обновите устаревшие ответы опросника после заметных изменений образа жизни.</span></li>
       </ol>
     </section>
 
-    <section class="card">
+    <section class="card prompt">
       <h2>Полезный запрос для Health Guide</h2>
       <div class="prompt">
         <div class="prompt-label">Скопируйте в Health Guide</div>
-        Используя мой личный контекст (приоритет — сон и восстановление; области — сон и восстановление, энергия и усталость, управление стрессом, долголетие; сон около 6,5 часов; движение 4 раза в неделю; стресс умеренно-высокий в рабочие дни; готовность 81%), помоги мягко спланировать следующую неделю вокруг общего самочувствия. Мой вопрос: С чего лучше начать в первую очередь?. Держи рекомендации образовательными, практичными и простыми для выполнения.
+        Используя мой личный контекст (приоритет — сон и восстановление; области — сон и восстановление, энергия и усталость, управление стрессом, долголетие; сон около 6,5 часов; движение 4 раза в неделю; стресс умеренно-высокий в рабочие дни; готовность 81%), помоги мягко спланировать следующую неделю вокруг общего самочувствия. Мой вопрос: С чего лучше начать в первую очередь?. Держи рекомендации образовательными, практичными и простыми — с конкретным временем и длительностью, где это уместно.
       </div>
     </section>
 
-    <section class="card">
+    <section class="card perspectives">
       <h2>Два взгляда</h2>
       <div class="perspectives">
         <article class="perspective">
           <h3>Взгляд A</h3>
-          <p>Взгляд A на ваше общее самочувствие: приоритет — профилактика, опираясь на текущие сигналы (сон и восстановление, энергия, стресс). Меняйте ровно столько, сколько можете спокойно повторять каждый день.</p>
+          <p>Приоритет — профилактика, опираясь на текущие сигналы (сон и восстановление, энергия, стресс). Меняйте ровно столько, сколько можете спокойно повторять каждый день всю неделю.</p>
         </article>
         <article class="perspective">
           <h3>Взгляд B</h3>
-          <p>Взгляд B на ваше общее самочувствие: акцент на образе жизни в поддерживающем тоне. Сочетайте усилие с восстановлением и пересмотрите через неделю.</p>
+          <p>Акцент на образе жизни в поддерживающем тоне. Сочетайте каждый блок усилия с восстановлением и пересмотрите через семь дней.</p>
         </article>
       </div>
     </section>
@@ -557,5 +458,66 @@
       <span class="copyright">© 2026 BioMath Core. Все права защищены.</span>
     </p>
   </main>
+
+  <script>
+    (function () {
+      const statusEl = document.getElementById('tool-status');
+      const setStatus = (msg) => { statusEl.textContent = msg || ''; };
+      const plainText = () => {
+        const root = document.getElementById('report-root');
+        return root ? root.innerText.trim() : '';
+      };
+      async function copyText(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch (_) {
+          const area = document.createElement('textarea');
+          area.value = text;
+          area.setAttribute('readonly', '');
+          area.style.position = 'fixed';
+          area.style.left = '-9999px';
+          document.body.appendChild(area);
+          area.select();
+          const ok = document.execCommand('copy');
+          document.body.removeChild(area);
+          return ok;
+        }
+      }
+      document.getElementById('btn-copy').addEventListener('click', async () => {
+        const ok = await copyText(plainText());
+        setStatus(ok ? 'Отчёт скопирован' : 'Не удалось скопировать');
+      });
+      document.getElementById('btn-share').addEventListener('click', async () => {
+        const text = plainText();
+        const title = 'Персональный отчёт о самочувствии — BioMath Core';
+        try {
+          if (navigator.share) {
+            await navigator.share({ title, text, url: location.href });
+            setStatus('Готово к отправке');
+            return;
+          }
+        } catch (err) {
+          if (err && err.name === 'AbortError') return;
+        }
+        const ok = await copyText(text + '\n\n' + location.href);
+        setStatus(ok ? 'Отчёт скопирован — можно поделиться' : 'Не удалось поделиться');
+      });
+      document.getElementById('btn-txt').addEventListener('click', () => {
+        const blob = new Blob([plainText()], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'personal-wellness-report.txt';
+        a.click();
+        URL.revokeObjectURL(url);
+        setStatus('TXT скачан');
+      });
+      document.getElementById('btn-pdf').addEventListener('click', () => {
+        setStatus('Выберите «Сохранить как PDF» в окне печати');
+        window.print();
+      });
+    })();
+  </script>
 </body>
 </html>

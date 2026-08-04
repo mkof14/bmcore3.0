@@ -348,7 +348,7 @@
       "generateBlockedCta": "Aller aux questionnaires",
       "viewTitle": "Rapport",
       "downloadTxt": "Télécharger TXT",
-      "printPdf": "Imprimer / PDF",
+      "printPdf": "Télécharger PDF",
       "share": "Lien de partage",
       "shareSuccess": "Lien copié",
       "shareFailed": "Impossible de créer le lien",
@@ -360,7 +360,14 @@
       "metricQuestionnaire": "Questionnaire",
       "metricQuestionnaireNote": "Complétion des sections actives",
       "metricLinkage": "Lien",
-      "metricProfileNote": "Complétude du profil {{percent}}%"
+      "metricProfileNote": "Complétude du profil {{percent}}%",
+      "copy": "Copier",
+      "copySuccess": "Rapport copié",
+      "copyFailed": "Impossible de copier le rapport",
+      "shareContent": "Partager",
+      "shareContentSuccess": "Rapport copié — prêt à partager",
+      "shareContentFailed": "Impossible de partager le rapport",
+      "downloadPdf": "Télécharger PDF"
     },
     "signalHub": {
       "title": "Hub de signaux",

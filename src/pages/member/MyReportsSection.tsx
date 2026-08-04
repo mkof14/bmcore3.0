@@ -263,9 +263,10 @@ export default function MyReportsSection({ onNavigateSection }: Props) {
   const handleShare = async (report: ReportRow) => {
     setSharing(true);
     try {
+      const title = report.report_title || report.topic || t('reportTemplate.fallbackTitle');
       const shared = await createShareableReport({
         reportId: report.id,
-        title: report.report_title || report.topic || t('reportTemplate.fallbackTitle'),
+        title,
         description: report.summary?.slice(0, 280) || undefined,
         reportData: {
           summary: report.summary,
@@ -282,6 +283,16 @@ export default function MyReportsSection({ onNavigateSection }: Props) {
       });
       if (!shared) throw new Error('share failed');
       const url = getShareableUrl(shared.share_token);
+      const text = formatReportAsText(report, t);
+      try {
+        if (typeof navigator.share === 'function') {
+          await navigator.share({ title: String(title), text, url });
+          notifyUserSuccess(t('member.reports.shareContentSuccess'));
+          return;
+        }
+      } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') return;
+      }
       await navigator.clipboard.writeText(url);
       notifyUserSuccess(t('member.reports.shareSuccess'));
     } catch {
