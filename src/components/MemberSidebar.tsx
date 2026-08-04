@@ -8,6 +8,7 @@ import {
   FileText,
   Scale,
   FolderLock,
+  Dna,
   Users,
   CreditCard,
   User,
@@ -76,7 +77,7 @@ export default function MemberSidebar({
     {
       title: t('member.nav.dataDocuments'),
       items: [
-        { id: 'medical-files', label: t('member.nav.medicalFiles'), icon: FolderLock },
+        { id: 'medical-files', label: t('member.nav.medicalFiles'), icon: Dna },
         { id: 'black-box', label: t('member.nav.blackBox'), icon: FolderLock },
       ],
     },

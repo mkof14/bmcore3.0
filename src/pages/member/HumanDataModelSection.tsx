@@ -15,17 +15,32 @@ const TOOL_ICONS = {
 
 interface Props {
   onOpenService: (servicePath: string) => void;
+  onNavigateSection?: (section: string) => void;
 }
 
 /**
  * Member Zone home for shared Human Data Model tools (not category catalog).
  */
-export default function HumanDataModelSection({ onOpenService }: Props) {
+export default function HumanDataModelSection({ onOpenService, onNavigateSection }: Props) {
   const { t } = useTranslation();
 
   return (
     <div className="space-y-6">
       <p className="member-body text-sm leading-relaxed">{t('member.humanDataModel.subtitle')}</p>
+      {onNavigateSection ? (
+        <button
+          type="button"
+          onClick={() => onNavigateSection('medical-files')}
+          className="member-inset w-full rounded-xl px-4 py-3 text-left text-sm member-body transition hover:border-orange-300 dark:hover:border-orange-500/40"
+        >
+          <span className="font-semibold member-heading">
+            {t('member.humanDataModel.recordsLinkTitle')}
+          </span>
+          <span className="mt-1 block member-muted">
+            {t('member.humanDataModel.recordsLinkBody')}
+          </span>
+        </button>
+      ) : null}
       <div className="grid gap-4 md:grid-cols-3">
         {humanDataModelServices.map((service) => {
           const Icon = TOOL_ICONS[service.id as keyof typeof TOOL_ICONS] ?? FileStack;

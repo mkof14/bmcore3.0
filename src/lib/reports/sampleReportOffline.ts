@@ -85,7 +85,13 @@ export function createOfflineSamplePersonalContext(): PersonalContext {
         customFieldsCount: 0,
       },
     },
-    medicalFiles: { count: 1, categories: ['labs'] },
+    medicalFiles: {
+      count: 1,
+      categories: ['labResults'],
+      countsByType: { labResults: 1 },
+      dnaPresent: false,
+      latestLabDate: '2024-06-01T00:00:00.000Z',
+    },
     devices: { count: 1, brands: ['Apple'] },
     services: {
       serviceIds: ['sleep-recovery', 'stress-resilience'],

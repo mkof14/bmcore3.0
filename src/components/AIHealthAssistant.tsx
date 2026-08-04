@@ -25,6 +25,7 @@ import {
   buildPersonalContext,
   type PersonalContext,
 } from '../lib/personalContext';
+import { consumePendingHealthGuidePrompt } from '../lib/healthRecords';
 
 interface BaseMessage {
   id: string;
@@ -139,6 +140,13 @@ export default function AIHealthAssistant({ isOpen, onClose }: AIHealthAssistant
         if (!cancelled) personalContextRef.current = ctx;
       } catch {
         if (!cancelled) personalContextRef.current = null;
+      }
+
+      if (cancelled) return;
+      const pending = consumePendingHealthGuidePrompt();
+      if (pending) {
+        inputMessageRef.current = pending;
+        setInputMessage(pending);
       }
     })();
     return () => {

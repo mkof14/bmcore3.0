@@ -24,6 +24,12 @@ export type MedicalFilesMeta = {
   count: number;
   /** Category / type labels only — never file URLs or PHI content. */
   categories: string[];
+  /** Counts by intake category key (labs, imaging, dna, …) — never file contents. */
+  countsByType: Record<string, number>;
+  /** True when a DNA report or raw DNA file is on record. */
+  dnaPresent: boolean;
+  /** ISO date of the latest lab-results upload, if any. */
+  latestLabDate: string | null;
 };
 
 export type DevicesMeta = {

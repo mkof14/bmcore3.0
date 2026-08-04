@@ -32,6 +32,10 @@
       "signalHub": {
         "title": "Centro de Señales y planes de acción",
         "body": "Revisa la fuerza de tus señales, la profundidad de conocimiento y la preparación de tus informes. Después convierte las conclusiones en planes de acción tranquilos, paso a paso."
+      },
+      "healthRecords": {
+        "title": "Historial de salud y ADN",
+        "body": "En Zona de miembros → Historial de salud y ADN puedes subir o escanear análisis, imágenes, PDF de informes de ADN y archivos de ADN en bruto (PDF, imágenes, CSV, TXT, VCF). Los archivos pasan de Recibido a En revisión a Insights listos. Los insights explican el registro, listan conclusiones y recomendaciones, y son educativos — no un diagnóstico. Los conteos y una marca de ADN en archivo alimentan el contexto personal para informes y Health Guide; el contenido de ADN en bruto nunca se pega en prompts de IA. Puedes Copiar, Imprimir o Descargar TXT cualquier insight listo."
       }
     },
     "viewPlans": "Ver planes →",

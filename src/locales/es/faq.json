@@ -365,6 +365,37 @@
         ]
       },
       {
+        "id": "health-records-dna",
+        "title": "Historial de salud y ADN",
+        "items": [
+          {
+            "id": "upload-labs-dna",
+            "question": "¿Puedo subir análisis y datos de ADN?",
+            "answer": "Sí. En Zona de miembros → Historial de salud y ADN puedes subir o escanear análisis, imágenes, PDF de informes de ADN y archivos de ADN en bruto. Forman parte de tu perfil junto al cuestionario."
+          },
+          {
+            "id": "supported-formats",
+            "question": "¿Qué formatos de archivo se admiten?",
+            "answer": "PDF, JPG, PNG, WEBP, CSV, TXT, VCF y exportaciones de texto de ADN en bruto habituales (incluido estilo 23andMe o Ancestry). En móvil también puedes usar la cámara cuando el navegador lo permita."
+          },
+          {
+            "id": "how-insights-work",
+            "question": "¿Qué ocurre después de subir un archivo?",
+            "answer": "Cada elemento pasa de Recibido a En revisión a Insights listos. Cuando está listo, recibes una explicación educativa, conclusiones y recomendaciones. Puedes Copiar, Imprimir o Descargar TXT. Es una captación estructurada con plantillas de insight — no un pipeline genómico completo."
+          },
+          {
+            "id": "feeds-reports-guide",
+            "question": "¿Cómo afectan las subidas a informes y Health Guide?",
+            "answer": "Las subidas aportan contexto personal de alto nivel: conteos por tipo, si hay ADN archivado y la fecha del último análisis. Informes y Health Guide usan esas señales junto con tu cuestionario. El contenido completo de ADN en bruto nunca se pega en prompts de IA."
+          },
+          {
+            "id": "dna-privacy",
+            "question": "¿El ADN en bruto se mantiene privado respecto a los prompts de IA?",
+            "answer": "Sí. Health Guide y las introducciones de informes solo reciben una marca sí/no de “ADN en bruto en archivo” más plantillas educativas — nunca el archivo genético completo."
+          }
+        ]
+      },
+      {
         "id": "privacy",
         "title": "Privacidad y seguridad",
         "items": [

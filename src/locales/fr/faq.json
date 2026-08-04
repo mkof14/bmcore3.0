@@ -365,6 +365,37 @@
         ]
       },
       {
+        "id": "health-records-dna",
+        "title": "Dossiers santé & ADN",
+        "items": [
+          {
+            "id": "upload-labs-dna",
+            "question": "Puis-je téléverser analyses et ADN ?",
+            "answer": "Oui. Dans Zone membre → Dossiers santé & ADN vous pouvez téléverser ou scanner analyses, imagerie, PDF de rapports ADN et ADN brut. Ils rejoignent votre profil avec le questionnaire."
+          },
+          {
+            "id": "supported-formats",
+            "question": "Quels formats sont pris en charge ?",
+            "answer": "PDF, JPG, PNG, WEBP, CSV, TXT, VCF et exports texte d’ADN brut courants (style 23andMe ou Ancestry). Sur mobile, la caméra est disponible si le navigateur le permet."
+          },
+          {
+            "id": "how-insights-work",
+            "question": "Que se passe-t-il après le téléversement ?",
+            "answer": "Chaque élément passe de Reçu à En revue à Insights prêts. Vous obtenez une explication éducative, des conclusions et des recommandations. Vous pouvez Copier, Imprimer ou Télécharger TXT. Il s’agit d’une collecte structurée avec modèles d’insight — pas d’un pipeline génomique complet."
+          },
+          {
+            "id": "feeds-reports-guide",
+            "question": "Comment les téléversements alimentent-ils rapports et Health Guide ?",
+            "answer": "Ils apportent un contexte personnel de haut niveau : comptes par type, présence d’ADN, date du dernier bilan. Rapports et Health Guide utilisent ces signaux avec le questionnaire. Le contenu brut d’ADN n’est jamais collé dans les prompts IA."
+          },
+          {
+            "id": "dna-privacy",
+            "question": "L’ADN brut reste-t-il hors des prompts IA ?",
+            "answer": "Oui. Health Guide et les préfaces de rapports reçoivent seulement un indicateur oui/non « ADN brut archivé » et des modèles éducatifs — jamais le fichier génétique complet."
+          }
+        ]
+      },
+      {
         "id": "privacy",
         "title": "Confidentialité et sécurité",
         "items": [

@@ -15,6 +15,7 @@
         "Overview",
         "Sign up",
         "Connect devices",
+        "Labs & DNA",
         "Analysis",
         "Reports",
         "Take action",
@@ -64,18 +65,34 @@
       },
       "connect": {
         "title": "Connect your health devices",
-        "summary": "BioMath Core links with 100+ health devices and apps — wearables, smart scales, blood pressure monitors, and more.",
+        "summary": "BioMath Core links with 100+ health devices and apps — wearables, smart scales, blood pressure monitors, and more. You can also bring labs and DNA into Member Zone the same way you complete the questionnaire.",
         "pointsHeading": "Seamless integration",
         "points": [
           { "title": "Fitness trackers", "body": "Apple Watch, Fitbit, Garmin" },
           { "title": "Health monitors", "body": "Blood pressure, glucose, weight scales" },
           { "title": "Health apps", "body": "Apple Health, Google Fit" },
-          { "title": "Lab results", "body": "Upload PDF reports manually" }
+          { "title": "Labs & DNA", "body": "Upload or scan labs, imaging, DNA reports, and raw DNA in Health Records & DNA" }
         ],
         "checklist": [
           "One-click OAuth connection for major services",
           "Automatic data synchronization every 15 minutes",
-          "Manual upload for lab reports and medical documents"
+          "Manual upload or camera scan for labs, imaging, DNA reports, and raw DNA files"
+        ]
+      },
+      "records": {
+        "title": "Bring your labs and DNA",
+        "summary": "Health Records & DNA in Member Zone accepts PDF, images, CSV, TXT, and VCF. We structure each upload, return educational insights, and link high-level signals (not raw DNA content) into reports and Health Guide.",
+        "pointsHeading": "What happens after upload",
+        "points": [
+          { "title": "Received", "body": "Your file is stored with your account." },
+          { "title": "In review", "body": "We organize the record type and prepare insight templates." },
+          { "title": "Insights ready", "body": "Read explanations, conclusions, and recommendations — then Copy, Print, or Download TXT." }
+        ],
+        "checklist": [
+          "Open Member Zone → Health Records & DNA",
+          "Choose Labs, Imaging, DNA report, Raw DNA, or Other",
+          "Upload a file or use camera scan on mobile",
+          "Ask Health Guide about the selected record when you want a voice-friendly explanation"
         ]
       },
       "analyze": {

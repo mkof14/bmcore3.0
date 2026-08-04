@@ -365,6 +365,37 @@
         ]
       },
       {
+        "id": "health-records-dna",
+        "title": "Gesundheitsakten & DNA",
+        "items": [
+          {
+            "id": "upload-labs-dna",
+            "question": "Kann ich Labore und DNA hochladen?",
+            "answer": "Ja. In der Member Zone → Gesundheitsakten & DNA können Sie Labore, Bildgebung, DNA-Bericht-PDFs und Roh-DNA hochladen oder scannen. Sie werden Teil Ihres Profils neben dem Fragebogen."
+          },
+          {
+            "id": "supported-formats",
+            "question": "Welche Dateiformate werden unterstützt?",
+            "answer": "PDF, JPG, PNG, WEBP, CSV, TXT, VCF und gängige Roh-DNA-Textexporte (inkl. 23andMe- oder Ancestry-Stil). Auf Mobilgeräten ist Kameraaufnahme möglich, wenn der Browser es erlaubt."
+          },
+          {
+            "id": "how-insights-work",
+            "question": "Was passiert nach dem Upload?",
+            "answer": "Jeder Eintrag geht von Empfangen über In Prüfung zu Insights bereit. Dann erhalten Sie eine Bildungs-Erklärung, Schlussfolgerungen und Empfehlungen. Sie können Kopieren, Drucken oder TXT herunterladen. Das ist strukturierte Aufnahme mit Insight-Vorlagen — keine volle Genom-Pipeline."
+          },
+          {
+            "id": "feeds-reports-guide",
+            "question": "Wie beeinflussen Uploads Berichte und Health Guide?",
+            "answer": "Uploads liefern High-Level-Kontext: Zählungen nach Typ, ob DNA vorhanden ist, und das Datum des letzten Labors. Berichte und Health Guide nutzen diese Signale mit Ihrem Fragebogen. Vollständige Roh-DNA wird nie in KI-Prompts eingefügt."
+          },
+          {
+            "id": "dna-privacy",
+            "question": "Bleibt Roh-DNA aus KI-Prompts heraus?",
+            "answer": "Ja. Health Guide und Berichtsvorworte erhalten nur ein Ja/Nein-Flag „Roh-DNA vorhanden“ plus Bildungsvorlagen — nie die volle genetische Datei."
+          }
+        ]
+      },
+      {
         "id": "privacy",
         "title": "Datenschutz & Sicherheit",
         "items": [

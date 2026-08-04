@@ -20,6 +20,7 @@ const NAV_SECTION_IDS = [
   'overview',
   'signup',
   'connect',
+  'records',
   'analyze',
   'reports',
   'action',
@@ -120,6 +121,14 @@ export default function HowItWorks({ onNavigate }: HowItWorksProps) {
       pointsHeading: t('howItWorks.steps.connect.pointsHeading'),
       points: tList<TitledBody>(t, 'howItWorks.steps.connect.points'),
       checklist: tList<string>(t, 'howItWorks.steps.connect.checklist'),
+    },
+    {
+      id: 'records',
+      title: t('howItWorks.steps.records.title'),
+      summary: t('howItWorks.steps.records.summary'),
+      pointsHeading: t('howItWorks.steps.records.pointsHeading'),
+      points: tList<TitledBody>(t, 'howItWorks.steps.records.points'),
+      checklist: tList<string>(t, 'howItWorks.steps.records.checklist'),
     },
     {
       id: 'analyze',
@@ -241,7 +250,7 @@ export default function HowItWorks({ onNavigate }: HowItWorksProps) {
               {'points' in step && step.points && (
                 <div className="mt-10 grid gap-10 md:grid-cols-2 md:gap-12">
                   <div>
-                    {step.id === 'signup' && (
+                    {(step.id === 'signup' || step.id === 'records') && (
                       <>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-100">
                           {step.pointsHeading}

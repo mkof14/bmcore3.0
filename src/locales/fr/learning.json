@@ -32,6 +32,10 @@
       "signalHub": {
         "title": "Hub de signaux et plans d'action",
         "body": "Examinez la force de vos signaux, votre profondeur de connaissance et la maturité de vos rapports. Puis transformez les analyses en plans d'action posés, étape par étape."
+      },
+      "healthRecords": {
+        "title": "Dossiers santé & ADN",
+        "body": "Dans Zone membre → Dossiers santé & ADN, vous pouvez téléverser ou scanner analyses, imagerie, PDF de rapports ADN et ADN brut (PDF, images, CSV, TXT, VCF). Les fichiers passent de Reçu à En revue à Insights prêts. Les insights expliquent l’enregistrement, listent conclusions et recommandations, et restent éducatifs — pas un diagnostic. Les comptes et un indicateur ADN alimentent le contexte personnel pour les rapports et Health Guide ; le contenu d’ADN brut n’est jamais collé dans les prompts IA. Vous pouvez Copier, Imprimer ou Télécharger TXT."
       }
     },
     "viewPlans": "Voir les formules →",

@@ -12,14 +12,15 @@
     "nav": {
       "ariaLabel": "Sections de la page",
       "items": [
-        "Vue d’ensemble",
+        "Aperçu",
         "Inscription",
-        "Connexion des appareils",
+        "Connecter les appareils",
+        "Analyses & ADN",
         "Analyse",
         "Rapports",
-        "Passer à l’action",
-        "Health Black Box",
-        "Deux modèles",
+        "Agir",
+        "Boîte noire santé",
+        "Modèles duals",
         "Catégories",
         "Centre d’apprentissage",
         "FAQ",
@@ -52,9 +53,18 @@
         "summary": "Créez votre compte en moins de deux minutes. Nous vous interrogeons sur vos antécédents, vos affections actuelles et vos objectifs de bien-être afin de personnaliser votre Human Data Model.",
         "pointsHeading": "Démarrer est simple",
         "points": [
-          { "title": "Inscription sécurisée", "body": "Vos données sont chiffrées dès votre inscription." },
-          { "title": "Profil de santé", "body": "Partagez vos antécédents et vos objectifs, qui façonnent votre modèle." },
-          { "title": "Préférences", "body": "Choisissez vos notifications et la fréquence des rapports." }
+          {
+            "title": "Inscription sécurisée",
+            "body": "Vos données sont chiffrées dès votre inscription."
+          },
+          {
+            "title": "Profil de santé",
+            "body": "Partagez vos antécédents et vos objectifs, qui façonnent votre modèle."
+          },
+          {
+            "title": "Préférences",
+            "body": "Choisissez vos notifications et la fréquence des rapports."
+          }
         ],
         "checklist": [
           "Saisissez votre e-mail et créez un mot de passe sûr",
@@ -63,19 +73,31 @@
         ]
       },
       "connect": {
-        "title": "Connectez vos appareils de santé",
-        "summary": "BioMath Core se connecte à plus de 100 appareils et applications de santé : montres et bracelets connectés, balances intelligentes, tensiomètres et bien d’autres.",
-        "pointsHeading": "Une intégration fluide",
+        "title": "Connect your health devices",
+        "summary": "BioMath Core se connecte à plus de 100 appareils et apps — wearables, balances connectées, tensiomètres, et plus. Vous pouvez aussi apporter analyses et ADN dans la Zone membre comme pour le questionnaire.",
+        "pointsHeading": "Seamless integration",
         "points": [
-          { "title": "Bracelets d’activité", "body": "Apple Watch, Fitbit, Garmin" },
-          { "title": "Appareils de mesure", "body": "Tension artérielle, glycémie, balances" },
-          { "title": "Applications de santé", "body": "Apple Santé, Google Fit" },
-          { "title": "Résultats de laboratoire", "body": "Importez vos comptes rendus en PDF" }
+          {
+            "title": "Trackers fitness",
+            "body": "Apple Watch, Fitbit, Garmin"
+          },
+          {
+            "title": "Moniteurs santé",
+            "body": "Tension, glucose, balances"
+          },
+          {
+            "title": "Apps santé",
+            "body": "Apple Health, Google Fit"
+          },
+          {
+            "title": "Analyses & ADN",
+            "body": "Téléversez ou scannez analyses, imagerie, rapports ADN et ADN brut dans Dossiers santé & ADN"
+          }
         ],
         "checklist": [
-          "Connexion OAuth en un clic pour les principaux services",
-          "Synchronisation automatique des données toutes les 15 minutes",
-          "Import manuel des comptes rendus et documents médicaux"
+          "Connexion OAuth en un clic pour les services majeurs",
+          "Synchronisation automatique toutes les 15 minutes",
+          "Téléversement manuel ou scan caméra pour analyses, imagerie, rapports ADN et ADN brut"
         ]
       },
       "analyze": {
@@ -108,17 +130,29 @@
           {
             "title": "Éclairages quotidiens",
             "body": "Aperçu rapide des indicateurs clés, des tendances et des recommandations du jour.",
-            "items": ["Synthèse des indicateurs clés", "Suivi des objectifs du jour", "Actions rapides"]
+            "items": [
+              "Synthèse des indicateurs clés",
+              "Suivi des objectifs du jour",
+              "Actions rapides"
+            ]
           },
           {
             "title": "Analyse hebdomadaire",
             "body": "Analyse détaillée des tendances, des motifs et de la progression vers vos objectifs.",
-            "items": ["Visualisation des tendances", "Reconnaissance de motifs", "Bilan de progression"]
+            "items": [
+              "Visualisation des tendances",
+              "Reconnaissance de motifs",
+              "Bilan de progression"
+            ]
           },
           {
             "title": "Bilan mensuel approfondi",
             "body": "Évaluation complète de la santé, avec conseils et analyse en second avis.",
-            "items": ["Évaluation complète", "Recommandations personnalisées", "Analyse en second avis"]
+            "items": [
+              "Évaluation complète",
+              "Recommandations personnalisées",
+              "Analyse en second avis"
+            ]
           }
         ]
       },
@@ -126,10 +160,47 @@
         "title": "Agissez à partir des constats",
         "summary": "Les conseils sont faits pour servir : fixez des objectifs, suivez les recommandations, partagez avec les soignants et suivez vos progrès.",
         "items": [
-          { "title": "Fixer des objectifs", "body": "À partir de vos constats, définissez des objectifs de santé personnalisés et suivez-les." },
-          { "title": "Suivre les recommandations", "body": "Des suggestions personnalisées et concrètes, applicables tout de suite." },
-          { "title": "Partager avec votre équipe soignante", "body": "Exportez des rapports pour vos médecins, diététiciens ou coachs." },
-          { "title": "Suivre vos progrès", "body": "Observez vos améliorations dans le temps grâce à un suivi détaillé." }
+          {
+            "title": "Fixer des objectifs",
+            "body": "À partir de vos constats, définissez des objectifs de santé personnalisés et suivez-les."
+          },
+          {
+            "title": "Suivre les recommandations",
+            "body": "Des suggestions personnalisées et concrètes, applicables tout de suite."
+          },
+          {
+            "title": "Partager avec votre équipe soignante",
+            "body": "Exportez des rapports pour vos médecins, diététiciens ou coachs."
+          },
+          {
+            "title": "Suivre vos progrès",
+            "body": "Observez vos améliorations dans le temps grâce à un suivi détaillé."
+          }
+        ]
+      },
+      "records": {
+        "title": "Apportez vos analyses et votre ADN",
+        "summary": "Dossiers santé & ADN dans la Zone membre accepte PDF, images, CSV, TXT et VCF. Nous structurons chaque téléversement, renvoyons des insights éducatifs et relions des signaux de haut niveau (pas le contenu d’ADN brut) aux rapports et à Health Guide.",
+        "pointsHeading": "Après le téléversement",
+        "points": [
+          {
+            "title": "Reçu",
+            "body": "Votre fichier est stocké avec votre compte."
+          },
+          {
+            "title": "En revue",
+            "body": "Nous organisons le type d’enregistrement et préparons les modèles d’insight."
+          },
+          {
+            "title": "Insights prêts",
+            "body": "Lisez explications, conclusions et recommandations — puis Copiez, Imprimez ou Téléchargez TXT."
+          }
+        ],
+        "checklist": [
+          "Ouvrez Zone membre → Dossiers santé & ADN",
+          "Choisissez Analyses, Imagerie, Rapport ADN, ADN brut ou Autre",
+          "Téléversez un fichier ou utilisez le scan caméra sur mobile",
+          "Demandez à Health Guide une explication vocale du dossier sélectionné"
         ]
       }
     },
@@ -139,17 +210,41 @@
       "summary": "Comme la boîte noire d’un avion, votre Health Black Box enregistre en toute sécurité chaque donnée de santé : mesures d’appareils, résultats d’analyses, traitements et symptômes.",
       "featuresHeading": "Qu’est-ce que la Health Black Box ?",
       "features": [
-        { "title": "Stockage complet", "body": "Toutes vos données de santé dans un coffre chiffré." },
-        { "title": "Synchronisation automatique", "body": "Des mises à jour au bon moment depuis tous vos appareils connectés." },
-        { "title": "Historique conservé", "body": "Une chronologie complète de votre parcours de santé." },
-        { "title": "Accès d’urgence", "body": "Partagez-la avec des professionnels de santé lorsque c’est nécessaire." }
+        {
+          "title": "Stockage complet",
+          "body": "Toutes vos données de santé dans un coffre chiffré."
+        },
+        {
+          "title": "Synchronisation automatique",
+          "body": "Des mises à jour au bon moment depuis tous vos appareils connectés."
+        },
+        {
+          "title": "Historique conservé",
+          "body": "Une chronologie complète de votre parcours de santé."
+        },
+        {
+          "title": "Accès d’urgence",
+          "body": "Partagez-la avec des professionnels de santé lorsque c’est nécessaire."
+        }
       ],
       "categoriesHeading": "Catégories de données de votre Black Box",
       "categories": [
-        { "title": "Constantes et indicateurs vitaux", "body": "Fréquence cardiaque, tension artérielle, oxygénation, température" },
-        { "title": "Dossier médical", "body": "Résultats d’analyses, ordonnances, diagnostics" },
-        { "title": "Données de mode de vie", "body": "Activité physique, sommeil, alimentation, niveau de stress" },
-        { "title": "Résultats du modèle", "body": "Analyses, prévisions, recommandations" }
+        {
+          "title": "Constantes et indicateurs vitaux",
+          "body": "Fréquence cardiaque, tension artérielle, oxygénation, température"
+        },
+        {
+          "title": "Dossier médical",
+          "body": "Résultats d’analyses, ordonnances, diagnostics"
+        },
+        {
+          "title": "Données de mode de vie",
+          "body": "Activité physique, sommeil, alimentation, niveau de stress"
+        },
+        {
+          "title": "Résultats du modèle",
+          "body": "Analyses, prévisions, recommandations"
+        }
       ],
       "note": "Votre Health Black Box vous appartient. Exportez toutes vos données quand vous voulez, supprimez-les définitivement ou partagez-en une partie avec des soignants. Aucun enfermement."
     },
@@ -158,9 +253,18 @@
       "title": "Pourquoi deux modèles ?",
       "subtitle": "Deux modèles indépendants offrent des éclairages de santé plus justes, plus complets et plus fiables.",
       "items": [
-        { "title": "Plus de justesse", "body": "La validation croisée entre les modèles réduit les erreurs et les faux positifs." },
-        { "title": "Vue d’ensemble", "body": "Des approches différentes repèrent ce que d’autres laisseraient passer." },
-        { "title": "Niveau de confiance", "body": "Quand les deux modèles convergent, la confiance dans le constat est plus élevée." }
+        {
+          "title": "Plus de justesse",
+          "body": "La validation croisée entre les modèles réduit les erreurs et les faux positifs."
+        },
+        {
+          "title": "Vue d’ensemble",
+          "body": "Des approches différentes repèrent ce que d’autres laisseraient passer."
+        },
+        {
+          "title": "Niveau de confiance",
+          "body": "Quand les deux modèles convergent, la confiance dans le constat est plus élevée."
+        }
       ],
       "more": "Retrouvez une explication détaillée sur notre page <link>Pourquoi deux modèles</link>."
     },
@@ -172,32 +276,62 @@
         {
           "title": "Santé cardiovasculaire",
           "body": "Fréquence cardiaque, tension artérielle, ECG, santé artérielle, indicateurs de circulation.",
-          "items": ["Fréquence cardiaque au repos", "Évolution de la tension", "Variabilité de la fréquence cardiaque", "Facteurs de risque cardiaque"]
+          "items": [
+            "Fréquence cardiaque au repos",
+            "Évolution de la tension",
+            "Variabilité de la fréquence cardiaque",
+            "Facteurs de risque cardiaque"
+          ]
         },
         {
           "title": "Activité physique",
           "body": "Pas, exercice, calories, habitudes de mouvement, condition physique.",
-          "items": ["Niveau d’activité quotidien", "Durée et intensité de l’exercice", "Dépense calorique", "Progression de la forme"]
+          "items": [
+            "Niveau d’activité quotidien",
+            "Durée et intensité de l’exercice",
+            "Dépense calorique",
+            "Progression de la forme"
+          ]
         },
         {
           "title": "Sommeil et récupération",
           "body": "Qualité et durée du sommeil, phases, indicateurs de récupération, rythme circadien.",
-          "items": ["Durée et qualité du sommeil", "Sommeil paradoxal et profond", "Régularité du sommeil", "Scores de récupération"]
+          "items": [
+            "Durée et qualité du sommeil",
+            "Sommeil paradoxal et profond",
+            "Régularité du sommeil",
+            "Scores de récupération"
+          ]
         },
         {
           "title": "Santé métabolique",
           "body": "Glycémie, poids, composition corporelle, marqueurs métaboliques.",
-          "items": ["Niveaux de glycémie", "Évolution du poids", "Taux de masse grasse", "Métabolisme de base"]
+          "items": [
+            "Niveaux de glycémie",
+            "Évolution du poids",
+            "Taux de masse grasse",
+            "Métabolisme de base"
+          ]
         },
         {
           "title": "Bien-être mental",
           "body": "Niveau de stress, suivi de l’humeur, indicateurs de santé mentale, pleine conscience.",
-          "items": ["Marqueurs de stress", "Variations de l’humeur", "Résilience mentale", "Équilibre émotionnel"]
+          "items": [
+            "Marqueurs de stress",
+            "Variations de l’humeur",
+            "Résilience mentale",
+            "Équilibre émotionnel"
+          ]
         },
         {
           "title": "Marqueurs cliniques",
           "body": "Résultats d’analyses, biomarqueurs, examens médicaux, dépistages.",
-          "items": ["Résultats de prises de sang", "Taux de cholestérol", "Marqueurs hormonaux", "Niveaux de vitamines"]
+          "items": [
+            "Résultats de prises de sang",
+            "Taux de cholestérol",
+            "Marqueurs hormonaux",
+            "Niveaux de vitamines"
+          ]
         }
       ],
       "moreTitle": "Et bien d’autres catégories",

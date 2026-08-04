@@ -191,6 +191,7 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
       case 'human-data-model':
         return (
           <HumanDataModelSection
+            onNavigateSection={setCurrentSection}
             onOpenService={(servicePath) => {
               setActiveServiceRef(servicePath);
               setCurrentSection('service-workspace');

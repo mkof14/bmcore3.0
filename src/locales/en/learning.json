@@ -13,6 +13,10 @@
         "title": "Member Zone",
         "body": "Your personalized health dashboard. Track progress across all services, review reports, manage device connections, set wellness goals, and access your complete health timeline in one secure location."
       },
+      "healthRecords": {
+        "title": "Health Records & DNA",
+        "body": "In Member Zone → Health Records & DNA you can upload or scan labs, imaging, DNA report PDFs, and raw DNA files (PDF, images, CSV, TXT, VCF). Files move from Received to In review to Insights ready. Insights explain the record, list conclusions and recommendations, and stay educational — not a diagnosis. Counts and a DNA-on-file flag feed personal context for reports and Health Guide; raw DNA content is never pasted into AI prompts. You can Copy, Print, or Download TXT any ready insight."
+      },
       "multiModel": {
         "title": "Multi-Model Reports",
         "body": "Run two AI perspectives at the same time and receive a unified summary. This helps you compare angles and arrive at a single, confident conclusion."

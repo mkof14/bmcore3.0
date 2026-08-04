@@ -32,6 +32,10 @@
       "signalHub": {
         "title": "Signal-Hub und Aktionspläne",
         "body": "Prüfen Sie Signalstärke, Wissenstiefe und die Reife Ihrer Berichte. Verwandeln Sie Erkenntnisse anschließend in ruhige Aktionspläne, Schritt für Schritt."
+      },
+      "healthRecords": {
+        "title": "Gesundheitsakten & DNA",
+        "body": "In der Member Zone → Gesundheitsakten & DNA können Sie Labore, Bildgebung, DNA-Bericht-PDFs und Roh-DNA hochladen oder scannen (PDF, Bilder, CSV, TXT, VCF). Status: Empfangen → In Prüfung → Insights bereit. Insights erklären den Datensatz, listen Schlussfolgerungen und Empfehlungen und bleiben bildend — keine Diagnose. Zählungen und ein DNA-Flag speisen den persönlichen Kontext für Berichte und Health Guide; Roh-DNA-Inhalt wird nie in KI-Prompts eingefügt. Sie können Kopieren, Drucken oder TXT herunterladen."
       }
     },
     "viewPlans": "Tarife ansehen →",

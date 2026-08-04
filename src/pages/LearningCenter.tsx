@@ -1,4 +1,4 @@
-import { BookOpen, FileText, HelpCircle, Search, ChevronRight, ChevronDown, DollarSign, Users, Grid, Activity, Database, Layers, FileCheck, Compass, GitCompareArrows } from 'lucide-react';
+import { BookOpen, FileText, HelpCircle, Search, ChevronRight, ChevronDown, DollarSign, Users, Grid, Activity, Database, Layers, FileCheck, Compass, GitCompareArrows, Dna } from 'lucide-react';
 import HealthGuideIcon from '../components/brand/HealthGuideIcon';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -163,6 +163,7 @@ export default function LearningCenter({ onNavigate }: LearningCenterProps) {
   const gettingStartedSections = [
     { key: 'pricing', icon: DollarSign },
     { key: 'member', icon: Users },
+    { key: 'healthRecords', icon: Dna },
     { key: 'multiModel', icon: GitCompareArrows },
     { key: 'aiGuide', icon: BookOpen },
     { key: 'services', icon: FileText },

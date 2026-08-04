@@ -156,17 +156,26 @@ function buildSystemPreface(
   completeness: CompletenessBreakdown,
   blurb: string,
   tier: string | null,
+  medicalFiles: { count: number; dnaPresent: boolean; latestLabDate: string | null; countsByType: Record<string, number> },
 ): string {
   const readiness = completeness.readyForPersonalizedAnalysis
     ? 'Personal context is linked and ready for personalized analysis.'
     : 'Personal context is incomplete; prefer general guidance and prompt questionnaire completion.';
+  const typeSummary = Object.entries(medicalFiles.countsByType)
+    .map(([k, n]) => `${k}=${n}`)
+    .join(', ');
   const parts = [
     'You are grounding answers in the member Health Guide personal context.',
     readiness,
     `Completeness=${completeness.score}% (questionnaire=${completeness.questionnairePercent}%, profile=${completeness.profilePercent}%).`,
     tier ? `Subscription tier=${tier}.` : null,
     blurb ? `Profile signals: ${blurb}` : 'No questionnaire signals yet.',
-    'Do not invent diagnoses. Educational wellness support only. Never include medical file URLs or raw PHI dumps.',
+    `Health records on file: count=${medicalFiles.count}${typeSummary ? ` (${typeSummary})` : ''}.`,
+    `Raw DNA on file: ${medicalFiles.dnaPresent ? 'yes' : 'no'}.`,
+    medicalFiles.latestLabDate
+      ? `Latest lab upload date: ${medicalFiles.latestLabDate.slice(0, 10)}.`
+      : null,
+    'Do not invent diagnoses. Educational wellness support only. Never include medical file URLs, raw DNA sequences, or raw PHI dumps.',
   ];
   return parts.filter(Boolean).join(' ');
 }
@@ -176,10 +185,11 @@ function buildAiPayload(
   contextBlurb: string,
   highlights: Record<string, unknown>,
   tier: string | null,
+  medicalFiles: { count: number; dnaPresent: boolean; latestLabDate: string | null; countsByType: Record<string, number> },
 ): PersonalContextAiPayload {
   return {
     version: PERSONAL_CONTEXT_VERSION,
-    systemPreface: buildSystemPreface(completeness, contextBlurb, tier),
+    systemPreface: buildSystemPreface(completeness, contextBlurb, tier, medicalFiles),
     contextBlurb,
     completeness,
     highlights,
@@ -242,7 +252,7 @@ async function loadProfile(userId: string) {
 async function loadMedicalFilesMeta(userId: string) {
   const { data } = await supabase
     .from('medical_files')
-    .select('id, file_type, category, created_at')
+    .select('id, file_type, category, upload_date, metadata')
     .eq('user_id', userId);
   const rows = (data || []) as Array<Record<string, unknown>>;
   const categories = Array.from(
@@ -252,7 +262,34 @@ async function loadMedicalFilesMeta(userId: string) {
         .filter(Boolean),
     ),
   );
-  return { count: rows.length, categories };
+  const countsByType: Record<string, number> = {};
+  let dnaPresent = false;
+  let latestLabDate: string | null = null;
+
+  for (const row of rows) {
+    const category = String(row.category || 'other');
+    const fileType = String(row.file_type || '');
+    countsByType[category] = (countsByType[category] || 0) + 1;
+
+    const isDna =
+      fileType === 'raw_dna' ||
+      category === 'rawDna' ||
+      category === 'dnaReport' ||
+      category === 'raw_dna' ||
+      category === 'dna_report';
+    if (isDna) dnaPresent = true;
+
+    const isLab = category === 'labResults' || category === 'labs';
+    const uploaded =
+      (typeof row.upload_date === 'string' && row.upload_date) ||
+      (typeof row.created_at === 'string' && row.created_at) ||
+      null;
+    if (isLab && uploaded && (!latestLabDate || uploaded > latestLabDate)) {
+      latestLabDate = uploaded;
+    }
+  }
+
+  return { count: rows.length, categories, countsByType, dnaPresent, latestLabDate };
 }
 
 async function loadDevicesMeta(userId: string) {
@@ -347,7 +384,13 @@ export async function buildPersonalContext(
   const highlights = buildHighlights(summary);
   const linkageHealth = deriveLinkageHealth(completeness, Boolean(summary), hasPaid);
   const digitalFile = summary ? digitalFileFromSummary(summary) : emptyDigitalFile(userId);
-  const aiPayload = buildAiPayload(completeness, contextBlurb, highlights, subscriptionTier);
+  const aiPayload = buildAiPayload(
+    completeness,
+    contextBlurb,
+    highlights,
+    subscriptionTier,
+    medicalFiles,
+  );
 
   const ctx: PersonalContext = {
     version: PERSONAL_CONTEXT_VERSION,

@@ -365,6 +365,37 @@
         ]
       },
       {
+        "id": "health-records-dna",
+        "title": "Health records & DNA",
+        "items": [
+          {
+            "id": "upload-labs-dna",
+            "question": "Can I upload lab tests and DNA data?",
+            "answer": "Yes. In Member Zone → Health Records & DNA you can upload or scan labs, imaging, DNA report PDFs, and raw DNA files. They become part of your health profile alongside the questionnaire."
+          },
+          {
+            "id": "supported-formats",
+            "question": "Which file formats are supported?",
+            "answer": "PDF, JPG, PNG, WEBP, CSV, TXT, VCF, and common raw DNA text exports (including 23andMe- or Ancestry-style files). On mobile you can also use camera capture when the browser allows it."
+          },
+          {
+            "id": "how-insights-work",
+            "question": "What happens after I upload a file?",
+            "answer": "Each item moves from Received to In review to Insights ready. When ready, you get an educational explanation, conclusions, and recommendations. You can Copy, Print, or Download TXT. This is structured intake with insight templates — not a full genomic analysis pipeline."
+          },
+          {
+            "id": "feeds-reports-guide",
+            "question": "How do uploads affect reports and Health Guide?",
+            "answer": "Uploads contribute high-level personal context: counts by type, whether DNA is on file, and the latest lab date. Reports and Health Guide use those signals together with your questionnaire. Full raw DNA content is never pasted into AI prompts."
+          },
+          {
+            "id": "dna-privacy",
+            "question": "Is raw DNA kept private from AI prompts?",
+            "answer": "Yes. Health Guide and report prefaces only receive a yes/no “raw DNA on file” flag plus educational templates — never the full genetic file."
+          }
+        ]
+      },
+      {
         "id": "privacy",
         "title": "Privacy & security",
         "items": [

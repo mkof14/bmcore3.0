@@ -365,6 +365,37 @@
         ]
       },
       {
+        "id": "health-records-dna",
+        "title": "健康档案与DNA",
+        "items": [
+          {
+            "id": "upload-labs-dna",
+            "question": "可以上传检验和DNA数据吗？",
+            "answer": "可以。在会员区 → 健康档案与DNA，您可上传或扫描检验、影像、DNA报告PDF与原始DNA。它们与问卷一起成为健康资料的一部分。"
+          },
+          {
+            "id": "supported-formats",
+            "question": "支持哪些文件格式？",
+            "answer": "PDF、JPG、PNG、WEBP、CSV、TXT、VCF，以及常见原始DNA文本导出（包括23andMe或Ancestry风格）。在移动设备上，浏览器允许时可使用相机拍摄。"
+          },
+          {
+            "id": "how-insights-work",
+            "question": "上传后会发生什么？",
+            "answer": "每条记录从已接收到审核中再到洞察已就绪。就绪后您会获得教育性解释、结论与建议，并可复制、打印或下载TXT。这是结构化采集与洞察模板，不是完整基因组分析流水线。"
+          },
+          {
+            "id": "feeds-reports-guide",
+            "question": "上传如何影响报告与Health Guide？",
+            "answer": "上传提供高层个人上下文：按类型计数、是否存有DNA、最近检验日期。报告与Health Guide会结合问卷使用这些信号。完整原始DNA内容绝不会粘贴进AI提示。"
+          },
+          {
+            "id": "dna-privacy",
+            "question": "原始DNA会对AI提示保密吗？",
+            "answer": "会。Health Guide与报告前言仅接收是/否“已存档原始DNA”标志和教育模板——从不接收完整基因文件。"
+          }
+        ]
+      },
+      {
         "id": "privacy",
         "title": "隐私与安全",
         "items": [

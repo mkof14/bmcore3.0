@@ -365,6 +365,37 @@
         ]
       },
       {
+        "id": "health-records-dna",
+        "title": "健康記録とDNA",
+        "items": [
+          {
+            "id": "upload-labs-dna",
+            "question": "検査やDNAデータをアップロードできますか？",
+            "answer": "はい。メンバーゾーン → 健康記録とDNAで、検査・画像・DNAレポートPDF・生DNAをアップロードまたはスキャンできます。問診票と並んで健康プロフィールの一部になります。"
+          },
+          {
+            "id": "supported-formats",
+            "question": "対応ファイル形式は？",
+            "answer": "PDF、JPG、PNG、WEBP、CSV、TXT、VCF、一般的な生DNAテキスト書き出し（23andMeやAncestry形式など）。モバイルではブラウザが許可する場合カメラ撮影も可能です。"
+          },
+          {
+            "id": "how-insights-work",
+            "question": "アップロード後どうなりますか？",
+            "answer": "各項目は受付済み→確認中→インサイト準備完了と進みます。準備完了後、教育的な説明・結論・推奨が表示され、コピー・印刷・TXTダウンロードができます。構造化インテークとインサイトテンプレートであり、完全なゲノム解析パイプラインではありません。"
+          },
+          {
+            "id": "feeds-reports-guide",
+            "question": "アップロードはレポートとHealth Guideにどう影響しますか？",
+            "answer": "種類別件数、DNA有無、最新検査日といった高レベルな個人コンテキストが追加されます。レポートとHealth Guideは問診票と合わせてこれらの信号を使います。生DNA全文はAIプロンプトに貼られません。"
+          },
+          {
+            "id": "dna-privacy",
+            "question": "生DNAはAIプロンプトから守られますか？",
+            "answer": "はい。Health Guideとレポート前文は「生DNAあり」のはい/いいえフラグと教育テンプレートのみを受け取り、完全な遺伝ファイルは受け取りません。"
+          }
+        ]
+      },
+      {
         "id": "privacy",
         "title": "プライバシーとセキュリティ",
         "items": [

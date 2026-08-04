@@ -348,12 +348,33 @@ function createMockQuery(table: string) {
         const payload = Array.isArray(updatePayload) ? updatePayload[0] : updatePayload;
         const row = {
           id: `mock-file-${Date.now()}`,
+          upload_date: new Date().toISOString(),
           created_at: new Date().toISOString(),
+          metadata: {},
+          tags: [],
           ...payload,
           user_id: payload?.user_id || userId,
         };
         writeMockJson(MOCK_MEDICAL_FILES_KEY, [row, ...all]);
         return emptyResult(row);
+      }
+      if (op === 'update') {
+        const idx = all.findIndex((r) => r.id === filters.id);
+        if (idx < 0) return emptyResult(null);
+        const next = { ...all[idx], ...updatePayload };
+        const copy = [...all];
+        copy[idx] = next;
+        writeMockJson(MOCK_MEDICAL_FILES_KEY, copy);
+        return emptyResult(next);
+      }
+      if (op === 'delete') {
+        const next = filters.id
+          ? all.filter((r) => r.id !== filters.id)
+          : userId
+            ? all.filter((r) => r.user_id !== userId)
+            : all;
+        writeMockJson(MOCK_MEDICAL_FILES_KEY, next);
+        return emptyResult(null);
       }
       const filtered = userId ? all.filter((r) => r.user_id === userId) : all;
       return emptyResult(filtered[0] || null);
