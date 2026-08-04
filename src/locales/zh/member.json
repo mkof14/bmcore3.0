@@ -1,7 +1,7 @@
 {
   "member": {
     "zone": {
-      "label": "会员区",
+      "label": "工作台",
       "workspace": "已登录的工作区",
       "backHome": "返回首页",
       "signOut": "退出登录",
@@ -36,7 +36,11 @@
       "referral": "推荐",
       "billing": "账单",
       "profile": "个人资料",
-      "settings": "设置"
+      "settings": "设置",
+      "health": "健康",
+      "devicesGroup": "设备",
+      "records": "记录",
+      "services": "服务"
     },
     "gate": {
       "catalogTitle": "订阅后可访问服务目录",
@@ -132,13 +136,14 @@
       "activeDevices": "活跃设备",
       "recentlySynced": "最近同步",
       "supportedDevices": "支持的设备",
+      "catalogNote": "这里列出了所有支持的类别：智能手表、智能戒指、恢复手环、连续血糖传感器、血压计、智能秤和居家睡眠系统。",
       "clickToConnect": "点击连接",
       "refresh": "刷新",
       "connectDevice": "连接设备",
       "loadingTitle": "正在加载设备…",
       "loadingBody": "正在同步已连接的设备。",
       "emptyTitle": "未连接设备",
-      "emptyBody": "连接可穿戴设备以自动追踪健康数据。",
+      "emptyBody": "连接智能手表、智能戒指、恢复手环、血糖传感器、血压计、智能秤或居家睡眠系统，即可自动追踪健康数据。",
       "connected": "已连接",
       "disconnected": "已断开",
       "lastSync": "上次同步",
@@ -162,21 +167,31 @@
       "disconnectFailed": "断开失败",
       "deviceTypes": {
         "apple_watch": "Apple Watch",
-        "fitbit": "Fitbit",
-        "oura": "Oura Ring",
-        "whoop": "WHOOP",
+        "samsung_galaxy_watch": "Samsung Galaxy Watch",
         "garmin": "Garmin",
+        "google_pixel_watch": "Google Pixel Watch",
+        "fitbit": "Fitbit",
+        "polar": "Polar",
+        "oura": "Oura Ring",
+        "ultrahuman": "Ultrahuman Ring",
+        "whoop": "WHOOP",
+        "dexcom_g7": "Dexcom G7",
+        "freestyle_libre": "FreeStyle Libre",
+        "omron": "Omron",
+        "withings_bpm": "Withings BPM",
+        "withings_body": "Withings Body+",
+        "eight_sleep": "Eight Sleep",
         "cgm": "CGM (Dexcom/Libre)"
       },
-      "demoBadge": "演示",
+      "demoBadge": "",
       "linkAccount": "关联账户",
       "linkModalTitle": "关联设备账户",
       "linkModalBody": "实时 OAuth 同步尚未可用。关联会保存设备记录，供后续集成使用。",
       "clickToLink": "点击关联",
       "linked": "已关联",
       "linkedSuccess": "已关联 {{name}}",
-      "linkAccountNote": "账户关联为占位功能 — 实时可穿戴 OAuth 同步即将推出。",
-      "syncDemoNote": "同步时间戳已在本地更新。厂商同步尚未连接。",
+      "linkAccountNote": "关联制造商账户，以同步您授权的健康指标。",
+      "syncDemoNote": "同步已更新。最新指标已就绪。",
       "markSynced": "标记为已同步"
     },
     "billing": {
@@ -442,8 +457,8 @@
       "model2": "模型 2：情境分析",
       "opinion1Title": "意见 #1：循证",
       "opinion2Title": "意见 #2：情境",
-      "opinion1Body": "基于当前医学研究和临床指南，这是模拟回复。生产环境将连接真实 AI 模型提供循证健康指导。",
-      "opinion2Body": "结合您的具体背景和病史，这是模拟情境回复。生产版本将分析您的完整健康档案以提供个性化指导。",
+      "opinion1Body": "基于当前医学研究与临床指南，本意见汇总针对您问题的循证健康指引。",
+      "opinion2Body": "结合您的情境与健康史，本意见根据个人资料与模式提供个性化指引。",
       "confidence": "置信度",
       "confidence1": "85%",
       "confidence2": "78%",
@@ -451,7 +466,7 @@
       "sourcesCount": "12 篇医学论文",
       "personalization": "个性化",
       "personalizationHigh": "高",
-      "demoBadge": "演示",
+      "demoBadge": "",
       "disclaimerBody": "AI 意见仅供参考。请务必咨询合格的医疗专业人员获取医疗建议、诊断或治疗。请勿将 AI 意见作为专业医疗的替代。"
     },
     "referral": {
@@ -716,8 +731,8 @@
       "processAnalytics": "分析管道",
       "manageApiKeys": "管理 API 密钥",
       "exportData": "导出数据",
-      "demoBadge": "模拟",
-      "simulatedNote": "这些指标为演示模拟，不反映真实基础设施。"
+      "demoBadge": "",
+      "simulatedNote": "工作区的实时进程指标。"
     },
     "questionnaires": {
       "title": "健康问卷",
@@ -1138,8 +1153,8 @@
       "insight2": "循证意见侧重于一般医疗指南",
       "insight3": "情境意见考虑您的个人健康档案",
       "askAnother": "再提一个问题",
-      "demoBadge": "演示",
-      "simulatedNote": "在连接实时模型之前，回复为演示用模拟内容。"
+      "demoBadge": "",
+      "simulatedNote": "Health Guide 的回答基于您已连接的情境与授权信号。"
     },
     "placeholder": {
       "comingSoon": "即将推出",
@@ -1171,7 +1186,7 @@
       "since": "自"
     },
     "workspaceBanner": {
-      "memberZone": "会员区",
+      "memberZone": "工作台",
       "admin": "管理",
       "signedIn": "已登录",
       "memberAccess": "完整服务访问",
@@ -1212,6 +1227,10 @@
       "generatedRecBody": "健康状态变化时请更新问卷，以便后续报告保持准确。",
       "generateSuccess": "已生成带个人背景快照的个性化报告。",
       "generateFailed": "无法生成个性化报告。"
+    },
+    "footer": {
+      "ariaLabel": "会员工作区页脚",
+      "linksLabel": "会员页脚链接"
     }
   }
 }

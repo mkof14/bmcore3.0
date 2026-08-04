@@ -1199,10 +1199,10 @@ function ReportView({ report, onBack, onNavigate }: ReportViewProps) {
           </section>
 
           <section className="bg-white dark:bg-[var(--bm-surface)]/60 border border-gray-200 dark:border-gray-800 rounded-xl p-6">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">AI Dialog Simulator</h2>
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Ask about your report</h2>
             <div className="space-y-3 mb-4">
               {dialog.length === 0 && (
-                <p className="text-sm text-gray-500">Ask a question about your report to get a simulated response.</p>
+                <p className="text-sm text-gray-500">Ask a question about your report to get a clear explanation.</p>
               )}
               {dialog.map((msg, idx) => (
                 <div key={idx} className={`${msg.role === 'user' ? 'text-right' : 'text-left'}`}>

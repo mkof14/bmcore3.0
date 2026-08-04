@@ -10,7 +10,7 @@
         "body": "Wählen Sie aus flexiblen Abostufen, die zu Ihrem Wellness-Weg passen. Alle Tarife enthalten die Kernleistungen; höhere Stufen schalten spezialisierte Auswertungen, Geräteanbindungen und erweiterte KI-Begleitung frei."
       },
       "member": {
-        "title": "Mitgliederbereich",
+        "title": "Cabinet",
         "body": "Ihr persönliches Gesundheits-Dashboard. Verfolgen Sie Ihren Fortschritt über alle Leistungen, prüfen Sie Berichte, verwalten Sie Geräteverbindungen, setzen Sie Ziele und sehen Sie Ihre gesamte Gesundheitschronik an einem sicheren Ort."
       },
       "multiModel": {
@@ -35,11 +35,16 @@
       },
       "healthRecords": {
         "title": "Gesundheitsakten & DNA",
-        "body": "In der Member Zone → Gesundheitsakten & DNA können Sie Labore, Bildgebung, DNA-Bericht-PDFs und Roh-DNA hochladen oder scannen (PDF, Bilder, CSV, TXT, VCF). Status: Empfangen → In Prüfung → Insights bereit. Insights erklären den Datensatz, listen Schlussfolgerungen und Empfehlungen und bleiben bildend — keine Diagnose. Zählungen und ein DNA-Flag speisen den persönlichen Kontext für Berichte und Health Guide; Roh-DNA-Inhalt wird nie in KI-Prompts eingefügt. Sie können Kopieren, Drucken oder TXT herunterladen."
+        "body": "In Cabinet → Gesundheitsakten & DNA laden oder scannen Sie Laborwerte, Bildgebung, DNA-Berichts-PDFs und rohe DNA-Dateien (PDF, Bilder, CSV, TXT, VCF). Auf dem Smartphone lässt sich ein gedruckter Bogen mit der Kamera aufnehmen. Dateien wandern von Empfangen über In Prüfung zu Insights bereit. Insights erklären die Akte, nennen Schlussfolgerungen und Empfehlungen und bleiben edukativ — keine Diagnose. Fertige Insights können Sie kopieren, drucken oder als TXT herunterladen oder Health Guide per Text oder Sprache zur gewählten Akte fragen. Anzahl und das Kennzeichen „DNA hinterlegt“ liefern persönlichen Kontext für Berichte und Health Guide; rohe DNA-Inhalte werden nie in KI-Prompts eingefügt."
+      },
+      "devices": {
+        "title": "Verbundene Geräte",
+        "body": "Cabinet → Verbundene Geräte deckt sieben Kategorien ab: Smartwatches (Apple Watch, Samsung Galaxy Watch, Garmin, Google Pixel Watch, Fitbit, Polar), Smart Rings (Oura Ring, Ultrahuman Ring), Erholungsbänder (WHOOP), Sensoren für kontinuierliche Glukose (Dexcom G7, FreeStyle Libre), Blutdruckmessgeräte (Omron, Withings BPM), smarte Waagen (Withings Body+) und Heim-Schlafsysteme (Eight Sleep). Sie autorisieren jede Marke selbst, und es synchronisieren nur die Werte, die Sie freigeben — im gewählten Rhythmus, nahezu in Echtzeit, wenn die Marke es unterstützt. Interpretierte Trends fließen in Ihre Berichte, damit Health Guide Muster in klarer Sprache erklären kann; rohe Sensordatenströme werden nicht gespeichert."
       }
     },
     "viewPlans": "Tarife ansehen →",
-    "goToMember": "Zum Mitgliederbereich →",
+    "goToMember": "Zum Cabinet →",
+    "openDevices": "Verbundene Geräte öffnen →",
     "browseServices": "Alle Leistungen ansehen →",
     "ai": {
       "title": "KI-Systeme 101",

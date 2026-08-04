@@ -9,7 +9,7 @@
     "commandCenter": "管理センター",
     "adminPanel": "管理パネル",
     "whyTwoModels": "2つのモデルを使う理由",
-    "privacyTrust": "プライバシーと信頼センター",
+    "privacyTrust": "信頼とプライバシーセンター",
     "legalNote": "BioMath Core はウェルネスサービスです。医療の提供、診断、治療は行いません。",
     "legalGroups": {
       "documents": "法的文書",
@@ -20,7 +20,8 @@
     "cookiePreferences": "Cookie の設定",
     "legalContact": "プライバシー・法務の窓口",
     "disclaimer": "BioMath Coreはウェルネスサービスであり、医療サービスではありません。診断、治療、医療上の助言は行いません。ウェルネスと予防的な健康支援のための案内のみを提供します。医療上の懸念については、必ず資格を持つ医療専門家にご相談ください。",
-    "media": "メディア"
+    "media": "メディア",
+    "refer": "紹介"
   },
   "cookies": {
     "title": "Cookie の設定",

@@ -91,7 +91,7 @@ export default function SummaryText({ onNavigate }: SummaryTextProps) {
                 Depth-based access
               </h2>
               <p className="mt-4">
-                A base subscription with deeper add-ons — progress through demonstration, not locked
+                A base subscription with deeper add-ons — progress through experience, not locked
                 features. Tiers grow capability. Add-ons extend interpretive depth when they are most
                 relevant.
               </p>

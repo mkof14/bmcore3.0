@@ -317,8 +317,9 @@ export default function Careers({ onNavigate }: CareersProps) {
                     {visibleJobs.length < filteredJobs.length && (
                       <div className="mt-10 text-center">
                         <button
+                          type="button"
                           onClick={() => setVisibleCount((count) => count + 6)}
-                          className="border border-[var(--bm-border)] bg-page px-6 py-3 text-sm font-semibold text-gray-900 transition-colors hover:border-orange-500/40 dark:text-neutral-100"
+                          className="bm-link"
                         >
                           {t('programs.careers.loadMore')}
                         </button>

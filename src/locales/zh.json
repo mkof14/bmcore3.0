@@ -4,7 +4,7 @@
     "about": "关于",
     "pricing": "价格",
     "allServices": "全部服务",
-    "memberZone": "会员区",
+    "memberZone": "工作台",
     "investors": "投资者",
     "signInUp": "登录/注册",
     "signOut": "退出登录",
@@ -13,7 +13,7 @@
     "languageSwitching": "正在切换语言…"
   },
   "footer": {
-    "tagline": "生物数学人体数据模型——您健康的活体数字孪生。",
+    "tagline": "生物数学人体数据模型——您健康的活体模型。",
     "navigation": "导航",
     "resources": "资源",
     "company": "公司",
@@ -34,7 +34,7 @@
     "security": "安全",
     "rights": "保留所有权利。",
     "legalSafety": "法律与安全",
-    "memberArea": "会员区",
+    "memberArea": "工作台",
     "infoHelp": "信息与帮助",
     "appsStatus": "尚未上架 App Store 或 Google Play 原生应用。请在浏览器使用 BioMath Core，或安装网页应用（PWA）。"
   },
@@ -78,10 +78,10 @@
   },
   "home": {
     "seoTitle": "生物数学人体数据模型",
-    "seoDescription": "BioMath Core 构建持续演进的人体数据模型——您健康的生物数学数字孪生——并由 Health Guide 双模型分析提供指引。",
+    "seoDescription": "BioMath Core 构建持续演进的人体数据模型——您健康的生物数学模型——并由 Health Guide 双模型分析提供指引。",
     "brand": "BioMath Core",
     "heroTitle": "伴随一生的人体数据模型",
-    "heroSubtitle": "随每一项经核实的健康事件成长的生物数学数字孪生——不是生物标志物看板。",
+    "heroSubtitle": "随每一项经核实的健康事件成长的生物数学模型——不是生物标志物看板。",
     "ctaPricing": "查看价格",
     "ctaHow": "如何运作",
     "coreTools": {
@@ -89,10 +89,34 @@
       "subtitle": "导入记录、查看时间线、追踪变化——覆盖每一类健康主题。",
       "readMore": "阅读说明"
     },
+    "twoModels": {
+      "eyebrow": "为何使用两个模型",
+      "headline": "由两个独立模型共同确认，而不是只靠一个。",
+      "subhead": "每一条洞察都会对照第二次独立分析进行核验。两者一致时，你知道它可靠；不一致时，你能清楚看到分歧在哪里、为什么。",
+      "toggle": {
+        "most": "多数情况",
+        "rare": "少见情况"
+      },
+      "confirmed": {
+        "title": "两个模型均已确认",
+        "body": "长期偏低的维生素 D 读数，会同时被循证分析与情境分析一致地标出。",
+        "caption": "大多数洞察就是这样呈现的。"
+      },
+      "differs": {
+        "title": "两个模型的看法不同",
+        "body": "一种分析强调持续的实验室模式；另一种则权衡近期作息与日照如何塑造同一发现。",
+        "caption": "这种情况偶尔会发生，一旦发生，你会看到双方的依据。",
+        "evidenceBased": "循证",
+        "contextual": "情境",
+        "evidenceReasoning": "多次检验中持续偏低的 25-OH 维生素 D 支持明确的缺乏信号。",
+        "contextualReasoning": "近期多月室内工作、户外时间有限，也可能解释同样的低读数，而不一定意味着持久的代谢问题。"
+      },
+      "cta": "了解运作方式 →"
+    },
     "what": {
       "label": "它是什么",
       "title": "关于您的活体生物数学模型",
-      "body": "人体数据模型是由经核实的化验、临床记录、用药、症状与生活方式信号构建的数字孪生。它保持连续结构——让 Health Guide 能基于完整病史推理，而非孤立快照。",
+      "body": "人体数据模型是由经核实的化验、临床记录、用药、症状与生活方式信号构建。它保持连续结构——让 Health Guide 能基于完整病史推理，而非孤立快照。",
       "points": [
         {
           "title": "一个模型，多种来源",
@@ -104,7 +128,7 @@
         },
         {
           "title": "为数十年而建",
-          "body": "每一个重要事件都会更新孪生——明天的问题仍保有昨天的证据。"
+          "body": "每一个重要事件都会更新模型——明天的问题仍保有昨天的证据。"
         }
       ],
       "signals": [
@@ -115,7 +139,7 @@
       ],
       "vizTitle": "汇入人体数据模型的信号",
       "vizCore": "HDM",
-      "vizCoreSub": "数字孪生",
+      "vizCoreSub": "数据模型",
       "vizCaption": "经核实的输入喂养一个模型——不是一堆互不相关的看板。"
     },
     "steps": {
@@ -128,7 +152,7 @@
           "body": "纳入化验、影像说明、处方与个人观察。"
         },
         {
-          "title": "结构化孪生",
+          "title": "结构化模型",
           "body": "BioMath Core 按健康类别将事件组织进您的人体数据模型。"
         },
         {
@@ -137,33 +161,43 @@
         },
         {
           "title": "询问 Health Guide",
-          "body": "双模型分析使用您的孪生——生物数学视角与临床导向视角并排呈现。"
+          "body": "双模型分析使用您的模型——生物数学视角与临床导向视角并排呈现。"
         }
       ]
     },
     "different": {
       "label": "为何不同",
       "title": "生物数学，而非又一条生物标志物信息流",
-      "body": "看板只显示最新数字。人体数据模型把化验、诊断、治疗与症状保存在一个活的孪生中——让您能带着情境行动。",
+      "body": "看板只显示最新数字。人体数据模型把化验、诊断、治疗与症状保存在一个活的模型中——让您能带着情境行动。",
       "viz": {
-        "title": "分散的指标汇成人体数据模型的数字孪生",
+        "title": "分散的指标汇成人体数据模型",
         "themLabel": "分散的指标",
         "usLabel": "人体数据模型",
-        "metrics": ["LDL", "HRV", "A1C", "睡眠"],
-        "links": ["化验", "记录", "用药", "生活方式"],
+        "metrics": [
+          "LDL",
+          "HRV",
+          "A1C",
+          "睡眠"
+        ],
+        "links": [
+          "化验",
+          "记录",
+          "用药",
+          "生活方式"
+        ],
         "core": "HDM",
-        "coreSub": "数字孪生",
+        "coreSub": "数据模型",
         "outAsk": "提问",
         "outMap": "探索",
         "outTime": "对比",
-        "caption": "互不相连的读数变成一个可提问、可探索、可跨时间对比的孪生。"
+        "caption": "互不相连的读数变成一个可提问、可探索、可跨时间对比的模型。"
       },
       "outcomes": {
         "label": "接下来可以做什么",
         "items": [
           {
             "title": "向 Health Guide 提问",
-            "body": "基于您的孪生给出双模型回答——不是单次化验结果上的通用建议。"
+            "body": "基于您的模型给出双模型回答——不是单次化验结果上的通用建议。"
           },
           {
             "title": "打开一个类别",
@@ -186,6 +220,127 @@
       "female": "女性",
       "male": "男性",
       "toggleLabel": "人形"
+    },
+    "linkage": {
+      "label": "数据关联",
+      "title": "关联问卷数据以解锁双重意见",
+      "body": "当足够多的问卷部分关联到您的 Human Data Model 后，Health Guide 会比较循证观点与情境观点。",
+      "caption": "以关于午后精力的常见健康问题为例——仅为说明性示例内容，并非您的个人数据。",
+      "question": "为什么午饭后会感到疲惫？",
+      "chipHint": "切换各个部分以改变关联完整度。",
+      "completeness": "已完成 {{percent}}%",
+      "filledCount": "{{filled}} / {{total}} 个部分",
+      "linkageLabel": "数据关联：{{health}}",
+      "health": {
+        "red": "红",
+        "yellow": "黄",
+        "green": "绿"
+      },
+      "sections": {
+        "categories": "健康关注点",
+        "personal_info": "个人信息",
+        "medical_history": "病史",
+        "medications": "用药",
+        "allergies": "过敏",
+        "vital_signs": "生命体征",
+        "lifestyle": "生活方式",
+        "psychological_health": "心理健康"
+      },
+      "lockedTitle": "双重意见已锁定",
+      "lockedBody": "至少关联 40% 的问卷部分，即可解锁 Health Guide 的并排比较。",
+      "unlockedLabel": "双重意见",
+      "evidenceBased": "循证",
+      "contextual": "情境",
+      "confidence": "置信度 {{value}}%",
+      "reasoning": "推理",
+      "recommendations": "建议",
+      "diffTitle": "对比",
+      "agreements": "一致点",
+      "disagreements": "分歧点",
+      "alignment": "总体一致度：{{percent}}%",
+      "severity": {
+        "high": "高",
+        "medium": "中",
+        "low": "低"
+      },
+      "priority": {
+        "high": "高",
+        "medium": "中",
+        "low": "低"
+      },
+      "opinionA": {
+        "summary": "午后精力下降与昼夜节律及餐后血糖反应有关。",
+        "reasoning": [
+          "昼夜节律在下午 1–3 点自然下降（腺苷积累）。",
+          "餐后血糖波动影响警觉性（胰岛素反应）。",
+          "睡眠债会加重日间疲劳。",
+          "餐食构成直接影响血糖稳定性。"
+        ],
+        "recommendations": [
+          {
+            "title": "优化午餐宏量营养素平衡",
+            "description": "午餐搭配蛋白质、复合碳水与脂肪，以稳定数小时血糖。"
+          },
+          {
+            "title": "策略性光照",
+            "description": "午饭后接受 10–15 分钟明亮自然光，以支持警觉。"
+          },
+          {
+            "title": "简短活动方案",
+            "description": "餐后短走有助于血糖处理并减轻午后低谷。"
+          }
+        ]
+      },
+      "opinionB": {
+        "summary": "午后精力低谷往往来自用餐时间、压力负荷以及可以切实调整的习惯。",
+        "reasoning": [
+          "午餐时间与构成影响餐后感受。",
+          "工作环境与压力水平也有作用。",
+          "小的行为改变也能带来明显改善。",
+          "个体反应不同——有效方法需贴合你的一天。"
+        ],
+        "recommendations": [
+          {
+            "title": "正念进餐练习",
+            "description": "午餐留几分钟不看屏幕、不赶时间，以缓解消化与餐后崩溃感。"
+          },
+          {
+            "title": "姿势与呼吸休息",
+            "description": "午后中段站起、伸展并缓慢呼吸，作为简单重置。"
+          },
+          {
+            "title": "水分检查",
+            "description": "午餐时喝水，午后再补一次——脱水常被感觉为疲劳。"
+          }
+        ]
+      },
+      "diff": {
+        "agreements": [
+          {
+            "topic": "餐后活动",
+            "consensus": "两种观点都支持午饭后轻度活动以稳定精力。"
+          },
+          {
+            "topic": "餐食构成很重要",
+            "consensus": "双方都指出午餐吃什么、怎么吃会影响午后低谷。"
+          }
+        ],
+        "disagreements": [
+          {
+            "topic": "首要重点",
+            "opinionA": "优化午餐宏量营养素平衡",
+            "opinionB": "正念进餐练习",
+            "severity": "medium",
+            "explanation": "循证观点优先餐食的代谢结构；情境观点优先真实日压下的进食方式。"
+          }
+        ],
+        "uniqueToA": [
+          "策略性光照"
+        ],
+        "uniqueToB": [
+          "水分检查"
+        ]
+      }
     }
   },
   "about": {
@@ -235,11 +390,11 @@
   "contact": {
     "label": "联系",
     "title": "联系我们",
-    "healthGuideHint": "如需健康指引，请使用会员区中的健康向导。",
+    "healthGuideHint": "如需健康指引，请使用工作台中的健康向导。",
     "heroTitle": "联系 BioMath Core 团队",
     "heroSubtitle": "关于服务、合作或企业部署的问题——我们随时协助。",
     "noteLabel": "注意：",
-    "noteBody": "此渠道用于商务咨询、合作与账户问题。健康指导请使用会员区中的 Health Guide。",
+    "noteBody": "此渠道用于商务咨询、合作与账户问题。健康指导请使用工作台中的 Health Guide。",
     "messageLabel": "留言",
     "sendMessage": "发送消息"
   },

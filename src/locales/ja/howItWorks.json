@@ -73,31 +73,31 @@
         ]
       },
       "connect": {
-        "title": "Connect your health devices",
-        "summary": "BioMath Coreは100以上の健康デバイスとアプリ（ウェアラブル、スマートスケール、血圧計など）と連携します。メンバーゾーンでは問診票と同じように検査とDNAも取り込めます。",
-        "pointsHeading": "Seamless integration",
+        "title": "健康デバイスを接続する",
+        "summary": "BioMath Coreは実際に使われているデバイスとつながります：スマートウォッチ、スマートリング、リカバリーバンド、持続血糖センサー、血圧計、スマートスケール、家庭用睡眠システム。問診票と同じように、検査結果やDNAもキャビネットに取り込めます。",
+        "pointsHeading": "7つのデバイスカテゴリー",
         "points": [
           {
-            "title": "フィットネストラッカー",
-            "body": "Apple Watch、Fitbit、Garmin"
+            "title": "ウォッチとバンド",
+            "body": "Apple Watch、Samsung Galaxy Watch、Garmin、Google Pixel Watch、Fitbit、Polar"
           },
           {
-            "title": "ヘルスモニター",
-            "body": "血圧、血糖、体重計"
+            "title": "リングとリカバリー",
+            "body": "Oura Ring、Ultrahuman Ring、WHOOP"
           },
           {
-            "title": "ヘルスアプリ",
-            "body": "Apple Health、Google Fit"
+            "title": "センサーと家庭用機器",
+            "body": "Dexcom G7、FreeStyle Libre、Omron、Withings BPM、Withings Body+、Eight Sleep"
           },
           {
-            "title": "検査とDNA",
-            "body": "健康記録とDNAで検査・画像・DNAレポート・生DNAをアップロードまたはスキャン"
+            "title": "検査結果とDNA",
+            "body": "健康記録とDNAで検査結果、画像診断、DNAレポート、生のDNAをアップロードまたはスキャン"
           }
         ],
         "checklist": [
-          "主要サービスへのワンクリックOAuth接続",
-          "15分ごとの自動同期",
-          "検査・画像・DNAレポート・生DNAの手動アップロードまたはカメラスキャン"
+          "キャビネット → 接続済みデバイスで案内に沿って認証",
+          "承認した指標は選んだ頻度で同期され、ブランドが対応していればほぼリアルタイム",
+          "検査結果、画像診断、DNAレポート、生DNAファイルは手動アップロードまたはカメラでスキャン"
         ]
       },
       "analyze": {
@@ -180,7 +180,7 @@
       },
       "records": {
         "title": "検査とDNAを取り込む",
-        "summary": "メンバーゾーンの健康記録とDNAはPDF、画像、CSV、TXT、VCFに対応します。各アップロードを整理し、教育的インサイトを返し、生DNA本文ではなく高レベル信号をレポートとHealth Guideに結びます。",
+        "summary": "キャビネットの健康記録とDNAはPDF、画像、CSV、TXT、VCFに対応します。アップロードを構造化し、コピー・印刷・ダウンロードできる教育的インサイトを返し、高レベルのシグナル（生DNAの内容ではありません）をレポートとHealth Guideに連携します。",
         "pointsHeading": "アップロード後の流れ",
         "points": [
           {
@@ -197,10 +197,10 @@
           }
         ],
         "checklist": [
-          "メンバーゾーン → 健康記録とDNAを開く",
+          "キャビネット → 健康記録とDNAを開く",
           "検査、画像、DNAレポート、生DNA、その他を選ぶ",
           "ファイルをアップロードするか、モバイルでカメラスキャンを使う",
-          "音声向けの説明が必要なときは、選択した記録についてHealth Guideに聞く"
+          "選択した記録についてテキストまたは音声でHealth Guideに質問し、分かりやすい説明を受け取る"
         ]
       }
     },
@@ -404,6 +404,14 @@
         {
           "question": "いつでも解約できますか。",
           "answer": "はい、違約金なしでいつでも解約できます。請求期間の終わりまではアカウントとデータをご利用いただけます。解約前にすべてのデータを書き出すこともできます。"
+        },
+        {
+          "question": "どのデバイスカテゴリーを接続できますか？",
+          "answer": "7つです：スマートウォッチ（Apple Watch、Samsung Galaxy Watch、Garmin、Google Pixel Watch、Fitbit、Polar）、スマートリング（Oura Ring、Ultrahuman Ring）、リカバリーバンド（WHOOP）、持続血糖センサー（Dexcom G7、FreeStyle Libre）、血圧計（Omron、Withings BPM）、スマートスケール（Withings Body+）、家庭用睡眠システム（Eight Sleep）。ブランドごとにご自身で認証し、承認した指標のみが同期されます。"
+        },
+        {
+          "question": "検査結果やDNAファイルはHealth Guideとどう連携しますか？",
+          "answer": "健康記録とDNAでアップロードまたはスキャンします。各記録にはコピー・印刷・ダウンロードできる教育的インサイトが返り、テキストまたは音声でHealth Guideに質問できます。Health Guideが受け取るのは件数、直近の検査日、DNA保存の有無といった高レベルの文脈のみで、生の遺伝データファイルは渡されません。"
         }
       ],
       "moreText": "まだ疑問がありますか。",

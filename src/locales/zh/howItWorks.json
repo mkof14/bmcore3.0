@@ -73,31 +73,31 @@
         ]
       },
       "connect": {
-        "title": "Connect your health devices",
-        "summary": "BioMath Core可连接100+健康设备与应用——可穿戴设备、智能秤、血压计等。您也可以像填写问卷一样，把检验与DNA带入会员区。",
-        "pointsHeading": "Seamless integration",
+        "title": "连接您的健康设备",
+        "summary": "BioMath Core 可连接人们日常真正使用的设备：智能手表、智能戒指、恢复手环、连续血糖传感器、血压计、智能秤和居家睡眠系统。您也可以像填写问卷那样，把化验单和 DNA 带入工作台。",
+        "pointsHeading": "七类设备",
         "points": [
           {
-            "title": "健身追踪器",
-            "body": "Apple Watch、Fitbit、Garmin"
+            "title": "手表与手环",
+            "body": "Apple Watch、Samsung Galaxy Watch、Garmin、Google Pixel Watch、Fitbit、Polar"
           },
           {
-            "title": "健康监测器",
-            "body": "血压、血糖、体重秤"
+            "title": "戒指与恢复",
+            "body": "Oura Ring、Ultrahuman Ring、WHOOP"
           },
           {
-            "title": "健康应用",
-            "body": "Apple Health、Google Fit"
+            "title": "传感器与家用设备",
+            "body": "Dexcom G7、FreeStyle Libre、Omron、Withings BPM、Withings Body+、Eight Sleep"
           },
           {
-            "title": "检验与DNA",
-            "body": "在健康档案与DNA中上传或扫描检验、影像、DNA报告与原始DNA"
+            "title": "化验与DNA",
+            "body": "在健康档案与DNA中上传或扫描化验单、影像、DNA 报告和原始 DNA"
           }
         ],
         "checklist": [
-          "主要服务一键OAuth连接",
-          "每15分钟自动同步",
-          "检验、影像、DNA报告与原始DNA的手动上传或相机扫描"
+          "在工作台 → 已连接设备中按引导完成授权",
+          "您批准的指标按所选频率同步，品牌支持时可接近实时",
+          "化验单、影像、DNA 报告和原始 DNA 文件可手动上传或用相机扫描"
         ]
       },
       "analyze": {
@@ -180,7 +180,7 @@
       },
       "records": {
         "title": "带上您的检验与DNA",
-        "summary": "会员区的健康档案与DNA接受PDF、图片、CSV、TXT与VCF。我们整理每次上传，返回教育性洞察，并将高层信号（非原始DNA内容）关联到报告与Health Guide。",
+        "summary": "工作台的健康档案与DNA支持 PDF、图片、CSV、TXT 和 VCF。我们会结构化每次上传，返回可复制、打印或下载的科普洞察，并把概要性信号（而非原始 DNA 内容）关联到报告和 Health Guide。",
         "pointsHeading": "上传后会发生什么",
         "points": [
           {
@@ -197,10 +197,10 @@
           }
         ],
         "checklist": [
-          "打开会员区 → 健康档案与DNA",
+          "打开工作台 → 健康档案与DNA",
           "选择检验、影像、DNA报告、原始DNA或其他",
           "上传文件或在手机上使用相机扫描",
-          "需要语音友好解释时，就所选记录询问Health Guide"
+          "用文字或语音就所选档案询问 Health Guide，获得通俗易懂的解释"
         ]
       }
     },
@@ -404,6 +404,14 @@
         {
           "question": "可以随时取消订阅吗？",
           "answer": "可以，随时取消且没有任何违约金。在计费周期结束前，你仍可访问账户和数据，也可以在取消前导出全部数据。"
+        },
+        {
+          "question": "我可以连接哪些设备类别？",
+          "answer": "共七类：智能手表（Apple Watch、Samsung Galaxy Watch、Garmin、Google Pixel Watch、Fitbit、Polar）、智能戒指（Oura Ring、Ultrahuman Ring）、恢复手环（WHOOP）、连续血糖传感器（Dexcom G7、FreeStyle Libre）、血压计（Omron、Withings BPM）、智能秤（Withings Body+）和居家睡眠系统（Eight Sleep）。每个品牌由您自行授权，只有您批准的指标才会同步。"
+        },
+        {
+          "question": "化验结果和 DNA 文件如何与 Health Guide 配合？",
+          "answer": "在健康档案与DNA中上传或扫描即可。每份档案都会返回可复制、打印或下载的科普洞察，您也可以用文字或语音向 Health Guide 询问。Health Guide 只会收到概要背景——数量、最近化验日期以及是否存有 DNA 的标记——绝不会收到您的原始基因文件。"
         }
       ],
       "moreText": "还有其他疑问？",

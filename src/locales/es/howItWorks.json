@@ -73,31 +73,31 @@
         ]
       },
       "connect": {
-        "title": "Connect your health devices",
-        "summary": "BioMath Core se vincula con más de 100 dispositivos y apps de salud — wearables, básculas inteligentes, monitores de presión y más. También puedes traer análisis y ADN a la Zona de miembros igual que completas el cuestionario.",
-        "pointsHeading": "Seamless integration",
+        "title": "Conecta tus dispositivos de salud",
+        "summary": "BioMath Core se conecta con los dispositivos que la gente usa de verdad: smartwatches, anillos inteligentes, bandas de recuperación, sensores de glucosa continua, monitores de presión arterial, básculas inteligentes y sistemas de sueño en casa. También puedes añadir análisis y ADN en el Gabinete igual que completas el cuestionario.",
+        "pointsHeading": "Siete categorías de dispositivos",
         "points": [
           {
-            "title": "Rastreadores de actividad",
-            "body": "Apple Watch, Fitbit, Garmin"
+            "title": "Relojes y pulseras",
+            "body": "Apple Watch, Samsung Galaxy Watch, Garmin, Google Pixel Watch, Fitbit, Polar"
           },
           {
-            "title": "Monitores de salud",
-            "body": "Presión arterial, glucosa, básculas"
+            "title": "Anillos y recuperación",
+            "body": "Oura Ring, Ultrahuman Ring, WHOOP"
           },
           {
-            "title": "Apps de salud",
-            "body": "Apple Health, Google Fit"
+            "title": "Sensores y dispositivos del hogar",
+            "body": "Dexcom G7, FreeStyle Libre, Omron, Withings BPM, Withings Body+, Eight Sleep"
           },
           {
             "title": "Análisis y ADN",
-            "body": "Sube o escanea análisis, imágenes, informes de ADN y ADN en bruto en Historial de salud y ADN"
+            "body": "Sube o escanea análisis, imágenes, informes de ADN y ADN sin procesar en Historial de salud y ADN"
           }
         ],
         "checklist": [
-          "Conexión OAuth con un clic para los principales servicios",
-          "Sincronización automática cada 15 minutos",
-          "Subida manual o escaneo con cámara para análisis, imágenes, informes de ADN y archivos de ADN en bruto"
+          "Autorización guiada en Gabinete → Dispositivos conectados",
+          "Las métricas que apruebas se sincronizan con la frecuencia que elijas, casi en tiempo real cuando la marca lo permite",
+          "Subida manual o escaneo con cámara para análisis, imágenes, informes de ADN y archivos de ADN sin procesar"
         ]
       },
       "analyze": {
@@ -180,7 +180,7 @@
       },
       "records": {
         "title": "Trae tus análisis y ADN",
-        "summary": "Historial de salud y ADN en la Zona de miembros acepta PDF, imágenes, CSV, TXT y VCF. Organizamos cada subida, devolvemos insights educativos y vinculamos señales de alto nivel (no el contenido de ADN en bruto) a informes y Health Guide.",
+        "summary": "Historial de salud y ADN en el Gabinete acepta PDF, imágenes, CSV, TXT y VCF. Estructuramos cada subida, devolvemos insights educativos que puedes Copiar, Imprimir o Descargar, y vinculamos señales de alto nivel (no el contenido del ADN sin procesar) a los informes y a Health Guide.",
         "pointsHeading": "Qué ocurre tras la subida",
         "points": [
           {
@@ -197,10 +197,10 @@
           }
         ],
         "checklist": [
-          "Abre Zona de miembros → Historial de salud y ADN",
+          "Abre Gabinete → Historial de salud y ADN",
           "Elige Análisis, Imágenes, Informe de ADN, ADN en bruto u Otro",
           "Sube un archivo o usa el escaneo con cámara en móvil",
-          "Pregunta a Health Guide sobre el registro seleccionado cuando quieras una explicación hablada"
+          "Pregunta a Health Guide sobre el registro seleccionado por texto o voz para una explicación en lenguaje claro"
         ]
       }
     },
@@ -404,6 +404,14 @@
         {
           "question": "¿Puedo cancelar la suscripción cuando quiera?",
           "answer": "Sí, puedes cancelar en cualquier momento sin penalización. Conservas el acceso a tu cuenta y a tus datos hasta el final del periodo facturado, y puedes exportarlos todos antes de cancelar."
+        },
+        {
+          "question": "¿Qué categorías de dispositivos puedo conectar?",
+          "answer": "Siete: smartwatches (Apple Watch, Samsung Galaxy Watch, Garmin, Google Pixel Watch, Fitbit, Polar), anillos inteligentes (Oura Ring, Ultrahuman Ring), bandas de recuperación (WHOOP), sensores de glucosa continua (Dexcom G7, FreeStyle Libre), monitores de presión arterial (Omron, Withings BPM), básculas inteligentes (Withings Body+) y sistemas de sueño en casa (Eight Sleep). Tú autorizas cada marca y solo se sincronizan las métricas que apruebas."
+        },
+        {
+          "question": "¿Cómo funcionan los análisis y el ADN con Health Guide?",
+          "answer": "Súbelos o escanéalos en Historial de salud y ADN. Cada registro devuelve un insight educativo que puedes Copiar, Imprimir o Descargar, y puedes preguntar por él a Health Guide por texto o voz. Health Guide solo recibe contexto de alto nivel —recuentos, la fecha del último análisis y un indicador sí/no de ADN archivado—, nunca tu archivo genético completo."
         }
       ],
       "moreText": "¿Te quedan dudas?",

@@ -3,7 +3,7 @@
     "signIn": {
       "title": "Welcome Back",
       "subtitle": "Sign in to access your wellness dashboard",
-      "mockNotice": "Local mock auth is on. Use superadmin email {{email}} and your password to open Member Zone and Admin for testing.",
+      "mockNotice": "Local mock auth is on. Use superadmin email {{email}} and your password to open Cabinet and Admin for testing.",
       "remember": "Remember me",
       "forgot": "Forgot password?",
       "submit": "Sign In",
@@ -103,8 +103,24 @@
     "sidebarTip": "Prefer chat for short account questions. Prefer email or the form when you need attachments, context, or a slower thoughtful reply."
   },
   "programs": {
+    "page": {
+      "label": "Refer",
+      "title": "Two programs to share BioMath Core",
+      "body": "Invite friends for credits, or apply as an Ambassador for enhanced rewards. Each program has its own rules and benefits.",
+      "navAria": "Refer programs",
+      "inviteShort": "Invite",
+      "ambassadorShort": "Ambassador",
+      "inviteCardTitle": "Invite a friend",
+      "inviteCardBody": "Share your code. Friends get a discount; you earn credits on every confirmed signup.",
+      "ambassadorCardTitle": "Ambassador program",
+      "ambassadorCardBody": "For active sharers and community leaders — enhanced rewards, tools, and priority support.",
+      "inviteCta": "Open Invite program",
+      "ambassadorCta": "Open Ambassador program",
+      "separator": "And separately",
+      "programBadge": "Program {{n}}"
+    },
     "referral": {
-      "label": "Referral program",
+      "label": "Invite a friend",
       "heroTitle": "Share health, earn rewards",
       "heroSubtitle": "Invite friends to BioMath Core and earn credits with every successful referral.",
       "statsLabel": "Your stats",
@@ -263,7 +279,7 @@
       },
       "footerQuestion": "Already have 10+ referrals?",
       "footerPrefix": "Check your",
-      "footerLink": "Member Zone",
+      "footerLink": "Cabinet",
       "footerSuffix": "for automatic upgrade eligibility."
     },
     "careers": {

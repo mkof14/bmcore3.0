@@ -1,4 +1,4 @@
-import { BookOpen, FileText, HelpCircle, Search, ChevronRight, ChevronDown, DollarSign, Users, Grid, Activity, Database, Layers, FileCheck, Compass, GitCompareArrows, Dna } from 'lucide-react';
+import { BookOpen, FileText, HelpCircle, Search, ChevronRight, ChevronDown, DollarSign, Users, Grid, Activity, Database, Layers, FileCheck, Compass, GitCompareArrows, Dna, Watch } from 'lucide-react';
 import HealthGuideIcon from '../components/brand/HealthGuideIcon';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -164,6 +164,7 @@ export default function LearningCenter({ onNavigate }: LearningCenterProps) {
     { key: 'pricing', icon: DollarSign },
     { key: 'member', icon: Users },
     { key: 'healthRecords', icon: Dna },
+    { key: 'devices', icon: Watch },
     { key: 'multiModel', icon: GitCompareArrows },
     { key: 'aiGuide', icon: BookOpen },
     { key: 'services', icon: FileText },
@@ -258,6 +259,22 @@ export default function LearningCenter({ onNavigate }: LearningCenterProps) {
                               className="mt-4 text-sm text-orange-600 dark:text-orange-400 hover:underline"
                             >
                               {t('learning.browseServices')}
+                            </button>
+                          )}
+                          {section.key === 'devices' && (
+                            <button
+                              onClick={() => onNavigate('devices')}
+                              className="mt-4 text-sm text-orange-600 dark:text-orange-400 hover:underline"
+                            >
+                              {t('learning.openDevices')}
+                            </button>
+                          )}
+                          {section.key === 'healthRecords' && (
+                            <button
+                              onClick={() => onNavigate('member')}
+                              className="mt-4 text-sm text-orange-600 dark:text-orange-400 hover:underline"
+                            >
+                              {t('learning.goToMember')}
                             </button>
                           )}
                         </div>

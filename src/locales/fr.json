@@ -4,7 +4,7 @@
     "about": "À propos",
     "pricing": "Tarifs",
     "allServices": "Tous les services",
-    "memberZone": "Espace membre",
+    "memberZone": "Cabinet",
     "investors": "Investisseurs",
     "signInUp": "Connexion/Inscription",
     "signOut": "Déconnexion",
@@ -13,7 +13,7 @@
     "languageSwitching": "Changement de langue…"
   },
   "footer": {
-    "tagline": "Modèle de données humaines biomathématique — un jumeau numérique vivant de votre santé.",
+    "tagline": "Modèle de données humaines biomathématique — un modèle vivant de votre santé.",
     "navigation": "Navigation",
     "resources": "Ressources",
     "company": "Entreprise",
@@ -34,7 +34,7 @@
     "security": "Sécurité",
     "rights": "Tous droits réservés.",
     "legalSafety": "Légal et sécurité",
-    "memberArea": "Espace membre",
+    "memberArea": "Cabinet",
     "infoHelp": "Infos et aide",
     "appsStatus": "Pas encore d’applications natives sur l’App Store ni Google Play. Utilisez BioMath Core dans le navigateur ou installez l’app web (PWA)."
   },
@@ -78,10 +78,10 @@
   },
   "home": {
     "seoTitle": "Modèle de données humaines biomatématique",
-    "seoDescription": "BioMath Core construit un Modèle de données humaines vivant — un jumeau numérique biomatématique de votre santé — et vous guide avec l’analyse duale de Health Guide.",
+    "seoDescription": "BioMath Core construit un Modèle de données humaines vivant — un modèle de données biomatématique de votre santé — et vous guide avec l’analyse duale de Health Guide.",
     "brand": "BioMath Core",
     "heroTitle": "Votre Modèle de données humaines à vie",
-    "heroSubtitle": "Un jumeau numérique biomatématique qui grandit avec chaque événement de santé vérifié — pas un tableau de biomarqueurs.",
+    "heroSubtitle": "Un modèle de données biomatématique qui grandit avec chaque événement de santé vérifié — pas un tableau de biomarqueurs.",
     "ctaPricing": "Voir les tarifs",
     "ctaHow": "Comment ça marche",
     "coreTools": {
@@ -89,10 +89,34 @@
       "subtitle": "Importez des dossiers, consultez la chronologie et suivez ce qui a changé — dans chaque catégorie.",
       "readMore": "Lire la description"
     },
+    "twoModels": {
+      "eyebrow": "Pourquoi deux modèles",
+      "headline": "Confirmé par deux modèles indépendants, pas seulement un.",
+      "subhead": "Chaque insight est vérifié par une seconde analyse indépendante. Quand les deux s’accordent, vous savez que c’est solide. Quand ce n’est pas le cas, vous voyez exactement où et pourquoi.",
+      "toggle": {
+        "most": "La plupart des cas",
+        "rare": "Cas rare"
+      },
+      "confirmed": {
+        "title": "Confirmé par les deux modèles",
+        "body": "Un taux bas de vitamine D de longue date est signalé de façon cohérente par l’analyse fondée sur les preuves et par l’analyse contextuelle.",
+        "caption": "C’est à cela que ressemblent la plupart des insights."
+      },
+      "differs": {
+        "title": "Les deux modèles le voient différemment",
+        "body": "Une analyse met l’accent sur le schéma biologique durable ; l’autre pèse comment le rythme récent et l’exposition au soleil façonnent le même constat.",
+        "caption": "Cela arrive occasionnellement, et vous voyez alors les deux côtés.",
+        "evidenceBased": "Fondé sur les preuves",
+        "contextual": "Contextuel",
+        "evidenceReasoning": "Un 25-OH vitamine D bas de façon persistante sur des bilans répétés soutient un signal clair de carence.",
+        "contextualReasoning": "Des mois récents de travail en intérieur et peu de temps à l’extérieur peuvent expliquer le même résultat bas sans impliquer un problème métabolique durable."
+      },
+      "cta": "Voir comment ça marche →"
+    },
     "what": {
       "label": "Ce que c’est",
       "title": "Un modèle biomatématique vivant de vous",
-      "body": "Le Modèle de données humaines est un jumeau numérique bâti à partir d’analyses vérifiées, de notes cliniques, de médicaments, de symptômes et de signaux de mode de vie. Il conserve une structure continue — pour que Health Guide raisonne sur votre histoire complète, pas sur des instantanés isolés.",
+      "body": "Le Modèle de données humaines est bâti à partir d’analyses vérifiées, de notes cliniques, de médicaments, de symptômes et de signaux de mode de vie. Il conserve une structure continue — pour que Health Guide raisonne sur votre histoire complète, pas sur des instantanés isolés.",
       "points": [
         {
           "title": "Un modèle, de nombreuses sources",
@@ -104,7 +128,7 @@
         },
         {
           "title": "Conçu pour des décennies",
-          "body": "Chaque événement important met à jour le jumeau — pour que la question de demain garde encore les preuves d’hier."
+          "body": "Chaque événement important met à jour le modèle — pour que la question de demain garde encore les preuves d’hier."
         }
       ],
       "signals": [
@@ -115,7 +139,7 @@
       ],
       "vizTitle": "Signaux qui convergent vers le Modèle de données humaines",
       "vizCore": "HDM",
-      "vizCoreSub": "jumeau numérique",
+      "vizCoreSub": "modèle de données",
       "vizCaption": "Des entrées vérifiées alimentent un seul modèle — pas une pile de tableaux déconnectés."
     },
     "steps": {
@@ -128,7 +152,7 @@
           "body": "Ajoutez analyses, notes d’imagerie, ordonnances et observations personnelles."
         },
         {
-          "title": "Structurez le jumeau",
+          "title": "Structurez le modèle",
           "body": "BioMath Core organise les événements dans votre Modèle de données humaines par catégories de santé."
         },
         {
@@ -137,33 +161,43 @@
         },
         {
           "title": "Demandez à Health Guide",
-          "body": "L’analyse duale s’appuie sur votre jumeau — vues biomatématique et cliniquement orientée, côte à côte."
+          "body": "L’analyse duale s’appuie sur votre modèle — vues biomatématique et cliniquement orientée, côte à côte."
         }
       ]
     },
     "different": {
       "label": "Pourquoi c’est différent",
       "title": "De la biomatématique, pas un autre flux de biomarqueurs",
-      "body": "Les tableaux montrent le dernier chiffre. Le Modèle de données humaines garde analyses, diagnostic, traitement et symptômes dans un jumeau vivant — pour agir avec du contexte.",
+      "body": "Les tableaux montrent le dernier chiffre. Le Modèle de données humaines garde analyses, diagnostic, traitement et symptômes dans un modèle vivant — pour agir avec du contexte.",
       "viz": {
-        "title": "Des métriques dispersées deviennent un jumeau numérique du Modèle de données humaines",
+        "title": "Des métriques dispersées deviennent un Modèle de données humaines",
         "themLabel": "Métriques dispersées",
         "usLabel": "Modèle de données humaines",
-        "metrics": ["LDL", "HRV", "A1C", "Sommeil"],
-        "links": ["Analyses", "Notes", "Médicaments", "Mode de vie"],
+        "metrics": [
+          "LDL",
+          "HRV",
+          "A1C",
+          "Sommeil"
+        ],
+        "links": [
+          "Analyses",
+          "Notes",
+          "Médicaments",
+          "Mode de vie"
+        ],
         "core": "HDM",
-        "coreSub": "jumeau numérique",
+        "coreSub": "modèle de données",
         "outAsk": "Demander",
         "outMap": "Explorer",
         "outTime": "Comparer",
-        "caption": "Des lectures déconnectées deviennent un jumeau que vous pouvez interroger, explorer et comparer dans le temps."
+        "caption": "Des lectures déconnectées deviennent un modèle que vous pouvez interroger, explorer et comparer dans le temps."
       },
       "outcomes": {
         "label": "Ce que vous pouvez faire ensuite",
         "items": [
           {
             "title": "Demander à Health Guide",
-            "body": "Des réponses à double modèle ancrées dans votre jumeau — pas des conseils génériques issus d’un seul résultat."
+            "body": "Des réponses à double modèle ancrées dans votre modèle — pas des conseils génériques issus d’un seul résultat."
           },
           {
             "title": "Ouvrir une catégorie",
@@ -186,6 +220,127 @@
       "female": "Femme",
       "male": "Homme",
       "toggleLabel": "Figure"
+    },
+    "linkage": {
+      "label": "Liaison des données",
+      "title": "Liez le questionnaire pour débloquer la double opinion",
+      "body": "Health Guide compare une lecture fondée sur les preuves et une lecture contextuelle dès que suffisamment de sections du questionnaire sont liées à votre Human Data Model.",
+      "caption": "Exemple basé sur une question fréquente sur l’énergie de l’après-midi — contenu illustratif d’échantillon, pas vos données personnelles.",
+      "question": "Pourquoi suis-je épuisé après le déjeuner ?",
+      "chipHint": "Activez ou désactivez des sections pour modifier le niveau de liaison.",
+      "completeness": "{{percent}} % complété",
+      "filledCount": "{{filled}} / {{total}} sections",
+      "linkageLabel": "Liaison des données : {{health}}",
+      "health": {
+        "red": "rouge",
+        "yellow": "jaune",
+        "green": "verte"
+      },
+      "sections": {
+        "categories": "Priorités santé",
+        "personal_info": "Informations personnelles",
+        "medical_history": "Antécédents médicaux",
+        "medications": "Médicaments",
+        "allergies": "Allergies",
+        "vital_signs": "Signes vitaux",
+        "lifestyle": "Mode de vie",
+        "psychological_health": "Santé psychologique"
+      },
+      "lockedTitle": "Double opinion verrouillée",
+      "lockedBody": "Liez au moins 40 % des sections du questionnaire pour débloquer la comparaison côte à côte de Health Guide.",
+      "unlockedLabel": "Double opinion",
+      "evidenceBased": "Fondée sur les preuves",
+      "contextual": "Contextuelle",
+      "confidence": "{{value}} % de confiance",
+      "reasoning": "Raisonnement",
+      "recommendations": "Recommandations",
+      "diffTitle": "Comparaison",
+      "agreements": "Accords",
+      "disagreements": "Désaccords",
+      "alignment": "Alignement global : {{percent}} %",
+      "severity": {
+        "high": "Élevée",
+        "medium": "Moyenne",
+        "low": "Faible"
+      },
+      "priority": {
+        "high": "Élevée",
+        "medium": "Moyenne",
+        "low": "Faible"
+      },
+      "opinionA": {
+        "summary": "La baisse d’énergie de l’après-midi est liée au rythme circadien et à la réponse glycémique postprandiale.",
+        "reasoning": [
+          "Le rythme circadien baisse naturellement entre 13 h et 15 h (accumulation d’adénosine).",
+          "Les fluctuations de glucose postprandial affectent la vigilance (réponse insulinique).",
+          "Le manque de sommeil aggrave la fatigue de mi-journée.",
+          "La composition du repas influence directement la stabilité glycémique."
+        ],
+        "recommendations": [
+          {
+            "title": "Équilibrer les macronutriments du repas",
+            "description": "Visez protéines, glucides complexes et lipides au déjeuner pour stabiliser le glucose plusieurs heures."
+          },
+          {
+            "title": "Exposition stratégique à la lumière",
+            "description": "Prenez 10–15 minutes de lumière naturelle vive après le déjeuner pour soutenir la vigilance."
+          },
+          {
+            "title": "Protocole de mouvement bref",
+            "description": "Une courte marche après le repas peut améliorer la gestion du glucose et réduire le creux de l’après-midi."
+          }
+        ]
+      },
+      "opinionB": {
+        "summary": "Votre baisse d’énergie de l’après-midi vient souvent du timing du repas, de la charge de stress et d’habitudes que vous pouvez ajuster concrètement.",
+        "reasoning": [
+          "L’horaire et la composition du déjeuner influencent votre ressenti ensuite.",
+          "L’environnement de travail et le stress jouent un rôle.",
+          "De petits changements de comportement peuvent déjà améliorer la situation.",
+          "La réponse est individuelle — la solution doit s’intégrer à votre journée."
+        ],
+        "recommendations": [
+          {
+            "title": "Alimentation plus consciente",
+            "description": "Prenez quelques minutes calmes au déjeuner, sans écran, pour faciliter la digestion et adoucir le coup de barre."
+          },
+          {
+            "title": "Pause posture et respiration",
+            "description": "En milieu d’après-midi, levez-vous, étirez-vous et respirez lentement pour un reset simple."
+          },
+          {
+            "title": "Vérification de l’hydratation",
+            "description": "Buvez de l’eau au déjeuner puis en milieu d’après-midi — la déshydratation ressemble souvent à de la fatigue."
+          }
+        ]
+      },
+      "diff": {
+        "agreements": [
+          {
+            "topic": "Mouvement après le repas",
+            "consensus": "Les deux lectures soutiennent une activité légère après le déjeuner pour stabiliser l’énergie."
+          },
+          {
+            "topic": "La composition du repas compte",
+            "consensus": "Les deux notent que ce que vous mangez et comment vous mangez au déjeuner influence le creux de l’après-midi."
+          }
+        ],
+        "disagreements": [
+          {
+            "topic": "Priorité principale",
+            "opinionA": "Équilibrer les macronutriments du repas",
+            "opinionB": "Alimentation plus consciente",
+            "severity": "medium",
+            "explanation": "La lecture fondée sur les preuves commence par la structure métabolique du repas ; la lecture contextuelle commence par la façon de manger sous le stress réel de la journée."
+          }
+        ],
+        "uniqueToA": [
+          "Exposition stratégique à la lumière"
+        ],
+        "uniqueToB": [
+          "Vérification de l’hydratation"
+        ]
+      }
     }
   },
   "about": {
@@ -235,11 +390,11 @@
   "contact": {
     "label": "Contact",
     "title": "Nous contacter",
-    "healthGuideHint": "Pour des conseils bien-être, utilisez le Guide santé dans l’Espace membre.",
+    "healthGuideHint": "Pour des conseils bien-être, utilisez le Guide santé dans le Cabinet.",
     "heroTitle": "Contacter l’équipe BioMath Core",
     "heroSubtitle": "Questions sur les services, partenariats ou déploiements entreprise — nous sommes là.",
     "noteLabel": "Note :",
-    "noteBody": "Ce canal est destiné aux demandes professionnelles, partenariats et compte. Pour le bien-être, utilisez le Health Guide dans l’Espace membre.",
+    "noteBody": "Ce canal est destiné aux demandes professionnelles, partenariats et compte. Pour le bien-être, utilisez le Health Guide dans le Cabinet.",
     "messageLabel": "Message",
     "sendMessage": "Envoyer un message"
   },

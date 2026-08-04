@@ -9,7 +9,7 @@
     "commandCenter": "Centre de contrôle",
     "adminPanel": "Panneau d’administration",
     "whyTwoModels": "Pourquoi deux modèles",
-    "privacyTrust": "Centre de confidentialité et de confiance",
+    "privacyTrust": "Centre de confiance et de confidentialité",
     "legalNote": "BioMath Core est un service de bien-être. Il ne fournit ni soins médicaux, ni diagnostic, ni traitement.",
     "legalGroups": {
       "documents": "Documents juridiques",
@@ -20,7 +20,8 @@
     "cookiePreferences": "Préférences de cookies",
     "legalContact": "Contact confidentialité et juridique",
     "disclaimer": "BioMath Core est un service de bien-être, et non un service médical. Nous ne posons pas de diagnostic, ne traitons pas et ne donnons pas de conseils médicaux. Nous proposons uniquement des orientations de bien-être et un soutien préventif. Consultez toujours des professionnels de santé qualifiés pour toute préoccupation médicale.",
-    "media": "Médias"
+    "media": "Médias",
+    "refer": "Refer"
   },
   "cookies": {
     "title": "Préférences de cookies",

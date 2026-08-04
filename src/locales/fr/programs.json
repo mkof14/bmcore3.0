@@ -1,7 +1,23 @@
 {
   "programs": {
+    "page": {
+      "label": "Refer",
+      "title": "Deux programmes pour partager BioMath Core",
+      "body": "Invitez des amis pour gagner des crédits, ou postulez comme ambassadeur pour des récompenses renforcées. Chaque programme a ses propres règles et avantages.",
+      "navAria": "Programmes Refer",
+      "inviteShort": "Inviter",
+      "ambassadorShort": "Ambassadeur",
+      "inviteCardTitle": "Inviter un ami",
+      "inviteCardBody": "Partagez votre code. Vos amis obtiennent une réduction ; vous gagnez des crédits à chaque inscription confirmée.",
+      "ambassadorCardTitle": "Programme ambassadeur",
+      "ambassadorCardBody": "Pour les partageurs actifs et les leaders de communauté — récompenses renforcées, outils et assistance prioritaire.",
+      "inviteCta": "Ouvrir le programme Inviter",
+      "ambassadorCta": "Ouvrir le programme Ambassadeur",
+      "separator": "Et séparément",
+      "programBadge": "Programme {{n}}"
+    },
     "referral": {
-      "label": "Programme de parrainage",
+      "label": "Inviter un ami",
       "heroTitle": "Partagez la santé, gagnez des récompenses",
       "heroSubtitle": "Invitez vos amis sur BioMath Core et gagnez des crédits à chaque parrainage validé.",
       "statsLabel": "Vos statistiques",
@@ -11,9 +27,18 @@
       "howLabel": "Comment ça marche",
       "howTitle": "Trois étapes simples",
       "steps": {
-        "share": { "title": "Partagez votre code unique", "body": "Envoyez-le à vos amis par e-mail ou sur les réseaux sociaux." },
-        "discount": { "title": "Votre ami reçoit 5 $ de réduction", "body": "Appliquée immédiatement à l'inscription." },
-        "credit": { "title": "Vous gagnez 10 $ de crédit", "body": "Ajoutés immédiatement après confirmation de l'inscription." }
+        "share": {
+          "title": "Partagez votre code unique",
+          "body": "Envoyez-le à vos amis par e-mail ou sur les réseaux sociaux."
+        },
+        "discount": {
+          "title": "Votre ami reçoit 5 $ de réduction",
+          "body": "Appliquée immédiatement à l'inscription."
+        },
+        "credit": {
+          "title": "Vous gagnez 10 $ de crédit",
+          "body": "Ajoutés immédiatement après confirmation de l'inscription."
+        }
       },
       "rewardTitle": "Détail des récompenses",
       "perReferral": "Vous gagnez par parrainage",
@@ -89,12 +114,30 @@
       "benefitsLabel": "Avantages",
       "benefitsTitle": "Avantages ambassadeur",
       "benefits": {
-        "enhanced": { "title": "Récompenses renforcées", "body": "Le double du taux de parrainage standard, avec des paliers évolutifs." },
-        "dashboard": { "title": "Tableau de bord dédié", "body": "Suivez votre cohorte, vos récompenses cumulées et votre niveau d'ambassadeur." },
-        "materials": { "title": "Supports co-brandés", "body": "Visuels professionnels pour les réseaux et kit de partage." },
-        "support": { "title": "Support prioritaire", "body": "Accès direct à l'équipe BioMath Core pour vos questions." },
-        "features": { "title": "Fonctionnalités en avant-première", "body": "Tests bêta et accès anticipé aux nouvelles capacités." },
-        "revenue": { "title": "Partage de revenus", "body": "Éligibilité à des modèles de partenariat avancés." }
+        "enhanced": {
+          "title": "Récompenses renforcées",
+          "body": "Le double du taux de parrainage standard, avec des paliers évolutifs."
+        },
+        "dashboard": {
+          "title": "Tableau de bord dédié",
+          "body": "Suivez votre cohorte, vos récompenses cumulées et votre niveau d'ambassadeur."
+        },
+        "materials": {
+          "title": "Supports co-brandés",
+          "body": "Visuels professionnels pour les réseaux et kit de partage."
+        },
+        "support": {
+          "title": "Support prioritaire",
+          "body": "Accès direct à l'équipe BioMath Core pour vos questions."
+        },
+        "features": {
+          "title": "Fonctionnalités en avant-première",
+          "body": "Tests bêta et accès anticipé aux nouvelles capacités."
+        },
+        "revenue": {
+          "title": "Partage de revenus",
+          "body": "Éligibilité à des modèles de partenariat avancés."
+        }
       },
       "guidelinesLabel": "Règles",
       "guidelinesTitle": "Responsabilités de l'ambassadeur",
@@ -133,7 +176,7 @@
       },
       "footerQuestion": "Vous avez déjà plus de 10 parrainages ?",
       "footerPrefix": "Consultez votre",
-      "footerLink": "Espace Membre",
+      "footerLink": "Cabinet",
       "footerSuffix": "pour vérifier votre éligibilité à la mise à niveau automatique."
     },
     "careers": {
@@ -143,9 +186,18 @@
       "whyLabel": "Pourquoi nous rejoindre",
       "whyTitle": "Pourquoi BioMath Core ?",
       "why": {
-        "innovation": { "title": "Portés par l'innovation", "body": "Travaillez sur la biomathématique et l'IA avec un impact réel sur la santé." },
-        "impact": { "title": "Centrés sur l'impact", "body": "Aidez les gens à améliorer leur santé grâce au bien-être préventif." },
-        "growth": { "title": "Tournés vers la progression", "body": "Apprentissage et développement continus dans une équipe qui place la science en premier." }
+        "innovation": {
+          "title": "Portés par l'innovation",
+          "body": "Travaillez sur la biomathématique et l'IA avec un impact réel sur la santé."
+        },
+        "impact": {
+          "title": "Centrés sur l'impact",
+          "body": "Aidez les gens à améliorer leur santé grâce au bien-être préventif."
+        },
+        "growth": {
+          "title": "Tournés vers la progression",
+          "body": "Apprentissage et développement continus dans une équipe qui place la science en premier."
+        }
       },
       "openLabel": "Postes ouverts",
       "openTitle": "Offres actuelles",

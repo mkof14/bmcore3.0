@@ -61,7 +61,7 @@ export function DataInfluenceReportsSection() {
 export function DataInfluenceAISection() {
   const { t } = useTranslation();
   return (
-    <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
+    <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/20 dark:to-amber-950/10 rounded-xl p-6 border border-orange-200 dark:border-orange-800">
       <div className="flex items-start space-x-4">
         <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden shadow-sm">
           <HealthGuideIcon className="h-12 w-12" size={48} />
@@ -73,9 +73,9 @@ export function DataInfluenceAISection() {
           <p className="text-gray-700 dark:text-gray-300 mb-3">
             {t('deviceEducation.dataInfluenceAI.description')}
           </p>
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-purple-200 dark:border-purple-700">
+          <div className="rounded-lg border border-orange-200 bg-white p-4 dark:border-orange-700 dark:bg-gray-800">
             <p className="text-sm text-gray-700 dark:text-gray-300">
-              <strong className="text-purple-700 dark:text-purple-400">{t('deviceEducation.dataInfluenceAI.secondOpinion.title')}</strong> {t('deviceEducation.dataInfluenceAI.secondOpinion.description')}
+              <strong className="text-orange-700 dark:text-orange-400">{t('deviceEducation.dataInfluenceAI.secondOpinion.title')}</strong> {t('deviceEducation.dataInfluenceAI.secondOpinion.description')}
             </p>
           </div>
         </div>
@@ -149,7 +149,7 @@ export function UserSettingsSection() {
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center space-x-2 mb-1">
-                <Zap className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                <Zap className="h-4 w-4 text-orange-600 dark:text-orange-400" />
                 <span className="font-semibold text-gray-900 dark:text-white text-sm">{t('deviceEducation.userSettings.continuously.title')}</span>
               </div>
               <p className="text-xs text-gray-600 dark:text-gray-400">{t('deviceEducation.userSettings.continuously.description')}</p>
@@ -219,10 +219,10 @@ export default function DeviceEducation() {
       <AlertsNudgesSection />
       <UserSettingsSection />
 
-      <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl p-6 border-2 border-indigo-200 dark:border-indigo-800">
-        <div className="flex items-start space-x-4 mb-6">
-          <div className="flex-shrink-0 w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center">
-            <BookOpen className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+      <div className="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-orange-50/40 p-6 dark:border-slate-700 dark:from-slate-900/40 dark:to-orange-950/10">
+        <div className="mb-6 flex items-start space-x-4">
+          <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-orange-100 dark:bg-orange-900/30">
+            <BookOpen className="h-6 w-6 text-orange-600 dark:text-orange-400" />
           </div>
           <div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">

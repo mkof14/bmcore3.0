@@ -73,31 +73,31 @@
         ]
       },
       "connect": {
-        "title": "Connect your health devices",
-        "summary": "BioMath Core verbindet sich mit über 100 Gesundheitsgeräten und Apps — Wearables, smarte Waagen, Blutdruckmesser und mehr. Sie können Labore und DNA auch wie den Fragebogen in die Member Zone bringen.",
-        "pointsHeading": "Seamless integration",
+        "title": "Verbinden Sie Ihre Gesundheitsgeräte",
+        "summary": "BioMath Core verbindet sich mit den Geräten, die Menschen wirklich tragen: Smartwatches, Smart Rings, Erholungsbänder, Sensoren für kontinuierliche Glukose, Blutdruckmessgeräte, smarte Waagen und Heim-Schlafsysteme. Laborwerte und DNA bringen Sie genauso in Cabinet wie den Fragebogen.",
+        "pointsHeading": "Sieben Gerätekategorien",
         "points": [
           {
-            "title": "Fitness-Tracker",
-            "body": "Apple Watch, Fitbit, Garmin"
+            "title": "Uhren & Bänder",
+            "body": "Apple Watch, Samsung Galaxy Watch, Garmin, Google Pixel Watch, Fitbit, Polar"
           },
           {
-            "title": "Gesundheitsmonitore",
-            "body": "Blutdruck, Glukose, Waagen"
+            "title": "Ringe & Erholung",
+            "body": "Oura Ring, Ultrahuman Ring, WHOOP"
           },
           {
-            "title": "Gesundheits-Apps",
-            "body": "Apple Health, Google Fit"
+            "title": "Sensoren & Heimgeräte",
+            "body": "Dexcom G7, FreeStyle Libre, Omron, Withings BPM, Withings Body+, Eight Sleep"
           },
           {
-            "title": "Labore & DNA",
-            "body": "Labore, Bildgebung, DNA-Berichte und Roh-DNA in Gesundheitsakten & DNA hochladen oder scannen"
+            "title": "Labor & DNA",
+            "body": "Laborwerte, Bildgebung, DNA-Berichte und rohe DNA in Gesundheitsakten & DNA hochladen oder scannen"
           }
         ],
         "checklist": [
-          "OAuth-Verbindung mit einem Klick für große Dienste",
-          "Automatische Synchronisation alle 15 Minuten",
-          "Manueller Upload oder Kamerascan für Labore, Bildgebung, DNA-Berichte und Roh-DNA"
+          "Geführte Autorisierung in Cabinet → Verbundene Geräte",
+          "Freigegebene Werte synchronisieren im gewählten Rhythmus — nahezu in Echtzeit, wo die Marke es unterstützt",
+          "Manueller Upload oder Kamerascan für Laborwerte, Bildgebung, DNA-Berichte und rohe DNA-Dateien"
         ]
       },
       "analyze": {
@@ -180,7 +180,7 @@
       },
       "records": {
         "title": "Bringen Sie Labore und DNA mit",
-        "summary": "Gesundheitsakten & DNA in der Member Zone akzeptiert PDF, Bilder, CSV, TXT und VCF. Wir strukturieren jeden Upload, liefern Bildungs-Insights und verknüpfen High-Level-Signale (nicht Roh-DNA-Inhalt) mit Berichten und Health Guide.",
+        "summary": "Gesundheitsakten & DNA in Cabinet akzeptiert PDF, Bilder, CSV, TXT und VCF. Wir strukturieren jeden Upload, geben edukative Insights zurück, die Sie kopieren, drucken oder herunterladen können, und verknüpfen übergeordnete Signale (nicht rohe DNA-Inhalte) mit Berichten und Health Guide.",
         "pointsHeading": "Nach dem Upload",
         "points": [
           {
@@ -197,10 +197,10 @@
           }
         ],
         "checklist": [
-          "Member Zone → Gesundheitsakten & DNA öffnen",
+          "Cabinet → Gesundheitsakten & DNA öffnen",
           "Labore, Bildgebung, DNA-Bericht, Roh-DNA oder Sonstiges wählen",
           "Datei hochladen oder auf dem Handy Kamerascan nutzen",
-          "Health Guide zum ausgewählten Datensatz fragen, wenn Sie eine sprachfreundliche Erklärung möchten"
+          "Health Guide per Text oder Sprache zur gewählten Akte fragen — für eine Erklärung in klarer Sprache"
         ]
       }
     },
@@ -404,6 +404,14 @@
         {
           "question": "Kann ich mein Abonnement jederzeit kündigen?",
           "answer": "Ja, Sie können jederzeit ohne Nachteile kündigen. Ihr Konto und Ihre Daten bleiben bis zum Ende des bezahlten Zeitraums zugänglich. Vor der Kündigung können Sie alle Daten exportieren."
+        },
+        {
+          "question": "Welche Gerätekategorien kann ich verbinden?",
+          "answer": "Sieben: Smartwatches (Apple Watch, Samsung Galaxy Watch, Garmin, Google Pixel Watch, Fitbit, Polar), Smart Rings (Oura Ring, Ultrahuman Ring), Erholungsbänder (WHOOP), Sensoren für kontinuierliche Glukose (Dexcom G7, FreeStyle Libre), Blutdruckmessgeräte (Omron, Withings BPM), smarte Waagen (Withings Body+) und Heim-Schlafsysteme (Eight Sleep). Sie autorisieren jede Marke selbst, und nur die freigegebenen Werte synchronisieren."
+        },
+        {
+          "question": "Wie arbeiten Laborwerte und DNA-Dateien mit Health Guide?",
+          "answer": "Laden oder scannen Sie sie in Gesundheitsakten & DNA. Jede Akte liefert ein edukatives Insight zum Kopieren, Drucken oder Herunterladen, und Sie können Health Guide per Text oder Sprache dazu fragen. Health Guide erhält nur übergeordneten Kontext — Anzahl, Datum der letzten Laborwerte und ein Ja/Nein-Kennzeichen zu hinterlegter DNA — niemals Ihre rohe Gendatei."
         }
       ],
       "moreText": "Noch Fragen offen?",

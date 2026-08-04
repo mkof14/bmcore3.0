@@ -351,13 +351,13 @@ export default function SecondOpinionDemo({ onNavigate }: SecondOpinionDemoProps
             Try Second Opinion Now
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-            See a live demo of how two AI models analyze the same health data
+            See how two AI models analyze the same health data side by side
           </p>
           <button
             onClick={() => setShowComparison(true)}
             className="inline-flex items-center space-x-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors text-lg"
           >
-            <span>View Demo Comparison</span>
+            <span>View comparison</span>
             <ArrowRight className="h-5 w-5" />
           </button>
         </div>

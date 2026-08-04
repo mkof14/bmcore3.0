@@ -4,7 +4,7 @@
     "about": "Acerca de",
     "pricing": "Precios",
     "allServices": "Todos los servicios",
-    "memberZone": "Zona de miembros",
+    "memberZone": "Gabinete",
     "investors": "Inversores",
     "signInUp": "Entrar/Registro",
     "signOut": "Cerrar sesión",
@@ -13,7 +13,7 @@
     "languageSwitching": "Cambiando idioma…"
   },
   "footer": {
-    "tagline": "Modelo de Datos Humanos biomatemático — un gemelo digital vivo de tu salud.",
+    "tagline": "Modelo de Datos Humanos biomatemático — un modelo vivo de tu salud.",
     "navigation": "Navegación",
     "resources": "Recursos",
     "company": "Empresa",
@@ -34,7 +34,7 @@
     "security": "Seguridad",
     "rights": "Todos los derechos reservados.",
     "legalSafety": "Legal y seguridad",
-    "memberArea": "Área de miembro",
+    "memberArea": "Gabinete",
     "infoHelp": "Info y ayuda",
     "appsStatus": "Aún no hay apps nativas en App Store ni Google Play. Usa BioMath Core en el navegador o instala la app web (PWA)."
   },
@@ -78,10 +78,10 @@
   },
   "home": {
     "seoTitle": "Modelo de Datos Humanos biomatemático",
-    "seoDescription": "BioMath Core construye un Modelo de Datos Humanos vivo — un gemelo digital biomatemático de tu salud — y te orienta con el análisis dual de Health Guide.",
+    "seoDescription": "BioMath Core construye un Modelo de Datos Humanos vivo — un modelo biomatemático de tu salud — y te orienta con el análisis dual de Health Guide.",
     "brand": "BioMath Core",
     "heroTitle": "Tu Modelo de Datos Humanos de por vida",
-    "heroSubtitle": "Un gemelo digital biomatemático que crece con cada evento de salud verificado — no un panel de biomarcadores.",
+    "heroSubtitle": "Un modelo biomatemático que crece con cada evento de salud verificado — no un panel de biomarcadores.",
     "ctaPricing": "Ver precios",
     "ctaHow": "Cómo funciona",
     "coreTools": {
@@ -89,10 +89,34 @@
       "subtitle": "Importa registros, ve la línea de tiempo y sigue qué cambió — en cada categoría.",
       "readMore": "Leer descripción"
     },
+    "twoModels": {
+      "eyebrow": "Por qué dos modelos",
+      "headline": "Confirmado por dos modelos independientes, no solo por uno.",
+      "subhead": "Cada hallazgo se contrasta con un segundo análisis independiente. Cuando ambos coinciden, sabes que es sólido. Cuando no, ves exactamente dónde y por qué.",
+      "toggle": {
+        "most": "La mayoría de los casos",
+        "rare": "Caso poco frecuente"
+      },
+      "confirmed": {
+        "title": "Confirmado por ambos modelos",
+        "body": "Un nivel bajo de vitamina D de larga duración es señalado de forma coherente tanto por el análisis basado en evidencia como por el contextual.",
+        "caption": "Así se ven la mayoría de los hallazgos."
+      },
+      "differs": {
+        "title": "Los dos modelos lo ven de forma distinta",
+        "body": "Un análisis enfatiza el patrón de laboratorio sostenido; el otro considera cómo la agenda reciente y la exposición al sol dan forma al mismo hallazgo.",
+        "caption": "Esto ocurre de vez en cuando, y cuando pasa ves ambos lados.",
+        "evidenceBased": "Basado en evidencia",
+        "contextual": "Contextual",
+        "evidenceReasoning": "Un 25-OH vitamina D bajo de forma persistente en laboratorios repetidos respalda una señal clara de deficiencia.",
+        "contextualReasoning": "Meses recientes de trabajo en interiores y poco tiempo al aire libre pueden explicar la misma lectura baja sin implicar un problema metabólico duradero."
+      },
+      "cta": "Ver cómo funciona →"
+    },
     "what": {
       "label": "Qué es",
       "title": "Un modelo biomatemático vivo de ti",
-      "body": "El Modelo de Datos Humanos es un gemelo digital construido a partir de laboratorios verificados, notas clínicas, medicamentos, síntomas y señales de estilo de vida. Mantiene una estructura continua — para que Health Guide razone sobre tu historia completa, no sobre capturas aisladas.",
+      "body": "El Modelo de Datos Humanos se construye a partir de laboratorios verificados, notas clínicas, medicamentos, síntomas y señales de estilo de vida. Mantiene una estructura continua — para que Health Guide razone sobre tu historia completa, no sobre capturas aisladas.",
       "points": [
         {
           "title": "Un modelo, muchas fuentes",
@@ -104,7 +128,7 @@
         },
         {
           "title": "Hecho para durar décadas",
-          "body": "Cada evento importante actualiza el gemelo — para que la pregunta de mañana aún tenga la evidencia de ayer."
+          "body": "Cada evento importante actualiza el modelo — para que la pregunta de mañana aún tenga la evidencia de ayer."
         }
       ],
       "signals": [
@@ -115,7 +139,7 @@
       ],
       "vizTitle": "Señales que convergen en el Modelo de Datos Humanos",
       "vizCore": "HDM",
-      "vizCoreSub": "gemelo digital",
+      "vizCoreSub": "modelo de datos",
       "vizCaption": "Entradas verificadas alimentan un solo modelo — no un montón de paneles desconectados."
     },
     "steps": {
@@ -128,7 +152,7 @@
           "body": "Incorpora laboratorios, notas de imagen, recetas y observaciones personales."
         },
         {
-          "title": "Estructura el gemelo",
+          "title": "Estructura el modelo",
           "body": "BioMath Core organiza los eventos en tu Modelo de Datos Humanos por categorías de salud."
         },
         {
@@ -137,33 +161,43 @@
         },
         {
           "title": "Pregunta a Health Guide",
-          "body": "El análisis dual usa tu gemelo — vistas biomatemática y clínicamente orientada, lado a lado."
+          "body": "El análisis dual usa tu modelo — vistas biomatemática y clínicamente orientada, lado a lado."
         }
       ]
     },
     "different": {
       "label": "Por qué es distinto",
       "title": "Biomatemática, no otro feed de biomarcadores",
-      "body": "Los paneles muestran el último número. El Modelo de Datos Humanos guarda laboratorios, diagnóstico, tratamiento y síntomas en un gemelo vivo — para actuar con contexto.",
+      "body": "Los paneles muestran el último número. El Modelo de Datos Humanos guarda laboratorios, diagnóstico, tratamiento y síntomas en un modelo vivo — para actuar con contexto.",
       "viz": {
-        "title": "Métricas dispersas se convierten en un gemelo digital del Modelo de Datos Humanos",
+        "title": "Métricas dispersas se convierten en un Modelo de Datos Humanos",
         "themLabel": "Métricas dispersas",
         "usLabel": "Modelo de Datos Humanos",
-        "metrics": ["LDL", "HRV", "A1C", "Sueño"],
-        "links": ["Labs", "Notas", "Meds", "Estilo de vida"],
+        "metrics": [
+          "LDL",
+          "HRV",
+          "A1C",
+          "Sueño"
+        ],
+        "links": [
+          "Labs",
+          "Notas",
+          "Meds",
+          "Estilo de vida"
+        ],
         "core": "HDM",
-        "coreSub": "gemelo digital",
+        "coreSub": "modelo de datos",
         "outAsk": "Preguntar",
         "outMap": "Explorar",
         "outTime": "Comparar",
-        "caption": "Lecturas desconectadas se vuelven un gemelo que puedes preguntar, explorar y comparar en el tiempo."
+        "caption": "Lecturas desconectadas se vuelven un modelo que puedes preguntar, explorar y comparar en el tiempo."
       },
       "outcomes": {
         "label": "Qué puedes hacer a continuación",
         "items": [
           {
             "title": "Preguntar a Health Guide",
-            "body": "Respuestas con doble modelo ancladas en tu gemelo — no consejos genéricos de un solo laboratorio."
+            "body": "Respuestas con doble modelo ancladas en tu modelo — no consejos genéricos de un solo laboratorio."
           },
           {
             "title": "Abrir una categoría",
@@ -186,6 +220,127 @@
       "female": "Mujer",
       "male": "Hombre",
       "toggleLabel": "Figura"
+    },
+    "linkage": {
+      "label": "Vinculación de datos",
+      "title": "Vincula el cuestionario para desbloquear la doble opinión",
+      "body": "Health Guide compara una vista basada en evidencia con una vista contextual cuando hay suficientes secciones del cuestionario vinculadas a tu Human Data Model.",
+      "caption": "Ejemplo basado en una pregunta habitual sobre la energía de la tarde — contenido ilustrativo de muestra, no tus datos personales.",
+      "question": "¿Por qué me siento agotado después del almuerzo?",
+      "chipHint": "Activa o desactiva secciones para cambiar la completitud de la vinculación.",
+      "completeness": "{{percent}}% completo",
+      "filledCount": "{{filled}} / {{total}} secciones",
+      "linkageLabel": "Vinculación de datos: {{health}}",
+      "health": {
+        "red": "roja",
+        "yellow": "amarilla",
+        "green": "verde"
+      },
+      "sections": {
+        "categories": "Enfoque de salud",
+        "personal_info": "Datos personales",
+        "medical_history": "Historial médico",
+        "medications": "Medicamentos",
+        "allergies": "Alergias",
+        "vital_signs": "Signos vitales",
+        "lifestyle": "Estilo de vida",
+        "psychological_health": "Salud psicológica"
+      },
+      "lockedTitle": "Doble opinión bloqueada",
+      "lockedBody": "Vincula al menos el 40% de las secciones del cuestionario para desbloquear la comparación lado a lado de Health Guide.",
+      "unlockedLabel": "Doble opinión",
+      "evidenceBased": "Basada en evidencia",
+      "contextual": "Contextual",
+      "confidence": "{{value}}% de confianza",
+      "reasoning": "Razones",
+      "recommendations": "Recomendaciones",
+      "diffTitle": "Comparación",
+      "agreements": "Acuerdos",
+      "disagreements": "Desacuerdos",
+      "alignment": "Alineación general: {{percent}}%",
+      "severity": {
+        "high": "Alta",
+        "medium": "Media",
+        "low": "Baja"
+      },
+      "priority": {
+        "high": "Alta",
+        "medium": "Media",
+        "low": "Baja"
+      },
+      "opinionA": {
+        "summary": "La bajada de energía por la tarde está ligada al ritmo circadiano y a la respuesta glucémica postprandial.",
+        "reasoning": [
+          "El ritmo circadiano baja de forma natural entre la 1 y las 3 p. m. (acumulación de adenosina).",
+          "Las fluctuaciones de glucosa postprandial afectan la alerta (respuesta a la insulina).",
+          "La deuda de sueño agrava la fatiga del mediodía.",
+          "La composición de la comida influye directamente en la estabilidad del azúcar en sangre."
+        ],
+        "recommendations": [
+          {
+            "title": "Equilibrar macronutrientes de la comida",
+            "description": "Incluye proteína, hidratos complejos y grasas en el almuerzo para estabilizar la glucosa varias horas."
+          },
+          {
+            "title": "Exposición estratégica a la luz",
+            "description": "Consigue 10–15 minutos de luz natural brillante después del almuerzo para apoyar la alerta."
+          },
+          {
+            "title": "Protocolo breve de movimiento",
+            "description": "Un paseo corto tras la comida puede mejorar el manejo de la glucosa y reducir la bajada de la tarde."
+          }
+        ]
+      },
+      "opinionB": {
+        "summary": "Tu bajada de energía de la tarde suele ser una mezcla de horario de comida, carga de estrés y hábitos que puedes ajustar de forma práctica.",
+        "reasoning": [
+          "El horario y la composición del almuerzo afectan cómo te sientes después.",
+          "El entorno laboral y el estrés también influyen.",
+          "Pequeños cambios de conducta pueden mejorar de forma notable.",
+          "La respuesta es individual: lo que funciona debe encajar en tu día."
+        ],
+        "recommendations": [
+          {
+            "title": "Práctica de comida consciente",
+            "description": "Dedica unos minutos sin prisas ni pantallas en el almuerzo para facilitar la digestión y suavizar el bajón."
+          },
+          {
+            "title": "Pausa de postura y respiración",
+            "description": "A media tarde, ponte de pie, estírate y respira despacio como un reinicio sencillo."
+          },
+          {
+            "title": "Revisión de hidratación",
+            "description": "Bebe agua con el almuerzo y otra vez a media tarde: la deshidratación a menudo se siente como fatiga."
+          }
+        ]
+      },
+      "diff": {
+        "agreements": [
+          {
+            "topic": "Movimiento después de comer",
+            "consensus": "Ambas vistas apoyan una actividad ligera tras el almuerzo para estabilizar la energía."
+          },
+          {
+            "topic": "La composición de la comida importa",
+            "consensus": "Ambas señalan que qué y cómo comes en el almuerzo afecta la bajada de la tarde."
+          }
+        ],
+        "disagreements": [
+          {
+            "topic": "Enfoque principal",
+            "opinionA": "Equilibrar macronutrientes de la comida",
+            "opinionB": "Práctica de comida consciente",
+            "severity": "medium",
+            "explanation": "La vista basada en evidencia prioriza la estructura metabólica de la comida; la contextual prioriza cómo comes bajo el estrés del día real."
+          }
+        ],
+        "uniqueToA": [
+          "Exposición estratégica a la luz"
+        ],
+        "uniqueToB": [
+          "Revisión de hidratación"
+        ]
+      }
     }
   },
   "about": {
@@ -235,11 +390,11 @@
   "contact": {
     "label": "Contacto",
     "title": "Ponte en contacto",
-    "healthGuideHint": "Para orientación de bienestar, usa la Guía de salud en la Zona de miembros.",
+    "healthGuideHint": "Para orientación de bienestar, usa la Guía de salud en el Gabinete.",
     "heroTitle": "Contacta al equipo de BioMath Core",
     "heroSubtitle": "Preguntas sobre servicios, alianzas o despliegues empresariales: estamos para ayudar.",
     "noteLabel": "Nota:",
-    "noteBody": "Este canal es para consultas de negocio, alianzas y cuenta. Para orientación de bienestar, usa el Health Guide en la Zona de miembro.",
+    "noteBody": "Este canal es para consultas de negocio, alianzas y cuenta. Para orientación de bienestar, usa el Health Guide en el Gabinete.",
     "messageLabel": "Mensaje",
     "sendMessage": "Enviar un mensaje"
   },

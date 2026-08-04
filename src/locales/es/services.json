@@ -74,20 +74,90 @@
       "featureHeader": "Función",
       "included": "Incluido",
       "rows": [
-        { "name": "Panel de salud", "core": "Básico", "daily": "Avanzado", "max": "Avanzado" },
-        { "name": "Categorías de servicios", "core": "3", "daily": "10", "max": "Las 20" },
-        { "name": "Almacenamiento del Archivo del Modelo", "core": "10 GB", "daily": "50 GB", "max": "200 GB" },
-        { "name": "Informes de salud", "core": "Mensuales", "daily": "Diarios", "max": "En tiempo real" },
-        { "name": "Soporte", "core": "Correo electrónico", "daily": "Correo prioritario", "max": "Prioritario 24/7" },
-        { "name": "Cifrado de datos", "core": true, "daily": true, "max": true },
-        { "name": "Conexión de dispositivos", "core": "Hasta 2", "daily": "Hasta 5", "max": "Ilimitada" },
-        { "name": "Health Guide", "core": false, "daily": true, "max": true },
-        { "name": "Integración de resultados de laboratorio", "core": false, "daily": true, "max": true },
-        { "name": "Análisis de datos genéticos", "core": false, "daily": true, "max": true },
-        { "name": "Analítica predictiva", "core": false, "daily": false, "max": true },
-        { "name": "Generación de informes personalizados", "core": false, "daily": false, "max": true },
-        { "name": "Cuentas familiares", "core": false, "daily": false, "max": "Hasta 5" },
-        { "name": "Acceso a la API", "core": false, "daily": false, "max": true }
+        {
+          "name": "Panel de salud",
+          "core": "Básico",
+          "daily": "Avanzado",
+          "max": "Avanzado"
+        },
+        {
+          "name": "Categorías de servicios",
+          "core": "3",
+          "daily": "10",
+          "max": "Las 20"
+        },
+        {
+          "name": "Almacenamiento del Archivo del Modelo",
+          "core": "10 GB",
+          "daily": "50 GB",
+          "max": "200 GB"
+        },
+        {
+          "name": "Informes de salud",
+          "core": "Mensuales",
+          "daily": "Diarios",
+          "max": "En tiempo real"
+        },
+        {
+          "name": "Soporte",
+          "core": "Correo electrónico",
+          "daily": "Correo prioritario",
+          "max": "Prioritario 24/7"
+        },
+        {
+          "name": "Cifrado de datos",
+          "core": true,
+          "daily": true,
+          "max": true
+        },
+        {
+          "name": "Conexión de dispositivos",
+          "core": "Hasta 2",
+          "daily": "Hasta 5",
+          "max": "Ilimitada"
+        },
+        {
+          "name": "Health Guide",
+          "core": false,
+          "daily": true,
+          "max": true
+        },
+        {
+          "name": "Integración de resultados de laboratorio",
+          "core": false,
+          "daily": true,
+          "max": true
+        },
+        {
+          "name": "Análisis de datos genéticos",
+          "core": false,
+          "daily": true,
+          "max": true
+        },
+        {
+          "name": "Analítica predictiva",
+          "core": false,
+          "daily": false,
+          "max": true
+        },
+        {
+          "name": "Generación de informes personalizados",
+          "core": false,
+          "daily": false,
+          "max": true
+        },
+        {
+          "name": "Cuentas familiares",
+          "core": false,
+          "daily": false,
+          "max": "Hasta 5"
+        },
+        {
+          "name": "Acceso a la API",
+          "core": false,
+          "daily": false,
+          "max": true
+        }
       ]
     },
     "testimonials": {

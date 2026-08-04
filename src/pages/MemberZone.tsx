@@ -5,6 +5,7 @@ import { supabase } from '../lib/supabase';
 import { notifyUserError } from '../lib/adminNotify';
 import { userHasMemberAccess } from '../lib/memberAccess';
 import MemberSidebar from '../components/MemberSidebar';
+import MemberFooter from '../components/MemberFooter';
 import DashboardSection from './member/DashboardSection';
 import QuestionnairesSection from './member/QuestionnairesSection';
 import ReportSettingsSection from './member/ReportSettingsSection';
@@ -368,49 +369,53 @@ export default function MemberZone({ onNavigate, onSignOut, initialServiceRef = 
       />
 
       <div
-        className={`ml-0 ${contentMarginClass} transition-all duration-300 pt-12 lg:pt-0`}
+        className={`ml-0 flex min-h-[calc(100vh-4rem)] flex-col ${contentMarginClass} transition-all duration-300 pt-12 lg:pt-0`}
         data-scroll-root
         data-scroll-blur
       >
-        <div className="px-4 sm:px-6 pt-6">
-          <WorkspaceStatusBanner
-            zone="member"
-            sectionLabel={sectionLabels[currentSection] || currentSection}
-            className="mb-4"
-          />
+        <div className="flex-1">
+          <div className="px-4 sm:px-6 pt-6">
+            <WorkspaceStatusBanner
+              zone="member"
+              sectionLabel={sectionLabels[currentSection] || currentSection}
+              className="mb-4"
+            />
 
-          <div className="mb-4 flex items-center justify-between gap-2">
-            <button
-              type="button"
-              onClick={() => onNavigate('home')}
-              className="member-btn"
-            >
-              <ArrowLeft className="h-5 w-5" />
-              <span>{t('member.zone.backHome')}</span>
-            </button>
-            <button
-              type="button"
-              onClick={handleSignOut}
-              className="member-btn"
-            >
-              <LogOut className="h-5 w-5" />
-              <span>{t('member.zone.signOut')}</span>
-            </button>
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={() => onNavigate('home')}
+                className="member-link"
+              >
+                <ArrowLeft className="h-3.5 w-3.5" />
+                <span>{t('member.zone.backHome')}</span>
+              </button>
+              <button
+                type="button"
+                onClick={handleSignOut}
+                className="member-link"
+              >
+                <LogOut className="h-3.5 w-3.5" />
+                <span>{t('member.zone.signOut')}</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Full-bleed photo hero across the member content column (all sections except service workspace). */}
+          {currentSection !== 'service-workspace' && (
+            <MemberSectionHero section={currentSection} />
+          )}
+
+          <div
+            className={`mx-auto px-6 py-8 ${
+              currentSection === 'service-workspace' ? 'max-w-6xl' : 'max-w-7xl'
+            }`}
+          >
+            {renderSection()}
           </div>
         </div>
 
-        {/* Full-bleed photo hero across the member content column (all sections except service workspace). */}
-        {currentSection !== 'service-workspace' && (
-          <MemberSectionHero section={currentSection} />
-        )}
-
-        <div
-          className={`mx-auto px-6 py-8 ${
-            currentSection === 'service-workspace' ? 'max-w-6xl' : 'max-w-7xl'
-          }`}
-        >
-          {renderSection()}
-        </div>
+        <MemberFooter onNavigate={onNavigate} onSectionChange={setCurrentSection} />
       </div>
 
       {showSuccessModal && (

@@ -105,10 +105,6 @@ export default function SecondOpinionSection() {
                 <FileText className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                 {t('member.secondOpinion.opinion1Title')}
               </h4>
-              <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
-                {t('member.secondOpinion.demoBadge')}
-              </span>
-              {/* Shared MemberDemoBadge pattern also used by Health Guide / System / service workspace */}
             </div>
             <p className="member-body mb-4 text-sm">{t('member.secondOpinion.opinion1Body')}</p>
             <div className="space-y-2">
@@ -127,9 +123,6 @@ export default function SecondOpinionSection() {
                 <FileText className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                 {t('member.secondOpinion.opinion2Title')}
               </h4>
-              <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
-                {t('member.secondOpinion.demoBadge')}
-              </span>
             </div>
             <p className="member-body mb-4 text-sm">{t('member.secondOpinion.opinion2Body')}</p>
             <div className="space-y-2">

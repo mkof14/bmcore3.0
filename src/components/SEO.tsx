@@ -34,15 +34,14 @@ const DEFAULT_SEO = {
   siteName: 'BioMath Core',
   defaultTitle: 'BioMath Core — Biomathematical Human Data Model',
   defaultDescription:
-    'BioMath Core builds a living Human Data Model — a biomathematical digital twin of your health — and guides you with Health Guide dual analysis.',
-  /** 1200×630 landscape share card (JPEG). WebP twin: /og-default.webp */
+    'BioMath Core builds a living Human Data Model — a biomathematical model of your health — and guides you with Health Guide dual analysis.',
+  /** 1200×630 landscape share card (JPEG). WebP version: /og-default.webp */
   defaultImage: '/og-default.jpg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
   defaultKeywords: [
     'biomathematical modeling',
     'Human Data Model',
-    'digital twin',
     'Health Guide',
     'BioMath Core',
     'dual intelligence',

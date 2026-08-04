@@ -10,7 +10,7 @@
         "body": "Choisissez parmi des abonnements flexibles adaptés à votre parcours bien-être. Toutes les formules incluent les services essentiels ; les niveaux avancés donnent accès à des évaluations spécialisées, aux intégrations d'appareils et à un accompagnement IA premium."
       },
       "member": {
-        "title": "Espace Membre",
+        "title": "Cabinet",
         "body": "Votre tableau de bord santé personnalisé. Suivez votre progression sur tous les services, consultez vos rapports, gérez vos appareils connectés, définissez vos objectifs et accédez à votre historique complet en un seul endroit sécurisé."
       },
       "multiModel": {
@@ -35,11 +35,16 @@
       },
       "healthRecords": {
         "title": "Dossiers santé & ADN",
-        "body": "Dans Zone membre → Dossiers santé & ADN, vous pouvez téléverser ou scanner analyses, imagerie, PDF de rapports ADN et ADN brut (PDF, images, CSV, TXT, VCF). Les fichiers passent de Reçu à En revue à Insights prêts. Les insights expliquent l’enregistrement, listent conclusions et recommandations, et restent éducatifs — pas un diagnostic. Les comptes et un indicateur ADN alimentent le contexte personnel pour les rapports et Health Guide ; le contenu d’ADN brut n’est jamais collé dans les prompts IA. Vous pouvez Copier, Imprimer ou Télécharger TXT."
+        "body": "Dans Cabinet → Dossiers santé & ADN, vous pouvez importer ou scanner analyses, imagerie, PDF de rapports ADN et fichiers ADN bruts (PDF, images, CSV, TXT, VCF). Sur mobile, l'appareil photo permet de capturer une feuille imprimée. Les fichiers passent de Reçu à En revue puis Insights prêts. Les insights expliquent le dossier, listent conclusions et recommandations et restent éducatifs — pas un diagnostic. Vous pouvez copier, imprimer ou télécharger en TXT tout insight prêt, ou interroger Health Guide sur le dossier sélectionné par texte ou à la voix. Les nombres et l'indicateur d'ADN au dossier alimentent le contexte personnel des rapports et de Health Guide ; le contenu ADN brut n'est jamais collé dans les prompts d'IA."
+      },
+      "devices": {
+        "title": "Appareils connectés",
+        "body": "Cabinet → Appareils connectés couvre sept catégories : montres connectées (Apple Watch, Samsung Galaxy Watch, Garmin, Google Pixel Watch, Fitbit, Polar), bagues intelligentes (Oura Ring, Ultrahuman Ring), bracelets de récupération (WHOOP), capteurs de glucose en continu (Dexcom G7, FreeStyle Libre), tensiomètres (Omron, Withings BPM), balances connectées (Withings Body+) et systèmes de sommeil à domicile (Eight Sleep). Vous autorisez chaque marque vous-même et seules les mesures approuvées se synchronisent — au rythme que vous choisissez, quasiment en temps réel lorsque la marque le permet. Les tendances interprétées alimentent vos rapports et permettent à Health Guide d'expliquer les schémas en langage clair ; les flux bruts des capteurs ne sont pas stockés."
       }
     },
     "viewPlans": "Voir les formules →",
-    "goToMember": "Aller à l'Espace Membre →",
+    "goToMember": "Aller au Cabinet →",
+    "openDevices": "Ouvrir Appareils connectés →",
     "browseServices": "Voir tous les services →",
     "ai": {
       "title": "Systèmes d'IA 101",

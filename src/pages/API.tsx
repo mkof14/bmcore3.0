@@ -236,18 +236,15 @@ export default function API({ onNavigate }: APIProps) {
               <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
                 {t('apiPage.ctaBody')}
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
                 <button
                   type="button"
                   onClick={() => onNavigate('contact')}
-                  className="bg-orange-500 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
+                  className="bm-cta-primary"
                 >
                   {t('apiPage.contactSales')}
                 </button>
-                <button
-                  type="button"
-                  className="border border-[var(--bm-border)] bg-page px-7 py-3.5 text-sm font-semibold text-gray-900 transition-colors hover:border-orange-500/40 dark:text-neutral-100"
-                >
+                <button type="button" className="bm-link">
                   {t('apiPage.viewDocs')}
                 </button>
               </div>

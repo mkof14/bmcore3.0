@@ -1,7 +1,23 @@
 {
   "programs": {
+    "page": {
+      "label": "Refer",
+      "title": "Dos programas para compartir BioMath Core",
+      "body": "Invita a amigos y gana créditos, o solicita ser embajador para obtener recompensas ampliadas. Cada programa tiene sus propias reglas y beneficios.",
+      "navAria": "Programas Refer",
+      "inviteShort": "Invitar",
+      "ambassadorShort": "Embajador",
+      "inviteCardTitle": "Invita a un amigo",
+      "inviteCardBody": "Comparte tu código. Tus amigos obtienen un descuento; tú ganas créditos por cada registro confirmado.",
+      "ambassadorCardTitle": "Programa de embajadores",
+      "ambassadorCardBody": "Para quienes comparten de forma activa y lideran comunidades: recompensas ampliadas, herramientas y soporte prioritario.",
+      "inviteCta": "Abrir programa Invitar",
+      "ambassadorCta": "Abrir programa Embajador",
+      "separator": "Y por separado",
+      "programBadge": "Programa {{n}}"
+    },
     "referral": {
-      "label": "Programa de referidos",
+      "label": "Invita a un amigo",
       "heroTitle": "Comparte salud, gana recompensas",
       "heroSubtitle": "Invita a tus amigos a BioMath Core y gana créditos con cada referido confirmado.",
       "statsLabel": "Tus estadísticas",
@@ -11,9 +27,18 @@
       "howLabel": "Cómo funciona",
       "howTitle": "Tres pasos sencillos",
       "steps": {
-        "share": { "title": "Comparte tu código único", "body": "Envíalo a tus amigos por correo o redes sociales." },
-        "discount": { "title": "Tu amigo recibe 5 $ de descuento", "body": "Se aplica al instante al registrarse." },
-        "credit": { "title": "Tú ganas 10 $ de crédito", "body": "Se añade al instante tras confirmar el registro." }
+        "share": {
+          "title": "Comparte tu código único",
+          "body": "Envíalo a tus amigos por correo o redes sociales."
+        },
+        "discount": {
+          "title": "Tu amigo recibe 5 $ de descuento",
+          "body": "Se aplica al instante al registrarse."
+        },
+        "credit": {
+          "title": "Tú ganas 10 $ de crédito",
+          "body": "Se añade al instante tras confirmar el registro."
+        }
       },
       "rewardTitle": "Detalles de la recompensa",
       "perReferral": "Ganas por referido",
@@ -89,12 +114,30 @@
       "benefitsLabel": "Beneficios",
       "benefitsTitle": "Beneficios del embajador",
       "benefits": {
-        "enhanced": { "title": "Recompensas mejoradas", "body": "El doble de la tarifa estándar de referidos, con niveles escalables." },
-        "dashboard": { "title": "Panel dedicado", "body": "Sigue tu grupo de referidos, recompensas acumuladas y nivel de embajador." },
-        "materials": { "title": "Materiales de marca compartida", "body": "Recursos profesionales para redes y kit para compartir." },
-        "support": { "title": "Soporte prioritario", "body": "Acceso directo al equipo de BioMath Core para tus dudas." },
-        "features": { "title": "Funciones anticipadas", "body": "Pruebas beta y acceso previo a nuevas capacidades." },
-        "revenue": { "title": "Reparto de ingresos", "body": "Posibilidad de acceder a modelos avanzados de colaboración." }
+        "enhanced": {
+          "title": "Recompensas mejoradas",
+          "body": "El doble de la tarifa estándar de referidos, con niveles escalables."
+        },
+        "dashboard": {
+          "title": "Panel dedicado",
+          "body": "Sigue tu grupo de referidos, recompensas acumuladas y nivel de embajador."
+        },
+        "materials": {
+          "title": "Materiales de marca compartida",
+          "body": "Recursos profesionales para redes y kit para compartir."
+        },
+        "support": {
+          "title": "Soporte prioritario",
+          "body": "Acceso directo al equipo de BioMath Core para tus dudas."
+        },
+        "features": {
+          "title": "Funciones anticipadas",
+          "body": "Pruebas beta y acceso previo a nuevas capacidades."
+        },
+        "revenue": {
+          "title": "Reparto de ingresos",
+          "body": "Posibilidad de acceder a modelos avanzados de colaboración."
+        }
       },
       "guidelinesLabel": "Directrices",
       "guidelinesTitle": "Responsabilidades del embajador",
@@ -133,7 +176,7 @@
       },
       "footerQuestion": "¿Ya tienes más de 10 referidos?",
       "footerPrefix": "Consulta tu",
-      "footerLink": "Zona de Miembro",
+      "footerLink": "Gabinete",
       "footerSuffix": "para ver si cumples los requisitos del ascenso automático."
     },
     "careers": {
@@ -143,9 +186,18 @@
       "whyLabel": "Por qué unirte",
       "whyTitle": "¿Por qué BioMath Core?",
       "why": {
-        "innovation": { "title": "Impulsados por la innovación", "body": "Trabaja con biomatemática e IA con impacto real en la salud." },
-        "impact": { "title": "Centrados en el impacto", "body": "Ayuda a las personas a mejorar su salud mediante el bienestar preventivo." },
-        "growth": { "title": "Orientados al crecimiento", "body": "Aprendizaje y desarrollo continuos en un equipo con la ciencia primero." }
+        "innovation": {
+          "title": "Impulsados por la innovación",
+          "body": "Trabaja con biomatemática e IA con impacto real en la salud."
+        },
+        "impact": {
+          "title": "Centrados en el impacto",
+          "body": "Ayuda a las personas a mejorar su salud mediante el bienestar preventivo."
+        },
+        "growth": {
+          "title": "Orientados al crecimiento",
+          "body": "Aprendizaje y desarrollo continuos en un equipo con la ciencia primero."
+        }
       },
       "openLabel": "Vacantes",
       "openTitle": "Ofertas actuales",

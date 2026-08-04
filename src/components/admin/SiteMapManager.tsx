@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Map, Eye, EyeOff, Save, CheckCircle, AlertCircle, Home, FileText, Building2, Users, Phone, DollarSign, Newspaper, Briefcase, BookOpen, FlaskConical, Shield, HelpCircle, Target, UserPlus, Gift, Stethoscope, BarChart3, Cog, GitBranch, Lock } from 'lucide-react';
+import { Map, Eye, EyeOff, Save, CheckCircle, AlertCircle, Home, FileText, Building2, Users, Phone, DollarSign, Newspaper, Briefcase, BookOpen, FlaskConical, Shield, HelpCircle, Target, Gift, Stethoscope, BarChart3, Cog, GitBranch, Lock } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 
 interface PageConfig {
@@ -32,14 +32,13 @@ export default function SiteMapManager() {
 
     { id: 'how-it-works', name: 'How It Works', path: '/how-it-works', icon: Target, enabled: true, category: 'info', description: 'How the platform works' },
     { id: 'why-two-models', name: 'Why Two Models', path: '/why-two-models', icon: GitBranch, enabled: true, category: 'info', description: 'Explanation of dual AI models' },
-    { id: 'privacy-trust', name: 'Privacy & Trust Center', path: '/privacy-trust', icon: Lock, enabled: true, category: 'info', description: 'Privacy and security information' },
+    { id: 'privacy-trust', name: 'Trust and Privacy Center', path: '/privacy-trust', icon: Lock, enabled: true, category: 'info', description: 'Trust, privacy, and legal documents hub' },
 
     { id: 'investors', name: 'For Investors', path: '/investors', icon: Target, enabled: true, category: 'marketing', description: 'Information for investors' },
     { id: 'partnership', name: 'Partnership', path: '/partnership', icon: Users, enabled: true, category: 'marketing', description: 'Partnership program' },
-    { id: 'ambassador', name: 'Ambassador', path: '/ambassador', icon: UserPlus, enabled: true, category: 'marketing', description: 'Ambassador program' },
-    { id: 'referral', name: 'Referral Program', path: '/referral', icon: Gift, enabled: true, category: 'marketing', description: 'Referral program' },
+    { id: 'refer', name: 'Refer', path: '/refer', icon: Gift, enabled: true, category: 'marketing', description: 'Invite friends and ambassador program' },
 
-    { id: 'member-zone', name: 'Member Zone', path: '/member-zone', icon: Users, enabled: true, category: 'member', description: 'Member dashboard' },
+    { id: 'member-zone', name: 'Cabinet', path: '/member-zone', icon: Users, enabled: true, category: 'member', description: 'Cabinet dashboard' },
     { id: 'command-center', name: 'Command Center', path: '/command-center', icon: Cog, enabled: true, category: 'member', description: 'Command center' },
 
     { id: 'admin', name: 'Admin Panel', path: '/admin', icon: Shield, enabled: true, category: 'admin', description: 'Admin panel' },

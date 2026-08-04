@@ -1,13 +1,13 @@
 {
   "privacyTrust": {
     "seo": {
-      "title": "Privacy & Trust - How BioMath Core Protects Your Data",
-      "description": "Learn how BioMath Core protects your health data with encryption, HIPAA-aligned practices, GDPR compliance, and user-controlled sharing. Read our privacy policies and security practices."
+      "title": "Trust and Privacy Center - How BioMath Core Protects Your Data",
+      "description": "Trust and Privacy Center for BioMath Core: privacy policy, terms, HIPAA, GDPR, security, and related legal notices in one place."
     },
     "hero": {
-      "label": "Privacy & Trust",
+      "label": "Trust and Privacy Center",
       "title": "Your data, protected by design",
-      "body": "Health data is deeply personal. BioMath Core treats its protection as a core product requirement — with transparent practices and plain-language policies."
+      "body": "Health data is deeply personal. This center gathers our privacy, trust, and legal documents so you can review how BioMath Core protects your information."
     },
     "commitments": {
       "label": "Commitments",
@@ -47,11 +47,13 @@
       "readMore": "Read more →",
       "items": [
         { "title": "Privacy Policy", "description": "How we collect, use, and protect your data" },
+        { "title": "Terms of Service", "description": "The agreement that governs use of BioMath Core" },
+        { "title": "Disclaimer", "description": "Wellness scope and limits of our guidance" },
         { "title": "HIPAA Notice", "description": "Our commitment to healthcare data protection" },
-        { "title": "GDPR Compliance", "description": "European data protection standards and your rights" },
-        { "title": "Security Practices", "description": "Technical and organizational measures we take" },
         { "title": "Data Privacy", "description": "Your rights and our responsibilities" },
-        { "title": "Trust & Safety", "description": "Creating a safe and trustworthy experience" }
+        { "title": "GDPR Compliance", "description": "European data protection standards and your rights" },
+        { "title": "Trust & Safety", "description": "Creating a safe and trustworthy experience" },
+        { "title": "Security Practices", "description": "Technical and organizational measures we take" }
       ]
     },
     "control": {

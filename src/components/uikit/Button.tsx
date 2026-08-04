@@ -5,14 +5,17 @@ import React from 'react';
 import { Spinner } from './Spinner';
 
 const button = tv({
-  base: 'inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed',
+  base: 'inline-flex items-center justify-center gap-2 font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed',
   variants: {
     variant: {
-      primary: 'bg-orange-600 hover:bg-orange-700 text-white focus:ring-orange-500',
-      secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-800 focus:ring-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200',
-      ghost: 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:ring-gray-500',
-      destructive: 'bg-red-600 hover:bg-red-700 text-white focus:ring-red-500',
-      info: 'bg-blue-600 hover:bg-blue-700 text-white focus:ring-blue-500',
+      primary:
+        'rounded-lg border border-orange-500/45 bg-transparent text-orange-700 hover:border-orange-500 hover:bg-orange-500 hover:text-white focus-visible:ring-orange-500 dark:text-orange-300 dark:hover:bg-orange-500 dark:hover:text-white',
+      secondary:
+        'bg-transparent text-gray-700 underline-offset-4 hover:text-orange-600 hover:underline focus-visible:ring-orange-500 dark:text-gray-300 dark:hover:text-orange-400',
+      ghost:
+        'bg-transparent text-gray-700 underline-offset-4 hover:text-orange-600 hover:underline focus-visible:ring-orange-500 dark:text-gray-300 dark:hover:text-orange-400',
+      destructive: 'rounded-lg bg-red-600 hover:bg-red-700 text-white focus-visible:ring-red-500',
+      info: 'rounded-lg bg-blue-600 hover:bg-blue-700 text-white focus-visible:ring-blue-500',
     },
     size: {
       sm: 'px-4 py-2 text-sm',

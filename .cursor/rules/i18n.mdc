@@ -15,6 +15,7 @@ BioMath Core supports: `en` (base), `es`, `fr`, `de`, `ja`, `he`, `zh`, `ar`, `u
 4. RTL: `ar` and `he` must keep natural phrasing; `document.documentElement.dir` is set automatically.
 5. Product name **Health Guide** (never “AI Health Advisor” / “AI Advisor”).
 6. Avoid banned marketing words: Platform, Ecosystem, Operating System, next-generation, cutting-edge, revolutionize.
+7. Never use **digital twin** / **цифровой двойник** (or equivalents: jumeau numérique, digitaler Zwilling, gemelo digital, 数字孪生, デジタルツイン, التوأم الرقمي / توأم رقمي, תאום דיגיטלי, цифровий двійник). Prefer **Human Data Model**, personal context, your data model, or biomathematics model.
 
 ## Language switcher
 

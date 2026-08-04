@@ -534,7 +534,7 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
           <div className="mb-6">
             {embedded && (
               <div className="mb-3 flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center rounded-full bg-orange-500 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
+                <span className="inline-flex items-center text-[11px] font-bold uppercase tracking-wide text-orange-600 dark:text-orange-400">
                   {t('member.workspaceBanner.memberZone')}
                 </span>
                 <span className="inline-flex items-center rounded-full bg-orange-50 px-2.5 py-1 text-[11px] font-semibold text-orange-700 ring-1 ring-orange-200 dark:bg-orange-950/40 dark:text-orange-200 dark:ring-orange-500/30">
@@ -560,7 +560,7 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
                 <Lock className="mt-0.5 h-5 w-5 flex-shrink-0 text-orange-500" />
                 <div>
                   <h3 className="mb-2 text-sm font-semibold text-gray-900 dark:text-white">
-                    Sign in to Member Zone to unlock full functionality and generate real reports
+                    Sign in to Cabinet to unlock full functionality and generate real reports
                   </h3>
                   <button
                     type="button"
@@ -1184,7 +1184,7 @@ export default function ServiceDetail({ onNavigate, serviceId, embedded = false,
               </div>
 
               <div className="bg-white dark:bg-[var(--bm-surface)] border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm">
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">AI Dialog Simulator</h3>
+                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">Ask about this report</h3>
                 <div className="space-y-3 mb-4">
                   {dialog.length === 0 && (
                     <p className="text-xs text-gray-500">Ask a question about this service report.</p>

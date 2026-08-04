@@ -1,7 +1,23 @@
 {
   "programs": {
+    "page": {
+      "label": "推荐",
+      "title": "分享 BioMath Core 的两种计划",
+      "body": "邀请好友赚取积分，或申请成为推广大使以获得更高奖励。每个计划都有各自的规则与权益。",
+      "navAria": "推荐计划",
+      "inviteShort": "邀请",
+      "ambassadorShort": "大使",
+      "inviteCardTitle": "邀请好友",
+      "inviteCardBody": "分享您的邀请码。好友可获折扣；每确认一次注册，您即可获得积分。",
+      "ambassadorCardTitle": "推广大使计划",
+      "ambassadorCardBody": "适合活跃分享者与社群领袖 — 更高奖励、专属工具与优先支持。",
+      "inviteCta": "打开邀请计划",
+      "ambassadorCta": "打开大使计划",
+      "separator": "另一计划",
+      "programBadge": "计划 {{n}}"
+    },
     "referral": {
-      "label": "推荐计划",
+      "label": "邀请好友",
       "heroTitle": "分享健康，收获回馈",
       "heroSubtitle": "邀请好友加入 BioMath Core，每一次成功推荐都能获得额度。",
       "statsLabel": "你的数据",
@@ -11,9 +27,18 @@
       "howLabel": "运作方式",
       "howTitle": "三个简单步骤",
       "steps": {
-        "share": { "title": "分享你的专属推荐码", "body": "通过邮件或社交平台发送给好友。" },
-        "discount": { "title": "好友立减 5 美元", "body": "注册时即时生效。" },
-        "credit": { "title": "你获得 10 美元额度", "body": "好友注册确认后立即到账。" }
+        "share": {
+          "title": "分享你的专属推荐码",
+          "body": "通过邮件或社交平台发送给好友。"
+        },
+        "discount": {
+          "title": "好友立减 5 美元",
+          "body": "注册时即时生效。"
+        },
+        "credit": {
+          "title": "你获得 10 美元额度",
+          "body": "好友注册确认后立即到账。"
+        }
       },
       "rewardTitle": "回馈详情",
       "perReferral": "每次推荐可得",
@@ -89,12 +114,30 @@
       "benefitsLabel": "权益",
       "benefitsTitle": "大使权益",
       "benefits": {
-        "enhanced": { "title": "更高回馈", "body": "标准推荐回馈的两倍，并可按等级提升。" },
-        "dashboard": { "title": "专属看板", "body": "查看你的推荐群体、累计回馈与大使等级。" },
-        "materials": { "title": "联合品牌素材", "body": "专业社交素材与分享工具包。" },
-        "support": { "title": "优先支持", "body": "有疑问可直接联系 BioMath Core 团队。" },
-        "features": { "title": "抢先体验", "body": "参与内测，提前使用新功能。" },
-        "revenue": { "title": "收益分成", "body": "有机会参与更进阶的合作模式。" }
+        "enhanced": {
+          "title": "更高回馈",
+          "body": "标准推荐回馈的两倍，并可按等级提升。"
+        },
+        "dashboard": {
+          "title": "专属看板",
+          "body": "查看你的推荐群体、累计回馈与大使等级。"
+        },
+        "materials": {
+          "title": "联合品牌素材",
+          "body": "专业社交素材与分享工具包。"
+        },
+        "support": {
+          "title": "优先支持",
+          "body": "有疑问可直接联系 BioMath Core 团队。"
+        },
+        "features": {
+          "title": "抢先体验",
+          "body": "参与内测，提前使用新功能。"
+        },
+        "revenue": {
+          "title": "收益分成",
+          "body": "有机会参与更进阶的合作模式。"
+        }
       },
       "guidelinesLabel": "准则",
       "guidelinesTitle": "大使的责任",
@@ -133,7 +176,7 @@
       },
       "footerQuestion": "已有 10 位以上推荐？",
       "footerPrefix": "请在",
-      "footerLink": "会员专区",
+      "footerLink": "工作台",
       "footerSuffix": "中查看是否符合自动升级条件。"
     },
     "careers": {
@@ -143,9 +186,18 @@
       "whyLabel": "为什么加入",
       "whyTitle": "为什么选择 BioMath Core？",
       "why": {
-        "innovation": { "title": "以创新驱动", "body": "从事生物数学与人工智能工作，带来真实的健康影响。" },
-        "impact": { "title": "以成效为本", "body": "通过预防性健康管理，帮助人们改善自身健康。" },
-        "growth": { "title": "重视成长", "body": "在以科学为先的团队中持续学习与成长。" }
+        "innovation": {
+          "title": "以创新驱动",
+          "body": "从事生物数学与人工智能工作，带来真实的健康影响。"
+        },
+        "impact": {
+          "title": "以成效为本",
+          "body": "通过预防性健康管理，帮助人们改善自身健康。"
+        },
+        "growth": {
+          "title": "重视成长",
+          "body": "在以科学为先的团队中持续学习与成长。"
+        }
       },
       "openLabel": "开放职位",
       "openTitle": "当前招聘",

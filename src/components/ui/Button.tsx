@@ -9,19 +9,19 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed';
+  'inline-flex items-center justify-center gap-2 font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed';
 
 const variants: Record<ButtonVariant, string> = {
-  primary: 'bg-orange-600 hover:bg-orange-700 text-white',
+  primary:
+    'rounded-lg border border-orange-500/45 bg-transparent text-orange-700 hover:border-orange-500 hover:bg-orange-500 hover:text-white dark:text-orange-300 dark:hover:bg-orange-500 dark:hover:text-white',
   secondary:
-    'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700',
+    'bg-transparent text-gray-700 underline-offset-4 hover:text-orange-600 hover:underline dark:text-gray-300 dark:hover:text-orange-400',
   outline:
-    'bg-transparent border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800',
-  ghost: 'bg-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800',
-  danger:
-    'bg-red-600 hover:bg-red-700 text-white',
-  success:
-    'bg-green-600 hover:bg-green-700 text-white',
+    'rounded-lg border border-orange-500/35 bg-transparent text-orange-700 hover:border-orange-500 hover:bg-orange-500 hover:text-white dark:text-orange-300 dark:hover:bg-orange-500 dark:hover:text-white',
+  ghost:
+    'bg-transparent text-gray-600 underline-offset-4 hover:text-orange-600 hover:underline dark:text-gray-300 dark:hover:text-orange-400',
+  danger: 'rounded-lg bg-red-600 hover:bg-red-700 text-white',
+  success: 'rounded-lg bg-green-600 hover:bg-green-700 text-white',
 };
 
 const sizes: Record<ButtonSize, string> = {

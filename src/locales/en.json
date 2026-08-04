@@ -4,7 +4,7 @@
     "about": "About",
     "pricing": "Pricing",
     "allServices": "All Services",
-    "memberZone": "Member Zone",
+    "memberZone": "Cabinet",
     "investors": "Investors",
     "signInUp": "Sign In/Up",
     "signOut": "Sign Out",
@@ -13,7 +13,7 @@
     "languageSwitching": "Switching language…"
   },
   "footer": {
-    "tagline": "Biomathematical Human Data Model — a living digital twin of your health.",
+    "tagline": "Biomathematical Human Data Model — a living model of your health.",
     "navigation": "Navigation",
     "resources": "Resources",
     "company": "Company",
@@ -34,7 +34,7 @@
     "security": "Security",
     "rights": "All rights reserved.",
     "legalSafety": "Legal & Safety",
-    "memberArea": "Member Area",
+    "memberArea": "Cabinet",
     "infoHelp": "Info & Help",
     "appsStatus": "Native App Store and Google Play apps are not listed yet. Use BioMath Core in the browser or install the web app (PWA)."
   },
@@ -78,10 +78,10 @@
   },
   "home": {
     "seoTitle": "Biomathematical Human Data Model",
-    "seoDescription": "BioMath Core builds a living Human Data Model — a biomathematical digital twin of your health — and guides you with Health Guide dual analysis.",
+    "seoDescription": "BioMath Core builds a living Human Data Model — a biomathematical model of your health — and guides you with Health Guide dual analysis.",
     "brand": "BioMath Core",
     "heroTitle": "Your lifelong Human Data Model",
-    "heroSubtitle": "A biomathematical digital twin that grows with every verified health event — not a biomarker dashboard.",
+    "heroSubtitle": "A biomathematical model that grows with every verified health event — not a biomarker dashboard.",
     "ctaPricing": "View pricing",
     "ctaHow": "How it works",
     "coreTools": {
@@ -89,10 +89,34 @@
       "subtitle": "Import records, see the timeline, and track what changed — across every category.",
       "readMore": "Read description"
     },
+    "twoModels": {
+      "eyebrow": "Why two models",
+      "headline": "Confirmed by two independent models, not just one.",
+      "subhead": "Every insight is checked against a second, independent analysis. When both agree, you know it's solid. When they don't, you see exactly where and why.",
+      "toggle": {
+        "most": "Most cases",
+        "rare": "Rare case"
+      },
+      "confirmed": {
+        "title": "Confirmed by both models",
+        "body": "A long-standing low vitamin D reading is flagged consistently by both the evidence-based and contextual analysis.",
+        "caption": "This is what most insights look like."
+      },
+      "differs": {
+        "title": "The two models see it differently",
+        "body": "One analysis emphasizes the sustained lab pattern; the other weighs how recent schedule and sun exposure shape the same finding.",
+        "caption": "This happens occasionally, and you see both sides when it does.",
+        "evidenceBased": "Evidence-based",
+        "contextual": "Contextual",
+        "evidenceReasoning": "Persistent low 25-OH vitamin D across repeated labs supports a clear deficiency signal.",
+        "contextualReasoning": "Recent indoor work months and limited outdoor time may explain the same low reading without implying a lasting metabolic issue."
+      },
+      "cta": "See how it works →"
+    },
     "what": {
       "label": "What it is",
       "title": "A living biomathematical model of you",
-      "body": "The Human Data Model is a digital twin built from verified labs, clinical notes, medications, symptoms, and lifestyle signals. It keeps one continuous structure — so Health Guide can reason over your full history, not isolated snapshots.",
+      "body": "The Human Data Model is built from verified labs, clinical notes, medications, symptoms, and lifestyle signals. It keeps one continuous structure — so Health Guide can reason over your full history, not isolated snapshots.",
       "points": [
         {
           "title": "One model, many sources",
@@ -104,7 +128,7 @@
         },
         {
           "title": "Built to last decades",
-          "body": "Every important event updates the twin — so tomorrow’s question still has yesterday’s evidence."
+          "body": "Every important event updates the model — so tomorrow’s question still has yesterday’s evidence."
         }
       ],
       "signals": [
@@ -115,7 +139,7 @@
       ],
       "vizTitle": "Signals converging into the Human Data Model",
       "vizCore": "HDM",
-      "vizCoreSub": "digital twin",
+      "vizCoreSub": "your data model",
       "vizCaption": "Verified inputs feed one model — not a pile of disconnected dashboards."
     },
     "steps": {
@@ -128,7 +152,7 @@
           "body": "Bring in labs, imaging notes, prescriptions, and personal observations."
         },
         {
-          "title": "Structure the twin",
+          "title": "Structure the model",
           "body": "BioMath Core organizes events into your Human Data Model across health categories."
         },
         {
@@ -137,33 +161,43 @@
         },
         {
           "title": "Ask Health Guide",
-          "body": "Dual-model analysis uses your twin — biomathematical and clinically oriented views side by side."
+          "body": "Dual-model analysis uses your model — biomathematical and clinically oriented views side by side."
         }
       ]
     },
     "different": {
       "label": "Why different",
       "title": "Biomathematics, not another biomarker feed",
-      "body": "Dashboards show the latest number. The Human Data Model keeps labs, diagnosis, treatment, and symptoms in one living twin — so you can act with context.",
+      "body": "Dashboards show the latest number. The Human Data Model keeps labs, diagnosis, treatment, and symptoms in one living model — so you can act with context.",
       "viz": {
-        "title": "Scattered metrics become one Human Data Model digital twin",
+        "title": "Scattered metrics become one Human Data Model",
         "themLabel": "Scattered metrics",
         "usLabel": "Human Data Model",
-        "metrics": ["LDL", "HRV", "A1C", "Sleep"],
-        "links": ["Labs", "Notes", "Meds", "Lifestyle"],
+        "metrics": [
+          "LDL",
+          "HRV",
+          "A1C",
+          "Sleep"
+        ],
+        "links": [
+          "Labs",
+          "Notes",
+          "Meds",
+          "Lifestyle"
+        ],
         "core": "HDM",
-        "coreSub": "digital twin",
+        "coreSub": "your data model",
         "outAsk": "Ask",
         "outMap": "Explore",
         "outTime": "Compare",
-        "caption": "Disconnected readings become one twin you can ask, explore, and compare over time."
+        "caption": "Disconnected readings become one model you can ask, explore, and compare over time."
       },
       "outcomes": {
         "label": "What you can do next",
         "items": [
           {
             "title": "Ask Health Guide",
-            "body": "Dual-model answers grounded in your twin — not generic tips from a single lab result."
+            "body": "Dual-model answers grounded in your model — not generic tips from a single lab result."
           },
           {
             "title": "Open a category",
@@ -186,6 +220,127 @@
       "female": "Woman",
       "male": "Man",
       "toggleLabel": "Figure"
+    },
+    "linkage": {
+      "label": "Data linkage",
+      "title": "Link questionnaire data to unlock dual opinion",
+      "body": "Health Guide compares an evidence-based view with a contextual view once enough questionnaire sections are linked into your Human Data Model.",
+      "caption": "Example based on a common health question about afternoon energy — illustrative sample content, not your personal data.",
+      "question": "Why do I feel drained after lunch?",
+      "chipHint": "Toggle sections to change linkage completeness.",
+      "completeness": "{{percent}}% complete",
+      "filledCount": "{{filled}} / {{total}} sections",
+      "linkageLabel": "Data linkage: {{health}}",
+      "health": {
+        "red": "red",
+        "yellow": "yellow",
+        "green": "green"
+      },
+      "sections": {
+        "categories": "Health focus",
+        "personal_info": "Personal info",
+        "medical_history": "Medical history",
+        "medications": "Medications",
+        "allergies": "Allergies",
+        "vital_signs": "Vital signs",
+        "lifestyle": "Lifestyle",
+        "psychological_health": "Psychological health"
+      },
+      "lockedTitle": "Dual opinion locked",
+      "lockedBody": "Link at least 40% of questionnaire sections to unlock the side-by-side Health Guide comparison.",
+      "unlockedLabel": "Dual opinion",
+      "evidenceBased": "Evidence-based",
+      "contextual": "Contextual",
+      "confidence": "{{value}}% confidence",
+      "reasoning": "Reasoning",
+      "recommendations": "Recommendations",
+      "diffTitle": "Comparison",
+      "agreements": "Agreements",
+      "disagreements": "Disagreements",
+      "alignment": "Overall alignment: {{percent}}%",
+      "severity": {
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      },
+      "priority": {
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      },
+      "opinionA": {
+        "summary": "Afternoon energy decline is linked to circadian rhythm and postprandial glucose response.",
+        "reasoning": [
+          "Circadian rhythm naturally dips between 1–3 PM (adenosine accumulation).",
+          "Postprandial glucose fluctuations affect alertness (insulin response).",
+          "Sleep debt compounds midday fatigue.",
+          "Meal composition directly impacts blood sugar stability."
+        ],
+        "recommendations": [
+          {
+            "title": "Optimize meal macronutrient balance",
+            "description": "Aim for protein, complex carbs, and fats at lunch to stabilize glucose for several hours."
+          },
+          {
+            "title": "Strategic light exposure",
+            "description": "Get 10–15 minutes of bright natural light after lunch to support alertness."
+          },
+          {
+            "title": "Brief movement protocol",
+            "description": "A short post-meal walk can improve glucose handling and reduce the afternoon dip."
+          }
+        ]
+      },
+      "opinionB": {
+        "summary": "Your afternoon energy dip is likely a mix of meal timing, stress load, and habits you can adjust practically.",
+        "reasoning": [
+          "Lunch timing and composition affect how you feel afterward.",
+          "Work environment and stress levels play a role.",
+          "Small behavior changes can create noticeable improvement.",
+          "Individual response varies — what works must fit your day."
+        ],
+        "recommendations": [
+          {
+            "title": "Mindful eating practice",
+            "description": "Take a few unhurried minutes at lunch without screens to ease digestion and the post-meal crash."
+          },
+          {
+            "title": "Power posture break",
+            "description": "Around mid-afternoon, stand, stretch, and take several slow breaths as a simple reset."
+          },
+          {
+            "title": "Hydration check",
+            "description": "Drink water with lunch and again mid-afternoon — dehydration often feels like fatigue."
+          }
+        ]
+      },
+      "diff": {
+        "agreements": [
+          {
+            "topic": "Post-meal movement",
+            "consensus": "Both views support light activity after lunch to steady energy."
+          },
+          {
+            "topic": "Meal composition matters",
+            "consensus": "Both note that what and how you eat at lunch affects the afternoon dip."
+          }
+        ],
+        "disagreements": [
+          {
+            "topic": "Primary focus",
+            "opinionA": "Optimize meal macronutrient balance",
+            "opinionB": "Mindful eating practice",
+            "severity": "medium",
+            "explanation": "The evidence-based view leads with metabolic meal structure; the contextual view leads with how you eat under real-day stress."
+          }
+        ],
+        "uniqueToA": [
+          "Strategic light exposure"
+        ],
+        "uniqueToB": [
+          "Hydration check"
+        ]
+      }
     }
   },
   "about": {
@@ -235,11 +390,11 @@
   "contact": {
     "label": "Contact",
     "title": "Get in touch",
-    "healthGuideHint": "For wellness guidance, use the Health Guide in the Member Zone.",
+    "healthGuideHint": "For wellness guidance, use the Health Guide in the Cabinet.",
     "heroTitle": "Reach the BioMath Core team",
     "heroSubtitle": "Questions about services, partnerships, or enterprise deployments — we are here to help.",
     "noteLabel": "Note:",
-    "noteBody": "This channel is for business inquiries, partnerships, and account questions. For wellness guidance, use the Health Guide in the Member Zone.",
+    "noteBody": "This channel is for business inquiries, partnerships, and account questions. For wellness guidance, use the Health Guide in the Cabinet.",
     "messageLabel": "Message",
     "sendMessage": "Send a message"
   },

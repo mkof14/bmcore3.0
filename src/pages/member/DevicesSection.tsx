@@ -1,14 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Watch, Plus, Trash2, RefreshCw, Check, X, Activity } from 'lucide-react';
+import {
+  Watch,
+  Trash2,
+  RefreshCw,
+  Check,
+  X,
+  Activity,
+} from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { notifyUserError, notifyUserInfo, notifyUserSuccess } from '../../lib/adminNotify';
 import ErrorBanner from '../../components/ui/ErrorBanner';
 import StateCard from '../../components/ui/StateCard';
-import ModalShell from '../../components/ui/ModalShell';
 import Button from '../../components/ui/Button';
 import MemberMetricCard from '../../components/ui/MemberMetricCard';
-import MemberDemoBadge from '../../components/MemberDemoBadge';
+import DeviceProductCard from '../../components/DeviceProductCard';
+import {
+  connectableDeviceIds,
+  deviceCatalog,
+} from '../../data/deviceCatalog';
+import { DeviceIconGlyph } from '../../data/deviceIcons';
 
 interface Device {
   id: string;
@@ -20,29 +31,10 @@ interface Device {
   connected_at: string;
 }
 
-const DEVICE_TYPE_IDS = [
-  'apple_watch',
-  'fitbit',
-  'oura',
-  'whoop',
-  'garmin',
-  'cgm',
-] as const;
-
-const DEVICE_ICONS: Record<string, string> = {
-  apple_watch: '⌚',
-  fitbit: '📊',
-  oura: '💍',
-  whoop: '⚡',
-  garmin: '🏃',
-  cgm: '🩸',
-};
-
 export default function DevicesSection() {
   const { t, i18n } = useTranslation();
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showConnectModal, setShowConnectModal] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -51,7 +43,9 @@ export default function DevicesSection() {
   }, []);
 
   const deviceName = (typeId: string) =>
-    t(`member.devices.deviceTypes.${typeId}`, { defaultValue: typeId });
+    t(`member.devices.deviceTypes.${typeId}`, {
+      defaultValue: t(`devicesPage.items.${typeId}.name`, { defaultValue: typeId }),
+    });
 
   const loadDevices = async () => {
     setLoading(true);
@@ -90,7 +84,6 @@ export default function DevicesSection() {
 
       const name = deviceName(deviceType);
 
-      // Link-account stub only — no live OAuth / vendor sync yet.
       const { error: insertError } = await supabase.from('device_connections').insert({
         user_id: resolvedUserId,
         device_type: deviceType,
@@ -100,7 +93,6 @@ export default function DevicesSection() {
       });
 
       if (insertError) throw insertError;
-      setShowConnectModal(false);
       notifyUserSuccess(t('member.devices.linkedSuccess', { name }));
       notifyUserInfo(t('member.devices.linkAccountNote'));
       loadDevices();
@@ -108,6 +100,8 @@ export default function DevicesSection() {
       notifyUserError(t('member.devices.connectionFailed'));
     }
   };
+
+  const linkedTypeIds = new Set(devices.map((d) => d.device_type));
 
   const handleSync = async (id: string) => {
     try {
@@ -143,10 +137,7 @@ export default function DevicesSection() {
 
   return (
     <div>
-      <div className="mb-4 flex flex-wrap items-center gap-2">
-        <MemberDemoBadge labelKey="member.devices.demoBadge" />
-        <p className="text-xs member-muted">{t('member.devices.linkAccountNote')}</p>
-      </div>
+      <p className="mb-4 text-xs member-muted">{t('member.devices.linkAccountNote')}</p>
 
       <div className="mb-6 grid gap-4 md:grid-cols-3">
         <MemberMetricCard
@@ -164,26 +155,18 @@ export default function DevicesSection() {
         <MemberMetricCard
           accent="orange"
           icon={<Watch className="h-6 w-6" />}
-          value={DEVICE_TYPE_IDS.length}
+          value={connectableDeviceIds.length}
           label={t('member.devices.supportedDevices')}
         />
       </div>
 
-      <div className="mb-4 flex items-center justify-between">
+      <p className="member-muted mb-6 text-sm">{t('member.devices.catalogNote')}</p>
+
+      <div className="mb-4 flex items-center justify-between gap-3">
         <h3 className="member-heading text-xl font-semibold">{t('member.devices.yourDevices')}</h3>
-        <div className="flex items-center gap-2">
-          <Button size="sm" onClick={() => loadDevices()}>
-            {t('member.devices.refresh')}
-          </Button>
-          <button
-            type="button"
-            onClick={() => setShowConnectModal(true)}
-            className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-orange-600 to-orange-500 px-6 py-2 text-white shadow-sm transition-all hover:from-orange-500 hover:to-orange-600"
-          >
-            <Plus className="h-4 w-4" />
-            {t('member.devices.linkAccount')}
-          </button>
-        </div>
+        <Button size="sm" onClick={() => loadDevices()}>
+          {t('member.devices.refresh')}
+        </Button>
       </div>
 
       {error && <ErrorBanner message={error} className="mb-4" />}
@@ -199,112 +182,118 @@ export default function DevicesSection() {
           description={t('member.devices.emptyBody')}
         />
       ) : (
-        <div className="grid gap-4 md:grid-cols-2">
-          {devices.map((device) => (
-            <div
-              key={device.id}
-              className="member-card p-6 transition-all hover:border-orange-500/30"
-            >
-              <div className="mb-4 flex items-start justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="text-3xl">
-                    {DEVICE_ICONS[device.device_type] || '📱'}
-                  </div>
-                  <div>
-                    <h3 className="member-heading text-lg font-semibold">{device.device_name}</h3>
-                    <div className="mt-1 flex items-center gap-2">
-                      {device.status === 'connected' ? (
-                        <span className="flex items-center gap-1 rounded-full border border-green-200 bg-green-100 px-2 py-0.5 text-xs text-green-700 dark:border-green-600/30 dark:bg-green-900/30 dark:text-green-400">
-                          <Check className="h-3 w-3" />
-                          {t('member.devices.linked')}
-                        </span>
-                      ) : (
-                        <span className="flex items-center gap-1 rounded-full border border-red-200 bg-red-100 px-2 py-0.5 text-xs text-red-700 dark:border-red-600/30 dark:bg-red-900/30 dark:text-red-400">
-                          <X className="h-3 w-3" />
-                          {t('member.devices.disconnected')}
-                        </span>
-                      )}
+        <div className="mb-10 grid gap-4 md:grid-cols-2">
+          {devices.map((device) => {
+            return (
+              <div
+                key={device.id}
+                className="member-card overflow-hidden transition-all hover:border-orange-500/30"
+              >
+                <div className="p-5">
+                  <div className="mb-4 flex items-start gap-3">
+                    <DeviceIconGlyph itemId={device.device_type} size="sm" />
+                    <div className="min-w-0 flex-1">
+                      <h3 className="member-heading text-lg font-semibold">{device.device_name}</h3>
+                      <div className="mt-1.5 flex items-center gap-2">
+                        {device.status === 'connected' ? (
+                          <span className="inline-flex items-center gap-1 rounded-full bg-sky-500/10 px-2.5 py-0.5 text-xs font-medium text-sky-800 ring-1 ring-inset ring-sky-500/20 dark:text-sky-300">
+                            <Check className="h-3 w-3" />
+                            {t('devicesPage.cardStatus.connected')}
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 rounded-full bg-neutral-500/10 px-2.5 py-0.5 text-xs font-medium text-neutral-700 ring-1 ring-inset ring-neutral-500/15 dark:text-neutral-300">
+                            <X className="h-3 w-3" />
+                            {t('devicesPage.cardStatus.notConnected')}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <div className="mb-4 space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="member-muted">{t('member.devices.lastSync')}</span>
-                  <span className="member-body font-medium">
-                    {device.last_sync
-                      ? new Date(device.last_sync).toLocaleString(i18n.language)
-                      : t('member.devices.never')}
-                  </span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="member-muted">{t('member.devices.frequency')}</span>
-                  <span className="member-body font-medium">{device.sync_frequency}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="member-muted">{t('member.devices.connectedAt')}</span>
-                  <span className="member-body font-medium">
-                    {new Date(device.connected_at).toLocaleDateString(i18n.language)}
-                  </span>
-                </div>
-              </div>
+                  <div className="mb-4 space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span className="member-muted">{t('member.devices.lastSync')}</span>
+                      <span className="member-body font-medium">
+                        {device.last_sync
+                          ? new Date(device.last_sync).toLocaleString(i18n.language)
+                          : t('member.devices.never')}
+                      </span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="member-muted">{t('member.devices.frequency')}</span>
+                      <span className="member-body font-medium">{device.sync_frequency}</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="member-muted">{t('member.devices.connectedAt')}</span>
+                      <span className="member-body font-medium">
+                        {new Date(device.connected_at).toLocaleDateString(i18n.language)}
+                      </span>
+                    </div>
+                  </div>
 
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => handleSync(device.id)}
-                  className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-blue-200 bg-blue-100 px-4 py-2 text-blue-700 transition-colors hover:bg-blue-200 dark:border-blue-600/30 dark:bg-blue-900/30 dark:text-blue-400 dark:hover:bg-blue-900/50"
-                >
-                  <RefreshCw className="h-4 w-4" />
-                  {t('member.devices.markSynced')}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleDisconnect(device.id)}
-                  className="rounded-lg border border-red-200 bg-red-100 px-4 py-2 text-red-700 transition-colors hover:bg-red-200 dark:border-red-600/30 dark:bg-red-900/30 dark:text-red-400 dark:hover:bg-red-900/50"
-                  title={t('member.devices.disconnect')}
-                >
-                  <Trash2 className="h-4 w-4" />
-                </button>
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => handleSync(device.id)}
+                      className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-500"
+                    >
+                      <RefreshCw className="h-4 w-4" />
+                      {t('member.devices.markSynced')}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDisconnect(device.id)}
+                      className="bm-link rounded-lg px-3 py-2 text-red-700 dark:text-red-400"
+                      title={t('member.devices.disconnect')}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
 
-      {showConnectModal && (
-        <ModalShell
-          title={t('member.devices.linkModalTitle')}
-          icon={<Watch className="h-6 w-6 text-orange-500" />}
-          onClose={() => setShowConnectModal(false)}
-          panelClassName="max-w-2xl"
-        >
-          <p className="member-muted mb-4 text-sm">{t('member.devices.linkModalBody')}</p>
-          <div className="grid gap-4 md:grid-cols-2">
-            {DEVICE_TYPE_IDS.map((deviceId) => (
-              <button
-                key={deviceId}
-                type="button"
-                onClick={() => handleConnect(deviceId)}
-                className="member-card rounded-xl p-6 text-left transition-all hover:border-orange-300"
-              >
-                <div className="mb-3 text-4xl">{DEVICE_ICONS[deviceId]}</div>
-                <h3 className="member-heading mb-2 text-lg font-semibold">{deviceName(deviceId)}</h3>
-                <p className="member-body text-sm">{t('member.devices.clickToLink')}</p>
-              </button>
-            ))}
-          </div>
+      <div className="mt-8 space-y-8">
+        <div>
+          <h3 className="member-heading text-xl font-semibold">
+            {t('member.devices.linkModalTitle')}
+          </h3>
+          <p className="member-muted mt-2 text-sm">{t('member.devices.linkModalBody')}</p>
+        </div>
 
-          <button
-            type="button"
-            onClick={() => setShowConnectModal(false)}
-            className="member-body mt-6 w-full rounded-lg bg-[var(--bm-surface)] px-6 py-2 transition-colors hover:bg-[var(--bm-border)]"
-          >
-            {t('member.devices.cancel')}
-          </button>
-        </ModalShell>
-      )}
+        {deviceCatalog.map((category) => (
+          <div key={category.id}>
+            <h4 className="member-heading mb-3 text-base font-semibold">
+              {t(`devicesPage.categories.${category.id}.title`)}
+            </h4>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {category.items.map((item) => {
+                const linked = linkedTypeIds.has(item.id);
+                return (
+                  <DeviceProductCard
+                    key={item.id}
+                    itemId={item.id}
+                    capabilities={item.capabilities}
+                    realtime={Boolean(item.realtime)}
+                    status={linked ? 'connected' : 'notConnected'}
+                    memberTone
+                    actionLabel={
+                      linked ? t('member.devices.linked') : t('member.devices.clickToLink')
+                    }
+                    onAction={() => {
+                      if (!linked) handleConnect(item.id);
+                    }}
+                    actionDisabled={linked}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

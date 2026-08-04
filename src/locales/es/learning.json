@@ -10,7 +10,7 @@
         "body": "Elige entre niveles de suscripción flexibles pensados para tu camino de bienestar. Todos los planes incluyen los servicios básicos, y los niveles avanzados desbloquean evaluaciones especializadas, integración con dispositivos y orientación de IA premium."
       },
       "member": {
-        "title": "Zona de Miembro",
+        "title": "Gabinete",
         "body": "Tu panel de salud personalizado. Sigue tu progreso en todos los servicios, revisa informes, gestiona dispositivos conectados, fija objetivos de bienestar y consulta tu historial completo en un solo lugar seguro."
       },
       "multiModel": {
@@ -35,11 +35,16 @@
       },
       "healthRecords": {
         "title": "Historial de salud y ADN",
-        "body": "En Zona de miembros → Historial de salud y ADN puedes subir o escanear análisis, imágenes, PDF de informes de ADN y archivos de ADN en bruto (PDF, imágenes, CSV, TXT, VCF). Los archivos pasan de Recibido a En revisión a Insights listos. Los insights explican el registro, listan conclusiones y recomendaciones, y son educativos — no un diagnóstico. Los conteos y una marca de ADN en archivo alimentan el contexto personal para informes y Health Guide; el contenido de ADN en bruto nunca se pega en prompts de IA. Puedes Copiar, Imprimir o Descargar TXT cualquier insight listo."
+        "body": "En Gabinete → Historial de salud y ADN puedes subir o escanear análisis, imágenes, PDF de informes de ADN y archivos de ADN sin procesar (PDF, imágenes, CSV, TXT, VCF). En el móvil puedes fotografiar una hoja impresa con la cámara. Los archivos pasan de Recibido a En revisión y a Insights listos. Los insights explican el registro, enumeran conclusiones y recomendaciones y son educativos, no un diagnóstico. Puedes Copiar, Imprimir o Descargar TXT cualquier insight listo, o preguntar a Health Guide sobre el registro seleccionado por texto o voz. Los recuentos y el indicador de ADN archivado aportan contexto personal a los informes y a Health Guide; el contenido del ADN sin procesar nunca se pega en los prompts de IA."
+      },
+      "devices": {
+        "title": "Dispositivos conectados",
+        "body": "Gabinete → Dispositivos conectados cubre siete categorías: smartwatches (Apple Watch, Samsung Galaxy Watch, Garmin, Google Pixel Watch, Fitbit, Polar), anillos inteligentes (Oura Ring, Ultrahuman Ring), bandas de recuperación (WHOOP), sensores de glucosa continua (Dexcom G7, FreeStyle Libre), monitores de presión arterial (Omron, Withings BPM), básculas inteligentes (Withings Body+) y sistemas de sueño en casa (Eight Sleep). Tú autorizas cada marca y solo se sincronizan las métricas que apruebas, con la frecuencia que elijas y casi en tiempo real cuando la marca lo permite. Las tendencias interpretadas alimentan tus informes y permiten que Health Guide explique los patrones en lenguaje claro; los flujos de sensores sin procesar no se almacenan."
       }
     },
     "viewPlans": "Ver planes →",
-    "goToMember": "Ir a la Zona de Miembro →",
+    "goToMember": "Ir al Gabinete →",
+    "openDevices": "Abrir Dispositivos conectados →",
     "browseServices": "Ver todos los servicios →",
     "ai": {
       "title": "Sistemas de IA 101",

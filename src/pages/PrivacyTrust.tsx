@@ -12,13 +12,16 @@ type Commitment = { title: string; body: string };
 type Policy = { title: string; description: string };
 type Stat = { value: string; label: string };
 
+/** Hub destinations for former footer legal links (order matches privacyTrust.policies.items). */
 const POLICY_PAGES = [
   'privacy-policy',
+  'terms-of-service',
+  'disclaimer',
   'hipaa-notice',
-  'gdpr',
-  'security',
   'data-privacy',
+  'gdpr',
   'trust-safety',
+  'security',
 ];
 
 function SectionLabel({ children }: { children: ReactNode }) {
@@ -165,7 +168,7 @@ export default function PrivacyTrust({ onNavigate }: NavigationProps) {
               <button
                 type="button"
                 onClick={() => onNavigate('contact')}
-                className="mt-8 bg-orange-500 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/40"
+                className="bm-cta-primary mt-8"
               >
                 {t('privacyTrust.contact.cta')}
               </button>

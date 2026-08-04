@@ -23,6 +23,7 @@ export type AppPage =
   | 'devices'
   | 'reports'
   | 'faq'
+  | 'refer'
   | 'referral'
   | 'ambassador'
   | 'learning'
@@ -103,8 +104,7 @@ export const PAGE_PATHS: Partial<Record<AppPage, string>> & Record<string, strin
   devices: '/devices',
   reports: '/reports',
   faq: '/faq',
-  referral: '/referral',
-  ambassador: '/ambassador',
+  refer: '/refer',
   learning: '/learning-center',
   'learning-center': '/learning-center',
   'biomath-core-summary': '/biomath-core-summary',
@@ -151,11 +151,22 @@ const PATH_ALIASES: Record<string, AppPage> = {
   '/second-opinion': 'second-opinion-demo',
   '/reset-password': 'signin',
   '/dashboard': 'member-zone',
+  /** Legacy growth program routes → combined Refer page. */
+  '/referral': 'refer',
+  '/ambassador': 'refer',
 };
 
 const CANONICAL_ALIASES: Partial<Record<string, AppPage>> = {
   member: 'member-zone',
   learning: 'learning-center',
+  referral: 'refer',
+  ambassador: 'refer',
+};
+
+/** Old path → canonical URL (with section hash when needed). */
+const LEGACY_PATH_REDIRECTS: Record<string, string> = {
+  '/referral': '/refer#invite',
+  '/ambassador': '/refer#ambassador',
 };
 
 const KNOWN_PAGES = new Set<string>([
@@ -188,6 +199,10 @@ function canonicalPage(page: string): AppPage {
 
 /** Build path (+ optional query) for a page key and optional data payload. */
 export function pageToPath(page: string, data?: string): string {
+  // Preserve section deep-links before canonical aliasing collapses them to `refer`.
+  if (page === 'ambassador') return '/refer#ambassador';
+  if (page === 'referral') return '/refer#invite';
+
   const key = canonicalPage(page);
 
   if (key === 'service-detail') {
@@ -246,7 +261,10 @@ export function pathToRoute(pathname: string, search = ''): RouteState {
 
   const aliasPage = PATH_ALIASES[path];
   if (aliasPage) {
-    return emptyRoute(aliasPage);
+    const route = emptyRoute(aliasPage);
+    const redirect = LEGACY_PATH_REDIRECTS[path];
+    if (redirect) route.normalizeUrl = redirect;
+    return route;
   }
 
   for (const [page, pagePath] of Object.entries(PAGE_PATHS) as [AppPage, string][]) {

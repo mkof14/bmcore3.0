@@ -77,7 +77,7 @@
           {
             "id": "purchase",
             "question": "Wie schließe ich ein Abo ab?",
-            "answer": "Sie können direkt auf der Preisseite abonnieren. Nach dem Kauf werden die erweiterten Funktionen im Mitgliederbereich freigeschaltet."
+            "answer": "Sie können direkt auf der Preisseite abonnieren. Nach dem Kauf werden die erweiterten Funktionen in Cabinet freigeschaltet."
           },
           {
             "id": "plans",
@@ -123,7 +123,7 @@
           {
             "id": "update-answers",
             "question": "Kann ich Antworten später ändern?",
-            "answer": "Ja, jederzeit im Mitgliederbereich."
+            "answer": "Ja, jederzeit in Cabinet."
           },
           {
             "id": "refresh-frequency",
@@ -144,7 +144,7 @@
           {
             "id": "add-services",
             "question": "Kann ich später weitere Services hinzufügen?",
-            "answer": "Ja. Sie können jederzeit neue Services im Servicekatalog oder im Mitgliederbereich aktivieren."
+            "answer": "Ja. Sie können jederzeit neue Services im Servicekatalog oder in Cabinet aktivieren."
           },
           {
             "id": "which-service",
@@ -160,11 +160,11 @@
       },
       {
         "id": "member-zone",
-        "title": "Mitgliederbereich",
+        "title": "Cabinet",
         "items": [
           {
             "id": "what-member-zone",
-            "question": "Was ist der Mitgliederbereich?",
+            "question": "Was ist Cabinet?",
             "answer": "Ihr persönliches, interaktives Dashboard, in dem alle Funktionen zusammenlaufen: Berichte, Ziele, Momentaufnahmen, Geräte, Zweitmeinung und Chat."
           },
           {
@@ -340,27 +340,42 @@
           {
             "id": "supported-devices",
             "question": "Welche Geräte werden unterstützt?",
-            "answer": "Apple Watch, Samsung, Fitbit, Amazon Halo, Oura, kontinuierliche Glukosemessgeräte und weitere zertifizierte Geräte."
+            "answer": "Sieben Kategorien: Smartwatches (Apple Watch, Samsung Galaxy Watch, Garmin, Google Pixel Watch, Fitbit, Polar), Smart Rings (Oura Ring, Ultrahuman Ring), Erholungsbänder (WHOOP), Sensoren für kontinuierliche Glukose (Dexcom G7, FreeStyle Libre), Blutdruckmessgeräte (Omron, Withings BPM), smarte Waagen (Withings Body+) und Heim-Schlafsysteme (Eight Sleep)."
+          },
+          {
+            "id": "device-categories",
+            "question": "Was decken die Gerätekategorien ab?",
+            "answer": "Smartwatches liefern Herzfrequenz über den Tag, Schlaf und Aktivität, häufig auch EKG oder SpO₂. Smart Rings erfassen Schlaf, HRV und Temperatur rund um die Uhr. Erholungsbänder konzentrieren sich auf Belastung und Erholungsbereitschaft. Sensoren für kontinuierliche Glukose zeigen Glukoseverläufe über den ganzen Tag. Blutdruckmessgeräte und smarte Waagen ergänzen verlässliche Messungen zu Hause. Heim-Schlafsysteme erfassen nächtliche Vitalwerte ohne Gerät am Handgelenk."
           },
           {
             "id": "connect-device",
             "question": "Wie verbinde ich ein Gerät?",
-            "answer": "Über einen geführten Schritt-für-Schritt-Ablauf im Mitgliederbereich."
+            "answer": "Öffnen Sie Cabinet → Verbundene Geräte, wählen Sie Ihre Marke und folgen Sie der geführten Autorisierung. Jede Verbindung ist ein Schritt-für-Schritt-Einwilligungsdialog; Geräte lassen sich jederzeit hinzufügen oder entfernen."
+          },
+          {
+            "id": "what-data-flows",
+            "question": "Welche Daten kommen nach dem Verbinden an?",
+            "answer": "Nur die Werte, die Sie freigeben: Herzfrequenz und HRV, Schlafphasen, Aktivität und Belastung, SpO₂, Temperatur, Glukose, Blutdruck, Gewicht und Körperzusammensetzung. Updates kommen im Rhythmus, den Sie wählen — nahezu in Echtzeit, wenn die Marke es unterstützt."
+          },
+          {
+            "id": "feeds-health-guide",
+            "question": "Wie fließen Geräte in Berichte und Health Guide ein?",
+            "answer": "Interpretierte Trends Ihrer Geräte werden Teil Ihres Human Data Model, damit Berichte und Health Guide Muster in klarer Sprache erklären. Die Hinweise bleiben edukativ und sind keine Diagnose."
           },
           {
             "id": "store-data",
             "question": "Speichern Sie rohe Gesundheitsdaten?",
-            "answer": "Nein. Wir interpretieren Kennzahlen – Rohdatenströme müssen wir nicht speichern."
+            "answer": "Nein. Wir interpretieren Messwerte und behalten die relevanten Trends — rohe Sensordatenströme müssen wir nicht speichern."
           },
           {
             "id": "syncing-stops",
-            "question": "Was passiert, wenn die Synchronisierung stoppt?",
-            "answer": "Sie erhalten eine Erinnerung und können mit einem Klick neu verbinden."
+            "question": "Was, wenn die Synchronisierung stoppt?",
+            "answer": "In Verbundene Geräte erscheint ein Hinweis, wenn eine Verbindung abläuft oder ein Token erneuert werden muss; ein Klick genügt zum Neuverbinden. Frühere Daten bleiben erhalten."
           },
           {
             "id": "disable-sharing",
-            "question": "Kann ich die Datenfreigabe deaktivieren?",
-            "answer": "Ja – sofort in den Einstellungen."
+            "question": "Kann ich die Datenfreigabe abschalten?",
+            "answer": "Ja — sofort. Trennen Sie ein einzelnes Gerät oder deaktivieren Sie die Freigabe für alle in den Einstellungen; neue Messwerte stoppen umgehend."
           }
         ]
       },
@@ -370,28 +385,43 @@
         "items": [
           {
             "id": "upload-labs-dna",
-            "question": "Kann ich Labore und DNA hochladen?",
-            "answer": "Ja. In der Member Zone → Gesundheitsakten & DNA können Sie Labore, Bildgebung, DNA-Bericht-PDFs und Roh-DNA hochladen oder scannen. Sie werden Teil Ihres Profils neben dem Fragebogen."
+            "question": "Kann ich Laborwerte und DNA-Daten hochladen?",
+            "answer": "Ja. In Cabinet → Gesundheitsakten & DNA laden oder scannen Sie Laborwerte, Bildgebung, DNA-Berichts-PDFs und rohe DNA-Dateien. Sie werden Teil Ihres Profils — neben Fragebogen und verbundenen Geräten."
           },
           {
             "id": "supported-formats",
             "question": "Welche Dateiformate werden unterstützt?",
-            "answer": "PDF, JPG, PNG, WEBP, CSV, TXT, VCF und gängige Roh-DNA-Textexporte (inkl. 23andMe- oder Ancestry-Stil). Auf Mobilgeräten ist Kameraaufnahme möglich, wenn der Browser es erlaubt."
+            "answer": "PDF, JPG, PNG, WEBP, CSV, TXT, VCF sowie verbreitete Textexporte roher DNA (auch im Stil von 23andMe oder Ancestry)."
+          },
+          {
+            "id": "scan-camera",
+            "question": "Kann ich einen Papierbefund mit der Kamera scannen?",
+            "answer": "Ja. Auf dem Smartphone können Sie eine Seite direkt mit der Kamera aufnehmen, wenn der Browser es erlaubt — praktisch für gedruckte Laborbögen. Ein Foto pro Seite, und vor dem Speichern den Aktentyp wählen."
           },
           {
             "id": "how-insights-work",
             "question": "Was passiert nach dem Upload?",
-            "answer": "Jeder Eintrag geht von Empfangen über In Prüfung zu Insights bereit. Dann erhalten Sie eine Bildungs-Erklärung, Schlussfolgerungen und Empfehlungen. Sie können Kopieren, Drucken oder TXT herunterladen. Das ist strukturierte Aufnahme mit Insight-Vorlagen — keine volle Genom-Pipeline."
+            "answer": "Jeder Eintrag wandert von Empfangen über In Prüfung zu Insights bereit. Danach erhalten Sie eine edukative Erklärung, Schlussfolgerungen und Empfehlungen. Das ist strukturierte Aufnahme mit Insight-Vorlagen — keine vollständige Genomanalyse."
+          },
+          {
+            "id": "copy-print-insights",
+            "question": "Kann ich ein Insight kopieren, drucken oder speichern?",
+            "answer": "Ja. Jedes fertige Insight bietet Kopieren, Drucken und TXT herunterladen — für Ihre Unterlagen oder den Arztbesuch."
           },
           {
             "id": "feeds-reports-guide",
-            "question": "Wie beeinflussen Uploads Berichte und Health Guide?",
-            "answer": "Uploads liefern High-Level-Kontext: Zählungen nach Typ, ob DNA vorhanden ist, und das Datum des letzten Labors. Berichte und Health Guide nutzen diese Signale mit Ihrem Fragebogen. Vollständige Roh-DNA wird nie in KI-Prompts eingefügt."
+            "question": "Wie wirken Uploads auf Berichte und Health Guide?",
+            "answer": "Uploads liefern übergeordneten persönlichen Kontext: Anzahl je Typ, ob DNA hinterlegt ist, und das Datum der letzten Laborwerte. Berichte und Health Guide nutzen diese Signale zusammen mit Ihrem Fragebogen und den Gerätetrends. Vollständige rohe DNA-Inhalte werden nie in KI-Prompts eingefügt."
+          },
+          {
+            "id": "voice-health-guide",
+            "question": "Kann ich Health Guide per Sprache zu einer Akte fragen?",
+            "answer": "Ja. Wählen Sie eine Akte und fragen Sie Health Guide per Text oder Sprache. Antworten kommen in klarer Sprache — hilfreich, wenn die Hände gerade nicht frei sind."
           },
           {
             "id": "dna-privacy",
-            "question": "Bleibt Roh-DNA aus KI-Prompts heraus?",
-            "answer": "Ja. Health Guide und Berichtsvorworte erhalten nur ein Ja/Nein-Flag „Roh-DNA vorhanden“ plus Bildungsvorlagen — nie die volle genetische Datei."
+            "question": "Bleibt rohe DNA aus KI-Prompts heraus?",
+            "answer": "Ja. Health Guide und Berichtseinleitungen erhalten nur ein Ja/Nein-Kennzeichen „rohe DNA hinterlegt“ plus edukative Vorlagen — niemals die vollständige Gendatei."
           }
         ]
       },

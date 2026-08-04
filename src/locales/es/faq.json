@@ -77,7 +77,7 @@
           {
             "id": "purchase",
             "question": "¿Cómo puedo contratar una suscripción?",
-            "answer": "Puedes suscribirte directamente en la página de Precios. Tras el pago, desbloquearás las funciones avanzadas dentro de la Zona de Miembros."
+            "answer": "Puedes suscribirte directamente en la página de Precios. Tras el pago, desbloquearás las funciones avanzadas dentro del Gabinete."
           },
           {
             "id": "plans",
@@ -123,7 +123,7 @@
           {
             "id": "update-answers",
             "question": "¿Puedo actualizar mis respuestas después?",
-            "answer": "Sí, en cualquier momento desde la Zona de Miembros."
+            "answer": "Sí, en cualquier momento desde el Gabinete."
           },
           {
             "id": "refresh-frequency",
@@ -144,7 +144,7 @@
           {
             "id": "add-services",
             "question": "¿Puedo añadir más servicios más adelante?",
-            "answer": "Sí. Puedes activar nuevos servicios cuando quieras desde el Catálogo de Servicios o la Zona de Miembros."
+            "answer": "Sí. Puedes activar nuevos servicios cuando quieras desde el Catálogo de Servicios o el Gabinete."
           },
           {
             "id": "which-service",
@@ -160,11 +160,11 @@
       },
       {
         "id": "member-zone",
-        "title": "Zona de Miembros",
+        "title": "Gabinete",
         "items": [
           {
             "id": "what-member-zone",
-            "question": "¿Qué es la Zona de Miembros?",
+            "question": "¿Qué es el Gabinete?",
             "answer": "Es tu panel interactivo personal, donde están todas las funciones: informes, objetivos, instantáneas, dispositivos, segunda opinión y chat."
           },
           {
@@ -340,27 +340,42 @@
           {
             "id": "supported-devices",
             "question": "¿Qué dispositivos son compatibles?",
-            "answer": "Apple Watch, Samsung, Fitbit, Amazon Halo, Oura, monitores continuos de glucosa y otros dispositivos certificados."
+            "answer": "Siete categorías: smartwatches (Apple Watch, Samsung Galaxy Watch, Garmin, Google Pixel Watch, Fitbit, Polar), anillos inteligentes (Oura Ring, Ultrahuman Ring), bandas de recuperación (WHOOP), sensores de glucosa continua (Dexcom G7, FreeStyle Libre), monitores de presión arterial (Omron, Withings BPM), básculas inteligentes (Withings Body+) y sistemas de sueño en casa (Eight Sleep)."
+          },
+          {
+            "id": "device-categories",
+            "question": "¿Qué mide cada categoría de dispositivos?",
+            "answer": "Los smartwatches registran frecuencia cardíaca todo el día, sueño y actividad, y a menudo ECG o SpO₂. Los anillos inteligentes siguen sueño, VFC y temperatura las 24 horas. Las bandas de recuperación se centran en la carga y la disposición para entrenar. Los sensores de glucosa continua muestran curvas de glucosa a lo largo del día. Los monitores de presión arterial y las básculas inteligentes añaden mediciones fiables en casa. Los sistemas de sueño en casa captan constantes nocturnas sin llevar nada en la muñeca."
           },
           {
             "id": "connect-device",
             "question": "¿Cómo conecto un dispositivo?",
-            "answer": "Mediante un flujo de conexión guiado paso a paso en la Zona de Miembros."
+            "answer": "Abre Gabinete → Dispositivos conectados, elige tu marca y sigue el flujo de autorización guiado. Cada conexión es una pantalla de consentimiento paso a paso, y puedes añadir o quitar dispositivos cuando quieras."
+          },
+          {
+            "id": "what-data-flows",
+            "question": "¿Qué datos llegan después de conectar?",
+            "answer": "Solo las métricas que autorizas: frecuencia cardíaca y VFC, fases del sueño, actividad y carga, SpO₂, temperatura, glucosa, presión arterial, peso y composición corporal. Las actualizaciones llegan con la frecuencia que elijas y casi en tiempo real cuando la marca lo permite."
+          },
+          {
+            "id": "feeds-health-guide",
+            "question": "¿Cómo alimentan los dispositivos los informes y Health Guide?",
+            "answer": "Las tendencias interpretadas de tus dispositivos pasan a formar parte de tu Human Data Model, para que los informes y Health Guide expliquen los patrones en lenguaje claro. La orientación es educativa y no es un diagnóstico."
           },
           {
             "id": "store-data",
-            "question": "¿Almacenáis datos de salud en bruto?",
-            "answer": "No. Interpretamos métricas: no necesitamos almacenar flujos de datos en bruto."
+            "question": "¿Guardan datos de salud sin procesar?",
+            "answer": "No. Interpretamos las métricas y conservamos las tendencias que importan: no necesitamos almacenar los flujos de sensores sin procesar."
           },
           {
             "id": "syncing-stops",
-            "question": "¿Qué pasa si la sincronización se detiene?",
-            "answer": "Verás un recordatorio y podrás volver a conectar con un clic."
+            "question": "¿Y si se detiene la sincronización?",
+            "answer": "Verás un aviso en Dispositivos conectados cuando un enlace caduque o haya que renovar un token, y podrás reconectar en un clic. Los datos anteriores se mantienen."
           },
           {
             "id": "disable-sharing",
-            "question": "¿Puedo desactivar el uso compartido de datos?",
-            "answer": "Sí, al instante desde los ajustes."
+            "question": "¿Puedo desactivar el envío de datos?",
+            "answer": "Sí, al instante. Desconecta un dispositivo concreto o desactiva el envío de todos en los ajustes; las nuevas lecturas se detienen de inmediato."
           }
         ]
       },
@@ -371,27 +386,42 @@
           {
             "id": "upload-labs-dna",
             "question": "¿Puedo subir análisis y datos de ADN?",
-            "answer": "Sí. En Zona de miembros → Historial de salud y ADN puedes subir o escanear análisis, imágenes, PDF de informes de ADN y archivos de ADN en bruto. Forman parte de tu perfil junto al cuestionario."
+            "answer": "Sí. En Gabinete → Historial de salud y ADN puedes subir o escanear análisis, imágenes, PDF de informes de ADN y archivos de ADN sin procesar. Pasan a formar parte de tu perfil junto al cuestionario y tus dispositivos conectados."
           },
           {
             "id": "supported-formats",
             "question": "¿Qué formatos de archivo se admiten?",
-            "answer": "PDF, JPG, PNG, WEBP, CSV, TXT, VCF y exportaciones de texto de ADN en bruto habituales (incluido estilo 23andMe o Ancestry). En móvil también puedes usar la cámara cuando el navegador lo permita."
+            "answer": "PDF, JPG, PNG, WEBP, CSV, TXT, VCF y las exportaciones de texto de ADN sin procesar más habituales (incluido el estilo 23andMe o Ancestry)."
+          },
+          {
+            "id": "scan-camera",
+            "question": "¿Puedo escanear un resultado en papel con la cámara?",
+            "answer": "Sí. En el móvil puedes fotografiar una página directamente con la cámara cuando el navegador lo permite, práctico para hojas de laboratorio impresas. Haz una foto por página y elige el tipo de registro antes de guardar."
           },
           {
             "id": "how-insights-work",
             "question": "¿Qué ocurre después de subir un archivo?",
-            "answer": "Cada elemento pasa de Recibido a En revisión a Insights listos. Cuando está listo, recibes una explicación educativa, conclusiones y recomendaciones. Puedes Copiar, Imprimir o Descargar TXT. Es una captación estructurada con plantillas de insight — no un pipeline genómico completo."
+            "answer": "Cada elemento pasa de Recibido a En revisión y a Insights listos. Cuando está listo recibes una explicación educativa, conclusiones y recomendaciones. Es una recepción estructurada con plantillas de insights, no un análisis genómico completo."
+          },
+          {
+            "id": "copy-print-insights",
+            "question": "¿Puedo copiar, imprimir o guardar un insight?",
+            "answer": "Sí. Cada insight listo tiene Copiar, Imprimir y Descargar TXT, para guardar una copia o llevarla a la consulta."
           },
           {
             "id": "feeds-reports-guide",
-            "question": "¿Cómo afectan las subidas a informes y Health Guide?",
-            "answer": "Las subidas aportan contexto personal de alto nivel: conteos por tipo, si hay ADN archivado y la fecha del último análisis. Informes y Health Guide usan esas señales junto con tu cuestionario. El contenido completo de ADN en bruto nunca se pega en prompts de IA."
+            "question": "¿Cómo influyen las subidas en los informes y Health Guide?",
+            "answer": "Las subidas aportan contexto personal de alto nivel: recuentos por tipo, si hay ADN archivado y la fecha del último análisis. Los informes y Health Guide usan esas señales junto con tu cuestionario y las tendencias de tus dispositivos. El contenido completo del ADN sin procesar nunca se pega en los prompts de IA."
+          },
+          {
+            "id": "voice-health-guide",
+            "question": "¿Puedo preguntar a Health Guide sobre un registro por voz?",
+            "answer": "Sí. Selecciona un registro y pregunta a Health Guide por texto o por voz. Las respuestas llegan en lenguaje claro, útil cuando quieres una explicación con las manos ocupadas."
           },
           {
             "id": "dna-privacy",
-            "question": "¿El ADN en bruto se mantiene privado respecto a los prompts de IA?",
-            "answer": "Sí. Health Guide y las introducciones de informes solo reciben una marca sí/no de “ADN en bruto en archivo” más plantillas educativas — nunca el archivo genético completo."
+            "question": "¿El ADN sin procesar queda fuera de los prompts de IA?",
+            "answer": "Sí. Health Guide y los prefacios de los informes solo reciben un indicador sí/no de «ADN sin procesar archivado» y plantillas educativas, nunca el archivo genético completo."
           }
         ]
       },

@@ -50,10 +50,10 @@ export default function WorkspaceStatusBanner({
       >
         <div className="flex min-w-0 flex-wrap items-center gap-2">
           <span
-            className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${
+            className={`inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide ${
               isMember
-                ? 'bg-orange-500/90 text-white'
-                : 'bg-slate-800 text-white dark:bg-blue-700'
+                ? 'text-orange-700 dark:text-orange-300'
+                : 'text-slate-800 dark:text-slate-100'
             }`}
           >
             <Icon className="h-3.5 w-3.5" aria-hidden />

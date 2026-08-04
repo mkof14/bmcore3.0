@@ -3,7 +3,7 @@
     "signIn": {
       "title": "Bienvenido de nuevo",
       "subtitle": "Inicia sesión para acceder a tu panel de bienestar",
-      "mockNotice": "La autenticación simulada local está activa. Usa el correo de superadministrador {{email}} y tu contraseña para abrir la Zona de Miembro y el Panel de Administración en pruebas.",
+      "mockNotice": "La autenticación simulada local está activa. Usa el correo de superadministrador {{email}} y tu contraseña para abrir el Gabinete y el Panel de Administración en pruebas.",
       "remember": "Recordarme",
       "forgot": "¿Olvidaste tu contraseña?",
       "submit": "Iniciar sesión",

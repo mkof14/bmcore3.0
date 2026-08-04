@@ -124,7 +124,7 @@ export default function ServicePublicPage({ onNavigate, serviceId }: Props) {
 
           <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 dark:border-gray-700 dark:bg-[var(--bm-surface)] dark:text-gray-300">
             <Lock className="h-3.5 w-3.5 text-orange-500" />
-            Public description · full tools in Member Zone
+            Public description · full tools in Cabinet
           </div>
         </div>
       </section>
@@ -166,7 +166,7 @@ export default function ServicePublicPage({ onNavigate, serviceId }: Props) {
               <ClipboardList className="mt-0.5 h-5 w-5 shrink-0 text-orange-500" />
               <div>
                 <h2 className="text-base font-semibold text-gray-900 dark:text-white">
-                  Use this in Member Zone
+                  Use this in Cabinet
                 </h2>
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
                   This page is a public description only. Interactive tools open after sign-in.
@@ -178,7 +178,7 @@ export default function ServicePublicPage({ onNavigate, serviceId }: Props) {
               onClick={isSignedIn ? openFullService : () => onNavigate('signin')}
               className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-orange-600"
             >
-              {isSignedIn ? 'Open in Member Zone' : 'Sign in to continue'}
+              {isSignedIn ? 'Open in Cabinet' : 'Sign in to continue'}
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>

@@ -119,17 +119,25 @@ export default function CookieBanner({ onNavigate }: CookieBannerProps) {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 mt-6">
-                <button onClick={handleAcceptAll} className="flex-1 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-lg transition-colors inline-flex items-center justify-center gap-2">
-                  <Check className="w-5 h-5" />
+              <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-5">
+                <button
+                  type="button"
+                  onClick={handleAcceptAll}
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-orange-600 px-6 py-3 font-medium text-white transition-colors hover:bg-orange-700"
+                >
+                  <Check className="h-5 w-5" />
                   {t('cookies.acceptAll')}
                 </button>
-                <button onClick={handleRejectAll} className="flex-1 px-6 py-3 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-medium rounded-lg transition-colors inline-flex items-center justify-center gap-2">
-                  <X className="w-5 h-5" />
+                <button type="button" onClick={handleRejectAll} className="bm-link justify-center sm:flex-1">
+                  <X className="h-4 w-4" />
                   {t('cookies.rejectAll')}
                 </button>
-                <button onClick={() => setShowSettings(true)} className="flex-1 px-6 py-3 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-750 text-gray-900 dark:text-white font-medium rounded-lg border border-gray-300 dark:border-gray-600 transition-colors inline-flex items-center justify-center gap-2">
-                  <Settings className="w-5 h-5" />
+                <button
+                  type="button"
+                  onClick={() => setShowSettings(true)}
+                  className="bm-link justify-center sm:flex-1"
+                >
+                  <Settings className="h-4 w-4" />
                   {t('cookies.customize')}
                 </button>
               </div>
@@ -187,9 +195,17 @@ export default function CookieBanner({ onNavigate }: CookieBannerProps) {
                 ))}
               </div>
 
-              <div className="flex gap-3 mt-6">
-                <button onClick={() => setShowSettings(false)} className="flex-1 px-6 py-3 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-medium rounded-lg transition-colors">{t('cookies.back')}</button>
-                <button onClick={handleSavePreferences} className="flex-1 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-lg transition-colors">{t('cookies.save')}</button>
+              <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-5">
+                <button type="button" onClick={() => setShowSettings(false)} className="bm-link justify-center sm:order-1">
+                  {t('cookies.back')}
+                </button>
+                <button
+                  type="button"
+                  onClick={handleSavePreferences}
+                  className="flex-1 rounded-lg bg-orange-600 px-6 py-3 font-medium text-white transition-colors hover:bg-orange-700 sm:order-2"
+                >
+                  {t('cookies.save')}
+                </button>
               </div>
             </div>
           </>

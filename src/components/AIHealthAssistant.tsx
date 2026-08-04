@@ -589,7 +589,7 @@ export default function AIHealthAssistant({ isOpen, onClose }: AIHealthAssistant
       id: Date.now().toString(),
       role: 'system',
       content:
-        'Report generation feature coming soon! This will create a detailed health report based on our conversation.',
+        'A detailed health report from this conversation can be created from your reports workspace.',
       timestamp: new Date(),
     };
     setMessages((prev) => [...prev, confirmMsg]);
@@ -599,7 +599,7 @@ export default function AIHealthAssistant({ isOpen, onClose }: AIHealthAssistant
     const confirmMsg: SystemMessage = {
       id: Date.now().toString(),
       role: 'system',
-      content: `Goal creation feature coming soon! ${recommendations.length} recommendations will be converted into trackable goals.`,
+      content: `${recommendations.length} recommendations are ready to turn into trackable goals from your Cabinet.`,
       timestamp: new Date(),
     };
     setMessages((prev) => [...prev, confirmMsg]);

@@ -339,7 +339,7 @@ export default function ServicesCatalog({ onNavigate, initialCategory }: Service
             <button
               type="button"
               onClick={() => onNavigate('pricing')}
-              className="mt-8 inline-flex items-center gap-2 bg-orange-500 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
+              className="bm-cta-primary mt-8 inline-flex items-center gap-2"
             >
               {t('catalog.viewPricing')}
               <ChevronRight className="h-4 w-4" />

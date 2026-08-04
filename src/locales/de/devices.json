@@ -1,15 +1,15 @@
 {
   "devicesPage": {
     "badge": "Wearables & Sensoren",
-    "title": "Meine Geräte",
+    "title": "Verbundene Geräte",
     "subtitle": "Verbinden Sie Uhren, Ringe, Glukosesensoren und Gesundheitsgeräte für zu Hause, damit BioMath Core Trends liest und sie in klarer Sprache erklärt.",
     "connectedTitle": "Verbundene Geräte",
     "connectTitle": "Marke verbinden",
-    "catalogTitle": "Leitfaden für moderne Geräte",
-    "catalogIntro": "Was Menschen heute nutzen — und welche Signale jede Kategorie typischerweise liefert. Wählen Sie nach Ihren Zielen und verbinden Sie unten eine unterstützte Marke.",
+    "catalogTitle": "Alle unterstützten Geräte",
+    "catalogIntro": "Hier stehen alle verbindbaren Geräte — nichts verbirgt sich hinter einem Filter. Jede Karte zeigt die Signale, die ein Gerät üblicherweise liefert, damit Sie passend zu Ihren Zielen wählen und unten eine unterstützte Marke verbinden können.",
     "signalsTitle": "Signale, die zählen",
     "signalsIntro": "Das sind die Fähigkeiten, die BioMath Core bei einem verbundenen Gerät am häufigsten nutzt.",
-    "emptyBrands": "Live-Markenverbindungen sind in dieser Sitzung nicht verfügbar. Sie können den Leitfaden oben trotzdem erkunden und später nach der Anmeldung im Mitgliederbereich verbinden.",
+    "emptyBrands": "Erkunden Sie den Geräteführer oben und verbinden Sie Geräte im Cabinet, wenn Sie angemeldet sind.",
     "learnMore": "Mehr erfahren",
     "hideGuide": "Leitfaden ausblenden",
     "helpChoosing": "Hilfe bei der Auswahl",
@@ -161,64 +161,162 @@
     "items": {
       "apple_watch": {
         "name": "Apple Watch",
-        "blurb": "Breite Alltagsabdeckung: Herzfrequenz, HRV, Schlaf, SpO₂, EKG und Workouts."
+        "blurb": "Breite Alltagsabdeckung: Herzfrequenz, HRV, Schlaf, SpO₂, EKG und Workouts.",
+        "connect": "Tragen Sie die Apple Watch und öffnen Sie die Health-App auf dem iPhone. In BioMath Core Apple Watch wählen und gewünschte Metriken freigeben.",
+        "syncs": "Herzfrequenz, HRV, Schlafphasen, SpO₂, EKG (falls verfügbar), Workouts und Aktivitätslast.",
+        "tip": "Über Nacht tragen, damit Schlaf und morgendliche Erholung vollständig sind."
       },
       "samsung_galaxy_watch": {
         "name": "Samsung Galaxy Watch",
-        "blurb": "Handgelenkmetriken; ausgewählte Modelle mit manschettenlosem Blutdruck, wo verfügbar."
+        "blurb": "Handgelenkmetriken; ausgewählte Modelle mit manschettenlosem Blutdruck, wo verfügbar.",
+        "connect": "Galaxy Watch mit Samsung Health koppeln. In BioMath Core Samsung Health für die gewünschten Metriken autorisieren.",
+        "syncs": "Herzfrequenz, HRV, Schlaf, SpO₂, Aktivität, EKG und Blutdruck auf unterstützten Modellen.",
+        "tip": "Samsung-Health-Kalibrierung für manschettenlosen Blutdruck abschließen."
       },
       "garmin": {
         "name": "Garmin",
-        "blurb": "Trainingslast, Erholung, Schlaf und HRV für Ausdauer und strukturierten Sport."
+        "blurb": "Trainingslast, Erholung, Schlaf und HRV für Ausdauer und strukturierten Sport.",
+        "connect": "Garmin mit Garmin Connect synchronisieren. In BioMath Core Garmin Connect für Training, Erholung und Schlaf verbinden.",
+        "syncs": "Herzfrequenz, HRV, Schlaf, Aktivität, Trainingslast, Erholung und Stress.",
+        "tip": "Garmin Connect nach Workouts öffnen, damit aktuelle Dateien ankommen."
       },
       "google_pixel_watch": {
         "name": "Google Pixel Watch",
-        "blurb": "Fitbit-gestützter Schlaf und Aktivität in einer kompakten Smartwatch."
+        "blurb": "Fitbit-gestützter Schlaf und Aktivität in einer kompakten Smartwatch.",
+        "connect": "Fitbit / Google Fit synchron halten. In BioMath Core Fitbit-Metriken der Pixel Watch autorisieren.",
+        "syncs": "Herzfrequenz, Schlaf, Aktivität, SpO₂ und alltägliche Bewegung.",
+        "tip": "Vor dem Schlafen laden oder nächtliches Tragen konstant halten."
       },
       "oura": {
         "name": "Oura Ring",
-        "blurb": "Schlafstadien, Readiness, Temperatur und HRV über den Ring."
+        "blurb": "Schlafstadien, Readiness, Temperatur und HRV über den Ring.",
+        "connect": "Oura Ring tragen und Oura-App öffnen. In BioMath Core Schlaf, Readiness und Erholung autorisieren.",
+        "syncs": "Schlafphasen, HRV, Ruhepuls, Temperaturtrends, Readiness und Aktivität.",
+        "tip": "Bequemer Nachtsitz verbessert Temperatur- und HRV-Qualität."
       },
       "ultrahuman": {
         "name": "Ultrahuman Ring",
-        "blurb": "Leichter Ring für Schlaf, Erholung und stoffwechselnahe Tagessignale."
+        "blurb": "Leichter Ring für Schlaf, Erholung und stoffwechselnahe Tagessignale.",
+        "connect": "Ultrahuman Ring in der App koppeln. In BioMath Core Schlaf- und Erholungssignale autorisieren.",
+        "syncs": "Schlaf, HRV, Herzfrequenz, Temperatur und tägliche Erholungswerte.",
+        "tip": "Einige Tage durchgehend tragen, bis die Erholungs-Baseline stabil ist."
       },
       "whoop": {
         "name": "WHOOP",
-        "blurb": "Kontinuierliche Belastung, Erholung und Schlaf ohne klassischen Bildschirm."
+        "blurb": "Kontinuierliche Belastung, Erholung und Schlaf ohne klassischen Bildschirm.",
+        "connect": "WHOOP tragen und App synchron halten. In BioMath Core Strain, Erholung und Schlaf autorisieren.",
+        "syncs": "Strain, Erholung, Schlaf, HRV, Ruhepuls und Aktivitätslast.",
+        "tip": "Beim Training und nachts tragen, damit Strain und Erholung zusammenpassen."
       },
       "dexcom_g7": {
         "name": "Dexcom G7",
-        "blurb": "Kontinuierliche Glukose mit häufigen Updates für Mahlzeiten- und Energiemuster."
+        "blurb": "Kontinuierliche Glukose mit häufigen Updates für Mahlzeiten- und Energiemuster.",
+        "connect": "Dexcom einrichten und Sensor-Aufwärmung abwarten. In BioMath Core kontinuierliche Glukose freigeben.",
+        "syncs": "Kontinuierliche Glukosekurven und Time-in-Range-Trends zur Orientierung.",
+        "tip": "Mahlzeitenzeiten notieren, um Schwankungen besser einzuordnen."
       },
       "freestyle_libre": {
         "name": "FreeStyle Libre",
-        "blurb": "Flash-/kontinuierliche Glukose für tägliche metabolische Orientierung."
+        "blurb": "Flash-/kontinuierliche Glukose für tägliche metabolische Orientierung.",
+        "connect": "FreeStyle-Libre-Sensor in LibreLink aktivieren. In BioMath Core Libre-Glukose freigeben.",
+        "syncs": "Flash- oder kontinuierliche Glukosewerte für den Alltag.",
+        "tip": "Scannen oder Telefon in Reichweite halten — je nach Modell."
       },
       "omron": {
         "name": "Omron",
-        "blurb": "Weit verbreitete validierte Blutdruckmanschetten für zu Hause."
+        "blurb": "Weit verbreitete validierte Blutdruckmanschetten für zu Hause.",
+        "connect": "Omron-Manschette mit Omron Connect koppeln. In BioMath Core Blutdruckwerte autorisieren.",
+        "syncs": "Systole, Diastole und Puls aus Heim-Messungen.",
+        "tip": "Zur gleichen Zeit sitzend und ruhig messen für klarere Trends."
       },
       "withings_bpm": {
         "name": "Withings BPM",
-        "blurb": "Verbundene Manschettenmessungen, die sauber in die Gesundheitsgeschichte passen."
+        "blurb": "Verbundene Manschettenmessungen, die sauber in die Gesundheitsgeschichte passen.",
+        "connect": "Withings BPM in Health Mate verbinden. In BioMath Core Withings-Blutdruck autorisieren.",
+        "syncs": "Validierte Manschetten-Blutdruckwerte und zugehöriger Puls.",
+        "tip": "Jeden Durchgang denselben Arm und dieselbe Haltung nutzen."
       },
       "withings_body": {
         "name": "Withings Body+",
-        "blurb": "Smarte Waage für Gewicht und Trends der Körperzusammensetzung."
+        "blurb": "Smarte Waage für Gewicht und Trends der Körperzusammensetzung.",
+        "connect": "Auf die Withings-Waage steigen, die in Health Mate verknüpft ist. In BioMath Core Gewicht und Körperzusammensetzung autorisieren.",
+        "syncs": "Gewicht, BMI und Schätzungen der Körperzusammensetzung.",
+        "tip": "Zur ähnlichen Tageszeit wiegen, idealerweise morgens."
       },
       "eight_sleep": {
         "name": "Eight Sleep",
-        "blurb": "Bettsystem für Schlafstadien und nächtliche Vitalwerte."
+        "blurb": "Bettsystem für Schlafstadien und nächtliche Vitalwerte.",
+        "connect": "Eight Sleep Pod in der App online halten. In BioMath Core Schlaf und nächtliche Vitalwerte autorisieren.",
+        "syncs": "Schlafphasen, nächtliche Herzfrequenz, HRV und Bett-Temperatur.",
+        "tip": "Cover nachts mit Strom und Verbindung lassen, damit morgens alles synct."
       },
       "fitbit": {
         "name": "Fitbit",
-        "blurb": "Zugängliches Tracking von Schlaf, Herzfrequenz, Aktivität und Stress."
+        "blurb": "Zugängliches Tracking von Schlaf, Herzfrequenz, Aktivität und Stress.",
+        "connect": "Fitbit mit der Fitbit-App synchronisieren. In BioMath Core Schlaf, Herzfrequenz und Aktivität autorisieren.",
+        "syncs": "Herzfrequenz, HRV, Schlaf, Aktivität, Stress und SpO₂ je nach Modell.",
+        "tip": "Nacht-Schlaftracking in Fitbit aktivieren."
       },
       "polar": {
         "name": "Polar",
-        "blurb": "Sporttaugliche Herzfrequenz, Trainingslast und Erholungsmetriken."
+        "blurb": "Sporttaugliche Herzfrequenz, Trainingslast und Erholungsmetriken.",
+        "connect": "Polar mit Polar Flow koppeln. In BioMath Core Herzfrequenz, Training und Erholung autorisieren.",
+        "syncs": "Herzfrequenz, HRV, Schlaf, Aktivität, Trainingslast und Erholung.",
+        "tip": "Polar Flow nach Sitzungen synchronisieren, bevor die Morgenführung startet."
       }
+    },
+    "seo": {
+      "title": "Verbundene Geräte — Wearables & Sensoren | BioMath Core",
+      "description": "Verbinden Sie Uhren, Ringe, Glukosesensoren, Blutdruckmanschetten und smarte Waagen. BioMath Core liest die Trends und erklärt sie in klarer Sprache für Ihre Berichte und Health Guide."
+    },
+    "signalsLabel": "Signale",
+    "catalogLabel": "Katalog",
+    "connectedLabel": "Ihre Geräte",
+    "connectLabel": "Verbinden",
+    "filterAll": "Alle Geräte ({{count}})",
+    "hero": {
+      "ctaCatalog": "Alle Geräte ansehen",
+      "ctaConnect": "Gerät verbinden",
+      "ctaMember": "Cabinet öffnen"
+    },
+    "live": {
+      "label": "Lebendige Signale",
+      "title": "Ihr Körper sendet den ganzen Tag leise Daten",
+      "body": "BioMath Core hört auf {{categories}} Kategorien und {{devices}} verbindbare Geräte — und macht aus Trends ruhige, praktische Hinweise für Berichte und Health Guide.",
+      "chipSleep": "Schlafphasen",
+      "chipGlucose": "Glukosekurve",
+      "chipHrv": "HRV-Erholung"
+    },
+    "flow": {
+      "label": "So funktioniert die Verbindung",
+      "title": "Freigeben, synchronisieren, verstehen",
+      "body": "Sie geben ausschließlich Messwerte frei. Trends fließen in den persönlichen Kontext für Berichte und Health Guide — als Orientierung zur Aufklärung, nicht als Diagnose.",
+      "steps": {
+        "authorize": {
+          "title": "Messwerte freigeben",
+          "body": "Wählen Sie den Hersteller und bestätigen Sie, welche Gesundheitswerte geteilt werden. Wir erhalten nie Ihre Zugangsdaten, und Sie können die Freigabe jederzeit zurücknehmen."
+        },
+        "sync": {
+          "title": "Im eigenen Rhythmus synchronisieren",
+          "body": "Täglich, mehrmals täglich oder nahezu in Echtzeit, wenn das Gerät es unterstützt. Die Synchronisierung läuft unauffällig im Hintergrund, und Sie können den Rhythmus jederzeit ändern."
+        },
+        "guide": {
+          "title": "Hinweise & Berichte",
+          "body": "Trends erscheinen in Ihren Berichten und geben Health Guide den Kontext für ruhige, praktische Vorschläge. Alles bleibt aufklärend — nie eine Diagnose."
+        }
+      }
+    },
+    "cardStatus": {
+      "available": "Bereit zur Verbindung",
+      "connected": "Verbunden",
+      "notConnected": "Nicht verbunden"
+    },
+    "card": {
+      "howToConnect": "So verbinden",
+      "whatSyncs": "Was synchronisiert wird",
+      "tip": "Tipp",
+      "showGuide": "Verbindungsanleitung",
+      "hideGuide": "Anleitung ausblenden"
     }
   },
   "deviceHints": {
@@ -307,6 +405,183 @@
       "agreeBody": "Ich erkläre es auf zwei Arten: (1) physiologische Analyse (Meinung A) und (2) verhaltens- und lebensstilbezogene Erklärung (Meinung B). Sie können vergleichen und passendes wählen.",
       "secondOpinionLabel": "Zweite Meinung",
       "secondOpinionBody": "Eine zweite Meinung hilft, dieselben Signale aus physiologischem und adaptivem Blickwinkel zu sehen — wie zwei Spezialisten mit unterschiedlichem Denkstil."
+    }
+  },
+  "deviceEducation": {
+    "whyDevicesMatter": {
+      "title": "Warum verbundene Geräte wichtig sind",
+      "description": "Eine einzelne Messung ist eine Momentaufnahme; ein Gerät zeigt die Richtung. Wenn Schlaf, Erholung, Glukose und Belastung über Wochen verfolgt werden, werden kleine Verschiebungen sichtbar, lange bevor daraus Beschwerden werden — und sanfte Anpassungen reichen meist aus."
+    },
+    "realTimeBehavior": {
+      "title": "Wie sich Daten verhalten, sobald ein Gerät verbunden ist",
+      "description": "Messwerte kommen in dem Rhythmus, den Sie wählen, und werden mit Ihrer eigenen jüngsten Ausgangslage verglichen, nicht mit einem fremden Durchschnitt. Sichtbar wird die Richtung der Veränderung: besser, stabil oder abdriftend.",
+      "continuousMonitoring": {
+        "title": "Durchgehender Blick:",
+        "description": "Zwischen den Synchronisierungen geht nichts verloren — Werte werden im Hintergrund gesammelt und beim Öffnen von BioMath Core zusammengefasst, Sie müssen nichts von Hand eintragen."
+      }
+    },
+    "dataInfluenceReports": {
+      "title": "Wie Gerätedaten Ihre Berichte prägen",
+      "description": "Freigegebene Messwerte werden Teil des persönlichen Kontexts hinter jedem Bericht. Statt Rohtabellen erhalten Sie den Trend, seine wahrscheinlichen Einflüsse und eine kurze Liste praktischer nächster Schritte, die sich wirklich umsetzen lassen."
+    },
+    "dataInfluenceAI": {
+      "title": "Wie Gerätedaten zu Health Guide gelangen",
+      "description": "Health Guide liest dieselben Trends, die Sie sehen. Antworten spiegeln daher Ihren jüngsten Schlaf, Ihre Erholung, Aktivität und Glukose wider statt allgemeiner Ratschläge. Es erklärt; es diagnostiziert nicht.",
+      "secondOpinion": {
+        "title": "Zweite Meinung:",
+        "description": "Dieselben Signale lassen sich auf zwei Arten lesen — physiologisch und verhaltensbezogen im Alltag. Beide Blickwinkel zu sehen hilft Ihnen zu entscheiden, was zu Ihrer Woche passt, statt ein einziges Urteil hinzunehmen."
+      }
+    },
+    "alertsNudges": {
+      "title": "Hinweise und sanfte Erinnerungen",
+      "description": "Benachrichtigungen bleiben selten und ruhig. Sie hören von uns, wenn ein Trend mehrere Tage hält, nicht wenn eine einzelne Nacht ungewöhnlich aussieht — und jede Nachricht erklärt, was sie bedeutet und was als Nächstes sinnvoll ist.",
+      "positiveReinforcement": {
+        "title": "Fortschritt zählt ebenso:",
+        "description": "Verbesserungen werden genauso deutlich hervorgehoben wie Rückgänge, denn zu wissen, was gewirkt hat, ist der schnellste Weg, es beizubehalten."
+      }
+    },
+    "userSettings": {
+      "title": "Sie bestimmen, wie oft Daten gelesen werden",
+      "description": "Die Synchronisierungsfrequenz legen Sie fest, Gerät für Gerät. Wählen Sie den Rhythmus, der zu Ihrer Tragegewohnheit passt — änderbar jederzeit, ohne Verlauf zu verlieren.",
+      "onlyAtNight": {
+        "title": "Nur nachts",
+        "description": "Ideal für Ringe und Schlafsysteme. Die Daten werden einmal nach der Nacht gelesen, der Tag bleibt still."
+      },
+      "onlyInTheMorning": {
+        "title": "Einmal jeden Morgen",
+        "description": "Eine einzige tägliche Zusammenfassung von Schlaf, Erholung und der Belastung des Vortags. Für die meisten die ruhigste Option."
+      },
+      "everyFewHours": {
+        "title": "Alle paar Stunden",
+        "description": "Hilfreich in Trainingsblöcken oder vollen Wochen, wenn sich Belastung und Erholung innerhalb eines Tages verschieben."
+      },
+      "continuously": {
+        "title": "Nahezu in Echtzeit",
+        "description": "Für kontinuierliche Glukosesensoren und Erholungsbänder, bei denen der Verlauf einer Kurve mehr sagt als ein Tageswert."
+      },
+      "footer": "Was immer Sie wählen: Die Synchronisierung endet in dem Moment, in dem Sie ein Gerät trennen, und frühere Daten bleiben in Ihrem Verlauf, bis Sie sie löschen."
+    },
+    "advancedBehaviorNote": {
+      "title": "Ein Hinweis zu den Grenzen",
+      "description": "BioMath Core liest, was Ihre Geräte melden, und erklärt es im Zusammenhang. Es steuert Ihr Gerät nicht, ersetzt keine klinische Messung und stellt nie eine Diagnose — nutzen Sie es als Grundlage für bessere Gespräche mit Ihrer Ärztin oder Ihrem Arzt."
+    },
+    "realScenarios": {
+      "title": "Wie das in der Praxis aussieht",
+      "description": "Unten stehen alltägliche Situationen aus echten Gerätedaten: was die Zahlen zeigten, wie Health Guide sie erklärt und in welchem Ton. Daran sehen Sie, wie Hinweise ruhig, konkret und ohne Alarm bleiben."
+    }
+  },
+  "deviceScenarios": {
+    "labels": {
+      "description": "Was die Daten zeigten:",
+      "healthGuide": "Health Guide erklärt",
+      "secondOpinion": "Zweite Meinung",
+      "behavior": "Was BioMath Core tut:"
+    },
+    "categories": {
+      "cgm": "Glukose",
+      "sleep_hrv": "Schlaf & HRV",
+      "activity": "Aktivität & Belastung"
+    },
+    "general": {
+      "title": "Wie jedes Szenario behandelt wird",
+      "safeTitle": "Sicher angelegt:",
+      "safeBody": "Nichts hier benennt eine Erkrankung oder sagt eine Diagnose voraus. Signale werden als Muster beschrieben, und jeder Wert außerhalb des üblichen Bereichs ist ein Anlass für ein ärztliches Gespräch, nicht schon ein Ergebnis.",
+      "trendsTitle": "Trends statt Einzelwerte:",
+      "trendsBody": "Eine unruhige Nacht oder ein hoher Wert ändert nichts. Ein Muster wird erst erwähnt, wenn es mehrere Tage hält — so bleiben Hinweise gelassen statt reaktiv.",
+      "termsTitle": "Wörter, die wir verwenden",
+      "terms": [
+        "Trend",
+        "Muster",
+        "Richtung der Veränderung",
+        "Ihr üblicher Bereich",
+        "Erholung",
+        "Belastung",
+        "Beobachtenswert",
+        "Ärztlich besprechenswert"
+      ],
+      "avoidTitle": "Wörter, die wir nie verwenden",
+      "avoided": [
+        "Diagnose",
+        "Krankheit",
+        "Pathologie",
+        "Anormal",
+        "Gefährlich",
+        "Kritisch",
+        "Therapie",
+        "Verordnung",
+        "Heilung"
+      ]
+    },
+    "blocks": {
+      "cgm": {
+        "title": "Kontinuierliche Glukosesensoren",
+        "body": "Ein CGM zeigt, wie Mahlzeiten, Bewegung, Stress und Schlaf Ihren Tag formen. Der Wert liegt in der Form der Kurve — wie hoch sie steigt und wie schnell sie sich beruhigt — nicht in einem einzelnen Zahlenwert.",
+        "bullets": [
+          "Vergleicht die Kurve jedes Tages mit Ihrer eigenen jüngsten Ausgangslage",
+          "Verknüpft Anstiege und Einbrüche mit Mahlzeiten, Bewegung und Schlaf",
+          "Wartet auf ein wiederkehrendes Muster, bevor etwas vorgeschlagen wird",
+          "Verweist an eine Ärztin oder einen Arzt, wenn Werte außerhalb Ihres üblichen Bereichs bleiben"
+        ]
+      },
+      "sleep_hrv": {
+        "title": "Schlaf und HRV",
+        "body": "Schlaftiefe und Herzratenvariabilität beschreiben, wie gut sich Ihr Nervensystem erholt. Zusammen erklären sie, warum sich eine gewöhnliche Woche schwer anfühlen kann und eine andere mühelos.",
+        "bullets": [
+          "Verfolgt das Verhältnis von Tief- und REM-Schlaf über die Woche, nicht über eine Nacht",
+          "Liest HRV gegen Ihre eigene Ausgangslage, nie gegen einen Bevölkerungsdurchschnitt",
+          "Schlägt leichtere Tage vor, wenn die Erholung mehrere Nächte sinkt",
+          "Bestätigt, was wirkt, sobald die Erholung zurückkommt"
+        ]
+      },
+      "activity": {
+        "title": "Aktivität und Belastung",
+        "body": "Schritte, Einheiten und Anstrengung ergeben nur neben der Erholung Sinn. Dieselbe Trainingswoche kann ein guter Reiz oder zu viel sein — je nachdem, wie Ihre Nächte aussehen.",
+        "bullets": [
+          "Wägt Trainingsbelastung gegen Schlaf und HRV ab",
+          "Bemerkt aufgebaute Belastung, bevor daraus Müdigkeit wird",
+          "Erkennt eine gut abgestimmte Woche und sagt das auch",
+          "Hält Vorschläge klein: eine Anpassung nach der anderen"
+        ]
+      }
+    },
+    "cards": {
+      "glucoseSpike": {
+        "title": "Ein steiler Anstieg nach den Mahlzeiten",
+        "description": "Die Glukose stieg an mehreren Tagen dieser Woche nach dem Mittagessen schnell und brauchte länger als üblich, um sich wieder zu senken.",
+        "response": "Ihre Nachmittagskurve steigt schneller als Ihre eigene Ausgangslage. Das ist ein Muster, das man verstehen darf — keine Warnung. Zusammensetzung der Mahlzeit und das, was danach kommt, wirken beides: Ein kurzer Spaziergang nach dem Essen flacht diese Kurve oft ab. Schauen wir uns die nächsten Tage gemeinsam an.",
+        "secondOpinion": "Aus Verhaltenssicht folgt dieselbe Kurve oft einer hastigen Mahlzeit, einer kurzen Nacht oder einem stressigen Morgen — nicht dem Essen allein. War Ihr Schlaf diese Woche leicht, ist die Stoffwechselantwort erwartbar: Die Nächte zu erholen verändert die Kurve häufig mehr als der Wechsel des Tellers."
+      },
+      "glucoseStable": {
+        "title": "Eine ruhigere Kurve",
+        "description": "Die Glukose blieb den größten Teil der Woche in einem engen Band, mit sanften Anstiegen nach den Mahlzeiten und ruhiger Rückkehr.",
+        "response": "Ihre Kurve war ruhig und vorhersehbar — die Anstiege sind moderat, die Rückkehr ist schnell. Welcher Rhythmus zuletzt auch galt, er passt zu Ihnen. Mahlzeiten und Bewegung so zu belassen, wie sie sind, ist der einfachste Weg, das zu halten."
+      },
+      "recoveryDown": {
+        "title": "Die Erholung geht zurück",
+        "description": "Die HRV liegt seit vier Nächten unter Ihrem üblichen Bereich und der Tiefschlaf ist kürzer geworden, obwohl die Zeit im Bett gleich geblieben ist.",
+        "response": "Ihr Nervensystem trägt offenbar mehr als sonst. Die Zeit im Bett stimmt, aber die Qualität der Erholung ist gesunken. Eine gute Woche für leichteres Training, ein früheres Herunterfahren am Abend und weniger späten Koffein. Hält es länger als ein bis zwei Wochen an, sollten Sie es ärztlich ansprechen.",
+        "secondOpinion": "Aus Verhaltenssicht folgt dieses Muster oft dem Leben statt der Physiologie — eine fordernde Phase im Beruf, spätere Abende oder Reisen. Passt das zu Ihrer Woche, nehmen Sie die Zahlen als Anlass, Ihre Abende für ein paar Tage zu schützen, nicht als Zeichen, dass etwas nicht stimmt."
+      },
+      "recoveryUp": {
+        "title": "Die Erholung kommt zurück",
+        "description": "Die HRV ist in Ihren üblichen Bereich zurückgekehrt und der Tiefschlaf hat sich über die letzten Nächte verlängert.",
+        "response": "Die Erholung bewegt sich dorthin zurück, wo sie üblicherweise liegt, und die Veränderung hält seit mehreren Nächten — also eine echte Verschiebung und kein Rauschen. Was Sie zuletzt geändert haben, wirkt: Dieselbe Schlafenszeit noch eine Woche beizubehalten, ist der einfachste Weg, es zu festigen."
+      },
+      "overload": {
+        "title": "Die Belastung überholt die Erholung",
+        "description": "Der Trainingsumfang stieg diese Woche deutlich, während der Schlaf gleich blieb und die Erholungswerte täglich weiter nachgaben.",
+        "response": "Sie haben Belastung schneller aufgebaut, als die Erholung mitkommt. Nichts davon ist beunruhigend — es ist schlicht der Punkt, an dem mehr Aufwand nicht mehr zahlt. Eine leichtere Einheit oder ein zusätzlicher Ruhetag in dieser Woche stellt das Gleichgewicht meist wieder her."
+      },
+      "balanced": {
+        "title": "Belastung und Erholung passen zusammen",
+        "description": "Die Aktivität blieb über die Woche gleichmäßig und die Erholungswerte hielten sich parallel dazu stabil.",
+        "response": "Belastung und Erholung bewegen sich gemeinsam — genau so sieht eine tragfähige Woche aus. Es gibt nichts anzupassen; das ist eine gute Ausgangslage, an die Sie sich beim nächsten Block erinnern können."
+      },
+      "fatigue": {
+        "title": "Stille, ungewohnte Müdigkeit",
+        "description": "Die Aktivität fiel mehrere Tage merklich ab, der Ruhepuls liegt etwas höher als üblich, und der Schlaf war länger, ohne erholsam zu wirken.",
+        "response": "Ihr Körper bittet um eine langsamere Phase — weniger Aktivität bei erhöhtem Ruhepuls bedeutet meist, dass die Erholung noch läuft. Gönnen Sie sich ein paar sanfte Tage und beobachten Sie, ob es sich einpendelt. Hält die Müdigkeit länger als zwei Wochen an, sollten Sie sie ärztlich besprechen."
+      }
     }
   }
 }

@@ -53,9 +53,18 @@
         "summary": "Create your account in under two minutes. We ask about health history, current conditions, and wellness goals to personalize your Human Data Model.",
         "pointsHeading": "Getting started is easy",
         "points": [
-          { "title": "Secure registration", "body": "Your data is encrypted from the moment you sign up." },
-          { "title": "Health profile", "body": "Share medical history and goals that shape your model." },
-          { "title": "Preference settings", "body": "Choose notifications and report frequency." }
+          {
+            "title": "Secure registration",
+            "body": "Your data is encrypted from the moment you sign up."
+          },
+          {
+            "title": "Health profile",
+            "body": "Share medical history and goals that shape your model."
+          },
+          {
+            "title": "Preference settings",
+            "body": "Choose notifications and report frequency."
+          }
         ],
         "checklist": [
           "Enter your email and create a secure password",
@@ -65,34 +74,55 @@
       },
       "connect": {
         "title": "Connect your health devices",
-        "summary": "BioMath Core links with 100+ health devices and apps — wearables, smart scales, blood pressure monitors, and more. You can also bring labs and DNA into Member Zone the same way you complete the questionnaire.",
-        "pointsHeading": "Seamless integration",
+        "summary": "BioMath Core links with the devices people actually wear: smartwatches, smart rings, recovery bands, continuous glucose sensors, blood pressure monitors, smart scales, and home sleep systems. You can also bring labs and DNA into Cabinet the same way you complete the questionnaire.",
+        "pointsHeading": "Seven device categories",
         "points": [
-          { "title": "Fitness trackers", "body": "Apple Watch, Fitbit, Garmin" },
-          { "title": "Health monitors", "body": "Blood pressure, glucose, weight scales" },
-          { "title": "Health apps", "body": "Apple Health, Google Fit" },
-          { "title": "Labs & DNA", "body": "Upload or scan labs, imaging, DNA reports, and raw DNA in Health Records & DNA" }
+          {
+            "title": "Watches & bands",
+            "body": "Apple Watch, Samsung Galaxy Watch, Garmin, Google Pixel Watch, Fitbit, Polar"
+          },
+          {
+            "title": "Rings & recovery",
+            "body": "Oura Ring, Ultrahuman Ring, WHOOP"
+          },
+          {
+            "title": "Sensors & home devices",
+            "body": "Dexcom G7, FreeStyle Libre, Omron, Withings BPM, Withings Body+, Eight Sleep"
+          },
+          {
+            "title": "Labs & DNA",
+            "body": "Upload or scan labs, imaging, DNA reports, and raw DNA in Health Records & DNA"
+          }
         ],
         "checklist": [
-          "One-click OAuth connection for major services",
-          "Automatic data synchronization every 15 minutes",
+          "Guided authorization in Cabinet → Connected Devices",
+          "Metrics you approve sync on the schedule you choose — near real-time where the brand supports it",
           "Manual upload or camera scan for labs, imaging, DNA reports, and raw DNA files"
         ]
       },
       "records": {
         "title": "Bring your labs and DNA",
-        "summary": "Health Records & DNA in Member Zone accepts PDF, images, CSV, TXT, and VCF. We structure each upload, return educational insights, and link high-level signals (not raw DNA content) into reports and Health Guide.",
+        "summary": "Health Records & DNA in Cabinet accepts PDF, images, CSV, TXT, and VCF. We structure each upload, return educational insights you can Copy, Print, or Download, and link high-level signals (not raw DNA content) into reports and Health Guide.",
         "pointsHeading": "What happens after upload",
         "points": [
-          { "title": "Received", "body": "Your file is stored with your account." },
-          { "title": "In review", "body": "We organize the record type and prepare insight templates." },
-          { "title": "Insights ready", "body": "Read explanations, conclusions, and recommendations — then Copy, Print, or Download TXT." }
+          {
+            "title": "Received",
+            "body": "Your file is stored with your account."
+          },
+          {
+            "title": "In review",
+            "body": "We organize the record type and prepare insight templates."
+          },
+          {
+            "title": "Insights ready",
+            "body": "Read explanations, conclusions, and recommendations — then Copy, Print, or Download TXT."
+          }
         ],
         "checklist": [
-          "Open Member Zone → Health Records & DNA",
+          "Open Cabinet → Health Records & DNA",
           "Choose Labs, Imaging, DNA report, Raw DNA, or Other",
           "Upload a file or use camera scan on mobile",
-          "Ask Health Guide about the selected record when you want a voice-friendly explanation"
+          "Ask Health Guide about the selected record by text or voice for a plain-language explanation"
         ]
       },
       "analyze": {
@@ -125,17 +155,29 @@
           {
             "title": "Daily insights",
             "body": "Quick overview of key metrics, trends, and daily recommendations.",
-            "items": ["Key metrics summary", "Daily goals tracking", "Quick action items"]
+            "items": [
+              "Key metrics summary",
+              "Daily goals tracking",
+              "Quick action items"
+            ]
           },
           {
             "title": "Weekly analysis",
             "body": "Detailed analysis of trends, patterns, and progress toward health goals.",
-            "items": ["Trend visualization", "Pattern recognition", "Goal progress review"]
+            "items": [
+              "Trend visualization",
+              "Pattern recognition",
+              "Goal progress review"
+            ]
           },
           {
             "title": "Monthly deep dive",
             "body": "Comprehensive health assessment with guidance and second-opinion analysis.",
-            "items": ["Full health assessment", "Personalized recommendations", "Second opinion analysis"]
+            "items": [
+              "Full health assessment",
+              "Personalized recommendations",
+              "Second opinion analysis"
+            ]
           }
         ]
       },
@@ -143,10 +185,22 @@
         "title": "Take action on insights",
         "summary": "Guidance is meant to be used — set goals, follow recommendations, share with clinicians, and track progress.",
         "items": [
-          { "title": "Set goals", "body": "Based on your insights, set personalized health goals and track progress." },
-          { "title": "Follow recommendations", "body": "Actionable, personalized suggestions you can implement immediately." },
-          { "title": "Share with your care team", "body": "Export reports for doctors, nutritionists, or trainers." },
-          { "title": "Track progress", "body": "Monitor improvements over time with detailed progress tracking." }
+          {
+            "title": "Set goals",
+            "body": "Based on your insights, set personalized health goals and track progress."
+          },
+          {
+            "title": "Follow recommendations",
+            "body": "Actionable, personalized suggestions you can implement immediately."
+          },
+          {
+            "title": "Share with your care team",
+            "body": "Export reports for doctors, nutritionists, or trainers."
+          },
+          {
+            "title": "Track progress",
+            "body": "Monitor improvements over time with detailed progress tracking."
+          }
         ]
       }
     },
@@ -156,17 +210,41 @@
       "summary": "Like an aircraft black box, your Health Black Box securely records every piece of health data — device readings, lab results, medications, and symptoms.",
       "featuresHeading": "What is the Health Black Box?",
       "features": [
-        { "title": "Comprehensive storage", "body": "All your health data in one encrypted vault." },
-        { "title": "Automatic sync", "body": "Timely updates from all connected devices." },
-        { "title": "Historical records", "body": "Complete timeline of your health journey." },
-        { "title": "Emergency access", "body": "Share with healthcare providers when needed." }
+        {
+          "title": "Comprehensive storage",
+          "body": "All your health data in one encrypted vault."
+        },
+        {
+          "title": "Automatic sync",
+          "body": "Timely updates from all connected devices."
+        },
+        {
+          "title": "Historical records",
+          "body": "Complete timeline of your health journey."
+        },
+        {
+          "title": "Emergency access",
+          "body": "Share with healthcare providers when needed."
+        }
       ],
       "categoriesHeading": "Data categories in your Black Box",
       "categories": [
-        { "title": "Vital signs and metrics", "body": "Heart rate, blood pressure, oxygen levels, temperature" },
-        { "title": "Medical records", "body": "Lab results, prescriptions, diagnoses" },
-        { "title": "Lifestyle data", "body": "Exercise, sleep, nutrition, stress levels" },
-        { "title": "Model insights", "body": "Analysis results, predictions, recommendations" }
+        {
+          "title": "Vital signs and metrics",
+          "body": "Heart rate, blood pressure, oxygen levels, temperature"
+        },
+        {
+          "title": "Medical records",
+          "body": "Lab results, prescriptions, diagnoses"
+        },
+        {
+          "title": "Lifestyle data",
+          "body": "Exercise, sleep, nutrition, stress levels"
+        },
+        {
+          "title": "Model insights",
+          "body": "Analysis results, predictions, recommendations"
+        }
       ],
       "note": "You own your Health Black Box. Export all data anytime, delete permanently, or share specific parts with providers. No lock-in."
     },
@@ -175,9 +253,18 @@
       "title": "Why two models?",
       "subtitle": "Two independent models provide more accurate, comprehensive, and reliable health insights.",
       "items": [
-        { "title": "Higher accuracy", "body": "Cross-validation between models reduces errors and false positives." },
-        { "title": "Comprehensive view", "body": "Different approaches catch insights that others might miss." },
-        { "title": "Confidence scoring", "body": "Agreement between models indicates higher confidence in findings." }
+        {
+          "title": "Higher accuracy",
+          "body": "Cross-validation between models reduces errors and false positives."
+        },
+        {
+          "title": "Comprehensive view",
+          "body": "Different approaches catch insights that others might miss."
+        },
+        {
+          "title": "Confidence scoring",
+          "body": "Agreement between models indicates higher confidence in findings."
+        }
       ],
       "more": "Learn more on our <link>Why Two Models</link> page for an in-depth explanation."
     },
@@ -189,32 +276,62 @@
         {
           "title": "Cardiovascular health",
           "body": "Heart rate, blood pressure, ECG, arterial health, circulation metrics.",
-          "items": ["Resting heart rate", "Blood pressure trends", "Heart rate variability", "Cardiac risk factors"]
+          "items": [
+            "Resting heart rate",
+            "Blood pressure trends",
+            "Heart rate variability",
+            "Cardiac risk factors"
+          ]
         },
         {
           "title": "Physical activity",
           "body": "Steps, exercise, calories, movement patterns, fitness levels.",
-          "items": ["Daily activity levels", "Exercise duration and intensity", "Calorie expenditure", "Fitness progress"]
+          "items": [
+            "Daily activity levels",
+            "Exercise duration and intensity",
+            "Calorie expenditure",
+            "Fitness progress"
+          ]
         },
         {
           "title": "Sleep and recovery",
           "body": "Sleep quality, duration, stages, recovery metrics, circadian rhythm.",
-          "items": ["Sleep duration and quality", "REM and deep sleep", "Sleep consistency", "Recovery scores"]
+          "items": [
+            "Sleep duration and quality",
+            "REM and deep sleep",
+            "Sleep consistency",
+            "Recovery scores"
+          ]
         },
         {
           "title": "Metabolic health",
           "body": "Blood glucose, weight, body composition, metabolic markers.",
-          "items": ["Glucose levels", "Weight trends", "Body fat percentage", "Metabolic rate"]
+          "items": [
+            "Glucose levels",
+            "Weight trends",
+            "Body fat percentage",
+            "Metabolic rate"
+          ]
         },
         {
           "title": "Mental wellness",
           "body": "Stress levels, mood tracking, mental health indicators, mindfulness.",
-          "items": ["Stress markers", "Mood patterns", "Mental resilience", "Emotional balance"]
+          "items": [
+            "Stress markers",
+            "Mood patterns",
+            "Mental resilience",
+            "Emotional balance"
+          ]
         },
         {
           "title": "Clinical markers",
           "body": "Lab results, biomarkers, medical tests, health screenings.",
-          "items": ["Blood test results", "Cholesterol levels", "Hormone markers", "Vitamin levels"]
+          "items": [
+            "Blood test results",
+            "Cholesterol levels",
+            "Hormone markers",
+            "Vitamin levels"
+          ]
         }
       ],
       "moreTitle": "And many more categories",
@@ -287,6 +404,14 @@
         {
           "question": "Can I cancel my subscription anytime?",
           "answer": "Yes, you can cancel anytime with no penalties. You retain access to your account and data until the end of your billing period. You can also export all your data before canceling."
+        },
+        {
+          "question": "Which device categories can I connect?",
+          "answer": "Seven: smartwatches (Apple Watch, Samsung Galaxy Watch, Garmin, Google Pixel Watch, Fitbit, Polar), smart rings (Oura Ring, Ultrahuman Ring), recovery bands (WHOOP), continuous glucose sensors (Dexcom G7, FreeStyle Libre), blood pressure monitors (Omron, Withings BPM), smart scales (Withings Body+), and home sleep systems (Eight Sleep). You authorize each brand yourself, and only the metrics you approve sync."
+        },
+        {
+          "question": "How do lab results and DNA files work with Health Guide?",
+          "answer": "Upload or scan them in Health Records & DNA. Each record returns an educational insight you can Copy, Print, or Download, and you can ask Health Guide about it by text or voice. Health Guide receives high-level context only — counts, the latest lab date, and a yes/no DNA-on-file flag — never your raw genetic file."
         }
       ],
       "moreText": "Still have questions?",

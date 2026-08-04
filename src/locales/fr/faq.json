@@ -77,7 +77,7 @@
           {
             "id": "purchase",
             "question": "Comment souscrire un abonnement ?",
-            "answer": "Vous pouvez vous abonner directement depuis la page Tarifs. Après le paiement, vous débloquerez les fonctionnalités avancées dans l'Espace Membre."
+            "answer": "Vous pouvez vous abonner directement depuis la page Tarifs. Après le paiement, vous débloquerez les fonctionnalités avancées dans le Cabinet."
           },
           {
             "id": "plans",
@@ -123,7 +123,7 @@
           {
             "id": "update-answers",
             "question": "Puis-je modifier mes réponses plus tard ?",
-            "answer": "Oui, à tout moment depuis l'Espace Membre."
+            "answer": "Oui, à tout moment depuis le Cabinet."
           },
           {
             "id": "refresh-frequency",
@@ -144,7 +144,7 @@
           {
             "id": "add-services",
             "question": "Puis-je ajouter d'autres services plus tard ?",
-            "answer": "Oui. Vous pouvez en activer de nouveaux à tout moment depuis le Catalogue de services ou l'Espace Membre."
+            "answer": "Oui. Vous pouvez en activer de nouveaux à tout moment depuis le Catalogue de services ou le Cabinet."
           },
           {
             "id": "which-service",
@@ -160,11 +160,11 @@
       },
       {
         "id": "member-zone",
-        "title": "Espace Membre",
+        "title": "Cabinet",
         "items": [
           {
             "id": "what-member-zone",
-            "question": "Qu'est-ce que l'Espace Membre ?",
+            "question": "Qu'est-ce que le Cabinet ?",
             "answer": "C'est votre tableau de bord interactif personnel où se trouvent toutes les fonctionnalités : rapports, objectifs, instantanés, appareils, deuxième avis et messagerie."
           },
           {
@@ -339,28 +339,43 @@
         "items": [
           {
             "id": "supported-devices",
-            "question": "Quels appareils sont pris en charge ?",
-            "answer": "Apple Watch, Samsung, Fitbit, Amazon Halo, Oura, capteurs de glycémie en continu et autres appareils certifiés."
+            "question": "Quels appareils sont compatibles ?",
+            "answer": "Sept catégories : montres connectées (Apple Watch, Samsung Galaxy Watch, Garmin, Google Pixel Watch, Fitbit, Polar), bagues intelligentes (Oura Ring, Ultrahuman Ring), bracelets de récupération (WHOOP), capteurs de glucose en continu (Dexcom G7, FreeStyle Libre), tensiomètres (Omron, Withings BPM), balances connectées (Withings Body+) et systèmes de sommeil à domicile (Eight Sleep)."
+          },
+          {
+            "id": "device-categories",
+            "question": "Que couvrent les catégories d'appareils ?",
+            "answer": "Les montres connectées suivent la fréquence cardiaque en continu, le sommeil et l'activité, et souvent l'ECG ou la SpO₂. Les bagues intelligentes suivent sommeil, VFC et température 24 h/24. Les bracelets de récupération se concentrent sur la charge et la disponibilité. Les capteurs de glucose en continu montrent les courbes de glycémie sur la journée. Les tensiomètres et balances connectées ajoutent des mesures fiables à domicile. Les systèmes de sommeil à domicile captent les constantes nocturnes sans rien au poignet."
           },
           {
             "id": "connect-device",
             "question": "Comment connecter un appareil ?",
-            "answer": "Via un parcours de connexion guidé, étape par étape, dans l'Espace Membre."
+            "answer": "Ouvrez Cabinet → Appareils connectés, choisissez votre marque et suivez le parcours d'autorisation guidé. Chaque connexion est un écran de consentement étape par étape, et vous pouvez ajouter ou retirer des appareils à tout moment."
+          },
+          {
+            "id": "what-data-flows",
+            "question": "Quelles données arrivent après la connexion ?",
+            "answer": "Uniquement les mesures que vous autorisez : fréquence cardiaque et VFC, phases de sommeil, activité et charge, SpO₂, température, glycémie, tension artérielle, poids et composition corporelle. Les mises à jour arrivent au rythme que vous choisissez, et quasiment en temps réel lorsque la marque le permet."
+          },
+          {
+            "id": "feeds-health-guide",
+            "question": "Comment les appareils alimentent-ils les rapports et Health Guide ?",
+            "answer": "Les tendances interprétées de vos appareils rejoignent votre Human Data Model, pour que les rapports et Health Guide expliquent les schémas en langage clair. Les conseils restent éducatifs et ne constituent pas un diagnostic."
           },
           {
             "id": "store-data",
-            "question": "Stockez-vous les données de santé brutes ?",
-            "answer": "Non. Nous interprétons des indicateurs : nous n'avons pas besoin de stocker les flux bruts."
+            "question": "Conservez-vous les données de santé brutes ?",
+            "answer": "Non. Nous interprétons les mesures et gardons les tendances utiles : nous n'avons pas besoin de stocker les flux bruts des capteurs."
           },
           {
             "id": "syncing-stops",
-            "question": "Que se passe-t-il si la synchronisation s'arrête ?",
-            "answer": "Vous verrez un rappel et pourrez vous reconnecter en un clic."
+            "question": "Et si la synchronisation s'arrête ?",
+            "answer": "Un rappel apparaît dans Appareils connectés lorsqu'une liaison expire ou qu'un jeton doit être renouvelé, et vous pouvez reconnecter en un clic. Les données antérieures restent en place."
           },
           {
             "id": "disable-sharing",
             "question": "Puis-je désactiver le partage de données ?",
-            "answer": "Oui — instantanément, depuis les paramètres."
+            "answer": "Oui — immédiatement. Déconnectez un appareil ou coupez le partage pour tous dans les réglages ; les nouvelles mesures s'arrêtent aussitôt."
           }
         ]
       },
@@ -370,28 +385,43 @@
         "items": [
           {
             "id": "upload-labs-dna",
-            "question": "Puis-je téléverser analyses et ADN ?",
-            "answer": "Oui. Dans Zone membre → Dossiers santé & ADN vous pouvez téléverser ou scanner analyses, imagerie, PDF de rapports ADN et ADN brut. Ils rejoignent votre profil avec le questionnaire."
+            "question": "Puis-je importer des analyses et des données ADN ?",
+            "answer": "Oui. Dans Cabinet → Dossiers santé & ADN, vous pouvez importer ou scanner analyses, imagerie, PDF de rapports ADN et fichiers ADN bruts. Ils rejoignent votre profil, aux côtés du questionnaire et de vos appareils connectés."
           },
           {
             "id": "supported-formats",
-            "question": "Quels formats sont pris en charge ?",
-            "answer": "PDF, JPG, PNG, WEBP, CSV, TXT, VCF et exports texte d’ADN brut courants (style 23andMe ou Ancestry). Sur mobile, la caméra est disponible si le navigateur le permet."
+            "question": "Quels formats de fichiers sont acceptés ?",
+            "answer": "PDF, JPG, PNG, WEBP, CSV, TXT, VCF et les exports texte d'ADN brut courants (y compris de type 23andMe ou Ancestry)."
+          },
+          {
+            "id": "scan-camera",
+            "question": "Puis-je scanner un résultat papier avec l'appareil photo ?",
+            "answer": "Oui. Sur mobile, vous pouvez photographier une page directement quand le navigateur l'autorise — pratique pour les feuilles de laboratoire imprimées. Une photo par page, et choisissez le type de dossier avant d'enregistrer."
           },
           {
             "id": "how-insights-work",
-            "question": "Que se passe-t-il après le téléversement ?",
-            "answer": "Chaque élément passe de Reçu à En revue à Insights prêts. Vous obtenez une explication éducative, des conclusions et des recommandations. Vous pouvez Copier, Imprimer ou Télécharger TXT. Il s’agit d’une collecte structurée avec modèles d’insight — pas d’un pipeline génomique complet."
+            "question": "Que se passe-t-il après l'import ?",
+            "answer": "Chaque élément passe de Reçu à En revue puis Insights prêts. Vous recevez alors une explication éducative, des conclusions et des recommandations. C'est une réception structurée avec des modèles d'insights — pas une analyse génomique complète."
+          },
+          {
+            "id": "copy-print-insights",
+            "question": "Puis-je copier, imprimer ou enregistrer un insight ?",
+            "answer": "Oui. Chaque insight prêt propose Copier, Imprimer et Télécharger TXT, pour en garder une copie ou l'apporter en consultation."
           },
           {
             "id": "feeds-reports-guide",
-            "question": "Comment les téléversements alimentent-ils rapports et Health Guide ?",
-            "answer": "Ils apportent un contexte personnel de haut niveau : comptes par type, présence d’ADN, date du dernier bilan. Rapports et Health Guide utilisent ces signaux avec le questionnaire. Le contenu brut d’ADN n’est jamais collé dans les prompts IA."
+            "question": "Comment les imports influencent-ils les rapports et Health Guide ?",
+            "answer": "Les imports apportent un contexte personnel de haut niveau : nombres par type, présence d'ADN au dossier et date des dernières analyses. Les rapports et Health Guide utilisent ces signaux avec votre questionnaire et les tendances de vos appareils. Le contenu ADN brut complet n'est jamais collé dans les prompts d'IA."
+          },
+          {
+            "id": "voice-health-guide",
+            "question": "Puis-je interroger Health Guide à la voix sur un dossier ?",
+            "answer": "Oui. Sélectionnez un dossier et interrogez Health Guide par texte ou à la voix. Les réponses arrivent en langage clair — utile quand vous avez les mains occupées."
           },
           {
             "id": "dna-privacy",
-            "question": "L’ADN brut reste-t-il hors des prompts IA ?",
-            "answer": "Oui. Health Guide et les préfaces de rapports reçoivent seulement un indicateur oui/non « ADN brut archivé » et des modèles éducatifs — jamais le fichier génétique complet."
+            "question": "L'ADN brut reste-t-il hors des prompts d'IA ?",
+            "answer": "Oui. Health Guide et les préambules de rapports reçoivent seulement un indicateur oui/non « ADN brut au dossier » et des modèles éducatifs — jamais le fichier génétique complet."
           }
         ]
       },

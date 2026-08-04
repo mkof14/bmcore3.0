@@ -14,7 +14,7 @@ export default function ServicesCatalogAdmin() {
           Source of truth: <code className="rounded bg-slate-100 px-1.5 py-0.5 text-xs">src/data/services.ts</code>.
           {' '}
           {serviceCategories.length} medical categories · {totalServiceCount()} services (including Human Data Model tools).
-          Edit the data file to update FAQ, Learning Center, Member Zone, and public catalog together.
+          Edit the data file to update FAQ, Learning Center, Cabinet, and public catalog together.
         </p>
       </div>
 

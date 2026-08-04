@@ -108,7 +108,7 @@
       "extended": "Mirada más profunda: comparamos lo destacado del cuestionario con la actividad reciente y la cobertura de dispositivos para ver brechas entre intención y práctica diaria.",
       "sectionsDeep": "Su cuestionario tiene actualmente más detalle en: {{sections}}.",
       "shortClose": "Formato breve: fije un hábito con hora, una práctica de recuperación y una revisión con Health Guide esta semana.",
-      "standardClose": "Esta semana: elija una recomendación numerada abajo, póngala en el calendario y revise el progreso en la zona de miembros a los siete días."
+      "standardClose": "Esta semana: elija una recomendación numerada abajo, póngala en el calendario y revise el progreso en el Gabinete a los siete días."
     },
     "insight": {
       "completeness": "Preparación {{score}} % (cuestionario {{questionnaire}} % · perfil {{profile}} %).",

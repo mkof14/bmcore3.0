@@ -2,6 +2,8 @@
  * BioMath Core theme canvases
  * Light: warm off-white
  * Dark: cool slate-blue family — page → surface → elevated in one hue ladder
+ *
+ * Cabinet (`.member-workspace`) overrides below keep marketing pages unchanged.
  */
 :root {
   --bm-page: #ebe8e2;
@@ -30,5 +32,30 @@ html.dark {
   /* Body on elevated cards ≈ gray-300; muted stays WCAG AA on #2c3340 */
   --bm-text-secondary: #d1d5db;
   --bm-text-muted: #b8c0cc;
-  /* cache-bust: member-zone-dark-contrast-2026-08-02 */
+}
+
+/**
+ * Cabinet / Member Zone — soft off-white light canvas;
+ * dark chrome is warm gray-blue (header = sidebar = footer).
+ */
+.member-workspace {
+  --bm-page: #f5f4f1;
+  --bm-surface: #faf9f7;
+  --bm-elevated: #ffffff;
+  --bm-inset: #ebe9e5;
+  --bm-header: #f0efec;
+  --bm-footer: #f0efec;
+  --bm-border: #e2e0db;
+}
+
+html.dark .member-workspace {
+  /* Warm gray-blue ladder — less cold navy, more steel/slate */
+  --bm-page: #15171c;
+  --bm-surface: #1c1f26;
+  --bm-elevated: #2a2e37;
+  --bm-inset: #111318;
+  --bm-header: #1a1d24;
+  --bm-footer: #1a1d24;
+  --bm-border: #4c5160;
+  /* cache-bust: member-workspace-warm-slate-2026-08-04 */
 }

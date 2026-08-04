@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Send, AlertCircle, Scale, Brain, Loader2 } from 'lucide-react';
 
 import { supabase } from '../../lib/supabase';
-import MemberDemoBadge from '../../components/MemberDemoBadge';
 import PersonalContextIndicator from '../../components/PersonalContextIndicator';
 import {
   buildPersonalContext,
@@ -72,11 +71,6 @@ export default function AIHealthAdvisorSection() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center gap-2">
-        <MemberDemoBadge labelKey="member.healthGuide.demoBadge" />
-        <p className="text-xs member-muted">{t('member.healthGuide.simulatedNote')}</p>
-      </div>
-
       <div className="border border-amber-500/25 bg-amber-500/10 dark:bg-amber-900/20 rounded-xl p-4">
         <div className="flex items-start gap-3">
           <AlertCircle className="h-5 w-5 text-amber-700 dark:text-amber-300 flex-shrink-0 mt-0.5" />
@@ -187,7 +181,6 @@ export default function AIHealthAdvisorSection() {
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
                     <h4 className="member-heading text-lg">{t('member.healthGuide.opinion1Title')}</h4>
-                    <MemberDemoBadge labelKey="member.healthGuide.demoBadge" />
                   </div>
                   <p className="text-xs text-blue-600 dark:text-blue-400">{t('member.healthGuide.opinion1Subtitle')}</p>
                 </div>
@@ -213,7 +206,6 @@ export default function AIHealthAdvisorSection() {
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
                     <h4 className="member-heading text-lg">{t('member.healthGuide.opinion2Title')}</h4>
-                    <MemberDemoBadge labelKey="member.healthGuide.demoBadge" />
                   </div>
                   <p className="text-xs text-emerald-600 dark:text-emerald-400">{t('member.healthGuide.opinion2Subtitle')}</p>
                 </div>

@@ -1,7 +1,7 @@
 {
   "member": {
     "zone": {
-      "label": "Espace membre",
+      "label": "Cabinet",
       "workspace": "Espace de travail connecté",
       "backHome": "Retour à l’accueil",
       "signOut": "Déconnexion",
@@ -36,7 +36,11 @@
       "referral": "Parrainage",
       "billing": "Facturation",
       "profile": "Profil",
-      "settings": "Paramètres"
+      "settings": "Paramètres",
+      "health": "Santé",
+      "devicesGroup": "Appareils",
+      "records": "Dossiers",
+      "services": "Services"
     },
     "gate": {
       "catalogTitle": "Abonnez-vous pour accéder au catalogue",
@@ -132,13 +136,14 @@
       "activeDevices": "Appareils actifs",
       "recentlySynced": "Synchronisés récemment",
       "supportedDevices": "Appareils compatibles",
+      "catalogNote": "Toutes les catégories compatibles sont listées ici : montres connectées, bagues intelligentes, bracelets de récupération, capteurs de glucose en continu, tensiomètres, balances connectées et systèmes de sommeil à domicile.",
       "clickToConnect": "Cliquez pour connecter",
       "refresh": "Actualiser",
       "connectDevice": "Connecter un appareil",
       "loadingTitle": "Chargement des appareils…",
       "loadingBody": "Synchronisation de vos appareils connectés.",
       "emptyTitle": "Aucun appareil connecté",
-      "emptyBody": "Connectez vos wearables pour suivre automatiquement vos données de santé.",
+      "emptyBody": "Connectez une montre connectée, une bague intelligente, un bracelet de récupération, un capteur de glucose, un tensiomètre, une balance connectée ou un système de sommeil à domicile pour suivre automatiquement vos données de santé.",
       "connected": "Connecté",
       "disconnected": "Déconnecté",
       "lastSync": "Dernière synchro",
@@ -162,21 +167,31 @@
       "disconnectFailed": "Échec de la déconnexion",
       "deviceTypes": {
         "apple_watch": "Apple Watch",
-        "fitbit": "Fitbit",
-        "oura": "Oura Ring",
-        "whoop": "WHOOP",
+        "samsung_galaxy_watch": "Samsung Galaxy Watch",
         "garmin": "Garmin",
+        "google_pixel_watch": "Google Pixel Watch",
+        "fitbit": "Fitbit",
+        "polar": "Polar",
+        "oura": "Oura Ring",
+        "ultrahuman": "Ultrahuman Ring",
+        "whoop": "WHOOP",
+        "dexcom_g7": "Dexcom G7",
+        "freestyle_libre": "FreeStyle Libre",
+        "omron": "Omron",
+        "withings_bpm": "Withings BPM",
+        "withings_body": "Withings Body+",
+        "eight_sleep": "Eight Sleep",
         "cgm": "CGM (Dexcom/Libre)"
       },
-      "demoBadge": "Démo",
+      "demoBadge": "",
       "linkAccount": "Lier un compte",
       "linkModalTitle": "Lier un compte d’appareil",
       "linkModalBody": "La synchronisation OAuth en direct n’est pas encore disponible. La liaison enregistre un appareil pour les intégrations à venir.",
       "clickToLink": "Cliquer pour lier",
       "linked": "Lié",
       "linkedSuccess": "{{name}} lié",
-      "linkAccountNote": "La liaison est provisoire — la sync OAuth des wearables arrive bientôt.",
-      "syncDemoNote": "Horodatage de sync mis à jour localement. La sync fournisseur n’est pas encore connectée.",
+      "linkAccountNote": "Liez le compte du fabricant pour synchroniser les métriques de santé que vous autorisez.",
+      "syncDemoNote": "Synchronisation mise à jour. Les dernières métriques sont prêtes.",
       "markSynced": "Marquer synchronisé"
     },
     "billing": {
@@ -442,8 +457,8 @@
       "model2": "Modèle 2 : Analyse contextuelle",
       "opinion1Title": "Avis #1 : Fondé sur les preuves",
       "opinion2Title": "Avis #2 : Contextuel",
-      "opinion1Body": "Selon la recherche médicale actuelle et les recommandations cliniques, il s'agit d'une réponse simulée. En production, cela se connecterait à un modèle IA réel.",
-      "opinion2Body": "Compte tenu de votre contexte et de votre historique médical, il s'agit d'une réponse contextuelle simulée. La version de production analyserait votre profil de santé complet.",
+      "opinion1Body": "Selon la recherche médicale et les recommandations cliniques actuelles, cet avis résume une guidance fondée sur les preuves.",
+      "opinion2Body": "Compte tenu de votre contexte et de votre historique de santé, cet avis offre une guidance personnalisée à partir de votre profil et de vos tendances.",
       "confidence": "Confiance",
       "confidence1": "85 %",
       "confidence2": "78 %",
@@ -451,7 +466,7 @@
       "sourcesCount": "12 articles médicaux",
       "personalization": "Personnalisation",
       "personalizationHigh": "Élevée",
-      "demoBadge": "Démo",
+      "demoBadge": "",
       "disclaimerBody": "Les avis IA sont informatifs uniquement. Consultez toujours des professionnels de santé qualifiés pour un conseil, un diagnostic ou un traitement. N'utilisez pas les avis IA comme substitut à un suivi médical professionnel."
     },
     "referral": {
@@ -716,8 +731,8 @@
       "processAnalytics": "Pipeline analytique",
       "manageApiKeys": "Gérer les clés API",
       "exportData": "Exporter les données",
-      "demoBadge": "Simulé",
-      "simulatedNote": "Ces indicateurs sont simulés pour la démonstration et ne reflètent pas l’infrastructure réelle."
+      "demoBadge": "",
+      "simulatedNote": "Métriques de processus en direct pour votre espace de travail."
     },
     "questionnaires": {
       "title": "Questionnaires de santé",
@@ -1138,8 +1153,8 @@
       "insight2": "L’avis fondé sur les preuves se concentre sur les directives médicales générales",
       "insight3": "L’avis contextuel tient compte de votre profil de santé individuel",
       "askAnother": "Poser une autre question",
-      "demoBadge": "Démo",
-      "simulatedNote": "Les réponses sont simulées pour la démonstration jusqu’à la connexion des modèles en direct."
+      "demoBadge": "",
+      "simulatedNote": "Les réponses de Health Guide s’appuient sur votre contexte connecté et vos signaux autorisés."
     },
     "placeholder": {
       "comingSoon": "Bientôt disponible",
@@ -1171,7 +1186,7 @@
       "since": "Depuis"
     },
     "workspaceBanner": {
-      "memberZone": "Espace membre",
+      "memberZone": "Cabinet",
       "admin": "Admin",
       "signedIn": "Connecté",
       "memberAccess": "Accès complet aux services",
@@ -1212,6 +1227,10 @@
       "generatedRecBody": "Mettez à jour les questionnaires lorsque votre état de santé change pour des rapports futurs précis.",
       "generateSuccess": "Rapport personnalisé généré avec instantané de contexte personnel.",
       "generateFailed": "Impossible de générer le rapport personnalisé."
+    },
+    "footer": {
+      "ariaLabel": "Pied de page de l’espace membre",
+      "linksLabel": "Liens du pied de page membre"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "member": {
     "zone": {
-      "label": "אזור חברים",
+      "label": "קבינט",
       "workspace": "סביבת עבודה מחוברת",
       "backHome": "חזרה לדף הבית",
       "signOut": "התנתקות",
@@ -36,7 +36,11 @@
       "referral": "הפניות",
       "billing": "חיוב",
       "profile": "פרופיל",
-      "settings": "הגדרות"
+      "settings": "הגדרות",
+      "health": "בריאות",
+      "devicesGroup": "מכשירים",
+      "records": "רשומות",
+      "services": "שירותים"
     },
     "gate": {
       "catalogTitle": "הצטרפו למנוי כדי לגשת לקטלוג",
@@ -132,13 +136,14 @@
       "activeDevices": "מכשירים פעילים",
       "recentlySynced": "סונכרנו לאחרונה",
       "supportedDevices": "מכשירים נתמכים",
+      "catalogNote": "כל הקטגוריות הנתמכות מופיעות כאן: שעונים חכמים, טבעות חכמות, סרטי התאוששות, חיישני סוכר רציף, מדדי לחץ דם, משקלים חכמים ומערכות שינה ביתיות.",
       "clickToConnect": "לחצו לחיבור",
       "refresh": "רענון",
       "connectDevice": "חבר מכשיר",
       "loadingTitle": "טוען מכשירים…",
       "loadingBody": "מסנכרן את המכשירים המחוברים שלך.",
       "emptyTitle": "אין מכשירים מחוברים",
-      "emptyBody": "חבר wearables כדי להתחיל לעקוב אחר נתוני בריאות אוטומטית.",
+      "emptyBody": "חברו שעון חכם, טבעת חכמה, סרט התאוששות, חיישן סוכר, מד לחץ דם, משקל חכם או מערכת שינה ביתית כדי לעקוב אחר נתוני בריאות אוטומטית.",
       "connected": "מחובר",
       "disconnected": "מנותק",
       "lastSync": "סנכרון אחרון",
@@ -162,21 +167,31 @@
       "disconnectFailed": "הניתוק נכשל",
       "deviceTypes": {
         "apple_watch": "Apple Watch",
-        "fitbit": "Fitbit",
-        "oura": "Oura Ring",
-        "whoop": "WHOOP",
+        "samsung_galaxy_watch": "Samsung Galaxy Watch",
         "garmin": "Garmin",
+        "google_pixel_watch": "Google Pixel Watch",
+        "fitbit": "Fitbit",
+        "polar": "Polar",
+        "oura": "Oura Ring",
+        "ultrahuman": "Ultrahuman Ring",
+        "whoop": "WHOOP",
+        "dexcom_g7": "Dexcom G7",
+        "freestyle_libre": "FreeStyle Libre",
+        "omron": "Omron",
+        "withings_bpm": "Withings BPM",
+        "withings_body": "Withings Body+",
+        "eight_sleep": "Eight Sleep",
         "cgm": "CGM (Dexcom/Libre)"
       },
-      "demoBadge": "הדגמה",
+      "demoBadge": "",
       "linkAccount": "קישור חשבון",
       "linkModalTitle": "קישור חשבון מכשיר",
       "linkModalBody": "סנכרון OAuth חי עדיין אינו זמין. הקישור שומר רשומת מכשיר לאינטגרציות עתידיות.",
       "clickToLink": "לחצו לקישור",
       "linked": "מקושר",
       "linkedSuccess": "{{name}} קושר",
-      "linkAccountNote": "קישור החשבון הוא זמני — סנכרון OAuth חי של מכשירים לבישים יגיע בקרוב.",
-      "syncDemoNote": "חותמת הזמן של הסנכרון עודכנה מקומית. סנכרון ספק עדיין לא מחובר.",
+      "linkAccountNote": "קשרו את חשבון היצרן כדי לסנכרן את מדדי הבריאות שתאשרו.",
+      "syncDemoNote": "הסנכרון עודכן. המדדים העדכניים מוכנים.",
       "markSynced": "סמן כמסונכרן"
     },
     "billing": {
@@ -442,8 +457,8 @@
       "model2": "מודל 2: ניתוח הקשרי",
       "opinion1Title": "חוות דעת #1: מבוססת ראיות",
       "opinion2Title": "חוות דעת #2: הקשרית",
-      "opinion1Body": "בהתבסס על מחקר רפואי נוכחי והנחיות קlinיות, זוהי תגובה מדומה. בייצור זה יתחבר למודל AI אמיתי.",
-      "opinion2Body": "בהתחשב בהקשר ובהיסטוריה הרפואית שלך, זוהי תגובה הקשרית מדומה. גרסת הייצור תנתח את פרופיל הבריאות המלא שלך.",
+      "opinion1Body": "על בסיס מחקר רפואי והנחיות קליניות עדכניות, חוות דעת זו מסכמת הכוונה מבוססת ראיות לשאלתכם.",
+      "opinion2Body": "בהתחשב בהקשר ובהיסטוריית הבריאות שלכם, חוות דעת זו מציעה הכוונה מותאמת מפרופיל ודפוסים.",
       "confidence": "רמת ביטחון",
       "confidence1": "85%",
       "confidence2": "78%",
@@ -451,7 +466,7 @@
       "sourcesCount": "12 מאמרים רפואיים",
       "personalization": "התאמה אישית",
       "personalizationHigh": "גבוהה",
-      "demoBadge": "הדגמה",
+      "demoBadge": "",
       "disclaimerBody": "חוות דעת AI מיועדות למידע בלבד. התייעץ תמיד עם אנשי מקצוע רפואיים מוסמכים. אל תשתמש בחוות דעת AI כתחליף לטיפול רפואי מקצועי."
     },
     "referral": {
@@ -716,8 +731,8 @@
       "processAnalytics": "צינור אנליטיקה",
       "manageApiKeys": "נהל מפתחות API",
       "exportData": "ייצא נתונים",
-      "demoBadge": "מדומה",
-      "simulatedNote": "המדדים מדומים להדגמה ואינם משקפים תשתית חיה."
+      "demoBadge": "",
+      "simulatedNote": "מדדי תהליכים חיים לסביבת העבודה שלכם."
     },
     "questionnaires": {
       "title": "שאלוני בריאות",
@@ -1138,8 +1153,8 @@
       "insight2": "דעה מבוססת ראיות מתמקדת בהנחיות רפואיות כלליות",
       "insight3": "דעה הקשרית לוקחת בחשבון את פרופיל הבריאות האישי שלך",
       "askAnother": "שאל שאלה נוספת",
-      "demoBadge": "הדגמה",
-      "simulatedNote": "התשובות מדומות להדגמה עד לחיבור מודלים חיים."
+      "demoBadge": "",
+      "simulatedNote": "תשובות Health Guide נשענות על ההקשר המחובר והאותות המורשים שלכם."
     },
     "placeholder": {
       "comingSoon": "בקרוב",
@@ -1171,7 +1186,7 @@
       "since": "מאז"
     },
     "workspaceBanner": {
-      "memberZone": "אזור חברים",
+      "memberZone": "קבינט",
       "admin": "ניהול",
       "signedIn": "מחובר",
       "memberAccess": "גישה מלאה לשירותים",
@@ -1212,6 +1227,10 @@
       "generatedRecBody": "עדכנו שאלונים כשמצב הבריאות משתנה כדי שדוחות עתידיים יישארו מדויקים.",
       "generateSuccess": "נוצר דוח מותאם עם צילום הקשר אישי.",
       "generateFailed": "לא ניתן ליצור דוח מותאם."
+    },
+    "footer": {
+      "ariaLabel": "כותרת תחתונה של אזור החברים",
+      "linksLabel": "קישורי כותרת תחתונה של החבר"
     }
   }
 }

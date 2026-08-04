@@ -77,7 +77,7 @@
           {
             "id": "purchase",
             "question": "如何购买订阅？",
-            "answer": "您可以在定价页面直接订阅。付款完成后，会员专区内的进阶功能即会解锁。"
+            "answer": "您可以在定价页面直接订阅。付款完成后，工作台内的进阶功能即会解锁。"
           },
           {
             "id": "plans",
@@ -123,7 +123,7 @@
           {
             "id": "update-answers",
             "question": "之后可以修改答案吗？",
-            "answer": "可以，随时在会员专区中修改。"
+            "answer": "可以，随时在工作台中修改。"
           },
           {
             "id": "refresh-frequency",
@@ -144,7 +144,7 @@
           {
             "id": "add-services",
             "question": "以后可以添加更多服务吗？",
-            "answer": "可以。您随时能在服务目录或会员专区中启用新的服务。"
+            "answer": "可以。您随时能在服务目录或工作台中启用新的服务。"
           },
           {
             "id": "which-service",
@@ -160,11 +160,11 @@
       },
       {
         "id": "member-zone",
-        "title": "会员专区",
+        "title": "工作台",
         "items": [
           {
             "id": "what-member-zone",
-            "question": "什么是会员专区？",
+            "question": "什么是工作台？",
             "answer": "这是您的个人交互式仪表盘，所有功能都在这里：报告、目标、快照、设备、第二意见和对话。"
           },
           {
@@ -340,27 +340,42 @@
           {
             "id": "supported-devices",
             "question": "支持哪些设备？",
-            "answer": "Apple Watch、三星、Fitbit、Amazon Halo、Oura、连续血糖监测仪，以及其他通过认证的设备。"
+            "answer": "共七类：智能手表（Apple Watch、Samsung Galaxy Watch、Garmin、Google Pixel Watch、Fitbit、Polar）、智能戒指（Oura Ring、Ultrahuman Ring）、恢复手环（WHOOP）、连续血糖传感器（Dexcom G7、FreeStyle Libre）、血压计（Omron、Withings BPM）、智能秤（Withings Body+）和居家睡眠系统（Eight Sleep）。"
+          },
+          {
+            "id": "device-categories",
+            "question": "各设备类别分别测什么？",
+            "answer": "智能手表提供全天心率、睡眠和活动数据，多数机型还支持心电图或血氧。智能戒指全天候记录睡眠、HRV 和体温。恢复手环侧重训练负荷与恢复度。连续血糖传感器展示全天血糖曲线。血压计与智能秤补充可靠的家用测量。居家睡眠系统无需手腕设备即可记录夜间体征。"
           },
           {
             "id": "connect-device",
             "question": "如何连接设备？",
-            "answer": "通过会员专区中分步引导的连接流程完成。"
+            "answer": "打开工作台 → 已连接设备，选择品牌并按引导完成授权。每次连接都是分步的授权确认页面，您可以随时添加或移除设备。"
+          },
+          {
+            "id": "what-data-flows",
+            "question": "连接后会同步哪些数据？",
+            "answer": "只同步您授权的指标：心率与 HRV、睡眠阶段、活动与负荷、血氧、体温、血糖、血压、体重与身体成分。更新按您选择的频率到达；品牌支持时可接近实时。"
+          },
+          {
+            "id": "feeds-health-guide",
+            "question": "设备如何为报告和 Health Guide 提供依据？",
+            "answer": "设备趋势经解读后成为您 Human Data Model 的一部分，报告和 Health Guide 便能用通俗语言解释这些规律。相关内容用于健康教育，不构成诊断。"
           },
           {
             "id": "store-data",
-            "question": "你们会存储原始健康数据吗？",
-            "answer": "不会。我们解读的是指标，无需保存原始数据流。"
+            "question": "你们会保存原始健康数据吗？",
+            "answer": "不会。我们解读指标并保留有意义的趋势——无需存储原始传感器数据流。"
           },
           {
             "id": "syncing-stops",
             "question": "如果同步中断怎么办？",
-            "answer": "您会收到提醒，一键即可重新连接。"
+            "answer": "当授权过期或需要刷新令牌时，已连接设备页面会提示您，一键即可重新连接。此前的数据仍会保留。"
           },
           {
             "id": "disable-sharing",
             "question": "可以关闭数据共享吗？",
-            "answer": "可以——在设置中即刻关闭。"
+            "answer": "可以，且立即生效。在设置中断开单个设备，或关闭全部共享；新的读数会立刻停止上传。"
           }
         ]
       },
@@ -370,28 +385,43 @@
         "items": [
           {
             "id": "upload-labs-dna",
-            "question": "可以上传检验和DNA数据吗？",
-            "answer": "可以。在会员区 → 健康档案与DNA，您可上传或扫描检验、影像、DNA报告PDF与原始DNA。它们与问卷一起成为健康资料的一部分。"
+            "question": "可以上传化验结果和 DNA 数据吗？",
+            "answer": "可以。在工作台 → 健康档案与DNA中，您可以上传或扫描化验单、影像、DNA 报告 PDF 和原始 DNA 文件。它们会与问卷和已连接设备一起构成您的健康档案。"
           },
           {
             "id": "supported-formats",
             "question": "支持哪些文件格式？",
-            "answer": "PDF、JPG、PNG、WEBP、CSV、TXT、VCF，以及常见原始DNA文本导出（包括23andMe或Ancestry风格）。在移动设备上，浏览器允许时可使用相机拍摄。"
+            "answer": "支持 PDF、JPG、PNG、WEBP、CSV、TXT、VCF，以及常见的原始 DNA 文本导出（包括 23andMe 或 Ancestry 格式）。"
+          },
+          {
+            "id": "scan-camera",
+            "question": "可以用相机扫描纸质报告吗？",
+            "answer": "可以。在手机上，浏览器允许时可直接用相机拍摄页面，适合打印的化验单。每页拍一张，保存前选择档案类型。"
           },
           {
             "id": "how-insights-work",
             "question": "上传后会发生什么？",
-            "answer": "每条记录从已接收到审核中再到洞察已就绪。就绪后您会获得教育性解释、结论与建议，并可复制、打印或下载TXT。这是结构化采集与洞察模板，不是完整基因组分析流水线。"
+            "answer": "每个条目会依次经过已接收、审核中、洞察已就绪。就绪后您会看到科普性的解释、结论与建议。这是带洞察模板的结构化归档，并非完整的基因组分析流程。"
+          },
+          {
+            "id": "copy-print-insights",
+            "question": "可以复制、打印或保存洞察吗？",
+            "answer": "可以。每条已就绪的洞察都提供复制、打印和下载 TXT，方便留存或带去就诊。"
           },
           {
             "id": "feeds-reports-guide",
-            "question": "上传如何影响报告与Health Guide？",
-            "answer": "上传提供高层个人上下文：按类型计数、是否存有DNA、最近检验日期。报告与Health Guide会结合问卷使用这些信号。完整原始DNA内容绝不会粘贴进AI提示。"
+            "question": "上传如何影响报告和 Health Guide？",
+            "answer": "上传只提供概要性的个人背景：各类型数量、是否已存有 DNA、最近一次化验日期。报告和 Health Guide 会结合问卷与设备趋势使用这些信号。原始 DNA 的完整内容绝不会被放入 AI 提示词。"
+          },
+          {
+            "id": "voice-health-guide",
+            "question": "可以用语音向 Health Guide 询问某份档案吗？",
+            "answer": "可以。选择一份档案后，用文字或语音向 Health Guide 提问。回答会用通俗语言给出，双手不便时尤其实用。"
           },
           {
             "id": "dna-privacy",
-            "question": "原始DNA会对AI提示保密吗？",
-            "answer": "会。Health Guide与报告前言仅接收是/否“已存档原始DNA”标志和教育模板——从不接收完整基因文件。"
+            "question": "原始 DNA 会被排除在 AI 提示词之外吗？",
+            "answer": "是的。Health Guide 和报告前言只会收到“是否已存有原始 DNA”的标记以及科普模板，绝不会收到完整的基因文件。"
           }
         ]
       },

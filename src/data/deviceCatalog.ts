@@ -165,3 +165,15 @@ export const deviceSignalKeys = [
 ] as const;
 
 export type DeviceSignalKey = (typeof deviceSignalKeys)[number];
+
+/** Flat list of every catalog device — used by Member Zone connect modal and public page counts. */
+export const connectableDeviceIds: DeviceCatalogItemId[] = deviceCatalog.flatMap((category) =>
+  category.items.map((item) => item.id),
+);
+
+export function catalogCategoryForItem(itemId: DeviceCatalogItemId): DeviceCatalogCategoryId | null {
+  for (const category of deviceCatalog) {
+    if (category.items.some((item) => item.id === itemId)) return category.id;
+  }
+  return null;
+}

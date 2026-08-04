@@ -4,7 +4,7 @@
     "about": "Über uns",
     "pricing": "Preise",
     "allServices": "Alle Dienste",
-    "memberZone": "Mitgliederbereich",
+    "memberZone": "Cabinet",
     "investors": "Investoren",
     "signInUp": "Anmelden/Registrieren",
     "signOut": "Abmelden",
@@ -13,7 +13,7 @@
     "languageSwitching": "Sprache wird gewechselt…"
   },
   "footer": {
-    "tagline": "Biomathematisches Human Data Model — ein lebendiger digitaler Zwilling Ihrer Gesundheit.",
+    "tagline": "Biomathematisches Human Data Model — ein lebendiges Modell Ihrer Gesundheit.",
     "navigation": "Navigation",
     "resources": "Ressourcen",
     "company": "Unternehmen",
@@ -34,7 +34,7 @@
     "security": "Sicherheit",
     "rights": "Alle Rechte vorbehalten.",
     "legalSafety": "Recht & Sicherheit",
-    "memberArea": "Mitgliederbereich",
+    "memberArea": "Cabinet",
     "infoHelp": "Info & Hilfe",
     "appsStatus": "Noch keine nativen Apps im App Store oder bei Google Play. Nutzen Sie BioMath Core im Browser oder installieren Sie die Web-App (PWA)."
   },
@@ -78,10 +78,10 @@
   },
   "home": {
     "seoTitle": "Biomathematisches Human Data Model",
-    "seoDescription": "BioMath Core baut ein lebendiges Human Data Model — einen biomathematischen digitalen Zwilling Ihrer Gesundheit — und führt Sie mit der Dual-Analyse von Health Guide.",
+    "seoDescription": "BioMath Core baut ein lebendiges Human Data Model — ein biomathematisches Modell Ihrer Gesundheit — und führt Sie mit der Dual-Analyse von Health Guide.",
     "brand": "BioMath Core",
     "heroTitle": "Ihr lebenslanges Human Data Model",
-    "heroSubtitle": "Ein biomathematischer digitaler Zwilling, der mit jedem verifizierten Gesundheitsereignis wächst — kein Biomarker-Dashboard.",
+    "heroSubtitle": "Ein biomathematisches Modell, das mit jedem verifizierten Gesundheitsereignis wächst — kein Biomarker-Dashboard.",
     "ctaPricing": "Preise ansehen",
     "ctaHow": "So funktioniert’s",
     "coreTools": {
@@ -89,10 +89,34 @@
       "subtitle": "Datensätze importieren, Zeitlinie sehen und Änderungen verfolgen — über alle Kategorien.",
       "readMore": "Beschreibung lesen"
     },
+    "twoModels": {
+      "eyebrow": "Warum zwei Modelle",
+      "headline": "Bestätigt durch zwei unabhängige Modelle, nicht nur durch eines.",
+      "subhead": "Jeder Hinweis wird gegen eine zweite, unabhängige Analyse geprüft. Wenn beide übereinstimmen, wissen Sie, dass er belastbar ist. Wenn nicht, sehen Sie genau wo und warum.",
+      "toggle": {
+        "most": "Die meisten Fälle",
+        "rare": "Seltener Fall"
+      },
+      "confirmed": {
+        "title": "Von beiden Modellen bestätigt",
+        "body": "Ein seit Langem niedriger Vitamin-D-Wert wird von der evidenzbasierten und der kontextuellen Analyse durchgängig markiert.",
+        "caption": "So sehen die meisten Hinweise aus."
+      },
+      "differs": {
+        "title": "Die beiden Modelle sehen es unterschiedlich",
+        "body": "Eine Analyse betont das anhaltende Labormuster; die andere gewichtet, wie aktueller Tagesablauf und Sonnenlicht denselben Befund prägen.",
+        "caption": "Das kommt gelegentlich vor — und dann sehen Sie beide Seiten.",
+        "evidenceBased": "Evidenzbasiert",
+        "contextual": "Kontextuell",
+        "evidenceReasoning": "Anhaltend niedriges 25-OH-Vitamin D in wiederholten Labors stützt ein klares Mangel-Signal.",
+        "contextualReasoning": "Aktuelle Monate mit Innenarbeit und wenig Zeit im Freien können denselben niedrigen Wert erklären, ohne ein dauerhaftes Stoffwechselproblem zu implizieren."
+      },
+      "cta": "So funktioniert es →"
+    },
     "what": {
       "label": "Was es ist",
       "title": "Ein lebendiges biomathematisches Modell von Ihnen",
-      "body": "Das Human Data Model ist ein digitaler Zwilling aus verifizierten Laborwerten, klinischen Notizen, Medikamenten, Symptomen und Lifestyle-Signalen. Es hält eine durchgängige Struktur — damit Health Guide über Ihre gesamte Geschichte nachdenken kann, nicht über isolierte Momentaufnahmen.",
+      "body": "Das Human Data Model entsteht aus verifizierten Laborwerten, klinischen Notizen, Medikamenten, Symptomen und Lifestyle-Signalen. Es hält eine durchgängige Struktur — damit Health Guide über Ihre gesamte Geschichte nachdenken kann, nicht über isolierte Momentaufnahmen.",
       "points": [
         {
           "title": "Ein Modell, viele Quellen",
@@ -104,7 +128,7 @@
         },
         {
           "title": "Für Jahrzehnte gebaut",
-          "body": "Jedes wichtige Ereignis aktualisiert den Zwilling — damit die Frage von morgen noch die Evidenz von gestern hat."
+          "body": "Jedes wichtige Ereignis aktualisiert das Modell — damit die Frage von morgen noch die Evidenz von gestern hat."
         }
       ],
       "signals": [
@@ -115,7 +139,7 @@
       ],
       "vizTitle": "Signale, die im Human Data Model zusammenlaufen",
       "vizCore": "HDM",
-      "vizCoreSub": "digitaler Zwilling",
+      "vizCoreSub": "Datenmodell",
       "vizCaption": "Verifizierte Eingaben speisen ein Modell — keinen Haufen getrennter Dashboards."
     },
     "steps": {
@@ -128,7 +152,7 @@
           "body": "Bringen Sie Labore, Bildgebungsnotizen, Rezepte und persönliche Beobachtungen ein."
         },
         {
-          "title": "Den Zwilling strukturieren",
+          "title": "Das Modell strukturieren",
           "body": "BioMath Core ordnet Ereignisse in Ihrem Human Data Model über Gesundheitskategorien."
         },
         {
@@ -137,33 +161,43 @@
         },
         {
           "title": "Health Guide fragen",
-          "body": "Die Dual-Analyse nutzt Ihren Zwilling — biomathematische und klinisch ausgerichtete Sicht nebeneinander."
+          "body": "Die Dual-Analyse nutzt Ihr Modell — biomathematische und klinisch ausgerichtete Sicht nebeneinander."
         }
       ]
     },
     "different": {
       "label": "Warum anders",
       "title": "Biomathematik, kein weiterer Biomarker-Feed",
-      "body": "Dashboards zeigen die letzte Zahl. Das Human Data Model hält Labore, Diagnose, Behandlung und Symptome in einem lebendigen Zwilling — damit Sie mit Kontext handeln können.",
+      "body": "Dashboards zeigen die letzte Zahl. Das Human Data Model hält Labore, Diagnose, Behandlung und Symptome in einem lebendigen Modell — damit Sie mit Kontext handeln können.",
       "viz": {
-        "title": "Verstreute Kennzahlen werden ein digitaler Zwilling des Human Data Model",
+        "title": "Verstreute Kennzahlen werden ein Human Data Model",
         "themLabel": "Verstreute Kennzahlen",
         "usLabel": "Human Data Model",
-        "metrics": ["LDL", "HRV", "A1C", "Schlaf"],
-        "links": ["Labore", "Notizen", "Medikamente", "Lebensstil"],
+        "metrics": [
+          "LDL",
+          "HRV",
+          "A1C",
+          "Schlaf"
+        ],
+        "links": [
+          "Labore",
+          "Notizen",
+          "Medikamente",
+          "Lebensstil"
+        ],
         "core": "HDM",
-        "coreSub": "digitaler Zwilling",
+        "coreSub": "Datenmodell",
         "outAsk": "Fragen",
         "outMap": "Erkunden",
         "outTime": "Vergleichen",
-        "caption": "Getrennte Messwerte werden ein Zwilling, den Sie fragen, erkunden und über die Zeit vergleichen können."
+        "caption": "Getrennte Messwerte werden ein Modell, das Sie fragen, erkunden und über die Zeit vergleichen können."
       },
       "outcomes": {
         "label": "Was Sie als Nächstes tun können",
         "items": [
           {
             "title": "Health Guide fragen",
-            "body": "Dual-Modell-Antworten verankert in Ihrem Zwilling — keine generischen Tipps aus einem einzelnen Laborwert."
+            "body": "Dual-Modell-Antworten verankert in Ihrem Modell — keine generischen Tipps aus einem einzelnen Laborwert."
           },
           {
             "title": "Eine Kategorie öffnen",
@@ -186,6 +220,127 @@
       "female": "Frau",
       "male": "Mann",
       "toggleLabel": "Figur"
+    },
+    "linkage": {
+      "label": "Datenverknüpfung",
+      "title": "Fragebogendaten verknüpfen, um die Doppelmeinung freizuschalten",
+      "body": "Health Guide vergleicht eine evidenzbasierte Sicht mit einer kontextbezogenen Sicht, sobald genug Fragebogenabschnitte mit Ihrem Human Data Model verknüpft sind.",
+      "caption": "Beispiel anhand einer häufigen Frage zur Nachmittagsmüdigkeit — illustrativer Beispielinhalt, nicht Ihre persönlichen Daten.",
+      "question": "Warum fühle ich mich nach dem Mittagessen erschöpft?",
+      "chipHint": "Abschnitte umschalten, um die Vollständigkeit der Verknüpfung zu ändern.",
+      "completeness": "{{percent}} % vollständig",
+      "filledCount": "{{filled}} / {{total}} Abschnitte",
+      "linkageLabel": "Datenverknüpfung: {{health}}",
+      "health": {
+        "red": "rot",
+        "yellow": "gelb",
+        "green": "grün"
+      },
+      "sections": {
+        "categories": "Gesundheitsschwerpunkt",
+        "personal_info": "Persönliche Angaben",
+        "medical_history": "Krankengeschichte",
+        "medications": "Medikamente",
+        "allergies": "Allergien",
+        "vital_signs": "Vitalwerte",
+        "lifestyle": "Lebensstil",
+        "psychological_health": "Psychische Gesundheit"
+      },
+      "lockedTitle": "Doppelmeinung gesperrt",
+      "lockedBody": "Verknüpfen Sie mindestens 40 % der Fragebogenabschnitte, um den Side-by-Side-Vergleich von Health Guide freizuschalten.",
+      "unlockedLabel": "Doppelmeinung",
+      "evidenceBased": "Evidenzbasiert",
+      "contextual": "Kontextbezogen",
+      "confidence": "{{value}} % Konfidenz",
+      "reasoning": "Begründung",
+      "recommendations": "Empfehlungen",
+      "diffTitle": "Vergleich",
+      "agreements": "Übereinstimmungen",
+      "disagreements": "Abweichungen",
+      "alignment": "Gesamtübereinstimmung: {{percent}} %",
+      "severity": {
+        "high": "Hoch",
+        "medium": "Mittel",
+        "low": "Niedrig"
+      },
+      "priority": {
+        "high": "Hoch",
+        "medium": "Mittel",
+        "low": "Niedrig"
+      },
+      "opinionA": {
+        "summary": "Der Energieabfall am Nachmittag hängt mit dem zirkadianen Rhythmus und der postprandialen Glukosereaktion zusammen.",
+        "reasoning": [
+          "Der zirkadiane Rhythmus sinkt zwischen 13 und 15 Uhr natürlich (Adenosinakkumulation).",
+          "Postprandiale Glukoseschwankungen beeinflussen die Wachheit (Insulinreaktion).",
+          "Schlafdefizit verstärkt die Mittagsmüdigkeit.",
+          "Die Mahlzeitzusammensetzung wirkt direkt auf die Blutzuckerstabilität."
+        ],
+        "recommendations": [
+          {
+            "title": "Makronährstoffe der Mahlzeit optimieren",
+            "description": "Zum Mittag Protein, komplexe Kohlenhydrate und Fette kombinieren, um den Glukosespiegel mehrere Stunden zu stabilisieren."
+          },
+          {
+            "title": "Strategische Lichtexposition",
+            "description": "10–15 Minuten helles Tageslicht nach dem Mittagessen unterstützen die Wachheit."
+          },
+          {
+            "title": "Kurzes Bewegungsprotokoll",
+            "description": "Ein kurzer Spaziergang nach dem Essen kann den Glukoseumgang verbessern und das Nachmittagstief lindern."
+          }
+        ]
+      },
+      "opinionB": {
+        "summary": "Ihr Energieabfall am Nachmittag entsteht oft aus Essenszeitpunkt, Stresslast und Gewohnheiten, die Sie praktisch anpassen können.",
+        "reasoning": [
+          "Zeitpunkt und Zusammensetzung des Mittagessens beeinflussen, wie Sie sich danach fühlen.",
+          "Arbeitsumfeld und Stress spielen eine Rolle.",
+          "Kleine Verhaltensänderungen können spürbar helfen.",
+          "Die Reaktion ist individuell — die Lösung muss in Ihren Tag passen."
+        ],
+        "recommendations": [
+          {
+            "title": "Achtsames Essen",
+            "description": "Nehmen Sie sich beim Mittagessen ein paar ruhige Minuten ohne Bildschirm, um Verdauung und Nachmittagstief zu erleichtern."
+          },
+          {
+            "title": "Haltungs- und Atempause",
+            "description": "Am Nachmittag aufstehen, strecken und langsam atmen — ein einfacher Reset."
+          },
+          {
+            "title": "Hydration prüfen",
+            "description": "Trinken Sie Wasser zum Mittagessen und erneut am Nachmittag — Dehydrierung fühlt sich oft wie Müdigkeit an."
+          }
+        ]
+      },
+      "diff": {
+        "agreements": [
+          {
+            "topic": "Bewegung nach dem Essen",
+            "consensus": "Beide Sichten unterstützen leichte Aktivität nach dem Mittagessen zur Stabilisierung der Energie."
+          },
+          {
+            "topic": "Mahlzeitzusammensetzung zählt",
+            "consensus": "Beide halten fest, dass was und wie Sie mittags essen das Nachmittagstief beeinflusst."
+          }
+        ],
+        "disagreements": [
+          {
+            "topic": "Primärer Fokus",
+            "opinionA": "Makronährstoffe der Mahlzeit optimieren",
+            "opinionB": "Achtsames Essen",
+            "severity": "medium",
+            "explanation": "Die evidenzbasierte Sicht beginnt mit der metabolischen Mahlzeitsstruktur; die kontextbezogene Sicht mit der Art zu essen unter realem Tagesstress."
+          }
+        ],
+        "uniqueToA": [
+          "Strategische Lichtexposition"
+        ],
+        "uniqueToB": [
+          "Hydration prüfen"
+        ]
+      }
     }
   },
   "about": {
@@ -235,11 +390,11 @@
   "contact": {
     "label": "Kontakt",
     "title": "Kontakt aufnehmen",
-    "healthGuideHint": "Für Wellness-Orientierung nutzen Sie den Gesundheitsführer im Mitgliederbereich.",
+    "healthGuideHint": "Für Wellness-Orientierung nutzen Sie den Gesundheitsführer in Cabinet.",
     "heroTitle": "Das BioMath-Core-Team erreichen",
     "heroSubtitle": "Fragen zu Services, Partnerschaften oder Enterprise — wir helfen gerne.",
     "noteLabel": "Hinweis:",
-    "noteBody": "Dieser Kanal ist für Geschäftsanfragen, Partnerschaften und Kontofragen. Für Wellness-Orientierung nutzen Sie den Health Guide im Mitgliederbereich.",
+    "noteBody": "Dieser Kanal ist für Geschäftsanfragen, Partnerschaften und Kontofragen. Für Wellness-Orientierung nutzen Sie den Health Guide in Cabinet.",
     "messageLabel": "Nachricht",
     "sendMessage": "Nachricht senden"
   },

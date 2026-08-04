@@ -29,19 +29,11 @@ export default function CTASection({
             'Start with BioMath Core and grow your Human Data Model as your questions deepen.'}
         </p>
 
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-          <button
-            type="button"
-            onClick={onPrimaryClick}
-            className="w-full bg-orange-500 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400 sm:w-auto"
-          >
+        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-6">
+          <button type="button" onClick={onPrimaryClick} className="bm-cta-primary w-full sm:w-auto">
             {primaryButtonText}
           </button>
-          <button
-            type="button"
-            onClick={onSecondaryClick}
-            className="w-full border border-[var(--bm-border)] bg-page px-8 py-3.5 text-sm font-semibold text-gray-900 transition-colors hover:border-orange-500/40 dark:text-neutral-100 sm:w-auto"
-          >
+          <button type="button" onClick={onSecondaryClick} className="bm-link">
             {secondaryButtonText}
           </button>
         </div>
@@ -70,7 +62,7 @@ export function CTABanner({
         <button
           type="button"
           onClick={() => onNavigate('pricing')}
-          className="text-sm font-semibold text-orange-700 transition-colors hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300"
+          className="bm-link font-semibold text-orange-700 dark:text-orange-400"
         >
           View pricing →
         </button>
@@ -93,7 +85,7 @@ export function CTAFloating({
       <button
         type="button"
         onClick={() => onNavigate('signup')}
-        className="mt-4 w-full bg-orange-500 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
+        className="bm-cta-primary mt-4 w-full"
       >
         Get started
       </button>
@@ -115,7 +107,7 @@ export function CTAInline({
       <button
         type="button"
         onClick={() => onNavigate('signup')}
-        className="mt-3 text-sm font-semibold text-orange-700 transition-colors hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300"
+        className="bm-link mt-3 font-semibold text-orange-700 dark:text-orange-400"
       >
         Sign up →
       </button>

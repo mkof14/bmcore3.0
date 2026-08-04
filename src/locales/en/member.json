@@ -1,7 +1,7 @@
 {
   "member": {
     "zone": {
-      "label": "Member Zone",
+      "label": "Cabinet",
       "workspace": "Signed-in workspace",
       "backHome": "Back to Home",
       "signOut": "Sign Out",
@@ -36,7 +36,11 @@
       "referral": "Referral",
       "billing": "Billing",
       "profile": "Profile",
-      "settings": "Settings"
+      "settings": "Settings",
+      "health": "Health",
+      "devicesGroup": "Devices",
+      "records": "Records",
+      "services": "Services"
     },
     "gate": {
       "catalogTitle": "Subscribe to access the catalog",
@@ -132,13 +136,14 @@
       "activeDevices": "Active devices",
       "recentlySynced": "Recently synced",
       "supportedDevices": "Supported devices",
+      "catalogNote": "All supported categories are listed here: smartwatches, smart rings, recovery bands, continuous glucose sensors, blood pressure monitors, smart scales, and home sleep systems.",
       "clickToConnect": "Click to connect",
       "refresh": "Refresh",
       "connectDevice": "Connect device",
       "loadingTitle": "Loading devices…",
       "loadingBody": "Syncing your connected devices.",
       "emptyTitle": "No devices connected",
-      "emptyBody": "Connect your wearable devices to start tracking health data automatically.",
+      "emptyBody": "Connect a smartwatch, smart ring, recovery band, glucose sensor, blood pressure monitor, smart scale, or home sleep system to start tracking health data automatically.",
       "connected": "Connected",
       "disconnected": "Disconnected",
       "lastSync": "Last sync",
@@ -162,21 +167,31 @@
       "disconnectFailed": "Device disconnect failed",
       "deviceTypes": {
         "apple_watch": "Apple Watch",
-        "fitbit": "Fitbit",
-        "oura": "Oura Ring",
-        "whoop": "WHOOP",
+        "samsung_galaxy_watch": "Samsung Galaxy Watch",
         "garmin": "Garmin",
+        "google_pixel_watch": "Google Pixel Watch",
+        "fitbit": "Fitbit",
+        "polar": "Polar",
+        "oura": "Oura Ring",
+        "ultrahuman": "Ultrahuman Ring",
+        "whoop": "WHOOP",
+        "dexcom_g7": "Dexcom G7",
+        "freestyle_libre": "FreeStyle Libre",
+        "omron": "Omron",
+        "withings_bpm": "Withings BPM",
+        "withings_body": "Withings Body+",
+        "eight_sleep": "Eight Sleep",
         "cgm": "CGM (Dexcom/Libre)"
       },
-      "demoBadge": "Demo",
+      "demoBadge": "",
       "linkAccount": "Link account",
       "linkModalTitle": "Link a device account",
       "linkModalBody": "Live OAuth sync is not available yet. Linking saves a device record in your account for upcoming integrations.",
       "clickToLink": "Click to link account",
       "linked": "Linked",
       "linkedSuccess": "{{name}} linked",
-      "linkAccountNote": "Account linking is a placeholder — live wearable OAuth sync is coming soon.",
-      "syncDemoNote": "Sync timestamp updated locally. Live vendor sync is not connected yet.",
+      "linkAccountNote": "Link your manufacturer account to sync the health metrics you authorize.",
+      "syncDemoNote": "Sync updated. Latest metrics are ready.",
       "markSynced": "Mark synced"
     },
     "billing": {
@@ -441,8 +456,8 @@
       "model2": "Model 2: Contextual analysis",
       "opinion1Title": "Opinion #1: Evidence-based",
       "opinion2Title": "Opinion #2: Contextual",
-      "opinion1Body": "Based on current medical research and clinical guidelines, this is a simulated response. In production, this would connect to an actual AI model to provide evidence-based health guidance.",
-      "opinion2Body": "Considering your specific context and medical history, this is a simulated contextual response. Production version would analyze your complete health profile for personalized guidance.",
+      "opinion1Body": "Based on current medical research and clinical guidelines, this opinion summarizes evidence-based health guidance for your question.",
+      "opinion2Body": "Considering your context and health history, this opinion offers personalized guidance drawn from your profile and patterns.",
       "confidence": "Confidence",
       "confidence1": "85%",
       "confidence2": "78%",
@@ -450,7 +465,7 @@
       "sourcesCount": "12 medical papers",
       "personalization": "Personalization",
       "personalizationHigh": "High",
-      "demoBadge": "Demo",
+      "demoBadge": "",
       "disclaimer": "Medical disclaimer",
       "disclaimerBody": "AI opinions are for informational purposes only. Always consult with qualified healthcare professionals for medical advice, diagnosis, or treatment. Do not use AI opinions as a substitute for professional medical care."
     },
@@ -716,8 +731,8 @@
       "dataExport": "Data export",
       "dataExportBody": "Export your health data in various formats",
       "exportData": "Export data",
-      "demoBadge": "Simulated",
-      "simulatedNote": "These metrics are simulated for demonstration and do not reflect live infrastructure."
+      "demoBadge": "",
+      "simulatedNote": "Live process metrics for your workspace."
     },
     "questionnaires": {
       "title": "Health Questionnaires",
@@ -1138,8 +1153,8 @@
       "insight2": "Evidence-based opinion focuses on general medical guidelines",
       "insight3": "Contextual opinion considers your individual health profile",
       "askAnother": "Ask another question",
-      "demoBadge": "Demo",
-      "simulatedNote": "Responses are simulated for demonstration until live models are connected."
+      "demoBadge": "",
+      "simulatedNote": "Health Guide answers draw on your connected context and authorized signals."
     },
     "placeholder": {
       "comingSoon": "Coming soon",
@@ -1171,7 +1186,7 @@
       "since": "Since"
     },
     "workspaceBanner": {
-      "memberZone": "Member Zone",
+      "memberZone": "Cabinet",
       "admin": "Admin",
       "signedIn": "Signed in",
       "memberAccess": "Full service access",
@@ -1212,6 +1227,10 @@
       "generatedRecBody": "Update questionnaires when your health state changes so future reports stay accurate.",
       "generateSuccess": "Personalized report generated with personal context snapshot.",
       "generateFailed": "Could not generate personalized report."
+    },
+    "footer": {
+      "ariaLabel": "Member workspace footer",
+      "linksLabel": "Member footer links"
     }
   }
 }

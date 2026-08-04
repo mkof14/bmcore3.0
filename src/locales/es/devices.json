@@ -1,15 +1,15 @@
 {
   "devicesPage": {
     "badge": "Wearables y sensores",
-    "title": "Mis dispositivos",
+    "title": "Dispositivos conectados",
     "subtitle": "Conecta relojes, anillos, sensores de glucosa y dispositivos de salud en casa para que BioMath Core lea tendencias y las explique en lenguaje sencillo.",
     "connectedTitle": "Dispositivos conectados",
     "connectTitle": "Conectar una marca",
-    "catalogTitle": "Guía de dispositivos actuales",
-    "catalogIntro": "Lo que la gente usa hoy y qué señales suele aportar cada categoría. Úsalo para elegir según tus objetivos y luego conecta una marca compatible abajo.",
+    "catalogTitle": "Todos los dispositivos compatibles",
+    "catalogIntro": "Aquí aparecen todos los dispositivos que puedes conectar: nada queda oculto tras un filtro. Cada tarjeta muestra las señales que suele aportar el dispositivo, para que elijas según tus objetivos y conectes una marca compatible más abajo.",
     "signalsTitle": "Señales que importan",
     "signalsIntro": "Estas son las capacidades que BioMath Core usa con más frecuencia cuando hay un dispositivo conectado.",
-    "emptyBrands": "Las conexiones de marca en vivo no están disponibles en esta sesión. Aún puedes explorar la guía y conectar más tarde desde la Zona de miembros al iniciar sesión.",
+    "emptyBrands": "Explora la guía de dispositivos arriba y conéctalos desde el Gabinete cuando hayas iniciado sesión.",
     "learnMore": "Más información",
     "hideGuide": "Ocultar guía",
     "helpChoosing": "Ayuda para elegir",
@@ -108,63 +108,108 @@
     "items": {
       "apple_watch": {
         "name": "Apple Watch",
-        "blurb": "Cobertura cotidiana amplia: frecuencia cardíaca, HRV, sueño, SpO₂, ECG y entrenamientos."
+        "blurb": "Cobertura cotidiana amplia: frecuencia cardíaca, HRV, sueño, SpO₂, ECG y entrenamientos.",
+        "connect": "Usa el Apple Watch y abre la app Salud en el iPhone. En BioMath Core, elige Apple Watch y autoriza frecuencia cardíaca, sueño, actividad y métricas relacionadas.",
+        "syncs": "Frecuencia cardíaca, VFC, fases del sueño, SpO₂, ECG (si está disponible), entrenamientos y carga de actividad.",
+        "tip": "Llévalo por la noche para que el sueño y la recuperación matutina tengan una imagen completa."
       },
       "samsung_galaxy_watch": {
         "name": "Samsung Galaxy Watch",
-        "blurb": "Métricas de muñeca y, en modelos selectos, soporte de presión arterial sin manguito donde esté disponible."
+        "blurb": "Métricas de muñeca y, en modelos selectos, soporte de presión arterial sin manguito donde esté disponible.",
+        "connect": "Empareja el Galaxy Watch con Samsung Health. En BioMath Core, autoriza Samsung Health para las métricas que quieras compartir.",
+        "syncs": "Frecuencia cardíaca, VFC, sueño, SpO₂, actividad, ECG y presión arterial en modelos compatibles.",
+        "tip": "Completa la calibración de Samsung Health para la presión sin manguito antes de esperar esas lecturas."
       },
       "garmin": {
         "name": "Garmin",
-        "blurb": "Carga de entrenamiento, recuperación, sueño y HRV ideales para deporte de resistencia y estructurado."
+        "blurb": "Carga de entrenamiento, recuperación, sueño y HRV ideales para deporte de resistencia y estructurado.",
+        "connect": "Sincroniza Garmin con Garmin Connect. En BioMath Core, vincula Garmin Connect y autoriza entrenamiento, recuperación y sueño.",
+        "syncs": "Frecuencia cardíaca, VFC, sueño, actividad, carga de entrenamiento, recuperación y estrés.",
+        "tip": "Abre Garmin Connect tras los entrenos para que lleguen los archivos más recientes."
       },
       "google_pixel_watch": {
         "name": "Google Pixel Watch",
-        "blurb": "Sueño y actividad impulsados por Fitbit en un smartwatch compacto."
+        "blurb": "Sueño y actividad impulsados por Fitbit en un smartwatch compacto.",
+        "connect": "Mantén Fitbit / Google Fit sincronizado. En BioMath Core, autoriza las métricas de Fitbit del Pixel Watch.",
+        "syncs": "Frecuencia cardíaca, sueño, actividad, SpO₂ y patrones de movimiento diarios.",
+        "tip": "Carga antes de dormir o mantén un uso nocturno constante para comparar semanas."
       },
       "oura": {
         "name": "Oura Ring",
-        "blurb": "Fases del sueño, preparación, temperatura y HRV desde el anillo."
+        "blurb": "Fases del sueño, preparación, temperatura y HRV desde el anillo.",
+        "connect": "Usa el anillo Oura y abre la app Oura. En BioMath Core, autoriza sueño, readiness y recuperación.",
+        "syncs": "Fases del sueño, VFC, FC en reposo, temperatura, readiness y actividad.",
+        "tip": "Un ajuste cómodo por la noche mejora la calidad de temperatura y VFC."
       },
       "ultrahuman": {
         "name": "Ultrahuman Ring",
-        "blurb": "Anillo ligero para sueño, recuperación y señales diarias orientadas al metabolismo."
+        "blurb": "Anillo ligero para sueño, recuperación y señales diarias orientadas al metabolismo.",
+        "connect": "Empareja el Ultrahuman Ring en su app. En BioMath Core, autoriza señales de sueño y recuperación.",
+        "syncs": "Sueño, VFC, frecuencia cardíaca, temperatura y puntuaciones diarias de recuperación.",
+        "tip": "Úsalo varios días seguidos para estabilizar la línea base de recuperación."
       },
       "whoop": {
         "name": "WHOOP",
-        "blurb": "Esfuerzo, recuperación y sueño continuos sin pantalla tradicional."
+        "blurb": "Esfuerzo, recuperación y sueño continuos sin pantalla tradicional.",
+        "connect": "Usa WHOOP y mantén la app sincronizada. En BioMath Core, autoriza strain, recuperación y sueño.",
+        "syncs": "Strain, recuperación, sueño, VFC, FC en reposo y carga de actividad.",
+        "tip": "Déjalo puesto en entrenos y por la noche para alinear strain y recuperación."
       },
       "dexcom_g7": {
         "name": "Dexcom G7",
-        "blurb": "Glucosa continua con actualizaciones frecuentes para patrones de comidas y energía."
+        "blurb": "Glucosa continua con actualizaciones frecuentes para patrones de comidas y energía.",
+        "connect": "Configura Dexcom y espera el calentamiento del sensor. En BioMath Core, autoriza las lecturas de glucosa continua.",
+        "syncs": "Curvas de glucosa continua y tendencias educativas de tiempo en rango.",
+        "tip": "Anota horarios de comida en tu rutina para interpretar mejor las oscilaciones."
       },
       "freestyle_libre": {
         "name": "FreeStyle Libre",
-        "blurb": "Sensado flash/continuo de glucosa para conciencia metabólica diaria."
+        "blurb": "Sensado flash/continuo de glucosa para conciencia metabólica diaria.",
+        "connect": "Activa el sensor FreeStyle Libre en LibreLink. En BioMath Core, autoriza el intercambio de glucosa Libre.",
+        "syncs": "Lecturas flash o continuas de glucosa para conciencia metabólica diaria.",
+        "tip": "Escanea o mantén el teléfono cerca según tu modelo para reducir huecos."
       },
       "omron": {
         "name": "Omron",
-        "blurb": "Manguitos de presión arterial validados y muy usados en casa."
+        "blurb": "Manguitos de presión arterial validados y muy usados en casa.",
+        "connect": "Empareja el manguito Omron con Omron Connect. En BioMath Core, autoriza las lecturas de presión.",
+        "syncs": "Sistólica, diastólica y pulso de mediciones en casa.",
+        "tip": "Mide a la misma hora, sentado y en reposo, para tendencias más limpias."
       },
       "withings_bpm": {
         "name": "Withings BPM",
-        "blurb": "Lecturas de manguito conectadas que se integran bien en el historial de salud."
+        "blurb": "Lecturas de manguito conectadas que se integran bien en el historial de salud.",
+        "connect": "Conecta Withings BPM en Health Mate. En BioMath Core, autoriza los datos de presión Withings.",
+        "syncs": "Lecturas validadas de presión y pulso relacionado.",
+        "tip": "Usa el mismo brazo y postura en cada sesión."
       },
       "withings_body": {
         "name": "Withings Body+",
-        "blurb": "Báscula inteligente para peso y tendencias de composición corporal."
+        "blurb": "Báscula inteligente para peso y tendencias de composición corporal.",
+        "connect": "Súbete a la báscula Withings enlazada en Health Mate. En BioMath Core, autoriza peso y composición.",
+        "syncs": "Peso, IMC y estimaciones de composición corporal.",
+        "tip": "Pésate a una hora similar, idealmente por la mañana."
       },
       "eight_sleep": {
         "name": "Eight Sleep",
-        "blurb": "Sistema de cama que registra fases del sueño y vitales nocturnas."
+        "blurb": "Sistema de cama que registra fases del sueño y vitales nocturnas.",
+        "connect": "Mantén el Pod Eight Sleep en línea en su app. En BioMath Core, autoriza sueño y vitales nocturnos.",
+        "syncs": "Fases del sueño, FC nocturna, VFC y señales de temperatura de la cama.",
+        "tip": "Deja la funda encendida y conectada por la noche para sincronizar al despertar."
       },
       "fitbit": {
         "name": "Fitbit",
-        "blurb": "Seguimiento accesible de sueño, frecuencia cardíaca, actividad y estrés."
+        "blurb": "Seguimiento accesible de sueño, frecuencia cardíaca, actividad y estrés.",
+        "connect": "Sincroniza Fitbit con su app. En BioMath Core, autoriza sueño, frecuencia cardíaca y actividad.",
+        "syncs": "Frecuencia cardíaca, VFC, sueño, actividad, estrés y SpO₂ según el modelo.",
+        "tip": "Activa el seguimiento nocturno en Fitbit para noches completas."
       },
       "polar": {
         "name": "Polar",
-        "blurb": "Frecuencia cardíaca de grado deportivo, carga de entrenamiento y recuperación."
+        "blurb": "Frecuencia cardíaca de grado deportivo, carga de entrenamiento y recuperación.",
+        "connect": "Empareja Polar con Polar Flow. En BioMath Core, autoriza FC, entrenamiento y recuperación.",
+        "syncs": "Frecuencia cardíaca, VFC, sueño, actividad, carga de entrenamiento y recuperación.",
+        "tip": "Sincroniza Polar Flow tras las sesiones antes de la guía matutina."
       }
     },
     "capabilities": {
@@ -219,6 +264,59 @@
       "howBody": "Se recopilan métricas autorizadas (sueño, frecuencia cardíaca, estrés, recuperación, glucosa y más) y se explican en lenguaje sencillo. Nos centramos en tendencias y pasos prácticos, no en volcar números crudos.",
       "privacyLabel": "Privacidad:",
       "privacyBody": "Tú controlas la conexión. No conocemos la contraseña del dispositivo ni podemos controlarlo. Desconecta cuando quieras."
+    },
+    "seo": {
+      "title": "Dispositivos conectados — wearables y sensores | BioMath Core",
+      "description": "Conecta relojes, anillos, sensores de glucosa, tensiómetros y básculas inteligentes. BioMath Core lee las tendencias y las explica en lenguaje sencillo para tus informes y Health Guide."
+    },
+    "signalsLabel": "Señales",
+    "catalogLabel": "Catálogo",
+    "connectedLabel": "Tu equipo",
+    "connectLabel": "Conectar",
+    "filterAll": "Todos los dispositivos ({{count}})",
+    "hero": {
+      "ctaCatalog": "Ver todos los dispositivos",
+      "ctaConnect": "Conectar un dispositivo",
+      "ctaMember": "Abrir Gabinete"
+    },
+    "live": {
+      "label": "Señales vivas",
+      "title": "Tu cuerpo envía datos discretos todo el día",
+      "body": "BioMath Core escucha {{categories}} categorías y {{devices}} dispositivos conectables, y convierte las tendencias en orientación serena y práctica para informes y Health Guide.",
+      "chipSleep": "Fases del sueño",
+      "chipGlucose": "Curva de glucosa",
+      "chipHrv": "Recuperación y VFC"
+    },
+    "flow": {
+      "label": "Cómo funciona la conexión",
+      "title": "Autoriza, sincroniza, comprende",
+      "body": "Solo concedes acceso a métricas. Las tendencias pasan al contexto personal de informes y Health Guide: orientación educativa, no un diagnóstico.",
+      "steps": {
+        "authorize": {
+          "title": "Autoriza las métricas",
+          "body": "Elige el fabricante y aprueba qué métricas de salud se comparten. Nunca recibimos el usuario ni la contraseña de tu dispositivo, y puedes retirar el acceso cuando quieras."
+        },
+        "sync": {
+          "title": "Sincroniza a tu ritmo",
+          "body": "A diario, varias veces al día o casi en tiempo real si el dispositivo lo permite. La sincronización se ejecuta en segundo plano y puedes cambiar el ritmo cuando quieras."
+        },
+        "guide": {
+          "title": "Orientación e informes",
+          "body": "Las tendencias aparecen en tus informes y dan a Health Guide contexto para sugerencias serenas y prácticas. Todo se mantiene educativo: nunca es un diagnóstico."
+        }
+      }
+    },
+    "cardStatus": {
+      "available": "Disponible para conectar",
+      "connected": "Conectado",
+      "notConnected": "No conectado"
+    },
+    "card": {
+      "howToConnect": "Cómo conectar",
+      "whatSyncs": "Qué se sincroniza",
+      "tip": "Consejo",
+      "showGuide": "Guía de conexión",
+      "hideGuide": "Ocultar guía"
     }
   },
   "deviceHints": {
@@ -307,6 +405,183 @@
       "agreeBody": "Lo explicaré de dos formas: (1) análisis fisiológico (Opinión A) y (2) explicación conductual y de estilo de vida (Opinión B). Puedes compararlas y elegir lo que encaje.",
       "secondOpinionLabel": "Segunda opinión",
       "secondOpinionBody": "Una segunda opinión ayuda a ver las mismas señales desde ángulos fisiológicos y adaptativos — como dos especialistas con estilos de pensamiento distintos."
+    }
+  },
+  "deviceEducation": {
+    "whyDevicesMatter": {
+      "title": "Por qué importan los dispositivos conectados",
+      "description": "Una medición aislada es una foto; un dispositivo muestra la dirección. Cuando el sueño, la recuperación, la glucosa y la carga se siguen durante semanas, los pequeños cambios se ven mucho antes de convertirse en molestias, y suele bastar con ajustes suaves."
+    },
+    "realTimeBehavior": {
+      "title": "Cómo se comportan los datos cuando conectas un dispositivo",
+      "description": "Las métricas llegan con la frecuencia que elijas y se comparan con tu propia línea base reciente, no con la media de un desconocido. Lo que ves es la dirección del cambio: mejora, estabilidad o deriva.",
+      "continuousMonitoring": {
+        "title": "Visión continua:",
+        "description": "Entre sincronizaciones no se pierde nada: las lecturas se recogen en segundo plano y se resumen al abrir BioMath Core, así no tienes que anotar nada a mano."
+      }
+    },
+    "dataInfluenceReports": {
+      "title": "Cómo los datos del dispositivo dan forma a tus informes",
+      "description": "Las métricas autorizadas pasan a formar parte del contexto personal de cada informe. En lugar de tablas en bruto recibes la tendencia, lo que probablemente influyó en ella y una lista breve de próximos pasos que puedes aplicar de verdad."
+    },
+    "dataInfluenceAI": {
+      "title": "Cómo llegan los datos del dispositivo a Health Guide",
+      "description": "Health Guide lee las mismas tendencias que ves tú, así que las respuestas reflejan tu sueño, recuperación, actividad y glucosa recientes en lugar de consejos genéricos. Explica; no diagnostica.",
+      "secondOpinion": {
+        "title": "Segunda opinión:",
+        "description": "Las mismas señales admiten dos lecturas: una explicación fisiológica y otra conductual, de estilo de vida. Ver ambas te ayuda a decidir qué encaja en tu semana en vez de aceptar un único veredicto."
+      }
+    },
+    "alertsNudges": {
+      "title": "Avisos y recordatorios suaves",
+      "description": "Las notificaciones son escasas y tranquilas. Te escribimos cuando una tendencia se mantiene varios días, no cuando una sola noche parece rara, y cada mensaje explica qué significa y qué hacer después.",
+      "positiveReinforcement": {
+        "title": "Los avances también cuentan:",
+        "description": "Las mejoras se señalan con la misma claridad que los descensos, porque saber qué funcionó es la forma más rápida de mantenerlo."
+      }
+    },
+    "userSettings": {
+      "title": "Tú eliges con qué frecuencia se leen los datos",
+      "description": "La frecuencia de sincronización la decides tú, dispositivo a dispositivo. Elige el ritmo que encaje con cómo lo llevas puesto; puedes cambiarlo cuando quieras sin perder el historial.",
+      "onlyAtNight": {
+        "title": "Solo de noche",
+        "description": "Ideal para anillos y sistemas de sueño. Los datos se leen una vez al terminar la noche, así el día queda tranquilo."
+      },
+      "onlyInTheMorning": {
+        "title": "Una vez cada mañana",
+        "description": "Un único resumen diario de sueño, recuperación y carga del día anterior. La opción más serena para la mayoría."
+      },
+      "everyFewHours": {
+        "title": "Cada pocas horas",
+        "description": "Útil en bloques de entrenamiento o semanas intensas, cuando la carga y la recuperación cambian dentro del mismo día."
+      },
+      "continuously": {
+        "title": "Casi en tiempo real",
+        "description": "Para sensores de glucosa continua y bandas de recuperación, donde la forma de la curva importa más que un número diario."
+      },
+      "footer": "Elijas lo que elijas, la sincronización se detiene en cuanto desconectas un dispositivo, y los datos anteriores permanecen en tu historial hasta que los borres."
+    },
+    "advancedBehaviorNote": {
+      "title": "Una nota sobre hasta dónde llega esto",
+      "description": "BioMath Core lee lo que informan tus dispositivos y lo explica en contexto. No controla el dispositivo, no sustituye una medición clínica y nunca emite un diagnóstico: úsalo como base para mejores conversaciones con tu profesional sanitario."
+    },
+    "realScenarios": {
+      "title": "Cómo se ve esto en la práctica",
+      "description": "Abajo tienes situaciones cotidianas construidas con datos reales de dispositivos: qué mostraron las cifras, cómo lo explica Health Guide y el tono que usamos. Sirven para ver cómo la orientación se mantiene tranquila, concreta y sin alarmismo."
+    }
+  },
+  "deviceScenarios": {
+    "labels": {
+      "description": "Qué mostraron los datos:",
+      "healthGuide": "Health Guide lo explica",
+      "secondOpinion": "Segunda opinión",
+      "behavior": "Qué hace BioMath Core:"
+    },
+    "categories": {
+      "cgm": "Glucosa",
+      "sleep_hrv": "Sueño y VFC",
+      "activity": "Actividad y carga"
+    },
+    "general": {
+      "title": "Cómo se trata cada escenario",
+      "safeTitle": "Seguro por diseño:",
+      "safeBody": "Nada de esto nombra una enfermedad ni predice un diagnóstico. Las señales se describen como patrones, y cualquier lectura fuera de un rango normal es un motivo para hablar con un profesional, no una conclusión en sí misma.",
+      "trendsTitle": "Tendencias, no puntos sueltos:",
+      "trendsBody": "Una noche inquieta o una lectura alta no cambian nada. Un patrón solo se menciona cuando se mantiene varios días, lo que hace que la orientación sea estable en vez de reactiva.",
+      "termsTitle": "Palabras que usamos",
+      "terms": [
+        "Tendencia",
+        "Patrón",
+        "Dirección del cambio",
+        "Tu rango habitual",
+        "Recuperación",
+        "Carga",
+        "Conviene observarlo",
+        "Conviene comentarlo con un profesional"
+      ],
+      "avoidTitle": "Palabras que nunca usamos",
+      "avoided": [
+        "Diagnóstico",
+        "Enfermedad",
+        "Patología",
+        "Anormal",
+        "Peligroso",
+        "Crítico",
+        "Tratamiento",
+        "Receta",
+        "Cura"
+      ]
+    },
+    "blocks": {
+      "cgm": {
+        "title": "Sensores de glucosa continua",
+        "body": "Un MCG muestra cómo las comidas, el movimiento, el estrés y el sueño moldean tu día. El valor está en la forma de la curva —cuánto sube y con qué rapidez vuelve— y no en un número aislado.",
+        "bullets": [
+          "Compara la curva de cada día con tu propia línea base reciente",
+          "Relaciona subidas y bajadas con comidas, movimiento y sueño",
+          "Espera a que un patrón se repita antes de sugerir nada",
+          "Te remite a un profesional si las lecturas siguen fuera de tu rango habitual"
+        ]
+      },
+      "sleep_hrv": {
+        "title": "Sueño y VFC",
+        "body": "La profundidad del sueño y la variabilidad de la frecuencia cardíaca describen cómo se recupera tu sistema nervioso. Juntas explican por qué una semana normal puede pesar y por qué otra parece ligera.",
+        "bullets": [
+          "Sigue el equilibrio de sueño profundo y REM durante la semana, no una noche",
+          "Lee la VFC frente a tu propia línea base, nunca frente a una media poblacional",
+          "Sugiere días más suaves cuando la recuperación baja varias noches seguidas",
+          "Confirma lo que funciona cuando la recuperación vuelve a subir"
+        ]
+      },
+      "activity": {
+        "title": "Actividad y carga",
+        "body": "Los pasos, los entrenamientos y el esfuerzo solo tienen sentido junto a la recuperación. La misma semana de entrenamiento puede ser buen estímulo o demasiado, según cómo sean tus noches.",
+        "bullets": [
+          "Equilibra la carga de entrenamiento con el sueño y la VFC",
+          "Detecta la acumulación de carga antes de que se convierta en fatiga",
+          "Reconoce una semana bien ajustada y te lo dice",
+          "Mantiene las sugerencias pequeñas: un ajuste cada vez"
+        ]
+      }
+    },
+    "cards": {
+      "glucoseSpike": {
+        "title": "Subida marcada después de comer",
+        "description": "La glucosa subió rápido tras la comida varios días de esta semana y tardó más de lo habitual en volver a bajar.",
+        "response": "Tu curva de la tarde ha subido más rápido que tu propia línea base. Es un patrón que merece entenderse, no una advertencia. Influyen tanto la composición de la comida como lo que viene después: un paseo corto tras comer suele suavizar esta curva. Observemos juntos los próximos días.",
+        "secondOpinion": "Leída en clave conductual, esta misma curva suele seguir a una comida con prisa, una noche corta o una mañana estresante más que al plato en sí. Si has dormido poco esta semana, la respuesta metabólica es esperable: recuperar las noches puede cambiar la curva más que cambiar la comida."
+      },
+      "glucoseStable": {
+        "title": "Una curva más estable",
+        "description": "La glucosa se mantuvo en una banda estrecha casi toda la semana, con subidas suaves tras las comidas y un regreso tranquilo.",
+        "response": "Tu curva ha sido tranquila y previsible: las subidas son moderadas y el retorno es rápido. Sea cual sea tu ritmo últimamente, te sienta bien. Mantener las comidas y el movimiento como están es la forma más sencilla de conservarlo."
+      },
+      "recoveryDown": {
+        "title": "La recuperación tiende a la baja",
+        "description": "La VFC lleva cuatro noches por debajo de tu rango habitual y el sueño profundo se ha acortado, aunque el tiempo total en cama no ha cambiado.",
+        "response": "Tu sistema nervioso parece llevar más carga de lo habitual. El tiempo en cama está bien, pero la calidad de la recuperación ha bajado. Es una buena semana para entrenar más suave, cerrar el día antes y reducir la cafeína tardía. Si se mantiene más de una o dos semanas, conviene comentarlo con un profesional.",
+        "secondOpinion": "Desde un ángulo conductual, este patrón suele seguir a la vida más que a la fisiología: una etapa exigente en el trabajo, noches más largas o viajes. Si algo de eso encaja con tu semana, toma los números como una señal para proteger tus tardes unos días, no como un indicio de que algo va mal."
+      },
+      "recoveryUp": {
+        "title": "La recuperación vuelve a subir",
+        "description": "La VFC ha regresado a tu rango habitual y el sueño profundo se ha alargado en las últimas noches.",
+        "response": "La recuperación vuelve a donde suele estar, y el cambio se ha mantenido varias noches, así que es real y no ruido. Lo que hayas cambiado últimamente funciona: mantener la misma hora de acostarte otra semana es la manera más fácil de fijarlo."
+      },
+      "overload": {
+        "title": "La carga va por delante de la recuperación",
+        "description": "El volumen de entrenamiento subió con fuerza esta semana mientras el sueño se mantuvo igual y las puntuaciones de recuperación bajaron cada día.",
+        "response": "Has añadido carga más rápido de lo que tu recuperación ha podido seguir. Nada de esto es alarmante: es simplemente el punto en el que más esfuerzo deja de rendir. Una sesión más suave o un día extra de descanso esta semana suele reequilibrarlo."
+      },
+      "balanced": {
+        "title": "Carga y recuperación equilibradas",
+        "description": "La actividad se mantuvo constante durante la semana y las puntuaciones de recuperación se sostuvieron a la par.",
+        "response": "Tu carga y tu recuperación se mueven juntas, que es justo el aspecto de una semana sostenible. No hay nada que ajustar: es una buena referencia para recordar cuando planifiques el siguiente bloque."
+      },
+      "fatigue": {
+        "title": "Cansancio silencioso y poco habitual",
+        "description": "La actividad bajó de forma notable varios días, la frecuencia cardíaca en reposo está algo más alta de lo normal y el sueño ha sido más largo sin resultar reparador.",
+        "response": "Tu cuerpo pide una etapa más lenta: menos actividad con una frecuencia cardíaca en reposo más alta suele significar que la recuperación sigue en marcha. Dale unos días suaves y observa si se asienta. Si el cansancio dura más de un par de semanas, conviene comentarlo con un profesional."
+      }
     }
   }
 }

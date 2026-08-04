@@ -24,7 +24,7 @@ export default function PlaceholderSection({
 
   return (
     <div>
-      {onBack && <BackButton onClick={onBack} />}
+      {onBack && <BackButton onClick={onBack} variant="link" />}
       <div className="mb-8">
         <div className="flex items-center space-x-3 mb-2">
           <Icon className="h-8 w-8 text-orange-500" />

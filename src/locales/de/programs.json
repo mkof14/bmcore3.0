@@ -1,7 +1,23 @@
 {
   "programs": {
+    "page": {
+      "label": "Refer",
+      "title": "Zwei Programme, um BioMath Core zu teilen",
+      "body": "Laden Sie Freunde ein und verdienen Sie Guthaben — oder bewerben Sie sich als Botschafter für erweiterte Belohnungen. Jedes Programm hat eigene Regeln und Vorteile.",
+      "navAria": "Refer-Programme",
+      "inviteShort": "Einladen",
+      "ambassadorShort": "Botschafter",
+      "inviteCardTitle": "Freund einladen",
+      "inviteCardBody": "Teilen Sie Ihren Code. Freunde erhalten einen Rabatt; Sie verdienen Guthaben bei jeder bestätigten Anmeldung.",
+      "ambassadorCardTitle": "Botschafterprogramm",
+      "ambassadorCardBody": "Für aktive Teiler und Community-Leads — erweiterte Belohnungen, Tools und vorrangiger Support.",
+      "inviteCta": "Einladungsprogramm öffnen",
+      "ambassadorCta": "Botschafterprogramm öffnen",
+      "separator": "Und getrennt davon",
+      "programBadge": "Programm {{n}}"
+    },
     "referral": {
-      "label": "Empfehlungsprogramm",
+      "label": "Freund einladen",
       "heroTitle": "Gesundheit teilen, Prämien erhalten",
       "heroSubtitle": "Laden Sie Freunde zu BioMath Core ein und erhalten Sie Guthaben für jede erfolgreiche Empfehlung.",
       "statsLabel": "Ihre Statistik",
@@ -11,9 +27,18 @@
       "howLabel": "So funktioniert es",
       "howTitle": "Drei einfache Schritte",
       "steps": {
-        "share": { "title": "Teilen Sie Ihren persönlichen Code", "body": "Senden Sie ihn per E-Mail oder über soziale Netzwerke an Freunde." },
-        "discount": { "title": "Ihr Freund erhält 5 $ Rabatt", "body": "Wird bei der Registrierung sofort angewendet." },
-        "credit": { "title": "Sie erhalten 10 $ Guthaben", "body": "Wird direkt nach bestätigter Registrierung hinzugefügt." }
+        "share": {
+          "title": "Teilen Sie Ihren persönlichen Code",
+          "body": "Senden Sie ihn per E-Mail oder über soziale Netzwerke an Freunde."
+        },
+        "discount": {
+          "title": "Ihr Freund erhält 5 $ Rabatt",
+          "body": "Wird bei der Registrierung sofort angewendet."
+        },
+        "credit": {
+          "title": "Sie erhalten 10 $ Guthaben",
+          "body": "Wird direkt nach bestätigter Registrierung hinzugefügt."
+        }
       },
       "rewardTitle": "Details zur Prämie",
       "perReferral": "Sie erhalten pro Empfehlung",
@@ -89,12 +114,30 @@
       "benefitsLabel": "Vorteile",
       "benefitsTitle": "Vorteile für Botschafter",
       "benefits": {
-        "enhanced": { "title": "Erhöhte Prämien", "body": "Doppelter Standardsatz für Empfehlungen mit steigenden Stufen." },
-        "dashboard": { "title": "Eigenes Dashboard", "body": "Verfolgen Sie Ihre Kohorte, Gesamtprämien und Botschafterstufe." },
-        "materials": { "title": "Co-gebrandete Unterlagen", "body": "Professionelle Social-Media-Assets und Sharing-Toolkit." },
-        "support": { "title": "Vorrangiger Support", "body": "Direkter Zugang zum BioMath-Core-Team bei Fragen." },
-        "features": { "title": "Funktionen im Voraus", "body": "Beta-Tests und Vorabzugang zu neuen Möglichkeiten." },
-        "revenue": { "title": "Umsatzbeteiligung", "body": "Zugang zu weiterführenden Partnerschaftsmodellen." }
+        "enhanced": {
+          "title": "Erhöhte Prämien",
+          "body": "Doppelter Standardsatz für Empfehlungen mit steigenden Stufen."
+        },
+        "dashboard": {
+          "title": "Eigenes Dashboard",
+          "body": "Verfolgen Sie Ihre Kohorte, Gesamtprämien und Botschafterstufe."
+        },
+        "materials": {
+          "title": "Co-gebrandete Unterlagen",
+          "body": "Professionelle Social-Media-Assets und Sharing-Toolkit."
+        },
+        "support": {
+          "title": "Vorrangiger Support",
+          "body": "Direkter Zugang zum BioMath-Core-Team bei Fragen."
+        },
+        "features": {
+          "title": "Funktionen im Voraus",
+          "body": "Beta-Tests und Vorabzugang zu neuen Möglichkeiten."
+        },
+        "revenue": {
+          "title": "Umsatzbeteiligung",
+          "body": "Zugang zu weiterführenden Partnerschaftsmodellen."
+        }
       },
       "guidelinesLabel": "Richtlinien",
       "guidelinesTitle": "Aufgaben als Botschafter",
@@ -133,7 +176,7 @@
       },
       "footerQuestion": "Haben Sie schon mehr als 10 Empfehlungen?",
       "footerPrefix": "Prüfen Sie Ihren",
-      "footerLink": "Mitgliederbereich",
+      "footerLink": "Cabinet",
       "footerSuffix": "auf die automatische Aufstiegsberechtigung."
     },
     "careers": {
@@ -143,9 +186,18 @@
       "whyLabel": "Warum wir",
       "whyTitle": "Warum BioMath Core?",
       "why": {
-        "innovation": { "title": "Von Innovation getrieben", "body": "Arbeiten Sie an Biomathematik und KI mit echter Wirkung auf die Gesundheit." },
-        "impact": { "title": "Auf Wirkung ausgerichtet", "body": "Helfen Sie Menschen, ihre Gesundheit durch präventives Wohlbefinden zu verbessern." },
-        "growth": { "title": "Auf Wachstum ausgerichtet", "body": "Kontinuierliches Lernen und Entwicklung in einem wissenschaftsorientierten Team." }
+        "innovation": {
+          "title": "Von Innovation getrieben",
+          "body": "Arbeiten Sie an Biomathematik und KI mit echter Wirkung auf die Gesundheit."
+        },
+        "impact": {
+          "title": "Auf Wirkung ausgerichtet",
+          "body": "Helfen Sie Menschen, ihre Gesundheit durch präventives Wohlbefinden zu verbessern."
+        },
+        "growth": {
+          "title": "Auf Wachstum ausgerichtet",
+          "body": "Kontinuierliches Lernen und Entwicklung in einem wissenschaftsorientierten Team."
+        }
       },
       "openLabel": "Offene Stellen",
       "openTitle": "Aktuelle Stellenangebote",

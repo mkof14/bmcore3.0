@@ -1,15 +1,15 @@
 {
   "devicesPage": {
     "badge": "可穿戴与传感器",
-    "title": "我的设备",
+    "title": "已连接设备",
     "subtitle": "连接手表、戒指、血糖传感器和家用健康设备，让 BioMath Core 读取趋势并用通俗语言解释。",
     "connectedTitle": "已连接设备",
     "connectTitle": "连接品牌",
-    "catalogTitle": "现代设备指南",
-    "catalogIntro": "当下常见的设备，以及各类别通常提供的信号。按目标选购后，在下方连接支持的品牌。",
+    "catalogTitle": "我们支持的全部设备",
+    "catalogIntro": "所有可连接的设备都列在这里，不会藏在筛选后面。每张卡片写明该设备通常提供的信号，方便你按目标挑选，然后在下方连接支持的品牌。",
     "signalsTitle": "关键信号",
     "signalsIntro": "设备连接后，BioMath Core 最常使用的能力。",
-    "emptyBrands": "本次会话无法使用实时品牌连接。你仍可浏览上方指南，登录后在会员区再连接。",
+    "emptyBrands": "先浏览上方设备指南，登录后即可在工作台连接。",
     "learnMore": "了解更多",
     "hideGuide": "隐藏指南",
     "helpChoosing": "选型帮助",
@@ -161,64 +161,162 @@
     "items": {
       "apple_watch": {
         "name": "Apple Watch",
-        "blurb": "广泛日常覆盖：心率、HRV、睡眠、SpO₂、ECG 与运动。"
+        "blurb": "广泛日常覆盖：心率、HRV、睡眠、SpO₂、ECG 与运动。",
+        "connect": "佩戴 Apple Watch 并打开 iPhone 上的健康应用。在 BioMath Core 中选择 Apple Watch 并授权共享指标。",
+        "syncs": "心率、HRV、睡眠阶段、SpO₂、ECG（若可用）、锻炼与活动负荷。",
+        "tip": "夜间佩戴可获得更完整的睡眠与晨间恢复信息。"
       },
       "samsung_galaxy_watch": {
         "name": "Samsung Galaxy Watch",
-        "blurb": "手腕指标；部分机型在可用地区支持无袖带血压。"
+        "blurb": "手腕指标；部分机型在可用地区支持无袖带血压。",
+        "connect": "将 Galaxy Watch 与 Samsung Health 配对。在 BioMath Core 中授权要共享的指标。",
+        "syncs": "心率、HRV、睡眠、SpO₂、活动、ECG，以及支持机型上的血压。",
+        "tip": "使用无袖带血压前，请完成 Samsung Health 校准。"
       },
       "garmin": {
         "name": "Garmin",
-        "blurb": "适合成耐力与结构化运动的训练负荷、恢复、睡眠与 HRV。"
+        "blurb": "适合成耐力与结构化运动的训练负荷、恢复、睡眠与 HRV。",
+        "connect": "将 Garmin 与 Garmin Connect 同步。在 BioMath Core 中授权训练、恢复与睡眠。",
+        "syncs": "心率、HRV、睡眠、活动、训练负荷、恢复与压力。",
+        "tip": "运动后打开 Garmin Connect 以接收最新文件。"
       },
       "google_pixel_watch": {
         "name": "Google Pixel Watch",
-        "blurb": "基于 Fitbit 的睡眠与活动，形态紧凑。"
+        "blurb": "基于 Fitbit 的睡眠与活动，形态紧凑。",
+        "connect": "保持 Fitbit / Google Fit 同步。在 BioMath Core 中授权 Pixel Watch 的 Fitbit 指标。",
+        "syncs": "心率、睡眠、活动、SpO₂ 与日常活动模式。",
+        "tip": "睡前充电，或保持夜间佩戴习惯以便周对比。"
       },
       "oura": {
         "name": "Oura Ring",
-        "blurb": "戒指提供的睡眠分期、准备度、体温与 HRV。"
+        "blurb": "戒指提供的睡眠分期、准备度、体温与 HRV。",
+        "connect": "佩戴 Oura 戒指并打开 Oura 应用。在 BioMath Core 中授权睡眠、准备度与恢复。",
+        "syncs": "睡眠阶段、HRV、静息心率、体温趋势、准备度与活动。",
+        "tip": "夜间贴合佩戴可提升体温与 HRV 质量。"
       },
       "ultrahuman": {
         "name": "Ultrahuman Ring",
-        "blurb": "轻量戒指，关注睡眠、恢复与偏代谢的日常信号。"
+        "blurb": "轻量戒指，关注睡眠、恢复与偏代谢的日常信号。",
+        "connect": "在配套应用中配对 Ultrahuman Ring。在 BioMath Core 中授权睡眠与恢复信号。",
+        "syncs": "睡眠、HRV、心率、体温与日常恢复评分。",
+        "tip": "连续佩戴数日，让恢复基线稳定。"
       },
       "whoop": {
         "name": "WHOOP",
-        "blurb": "无传统屏幕的持续负荷、恢复与睡眠。"
+        "blurb": "无传统屏幕的持续负荷、恢复与睡眠。",
+        "connect": "佩戴 WHOOP 并保持应用同步。在 BioMath Core 中授权负荷、恢复与睡眠。",
+        "syncs": "负荷、恢复、睡眠、HRV、静息心率与活动负荷。",
+        "tip": "训练与夜间保持佩戴，使负荷与恢复对齐。"
       },
       "dexcom_g7": {
         "name": "Dexcom G7",
-        "blurb": "高频更新的连续血糖，利于进餐与能量模式洞察。"
+        "blurb": "高频更新的连续血糖，利于进餐与能量模式洞察。",
+        "connect": "完成 Dexcom 设置并等待传感器预热。在 BioMath Core 中授权连续血糖。",
+        "syncs": "连续血糖曲线与教育性的目标范围内时间趋势。",
+        "tip": "记录进餐时间，便于解读波动。"
       },
       "freestyle_libre": {
         "name": "FreeStyle Libre",
-        "blurb": "闪扫/连续血糖感应，用于日常代谢觉察。"
+        "blurb": "闪扫/连续血糖感应，用于日常代谢觉察。",
+        "connect": "在 LibreLink 中激活 FreeStyle Libre 传感器。在 BioMath Core 中授权 Libre 共享。",
+        "syncs": "闪测或连续血糖读数，用于日常代谢觉察。",
+        "tip": "按型号要求扫描或让手机保持在附近。"
       },
       "omron": {
         "name": "Omron",
-        "blurb": "广泛使用的家用验证血压袖带。"
+        "blurb": "广泛使用的家用验证血压袖带。",
+        "connect": "将欧姆龙袖带与 Omron Connect 配对。在 BioMath Core 中授权血压读数。",
+        "syncs": "家庭测量的收缩压、舒张压与脉搏。",
+        "tip": "在固定时间、坐姿静息下测量，趋势更清晰。"
       },
       "withings_bpm": {
         "name": "Withings BPM",
-        "blurb": "可干净同步到健康历史的互联袖带读数。"
+        "blurb": "可干净同步到健康历史的互联袖带读数。",
+        "connect": "在 Health Mate 中连接 Withings BPM。在 BioMath Core 中授权血压数据。",
+        "syncs": "经验证的袖带血压与相关脉搏。",
+        "tip": "每次使用同一手臂与同一姿势。"
       },
       "withings_body": {
         "name": "Withings Body+",
-        "blurb": "用于体重与体成分趋势的智能秤。"
+        "blurb": "用于体重与体成分趋势的智能秤。",
+        "connect": "站上已在 Health Mate 关联的 Withings 体脂秤。在 BioMath Core 中授权体重与体成分。",
+        "syncs": "体重、BMI 与体成分估算。",
+        "tip": "尽量在相近时间测量，最好是早晨。"
       },
       "eight_sleep": {
         "name": "Eight Sleep",
-        "blurb": "追踪睡眠分期与夜间生命体征的床系统。"
+        "blurb": "追踪睡眠分期与夜间生命体征的床系统。",
+        "connect": "在 Eight Sleep 应用中保持 Pod 在线。在 BioMath Core 中授权睡眠与夜间生命体征。",
+        "syncs": "睡眠阶段、夜间心率、HRV 与床温信号。",
+        "tip": "夜间保持罩垫供电与连接，以便早晨同步。"
       },
       "fitbit": {
         "name": "Fitbit",
-        "blurb": "易上手的睡眠、心率、活动与压力追踪。"
+        "blurb": "易上手的睡眠、心率、活动与压力追踪。",
+        "connect": "将 Fitbit 与应用同步。在 BioMath Core 中授权睡眠、心率与活动。",
+        "syncs": "心率、HRV、睡眠、活动、压力，以及支持机型上的 SpO₂。",
+        "tip": "在 Fitbit 中启用夜间睡眠追踪。"
       },
       "polar": {
         "name": "Polar",
-        "blurb": "运动级心率、训练负荷与恢复指标。"
+        "blurb": "运动级心率、训练负荷与恢复指标。",
+        "connect": "将 Polar 与 Polar Flow 配对。在 BioMath Core 中授权心率、训练与恢复。",
+        "syncs": "心率、HRV、睡眠、活动、训练负荷与恢复。",
+        "tip": "训练后同步 Polar Flow，再查看晨间指引。"
       }
+    },
+    "seo": {
+      "title": "已连接设备 — 可穿戴与传感器 | BioMath Core",
+      "description": "连接手表、戒指、血糖传感器、血压计和智能体脂秤。BioMath Core 读取趋势，并用通俗语言为报告与 Health Guide 作出解释。"
+    },
+    "signalsLabel": "信号",
+    "catalogLabel": "目录",
+    "connectedLabel": "你的设备",
+    "connectLabel": "连接",
+    "filterAll": "全部设备（{{count}}）",
+    "hero": {
+      "ctaCatalog": "浏览全部设备",
+      "ctaConnect": "连接设备",
+      "ctaMember": "打开工作台"
+    },
+    "live": {
+      "label": "流动的信号",
+      "title": "你的身体整天都在安静地发送数据",
+      "body": "BioMath Core 关注 {{categories}} 个类别、{{devices}} 款可连接设备，把趋势转化为平静实用的建议，用于报告与 Health Guide。",
+      "chipSleep": "睡眠阶段",
+      "chipGlucose": "血糖曲线",
+      "chipHrv": "HRV 恢复"
+    },
+    "flow": {
+      "label": "连接如何进行",
+      "title": "授权、同步、理解",
+      "body": "你只授权指标访问。趋势进入报告与 Health Guide 的个人背景信息——这是教育性指引，不是诊断。",
+      "steps": {
+        "authorize": {
+          "title": "授权指标",
+          "body": "选择厂商并确认可共享哪些健康指标。我们从不接收设备的账号或密码，你也可以随时收回授权。"
+        },
+        "sync": {
+          "title": "按你的节奏同步",
+          "body": "每天一次、每天数次，或在设备支持时接近实时。同步在后台安静运行，节奏随时可改。"
+        },
+        "guide": {
+          "title": "指引与报告",
+          "body": "趋势会出现在报告中，并为 Health Guide 提供背景，从而给出平静实用的建议。全部内容保持教育性质，绝不是诊断。"
+        }
+      }
+    },
+    "cardStatus": {
+      "available": "可连接",
+      "connected": "已连接",
+      "notConnected": "未连接"
+    },
+    "card": {
+      "howToConnect": "如何连接",
+      "whatSyncs": "同步内容",
+      "tip": "提示",
+      "showGuide": "连接指南",
+      "hideGuide": "隐藏指南"
     }
   },
   "deviceHints": {
@@ -307,6 +405,183 @@
       "agreeBody": "我将用两种方式说明：(1) 生理分析（意见 A）与 (2) 行为与生活方式解释（意见 B）。你可以比较并选择合适的。",
       "secondOpinionLabel": "第二意见",
       "secondOpinionBody": "第二意见帮助从生理与适应角度看待同一信号——像两位思维风格不同的专家。"
+    }
+  },
+  "deviceEducation": {
+    "whyDevicesMatter": {
+      "title": "为什么连接设备值得",
+      "description": "一次测量只是一张快照，而设备显示的是方向。当睡眠、恢复、血糖和负荷被连续观察数周，细小的变化会在变成不适之前很久就显现出来，通常只需温和的调整即可。"
+    },
+    "realTimeBehavior": {
+      "title": "设备连接后数据如何呈现",
+      "description": "指标按你选定的频率到达，并与你自己近期的基线比较，而不是与陌生人的平均值比较。你看到的是变化的方向：改善、持平，还是缓慢偏移。",
+      "continuousMonitoring": {
+        "title": "连续视角：",
+        "description": "两次同步之间不会丢失任何内容——数据在后台收集，打开 BioMath Core 时汇总呈现，你无需手动记录。"
+      }
+    },
+    "dataInfluenceReports": {
+      "title": "设备数据如何影响你的报告",
+      "description": "已授权的指标会成为每份报告背后个人背景的一部分。你得到的不是原始表格，而是趋势、可能的影响因素，以及一份真正可执行的简短后续步骤清单。"
+    },
+    "dataInfluenceAI": {
+      "title": "设备数据如何进入 Health Guide",
+      "description": "Health Guide 读取的是你看到的同一批趋势，因此回应会反映你近期的睡眠、恢复、活动与血糖模式，而不是泛泛的建议。它负责解释，不作诊断。",
+      "secondOpinion": {
+        "title": "第二意见：",
+        "description": "同样的信号可以有两种读法：生理层面的解释，以及行为与生活方式层面的解释。看到两者，你可以选择更适合这一周的做法，而不是接受单一结论。"
+      }
+    },
+    "alertsNudges": {
+      "title": "提醒与温和提示",
+      "description": "通知保持稀少而平静。只有当某个趋势持续数天时我们才会提醒，而不是因为某一晚看起来异常；每条消息都会说明含义和下一步。",
+      "positiveReinforcement": {
+        "title": "进步同样重要：",
+        "description": "改善会与下降一样被清楚指出，因为知道什么起了作用，是把它坚持下去的最快方式。"
+      }
+    },
+    "userSettings": {
+      "title": "读取数据的频率由你决定",
+      "description": "同步频率可按设备分别设置。选择与你佩戴习惯相符的节奏——随时可改，且不会丢失历史。",
+      "onlyAtNight": {
+        "title": "仅夜间",
+        "description": "适合戒指和睡眠系统。一夜结束后读取一次，白天保持安静。"
+      },
+      "onlyInTheMorning": {
+        "title": "每天早晨一次",
+        "description": "每天一次汇总睡眠、恢复与前一天的负荷。对大多数人来说最平静的选择。"
+      },
+      "everyFewHours": {
+        "title": "每隔几小时",
+        "description": "适合训练周期或忙碌的一周，此时负荷与恢复会在一天之内变化。"
+      },
+      "continuously": {
+        "title": "接近实时",
+        "description": "适合连续血糖传感器和恢复手环，此时曲线的形状比每日一个数字更有意义。"
+      },
+      "footer": "无论选择哪种方式，一旦断开设备，同步立即停止；此前的数据会保留在历史记录中，直到你删除为止。"
+    },
+    "advancedBehaviorNote": {
+      "title": "关于边界的说明",
+      "description": "BioMath Core 读取设备上报的内容，并在背景中加以解释。它不会控制你的设备，不能替代临床测量，也绝不给出诊断——请把它当作与医生更好交流的参考背景。"
+    },
+    "realScenarios": {
+      "title": "实际中是什么样子",
+      "description": "以下是基于真实设备数据的日常情境：数字显示了什么、Health Guide 如何解释，以及我们使用的语气。你可以从中看到指引如何保持平静、具体且不制造恐慌。"
+    }
+  },
+  "deviceScenarios": {
+    "labels": {
+      "description": "数据显示了什么：",
+      "healthGuide": "Health Guide 的解释",
+      "secondOpinion": "第二意见",
+      "behavior": "BioMath Core 会做什么："
+    },
+    "categories": {
+      "cgm": "血糖",
+      "sleep_hrv": "睡眠与 HRV",
+      "activity": "活动与负荷"
+    },
+    "general": {
+      "title": "每种情境的处理方式",
+      "safeTitle": "设计上就安全：",
+      "safeBody": "这里不会点名任何疾病，也不会预测诊断。信号以模式的方式描述；任何超出常规范围的读数都是与医生沟通的理由，而不是结论本身。",
+      "trendsTitle": "看趋势，而非单点：",
+      "trendsBody": "一个不安稳的夜晚或一次偏高的读数不会改变什么。只有当模式持续数天才会被提及，这样指引才稳定，而不是被动反应。",
+      "termsTitle": "我们使用的词",
+      "terms": [
+        "趋势",
+        "模式",
+        "变化方向",
+        "你的常规区间",
+        "恢复",
+        "负荷",
+        "值得留意",
+        "值得与医生讨论"
+      ],
+      "avoidTitle": "我们从不使用的词",
+      "avoided": [
+        "诊断",
+        "疾病",
+        "病理",
+        "异常",
+        "危险",
+        "危重",
+        "治疗",
+        "处方",
+        "治愈"
+      ]
+    },
+    "blocks": {
+      "cgm": {
+        "title": "连续血糖传感器",
+        "body": "CGM 展示饮食、运动、压力和睡眠如何塑造你的一天。价值在于曲线的形状——升到多高、多快回落——而不是某一个数字。",
+        "bullets": [
+          "把每天的曲线与你自己近期的基线比较",
+          "把升高与回落同饮食、运动和睡眠联系起来",
+          "等模式重复出现后才提出建议",
+          "若读数持续超出你的常规区间，会建议你咨询医生"
+        ]
+      },
+      "sleep_hrv": {
+        "title": "睡眠与 HRV",
+        "body": "睡眠深度与心率变异性共同描述神经系统的恢复情况。两者结合可以解释为什么平常的一周会觉得沉重，而另一周却轻松。",
+        "bullets": [
+          "按周观察深睡与 REM 的平衡，而不是看单独一晚",
+          "将 HRV 与你自己的基线比较，绝不与人群平均值比较",
+          "当恢复连续数晚下降时，建议安排更轻松的日子",
+          "当恢复回升时，确认哪些做法有效"
+        ]
+      },
+      "activity": {
+        "title": "活动与负荷",
+        "body": "步数、训练与消耗只有放在恢复旁边才有意义。同样的训练周，取决于你的夜晚状况，可能是良好刺激，也可能过量。",
+        "bullets": [
+          "在睡眠与 HRV 之间平衡训练负荷",
+          "在负荷累积转为疲劳之前先行察觉",
+          "识别出安排得当的一周并明确告知",
+          "建议保持小幅度：一次只做一个调整"
+        ]
+      }
+    },
+    "cards": {
+      "glucoseSpike": {
+        "title": "餐后明显升高",
+        "description": "本周有几天午餐后血糖上升很快，回落所需的时间也比平时更长。",
+        "response": "你下午的曲线比自己的基线上升得更快。这是一个值得理解的模式，而不是警告。餐食构成与餐后行为都会影响：饭后短距离散步常常能让这条曲线变得平缓。我们一起观察接下来几天。",
+        "secondOpinion": "从行为角度看，同样的曲线往往跟随匆忙的一餐、短暂的睡眠或紧张的早晨，而不只是食物本身。如果这周睡得较浅，这种代谢反应是可以预期的——把夜晚恢复好，可能比改变盘子里的内容更能改变曲线。"
+      },
+      "glucoseStable": {
+        "title": "更平稳的曲线",
+        "description": "本周大部分时间血糖保持在较窄区间内，餐后升幅温和，回落顺畅。",
+        "response": "你的曲线平静且可预期——升幅温和，回落迅速。无论你最近的节奏是什么，它都适合你。保持现有的饮食与活动方式，是维持这一状态最简单的办法。"
+      },
+      "recoveryDown": {
+        "title": "恢复呈下降趋势",
+        "description": "HRV 已连续四晚低于你的常规区间，深睡时间缩短，但卧床总时长没有变化。",
+        "response": "你的神经系统似乎承担得比平时更多。卧床时间没问题，但恢复质量下降了。这一周适合减轻训练强度、更早进入放松状态，并减少晚间咖啡因。如果持续超过一两周，值得向医生提及。",
+        "secondOpinion": "从行为角度看，这种模式往往跟随生活而非生理——工作紧张阶段、更晚的夜晚，或是出差旅行。如果其中有符合你这一周的情况，请把这些数字当作接下来几天保护晚间时间的信号，而不是身体出问题的迹象。"
+      },
+      "recoveryUp": {
+        "title": "恢复正在回升",
+        "description": "HRV 已回到你的常规区间，最近几晚深睡时间也在延长。",
+        "response": "恢复正在回到它通常所在的位置，而且这一变化已经持续数晚，说明是真实的转变而非波动。你最近做出的改变正在起作用——再保持同样的入睡时间一周，是让它稳固下来最容易的方式。"
+      },
+      "overload": {
+        "title": "负荷超过了恢复",
+        "description": "本周训练量明显上升，而睡眠保持不变，恢复评分逐日走低。",
+        "response": "你增加负荷的速度快过了恢复跟上的速度。这里没有什么令人担忧的地方——只是到了继续加码不再带来回报的位置。本周安排一次更轻松的训练或增加一天休息，通常就能让平衡回来。"
+      },
+      "balanced": {
+        "title": "负荷与恢复相匹配",
+        "description": "整周活动量保持稳定，恢复评分也同步保持平稳。",
+        "response": "你的负荷与恢复在同步移动，这正是可持续一周该有的样子。没有需要调整的地方——把它记住，作为规划下一阶段的良好基准。"
+      },
+      "fatigue": {
+        "title": "安静而不寻常的疲惫",
+        "description": "连续几天活动量明显下降，静息心率略高于平时，睡眠时间更长却没有休息够的感觉。",
+        "response": "身体在要求一段更慢的时间——活动减少同时静息心率升高，通常意味着恢复仍在进行中。给自己几天平缓的日子，看看是否稳定下来。如果疲惫持续超过两周左右，值得与医生讨论。"
+      }
     }
   }
 }

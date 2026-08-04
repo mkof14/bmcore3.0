@@ -188,7 +188,7 @@ export function generateOrganizationSchema(): Organization {
     '@type': 'MedicalOrganization',
     name: 'BioMath Core',
     description:
-      'BioMath Core builds a biomathematical Human Data Model — a living digital twin of your health — and delivers dual-model guidance through Health Guide.',
+      'BioMath Core builds a biomathematical Human Data Model — a living model of your health — and delivers dual-model guidance through Health Guide.',
     url: 'https://biomathcore.com',
     logo: 'https://biomathcore.com/biomathcore_emblem_1024.png',
     sameAs: getSocialSameAs(),

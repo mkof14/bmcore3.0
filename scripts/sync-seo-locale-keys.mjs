@@ -14,17 +14,17 @@ const langs = ['es', 'fr', 'de', 'ja', 'he', 'zh', 'ar', 'uk', 'ru'];
 const basePatches = {
   es: {
     'footer.tagline':
-      'Modelo de Datos Humanos biomatemático — un gemelo digital vivo de tu salud.',
+      'Modelo de Datos Humanos biomatemático — un modelo vivo de tu salud.',
     'footer.appsStatus':
       'Aún no hay apps nativas en App Store ni Google Play. Usa BioMath Core en el navegador o instala la app web (PWA).',
     'healthGuide.tagline': 'Orientación de doble modelo sobre tu Modelo de Datos Humanos',
     'home.seoTitle': 'Modelo de Datos Humanos biomatemático',
     'home.seoDescription':
-      'BioMath Core construye un Modelo de Datos Humanos vivo — un gemelo digital biomatemático de tu salud — y te orienta con el análisis dual de Health Guide.',
+      'BioMath Core construye un Modelo de Datos Humanos vivo — un modelo biomatemático de tu salud — y te orienta con el análisis dual de Health Guide.',
     'home.heroSubtitle':
-      'Un gemelo digital biomatemático que crece con cada evento de salud verificado — no un feed genérico de insights.',
+      'Un modelo biomatemático que crece con cada evento de salud verificado — no un feed genérico de insights.',
     'home.modelSubtitle':
-      'Un gemelo digital biomatemático construido a partir de información de salud verificada.',
+      'Un modelo biomatemático construido a partir de información de salud verificada.',
     'home.whatSubtitle':
       'Tu Modelo de Datos Humanos revela conexiones que permanecen ocultas cuando laboratorios, wearables e historial siguen separados.',
     'home.timelineSubtitle': 'Tu historial de salud, entendido en contexto biomatemático.',
@@ -45,17 +45,17 @@ const basePatches = {
   },
   fr: {
     'footer.tagline':
-      'Modèle de données humaines biomathématique — un jumeau numérique vivant de votre santé.',
+      'Modèle de données humaines biomathématique — un modèle vivant de votre santé.',
     'footer.appsStatus':
       'Pas encore d’applications natives sur l’App Store ni Google Play. Utilisez BioMath Core dans le navigateur ou installez l’app web (PWA).',
     'healthGuide.tagline': 'Conseils à double modèle sur votre Modèle de données humaines',
     'home.seoTitle': 'Modèle de données humaines biomathématique',
     'home.seoDescription':
-      'BioMath Core construit un Modèle de données humaines vivant — un jumeau numérique biomathématique de votre santé — et vous guide avec l’analyse duale de Health Guide.',
+      'BioMath Core construit un Modèle de données humaines vivant — un modèle biomathématique de votre santé — et vous guide avec l’analyse duale de Health Guide.',
     'home.heroSubtitle':
-      'Un jumeau numérique biomathématique qui grandit avec chaque événement de santé vérifié — pas un flux générique d’insights.',
+      'Un modèle biomathématique qui grandit avec chaque événement de santé vérifié — pas un flux générique d’insights.',
     'home.modelSubtitle':
-      'Un jumeau numérique biomathématique construit à partir d’informations de santé vérifiées.',
+      'Un modèle biomathématique construit à partir d’informations de santé vérifiées.',
     'home.whatSubtitle':
       'Votre Modèle de données humaines révèle des liens invisibles lorsque laboratoires, wearables et historique restent séparés.',
     'home.timelineSubtitle': 'Votre historique de santé, compris dans un contexte biomathématique.',
@@ -76,17 +76,17 @@ const basePatches = {
   },
   de: {
     'footer.tagline':
-      'Biomathematisches Human Data Model — ein lebendiger digitaler Zwilling Ihrer Gesundheit.',
+      'Biomathematisches Human Data Model — ein lebendiges Modell Ihrer Gesundheit.',
     'footer.appsStatus':
       'Noch keine nativen Apps im App Store oder bei Google Play. Nutzen Sie BioMath Core im Browser oder installieren Sie die Web-App (PWA).',
     'healthGuide.tagline': 'Doppelmodell-Guidance zu Ihrem Human Data Model',
     'home.seoTitle': 'Biomathematisches Human Data Model',
     'home.seoDescription':
-      'BioMath Core baut ein lebendiges Human Data Model — einen biomathematischen digitalen Zwilling Ihrer Gesundheit — und führt Sie mit der Dualanalyse von Health Guide.',
+      'BioMath Core baut ein lebendiges Human Data Model — ein biomathematisches Modell Ihrer Gesundheit — und führt Sie mit der Dualanalyse von Health Guide.',
     'home.heroSubtitle':
-      'Ein biomathematischer digitaler Zwilling, der mit jedem verifizierten Gesundheitsereignis wächst — kein generischer Insight-Feed.',
+      'Ein biomathematisches Modell, das mit jedem verifizierten Gesundheitsereignis wächst — kein generischer Insight-Feed.',
     'home.modelSubtitle':
-      'Ein biomathematischer digitaler Zwilling aus verifizierten Gesundheitsinformationen.',
+      'Ein biomathematisches Modell aus verifizierten Gesundheitsinformationen.',
     'home.whatSubtitle':
       'Ihr Human Data Model zeigt Zusammenhänge, die verborgen bleiben, wenn Labore, Wearables und Historie getrennt sind.',
     'home.timelineSubtitle': 'Ihre Gesundheitsgeschichte im biomathematischen Kontext.',
@@ -107,16 +107,16 @@ const basePatches = {
   },
   ja: {
     'footer.tagline':
-      '生物数学的なヒューマンデータモデル — あなたの健康の生きたデジタルツイン。',
+      '生物数学的なヒューマンデータモデル — あなたの健康の生きたモデル。',
     'footer.appsStatus':
       'App Store / Google Play のネイティブアプリはまだ公開していません。ブラウザで BioMath Core を使うか、ウェブアプリ（PWA）をインストールしてください。',
     'healthGuide.tagline': 'ヒューマンデータモデルに基づくデュアルモデル・ガイダンス',
     'home.seoTitle': '生物数学的ヒューマンデータモデル',
     'home.seoDescription':
-      'BioMath Core は生きたヒューマンデータモデル — 健康の生物数学的デジタルツイン — を構築し、Health Guide のデュアル分析で導きます。',
+      'BioMath Core は生きたヒューマンデータモデル — 健康の生物数学的モデル — を構築し、Health Guide のデュアル分析で導きます。',
     'home.heroSubtitle':
-      '検証された健康イベントごとに成長する生物数学的デジタルツイン — 汎用的なインサイトフィードではありません。',
-    'home.modelSubtitle': '検証された健康情報から構築される生物数学的デジタルツイン。',
+      '検証された健康イベントごとに成長する生物数学的モデル — 汎用的なインサイトフィードではありません。',
+    'home.modelSubtitle': '検証された健康情報から構築される生物数学的モデル。',
     'home.whatSubtitle':
       '検査・ウェアラブル・履歴が分断されていると見えにくいつながりを、ヒューマンデータモデルが明らかにします。',
     'home.timelineSubtitle': '生物数学的な文脈で理解する健康履歴。',
@@ -137,16 +137,16 @@ const basePatches = {
   },
   he: {
     'footer.tagline':
-      'מודל נתוני אדם ביו־מתמטי — תאום דיגיטלי חי של הבריאות שלך.',
+      'מודל נתוני אדם ביו־מתמטי — מודל חי של הבריאות שלך.',
     'footer.appsStatus':
       'עדיין אין אפליקציות מקוריות ב־App Store או ב־Google Play. השתמשו ב־BioMath Core בדפדפן או התקינו את אפליקציית הווב (PWA).',
     'healthGuide.tagline': 'הכוונה במודל כפול על מודל נתוני האדם שלך',
     'home.seoTitle': 'מודל נתוני אדם ביו־מתמטי',
     'home.seoDescription':
-      'BioMath Core בונה מודל נתוני אדם חי — תאום דיגיטלי ביו־מתמטי של הבריאות שלך — ומנחה באמצעות ניתוח כפול של Health Guide.',
+      'BioMath Core בונה מודל נתוני אדם חי — מודל ביו־מתמטי של הבריאות שלך — ומנחה באמצעות ניתוח כפול של Health Guide.',
     'home.heroSubtitle':
-      'תאום דיגיטלי ביו־מתמטי שגדל עם כל אירוע בריאות מאומת — לא פיד תובנות גנרי.',
-    'home.modelSubtitle': 'תאום דיגיטלי ביו־מתמטי שנבנה ממידע בריאות מאומת.',
+      'מודל ביו־מתמטי שגדל עם כל אירוע בריאות מאומת — לא פיד תובנות גנרי.',
+    'home.modelSubtitle': 'מודל ביו־מתמטי שנבנה ממידע בריאות מאומת.',
     'home.whatSubtitle':
       'מודל נתוני האדם חושף קשרים שנשארים סמויים כאשר מעבדות, לבישים והיסטוריה נשארים נפרדים.',
     'home.timelineSubtitle': 'היסטוריית הבריאות שלך, מובנת בהקשר ביו־מתמטי.',
@@ -166,15 +166,15 @@ const basePatches = {
       'הדרך העיקרית לפגוש את BioMath Core — הכוונה במודל כפול לפני ניווט.',
   },
   zh: {
-    'footer.tagline': '生物数学人体数据模型——您健康的活体数字孪生。',
+    'footer.tagline': '生物数学人体数据模型——您健康的活体模型。',
     'footer.appsStatus':
       '尚未上架 App Store 或 Google Play 原生应用。请在浏览器使用 BioMath Core，或安装网页应用（PWA）。',
     'healthGuide.tagline': '基于人体数据模型的双模型指引',
     'home.seoTitle': '生物数学人体数据模型',
     'home.seoDescription':
-      'BioMath Core 构建活体人体数据模型——健康的生物数学数字孪生——并通过 Health Guide 双分析为您指引。',
-    'home.heroSubtitle': '随每条已验证健康事件成长的生物数学数字孪生——而非泛化的洞察信息流。',
-    'home.modelSubtitle': '基于已验证健康信息构建的生物数学数字孪生。',
+      'BioMath Core 构建活体人体数据模型——健康的生物数学模型——并通过 Health Guide 双分析为您指引。',
+    'home.heroSubtitle': '随每条已验证健康事件成长的生物数学模型——而非泛化的洞察信息流。',
+    'home.modelSubtitle': '基于已验证健康信息构建的生物数学模型。',
     'home.whatSubtitle': '当化验、可穿戴与病史彼此割裂时，人体数据模型揭示难以察觉的关联。',
     'home.timelineSubtitle': '在生物数学语境中理解您的健康史。',
     'home.changesSubtitle': '每一个重要健康事件都会更新您终身的生物数学人体数据模型。',
@@ -189,16 +189,16 @@ const basePatches = {
   },
   ar: {
     'footer.tagline':
-      'نموذج بيانات بشرية بيومرياضية — توأم رقمي حي لصحتك.',
+      'نموذج بيانات بشرية بيومرياضية — نموذج حي لصحتك.',
     'footer.appsStatus':
       'لا تتوفر بعد تطبيقات أصلية على App Store أو Google Play. استخدم BioMath Core في المتصفح أو ثبّت تطبيق الويب (PWA).',
     'healthGuide.tagline': 'إرشاد بنموذجين حول نموذج بياناتك البشرية',
     'home.seoTitle': 'نموذج بيانات بشرية بيومرياضي',
     'home.seoDescription':
-      'يبني BioMath Core نموذج بيانات بشرية حيًا — توأمًا رقميًا بيومرياضيًا لصحتك — ويرشدك بتحليل Health Guide المزدوج.',
+      'يبني BioMath Core نموذج بيانات بشرية حيًا — نموذجًا بيومرياضيًا لصحتك — ويرشدك بتحليل Health Guide المزدوج.',
     'home.heroSubtitle':
-      'توأم رقمي بيومرياضي ينمو مع كل حدث صحي موثّق — وليس بث رؤى عامة.',
-    'home.modelSubtitle': 'توأم رقمي بيومرياضي مبني من معلومات صحية موثّقة.',
+      'نموذج بيومرياضي ينمو مع كل حدث صحي موثّق — وليس بث رؤى عامة.',
+    'home.modelSubtitle': 'نموذج بيومرياضي مبني من معلومات صحية موثّقة.',
     'home.whatSubtitle':
       'يكشف نموذج بياناتك البشرية روابط تبقى مخفية عندما تظل التحاليل والأجهزة القابلة للارتداء والسجل منفصلة.',
     'home.timelineSubtitle': 'تاريخك الصحي، مفهومًا في سياق بيومرياضي.',
@@ -219,17 +219,17 @@ const basePatches = {
   },
   uk: {
     'footer.tagline':
-      'Біоматематична модель людських даних — живий цифровий двійник вашого здоров’я.',
+      'Біоматематична модель людських даних — жива модель вашого здоров’я.',
     'footer.appsStatus':
       'Нативних застосунків у App Store чи Google Play ще немає. Користуйтеся BioMath Core у браузері або встановіть вебзастосунок (PWA).',
     'healthGuide.tagline': 'Подвійне моделювання для вашої моделі людських даних',
     'home.seoTitle': 'Біоматематична модель людських даних',
     'home.seoDescription':
-      'BioMath Core будує живу модель людських даних — біоматематичного цифрового двійника здоров’я — і спрямовує через подвійний аналіз Health Guide.',
+      'BioMath Core будує живу модель людських даних — біоматематичної моделі здоров’я — і спрямовує через подвійний аналіз Health Guide.',
     'home.heroSubtitle':
-      'Біоматематичний цифровий двійник, що зростає з кожною перевіреною подією здоров’я — не загальна стрічка інсайтів.',
+      'Біоматематична модель, що зростає з кожною перевіреною подією здоров’я — не загальна стрічка інсайтів.',
     'home.modelSubtitle':
-      'Біоматематичний цифровий двійник, побудований з перевіреної інформації про здоров’я.',
+      'Біоматематична модель, побудована з перевіреної інформації про здоров’я.',
     'home.whatSubtitle':
       'Ваша модель людських даних розкриває зв’язки, непомітні, коли аналізи, носимі пристрої та історія розділені.',
     'home.timelineSubtitle': 'Історія здоров’я в біоматематичному контексті.',
@@ -250,17 +250,17 @@ const basePatches = {
   },
   ru: {
     'footer.tagline':
-      'Биоматематическая модель человеческих данных — живой цифровой двойник вашего здоровья.',
+      'Биоматематическая модель человеческих данных — живая модель вашего здоровья.',
     'footer.appsStatus':
       'Нативных приложений в App Store и Google Play пока нет. Используйте BioMath Core в браузере или установите веб‑приложение (PWA).',
     'healthGuide.tagline': 'Двухмодельные рекомендации по вашей модели человеческих данных',
     'home.seoTitle': 'Биоматематическая модель человеческих данных',
     'home.seoDescription':
-      'BioMath Core строит живую модель человеческих данных — биоматематического цифрового двойника здоровья — и ведёт вас через двойной анализ Health Guide.',
+      'BioMath Core строит живую модель человеческих данных — биоматематической модели здоровья — и ведёт вас через двойной анализ Health Guide.',
     'home.heroSubtitle':
-      'Биоматематический цифровой двойник, который растёт с каждым проверенным событием здоровья — не лента общих инсайтов.',
+      'Биоматематическая модель, которая растёт с каждым проверенным событием здоровья — не лента общих инсайтов.',
     'home.modelSubtitle':
-      'Биоматематический цифровой двойник на основе проверенной информации о здоровье.',
+      'Биоматематическая модель на основе проверенной информации о здоровье.',
     'home.whatSubtitle':
       'Модель человеческих данных выявляет связи, которые остаются скрытыми, когда анализы, носимые устройства и история разделены.',
     'home.timelineSubtitle': 'История здоровья в биоматематическом контексте.',
@@ -285,7 +285,7 @@ const basePatches = {
 const aboutPack = {
   es: {
     seoDescription:
-      'BioMath Core construye un Modelo de Datos Humanos biomatemático — un gemelo digital vivo de tu salud — con biología computacional y orientación dual de Health Guide. Desarrollado bajo Digital Invest Inc. y moldeado por la visión BioMath Life.',
+      'BioMath Core construye un Modelo de Datos Humanos biomatemático — un modelo vivo de tu salud — con biología computacional y orientación dual de Health Guide. Desarrollado bajo Digital Invest Inc. y moldeado por la visión BioMath Life.',
     'mission.title': 'Inteligencia de bienestar biomatemática de confianza',
     'mission.body':
       'Construimos inteligencia de bienestar práctica en la intersección de la <b>biomatemática</b>, la <b>biología computacional</b> y la <b>IA</b>. BioMath Core ayuda a personas y profesionales a navegar preguntas complejas de salud con un <b>Modelo de Datos Humanos</b> vivo y orientación dual explicable — centrada en prevención, bienestar y resiliencia a largo plazo.',
@@ -323,7 +323,7 @@ const aboutPack = {
   },
   fr: {
     seoDescription:
-      'BioMath Core construit un Modèle de données humaines biomathématique — un jumeau numérique vivant de votre santé — grâce à la biologie computationnelle et aux conseils duals de Health Guide. Développé sous Digital Invest Inc. et façonné par la vision BioMath Life.',
+      'BioMath Core construit un Modèle de données humaines biomathématique — un modèle vivant de votre santé — grâce à la biologie computationnelle et aux conseils duals de Health Guide. Développé sous Digital Invest Inc. et façonné par la vision BioMath Life.',
     'mission.title': 'Intelligence bien-être biomathématique digne de confiance',
     'mission.body':
       'Nous construisons une intelligence bien-être pratique à l’intersection de la <b>biomathématique</b>, de la <b>biologie computationnelle</b> et de l’<b>IA</b>. BioMath Core aide les personnes et les professionnels à naviguer des questions de santé complexes avec un <b>Modèle de données humaines</b> vivant et des conseils duals explicables — axés sur la prévention, le bien-être et la résilience à long terme.',
@@ -362,7 +362,7 @@ const aboutPack = {
   },
   de: {
     seoDescription:
-      'BioMath Core baut ein biomathematisches Human Data Model — einen lebendigen digitalen Zwilling Ihrer Gesundheit — mit Computational Biology und Dual-Guidance von Health Guide. Entwickelt unter Digital Invest Inc. und geprägt von der Vision BioMath Life.',
+      'BioMath Core baut ein biomathematisches Human Data Model — ein lebendiges Modell Ihrer Gesundheit — mit Computational Biology und Dual-Guidance von Health Guide. Entwickelt unter Digital Invest Inc. und geprägt von der Vision BioMath Life.',
     'mission.title': 'Vertrauenswürdige biomathematische Wellness-Intelligenz',
     'mission.body':
       'Wir bauen praktische Wellness-Intelligenz an der Schnittstelle von <b>Biomathematik</b>, <b>Computational Biology</b> und <b>KI</b>. BioMath Core hilft Menschen und Fachkräften, komplexe Gesundheitsfragen mit einem lebendigen <b>Human Data Model</b> und erklärbarer Doppelmodell-Guidance zu navigieren — mit Fokus auf Prävention, Wellness und langfristige Resilienz.',
@@ -401,7 +401,7 @@ const aboutPack = {
   },
   ja: {
     seoDescription:
-      'BioMath Core は生物数学的ヒューマンデータモデル — 健康の生きたデジタルツイン — を、計算生物学と Health Guide のデュアルガイダンスで構築します。Digital Invest Inc. の下で開発され、BioMath Life のビジョンに沿っています。',
+      'BioMath Core は生物数学的ヒューマンデータモデル — 健康の生きたモデル — を、計算生物学と Health Guide のデュアルガイダンスで構築します。Digital Invest Inc. の下で開発され、BioMath Life のビジョンに沿っています。',
     'mission.title': '信頼できる生物数学的ウェルネスインテリジェンス',
     'mission.body':
       '私たちは <b>生物数学</b>、<b>計算生物学</b>、<b>AI</b> の交差点で実践的なウェルネスインテリジェンスを構築します。BioMath Core は、生きた <b>ヒューマンデータモデル</b> と説明可能なデュアルモデル・ガイダンスで、複雑な健康の問いに向き合う人々と専門家を支えます — 予防、ウェルネス、長期的な回復力に焦点を当てます。',
@@ -438,7 +438,7 @@ const aboutPack = {
   },
   he: {
     seoDescription:
-      'BioMath Core בונה מודל נתוני אדם ביו־מתמטי — תאום דיגיטלי חי של הבריאות שלך — באמצעות ביולוגיה חישובית והכוונה כפולה של Health Guide. מפותח תחת Digital Invest Inc. ומעוצב לפי חזון BioMath Life.',
+      'BioMath Core בונה מודל נתוני אדם ביו־מתמטי — מודל חי של הבריאות שלך — באמצעות ביולוגיה חישובית והכוונה כפולה של Health Guide. מפותח תחת Digital Invest Inc. ומעוצב לפי חזון BioMath Life.',
     'mission.title': 'אינטליגנציית בריאות ביו־מתמטית אמינה',
     'mission.body':
       'אנו בונים אינטליגנציית בריאות מעשית במפגש בין <b>ביו־מתמטיקה</b>, <b>ביולוגיה חישובית</b> ו־<b>AI</b>. BioMath Core עוזר לאנשים ולאנשי מקצוע לנווט בשאלות בריאות מורכבות עם <b>מודל נתוני אדם</b> חי והכוונה כפולה שניתן להסביר — עם דגש על מניעה, רווחה וחוסן לטווח ארוך.',
@@ -475,7 +475,7 @@ const aboutPack = {
   },
   zh: {
     seoDescription:
-      'BioMath Core 构建生物数学人体数据模型——健康的活体数字孪生——依托计算生物学与 Health Guide 双模型指引。由 Digital Invest Inc. 开发，并受 BioMath Life 愿景塑造。',
+      'BioMath Core 构建生物数学人体数据模型——健康的活体模型——依托计算生物学与 Health Guide 双模型指引。由 Digital Invest Inc. 开发，并受 BioMath Life 愿景塑造。',
     'mission.title': '可信的生物数学健康智能',
     'mission.body':
       '我们在 <b>生物数学</b>、<b>计算生物学</b> 与 <b>AI</b> 的交汇处构建实用健康智能。BioMath Core 帮助个人与专业人士以活体 <b>人体数据模型</b> 与可解释的双模型指引应对复杂健康问题——聚焦预防、健康与长期韧性。',
@@ -512,7 +512,7 @@ const aboutPack = {
   },
   ar: {
     seoDescription:
-      'يبني BioMath Core نموذج بيانات بشرية بيومرياضيًا — توأمًا رقميًا حيًا لصحتك — عبر الأحياء الحاسوبية وإرشاد Health Guide المزدوج. يُطوَّر تحت Digital Invest Inc. ويتشكّل برؤية BioMath Life.',
+      'يبني BioMath Core نموذج بيانات بشرية بيومرياضيًا — نموذجًا حيًا لصحتك — عبر الأحياء الحاسوبية وإرشاد Health Guide المزدوج. يُطوَّر تحت Digital Invest Inc. ويتشكّل برؤية BioMath Life.',
     'mission.title': 'ذكاء عافية بيومرياضي موثوق',
     'mission.body':
       'نبني ذكاء عافية عمليًا عند تقاطع <b>الرياضيات الحيوية</b> و<b>الأحياء الحاسوبية</b> و<b>الذكاء الاصطناعي</b>. يساعد BioMath Core الأفراد والمتخصصين على التنقل في أسئلة صحية معقدة عبر <b>نموذج بيانات بشرية</b> حي وإرشاد مزدوج قابل للتفسير — مع التركيز على الوقاية والعافية والمرونة طويلة الأمد.',
@@ -549,7 +549,7 @@ const aboutPack = {
   },
   uk: {
     seoDescription:
-      'BioMath Core будує біоматематичну модель людських даних — живого цифрового двійника здоров’я — через обчислювальну біологію та подвійну навігацію Health Guide. Розробляється під Digital Invest Inc. і формується баченням BioMath Life.',
+      'BioMath Core будує біоматематичну модель людських даних — живої моделі здоров’я — через обчислювальну біологію та подвійну навігацію Health Guide. Розробляється під Digital Invest Inc. і формується баченням BioMath Life.',
     'mission.title': 'Надійний біоматематичний велнес-інтелект',
     'mission.body':
       'Ми будуємо практичний велнес-інтелект на перетині <b>біоматематики</b>, <b>обчислювальної біології</b> та <b>ШІ</b>. BioMath Core допомагає людям і фахівцям орієнтуватися в складних питаннях здоров’я за допомогою живої <b>моделі людських даних</b> та пояснюваної подвійної навігації — з фокусом на профілактику, велнес і довгострокову стійкість.',
@@ -587,7 +587,7 @@ const aboutPack = {
   },
   ru: {
     seoDescription:
-      'BioMath Core строит биоматематическую модель человеческих данных — живого цифрового двойника здоровья — через вычислительную биологию и двойные рекомендации Health Guide. Разрабатывается под Digital Invest Inc. и формируется видением BioMath Life.',
+      'BioMath Core строит биоматематическую модель человеческих данных — живой модели здоровья — через вычислительную биологию и двойные рекомендации Health Guide. Разрабатывается под Digital Invest Inc. и формируется видением BioMath Life.',
     'mission.title': 'Надёжный биоматематический велнес-интеллект',
     'mission.body':
       'Мы создаём практический велнес-интеллект на стыке <b>биоматематики</b>, <b>вычислительной биологии</b> и <b>ИИ</b>. BioMath Core помогает людям и специалистам ориентироваться в сложных вопросах здоровья с помощью живой <b>модели человеческих данных</b> и объяснимых двухмодельных рекомендаций — с фокусом на профилактику, велнес и долгосрочную устойчивость.',
@@ -629,47 +629,47 @@ const scienceHero = {
   es: {
     description:
       'Fundamento científico de BioMath Core: modelado biomatemático y un Modelo de Datos Humanos vivo — no insights personalizados genéricos ni paneles solo de biomarcadores.',
-    body: 'BioMath Core se basa en décadas de investigación en biología de sistemas, biomatemática y modelado fisiológico — aplicadas como un Modelo de Datos Humanos vivo, un gemelo digital biomatemático de tu salud.',
+    body: 'BioMath Core se basa en décadas de investigación en biología de sistemas, biomatemática y modelado fisiológico — aplicadas como un Modelo de Datos Humanos vivo, un modelo biomatemático de tu salud.',
   },
   fr: {
     description:
       'Fondement scientifique de BioMath Core : modélisation biomathématique et Modèle de données humaines vivant — pas des insights personnalisés génériques ni des tableaux de biomarqueurs seuls.',
-    body: 'BioMath Core s’appuie sur des décennies de recherche en biologie des systèmes, biomathématique et modélisation physiologique — appliquées comme un Modèle de données humaines vivant, un jumeau numérique biomathématique de votre santé.',
+    body: 'BioMath Core s’appuie sur des décennies de recherche en biologie des systèmes, biomathématique et modélisation physiologique — appliquées comme un Modèle de données humaines vivant, un modèle biomathématique de votre santé.',
   },
   de: {
     description:
       'Wissenschaftliche Grundlage von BioMath Core: biomathematische Modellierung und ein lebendiges Human Data Model — keine generischen personalisierten Insights oder reine Biomarker-Dashboards.',
-    body: 'BioMath Core basiert auf jahrzehntelanger Forschung in Systembiologie, Biomathematik und physiologischer Modellierung — umgesetzt als lebendiges Human Data Model, ein biomathematischer digitaler Zwilling Ihrer Gesundheit.',
+    body: 'BioMath Core basiert auf jahrzehntelanger Forschung in Systembiologie, Biomathematik und physiologischer Modellierung — umgesetzt als lebendiges Human Data Model, ein biomathematisches Modell Ihrer Gesundheit.',
   },
   ja: {
     description:
       'BioMath Core の科学的基盤：生物数学モデリングと生きたヒューマンデータモデル — 汎用的なパーソナライズド・インサイトやバイオマーカーだけのダッシュボードではありません。',
-    body: 'BioMath Core はシステム生物学・生物数学・生理モデリングの長年の研究に基づき、生きたヒューマンデータモデル — 健康の生物数学的デジタルツイン — として応用されています。',
+    body: 'BioMath Core はシステム生物学・生物数学・生理モデリングの長年の研究に基づき、生きたヒューマンデータモデル — 健康の生物数学的モデル — として応用されています。',
   },
   he: {
     description:
       'הבסיס המדעי של BioMath Core: מידול ביו־מתמטי ומודל נתוני אדם חי — לא תובנות מותאמות גנריות או לוחות סמנים ביולוגיים בלבד.',
-    body: 'BioMath Core מבוסס על עשרות שנות מחקר בביולוגיית מערכות, ביו־מתמטיקה ומידול פיזיולוגי — מיושם כמודל נתוני אדם חי, תאום דיגיטלי ביו־מתמטי של הבריאות שלך.',
+    body: 'BioMath Core מבוסס על עשרות שנות מחקר בביולוגיית מערכות, ביו־מתמטיקה ומידול פיזיולוגי — מיושם כמודל נתוני אדם חי, מודל ביו־מתמטי של הבריאות שלך.',
   },
   zh: {
     description:
       'BioMath Core 的科学基础：生物数学建模与活体人体数据模型——而非泛化的个性化洞察或仅有生物标志物的仪表盘。',
-    body: 'BioMath Core 建立在系统生物学、生物数学与生理建模数十年研究之上——以活体人体数据模型（健康的生物数学数字孪生）形式应用。',
+    body: 'BioMath Core 建立在系统生物学、生物数学与生理建模数十年研究之上——以活体人体数据模型（健康的生物数学模型）形式应用。',
   },
   ar: {
     description:
       'الأساس العلمي لـ BioMath Core: نمذجة بيومرياضية ونموذج بيانات بشرية حي — وليس رؤى مخصصة عامة أو لوحات مؤشرات حيوية فقط.',
-    body: 'يُبنى BioMath Core على عقود من البحث في بيولوجيا النظم والرياضيات الحيوية والنمذجة الفسيولوجية — مطبّقًا كنموذج بيانات بشرية حي، توأم رقمي بيومرياضي لصحتك.',
+    body: 'يُبنى BioMath Core على عقود من البحث في بيولوجيا النظم والرياضيات الحيوية والنمذجة الفسيولوجية — مطبّقًا كنموذج بيانات بشرية حي، نموذج بيومرياضي لصحتك.',
   },
   uk: {
     description:
       'Наукова основа BioMath Core: біоматематичне моделювання та жива модель людських даних — не загальні персоналізовані інсайти й не дашборди лише біомаркерів.',
-    body: 'BioMath Core побудовано на десятиліттях досліджень системної біології, біоматематики та фізіологічного моделювання — застосованих як жива модель людських даних, біоматематичний цифровий двійник здоров’я.',
+    body: 'BioMath Core побудовано на десятиліттях досліджень системної біології, біоматематики та фізіологічного моделювання — застосованих як жива модель людських даних, біоматематична модель здоров’я.',
   },
   ru: {
     description:
       'Научная основа BioMath Core: биоматематическое моделирование и живая модель человеческих данных — не общие персонализированные инсайты и не дашборды только биомаркеров.',
-    body: 'BioMath Core опирается на десятилетия исследований системной биологии, биоматематики и физиологического моделирования — реализованных как живая модель человеческих данных, биоматематический цифровой двойник здоровья.',
+    body: 'BioMath Core опирается на десятилетия исследований системной биологии, биоматематики и физиологического моделирования — реализованных как живая модель человеческих данных, биоматематическая модель здоровья.',
   },
 };
 

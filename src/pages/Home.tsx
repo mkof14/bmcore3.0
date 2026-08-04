@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
-import CTASection from '../components/CTASection';
 import { useTheme } from '../contexts/ThemeContext';
 import {
   generateOrganizationSchema,
@@ -9,11 +8,8 @@ import {
   generateWebSiteSchema,
   injectStructuredData,
 } from '../lib/structuredData';
-import { trackClick, trackEvent } from '../lib/analytics';
 import HumanDataModel from '../components/home/humanDataModel/HumanDataModel';
-import HomeWhatItIs from '../components/home/HomeWhatItIs';
-import HomeHowItWorks from '../components/home/HomeHowItWorks';
-import HomeWhyDifferent from '../components/home/HomeWhyDifferent';
+import TwoModelsSection from '../components/home/twoModels/TwoModelsSection';
 
 interface HomeProps {
   onNavigate: (page: string, data?: string) => void;
@@ -39,13 +35,12 @@ export default function Home({ onNavigate }: HomeProps) {
           'BioMath Core',
           'Human Data Model',
           'biomathematical modeling',
-          'digital twin',
           'Health Guide',
         ]}
         page="home"
       />
 
-      {/* First viewport: brand + one headline + support + CTAs + HDM figure */}
+      {/* First viewport: brand + one headline + support + HDM figure */}
       <section className="relative flex min-h-[100svh] flex-col overflow-hidden px-4 pb-12 pt-24 sm:px-6 lg:px-8">
         <div
           aria-hidden
@@ -79,35 +74,6 @@ export default function Home({ onNavigate }: HomeProps) {
             >
               {t('home.heroSubtitle')}
             </p>
-
-            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-              <button
-                type="button"
-                onClick={() => {
-                  trackEvent('view_pricing', { source: 'home_hero' });
-                  trackClick('home_hero_pricing', { destination: 'pricing' });
-                  onNavigate('pricing');
-                }}
-                className="w-full bg-orange-500 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400 sm:w-auto"
-              >
-                {t('home.ctaPricing')}
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  trackEvent('cta_click', { source: 'home_hero', destination: 'how-it-works' });
-                  trackClick('home_hero_how', { destination: 'how-it-works' });
-                  onNavigate('how-it-works');
-                }}
-                className={`w-full border px-8 py-3.5 text-sm font-semibold transition-colors sm:w-auto ${
-                  dark
-                    ? 'border-white/15 bg-white/[0.03] text-neutral-100 hover:border-orange-400/40'
-                    : 'border-[var(--bm-border)] bg-page text-gray-900 hover:border-orange-500/40'
-                }`}
-              >
-                {t('home.ctaHow')}
-              </button>
-            </div>
           </header>
 
           <div className="flex flex-1 flex-col items-center justify-center py-2">
@@ -116,29 +82,8 @@ export default function Home({ onNavigate }: HomeProps) {
         </div>
       </section>
 
-      <HomeWhatItIs />
-      <HomeHowItWorks />
-      <HomeWhyDifferent />
-
-      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
-        <CTASection
-          title={t('home.cta.title')}
-          description={t('home.cta.description')}
-          primaryButtonText={t('home.cta.primary')}
-          secondaryButtonText={t('home.cta.secondary')}
-          onPrimaryClick={() => {
-            trackEvent('view_pricing', { source: 'home_cta' });
-            trackClick('home_cta_pricing', { destination: 'pricing' });
-            onNavigate('pricing');
-          }}
-          onSecondaryClick={() => {
-            trackEvent('cta_click', { source: 'home_cta', destination: 'signup' });
-            trackClick('home_cta_member', { destination: 'signup' });
-            onNavigate('signup');
-          }}
-          showStats={false}
-        />
-      </div>
+      {/* After HDM three-card block (import / timeline / what changed) */}
+      <TwoModelsSection dark={dark} onNavigate={onNavigate} />
     </div>
   );
 }

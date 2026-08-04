@@ -71,25 +71,25 @@ export default function Investors({ onNavigate }: InvestorsProps) {
           <p className="mb-6 max-w-2xl text-[15px] leading-relaxed text-neutral-200">
             {t('investors.hero.body2')}
           </p>
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
             <button
               type="button"
               onClick={() => onNavigate('contact')}
-              className="bg-orange-500 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
+              className="inline-flex items-center justify-center border border-white/45 bg-transparent px-7 py-3 text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white hover:text-gray-900"
             >
               {t('investors.hero.ctaContact')}
             </button>
             <button
               type="button"
               onClick={() => onNavigate('biomath-core-summary')}
-              className="border border-white/30 bg-white/10 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+              className="text-sm font-medium text-white/85 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
             >
               {t('investors.hero.ctaSummary')}
             </button>
             <button
               type="button"
               onClick={() => onNavigate('about')}
-              className="border border-white/30 bg-transparent px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              className="text-sm font-medium text-white/85 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
             >
               {t('investors.hero.ctaAbout')}
             </button>
@@ -392,25 +392,25 @@ export default function Investors({ onNavigate }: InvestorsProps) {
               <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
                 {t('investors.closing.body')}
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
                 <button
                   type="button"
                   onClick={() => onNavigate('contact')}
-                  className="bg-orange-500 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
+                  className="bm-cta-primary"
                 >
                   {t('investors.hero.ctaContact')}
                 </button>
                 <button
                   type="button"
                   onClick={() => onNavigate('biomath-core-summary')}
-                  className="border border-[var(--bm-border)] bg-page px-7 py-3.5 text-sm font-semibold text-gray-900 transition-colors hover:border-orange-500/40 dark:text-neutral-100"
+                  className="bm-link"
                 >
                   {t('investors.hero.ctaSummary')}
                 </button>
                 <button
                   type="button"
                   onClick={() => onNavigate('about')}
-                  className="border border-[var(--bm-border)] bg-page px-7 py-3.5 text-sm font-semibold text-gray-900 transition-colors hover:border-orange-500/40 dark:text-neutral-100"
+                  className="bm-link"
                 >
                   {t('investors.hero.ctaAbout')}
                 </button>

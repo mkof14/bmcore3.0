@@ -24,6 +24,8 @@ import {
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+type NavAccent = 'health' | 'devices' | 'records' | 'services' | 'account';
+
 interface MemberSidebarProps {
   currentSection: string;
   onSectionChange: (section: string) => void;
@@ -45,28 +47,19 @@ export default function MemberSidebar({
 }: MemberSidebarProps) {
   const { t } = useTranslation();
 
-  const menuSections = [
+  const menuSections: {
+    accent: NavAccent;
+    title: string;
+    items: { id: string; label: string; icon: typeof Heart }[];
+  }[] = [
     {
-      title: t('member.nav.main'),
+      accent: 'health',
+      title: t('member.nav.health'),
       items: [
         { id: 'dashboard', label: t('member.nav.dashboard'), icon: Heart },
         { id: 'human-data-model', label: t('member.nav.humanDataModel'), icon: Waypoints },
         // Route id `ai-assistant` kept for deep links; label is Health Guide.
         { id: 'ai-assistant', label: t('member.nav.healthGuide'), icon: Scale },
-        { id: 'devices', label: t('member.nav.devices'), icon: Watch },
-      ],
-    },
-    {
-      title: t('member.nav.supportServices'),
-      items: [
-        { id: 'support', label: t('member.nav.support'), icon: HeadphonesIcon },
-        { id: 'system', label: t('member.nav.system'), icon: Settings2 },
-        { id: 'catalog', label: t('member.nav.catalog'), icon: BookOpen },
-      ],
-    },
-    {
-      title: t('member.nav.healthAnalysis'),
-      items: [
         { id: 'questionnaires', label: t('member.nav.questionnaires'), icon: ClipboardList },
         { id: 'reports', label: t('member.nav.reports'), icon: FileText },
         { id: 'signal-hub', label: t('member.nav.signalHub'), icon: Database },
@@ -75,13 +68,29 @@ export default function MemberSidebar({
       ],
     },
     {
-      title: t('member.nav.dataDocuments'),
+      accent: 'devices',
+      title: t('member.nav.devicesGroup'),
+      items: [{ id: 'devices', label: t('member.nav.devices'), icon: Watch }],
+    },
+    {
+      accent: 'records',
+      title: t('member.nav.records'),
       items: [
         { id: 'medical-files', label: t('member.nav.medicalFiles'), icon: Dna },
         { id: 'black-box', label: t('member.nav.blackBox'), icon: FolderLock },
       ],
     },
     {
+      accent: 'services',
+      title: t('member.nav.services'),
+      items: [
+        { id: 'catalog', label: t('member.nav.catalog'), icon: BookOpen },
+        { id: 'support', label: t('member.nav.support'), icon: HeadphonesIcon },
+        { id: 'system', label: t('member.nav.system'), icon: Settings2 },
+      ],
+    },
+    {
+      accent: 'account',
       title: t('member.nav.account'),
       items: [
         { id: 'referral', label: t('member.nav.referral'), icon: Users },
@@ -109,17 +118,17 @@ export default function MemberSidebar({
   const navContent = (
     <div className="h-full flex flex-col">
       {!isCollapsed && (
-        <div className="border-b border-orange-200/80 bg-orange-50/90 px-4 py-3 dark:border-orange-500/15 dark:bg-[var(--bm-surface)]">
+        <div className="border-b border-theme px-4 py-2.5">
           <div className="flex items-center justify-between gap-2">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-orange-600 dark:text-orange-400">
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] member-body">
                 {t('member.zone.label')}
               </p>
-              <p className="mt-0.5 text-xs member-body">{t('member.zone.workspace')}</p>
+              <p className="mt-0.5 text-xs member-muted">{t('member.zone.workspace')}</p>
             </div>
             <button
               type="button"
-              className="rounded-lg p-2 member-muted hover:bg-[var(--bm-elevated)] lg:hidden"
+              className="rounded-lg p-2 member-muted hover:bg-[var(--bm-elevated)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 lg:hidden"
               onClick={() => onMobileOpenChange(false)}
               aria-label={t('member.zone.closeMenu')}
             >
@@ -128,81 +137,86 @@ export default function MemberSidebar({
           </div>
         </div>
       )}
-      <div className="flex-1 overflow-y-auto py-6 px-3">
-        {menuSections.map((section, sectionIndex) => (
-          <div key={sectionIndex} className="mb-6">
-            {!isCollapsed && (
-              <h3 className="px-3 mb-2 text-xs font-semibold member-muted uppercase tracking-wider">
-                {section.title}
-              </h3>
-            )}
-            <nav className="space-y-1" aria-label={section.title}>
-              {section.items.map((item) => {
-                if (item.id === 'catalog' && !hasActiveSubscription) {
-                  return null;
-                }
+      <div className="flex-1 overflow-y-auto py-3 px-2.5">
+        {menuSections.map((section, sectionIndex) => {
+          const visibleItems = section.items.filter(
+            (item) => !(item.id === 'catalog' && !hasActiveSubscription),
+          );
+          if (visibleItems.length === 0) return null;
 
-                const Icon = item.icon;
-                const isActive =
-                  currentSection === item.id ||
-                  (item.id === 'reports' && currentSection === 'my-reports');
-                const isCatalog = item.id === 'catalog';
+          return (
+            <div
+              key={section.accent}
+              data-accent={section.accent}
+              className={`member-nav-group ${
+                sectionIndex === 0
+                  ? 'pb-2.5'
+                  : 'member-nav-divider mt-0.5 border-t pt-2.5'
+              }`}
+            >
+              {!isCollapsed ? (
+                <h3 className="member-nav-label mb-1 px-2.5 text-[10px] font-bold uppercase tracking-[0.14em]">
+                  {section.title}
+                </h3>
+              ) : (
+                <div
+                  className="member-nav-dot mx-auto mb-1.5 h-1 w-6 rounded-full"
+                  aria-hidden
+                  title={section.title}
+                />
+              )}
+              <nav className="space-y-0.5" aria-label={section.title}>
+                {visibleItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive =
+                    currentSection === item.id ||
+                    (item.id === 'reports' && currentSection === 'my-reports');
+                  const isCatalog = item.id === 'catalog';
 
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => handleNavigate(item.id)}
-                    aria-current={isActive ? 'page' : undefined}
-                    className={`w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg transition-all duration-300 ${
-                      isActive
-                        ? 'bg-gradient-to-r from-orange-100 to-orange-50 dark:from-orange-900/25 dark:to-[var(--bm-elevated)] border border-orange-300 dark:border-orange-600/25 text-orange-600 dark:text-orange-400'
-                        : isCatalog
-                          ? 'bg-gradient-to-r from-green-100 to-green-50 dark:from-green-900/15 dark:to-[var(--bm-elevated)] border border-green-300 dark:border-green-600/25 text-green-600 dark:text-green-400 hover:from-green-200 hover:to-green-100 dark:hover:from-green-900/25 dark:hover:to-[var(--bm-elevated)]'
-                          : 'member-body hover:bg-[var(--bm-surface)] dark:hover:bg-[var(--bm-elevated)] border border-transparent hover:border-[var(--bm-border)]'
-                    }`}
-                    title={isCollapsed ? item.label : undefined}
-                  >
-                    <Icon
-                      className={`h-5 w-5 flex-shrink-0 ${
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => handleNavigate(item.id)}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={`member-nav-item w-full flex items-center gap-2.5 rounded-md px-2.5 py-1.5 text-left transition-all duration-200 ${
                         isActive
-                          ? 'text-orange-600 dark:text-orange-500'
+                          ? 'font-semibold'
                           : isCatalog
-                            ? 'text-green-600 dark:text-green-400'
-                            : ''
+                            ? 'member-nav-item-catalog font-semibold'
+                            : 'member-body'
                       }`}
-                    />
-                    {!isCollapsed && (
-                      <span
-                        className={`text-sm font-medium ${
-                          isActive ? 'font-semibold' : isCatalog ? 'font-semibold' : ''
-                        }`}
-                      >
-                        {item.label}
-                      </span>
-                    )}
-                  </button>
-                );
-              })}
-            </nav>
-          </div>
-        ))}
+                      title={isCollapsed ? item.label : undefined}
+                    >
+                      <Icon className="member-nav-icon h-4 w-4 flex-shrink-0" />
+                      {!isCollapsed && (
+                        <span className={`text-[13px] leading-snug ${isActive || isCatalog ? 'font-semibold' : 'font-medium'}`}>
+                          {item.label}
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </nav>
+            </div>
+          );
+        })}
       </div>
 
-      <div className="border-t border-theme p-4 hidden lg:block">
+      <div className="border-t border-theme p-3 hidden lg:block">
         <button
           type="button"
           onClick={() => onCollapsedChange(!isCollapsed)}
           aria-expanded={!isCollapsed}
           aria-label={isCollapsed ? t('member.zone.expand') : t('member.zone.collapse')}
-          className="w-full flex items-center justify-center space-x-2 px-3 py-2 member-muted hover:bg-[var(--bm-surface)] dark:hover:bg-[var(--bm-elevated)] hover:text-[var(--bm-text)] rounded-lg transition-all duration-300"
+          className="w-full flex items-center justify-center gap-2 px-2.5 py-1.5 member-muted hover:bg-[var(--bm-surface)] dark:hover:bg-[var(--bm-elevated)] hover:text-[var(--bm-text)] rounded-md transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60"
         >
           {isCollapsed ? (
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-4 w-4" />
           ) : (
             <>
-              <ChevronLeft className="h-5 w-5" />
-              <span className="text-sm">{t('member.zone.collapse')}</span>
+              <ChevronLeft className="h-4 w-4" />
+              <span className="text-xs">{t('member.zone.collapse')}</span>
             </>
           )}
         </button>
@@ -216,7 +230,7 @@ export default function MemberSidebar({
       <button
         type="button"
         onClick={() => onMobileOpenChange(true)}
-        className="fixed left-3 top-[4.5rem] z-40 flex items-center gap-2 rounded-lg border border-theme bg-[var(--bm-header)] px-3 py-2 text-sm font-medium member-body shadow-sm lg:hidden"
+        className="member-link fixed left-3 top-[4.5rem] z-40 gap-2 px-1 py-1 text-sm lg:hidden"
         aria-expanded={mobileOpen}
         aria-controls="member-sidebar"
         aria-label={t('member.zone.openMenu')}
@@ -238,7 +252,7 @@ export default function MemberSidebar({
       <aside
         id="member-sidebar"
         data-scroll-blur
-        className={`fixed left-0 top-16 bottom-0 z-50 border-r border-theme bg-gradient-to-b from-[var(--bm-header)] to-[var(--bm-page)] transition-transform duration-300 dark:from-[var(--bm-header)] dark:via-[var(--bm-surface)] dark:to-[var(--bm-page)] lg:z-40 lg:translate-x-0 ${
+        className={`fixed left-0 top-16 bottom-0 z-50 border-r border-theme bg-header transition-transform duration-300 lg:z-40 lg:translate-x-0 ${
           isCollapsed ? 'lg:w-20' : 'lg:w-64'
         } w-64 ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
       >

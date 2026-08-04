@@ -1,15 +1,15 @@
 {
   "devicesPage": {
     "badge": "Wearables & sensors",
-    "title": "My Devices",
+    "title": "Connected Devices",
     "subtitle": "Connect watches, rings, glucose sensors, and home health devices so BioMath Core can read trends and explain them in plain language.",
     "connectedTitle": "Connected devices",
     "connectTitle": "Connect a brand",
-    "catalogTitle": "Modern device guide",
-    "catalogIntro": "What people use today — and which signals each category usually provides. Use this to choose gear that matches your goals, then connect a supported brand below.",
+    "catalogTitle": "Every device we support",
+    "catalogIntro": "All connectable devices are listed here — nothing is hidden behind a filter. Each card shows the signals a device usually provides, so you can pick gear that matches your goals and connect a supported brand below.",
     "signalsTitle": "Signals that matter",
     "signalsIntro": "These are the capabilities BioMath Core uses most often when a device is connected.",
-    "emptyBrands": "Live brand connections are not available in this session. You can still explore the guide above and connect later from Member Zone when signed in.",
+    "emptyBrands": "Explore the full device guide above, then connect from Cabinet when you are signed in.",
     "learnMore": "Learn more",
     "hideGuide": "Hide guide",
     "helpChoosing": "Help choosing",
@@ -108,63 +108,108 @@
     "items": {
       "apple_watch": {
         "name": "Apple Watch",
-        "blurb": "Broad everyday coverage: heart rate, HRV, sleep, SpO₂, ECG, and workouts."
+        "blurb": "Broad everyday coverage: heart rate, HRV, sleep, SpO₂, ECG, and workouts.",
+        "connect": "Wear your Apple Watch and open the Health app on your iPhone. In BioMath Core, choose Apple Watch and approve sharing for heart rate, sleep, activity, and related metrics.",
+        "syncs": "Heart rate, HRV, sleep stages, SpO₂, ECG (where available), workouts, and activity load.",
+        "tip": "Keep the watch on overnight so sleep staging and morning readiness have a full picture."
       },
       "samsung_galaxy_watch": {
         "name": "Samsung Galaxy Watch",
-        "blurb": "Wrist metrics plus select models with cuffless blood-pressure support where available."
+        "blurb": "Wrist metrics plus select models with cuffless blood-pressure support where available.",
+        "connect": "Pair the Galaxy Watch with Samsung Health on your phone. In BioMath Core, authorize Samsung Health for the metrics you want to share.",
+        "syncs": "Heart rate, HRV, sleep, SpO₂, activity, ECG, and blood pressure on supported models.",
+        "tip": "Complete any Samsung Health calibration steps for cuffless blood pressure before expecting those readings."
       },
       "garmin": {
         "name": "Garmin",
-        "blurb": "Training load, recovery, sleep, and HRV suited to endurance and structured sport."
+        "blurb": "Training load, recovery, sleep, and HRV suited to endurance and structured sport.",
+        "connect": "Sync your Garmin with Garmin Connect. In BioMath Core, link Garmin Connect and approve training, recovery, and sleep metrics.",
+        "syncs": "Heart rate, HRV, sleep, activity, training load, recovery, and stress scores.",
+        "tip": "Open Garmin Connect once after workouts so BioMath Core receives the latest training files."
       },
       "google_pixel_watch": {
         "name": "Google Pixel Watch",
-        "blurb": "Fitbit-backed sleep and activity with a compact smartwatch experience."
+        "blurb": "Fitbit-backed sleep and activity with a compact smartwatch experience.",
+        "connect": "Keep Fitbit / Google Fit syncing on your phone. In BioMath Core, authorize Fitbit-backed metrics from your Pixel Watch.",
+        "syncs": "Heart rate, sleep, activity, SpO₂, and everyday movement patterns.",
+        "tip": "Charge before bed or keep overnight wear consistent so sleep trends stay comparable week to week."
       },
       "oura": {
         "name": "Oura Ring",
-        "blurb": "Ring-based sleep staging, readiness, temperature, and HRV."
+        "blurb": "Ring-based sleep staging, readiness, temperature, and HRV.",
+        "connect": "Wear the Oura Ring and open the Oura app. In BioMath Core, authorize Oura for sleep, readiness, and recovery metrics.",
+        "syncs": "Sleep stages, HRV, resting heart rate, temperature trends, readiness, and activity.",
+        "tip": "A snug overnight fit improves temperature and HRV quality for recovery insight."
       },
       "ultrahuman": {
         "name": "Ultrahuman Ring",
-        "blurb": "Lightweight ring for sleep, recovery, and metabolic-leaning daily signals."
+        "blurb": "Lightweight ring for sleep, recovery, and metabolic-leaning daily signals.",
+        "connect": "Pair the Ultrahuman Ring in its companion app. In BioMath Core, authorize Ultrahuman for sleep and recovery signals.",
+        "syncs": "Sleep, HRV, heart rate, temperature, and recovery-oriented daily scores.",
+        "tip": "Wear continuously for a few days so recovery baselines settle before comparing days."
       },
       "whoop": {
         "name": "WHOOP",
-        "blurb": "Continuous strain, recovery, and sleep coaching without a traditional screen."
+        "blurb": "Continuous strain, recovery, and sleep coaching without a traditional screen.",
+        "connect": "Wear WHOOP and keep the WHOOP app synced. In BioMath Core, authorize WHOOP for strain, recovery, and sleep.",
+        "syncs": "Strain, recovery, sleep performance, HRV, resting heart rate, and activity load.",
+        "tip": "Leave the band on during workouts and overnight so strain and recovery stay aligned."
       },
       "dexcom_g7": {
         "name": "Dexcom G7",
-        "blurb": "Continuous glucose with frequent updates for meal and energy pattern insight."
+        "blurb": "Continuous glucose with frequent updates for meal and energy pattern insight.",
+        "connect": "Follow Dexcom setup for sensor warm-up. In BioMath Core, authorize Dexcom to share continuous glucose readings you approve.",
+        "syncs": "Continuous glucose curves and related time-in-range style trends for educational insight.",
+        "tip": "Note meal times in your own routine so glucose swings are easier to interpret later."
       },
       "freestyle_libre": {
         "name": "FreeStyle Libre",
-        "blurb": "Flash/continuous glucose sensing for day-to-day metabolic awareness."
+        "blurb": "Flash/continuous glucose sensing for day-to-day metabolic awareness.",
+        "connect": "Activate the FreeStyle Libre sensor in LibreLink / Libre app. In BioMath Core, authorize Libre glucose sharing.",
+        "syncs": "Flash or continuous glucose readings for day-to-day metabolic awareness.",
+        "tip": "Scan or keep the phone nearby as your Libre model requires so gaps stay short."
       },
       "omron": {
         "name": "Omron",
-        "blurb": "Widely used validated blood-pressure cuffs for home monitoring."
+        "blurb": "Widely used validated blood-pressure cuffs for home monitoring.",
+        "connect": "Pair your Omron cuff with the Omron Connect app. In BioMath Core, authorize Omron for blood-pressure readings.",
+        "syncs": "Systolic, diastolic, and pulse readings from home cuff measurements.",
+        "tip": "Measure at a consistent time, seated and rested, for cleaner week-to-week trends."
       },
       "withings_bpm": {
         "name": "Withings BPM",
-        "blurb": "Connected cuff readings that sync cleanly into a health history."
+        "blurb": "Connected cuff readings that sync cleanly into a health history.",
+        "connect": "Connect Withings BPM in the Health Mate / Withings app. In BioMath Core, authorize Withings blood-pressure data.",
+        "syncs": "Validated cuff blood-pressure readings and related pulse metrics.",
+        "tip": "Use the same arm and posture each session so comparisons stay meaningful."
       },
       "withings_body": {
         "name": "Withings Body+",
-        "blurb": "Smart scale for weight and body-composition trends."
+        "blurb": "Smart scale for weight and body-composition trends.",
+        "connect": "Step on the Withings scale while it is linked in Health Mate. In BioMath Core, authorize weight and body-composition metrics.",
+        "syncs": "Weight, BMI, and body-composition estimates such as fat and muscle trends.",
+        "tip": "Weigh at a similar time of day, ideally mornings, for smoother trend lines."
       },
       "eight_sleep": {
         "name": "Eight Sleep",
-        "blurb": "Bed system tracking sleep stages and overnight vitals."
+        "blurb": "Bed system tracking sleep stages and overnight vitals.",
+        "connect": "Keep the Eight Sleep Pod online in the Eight Sleep app. In BioMath Core, authorize sleep and overnight vitals.",
+        "syncs": "Sleep stages, overnight heart rate, HRV, and bed temperature signals.",
+        "tip": "Leave the cover powered and connected overnight so stages and vitals sync by morning."
       },
       "fitbit": {
         "name": "Fitbit",
-        "blurb": "Accessible sleep, heart rate, activity, and stress tracking."
+        "blurb": "Accessible sleep, heart rate, activity, and stress tracking.",
+        "connect": "Sync your Fitbit with the Fitbit app. In BioMath Core, authorize Fitbit for sleep, heart rate, and activity.",
+        "syncs": "Heart rate, HRV, sleep, activity, stress, and SpO₂ where the model supports them.",
+        "tip": "Enable overnight sleep tracking in Fitbit settings so BioMath Core receives full nights."
       },
       "polar": {
         "name": "Polar",
-        "blurb": "Sport-grade heart rate, training load, and recovery metrics."
+        "blurb": "Sport-grade heart rate, training load, and recovery metrics.",
+        "connect": "Pair Polar with Polar Flow. In BioMath Core, authorize Polar for heart rate, training, and recovery.",
+        "syncs": "Heart rate, HRV, sleep, activity, training load, and recovery metrics.",
+        "tip": "Sync Polar Flow after sessions so recovery and load update before morning guidance."
       }
     },
     "capabilities": {
@@ -219,6 +264,59 @@
       "howBody": "Authorized metrics (sleep, heart rate, stress, recovery, glucose, and more) are collected and explained in plain language. We focus on trends and practical next steps — not raw dumps of numbers.",
       "privacyLabel": "Privacy:",
       "privacyBody": "You control the connection. We do not know your device password and cannot control the device. Disconnect anytime."
+    },
+    "seo": {
+      "title": "Connected Devices — Wearables & Sensors | BioMath Core",
+      "description": "Connect watches, rings, glucose sensors, blood-pressure cuffs, and smart scales. BioMath Core reads the trends and explains them in plain language for your reports and Health Guide."
+    },
+    "signalsLabel": "Signals",
+    "catalogLabel": "Catalog",
+    "connectedLabel": "Your gear",
+    "connectLabel": "Connect",
+    "filterAll": "All devices ({{count}})",
+    "hero": {
+      "ctaCatalog": "Browse all devices",
+      "ctaConnect": "Connect a device",
+      "ctaMember": "Open Cabinet"
+    },
+    "live": {
+      "label": "Living signals",
+      "title": "Your body sends quiet data all day",
+      "body": "BioMath Core listens across {{categories}} categories and {{devices}} connectable devices — then turns trends into calm, practical guidance for reports and Health Guide.",
+      "chipSleep": "Sleep stages",
+      "chipGlucose": "Glucose curve",
+      "chipHrv": "HRV recovery"
+    },
+    "flow": {
+      "label": "How connection works",
+      "title": "Authorize, sync, understand",
+      "body": "You grant access to metrics only. Trends flow into personal context for reports and Health Guide — educational guidance, not a diagnosis.",
+      "steps": {
+        "authorize": {
+          "title": "Authorize metrics",
+          "body": "Choose the manufacturer and approve which health metrics may be shared. We never receive your device login or password, and you can withdraw access at any time."
+        },
+        "sync": {
+          "title": "Sync on your schedule",
+          "body": "Daily, a few times a day, or near real-time where the device supports it. Syncing runs quietly in the background and you can change the rhythm whenever you like."
+        },
+        "guide": {
+          "title": "Guide & reports",
+          "body": "Trends appear in your reports and give Health Guide context for calm, practical suggestions. Everything stays educational — it is never a diagnosis."
+        }
+      }
+    },
+    "cardStatus": {
+      "available": "Available to connect",
+      "connected": "Connected",
+      "notConnected": "Not connected"
+    },
+    "card": {
+      "howToConnect": "How to connect",
+      "whatSyncs": "What syncs",
+      "tip": "Tip",
+      "showGuide": "Connection guide",
+      "hideGuide": "Hide guide"
     }
   },
   "deviceHints": {
@@ -307,6 +405,183 @@
       "agreeBody": "I will explain in two ways: (1) physiological analysis (Opinion A) and (2) behavioral and lifestyle explanation (Opinion B). You can compare them and choose what fits.",
       "secondOpinionLabel": "Second Opinion",
       "secondOpinionBody": "A second opinion helps view the same signals from physiological and adaptive angles — like two specialists with different thinking styles."
+    }
+  },
+  "deviceEducation": {
+    "whyDevicesMatter": {
+      "title": "Why connected devices matter",
+      "description": "A single measurement is a snapshot; a device shows direction. When sleep, recovery, glucose, and load are followed over weeks, small shifts become visible long before they turn into complaints — and gentle adjustments are usually enough."
+    },
+    "realTimeBehavior": {
+      "title": "How data behaves once a device is connected",
+      "description": "Metrics arrive on the schedule you choose and are compared with your own recent baseline, not with an average stranger. What you see is the direction of change: improving, steady, or drifting.",
+      "continuousMonitoring": {
+        "title": "Continuous view:",
+        "description": "Between syncs nothing is lost — readings are collected in the background and summarized when you open BioMath Core, so you never have to log anything by hand."
+      }
+    },
+    "dataInfluenceReports": {
+      "title": "How device data shapes your reports",
+      "description": "Authorized metrics become part of the personal context behind every report. Instead of raw tables you get the trend, what likely influenced it, and a short list of practical next steps you can actually follow."
+    },
+    "dataInfluenceAI": {
+      "title": "How device data reaches Health Guide",
+      "description": "Health Guide reads the same trends you see, so answers reflect your recent sleep, recovery, activity, and glucose patterns instead of generic advice. It explains; it does not diagnose.",
+      "secondOpinion": {
+        "title": "Second Opinion:",
+        "description": "The same signals can be read two ways — a physiological explanation and a behavioral, lifestyle one. Seeing both helps you decide what fits your week instead of accepting a single verdict."
+      }
+    },
+    "alertsNudges": {
+      "title": "Alerts and gentle nudges",
+      "description": "Notifications stay rare and calm. You hear from us when a trend holds for several days, not when a single night looks unusual — and every message explains what it means and what to do next.",
+      "positiveReinforcement": {
+        "title": "Progress counts too:",
+        "description": "Improvements are highlighted just as clearly as declines, because knowing what worked is the fastest way to keep it going."
+      }
+    },
+    "userSettings": {
+      "title": "You choose how often data is read",
+      "description": "Sync frequency is yours to set, device by device. Pick the rhythm that matches how you wear it — you can change it at any time without losing history.",
+      "onlyAtNight": {
+        "title": "Only at night",
+        "description": "Best for rings and sleep systems. Data is read once after your night, so the day stays quiet."
+      },
+      "onlyInTheMorning": {
+        "title": "Once each morning",
+        "description": "A single daily summary of sleep, recovery, and yesterday’s load. The calmest option for most people."
+      },
+      "everyFewHours": {
+        "title": "Every few hours",
+        "description": "Useful during training blocks or busy weeks, when load and recovery shift within a single day."
+      },
+      "continuously": {
+        "title": "Near real-time",
+        "description": "For continuous glucose sensors and recovery bands, where the shape of a curve matters more than a daily number."
+      },
+      "footer": "Whatever you choose, syncing stops the moment you disconnect a device, and past data stays in your history until you delete it."
+    },
+    "advancedBehaviorNote": {
+      "title": "A note on how far this goes",
+      "description": "BioMath Core reads what your devices report and explains it in context. It does not control your device, does not replace clinical measurement, and never issues a diagnosis — use it as background for better conversations with your clinician."
+    },
+    "realScenarios": {
+      "title": "What this looks like in practice",
+      "description": "Below are everyday situations built from real device data — what the numbers showed, how Health Guide explains them, and the tone we use. Read them to see how guidance stays calm, specific, and free of alarm."
+    }
+  },
+  "deviceScenarios": {
+    "labels": {
+      "description": "What the data showed:",
+      "healthGuide": "Health Guide explains",
+      "secondOpinion": "Second Opinion",
+      "behavior": "What BioMath Core does:"
+    },
+    "categories": {
+      "cgm": "Glucose",
+      "sleep_hrv": "Sleep & HRV",
+      "activity": "Activity & load"
+    },
+    "general": {
+      "title": "How every scenario is handled",
+      "safeTitle": "Safe by design:",
+      "safeBody": "Nothing here names a condition or predicts illness. Signals are described as patterns, and any reading outside a normal range is a reason to speak with a clinician, not a conclusion in itself.",
+      "trendsTitle": "Trends, not single points:",
+      "trendsBody": "One restless night or one high reading changes nothing. A pattern is only mentioned once it holds across several days, which keeps guidance steady instead of reactive.",
+      "termsTitle": "Words we use",
+      "terms": [
+        "Trend",
+        "Pattern",
+        "Direction of change",
+        "Your usual range",
+        "Recovery",
+        "Load",
+        "Worth watching",
+        "Worth discussing with a clinician"
+      ],
+      "avoidTitle": "Words we never use",
+      "avoided": [
+        "Diagnosis",
+        "Disease",
+        "Pathology",
+        "Abnormal",
+        "Dangerous",
+        "Critical",
+        "Treatment",
+        "Prescription",
+        "Cure"
+      ]
+    },
+    "blocks": {
+      "cgm": {
+        "title": "Continuous glucose sensors",
+        "body": "A CGM shows how meals, movement, stress, and sleep shape your day. The value is in the shape of the curve — how high it climbs and how quickly it settles — not in any single number.",
+        "bullets": [
+          "Compares each day’s curve with your own recent baseline",
+          "Links rises and dips to meals, movement, and sleep",
+          "Waits for a repeated pattern before suggesting anything",
+          "Points you to a clinician if readings stay outside your usual range"
+        ]
+      },
+      "sleep_hrv": {
+        "title": "Sleep and HRV",
+        "body": "Sleep depth and heart-rate variability describe how well your nervous system recovers. Together they explain why an ordinary week can feel heavy and why an easy week can feel effortless.",
+        "bullets": [
+          "Follows deep and REM balance across the week, not one night",
+          "Reads HRV against your own baseline, never a population average",
+          "Suggests lighter days when recovery drops for several nights",
+          "Confirms what is working when recovery climbs back"
+        ]
+      },
+      "activity": {
+        "title": "Activity and load",
+        "body": "Steps, workouts, and strain only make sense next to recovery. The same training week can be a good stimulus or too much, depending on how your nights look.",
+        "bullets": [
+          "Balances training load against sleep and HRV",
+          "Notices a build-up of load before it turns into fatigue",
+          "Recognises a well-matched week and says so",
+          "Keeps suggestions small: one adjustment at a time"
+        ]
+      }
+    },
+    "cards": {
+      "glucoseSpike": {
+        "title": "A sharp rise after meals",
+        "description": "Glucose climbed quickly after lunch on several days this week and took longer than usual to settle back down.",
+        "response": "Your afternoon curve has been rising faster than your own baseline. This is a pattern worth understanding, not a warning. Meal composition and what follows the meal both matter — a short walk after eating often flattens this curve. Let us watch the next few days together.",
+        "secondOpinion": "Read behaviorally, the same curve often follows a rushed meal, a short night, or a stressful morning rather than the food alone. If your sleep has been light this week, the metabolic response is expected — restoring the nights may change the curve more than changing the plate."
+      },
+      "glucoseStable": {
+        "title": "A steadier curve",
+        "description": "Glucose stayed within a narrow band for most of the week, with gentle rises after meals and a smooth return.",
+        "response": "Your curve has been calm and predictable — the rises are moderate and the returns are quick. Whatever your rhythm has been lately, it suits you. Keeping meals and movement in their current pattern is the simplest way to hold this."
+      },
+      "recoveryDown": {
+        "title": "Recovery is trending down",
+        "description": "HRV has been below your usual range for four nights and deep sleep has shortened, though total time in bed has not changed.",
+        "response": "Your nervous system looks like it is carrying more than usual. Time in bed is fine, but the quality of recovery has dipped. This is a good week for lighter training, an earlier wind-down, and less late caffeine. If it persists beyond a week or two, it is worth mentioning to a clinician.",
+        "secondOpinion": "From a behavioral angle, this pattern often tracks life rather than physiology — a demanding stretch at work, later evenings, or travel. If any of that matches your week, treat the numbers as a signal to protect your evenings for a few days rather than a sign that something is wrong."
+      },
+      "recoveryUp": {
+        "title": "Recovery is climbing back",
+        "description": "HRV has returned to your usual range and deep sleep has lengthened across the last several nights.",
+        "response": "Recovery is heading back to where it usually sits, and the change has held for several nights, so it is a real shift rather than noise. Whatever you changed recently is working — keeping the same bedtime for another week is the easiest way to make it stick."
+      },
+      "overload": {
+        "title": "Load is outpacing recovery",
+        "description": "Training volume rose sharply this week while sleep stayed the same and recovery scores drifted lower each day.",
+        "response": "You have added load faster than your recovery has kept up. Nothing here is alarming — it is simply the point where more effort stops paying off. One easier session or one extra rest day this week usually resets the balance."
+      },
+      "balanced": {
+        "title": "Load and recovery are matched",
+        "description": "Activity stayed consistent through the week and recovery scores held steady alongside it.",
+        "response": "Your load and your recovery are moving together, which is exactly what a sustainable week looks like. There is nothing to adjust — this is a good baseline to remember when you plan the next block."
+      },
+      "fatigue": {
+        "title": "Quiet, unusual tiredness",
+        "description": "Activity dropped noticeably for several days, resting heart rate is slightly higher than usual, and sleep has been longer without feeling restful.",
+        "response": "Your body is asking for a slower stretch — lower activity with a higher resting heart rate usually means recovery is still in progress. Give it a few gentle days and watch whether things settle. If the tiredness continues for more than a couple of weeks, it is worth discussing with a clinician."
+      }
     }
   }
 }

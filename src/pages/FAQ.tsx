@@ -238,7 +238,7 @@ export default function FAQ({ onNavigate }: FAQProps) {
               <button
                 type="button"
                 onClick={() => onNavigate('contact')}
-                className="mt-8 bg-orange-500 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400"
+                className="bm-cta-primary mt-8"
               >
                 {t('faq.cta.button')}
               </button>

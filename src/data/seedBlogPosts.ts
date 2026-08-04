@@ -19,7 +19,7 @@ export const SEED_BLOG_POSTS: SeedBlogPost[] = [
     title: 'How the biomathematical model works',
     slug: 'how-the-biomathematical-model-works',
     excerpt:
-      'BioMath Core does not stop at charts. It builds a living Human Data Model — a biomathematical digital twin that connects signals over time.',
+      'BioMath Core does not stop at charts. It builds a living Human Data Model — a biomathematical model that connects signals over time.',
     content: `BioMath Core starts from a simple idea: health understanding improves when data is modeled as a system, not listed as isolated numbers.
 
 From measurements to a Human Data Model
@@ -90,7 +90,7 @@ Learn more on the Why Two Models page.`,
     title: 'Privacy and trust in a living health model',
     slug: 'privacy-and-trust-human-data-model',
     excerpt:
-      'A digital twin of your health is only useful if you control the data. Here is how BioMath Core approaches privacy and trust.',
+      'A living Human Data Model is only useful if you control the data. Here is how BioMath Core approaches privacy and trust.',
     content: `Building a Human Data Model requires sensitive information. Trust is therefore a product requirement, not a footnote.
 
 Your data, your decisions

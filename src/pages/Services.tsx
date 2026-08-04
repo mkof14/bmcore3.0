@@ -491,21 +491,21 @@ export default function Services({ onNavigate }: ServicesProps) {
               <p className="mx-auto mt-3 max-w-xl text-base leading-relaxed text-gray-600 dark:text-neutral-400">
                 {t('services.closing.body')}
               </p>
-              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-6">
                 <button
                   type="button"
                   onClick={() => {
                     const daily = plans[1];
                     if (daily) handleSelectPlan(daily);
                   }}
-                  className="w-full bg-orange-500 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-400 sm:w-auto"
+                  className="bm-cta-primary w-full sm:w-auto"
                 >
                   {t('services.closing.ctaTrial')}
                 </button>
                 <button
                   type="button"
                   onClick={() => onNavigate('contact')}
-                  className="w-full border border-[var(--bm-border)] bg-page px-8 py-3.5 text-sm font-semibold text-gray-900 transition-colors hover:border-orange-500/40 dark:text-neutral-100 sm:w-auto"
+                  className="bm-link"
                 >
                   {t('services.closing.ctaContact')}
                 </button>

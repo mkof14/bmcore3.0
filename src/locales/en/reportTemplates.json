@@ -108,7 +108,7 @@
       "extended": "Deeper look: we compare questionnaire highlights with recent activity and device coverage to spot gaps between intention and daily practice.",
       "sectionsDeep": "Your questionnaire currently has the most detail in: {{sections}}.",
       "shortClose": "Short form: lock one habit with a clock time, one recovery practice, and one Health Guide check-in this week.",
-      "standardClose": "This week: pick one numbered recommendation below, put it on your calendar, and review progress in Member Zone after seven days."
+      "standardClose": "This week: pick one numbered recommendation below, put it on your calendar, and review progress in Cabinet after seven days."
     },
     "insight": {
       "completeness": "Readiness {{score}}% (questionnaire {{questionnaire}}% · profile {{profile}}%).",

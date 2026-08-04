@@ -8,8 +8,14 @@ import { openCookiePreferences } from './CookieBanner';
 import { getFooterSocialLinks, type SocialNetwork } from '../config/social';
 import { pageToPath } from '../lib/routing';
 
+export type FooterVariant = 'site' | 'member';
+
 interface FooterProps {
   onNavigate: (page: string) => void;
+  /** `member` = embedded in Member Zone content column (taller stack, member tokens). */
+  variant?: FooterVariant;
+  /** Jump to a Member Zone section (e.g. support) without leaving the workspace. */
+  onSectionChange?: (section: string) => void;
 }
 
 function footerNavClick(page: string, onNavigate: (page: string) => void) {
@@ -19,9 +25,6 @@ function footerNavClick(page: string, onNavigate: (page: string) => void) {
     onNavigate(page);
   };
 }
-
-const linkClassName =
-  'text-left text-sm text-gray-800 transition-colors hover:text-orange-600 dark:text-gray-400 dark:hover:text-orange-500';
 
 const SOCIAL_ICON_CLASS: Record<SocialNetwork, string> = {
   facebook: 'bg-orange-600 hover:bg-orange-700',
@@ -62,196 +65,280 @@ const SOCIAL_LABELS: Record<SocialNetwork, string> = {
   github: 'GitHub',
 };
 
-export default function Footer({ onNavigate }: FooterProps) {
+export default function Footer({
+  onNavigate,
+  variant = 'site',
+  onSectionChange,
+}: FooterProps) {
   const { theme, toggleTheme } = useTheme();
   const { t } = useTranslation();
   const social = getFooterSocialLinks();
+  const isMember = variant === 'member';
+
+  const linkClassName = isMember
+    ? 'text-left text-sm member-muted transition-colors hover:text-orange-600 dark:hover:text-orange-400'
+    : 'text-left text-sm text-gray-800 transition-colors hover:text-orange-600 dark:text-gray-400 dark:hover:text-orange-500';
+
+  const headingClassName = isMember
+    ? 'mb-4 text-sm font-semibold member-heading'
+    : 'mb-4 text-sm font-semibold text-gray-900 dark:text-white';
+
+  const bodyClassName = isMember
+    ? 'text-sm member-muted'
+    : 'text-sm text-gray-800 dark:text-gray-400';
+
+  const themeButtonClassName = isMember
+    ? 'member-link text-sm'
+    : 'bm-link';
+
+  const mailIconClassName = isMember
+    ? 'mt-0.5 h-4 w-4 flex-shrink-0 member-muted'
+    : 'mt-0.5 h-4 w-4 flex-shrink-0 text-gray-700 dark:text-gray-500';
+
+  const navLinks = (
+    [
+      ['home', t('nav.home')],
+      ['about', t('nav.about')],
+      ['pricing', t('nav.pricing')],
+      ['services-catalog', t('nav.allServices')],
+      ['devices', t('footer.devices')],
+      ['investors', t('nav.investors')],
+      ['science', t('footer.science')],
+      ['how-it-works', t('footer.howItWorks')],
+      ['faq', t('footer.faq')],
+      ['learning', t('footer.learningCenter')],
+      ['contact', t('footer.contact')],
+    ] as const
+  );
+
+  const companyLinks = (
+    [
+      ['news', t('footer.news')],
+      ['blog', t('footer.blog')],
+      ['media', t('footer.media')],
+      ['careers', t('footer.careers')],
+      ['partnership', t('footer.partnership')],
+      ['refer', t('footer.refer')],
+    ] as const
+  );
+
+  const trustCenterLinkClassName = isMember
+    ? 'inline-flex text-left text-sm font-semibold text-orange-700 transition-colors hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300'
+    : 'inline-flex border border-orange-500/25 bg-orange-500/[0.07] px-3 py-2 text-left text-sm font-semibold text-orange-700 transition-colors hover:border-orange-500/40 hover:bg-orange-500/10 hover:text-orange-600 dark:border-orange-400/30 dark:bg-orange-500/10 dark:text-orange-300 dark:hover:text-orange-200';
+
+  const brandBlock = (
+    <div className={isMember ? '' : 'col-span-2'}>
+      <div className={`mb-4 flex items-center ${isMember ? 'gap-3' : 'space-x-3'}`}>
+        <picture>
+          <source srcSet="/logo-footer.webp?v=2" type="image/webp" />
+          <img
+            src="/logo-footer.png?v=2"
+            alt="BioMath Core Logo"
+            className={`${isMember ? 'h-14 w-14' : 'h-16 w-16'} object-contain`}
+            width={isMember ? 56 : 64}
+            height={isMember ? 56 : 64}
+          />
+        </picture>
+        <span className={`${isMember ? 'text-2xl' : 'text-3xl'} font-bold`}>
+          <span className="text-blue-500">BioMath</span>
+          <span className={isMember ? 'member-heading' : 'text-gray-900 dark:text-white'}> Core</span>
+        </span>
+      </div>
+      <p className={`mb-4 ${bodyClassName}`}>{t('footer.tagline')}</p>
+
+      {social.length > 0 && (
+        <div className="mb-6 flex flex-wrap gap-3">
+          {social.map(({ network, href }) => (
+            <a
+              key={network}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={SOCIAL_LABELS[network]}
+              className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${SOCIAL_ICON_CLASS[network]}`}
+            >
+              <SocialIcon network={network} />
+            </a>
+          ))}
+        </div>
+      )}
+
+      <div className="mb-6 flex items-start space-x-2">
+        <Mail className={mailIconClassName} />
+        <a href="mailto:info@biomathcore.com" className={linkClassName}>
+          info@biomathcore.com
+        </a>
+      </div>
+
+      <div className="mb-6">
+        <h3 className={headingClassName}>{t('footer.newsletter')}</h3>
+        <NewsletterSignup variant="footer" />
+      </div>
+
+      {!isMember && (
+        <div className="flex flex-wrap items-center gap-3">
+          <LanguageSwitcher variant="footer" />
+          <button type="button" onClick={toggleTheme} className={themeButtonClassName}>
+            {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+            <span>{theme === 'light' ? t('footer.darkMode') : t('footer.lightMode')}</span>
+          </button>
+        </div>
+      )}
+    </div>
+  );
+
+  const linkColumns = (
+    <>
+      <div>
+        <h3 className={headingClassName}>{t('footer.navigation')}</h3>
+        <ul className="space-y-2">
+          {navLinks.map(([page, label]) => (
+            <li key={page}>
+              <a href={pageToPath(page)} onClick={footerNavClick(page, onNavigate)} className={linkClassName}>
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 className={headingClassName}>{t('footer.company')}</h3>
+        <ul className="space-y-2">
+          {companyLinks.map(([page, label]) => (
+            <li key={page}>
+              <a href={pageToPath(page)} onClick={footerNavClick(page, onNavigate)} className={linkClassName}>
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 className={headingClassName}>{t('footer.legal')}</h3>
+        <ul className="space-y-3">
+          <li>
+            <a
+              href={pageToPath('privacy-trust')}
+              onClick={footerNavClick('privacy-trust', onNavigate)}
+              className={trustCenterLinkClassName}
+            >
+              {t('footer.privacyTrust')}
+            </a>
+          </li>
+          <li>
+            <button type="button" onClick={openCookiePreferences} className={linkClassName}>
+              {t('footer.cookiePreferences')}
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 className={headingClassName}>{t('footer.memberArea')}</h3>
+        <ul className="space-y-2">
+          <li>
+            <a
+              href={pageToPath('member-zone')}
+              onClick={footerNavClick('member-zone', onNavigate)}
+              className={linkClassName}
+            >
+              {t('nav.memberZone')}
+            </a>
+          </li>
+          {isMember && onSectionChange && (
+            <li>
+              <button type="button" onClick={() => onSectionChange('support')} className={linkClassName}>
+                {t('member.nav.support')}
+              </button>
+            </li>
+          )}
+        </ul>
+
+        <h3 className={`${headingClassName} mt-8`}>{t('footer.infoHelp')}</h3>
+        <ul className="space-y-2">
+          <li>
+            <a
+              href={pageToPath('why-two-models')}
+              onClick={footerNavClick('why-two-models', onNavigate)}
+              className={linkClassName}
+            >
+              {t('footer.whyTwoModels')}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </>
+  );
+
+  const prefsControls = (
+    <div className="flex flex-wrap items-center gap-3">
+      <LanguageSwitcher variant="footer" />
+      <button type="button" onClick={toggleTheme} className={themeButtonClassName}>
+        {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+        <span>{theme === 'light' ? t('footer.darkMode') : t('footer.lightMode')}</span>
+      </button>
+    </div>
+  );
+
+  const bottomBar = (
+    <div
+      className={`${isMember ? 'mt-10' : 'mt-12'} border-t ${
+        isMember ? 'border-theme/70' : 'border-gray-300 dark:border-gray-800'
+      } pt-8`}
+    >
+      {isMember && (
+        <div className="mb-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+          {prefsControls}
+        </div>
+      )}
+      <p className={`text-center ${bodyClassName}`}>
+        © 2026 BioMath Core. {t('footer.rights')}
+      </p>
+      <p className={`mx-auto mt-3 max-w-3xl text-center text-xs ${isMember ? 'member-muted' : 'text-gray-800 dark:text-gray-400'}`}>
+        {t('footer.appsStatus')}
+      </p>
+      <p className={`mx-auto mt-3 max-w-3xl text-center text-xs leading-relaxed ${isMember ? 'member-muted' : 'text-gray-800 dark:text-gray-400'}`}>
+        {t('footer.disclaimer')}
+      </p>
+    </div>
+  );
+
+  if (isMember) {
+    return (
+      <footer
+        className="mt-auto border-t border-theme bg-footer transition-colors"
+        aria-label={t('member.footer.ariaLabel')}
+      >
+        <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-6">
+              {brandBlock}
+              {/* Keep prefs near the top of Cabinet footer so they stay easy to find */}
+              <div className="-mt-2">{prefsControls}</div>
+            </div>
+            <nav
+              className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4"
+              aria-label={t('member.footer.linksLabel')}
+            >
+              {linkColumns}
+            </nav>
+          </div>
+          {bottomBar}
+        </div>
+      </footer>
+    );
+  }
 
   return (
     <footer className="border-t border-theme bg-footer transition-colors">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
-          <div className="col-span-2">
-            <div className="mb-4 flex items-center space-x-3">
-              <picture>
-                <source srcSet="/logo-footer.webp?v=2" type="image/webp" />
-                <img
-                  src="/logo-footer.png?v=2"
-                  alt="BioMath Core Logo"
-                  className="h-16 w-16 object-contain"
-                  width="64"
-                  height="64"
-                />
-              </picture>
-              <span className="text-3xl font-bold">
-                <span className="text-blue-500">BioMath</span>
-                <span className="text-gray-900 dark:text-white"> Core</span>
-              </span>
-            </div>
-            <p className="mb-4 text-sm text-gray-800 dark:text-gray-400">{t('footer.tagline')}</p>
-
-            {social.length > 0 && (
-              <div className="mb-6 flex space-x-3">
-                {social.map(({ network, href }) => (
-                  <a
-                    key={network}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={SOCIAL_LABELS[network]}
-                    className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${SOCIAL_ICON_CLASS[network]}`}
-                  >
-                    <SocialIcon network={network} />
-                  </a>
-                ))}
-              </div>
-            )}
-
-            <div className="mb-6 flex items-start space-x-2">
-              <Mail className="mt-0.5 h-4 w-4 flex-shrink-0 text-gray-700 dark:text-gray-500" />
-              <a href="mailto:info@biomathcore.com" className="text-sm text-gray-800 transition-colors hover:text-orange-600 dark:text-gray-400 dark:hover:text-orange-500">
-                info@biomathcore.com
-              </a>
-            </div>
-
-            <div className="mb-6">
-              <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-white">{t('footer.newsletter')}</h3>
-              <NewsletterSignup variant="footer" />
-            </div>
-
-            <div className="flex flex-wrap items-center gap-3">
-              <LanguageSwitcher variant="footer" />
-              <button
-                type="button"
-                onClick={toggleTheme}
-                className="flex items-center space-x-2 rounded-md px-3 py-2 text-sm text-gray-800 transition-colors hover:bg-gray-200 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
-              >
-                {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-                <span>{theme === 'light' ? t('footer.darkMode') : t('footer.lightMode')}</span>
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="mb-4 text-sm font-semibold text-gray-900 dark:text-white">{t('footer.navigation')}</h3>
-            <ul className="space-y-2">
-              {(
-                [
-                  ['home', t('nav.home')],
-                  ['about', t('nav.about')],
-                  ['pricing', t('nav.pricing')],
-                  ['services-catalog', t('nav.allServices')],
-                  ['devices', t('footer.devices')],
-                  ['investors', t('nav.investors')],
-                  ['science', t('footer.science')],
-                  ['how-it-works', t('footer.howItWorks')],
-                  ['faq', t('footer.faq')],
-                  ['learning', t('footer.learningCenter')],
-                  ['contact', t('footer.contact')],
-                ] as const
-              ).map(([page, label]) => (
-                <li key={page}>
-                  <a href={pageToPath(page)} onClick={footerNavClick(page, onNavigate)} className={linkClassName}>
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-4 text-sm font-semibold text-gray-900 dark:text-white">{t('footer.company')}</h3>
-            <ul className="space-y-2">
-              {(
-                [
-                  ['news', t('footer.news')],
-                  ['blog', t('footer.blog')],
-                  ['media', t('footer.media')],
-                  ['careers', t('footer.careers')],
-                  ['partnership', t('footer.partnership')],
-                  ['referral', t('footer.inviteFriend')],
-                  ['ambassador', t('footer.ambassador')],
-                ] as const
-              ).map(([page, label]) => (
-                <li key={page}>
-                  <a href={pageToPath(page)} onClick={footerNavClick(page, onNavigate)} className={linkClassName}>
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-4 text-sm font-semibold text-gray-900 dark:text-white">{t('footer.legal')}</h3>
-            <ul className="space-y-2">
-              {(
-                [
-                  ['terms-of-service', t('footer.terms')],
-                  ['privacy-policy', t('footer.privacy')],
-                  ['disclaimer', t('legal.disclaimer.title')],
-                  ['hipaa-notice', t('legal.hipaaNotice.title')],
-                  ['data-privacy', t('legal.dataPrivacy.title')],
-                  ['gdpr', t('legal.gdpr.title')],
-                  ['privacy-trust', t('footer.privacyTrust')],
-                  ['trust-safety', t('legal.trustSafety.title')],
-                  ['security', t('footer.security')],
-                ] as const
-              ).map(([page, label]) => (
-                <li key={page}>
-                  <a href={pageToPath(page)} onClick={footerNavClick(page, onNavigate)} className={linkClassName}>
-                    {label}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <button type="button" onClick={openCookiePreferences} className={linkClassName}>
-                  {t('footer.cookiePreferences')}
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-4 text-sm font-semibold text-gray-900 dark:text-white">{t('footer.memberArea')}</h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href={pageToPath('member-zone')}
-                  onClick={footerNavClick('member-zone', onNavigate)}
-                  className={linkClassName}
-                >
-                  {t('nav.memberZone')}
-                </a>
-              </li>
-            </ul>
-
-            <h3 className="mb-4 mt-8 text-sm font-semibold text-gray-900 dark:text-white">{t('footer.infoHelp')}</h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href={pageToPath('why-two-models')}
-                  onClick={footerNavClick('why-two-models', onNavigate)}
-                  className={linkClassName}
-                >
-                  {t('footer.whyTwoModels')}
-                </a>
-              </li>
-            </ul>
-          </div>
+          {brandBlock}
+          {linkColumns}
         </div>
-
-        <div className="mt-12 border-t border-gray-300 pt-8 dark:border-gray-800">
-          <p className="text-center text-sm text-gray-800 dark:text-gray-400">
-            © 2026 BioMath Core. {t('footer.rights')}
-          </p>
-          <p className="mx-auto mt-3 max-w-3xl text-center text-xs text-gray-800 dark:text-gray-400">
-            {t('footer.appsStatus')}
-          </p>
-          <p className="mx-auto mt-3 max-w-3xl text-center text-xs text-gray-800 dark:text-gray-400">
-            {t('footer.disclaimer')}
-          </p>
-        </div>
+        {bottomBar}
       </div>
     </footer>
   );

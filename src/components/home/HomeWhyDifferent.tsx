@@ -120,7 +120,7 @@ export default function HomeWhyDifferent() {
   );
 }
 
-/** Side-by-side: disconnected metric tiles → unified HDM digital twin. */
+/** Side-by-side: disconnected metric tiles → unified HDM your data model. */
 function ComparisonViz({
   metrics,
   links,
@@ -239,7 +239,7 @@ function ComparisonViz({
         />
       </g>
 
-      {/* Right: unified HDM twin */}
+      {/* Right: unified Human Data Model */}
       <text
         x="500"
         y="16"
@@ -323,7 +323,7 @@ function ComparisonViz({
         </text>
       </g>
 
-      {/* Outcomes leaving the twin */}
+      {/* Outcomes leaving the model */}
       <g style={{ opacity: active ? 1 : 0.25, transition: 'opacity 400ms ease 280ms' }}>
         <line
           x1="554"

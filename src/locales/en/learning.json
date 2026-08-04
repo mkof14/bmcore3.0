@@ -10,12 +10,16 @@
         "body": "Choose from flexible subscription tiers designed to match your wellness journey. All plans include core services, with advanced tiers unlocking specialized assessments, device integrations, and premium AI guidance."
       },
       "member": {
-        "title": "Member Zone",
+        "title": "Cabinet",
         "body": "Your personalized health dashboard. Track progress across all services, review reports, manage device connections, set wellness goals, and access your complete health timeline in one secure location."
       },
       "healthRecords": {
         "title": "Health Records & DNA",
-        "body": "In Member Zone → Health Records & DNA you can upload or scan labs, imaging, DNA report PDFs, and raw DNA files (PDF, images, CSV, TXT, VCF). Files move from Received to In review to Insights ready. Insights explain the record, list conclusions and recommendations, and stay educational — not a diagnosis. Counts and a DNA-on-file flag feed personal context for reports and Health Guide; raw DNA content is never pasted into AI prompts. You can Copy, Print, or Download TXT any ready insight."
+        "body": "In Cabinet → Health Records & DNA you can upload or scan labs, imaging, DNA report PDFs, and raw DNA files (PDF, images, CSV, TXT, VCF). On mobile you can capture a printed page with the camera. Files move from Received to In review to Insights ready. Insights explain the record, list conclusions and recommendations, and stay educational — not a diagnosis. You can Copy, Print, or Download TXT any ready insight, or ask Health Guide about the selected record by text or voice. Counts and a DNA-on-file flag feed personal context for reports and Health Guide; raw DNA content is never pasted into AI prompts."
+      },
+      "devices": {
+        "title": "Connected Devices",
+        "body": "Cabinet → Connected Devices covers seven categories: smartwatches (Apple Watch, Samsung Galaxy Watch, Garmin, Google Pixel Watch, Fitbit, Polar), smart rings (Oura Ring, Ultrahuman Ring), recovery bands (WHOOP), continuous glucose sensors (Dexcom G7, FreeStyle Libre), blood pressure monitors (Omron, Withings BPM), smart scales (Withings Body+), and home sleep systems (Eight Sleep). You authorize each brand yourself, and only the metrics you approve sync — on the schedule you choose, near real-time where the brand supports it. Interpreted trends feed your reports and let Health Guide explain patterns in plain language; raw sensor streams are not stored."
       },
       "multiModel": {
         "title": "Multi-Model Reports",
@@ -39,7 +43,8 @@
       }
     },
     "viewPlans": "View Plans →",
-    "goToMember": "Go to Member Zone →",
+    "goToMember": "Go to Cabinet →",
+    "openDevices": "Open Connected Devices →",
     "browseServices": "Browse All Services →",
     "ai": {
       "title": "AI Systems 101",

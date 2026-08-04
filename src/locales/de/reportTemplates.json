@@ -108,7 +108,7 @@
       "extended": "Tiefenblick: Wir vergleichen Fragebogen-Highlights mit aktueller Aktivität und Geräteabdeckung, um Lücken zwischen Absicht und Alltag zu finden.",
       "sectionsDeep": "Ihr Fragebogen hat derzeit die meisten Details in: {{sections}}.",
       "shortClose": "Kurzform: eine Gewohnheit mit Uhrzeit, eine Erholungspraxis und ein Health-Guide-Check-in diese Woche.",
-      "standardClose": "Diese Woche: eine nummerierte Empfehlung unten wählen, im Kalender verankern und nach sieben Tagen den Fortschritt in der Mitgliederzone prüfen."
+      "standardClose": "Diese Woche: eine nummerierte Empfehlung unten wählen, im Kalender verankern und nach sieben Tagen den Fortschritt in Cabinet prüfen."
     },
     "insight": {
       "completeness": "Bereitschaft {{score}} % (Fragebogen {{questionnaire}} % · Profil {{profile}} %).",

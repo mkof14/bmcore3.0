@@ -1,13 +1,13 @@
 {
   "privacyTrust": {
     "seo": {
-      "title": "Confidentialité et confiance — comment BioMath Core protège vos données",
-      "description": "Découvrez comment BioMath Core protège vos données de santé : chiffrement, pratiques conformes à HIPAA, conformité au RGPD et partage contrôlé par l’utilisateur. Consultez nos politiques de confidentialité et nos pratiques de sécurité."
+      "title": "Centre de confiance et de confidentialité — comment BioMath Core protège vos données",
+      "description": "Centre de confiance et de confidentialité de BioMath Core : politique de confidentialité, conditions, HIPAA, RGPD, sécurité et avis juridiques au même endroit."
     },
     "hero": {
-      "label": "Confidentialité et confiance",
-      "title": "Vos données, protégées dès la conception",
-      "body": "Les données de santé sont profondément personnelles. BioMath Core considère leur protection comme une exigence fondamentale du produit, avec des pratiques transparentes et des politiques rédigées en langage clair."
+      "label": "Centre de confiance et de confidentialité",
+      "title": "Vos données, protégées par conception",
+      "body": "Les données de santé sont profondément personnelles. Ce centre rassemble nos documents de confidentialité, de confiance et juridiques pour que vous puissiez voir comment BioMath Core protège vos informations."
     },
     "commitments": {
       "label": "Engagements",
@@ -46,12 +46,38 @@
       "body": "L’ensemble de la documentation juridique est public et rédigé en langage clair.",
       "readMore": "En savoir plus →",
       "items": [
-        { "title": "Politique de confidentialité", "description": "Comment nous collectons, utilisons et protégeons vos données" },
-        { "title": "Avis HIPAA", "description": "Notre engagement pour la protection des données de santé" },
-        { "title": "Conformité au RGPD", "description": "Les normes européennes de protection des données et vos droits" },
-        { "title": "Pratiques de sécurité", "description": "Les mesures techniques et organisationnelles que nous appliquons" },
-        { "title": "Protection des données", "description": "Vos droits et nos responsabilités" },
-        { "title": "Confiance et sécurité", "description": "Créer une expérience sûre et digne de confiance" }
+        {
+          "title": "Politique de confidentialité",
+          "description": "Comment nous collectons, utilisons et protégeons vos données"
+        },
+        {
+          "title": "Conditions d’utilisation",
+          "description": "L’accord qui régit l’utilisation de BioMath Core"
+        },
+        {
+          "title": "Avertissement",
+          "description": "Périmètre bien-être et limites de nos conseils"
+        },
+        {
+          "title": "Avis HIPAA",
+          "description": "Notre engagement pour la protection des données de santé"
+        },
+        {
+          "title": "Protection des données",
+          "description": "Vos droits et nos responsabilités"
+        },
+        {
+          "title": "Conformité au RGPD",
+          "description": "Les normes européennes de protection des données et vos droits"
+        },
+        {
+          "title": "Confiance et sécurité",
+          "description": "Créer une expérience sûre et digne de confiance"
+        },
+        {
+          "title": "Pratiques de sécurité",
+          "description": "Les mesures techniques et organisationnelles que nous appliquons"
+        }
       ]
     },
     "control": {
@@ -59,9 +85,18 @@
       "title": "Vos données, votre contrôle",
       "body": "Vous avez le droit d’accéder à vos données, de les exporter ou de les supprimer à tout moment. Sans justification.",
       "stats": [
-        { "value": "100%", "label": "Propriété des données" },
-        { "value": "0", "label": "Vente de données" },
-        { "value": "24/7", "label": "Surveillance de sécurité" }
+        {
+          "value": "100%",
+          "label": "Propriété des données"
+        },
+        {
+          "value": "0",
+          "label": "Vente de données"
+        },
+        {
+          "value": "24/7",
+          "label": "Surveillance de sécurité"
+        }
       ]
     },
     "contact": {

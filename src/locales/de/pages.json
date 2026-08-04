@@ -3,7 +3,7 @@
     "signIn": {
       "title": "Willkommen zurück",
       "subtitle": "Melden Sie sich an, um Ihr Wellness-Dashboard zu öffnen",
-      "mockNotice": "Die lokale Test-Anmeldung ist aktiv. Verwenden Sie die Superadmin-E-Mail {{email}} und Ihr Passwort, um Mitgliederbereich und Administration zu Testzwecken zu öffnen.",
+      "mockNotice": "Die lokale Test-Anmeldung ist aktiv. Verwenden Sie die Superadmin-E-Mail {{email}} und Ihr Passwort, um Cabinet und Administration zu Testzwecken zu öffnen.",
       "remember": "Angemeldet bleiben",
       "forgot": "Passwort vergessen?",
       "submit": "Anmelden",

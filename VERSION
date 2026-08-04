@@ -1,0 +1,3 @@
+date: 2026-08-04
+label: final snapshot / финальная версия на Aug4, 2026
+note: Final repository snapshot for 2026-08-04. Not a package semver bump (package.json remains 1.0.0).

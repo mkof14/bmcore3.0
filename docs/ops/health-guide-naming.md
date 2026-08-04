@@ -25,7 +25,7 @@ Use only if counsel or store conflict forces a change. Prefer keeping **BioMath 
 
 1. **BioMath Guide** — closest to parent brand; clearer ownership.
 2. **HDM Guide** — ties to Human Data Model; more unique, less descriptive.
-3. **Twin Guide** — echoes digital-twin / Human Data Model positioning (verify conflicts).
+3. **Model Guide** — echoes Human Data Model positioning (verify conflicts).
 
 Do **not** mass-rename UI strings without an explicit product decision.
 

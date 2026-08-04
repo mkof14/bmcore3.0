@@ -146,11 +146,13 @@ export default function MedicalFilesSection() {
         insightsVersion: derived === 'insights_ready' ? '1' : meta.insightsVersion,
       };
       updates.push(
-        supabase
-          .from('medical_files')
-          .update({ metadata: nextMeta })
-          .eq('id', file.id)
-          .then(() => undefined),
+        Promise.resolve(
+          supabase
+            .from('medical_files')
+            .update({ metadata: nextMeta })
+            .eq('id', file.id)
+            .then(() => undefined),
+        ),
       );
       file.metadata = nextMeta;
     }

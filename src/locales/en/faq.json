@@ -77,7 +77,7 @@
           {
             "id": "purchase",
             "question": "How can I purchase a subscription?",
-            "answer": "You can subscribe directly on the Pricing page. After checkout you will unlock advanced features inside the Member Zone."
+            "answer": "You can subscribe directly on the Pricing page. After checkout you will unlock advanced features inside the Cabinet."
           },
           {
             "id": "plans",
@@ -123,7 +123,7 @@
           {
             "id": "update-answers",
             "question": "Can I update answers later?",
-            "answer": "Yes, at any time from the Member Zone."
+            "answer": "Yes, at any time from the Cabinet."
           },
           {
             "id": "refresh-frequency",
@@ -144,7 +144,7 @@
           {
             "id": "add-services",
             "question": "Can I add more services later?",
-            "answer": "Yes. You can activate new ones anytime from the Services Catalog or Member Zone."
+            "answer": "Yes. You can activate new ones anytime from the Services Catalog or Cabinet."
           },
           {
             "id": "which-service",
@@ -160,11 +160,11 @@
       },
       {
         "id": "member-zone",
-        "title": "Member Zone",
+        "title": "Cabinet",
         "items": [
           {
             "id": "what-member-zone",
-            "question": "What is the Member Zone?",
+            "question": "What is the Cabinet?",
             "answer": "It is your personal interactive dashboard where all features live: reports, goals, snapshots, devices, second opinion, and chat."
           },
           {
@@ -340,27 +340,42 @@
           {
             "id": "supported-devices",
             "question": "Which devices are supported?",
-            "answer": "Apple Watch, Samsung, Fitbit, Amazon Halo, Oura, continuous glucose monitors, and other certified devices."
+            "answer": "Seven categories: smartwatches (Apple Watch, Samsung Galaxy Watch, Garmin, Google Pixel Watch, Fitbit, Polar), smart rings (Oura Ring, Ultrahuman Ring), recovery bands (WHOOP), continuous glucose sensors (Dexcom G7, FreeStyle Libre), blood pressure monitors (Omron, Withings BPM), smart scales (Withings Body+), and home sleep systems (Eight Sleep)."
+          },
+          {
+            "id": "device-categories",
+            "question": "What do the device categories cover?",
+            "answer": "Smartwatches give all-day heart rate, sleep, and activity, and often ECG or SpO₂. Smart rings track sleep, HRV, and temperature around the clock. Recovery bands focus on strain and readiness. Continuous glucose sensors show day-long glucose curves. Blood pressure monitors and smart scales add reliable readings at home. Home sleep systems capture overnight vitals without anything on your wrist."
           },
           {
             "id": "connect-device",
             "question": "How do I connect a device?",
-            "answer": "Through a guided step-by-step connection flow in the Member Zone."
+            "answer": "Open Cabinet → Connected Devices, choose your brand, and follow the guided authorization flow. Each connection is a step-by-step consent screen, and you can add or remove devices at any time."
+          },
+          {
+            "id": "what-data-flows",
+            "question": "What data flows in after I connect?",
+            "answer": "Only the metrics you authorize: heart rate and HRV, sleep stages, activity and strain, SpO₂, temperature, glucose, blood pressure, weight, and body composition. Updates arrive on the schedule you choose, and near real-time where the brand supports it."
+          },
+          {
+            "id": "feeds-health-guide",
+            "question": "How do devices feed reports and Health Guide?",
+            "answer": "Interpreted trends from your devices become part of your Human Data Model, so reports and Health Guide can explain patterns in plain language. Guidance stays educational and is not a diagnosis."
           },
           {
             "id": "store-data",
             "question": "Do you store raw health data?",
-            "answer": "No. We interpret metrics — we do not need to store raw streams."
+            "answer": "No. We interpret metrics and keep the trends that matter — we do not need to store raw sensor streams."
           },
           {
             "id": "syncing-stops",
             "question": "What if syncing stops?",
-            "answer": "You'll see a reminder and can reconnect in one click."
+            "answer": "You'll see a reminder in Connected Devices when a link expires or a token needs renewal, and you can reconnect in one click. Earlier data stays in place."
           },
           {
             "id": "disable-sharing",
             "question": "Can I disable data sharing?",
-            "answer": "Yes — instantly from settings."
+            "answer": "Yes — instantly. Disconnect a single device or turn off sharing for all of them in settings; new readings stop right away."
           }
         ]
       },
@@ -371,22 +386,37 @@
           {
             "id": "upload-labs-dna",
             "question": "Can I upload lab tests and DNA data?",
-            "answer": "Yes. In Member Zone → Health Records & DNA you can upload or scan labs, imaging, DNA report PDFs, and raw DNA files. They become part of your health profile alongside the questionnaire."
+            "answer": "Yes. In Cabinet → Health Records & DNA you can upload or scan labs, imaging, DNA report PDFs, and raw DNA files. They become part of your health profile alongside the questionnaire and your connected devices."
           },
           {
             "id": "supported-formats",
             "question": "Which file formats are supported?",
-            "answer": "PDF, JPG, PNG, WEBP, CSV, TXT, VCF, and common raw DNA text exports (including 23andMe- or Ancestry-style files). On mobile you can also use camera capture when the browser allows it."
+            "answer": "PDF, JPG, PNG, WEBP, CSV, TXT, VCF, and common raw DNA text exports (including 23andMe- or Ancestry-style files)."
+          },
+          {
+            "id": "scan-camera",
+            "question": "Can I scan a paper result with my camera?",
+            "answer": "Yes. On mobile you can capture a page directly with the camera when the browser allows it — handy for printed lab sheets. Take one photo per page and choose the record type before saving."
           },
           {
             "id": "how-insights-work",
             "question": "What happens after I upload a file?",
-            "answer": "Each item moves from Received to In review to Insights ready. When ready, you get an educational explanation, conclusions, and recommendations. You can Copy, Print, or Download TXT. This is structured intake with insight templates — not a full genomic analysis pipeline."
+            "answer": "Each item moves from Received to In review to Insights ready. When ready you get an educational explanation, conclusions, and recommendations. This is structured intake with insight templates — not a full genomic analysis pipeline."
+          },
+          {
+            "id": "copy-print-insights",
+            "question": "Can I copy, print, or save an insight?",
+            "answer": "Yes. Every ready insight has Copy, Print, and Download TXT, so you can keep a copy or bring it to an appointment."
           },
           {
             "id": "feeds-reports-guide",
             "question": "How do uploads affect reports and Health Guide?",
-            "answer": "Uploads contribute high-level personal context: counts by type, whether DNA is on file, and the latest lab date. Reports and Health Guide use those signals together with your questionnaire. Full raw DNA content is never pasted into AI prompts."
+            "answer": "Uploads contribute high-level personal context: counts by type, whether DNA is on file, and the latest lab date. Reports and Health Guide use those signals together with your questionnaire and device trends. Full raw DNA content is never pasted into AI prompts."
+          },
+          {
+            "id": "voice-health-guide",
+            "question": "Can I ask Health Guide about a record out loud?",
+            "answer": "Yes. Select a record and ask Health Guide about it by text or voice. Answers come back in plain language, which helps when your hands are busy."
           },
           {
             "id": "dna-privacy",

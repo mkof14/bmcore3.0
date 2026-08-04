@@ -1,13 +1,13 @@
 {
   "privacyTrust": {
     "seo": {
-      "title": "隐私与信任 — BioMath Core 如何保护您的数据",
-      "description": "了解 BioMath Core 如何通过加密、符合 HIPAA 的做法、遵守 GDPR 以及由用户掌控的共享设置来保护您的健康数据。查阅我们的隐私政策与安全实践。"
+      "title": "信任与隐私中心 — BioMath Core 如何保护您的数据",
+      "description": "BioMath Core 信任与隐私中心：隐私政策、服务条款、HIPAA、GDPR、安全及相关法律声明集中于此。"
     },
     "hero": {
-      "label": "隐私与信任",
-      "title": "从设计之初就受到保护的数据",
-      "body": "健康数据高度私密。BioMath Core 将其保护视为产品的核心要求，坚持透明的做法与通俗易懂的政策。"
+      "label": "信任与隐私中心",
+      "title": "您的数据，从设计起即受保护",
+      "body": "健康数据极为私密。本中心汇集我们的隐私、信任与法律文件，便于您了解 BioMath Core 如何保护您的信息。"
     },
     "commitments": {
       "label": "承诺",
@@ -46,12 +46,38 @@
       "body": "全部法律文件均公开发布，并以通俗语言撰写。",
       "readMore": "了解更多 →",
       "items": [
-        { "title": "隐私政策", "description": "我们如何收集、使用并保护您的数据" },
-        { "title": "HIPAA 声明", "description": "我们对医疗数据保护的承诺" },
-        { "title": "GDPR 合规", "description": "欧洲数据保护标准与您的权利" },
-        { "title": "安全实践", "description": "我们采取的技术与组织措施" },
-        { "title": "数据隐私", "description": "您的权利与我们的责任" },
-        { "title": "信任与安全", "description": "打造安全可信的使用体验" }
+        {
+          "title": "隐私政策",
+          "description": "我们如何收集、使用并保护您的数据"
+        },
+        {
+          "title": "服务条款",
+          "description": "使用 BioMath Core 的约定"
+        },
+        {
+          "title": "免责声明",
+          "description": "健康管理范围与建议的边界"
+        },
+        {
+          "title": "HIPAA 声明",
+          "description": "我们对医疗数据保护的承诺"
+        },
+        {
+          "title": "数据隐私",
+          "description": "您的权利与我们的责任"
+        },
+        {
+          "title": "GDPR 合规",
+          "description": "欧洲数据保护标准与您的权利"
+        },
+        {
+          "title": "信任与安全",
+          "description": "打造安全可信的使用体验"
+        },
+        {
+          "title": "安全实践",
+          "description": "我们采取的技术与组织措施"
+        }
       ]
     },
     "control": {
@@ -59,9 +85,18 @@
       "title": "您的数据，由您做主",
       "body": "您有权随时访问、导出或删除自己的数据，无需说明理由。",
       "stats": [
-        { "value": "100%", "label": "数据所有权" },
-        { "value": "0", "label": "数据出售次数" },
-        { "value": "24/7", "label": "安全监控" }
+        {
+          "value": "100%",
+          "label": "数据所有权"
+        },
+        {
+          "value": "0",
+          "label": "数据出售次数"
+        },
+        {
+          "value": "24/7",
+          "label": "安全监控"
+        }
       ]
     },
     "contact": {

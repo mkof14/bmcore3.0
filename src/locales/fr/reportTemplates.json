@@ -108,7 +108,7 @@
       "extended": "Regard plus profond : nous comparons les points forts du questionnaire à l’activité récente et à la couverture des appareils pour repérer les écarts entre intention et pratique quotidienne.",
       "sectionsDeep": "Votre questionnaire a actuellement le plus de détail dans : {{sections}}.",
       "shortClose": "Format court : verrouiller une habitude avec une heure, une pratique de récupération et un point Health Guide cette semaine.",
-      "standardClose": "Cette semaine : choisissez une recommandation numérotée ci-dessous, placez-la dans votre calendrier et revoyez les progrès dans la zone membre après sept jours."
+      "standardClose": "Cette semaine : choisissez une recommandation numérotée ci-dessous, placez-la dans votre calendrier et revoyez les progrès dans la Cabinet après sept jours."
     },
     "insight": {
       "completeness": "Préparation {{score}} % (questionnaire {{questionnaire}} % · profil {{profile}} %).",

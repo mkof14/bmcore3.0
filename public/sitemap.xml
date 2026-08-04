@@ -144,14 +144,8 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://biomathcore.com/ambassador</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://biomathcore.com/referral</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://biomathcore.com/refer</loc>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

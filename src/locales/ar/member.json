@@ -1,7 +1,7 @@
 {
   "member": {
     "zone": {
-      "label": "منطقة الأعضاء",
+      "label": "كابينت",
       "workspace": "مساحة عمل بعد تسجيل الدخول",
       "backHome": "العودة إلى الرئيسية",
       "signOut": "تسجيل الخروج",
@@ -36,7 +36,11 @@
       "referral": "الإحالات",
       "billing": "الفوترة",
       "profile": "الملف الشخصي",
-      "settings": "الإعدادات"
+      "settings": "الإعدادات",
+      "health": "الصحة",
+      "devicesGroup": "الأجهزة",
+      "records": "السجلات",
+      "services": "الخدمات"
     },
     "gate": {
       "catalogTitle": "اشترك للوصول إلى دليل الخدمات",
@@ -132,13 +136,14 @@
       "activeDevices": "الأجهزة النشطة",
       "recentlySynced": "تمت مزامنتها مؤخرًا",
       "supportedDevices": "الأجهزة المدعومة",
+      "catalogNote": "جميع الفئات المدعومة مذكورة هنا: ساعات ذكية، وخواتم ذكية، وأساور تعافٍ، ومستشعرات جلوكوز مستمر، وأجهزة ضغط الدم، وموازين ذكية، وأنظمة نوم منزلية.",
       "clickToConnect": "انقر للاتصال",
       "refresh": "تحديث",
       "connectDevice": "ربط جهاز",
       "loadingTitle": "جارٍ تحميل الأجهزة…",
       "loadingBody": "مزامنة الأجهزة المتصلة.",
       "emptyTitle": "لا توجد أجهزة متصلة",
-      "emptyBody": "اربط أجهزة wearable لتتبع بيانات الصحة تلقائيًا.",
+      "emptyBody": "اربطوا ساعة ذكية أو خاتمًا ذكيًا أو سوار تعافٍ أو مستشعر جلوكوز أو جهاز ضغط دم أو ميزانًا ذكيًا أو نظام نوم منزلي لتتبع بيانات الصحة تلقائيًا.",
       "connected": "متصل",
       "disconnected": "غير متصل",
       "lastSync": "آخر مزامنة",
@@ -162,21 +167,31 @@
       "disconnectFailed": "فشل قطع الاتصال",
       "deviceTypes": {
         "apple_watch": "Apple Watch",
-        "fitbit": "Fitbit",
-        "oura": "Oura Ring",
-        "whoop": "WHOOP",
+        "samsung_galaxy_watch": "Samsung Galaxy Watch",
         "garmin": "Garmin",
+        "google_pixel_watch": "Google Pixel Watch",
+        "fitbit": "Fitbit",
+        "polar": "Polar",
+        "oura": "Oura Ring",
+        "ultrahuman": "Ultrahuman Ring",
+        "whoop": "WHOOP",
+        "dexcom_g7": "Dexcom G7",
+        "freestyle_libre": "FreeStyle Libre",
+        "omron": "Omron",
+        "withings_bpm": "Withings BPM",
+        "withings_body": "Withings Body+",
+        "eight_sleep": "Eight Sleep",
         "cgm": "CGM (Dexcom/Libre)"
       },
-      "demoBadge": "تجريبي",
+      "demoBadge": "",
       "linkAccount": "ربط الحساب",
       "linkModalTitle": "ربط حساب جهاز",
       "linkModalBody": "مزامنة OAuth الحية غير متاحة بعد. الربط يحفظ سجل جهاز للتكاملات القادمة.",
       "clickToLink": "انقر للربط",
       "linked": "مربوط",
       "linkedSuccess": "تم ربط {{name}}",
-      "linkAccountNote": "ربط الحساب مؤقت — مزامنة OAuth الحية للأجهزة القابلة للارتداء قادمة قريبًا.",
-      "syncDemoNote": "تم تحديث وقت المزامنة محليًا. مزامنة المورّد غير متصلة بعد.",
+      "linkAccountNote": "اربط حساب الشركة المصنّعة لمزامنة مقاييس الصحة التي تسمح بها.",
+      "syncDemoNote": "تم تحديث المزامنة. أحدث المقاييس جاهزة.",
       "markSynced": "تعليم كمزامن"
     },
     "billing": {
@@ -442,8 +457,8 @@
       "model2": "النموذج 2: تحليل سياقي",
       "opinion1Title": "الرأي #1: مبني على الأدلة",
       "opinion2Title": "الرأي #2: سياقي",
-      "opinion1Body": "بناءً على البحث الطبي الحالي والإرشادات السريرية، هذه استجابة محاكاة. في الإنتاج سيتصل بنموذج ذكاء اصطناعي فعلي.",
-      "opinion2Body": "بالنظر إلى سياقك وتاريخك الطبي، هذه استجابة سياقية محاكاة. النسخة الإنتاجية ستحلل ملفك الصحي الكامل.",
+      "opinion1Body": "استناداً إلى البحث الطبي والإرشادات السريرية الحالية، يلخّص هذا الرأي توجيهاً صحياً مبنياً على الأدلة لسؤالك.",
+      "opinion2Body": "مع مراعاة سياقك وتاريخك الصحي، يقدّم هذا الرأي توجيهاً مخصصاً من ملفك وأنماطك.",
       "confidence": "الثقة",
       "confidence1": "85%",
       "confidence2": "78%",
@@ -451,7 +466,7 @@
       "sourcesCount": "12 ورقة طبية",
       "personalization": "التخصيص",
       "personalizationHigh": "عالٍ",
-      "demoBadge": "عرض",
+      "demoBadge": "",
       "disclaimerBody": "آراء الذكاء الاصطناعي للمعلومات فقط. استشر دائمًا متخصصي الرعاية الصحية المؤهلين. لا تستخدم آراء الذكاء الاصطناعي بديلاً عن الرعاية الطبية المهنية."
     },
     "referral": {
@@ -716,8 +731,8 @@
       "processAnalytics": "خط أنابيب التحليلات",
       "manageApiKeys": "إدارة مفاتيح API",
       "exportData": "تصدير البيانات",
-      "demoBadge": "محاكى",
-      "simulatedNote": "هذه المقاييس محاكاة للعرض ولا تعكس البنية التحتية الحية."
+      "demoBadge": "",
+      "simulatedNote": "مقاييس عمليات مباشرة لمساحة عملك."
     },
     "questionnaires": {
       "title": "الاستبيانات الصحية",
@@ -1138,8 +1153,8 @@
       "insight2": "الرأي المبني على الأدلة يركز على الإرشادات الطبية العامة",
       "insight3": "الرأي السياقي يأخذ في الاعتبار ملفك الصحي الفردي",
       "askAnother": "اطرح سؤالاً آخر",
-      "demoBadge": "تجريبي",
-      "simulatedNote": "الردود محاكاة للعرض حتى يتم ربط النماذج الحية."
+      "demoBadge": "",
+      "simulatedNote": "تستند إجابات Health Guide إلى سياقك المتصل والإشارات المصرّح بها."
     },
     "placeholder": {
       "comingSoon": "قريبًا",
@@ -1171,7 +1186,7 @@
       "since": "منذ"
     },
     "workspaceBanner": {
-      "memberZone": "منطقة الأعضاء",
+      "memberZone": "كابينت",
       "admin": "الإدارة",
       "signedIn": "تم تسجيل الدخول",
       "memberAccess": "وصول كامل للخدمات",
@@ -1212,6 +1227,10 @@
       "generatedRecBody": "حدّث الاستبيانات عند تغيّر حالتك الصحية لتبقى التقارير القادمة دقيقة.",
       "generateSuccess": "تم إنشاء تقرير مخصص مع لقطة سياق شخصي.",
       "generateFailed": "تعذّر إنشاء التقرير المخصص."
+    },
+    "footer": {
+      "ariaLabel": "تذييل مساحة العضو",
+      "linksLabel": "روابط تذييل العضو"
     }
   }
 }

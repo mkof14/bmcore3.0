@@ -12,10 +12,10 @@ export const PRERENDER_ROUTES = [
     path: '/',
     title: 'BioMath Core — Biomathematical Human Data Model',
     description:
-      'BioMath Core builds a living Human Data Model — a biomathematical digital twin of your health — and guides you with Health Guide dual analysis.',
+      'BioMath Core builds a living Human Data Model — a biomathematical model of your health — and guides you with Health Guide dual analysis.',
     h1: 'Human Data Model',
     keywords:
-      'biomathematical modeling, Human Data Model, digital twin, Health Guide, BioMath Core, dual intelligence',
+      'biomathematical modeling, Human Data Model, Health Guide, BioMath Core, dual intelligence',
   },
   {
     path: '/about',
@@ -130,7 +130,7 @@ export function organizationJsonLd() {
     '@type': 'MedicalOrganization',
     name: 'BioMath Core',
     description:
-      'BioMath Core builds a biomathematical Human Data Model — a living digital twin of your health — and delivers dual-model guidance through Health Guide.',
+      'BioMath Core builds a biomathematical Human Data Model — a living model of your health — and delivers dual-model guidance through Health Guide.',
     url: `${BASE_URL.replace(/\/+$/, '')}/`,
     logo: `${BASE_URL.replace(/\/+$/, '')}/biomathcore_emblem_1024.png`,
     sameAs: [

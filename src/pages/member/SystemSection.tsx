@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Activity, Database, Zap, Server, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import MemberMetricCard from '../../components/ui/MemberMetricCard';
-import MemberDemoBadge from '../../components/MemberDemoBadge';
-
 type ProcessStatus = 'running' | 'stopped';
 
 type Process = {
@@ -64,11 +62,6 @@ export default function SystemSection() {
 
   return (
     <div>
-      <div className="mb-4 flex flex-wrap items-center gap-2">
-        <MemberDemoBadge labelKey="member.system.demoBadge" />
-        <p className="text-xs member-muted">{t('member.system.simulatedNote')}</p>
-      </div>
-
       <div className="mb-6 grid gap-4 md:grid-cols-4">
         <MemberMetricCard
           accent="blue"
@@ -113,7 +106,6 @@ export default function SystemSection() {
           <h3 className="member-heading flex items-center gap-2 text-xl font-semibold">
             <Database className="h-5 w-5 text-orange-500" />
             {t('member.system.liveProcesses')}
-            <MemberDemoBadge labelKey="member.system.demoBadge" />
           </h3>
           <div className="flex items-center gap-2">
             <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />

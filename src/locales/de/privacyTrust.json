@@ -1,13 +1,13 @@
 {
   "privacyTrust": {
     "seo": {
-      "title": "Datenschutz und Vertrauen – so schützt BioMath Core Ihre Daten",
-      "description": "Erfahren Sie, wie BioMath Core Ihre Gesundheitsdaten schützt: Verschlüsselung, HIPAA-konforme Verfahren, DSGVO-Konformität und nutzergesteuerte Freigabe. Lesen Sie unsere Datenschutzrichtlinien und Sicherheitspraktiken."
+      "title": "Vertrauens- und Datenschutzcenter — so schützt BioMath Core Ihre Daten",
+      "description": "Vertrauens- und Datenschutzcenter von BioMath Core: Datenschutzerklärung, Nutzungsbedingungen, HIPAA, DSGVO, Sicherheit und rechtliche Hinweise an einem Ort."
     },
     "hero": {
-      "label": "Datenschutz und Vertrauen",
-      "title": "Ihre Daten – geschützt von Anfang an",
-      "body": "Gesundheitsdaten sind zutiefst persönlich. BioMath Core behandelt ihren Schutz als grundlegende Produktanforderung – mit transparenten Verfahren und verständlich formulierten Richtlinien."
+      "label": "Vertrauens- und Datenschutzcenter",
+      "title": "Ihre Daten — von Grund auf geschützt",
+      "body": "Gesundheitsdaten sind höchst persönlich. Dieses Center bündelt unsere Datenschutz-, Vertrauens- und Rechtsdokumente, damit Sie nachvollziehen können, wie BioMath Core Ihre Informationen schützt."
     },
     "commitments": {
       "label": "Zusagen",
@@ -46,12 +46,38 @@
       "body": "Die vollständige rechtliche Dokumentation ist öffentlich und verständlich geschrieben.",
       "readMore": "Mehr lesen →",
       "items": [
-        { "title": "Datenschutzerklärung", "description": "Wie wir Ihre Daten erheben, nutzen und schützen" },
-        { "title": "HIPAA-Hinweis", "description": "Unsere Zusage zum Schutz von Gesundheitsdaten" },
-        { "title": "DSGVO-Konformität", "description": "Europäische Datenschutzstandards und Ihre Rechte" },
-        { "title": "Sicherheitspraktiken", "description": "Technische und organisatorische Maßnahmen, die wir ergreifen" },
-        { "title": "Datenschutz", "description": "Ihre Rechte und unsere Pflichten" },
-        { "title": "Vertrauen und Sicherheit", "description": "So schaffen wir eine sichere, vertrauenswürdige Nutzung" }
+        {
+          "title": "Datenschutzerklärung",
+          "description": "Wie wir Ihre Daten erheben, nutzen und schützen"
+        },
+        {
+          "title": "Nutzungsbedingungen",
+          "description": "Die Vereinbarung für die Nutzung von BioMath Core"
+        },
+        {
+          "title": "Haftungsausschluss",
+          "description": "Wellness-Rahmen und Grenzen unserer Hinweise"
+        },
+        {
+          "title": "HIPAA-Hinweis",
+          "description": "Unsere Zusage zum Schutz von Gesundheitsdaten"
+        },
+        {
+          "title": "Datenschutz",
+          "description": "Ihre Rechte und unsere Pflichten"
+        },
+        {
+          "title": "DSGVO-Konformität",
+          "description": "Europäische Datenschutzstandards und Ihre Rechte"
+        },
+        {
+          "title": "Vertrauen und Sicherheit",
+          "description": "So schaffen wir eine sichere, vertrauenswürdige Nutzung"
+        },
+        {
+          "title": "Sicherheitspraktiken",
+          "description": "Technische und organisatorische Maßnahmen, die wir ergreifen"
+        }
       ]
     },
     "control": {
@@ -59,9 +85,18 @@
       "title": "Ihre Daten, Ihre Kontrolle",
       "body": "Sie haben jederzeit das Recht, auf Ihre Daten zuzugreifen, sie zu exportieren oder zu löschen – ohne Rückfragen.",
       "stats": [
-        { "value": "100%", "label": "Dateneigentum" },
-        { "value": "0", "label": "Datenverkäufe" },
-        { "value": "24/7", "label": "Sicherheitsüberwachung" }
+        {
+          "value": "100%",
+          "label": "Dateneigentum"
+        },
+        {
+          "value": "0",
+          "label": "Datenverkäufe"
+        },
+        {
+          "value": "24/7",
+          "label": "Sicherheitsüberwachung"
+        }
       ]
     },
     "contact": {

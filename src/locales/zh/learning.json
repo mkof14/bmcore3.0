@@ -10,7 +10,7 @@
         "body": "从灵活的订阅层级中选择，匹配你的健康之路。所有方案都包含核心服务，进阶层级还可解锁专项评估、设备接入与更高级的 AI 指引。"
       },
       "member": {
-        "title": "会员专区",
+        "title": "工作台",
         "body": "你的个性化健康看板。在一个安全的位置追踪所有服务的进展、查看报告、管理设备连接、设定健康目标并浏览完整的健康时间线。"
       },
       "multiModel": {
@@ -35,11 +35,16 @@
       },
       "healthRecords": {
         "title": "健康档案与DNA",
-        "body": "在会员区 → 健康档案与DNA，可上传或扫描检验、影像、DNA报告PDF与原始DNA（PDF、图片、CSV、TXT、VCF）。状态从已接收到审核中再到洞察已就绪。洞察解释记录、列出结论与建议，且为教育性——不是诊断。数量统计与DNA存档标志会进入报告与Health Guide的个人上下文；原始DNA内容绝不会粘贴进AI提示。可复制、打印或下载TXT。"
+        "body": "在工作台 → 健康档案与DNA中，您可以上传或扫描化验单、影像、DNA 报告 PDF 和原始 DNA 文件（PDF、图片、CSV、TXT、VCF）。在手机上可用相机拍摄打印页面。文件会依次经过已接收、审核中、洞察已就绪。洞察会解释这份档案，列出结论与建议，内容用于健康教育，不构成诊断。任何已就绪的洞察都可复制、打印或下载 TXT，也可以用文字或语音就所选档案询问 Health Guide。各类型数量与是否存有 DNA 的标记会作为个人背景用于报告和 Health Guide；原始 DNA 内容绝不会被放入 AI 提示词。"
+      },
+      "devices": {
+        "title": "已连接设备",
+        "body": "工作台 → 已连接设备涵盖七类：智能手表（Apple Watch、Samsung Galaxy Watch、Garmin、Google Pixel Watch、Fitbit、Polar）、智能戒指（Oura Ring、Ultrahuman Ring）、恢复手环（WHOOP）、连续血糖传感器（Dexcom G7、FreeStyle Libre）、血压计（Omron、Withings BPM）、智能秤（Withings Body+）和居家睡眠系统（Eight Sleep）。每个品牌都由您自行授权，只有您批准的指标才会同步——频率由您选择，品牌支持时可接近实时。解读后的趋势会进入报告，让 Health Guide 用通俗语言解释其中的规律；原始传感器数据流不会被存储。"
       }
     },
     "viewPlans": "查看方案 →",
-    "goToMember": "前往会员专区 →",
+    "goToMember": "前往工作台 →",
+    "openDevices": "打开已连接设备 →",
     "browseServices": "浏览全部服务 →",
     "ai": {
       "title": "AI 系统入门",

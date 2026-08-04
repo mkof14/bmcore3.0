@@ -108,7 +108,7 @@
       "extended": "更深入的视角：我们将问卷重点与近期活动、设备覆盖对照，以发现意图与日常实践之间的差距。",
       "sectionsDeep": "您的问卷目前在这些部分细节最多：{{sections}}。",
       "shortClose": "简版：用具体时刻锁定一个习惯、一个恢复练习，以及本周一次 Health Guide 回顾。",
-      "standardClose": "本周：从下方编号建议中选一项，放入日历，并在七天后于会员区查看进度。"
+      "standardClose": "本周：从下方编号建议中选一项，放入日历，并在七天后于工作台查看进度。"
     },
     "insight": {
       "completeness": "准备度 {{score}}%（问卷 {{questionnaire}}% · 档案 {{profile}}%）。",

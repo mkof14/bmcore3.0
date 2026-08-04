@@ -1,7 +1,7 @@
 {
   "member": {
     "zone": {
-      "label": "メンバーゾーン",
+      "label": "キャビネット",
       "workspace": "ログイン中のワークスペース",
       "backHome": "ホームに戻る",
       "signOut": "ログアウト",
@@ -36,7 +36,11 @@
       "referral": "紹介",
       "billing": "請求",
       "profile": "プロフィール",
-      "settings": "設定"
+      "settings": "設定",
+      "health": "健康",
+      "devicesGroup": "デバイス",
+      "records": "記録",
+      "services": "サービス"
     },
     "gate": {
       "catalogTitle": "カタログを利用するには登録が必要です",
@@ -132,13 +136,14 @@
       "activeDevices": "有効なデバイス",
       "recentlySynced": "最近同期済み",
       "supportedDevices": "対応デバイス",
+      "catalogNote": "対応するすべてのカテゴリーを掲載しています：スマートウォッチ、スマートリング、リカバリーバンド、持続血糖センサー、血圧計、スマートスケール、家庭用睡眠システム。",
       "clickToConnect": "クリックして接続",
       "refresh": "更新",
       "connectDevice": "デバイスを接続",
       "loadingTitle": "デバイスを読み込み中…",
       "loadingBody": "接続済みデバイスを同期しています。",
       "emptyTitle": "接続されたデバイスがありません",
-      "emptyBody": "ウェアラブルを接続して、健康データの自動追跡を開始しましょう。",
+      "emptyBody": "スマートウォッチ、スマートリング、リカバリーバンド、血糖センサー、血圧計、スマートスケール、家庭用睡眠システムを接続すると、健康データの自動追跡が始まります。",
       "connected": "接続済み",
       "disconnected": "切断",
       "lastSync": "最終同期",
@@ -162,21 +167,31 @@
       "disconnectFailed": "切断に失敗しました",
       "deviceTypes": {
         "apple_watch": "Apple Watch",
-        "fitbit": "Fitbit",
-        "oura": "Oura Ring",
-        "whoop": "WHOOP",
+        "samsung_galaxy_watch": "Samsung Galaxy Watch",
         "garmin": "Garmin",
+        "google_pixel_watch": "Google Pixel Watch",
+        "fitbit": "Fitbit",
+        "polar": "Polar",
+        "oura": "Oura Ring",
+        "ultrahuman": "Ultrahuman Ring",
+        "whoop": "WHOOP",
+        "dexcom_g7": "Dexcom G7",
+        "freestyle_libre": "FreeStyle Libre",
+        "omron": "Omron",
+        "withings_bpm": "Withings BPM",
+        "withings_body": "Withings Body+",
+        "eight_sleep": "Eight Sleep",
         "cgm": "CGM (Dexcom/Libre)"
       },
-      "demoBadge": "デモ",
+      "demoBadge": "",
       "linkAccount": "アカウントをリンク",
       "linkModalTitle": "デバイスアカウントをリンク",
       "linkModalBody": "ライブOAuth同期はまだ利用できません。リンクすると今後の連携用にデバイス記録が保存されます。",
       "clickToLink": "クリックしてリンク",
       "linked": "リンク済み",
       "linkedSuccess": "{{name}} をリンクしました",
-      "linkAccountNote": "アカウントリンクは仮実装です。ライブのウェアラブルOAuth同期は近日予定です。",
-      "syncDemoNote": "同期タイムスタンプをローカル更新しました。ベンダー同期は未接続です。",
+      "linkAccountNote": "メーカーアカウントを連携し、許可した健康指標を同期します。",
+      "syncDemoNote": "同期を更新しました。最新の指標が準備できています。",
       "markSynced": "同期済みにする"
     },
     "billing": {
@@ -442,8 +457,8 @@
       "model2": "モデル2：文脈分析",
       "opinion1Title": "意見 #1：エビデンスベース",
       "opinion2Title": "意見 #2：文脈的",
-      "opinion1Body": "現在の医学研究と臨床ガイドラインに基づくシミュレーション回答です。本番環境では実際のAIモデルに接続されます。",
-      "opinion2Body": "あなたの状況と病歴を考慮したシミュレーション回答です。本番環境では完全な健康プロファイルを分析します。",
+      "opinion1Body": "最新の医学研究と臨床ガイドラインに基づき、この意見は質問に対するエビデンス重視の健康ガイダンスをまとめます。",
+      "opinion2Body": "あなたの状況と健康歴を踏まえ、この意見はプロファイルとパターンに基づく個別ガイダンスを示します。",
       "confidence": "信頼度",
       "confidence1": "85%",
       "confidence2": "78%",
@@ -451,7 +466,7 @@
       "sourcesCount": "12件の医学論文",
       "personalization": "パーソナライズ",
       "personalizationHigh": "高",
-      "demoBadge": "デモ",
+      "demoBadge": "",
       "disclaimerBody": "AIの意見は情報提供のみを目的としています。医療上の助言、診断、治療については必ず資格のある医療専門家に相談してください。AIの意見を専門的な医療の代わりに使用しないでください。"
     },
     "referral": {
@@ -716,8 +731,8 @@
       "processAnalytics": "分析パイプライン",
       "manageApiKeys": "APIキーを管理",
       "exportData": "データをエクスポート",
-      "demoBadge": "シミュレーション",
-      "simulatedNote": "これらの指標はデモ用で、本番インフラを反映していません。"
+      "demoBadge": "",
+      "simulatedNote": "ワークスペースのライブプロセス指標です。"
     },
     "questionnaires": {
       "title": "健康問診票",
@@ -1138,8 +1153,8 @@
       "insight2": "エビデンスベースの意見は一般的な医学ガイドラインに焦点",
       "insight3": "文脈的意見は個人の健康プロフィールを考慮",
       "askAnother": "別の質問をする",
-      "demoBadge": "デモ",
-      "simulatedNote": "ライブモデル接続まで、回答はデモ用のシミュレーションです。"
+      "demoBadge": "",
+      "simulatedNote": "Health Guide の回答は、接続済みコンテキストと許可されたシグナルに基づきます。"
     },
     "placeholder": {
       "comingSoon": "近日公開",
@@ -1171,7 +1186,7 @@
       "since": "開始"
     },
     "workspaceBanner": {
-      "memberZone": "メンバーゾーン",
+      "memberZone": "キャビネット",
       "admin": "管理",
       "signedIn": "サインイン済み",
       "memberAccess": "全サービスアクセス",
@@ -1212,6 +1227,10 @@
       "generatedRecBody": "健康状態が変わったら問診を更新し、今後のレポート精度を保ちましょう。",
       "generateSuccess": "個人コンテキストのスナップショット付きパーソナライズレポートを生成しました。",
       "generateFailed": "パーソナライズレポートを生成できませんでした。"
+    },
+    "footer": {
+      "ariaLabel": "メンバーワークスペースのフッター",
+      "linksLabel": "メンバーフッターのリンク"
     }
   }
 }

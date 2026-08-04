@@ -3,7 +3,7 @@
     "signIn": {
       "title": "Bon retour",
       "subtitle": "Connectez-vous pour accéder à votre tableau de bord bien-être",
-      "mockNotice": "L'authentification simulée locale est activée. Utilisez l'e-mail super-administrateur {{email}} et votre mot de passe pour ouvrir l'Espace Membre et l'Administration en test.",
+      "mockNotice": "L'authentification simulée locale est activée. Utilisez l'e-mail super-administrateur {{email}} et votre mot de passe pour ouvrir le Cabinet et l'Administration en test.",
       "remember": "Se souvenir de moi",
       "forgot": "Mot de passe oublié ?",
       "submit": "Se connecter",

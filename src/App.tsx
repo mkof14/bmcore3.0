@@ -46,8 +46,7 @@ const ServicePublicPage = lazy(() => import('./pages/ServicePublicPage'));
 const Devices = lazy(() => import('./pages/Devices'));
 const Reports = lazy(() => import('./pages/Reports'));
 const FAQ = lazy(() => import('./pages/FAQ'));
-const Referral = lazy(() => import('./pages/Referral'));
-const Ambassador = lazy(() => import('./pages/Ambassador'));
+const Refer = lazy(() => import('./pages/Refer'));
 const LearningCenter = lazy(() => import('./pages/LearningCenter'));
 const BiomathCoreSummary = lazy(() => import('./pages/BiomathCoreSummary'));
 const SummaryText = lazy(() => import('./pages/SummaryText'));
@@ -117,10 +116,17 @@ function App() {
 
   const goToPage = (page: Page, data?: string, options?: { replace?: boolean }) => {
     if (page === 'shared-report') setShareToken(data || '');
-    setCurrentPage(page);
+    // Collapse legacy growth keys onto the combined Refer page.
+    const target: Page =
+      page === 'referral' || page === 'ambassador' ? 'refer' : page;
+    setCurrentPage(target);
     syncUrl(page, data, { replace: options?.replace });
     // Sync + post-paint: pushState keeps scroll; focused footer links can re-scroll after paint.
-    scrollAppToTopAfterNavigate();
+    // Keep in-page section hashes (#invite / #ambassador) — do not jump to top.
+    const hash = typeof window !== 'undefined' ? window.location.hash : '';
+    if (!hash || hash.startsWith('#/')) {
+      scrollAppToTopAfterNavigate();
+    }
   };
 
   // Jump to top on every SPA page/detail change (nav links, back/forward, initial sync).
@@ -373,10 +379,10 @@ function App() {
         ) : (
           <SignIn onNavigate={handleNavigate} onSignIn={handleSignIn} />
         );
+      case 'refer':
       case 'referral':
-        return <Referral onNavigate={handleNavigate} />;
       case 'ambassador':
-        return <Ambassador onNavigate={handleNavigate} />;
+        return <Refer onNavigate={handleNavigate} />;
       case 'learning':
       case 'learning-center':
         return <LearningCenter onNavigate={handleNavigate} />;
@@ -439,9 +445,17 @@ function App() {
   };
 
   const showHeaderFooter = currentPage !== 'signin' && currentPage !== 'signup';
+  // Member Zone renders its own full footer inside the content column
+  // so it never spans under / collides with the fixed sidebar.
+  const isMemberWorkspace = currentPage === 'member-zone' || currentPage === 'member';
+  const showSiteFooter = showHeaderFooter && !isMemberWorkspace;
 
   return (
-    <div className="min-h-screen bg-page transition-colors">
+    <div
+      className={`min-h-screen bg-page transition-colors${
+        isMemberWorkspace ? ' member-workspace' : ''
+      }`}
+    >
       <AdminToast />
       {showHeaderFooter && (
         <Header
@@ -456,7 +470,7 @@ function App() {
           {renderPage()}
         </Suspense>
       </main>
-      {showHeaderFooter && <Footer onNavigate={handleNavigate} />}
+      {showSiteFooter && <Footer onNavigate={handleNavigate} />}
 
       <AIAssistantButton
         onClick={() => {

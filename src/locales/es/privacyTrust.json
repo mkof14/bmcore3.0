@@ -1,13 +1,13 @@
 {
   "privacyTrust": {
     "seo": {
-      "title": "Privacidad y confianza: cómo BioMath Core protege tus datos",
-      "description": "Descubre cómo BioMath Core protege tus datos de salud con cifrado, prácticas alineadas con HIPAA, cumplimiento del RGPD y compartición controlada por el usuario. Consulta nuestras políticas de privacidad y prácticas de seguridad."
+      "title": "Centro de confianza y privacidad: cómo BioMath Core protege tus datos",
+      "description": "Centro de confianza y privacidad de BioMath Core: política de privacidad, términos, HIPAA, RGPD, seguridad y avisos legales en un solo lugar."
     },
     "hero": {
-      "label": "Privacidad y confianza",
-      "title": "Tus datos, protegidos desde el diseño",
-      "body": "Los datos de salud son profundamente personales. BioMath Core trata su protección como un requisito esencial del producto, con prácticas transparentes y políticas en lenguaje claro."
+      "label": "Centro de confianza y privacidad",
+      "title": "Tus datos, protegidos por diseño",
+      "body": "Los datos de salud son profundamente personales. Este centro reúne nuestros documentos de privacidad, confianza y legales para que puedas revisar cómo BioMath Core protege tu información."
     },
     "commitments": {
       "label": "Compromisos",
@@ -46,12 +46,38 @@
       "body": "Toda la documentación legal es pública y está escrita en lenguaje claro.",
       "readMore": "Leer más →",
       "items": [
-        { "title": "Política de privacidad", "description": "Cómo recopilamos, usamos y protegemos tus datos" },
-        { "title": "Aviso HIPAA", "description": "Nuestro compromiso con la protección de datos sanitarios" },
-        { "title": "Cumplimiento del RGPD", "description": "Estándares europeos de protección de datos y tus derechos" },
-        { "title": "Prácticas de seguridad", "description": "Medidas técnicas y organizativas que aplicamos" },
-        { "title": "Privacidad de los datos", "description": "Tus derechos y nuestras responsabilidades" },
-        { "title": "Confianza y seguridad", "description": "Cómo creamos una experiencia segura y fiable" }
+        {
+          "title": "Política de privacidad",
+          "description": "Cómo recopilamos, usamos y protegemos tus datos"
+        },
+        {
+          "title": "Términos del servicio",
+          "description": "El acuerdo que regula el uso de BioMath Core"
+        },
+        {
+          "title": "Aviso legal",
+          "description": "Alcance del bienestar y límites de nuestra orientación"
+        },
+        {
+          "title": "Aviso HIPAA",
+          "description": "Nuestro compromiso con la protección de datos sanitarios"
+        },
+        {
+          "title": "Privacidad de los datos",
+          "description": "Tus derechos y nuestras responsabilidades"
+        },
+        {
+          "title": "Cumplimiento del RGPD",
+          "description": "Estándares europeos de protección de datos y tus derechos"
+        },
+        {
+          "title": "Confianza y seguridad",
+          "description": "Cómo creamos una experiencia segura y fiable"
+        },
+        {
+          "title": "Prácticas de seguridad",
+          "description": "Medidas técnicas y organizativas que aplicamos"
+        }
       ]
     },
     "control": {
@@ -59,9 +85,18 @@
       "title": "Tus datos, bajo tu control",
       "body": "Tienes derecho a acceder a tus datos, exportarlos o eliminarlos en cualquier momento. Sin preguntas.",
       "stats": [
-        { "value": "100%", "label": "Propiedad de los datos" },
-        { "value": "0", "label": "Ventas de datos" },
-        { "value": "24/7", "label": "Supervisión de seguridad" }
+        {
+          "value": "100%",
+          "label": "Propiedad de los datos"
+        },
+        {
+          "value": "0",
+          "label": "Ventas de datos"
+        },
+        {
+          "value": "24/7",
+          "label": "Supervisión de seguridad"
+        }
       ]
     },
     "contact": {

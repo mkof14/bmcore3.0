@@ -9,7 +9,7 @@
     "commandCenter": "管理中心",
     "adminPanel": "管理面板",
     "whyTwoModels": "为何使用两个模型",
-    "privacyTrust": "隐私与信任中心",
+    "privacyTrust": "信任与隐私中心",
     "legalNote": "BioMath Core 是健康管理服务，不提供医疗照护、诊断或治疗。",
     "legalGroups": {
       "documents": "法律文件",
@@ -20,7 +20,8 @@
     "cookiePreferences": "Cookie 设置",
     "legalContact": "隐私与法务联系方式",
     "disclaimer": "BioMath Core 是健康管理服务，并非医疗服务。我们不提供诊断、治疗或医疗建议，仅提供健康管理指导和预防性健康支持。如有医疗问题，请务必咨询具备资质的医疗专业人员。",
-    "media": "媒体"
+    "media": "媒体",
+    "refer": "推荐"
   },
   "cookies": {
     "title": "Cookie 设置",

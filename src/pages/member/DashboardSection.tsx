@@ -184,7 +184,7 @@ export default function DashboardSection({ onBack }: DashboardSectionProps = {})
 
   return (
     <div className="space-y-6">
-      {onBack && <BackButton onClick={onBack} label={t('member.zone.backHome')} />}
+      {onBack && <BackButton onClick={onBack} label={t('member.zone.backHome')} variant="link" />}
       {!todaySnapshot ? (
         <div className="member-card rounded-xl p-8 border-2 border-dashed text-center">
           <Sun className="h-12 w-12 text-orange-500 mx-auto mb-4" />
